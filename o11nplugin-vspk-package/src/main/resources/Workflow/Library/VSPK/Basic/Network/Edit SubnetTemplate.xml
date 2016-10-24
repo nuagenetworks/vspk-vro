@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d1a23f96-bd5c-5ff5-b729-c7bfaf4e8fff"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit SubnetTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:SubnetTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='subnetTemplateObj' type='VSPK:SubnetTemplate' >
+</param>
+
+<param name='address' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='gateway' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='netmask' type='string' >
+</param>
+
+<param name='proxyARP' type='boolean' >
+</param>
+
+<param name='splitSubnet' type='boolean' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = subnetTemplateObj.session;
+
+if (address) {
+   subnetTemplateObj.address = address;
+} else if (subnetTemplateObj.address) {
+   subnetTemplateObj.address = "";
+}
+if (description) {
+   subnetTemplateObj.description = description;
+} else if (subnetTemplateObj.description) {
+   subnetTemplateObj.description = "";
+}
+if (externalID) {
+   subnetTemplateObj.externalID = externalID;
+} else if (subnetTemplateObj.externalID) {
+   subnetTemplateObj.externalID = "";
+}
+if (gateway) {
+   subnetTemplateObj.gateway = gateway;
+} else if (subnetTemplateObj.gateway) {
+   subnetTemplateObj.gateway = "";
+}
+if (name) {
+   subnetTemplateObj.name = name;
+} else if (subnetTemplateObj.name) {
+   subnetTemplateObj.name = "";
+}
+if (netmask) {
+   subnetTemplateObj.netmask = netmask;
+} else if (subnetTemplateObj.netmask) {
+   subnetTemplateObj.netmask = "";
+}
+subnetTemplateObj.proxyARP = proxyARP;
+subnetTemplateObj.splitSubnet = splitSubnet;
+subnetTemplateObj.save(session);]]></script>
+<in-binding><bind name='subnetTemplateObj' type='VSPK:SubnetTemplate' export-name="subnetTemplateObj" ></bind>
+
+<bind name='address' type='string' export-name="address" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='gateway' type='string' export-name="gateway" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='netmask' type='string' export-name="netmask" ></bind>
+
+<bind name='proxyARP' type='boolean' export-name="proxyARP" ></bind>
+
+<bind name='splitSubnet' type='boolean' export-name="splitSubnet" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="subnetTemplateObj"><desc><![CDATA[subnetTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="address"><desc><![CDATA[address]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetTemplateObj.address]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetTemplateObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetTemplateObj.externalID]]></p-qual></p-param>
+
+<p-param name="gateway"><desc><![CDATA[gateway]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetTemplateObj.gateway]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetTemplateObj.name]]></p-qual></p-param>
+
+<p-param name="netmask"><desc><![CDATA[netmask]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetTemplateObj.netmask]]></p-qual></p-param>
+
+<p-param name="proxyARP"><desc><![CDATA[proxyARP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#subnetTemplateObj.proxyARP]]></p-qual></p-param>
+
+<p-param name="splitSubnet"><desc><![CDATA[splitSubnet]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#subnetTemplateObj.splitSubnet]]></p-qual></p-param>
+
+</presentation></workflow>

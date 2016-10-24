@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getVPortType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">6534f99f-9c90-5c9e-bd0e-e7d65bce1311</entry>
+</properties>

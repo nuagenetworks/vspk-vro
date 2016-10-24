@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="5ab307af-ed20-583b-950a-a5da03de2b49"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add Container to Me]]></display-name>
+<ref-types><![CDATA[(VSPK:Me)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='meObj' type='VSPK:Me' >
+</param>
+<param name='UUID' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+<param name='orchestrationID' type='string' >
+</param>
+</input><output><param name='containerObj' type='VSPK:Container' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = meObj.session;
+
+containerObj = new VSPKContainer();
+if (UUID) {
+   containerObj.UUID = UUID;
+}
+if (externalID) {
+   containerObj.externalID = externalID;
+}
+if (name) {
+   containerObj.name = name;
+}
+if (orchestrationID) {
+   containerObj.orchestrationID = orchestrationID;
+}
+
+meObj.createContainer(session, containerObj);
+]]></script>
+<in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
+<bind name='UUID' type='string' export-name="UUID" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+<bind name='orchestrationID' type='string' export-name="orchestrationID" ></bind>
+</in-binding><out-binding><bind name='containerObj' type='VSPK:Container' export-name="containerObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="meObj"><desc><![CDATA[meObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="UUID"><desc><![CDATA[UUID]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="orchestrationID"><desc><![CDATA[orchestrationID]]></desc>
+</p-param>
+</presentation></workflow>

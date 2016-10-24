@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vm</entry>
+<entry key="name">Find VMResync in Subnet</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">237e2975-2170-511c-891a-50d231e24e35</entry>
+</properties>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getTCAMetric" result-type="VSPK:TCAMetric" api-version="6.0.0"  id="2754af5d-596d-5ba5-9d3d-e80367c176ca"  version="1.0.1"  allowed-operations="vef" ><param n="tCAObj" t="VSPK:TCA"></param><script encoded='false'><![CDATA[return tCAObj.metric;]]></script>
+</dunes-script-module>

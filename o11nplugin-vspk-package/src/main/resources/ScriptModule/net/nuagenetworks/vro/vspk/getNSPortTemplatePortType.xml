@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getNSPortTemplatePortType" result-type="VSPK:NSPortTemplatePortType" api-version="6.0.0"  id="5fea2d57-d542-55c2-97b5-e9dab8cced17"  version="1.0.1"  allowed-operations="vef" ><param n="nSPortTemplateObj" t="VSPK:NSPortTemplate"></param><script encoded='false'><![CDATA[return nSPortTemplateObj.portType;]]></script>
+</dunes-script-module>

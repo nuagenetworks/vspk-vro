@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/qos</entry>
+<entry key="name">Add QOS to SubnetTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">46bd94b1-1ae6-5f8a-9475-2cf167caec2d</entry>
+</properties>

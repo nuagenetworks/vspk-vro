@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to VMInterface</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">99d573be-7a24-5403-b896-6af7b0bcd174</entry>
+</properties>

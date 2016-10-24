@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Remove ExternalService</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">13bc74a1-ed60-512f-944a-216b10139a37</entry>
+</properties>

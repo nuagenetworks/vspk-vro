@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Sysmon</entry>
+<entry key="name">Remove MultiNICVPort</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a0102a49-5401-5007-8e28-8f4e1a56726c</entry>
+</properties>

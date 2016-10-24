@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Add EnterprisePermission to RedundancyGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c97971e9-785d-52e1-8a5d-1a948618166f</entry>
+</properties>

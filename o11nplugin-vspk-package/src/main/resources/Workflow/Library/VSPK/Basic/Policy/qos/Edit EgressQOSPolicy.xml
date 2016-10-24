@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ce1d4c09-cb4b-5f36-8bb0-6708966753e1"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit EgressQOSPolicy]]></display-name>
+<ref-types><![CDATA[(VSPK:EgressQOSPolicy)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='egressQOSPolicyObj' type='VSPK:EgressQOSPolicy' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='parentQueueAssociatedRateLimiterID' type='string' >
+</param>
+
+<param name='queue1AssociatedRateLimiterID' type='string' >
+</param>
+
+<param name='queue1ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue1ForwardingClasses' >
+</param>
+
+<param name='queue2AssociatedRateLimiterID' type='string' >
+</param>
+
+<param name='queue2ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue2ForwardingClasses' >
+</param>
+
+<param name='queue3AssociatedRateLimiterID' type='string' >
+</param>
+
+<param name='queue3ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue3ForwardingClasses' >
+</param>
+
+<param name='queue4AssociatedRateLimiterID' type='string' >
+</param>
+
+<param name='queue4ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue4ForwardingClasses' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = egressQOSPolicyObj.session;
+
+if (description) {
+   egressQOSPolicyObj.description = description;
+} else if (egressQOSPolicyObj.description) {
+   egressQOSPolicyObj.description = "";
+}
+if (externalID) {
+   egressQOSPolicyObj.externalID = externalID;
+} else if (egressQOSPolicyObj.externalID) {
+   egressQOSPolicyObj.externalID = "";
+}
+if (name) {
+   egressQOSPolicyObj.name = name;
+} else if (egressQOSPolicyObj.name) {
+   egressQOSPolicyObj.name = "";
+}
+if (parentQueueAssociatedRateLimiterID) {
+   egressQOSPolicyObj.parentQueueAssociatedRateLimiterID = parentQueueAssociatedRateLimiterID;
+} else if (egressQOSPolicyObj.parentQueueAssociatedRateLimiterID) {
+   egressQOSPolicyObj.parentQueueAssociatedRateLimiterID = "";
+}
+if (queue1AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue1AssociatedRateLimiterID = queue1AssociatedRateLimiterID;
+} else if (egressQOSPolicyObj.queue1AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue1AssociatedRateLimiterID = "";
+}
+egressQOSPolicyObj.queue1ForwardingClasses = queue1ForwardingClasses;
+if (queue2AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue2AssociatedRateLimiterID = queue2AssociatedRateLimiterID;
+} else if (egressQOSPolicyObj.queue2AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue2AssociatedRateLimiterID = "";
+}
+egressQOSPolicyObj.queue2ForwardingClasses = queue2ForwardingClasses;
+if (queue3AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue3AssociatedRateLimiterID = queue3AssociatedRateLimiterID;
+} else if (egressQOSPolicyObj.queue3AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue3AssociatedRateLimiterID = "";
+}
+egressQOSPolicyObj.queue3ForwardingClasses = queue3ForwardingClasses;
+if (queue4AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue4AssociatedRateLimiterID = queue4AssociatedRateLimiterID;
+} else if (egressQOSPolicyObj.queue4AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue4AssociatedRateLimiterID = "";
+}
+egressQOSPolicyObj.queue4ForwardingClasses = queue4ForwardingClasses;
+egressQOSPolicyObj.save(session);]]></script>
+<in-binding><bind name='egressQOSPolicyObj' type='VSPK:EgressQOSPolicy' export-name="egressQOSPolicyObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='parentQueueAssociatedRateLimiterID' type='string' export-name="parentQueueAssociatedRateLimiterID" ></bind>
+
+<bind name='queue1AssociatedRateLimiterID' type='string' export-name="queue1AssociatedRateLimiterID" ></bind>
+
+<bind name='queue1ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue1ForwardingClasses' export-name="queue1ForwardingClasses" ></bind>
+
+<bind name='queue2AssociatedRateLimiterID' type='string' export-name="queue2AssociatedRateLimiterID" ></bind>
+
+<bind name='queue2ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue2ForwardingClasses' export-name="queue2ForwardingClasses" ></bind>
+
+<bind name='queue3AssociatedRateLimiterID' type='string' export-name="queue3AssociatedRateLimiterID" ></bind>
+
+<bind name='queue3ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue3ForwardingClasses' export-name="queue3ForwardingClasses" ></bind>
+
+<bind name='queue4AssociatedRateLimiterID' type='string' export-name="queue4AssociatedRateLimiterID" ></bind>
+
+<bind name='queue4ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue4ForwardingClasses' export-name="queue4ForwardingClasses" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="egressQOSPolicyObj"><desc><![CDATA[egressQOSPolicyObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressQOSPolicyObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressQOSPolicyObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressQOSPolicyObj.name]]></p-qual></p-param>
+
+<p-param name="parentQueueAssociatedRateLimiterID"><desc><![CDATA[parentQueueAssociatedRateLimiterID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressQOSPolicyObj.parentQueueAssociatedRateLimiterID]]></p-qual></p-param>
+
+<p-param name="queue1AssociatedRateLimiterID"><desc><![CDATA[queue1AssociatedRateLimiterID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressQOSPolicyObj.queue1AssociatedRateLimiterID]]></p-qual></p-param>
+
+<p-param name="queue1ForwardingClasses"><desc><![CDATA[queue1ForwardingClasses]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="Array/VSPK:EgressQOSPolicyQueue1ForwardingClasses" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEgressQOSPolicyQueue1ForwardingClasses").call( #egressQOSPolicyObj )]]></p-qual></p-param>
+
+<p-param name="queue2AssociatedRateLimiterID"><desc><![CDATA[queue2AssociatedRateLimiterID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressQOSPolicyObj.queue2AssociatedRateLimiterID]]></p-qual></p-param>
+
+<p-param name="queue2ForwardingClasses"><desc><![CDATA[queue2ForwardingClasses]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="Array/VSPK:EgressQOSPolicyQueue2ForwardingClasses" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEgressQOSPolicyQueue2ForwardingClasses").call( #egressQOSPolicyObj )]]></p-qual></p-param>
+
+<p-param name="queue3AssociatedRateLimiterID"><desc><![CDATA[queue3AssociatedRateLimiterID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressQOSPolicyObj.queue3AssociatedRateLimiterID]]></p-qual></p-param>
+
+<p-param name="queue3ForwardingClasses"><desc><![CDATA[queue3ForwardingClasses]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="Array/VSPK:EgressQOSPolicyQueue3ForwardingClasses" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEgressQOSPolicyQueue3ForwardingClasses").call( #egressQOSPolicyObj )]]></p-qual></p-param>
+
+<p-param name="queue4AssociatedRateLimiterID"><desc><![CDATA[queue4AssociatedRateLimiterID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressQOSPolicyObj.queue4AssociatedRateLimiterID]]></p-qual></p-param>
+
+<p-param name="queue4ForwardingClasses"><desc><![CDATA[queue4ForwardingClasses]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="Array/VSPK:EgressQOSPolicyQueue4ForwardingClasses" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEgressQOSPolicyQueue4ForwardingClasses").call( #egressQOSPolicyObj )]]></p-qual></p-param>
+
+</presentation></workflow>

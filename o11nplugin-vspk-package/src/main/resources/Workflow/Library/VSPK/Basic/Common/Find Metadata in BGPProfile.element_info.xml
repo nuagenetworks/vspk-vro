@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in BGPProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a91254a3-3cd2-53f2-b9e3-00eaa49e1224</entry>
+</properties>

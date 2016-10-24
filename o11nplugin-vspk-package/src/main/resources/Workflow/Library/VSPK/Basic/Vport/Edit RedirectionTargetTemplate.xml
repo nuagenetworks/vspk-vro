@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7f6fa62d-3a4c-5a49-a4d6-7f07716901e2"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit RedirectionTargetTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:RedirectionTargetTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='redirectionTargetTemplateObj' type='VSPK:RedirectionTargetTemplate' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='endPointType' type='VSPK:RedirectionTargetTemplateEndPointType' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = redirectionTargetTemplateObj.session;
+
+if (description) {
+   redirectionTargetTemplateObj.description = description;
+} else if (redirectionTargetTemplateObj.description) {
+   redirectionTargetTemplateObj.description = "";
+}
+redirectionTargetTemplateObj.endPointType = endPointType;
+if (externalID) {
+   redirectionTargetTemplateObj.externalID = externalID;
+} else if (redirectionTargetTemplateObj.externalID) {
+   redirectionTargetTemplateObj.externalID = "";
+}
+if (name) {
+   redirectionTargetTemplateObj.name = name;
+} else if (redirectionTargetTemplateObj.name) {
+   redirectionTargetTemplateObj.name = "";
+}
+redirectionTargetTemplateObj.save(session);]]></script>
+<in-binding><bind name='redirectionTargetTemplateObj' type='VSPK:RedirectionTargetTemplate' export-name="redirectionTargetTemplateObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='endPointType' type='VSPK:RedirectionTargetTemplateEndPointType' export-name="endPointType" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="redirectionTargetTemplateObj"><desc><![CDATA[redirectionTargetTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#redirectionTargetTemplateObj.description]]></p-qual></p-param>
+
+<p-param name="endPointType"><desc><![CDATA[endPointType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:RedirectionTargetTemplateEndPointType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getRedirectionTargetTemplateEndPointType").call( #redirectionTargetTemplateObj )]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#redirectionTargetTemplateObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#redirectionTargetTemplateObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

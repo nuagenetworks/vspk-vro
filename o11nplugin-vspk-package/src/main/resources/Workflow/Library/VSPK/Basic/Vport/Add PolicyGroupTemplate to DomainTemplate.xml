@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="dcf16a89-5a83-5495-a70f-db5f5f026305"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add PolicyGroupTemplate to DomainTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:DomainTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='domainTemplateObj' type='VSPK:DomainTemplate' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+<param name='type' type='VSPK:PolicyGroupTemplateType' >
+</param>
+</input><output><param name='policyGroupTemplateObj' type='VSPK:PolicyGroupTemplate' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = domainTemplateObj.session;
+
+policyGroupTemplateObj = new VSPKPolicyGroupTemplate();
+if (description) {
+   policyGroupTemplateObj.description = description;
+}
+if (externalID) {
+   policyGroupTemplateObj.externalID = externalID;
+}
+if (name) {
+   policyGroupTemplateObj.name = name;
+}
+policyGroupTemplateObj.type = type;
+
+domainTemplateObj.createPolicyGroupTemplate(session, policyGroupTemplateObj);
+]]></script>
+<in-binding><bind name='domainTemplateObj' type='VSPK:DomainTemplate' export-name="domainTemplateObj" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+<bind name='type' type='VSPK:PolicyGroupTemplateType' export-name="type" ></bind>
+</in-binding><out-binding><bind name='policyGroupTemplateObj' type='VSPK:PolicyGroupTemplate' export-name="policyGroupTemplateObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="domainTemplateObj"><desc><![CDATA[domainTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="type"><desc><![CDATA[type]]></desc>
+</p-param>
+</presentation></workflow>

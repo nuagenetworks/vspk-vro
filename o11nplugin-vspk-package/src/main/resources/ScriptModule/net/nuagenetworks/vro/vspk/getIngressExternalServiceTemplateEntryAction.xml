@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getIngressExternalServiceTemplateEntryAction" result-type="VSPK:IngressExternalServiceTemplateEntryAction" api-version="6.0.0"  id="1b3a4ee1-606b-5b7f-915c-7e870ef1ced4"  version="1.0.1"  allowed-operations="vef" ><param n="ingressExternalServiceTemplateEntryObj" t="VSPK:IngressExternalServiceTemplateEntry"></param><script encoded='false'><![CDATA[return ingressExternalServiceTemplateEntryObj.action;]]></script>
+</dunes-script-module>

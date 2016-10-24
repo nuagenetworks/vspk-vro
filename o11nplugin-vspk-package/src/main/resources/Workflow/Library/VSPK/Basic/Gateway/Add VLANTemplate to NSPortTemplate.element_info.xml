@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Add VLANTemplate to NSPortTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">db2d6228-9702-5b22-8b0e-76409090d428</entry>
+</properties>

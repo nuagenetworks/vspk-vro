@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getZoneMaintenanceMode</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">0ac8a27c-e97e-5313-8f9f-f898306afe13</entry>
+</properties>

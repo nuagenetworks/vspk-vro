@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in VLAN</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5b99d4ef-98ba-5be8-a937-d2f3e99190ef</entry>
+</properties>

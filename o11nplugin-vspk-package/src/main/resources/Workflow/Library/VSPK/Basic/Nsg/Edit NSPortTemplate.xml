@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="73439c1f-a5db-5a57-8ce7-74eef38346fd"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit NSPortTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:NSPortTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='nSPortTemplateObj' type='VSPK:NSPortTemplate' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='physicalName' type='string' >
+</param>
+
+<param name='portType' type='VSPK:NSPortTemplatePortType' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = nSPortTemplateObj.session;
+
+if (description) {
+   nSPortTemplateObj.description = description;
+} else if (nSPortTemplateObj.description) {
+   nSPortTemplateObj.description = "";
+}
+if (externalID) {
+   nSPortTemplateObj.externalID = externalID;
+} else if (nSPortTemplateObj.externalID) {
+   nSPortTemplateObj.externalID = "";
+}
+if (name) {
+   nSPortTemplateObj.name = name;
+} else if (nSPortTemplateObj.name) {
+   nSPortTemplateObj.name = "";
+}
+if (physicalName) {
+   nSPortTemplateObj.physicalName = physicalName;
+} else if (nSPortTemplateObj.physicalName) {
+   nSPortTemplateObj.physicalName = "";
+}
+nSPortTemplateObj.portType = portType;
+nSPortTemplateObj.save(session);]]></script>
+<in-binding><bind name='nSPortTemplateObj' type='VSPK:NSPortTemplate' export-name="nSPortTemplateObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='physicalName' type='string' export-name="physicalName" ></bind>
+
+<bind name='portType' type='VSPK:NSPortTemplatePortType' export-name="portType" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="nSPortTemplateObj"><desc><![CDATA[nSPortTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSPortTemplateObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSPortTemplateObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSPortTemplateObj.name]]></p-qual></p-param>
+
+<p-param name="physicalName"><desc><![CDATA[physicalName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSPortTemplateObj.physicalName]]></p-qual></p-param>
+
+<p-param name="portType"><desc><![CDATA[portType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:NSPortTemplatePortType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getNSPortTemplatePortType").call( #nSPortTemplateObj )]]></p-qual></p-param>
+
+</presentation></workflow>

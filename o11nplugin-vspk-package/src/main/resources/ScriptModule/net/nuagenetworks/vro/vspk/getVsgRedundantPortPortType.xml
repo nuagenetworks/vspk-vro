@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getVsgRedundantPortPortType" result-type="VSPK:VsgRedundantPortPortType" api-version="6.0.0"  id="e6704e9a-e75d-5bc9-9162-43a1a72ce3d5"  version="1.0.1"  allowed-operations="vef" ><param n="vsgRedundantPortObj" t="VSPK:VsgRedundantPort"></param><script encoded='false'><![CDATA[return vsgRedundantPortObj.portType;]]></script>
+</dunes-script-module>

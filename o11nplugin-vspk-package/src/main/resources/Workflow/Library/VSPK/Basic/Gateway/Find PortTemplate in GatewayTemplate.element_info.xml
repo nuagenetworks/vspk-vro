@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Find PortTemplate in GatewayTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0a4ab374-d6f3-59d6-a72b-d39090976520</entry>
+</properties>

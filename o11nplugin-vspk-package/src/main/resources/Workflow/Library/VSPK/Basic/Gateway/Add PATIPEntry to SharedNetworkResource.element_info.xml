@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Add PATIPEntry to SharedNetworkResource</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0fb366ac-72a3-50f3-b542-115c76e721ab</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vm</entry>
+<entry key="name">Remove VM</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">53b797ae-6e9b-598b-924e-f71e719700c5</entry>
+</properties>

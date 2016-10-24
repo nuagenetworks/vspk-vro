@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a47520ad-6d50-5bdd-aec9-d466b4336832"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit DomainFIPAclTemplateEntry]]></display-name>
+<ref-types><![CDATA[(VSPK:DomainFIPAclTemplateEntry)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='domainFIPAclTemplateEntryObj' type='VSPK:DomainFIPAclTemplateEntry' >
+</param>
+
+<param name='ACLTemplateName' type='string' >
+</param>
+
+<param name='DSCP' type='string' >
+</param>
+
+<param name='action' type='VSPK:DomainFIPAclTemplateEntryAction' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='destinationPort' type='string' >
+</param>
+
+<param name='domainName' type='string' >
+</param>
+
+<param name='enterpriseName' type='string' >
+</param>
+
+<param name='etherType' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='locationType' type='VSPK:DomainFIPAclTemplateEntryLocationType' >
+</param>
+
+<param name='networkType' type='VSPK:DomainFIPAclTemplateEntryNetworkType' >
+</param>
+
+<param name='protocol' type='string' >
+</param>
+
+<param name='sourcePort' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = domainFIPAclTemplateEntryObj.session;
+
+if (ACLTemplateName) {
+   domainFIPAclTemplateEntryObj.ACLTemplateName = ACLTemplateName;
+} else if (domainFIPAclTemplateEntryObj.ACLTemplateName) {
+   domainFIPAclTemplateEntryObj.ACLTemplateName = "";
+}
+if (DSCP) {
+   domainFIPAclTemplateEntryObj.DSCP = DSCP;
+} else if (domainFIPAclTemplateEntryObj.DSCP) {
+   domainFIPAclTemplateEntryObj.DSCP = "";
+}
+domainFIPAclTemplateEntryObj.action = action;
+if (description) {
+   domainFIPAclTemplateEntryObj.description = description;
+} else if (domainFIPAclTemplateEntryObj.description) {
+   domainFIPAclTemplateEntryObj.description = "";
+}
+if (destinationPort) {
+   domainFIPAclTemplateEntryObj.destinationPort = destinationPort;
+} else if (domainFIPAclTemplateEntryObj.destinationPort) {
+   domainFIPAclTemplateEntryObj.destinationPort = "";
+}
+if (domainName) {
+   domainFIPAclTemplateEntryObj.domainName = domainName;
+} else if (domainFIPAclTemplateEntryObj.domainName) {
+   domainFIPAclTemplateEntryObj.domainName = "";
+}
+if (enterpriseName) {
+   domainFIPAclTemplateEntryObj.enterpriseName = enterpriseName;
+} else if (domainFIPAclTemplateEntryObj.enterpriseName) {
+   domainFIPAclTemplateEntryObj.enterpriseName = "";
+}
+if (etherType) {
+   domainFIPAclTemplateEntryObj.etherType = etherType;
+} else if (domainFIPAclTemplateEntryObj.etherType) {
+   domainFIPAclTemplateEntryObj.etherType = "";
+}
+if (externalID) {
+   domainFIPAclTemplateEntryObj.externalID = externalID;
+} else if (domainFIPAclTemplateEntryObj.externalID) {
+   domainFIPAclTemplateEntryObj.externalID = "";
+}
+domainFIPAclTemplateEntryObj.locationType = locationType;
+domainFIPAclTemplateEntryObj.networkType = networkType;
+if (protocol) {
+   domainFIPAclTemplateEntryObj.protocol = protocol;
+} else if (domainFIPAclTemplateEntryObj.protocol) {
+   domainFIPAclTemplateEntryObj.protocol = "";
+}
+if (sourcePort) {
+   domainFIPAclTemplateEntryObj.sourcePort = sourcePort;
+} else if (domainFIPAclTemplateEntryObj.sourcePort) {
+   domainFIPAclTemplateEntryObj.sourcePort = "";
+}
+domainFIPAclTemplateEntryObj.save(session);]]></script>
+<in-binding><bind name='domainFIPAclTemplateEntryObj' type='VSPK:DomainFIPAclTemplateEntry' export-name="domainFIPAclTemplateEntryObj" ></bind>
+
+<bind name='ACLTemplateName' type='string' export-name="ACLTemplateName" ></bind>
+
+<bind name='DSCP' type='string' export-name="DSCP" ></bind>
+
+<bind name='action' type='VSPK:DomainFIPAclTemplateEntryAction' export-name="action" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='destinationPort' type='string' export-name="destinationPort" ></bind>
+
+<bind name='domainName' type='string' export-name="domainName" ></bind>
+
+<bind name='enterpriseName' type='string' export-name="enterpriseName" ></bind>
+
+<bind name='etherType' type='string' export-name="etherType" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='locationType' type='VSPK:DomainFIPAclTemplateEntryLocationType' export-name="locationType" ></bind>
+
+<bind name='networkType' type='VSPK:DomainFIPAclTemplateEntryNetworkType' export-name="networkType" ></bind>
+
+<bind name='protocol' type='string' export-name="protocol" ></bind>
+
+<bind name='sourcePort' type='string' export-name="sourcePort" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="domainFIPAclTemplateEntryObj"><desc><![CDATA[domainFIPAclTemplateEntryObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="ACLTemplateName"><desc><![CDATA[ACLTemplateName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.ACLTemplateName]]></p-qual></p-param>
+
+<p-param name="DSCP"><desc><![CDATA[DSCP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.DSCP]]></p-qual></p-param>
+
+<p-param name="action"><desc><![CDATA[action]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:DomainFIPAclTemplateEntryAction" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getDomainFIPAclTemplateEntryAction").call( #domainFIPAclTemplateEntryObj )]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.description]]></p-qual></p-param>
+
+<p-param name="destinationPort"><desc><![CDATA[destinationPort]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.destinationPort]]></p-qual></p-param>
+
+<p-param name="domainName"><desc><![CDATA[domainName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.domainName]]></p-qual></p-param>
+
+<p-param name="enterpriseName"><desc><![CDATA[enterpriseName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.enterpriseName]]></p-qual></p-param>
+
+<p-param name="etherType"><desc><![CDATA[etherType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.etherType]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.externalID]]></p-qual></p-param>
+
+<p-param name="locationType"><desc><![CDATA[locationType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:DomainFIPAclTemplateEntryLocationType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getDomainFIPAclTemplateEntryLocationType").call( #domainFIPAclTemplateEntryObj )]]></p-qual></p-param>
+
+<p-param name="networkType"><desc><![CDATA[networkType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:DomainFIPAclTemplateEntryNetworkType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getDomainFIPAclTemplateEntryNetworkType").call( #domainFIPAclTemplateEntryObj )]]></p-qual></p-param>
+
+<p-param name="protocol"><desc><![CDATA[protocol]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.protocol]]></p-qual></p-param>
+
+<p-param name="sourcePort"><desc><![CDATA[sourcePort]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.sourcePort]]></p-qual></p-param>
+
+</presentation></workflow>

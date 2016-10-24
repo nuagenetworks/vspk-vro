@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="3cff352b-f3e8-568b-bca3-e3cefa5bb5a4"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit VCenterHypervisor]]></display-name>
+<ref-types><![CDATA[(VSPK:VCenterHypervisor)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vCenterHypervisorObj' type='VSPK:VCenterHypervisor' >
+</param>
+
+<param name='dataNetworkPortgroup' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='hypervisorIP' type='string' >
+</param>
+
+<param name='hypervisorPassword' type='string' >
+</param>
+
+<param name='hypervisorUser' type='string' >
+</param>
+
+<param name='mgmtNetworkPortgroup' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='vmNetworkPortgroup' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vCenterHypervisorObj.session;
+
+if (dataNetworkPortgroup) {
+   vCenterHypervisorObj.dataNetworkPortgroup = dataNetworkPortgroup;
+} else if (vCenterHypervisorObj.dataNetworkPortgroup) {
+   vCenterHypervisorObj.dataNetworkPortgroup = "";
+}
+if (description) {
+   vCenterHypervisorObj.description = description;
+} else if (vCenterHypervisorObj.description) {
+   vCenterHypervisorObj.description = "";
+}
+if (externalID) {
+   vCenterHypervisorObj.externalID = externalID;
+} else if (vCenterHypervisorObj.externalID) {
+   vCenterHypervisorObj.externalID = "";
+}
+if (hypervisorIP) {
+   vCenterHypervisorObj.hypervisorIP = hypervisorIP;
+} else if (vCenterHypervisorObj.hypervisorIP) {
+   vCenterHypervisorObj.hypervisorIP = "";
+}
+if (hypervisorPassword) {
+   vCenterHypervisorObj.hypervisorPassword = hypervisorPassword;
+} else if (vCenterHypervisorObj.hypervisorPassword) {
+   vCenterHypervisorObj.hypervisorPassword = "";
+}
+if (hypervisorUser) {
+   vCenterHypervisorObj.hypervisorUser = hypervisorUser;
+} else if (vCenterHypervisorObj.hypervisorUser) {
+   vCenterHypervisorObj.hypervisorUser = "";
+}
+if (mgmtNetworkPortgroup) {
+   vCenterHypervisorObj.mgmtNetworkPortgroup = mgmtNetworkPortgroup;
+} else if (vCenterHypervisorObj.mgmtNetworkPortgroup) {
+   vCenterHypervisorObj.mgmtNetworkPortgroup = "";
+}
+if (name) {
+   vCenterHypervisorObj.name = name;
+} else if (vCenterHypervisorObj.name) {
+   vCenterHypervisorObj.name = "";
+}
+if (vmNetworkPortgroup) {
+   vCenterHypervisorObj.vmNetworkPortgroup = vmNetworkPortgroup;
+} else if (vCenterHypervisorObj.vmNetworkPortgroup) {
+   vCenterHypervisorObj.vmNetworkPortgroup = "";
+}
+vCenterHypervisorObj.save(session);]]></script>
+<in-binding><bind name='vCenterHypervisorObj' type='VSPK:VCenterHypervisor' export-name="vCenterHypervisorObj" ></bind>
+
+<bind name='dataNetworkPortgroup' type='string' export-name="dataNetworkPortgroup" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='hypervisorIP' type='string' export-name="hypervisorIP" ></bind>
+
+<bind name='hypervisorPassword' type='string' export-name="hypervisorPassword" ></bind>
+
+<bind name='hypervisorUser' type='string' export-name="hypervisorUser" ></bind>
+
+<bind name='mgmtNetworkPortgroup' type='string' export-name="mgmtNetworkPortgroup" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='vmNetworkPortgroup' type='string' export-name="vmNetworkPortgroup" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vCenterHypervisorObj"><desc><![CDATA[vCenterHypervisorObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="dataNetworkPortgroup"><desc><![CDATA[dataNetworkPortgroup]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.dataNetworkPortgroup]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.externalID]]></p-qual></p-param>
+
+<p-param name="hypervisorIP"><desc><![CDATA[hypervisorIP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.hypervisorIP]]></p-qual></p-param>
+
+<p-param name="hypervisorPassword"><desc><![CDATA[hypervisorPassword]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.hypervisorPassword]]></p-qual></p-param>
+
+<p-param name="hypervisorUser"><desc><![CDATA[hypervisorUser]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.hypervisorUser]]></p-qual></p-param>
+
+<p-param name="mgmtNetworkPortgroup"><desc><![CDATA[mgmtNetworkPortgroup]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.mgmtNetworkPortgroup]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.name]]></p-qual></p-param>
+
+<p-param name="vmNetworkPortgroup"><desc><![CDATA[vmNetworkPortgroup]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.vmNetworkPortgroup]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Appd</entry>
+<entry key="name">Add Link to Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">1ddfc1be-21d8-5d1e-aff0-bc1021599840</entry>
+</properties>

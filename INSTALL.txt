@@ -1,0 +1,96 @@
+VSPK Plug-In for VMWare vRealize Orchestrator (vRO) README
+
+Plug-in upgrades:
+=================
+
+Prior to installing a new version of the vspk-vro plug-in, it is highly recommended to remove all the workflows that were installed with
+the previous version of the plug-in. Here are the steps to achieve this:
+   
+   a. Log in to the Orchestrator Client (please refer to #2 below for more info)
+   b. Select "Design" mode from the combo box
+   c. Select the "Packages" icon
+   d. Right click on "net.nuagenetworks.vro.vspk". Note that it takes several seconds for the context menu to appear
+   e. Select "Delete element with content..." from the context menu
+   f. Click the "DELETE ALL!" button. Note that the procedure takes several seconds to complete
+
+
+Installation steps:
+===================
+
+1. Install VSPK plug-in for vRO 7.0.x:
+
+   a. In a web browser, go to the IP address of your Orchestrator Appliance virtual machine: http://orchestrator_appliance_ip
+   b. Click the "Orchestrator Control Center" link
+   c. Login to Control Center
+   d. Click the "Manage Plug-Ins" icon
+   e. Click the "Browse..." button
+   f. Select the plug-in installer file to install:
+       i) For a VSD 3.2.x compatible plug-in, use o11nplugin-3.2.x.vmoapp
+      ii) For a VSD 4.0.x compatible plug-in, use o11nplugin-4.0.x.vmoapp
+   g. Click "Open"
+   h. Put a check mark beside "Accept EULA"
+   i. Click the "Install" button. The plug-in version information should be displayed
+   j. Click the "Install" button
+   k. Click the "Statup Options" link
+   l. Click the "Restart" button
+
+2. Start the Orchestrator Client:
+
+   a. In a web browser, go to the IP address of your Orchestrator Appliance virtual machine: http://orchestrator_appliance_ip
+   b. Click "Start Orchestrator Client" link
+   c. The IP address of the Orchestrator Appliance should be displayed in the "Host Name" text box
+   d. Log in by using the Orchestrator client user name and password
+   e. If a Security Warning window pops up, select "Install this certificate and do not display any security warnings for it anymore." and click "Ignore" to install the certificate
+
+3. Verify that VSPK plug-in is properly installed in vRO:
+
+   a. In the Orchestrator Client main window, select Help->Installed plug-ins...
+   b. Check that VSPK (version 3.2.x or 4.0.x) shows up in the list of installed plug-ins
+
+4. Create a session to a VSD:
+
+   a. In the Orchestrator Client main window, click the "Workflows" icon
+   b. Expand the following folders: Library->VSPK->Basic->Session
+   c. Right click "Add Session" workflow
+   d. Select "Start Workflow..." from the context menu
+   e. Fill in the following fields:
+         - apiUrl: The URL of the VSD to connect to, ex: http://135.121.118.83:8443
+         - username, ex: csproot
+         - password, ex: csproot
+         - enterprise, ex: csp
+   f. Click the "Submit" button
+   e. Ensure that the workflow executed successfully, otherwise correct errors and click "Submit" again
+
+5. Verify that the newly created session is available in the VSPK plug-in's Inventory:
+
+   a. In the Orchestrator Client main window, click the "Inventory" icon
+   b. Expand the VSPK plug-in folder
+   c. Check that the VSD URL entered at #4 is displayed
+   d. Expand the VSD URL
+   e. Expand the "Enterprises" folder. Make sure the enterprises listed below are the same as in the VSD GUI.
+
+6. Create a new Enterprise:
+
+   a. In the VSPK plug-in Inventory, right click on the "Me" folder
+   b. Select "Run Workflow..." from the context menu 
+   c. In the "Chooser..." dialog, select the "Add Enterprise to Me" workflow then click the "Select" button
+        Tip: Sorting workflows by name helps finding a specific workflow more quickly
+   d. In the workflow dialog, enter a name for the new enterprise, ex: testEnterprise
+   e. Click the "Submit" button
+   f. Verify that the newly created enterprise shows up in both VSPK plug-in's Inventory, under the "Enterprises" folder, as well as in the VSD GUI
+
+7. Delete the newly created Enterprise:
+
+   a. In the VSPK plug-in Inventory, right click on the newly created enterprise node
+   b. Select "Run Workflow..." from the context menu 
+   c. In the "Chooser..." dialog, select the "Remove Enterprise" workflow then click "Select"
+        Tip: Sorting workflows by name helps finding a specific workflow more quickly
+   d. In the workflow dialog, click the "Submit" button
+   e. Verify that the enterprise is removed from both VSPK plug-in's Inventory as well as from the VSD GUI
+
+
+Support information:
+====================
+
+For support and feature requests, please contact:
+nuage-oss-support@alcatel-lucent.com

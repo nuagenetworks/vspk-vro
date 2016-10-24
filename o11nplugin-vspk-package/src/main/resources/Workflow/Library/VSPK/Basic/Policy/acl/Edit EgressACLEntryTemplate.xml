@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ef55e5dd-c5f2-5aab-8224-c904331871e8"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit EgressACLEntryTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:EgressACLEntryTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='egressACLEntryTemplateObj' type='VSPK:EgressACLEntryTemplate' >
+</param>
+
+<param name='ACLTemplateName' type='string' >
+</param>
+
+<param name='DSCP' type='string' >
+</param>
+
+<param name='action' type='VSPK:EgressACLEntryTemplateAction' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='destinationPort' type='string' >
+</param>
+
+<param name='domainName' type='string' >
+</param>
+
+<param name='enterpriseName' type='string' >
+</param>
+
+<param name='etherType' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='locationType' type='VSPK:EgressACLEntryTemplateLocationType' >
+</param>
+
+<param name='networkType' type='VSPK:EgressACLEntryTemplateNetworkType' >
+</param>
+
+<param name='protocol' type='string' >
+</param>
+
+<param name='sourcePort' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = egressACLEntryTemplateObj.session;
+
+if (ACLTemplateName) {
+   egressACLEntryTemplateObj.ACLTemplateName = ACLTemplateName;
+} else if (egressACLEntryTemplateObj.ACLTemplateName) {
+   egressACLEntryTemplateObj.ACLTemplateName = "";
+}
+if (DSCP) {
+   egressACLEntryTemplateObj.DSCP = DSCP;
+} else if (egressACLEntryTemplateObj.DSCP) {
+   egressACLEntryTemplateObj.DSCP = "";
+}
+egressACLEntryTemplateObj.action = action;
+if (description) {
+   egressACLEntryTemplateObj.description = description;
+} else if (egressACLEntryTemplateObj.description) {
+   egressACLEntryTemplateObj.description = "";
+}
+if (destinationPort) {
+   egressACLEntryTemplateObj.destinationPort = destinationPort;
+} else if (egressACLEntryTemplateObj.destinationPort) {
+   egressACLEntryTemplateObj.destinationPort = "";
+}
+if (domainName) {
+   egressACLEntryTemplateObj.domainName = domainName;
+} else if (egressACLEntryTemplateObj.domainName) {
+   egressACLEntryTemplateObj.domainName = "";
+}
+if (enterpriseName) {
+   egressACLEntryTemplateObj.enterpriseName = enterpriseName;
+} else if (egressACLEntryTemplateObj.enterpriseName) {
+   egressACLEntryTemplateObj.enterpriseName = "";
+}
+if (etherType) {
+   egressACLEntryTemplateObj.etherType = etherType;
+} else if (egressACLEntryTemplateObj.etherType) {
+   egressACLEntryTemplateObj.etherType = "";
+}
+if (externalID) {
+   egressACLEntryTemplateObj.externalID = externalID;
+} else if (egressACLEntryTemplateObj.externalID) {
+   egressACLEntryTemplateObj.externalID = "";
+}
+egressACLEntryTemplateObj.locationType = locationType;
+egressACLEntryTemplateObj.networkType = networkType;
+if (protocol) {
+   egressACLEntryTemplateObj.protocol = protocol;
+} else if (egressACLEntryTemplateObj.protocol) {
+   egressACLEntryTemplateObj.protocol = "";
+}
+if (sourcePort) {
+   egressACLEntryTemplateObj.sourcePort = sourcePort;
+} else if (egressACLEntryTemplateObj.sourcePort) {
+   egressACLEntryTemplateObj.sourcePort = "";
+}
+egressACLEntryTemplateObj.save(session);]]></script>
+<in-binding><bind name='egressACLEntryTemplateObj' type='VSPK:EgressACLEntryTemplate' export-name="egressACLEntryTemplateObj" ></bind>
+
+<bind name='ACLTemplateName' type='string' export-name="ACLTemplateName" ></bind>
+
+<bind name='DSCP' type='string' export-name="DSCP" ></bind>
+
+<bind name='action' type='VSPK:EgressACLEntryTemplateAction' export-name="action" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='destinationPort' type='string' export-name="destinationPort" ></bind>
+
+<bind name='domainName' type='string' export-name="domainName" ></bind>
+
+<bind name='enterpriseName' type='string' export-name="enterpriseName" ></bind>
+
+<bind name='etherType' type='string' export-name="etherType" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='locationType' type='VSPK:EgressACLEntryTemplateLocationType' export-name="locationType" ></bind>
+
+<bind name='networkType' type='VSPK:EgressACLEntryTemplateNetworkType' export-name="networkType" ></bind>
+
+<bind name='protocol' type='string' export-name="protocol" ></bind>
+
+<bind name='sourcePort' type='string' export-name="sourcePort" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="egressACLEntryTemplateObj"><desc><![CDATA[egressACLEntryTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="ACLTemplateName"><desc><![CDATA[ACLTemplateName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.ACLTemplateName]]></p-qual></p-param>
+
+<p-param name="DSCP"><desc><![CDATA[DSCP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.DSCP]]></p-qual></p-param>
+
+<p-param name="action"><desc><![CDATA[action]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:EgressACLEntryTemplateAction" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEgressACLEntryTemplateAction").call( #egressACLEntryTemplateObj )]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.description]]></p-qual></p-param>
+
+<p-param name="destinationPort"><desc><![CDATA[destinationPort]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.destinationPort]]></p-qual></p-param>
+
+<p-param name="domainName"><desc><![CDATA[domainName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.domainName]]></p-qual></p-param>
+
+<p-param name="enterpriseName"><desc><![CDATA[enterpriseName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.enterpriseName]]></p-qual></p-param>
+
+<p-param name="etherType"><desc><![CDATA[etherType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.etherType]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.externalID]]></p-qual></p-param>
+
+<p-param name="locationType"><desc><![CDATA[locationType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:EgressACLEntryTemplateLocationType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEgressACLEntryTemplateLocationType").call( #egressACLEntryTemplateObj )]]></p-qual></p-param>
+
+<p-param name="networkType"><desc><![CDATA[networkType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:EgressACLEntryTemplateNetworkType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEgressACLEntryTemplateNetworkType").call( #egressACLEntryTemplateObj )]]></p-qual></p-param>
+
+<p-param name="protocol"><desc><![CDATA[protocol]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.protocol]]></p-qual></p-param>
+
+<p-param name="sourcePort"><desc><![CDATA[sourcePort]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressACLEntryTemplateObj.sourcePort]]></p-qual></p-param>
+
+</presentation></workflow>

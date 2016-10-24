@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="4fb4d77e-8f88-5eb8-a412-69acc8d22c57"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit AddressMap]]></display-name>
+<ref-types><![CDATA[(VSPK:AddressMap)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='addressMapObj' type='VSPK:AddressMap' >
+</param>
+
+<param name='associatedPATNATPoolID' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='privateIP' type='string' >
+</param>
+
+<param name='publicIP' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = addressMapObj.session;
+
+if (associatedPATNATPoolID) {
+   addressMapObj.associatedPATNATPoolID = associatedPATNATPoolID;
+} else if (addressMapObj.associatedPATNATPoolID) {
+   addressMapObj.associatedPATNATPoolID = "";
+}
+if (externalID) {
+   addressMapObj.externalID = externalID;
+} else if (addressMapObj.externalID) {
+   addressMapObj.externalID = "";
+}
+if (privateIP) {
+   addressMapObj.privateIP = privateIP;
+} else if (addressMapObj.privateIP) {
+   addressMapObj.privateIP = "";
+}
+if (publicIP) {
+   addressMapObj.publicIP = publicIP;
+} else if (addressMapObj.publicIP) {
+   addressMapObj.publicIP = "";
+}
+addressMapObj.save(session);]]></script>
+<in-binding><bind name='addressMapObj' type='VSPK:AddressMap' export-name="addressMapObj" ></bind>
+
+<bind name='associatedPATNATPoolID' type='string' export-name="associatedPATNATPoolID" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='privateIP' type='string' export-name="privateIP" ></bind>
+
+<bind name='publicIP' type='string' export-name="publicIP" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="addressMapObj"><desc><![CDATA[addressMapObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="associatedPATNATPoolID"><desc><![CDATA[associatedPATNATPoolID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#addressMapObj.associatedPATNATPoolID]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#addressMapObj.externalID]]></p-qual></p-param>
+
+<p-param name="privateIP"><desc><![CDATA[privateIP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#addressMapObj.privateIP]]></p-qual></p-param>
+
+<p-param name="publicIP"><desc><![CDATA[publicIP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#addressMapObj.publicIP]]></p-qual></p-param>
+
+</presentation></workflow>

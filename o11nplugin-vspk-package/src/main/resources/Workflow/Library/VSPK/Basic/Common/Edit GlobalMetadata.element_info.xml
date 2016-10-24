@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Edit GlobalMetadata</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">035fa90a-06a7-53be-afe4-485442a35bfc</entry>
+</properties>

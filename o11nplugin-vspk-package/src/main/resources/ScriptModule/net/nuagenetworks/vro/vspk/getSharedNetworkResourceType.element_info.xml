@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getSharedNetworkResourceType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">f14b5b77-c2f8-534a-bba9-b9fe1508cd5b</entry>
+</properties>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dunes-script-module name="getNSGatewayInstaller" result-type="VSPK:User" api-version="6.0.0" id="d639d23a-c0c3-4a67-86ea-9c89104f0d5f" version="1.0.0" allowed-operations="vef">
+  <param n="nsGateway" t="VSPK:NSGateway"></param>
+  <script encoded="false"><![CDATA[var session = nsGateway.session;
+var bootstrap = nsGateway.bootstraps.getFirst(session);
+var user = new VSPKUser();
+user.id = bootstrap.installerID;
+user.fetch(session);
+return user;
+
+]]></script>
+</dunes-script-module>

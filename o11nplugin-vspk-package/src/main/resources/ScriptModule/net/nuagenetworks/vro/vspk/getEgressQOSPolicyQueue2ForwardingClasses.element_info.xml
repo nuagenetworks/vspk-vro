@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getEgressQOSPolicyQueue2ForwardingClasses</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">b1757f74-c2cd-5005-a466-da7ee48f2b5f</entry>
+</properties>

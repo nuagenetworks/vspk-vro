@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Advanced.Nsg</entry>
+<entry key="name">Send NSG Job</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">762e8a20-7cd6-4c22-b07d-d6d12ed2971d</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Find NATMapEntry in PATNATPool</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">bcc46296-f61b-5c2a-aa4f-044ad5aeb00b</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Add SharedNetworkResource to Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">671f3900-01fb-5482-8608-0538b4adf229</entry>
+</properties>

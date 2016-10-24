@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in Infrastructureaccessprofile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">72f74876-31ab-5315-931b-14d46a77fdd5</entry>
+</properties>

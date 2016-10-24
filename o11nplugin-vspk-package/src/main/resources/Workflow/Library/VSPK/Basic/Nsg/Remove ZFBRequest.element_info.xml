@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Remove ZFBRequest</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">1076db10-9764-56b9-ada8-b95e4af243d7</entry>
+</properties>

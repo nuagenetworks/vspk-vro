@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Add NSPortTemplate to NSGatewayTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">28c8466b-4a8c-565f-ba92-e8704e8eeb2c</entry>
+</properties>

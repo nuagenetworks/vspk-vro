@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a30793b7-4c9d-5365-81ca-d04bc542c666"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add VRSAddressRange to VCenterDataCenter]]></display-name>
+<ref-types><![CDATA[(VSPK:VCenterDataCenter)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vCenterDataCenterObj' type='VSPK:VCenterDataCenter' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='maxAddress' type='string' >
+</param>
+<param name='minAddress' type='string' >
+</param>
+</input><output><param name='vRSAddressRangeObj' type='VSPK:VRSAddressRange' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vCenterDataCenterObj.session;
+
+vRSAddressRangeObj = new VSPKVRSAddressRange();
+if (externalID) {
+   vRSAddressRangeObj.externalID = externalID;
+}
+if (maxAddress) {
+   vRSAddressRangeObj.maxAddress = maxAddress;
+}
+if (minAddress) {
+   vRSAddressRangeObj.minAddress = minAddress;
+}
+
+vCenterDataCenterObj.createVRSAddressRange(session, vRSAddressRangeObj);
+]]></script>
+<in-binding><bind name='vCenterDataCenterObj' type='VSPK:VCenterDataCenter' export-name="vCenterDataCenterObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='maxAddress' type='string' export-name="maxAddress" ></bind>
+<bind name='minAddress' type='string' export-name="minAddress" ></bind>
+</in-binding><out-binding><bind name='vRSAddressRangeObj' type='VSPK:VRSAddressRange' export-name="vRSAddressRangeObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vCenterDataCenterObj"><desc><![CDATA[vCenterDataCenterObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="maxAddress"><desc><![CDATA[maxAddress]]></desc>
+</p-param>
+<p-param name="minAddress"><desc><![CDATA[minAddress]]></desc>
+</p-param>
+</presentation></workflow>

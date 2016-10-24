@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Perfrouting</entry>
+<entry key="name">Edit Application</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">097b697d-158e-59a3-9506-2257bd52dd15</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Ike</entry>
+<entry key="name">Edit IKEGatewayConfig</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b30d514b-2caf-54dd-9365-28661a813e05</entry>
+</properties>

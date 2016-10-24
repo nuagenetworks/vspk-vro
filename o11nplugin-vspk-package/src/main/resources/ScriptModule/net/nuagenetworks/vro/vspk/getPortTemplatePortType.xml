@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getPortTemplatePortType" result-type="VSPK:PortTemplatePortType" api-version="6.0.0"  id="a8c70ad7-cbb5-570b-9457-a6b5934d3667"  version="1.0.1"  allowed-operations="vef" ><param n="portTemplateObj" t="VSPK:PortTemplate"></param><script encoded='false'><![CDATA[return portTemplateObj.portType;]]></script>
+</dunes-script-module>

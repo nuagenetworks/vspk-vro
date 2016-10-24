@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getIngressAdvFwdEntryTemplateAction</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">d623bac7-95c7-564e-9ebb-5b945dfa4bf4</entry>
+</properties>

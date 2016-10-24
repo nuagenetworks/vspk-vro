@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="3e3c2fec-ec1e-53e3-a45a-87990f8a9ed4"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add VirtualIP to RedirectionTarget]]></display-name>
+<ref-types><![CDATA[(VSPK:RedirectionTarget)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='redirectionTargetObj' type='VSPK:RedirectionTarget' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='virtualIP' type='string' >
+</param>
+</input><output><param name='virtualIPObj' type='VSPK:VirtualIP' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = redirectionTargetObj.session;
+
+virtualIPObj = new VSPKVirtualIP();
+if (externalID) {
+   virtualIPObj.externalID = externalID;
+}
+if (virtualIP) {
+   virtualIPObj.virtualIP = virtualIP;
+}
+
+redirectionTargetObj.createVirtualIP(session, virtualIPObj);
+]]></script>
+<in-binding><bind name='redirectionTargetObj' type='VSPK:RedirectionTarget' export-name="redirectionTargetObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='virtualIP' type='string' export-name="virtualIP" ></bind>
+</in-binding><out-binding><bind name='virtualIPObj' type='VSPK:VirtualIP' export-name="virtualIPObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="redirectionTargetObj"><desc><![CDATA[redirectionTargetObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="virtualIP"><desc><![CDATA[virtualIP]]></desc>
+</p-param>
+</presentation></workflow>

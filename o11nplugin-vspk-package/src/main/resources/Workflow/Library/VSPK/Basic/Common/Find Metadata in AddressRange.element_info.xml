@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in AddressRange</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a8c575fd-a40d-55a4-9bcc-435d3bb2a2ce</entry>
+</properties>

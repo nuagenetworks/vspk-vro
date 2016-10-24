@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in EgressACLTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e0dc3440-6c3e-539a-8a2e-9f93fed9020c</entry>
+</properties>

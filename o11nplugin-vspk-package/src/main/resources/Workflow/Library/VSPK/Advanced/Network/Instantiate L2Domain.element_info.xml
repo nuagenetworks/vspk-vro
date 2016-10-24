@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Advanced.Network</entry>
+<entry key="name">Instantiate L2Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">701213b5-3c69-45e1-bb99-db9601b478fc</entry>
+</properties>

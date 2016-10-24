@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vmware</entry>
+<entry key="name">Remove VRSAddressRange</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">10ad6f53-42c8-5040-a140-ff19869fc4e5</entry>
+</properties>

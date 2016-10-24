@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to Subnet</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3f9433aa-53a2-59ce-bf6f-e4b54648be31</entry>
+</properties>

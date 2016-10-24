@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/acl</entry>
+<entry key="name">Add IngressAdvFwdTemplate to L2Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">63007774-67c4-5f79-9ce8-3ff6a5ab740d</entry>
+</properties>

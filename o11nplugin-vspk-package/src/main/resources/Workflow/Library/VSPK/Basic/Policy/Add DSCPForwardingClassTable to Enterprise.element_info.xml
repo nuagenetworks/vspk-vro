@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Add DSCPForwardingClassTable to Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">55365269-3d2f-527a-a948-f403a8ed8af0</entry>
+</properties>

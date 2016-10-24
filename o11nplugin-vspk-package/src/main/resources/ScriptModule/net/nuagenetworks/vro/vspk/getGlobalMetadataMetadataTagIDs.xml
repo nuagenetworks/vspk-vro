@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getGlobalMetadataMetadataTagIDs" result-type="Array/string" api-version="6.0.0"  id="2bda2bac-1ee6-5b8c-8524-0bd7752d8179"  version="1.0.1"  allowed-operations="vef" ><param n="globalMetadataObj" t="VSPK:GlobalMetadata"></param><script encoded='false'><![CDATA[return globalMetadataObj.metadataTagIDs;]]></script>
+</dunes-script-module>

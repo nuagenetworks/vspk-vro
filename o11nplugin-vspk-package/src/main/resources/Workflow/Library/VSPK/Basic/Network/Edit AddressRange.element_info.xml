@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Edit AddressRange</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">76c70344-f87d-5901-93f8-0daf8676cf66</entry>
+</properties>

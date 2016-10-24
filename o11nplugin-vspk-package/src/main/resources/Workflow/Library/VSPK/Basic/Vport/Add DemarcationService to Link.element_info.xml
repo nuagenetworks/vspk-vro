@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Add DemarcationService to Link</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">aa4c95f7-ef3b-5314-a3fd-5e9713b1c93f</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Remove AddressMap</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f5f79eb6-400c-5be3-ab52-e5b6c1e24a98</entry>
+</properties>

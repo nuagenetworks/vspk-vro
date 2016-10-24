@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Appd</entry>
+<entry key="name">Add ExternalAppService to Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2f384998-6dc6-5d16-8ad8-00ad4113d2d6</entry>
+</properties>

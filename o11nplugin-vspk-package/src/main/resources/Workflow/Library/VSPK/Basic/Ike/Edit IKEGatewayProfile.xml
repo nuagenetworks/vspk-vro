@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="64dd5411-276a-5e04-b667-07b3ae63222f"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit IKEGatewayProfile]]></display-name>
+<ref-types><![CDATA[(VSPK:IKEGatewayProfile)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='iKEGatewayProfileObj' type='VSPK:IKEGatewayProfile' >
+</param>
+
+<param name='IKEGatewayIdentifier' type='string' >
+</param>
+
+<param name='IKEGatewayIdentifierType' type='VSPK:IKEGatewayProfileIKEGatewayIdentifierType' >
+</param>
+
+<param name='associatedIKEGatewayID' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = iKEGatewayProfileObj.session;
+
+if (IKEGatewayIdentifier) {
+   iKEGatewayProfileObj.IKEGatewayIdentifier = IKEGatewayIdentifier;
+} else if (iKEGatewayProfileObj.IKEGatewayIdentifier) {
+   iKEGatewayProfileObj.IKEGatewayIdentifier = "";
+}
+iKEGatewayProfileObj.IKEGatewayIdentifierType = IKEGatewayIdentifierType;
+if (associatedIKEGatewayID) {
+   iKEGatewayProfileObj.associatedIKEGatewayID = associatedIKEGatewayID;
+} else if (iKEGatewayProfileObj.associatedIKEGatewayID) {
+   iKEGatewayProfileObj.associatedIKEGatewayID = "";
+}
+if (description) {
+   iKEGatewayProfileObj.description = description;
+} else if (iKEGatewayProfileObj.description) {
+   iKEGatewayProfileObj.description = "";
+}
+if (externalID) {
+   iKEGatewayProfileObj.externalID = externalID;
+} else if (iKEGatewayProfileObj.externalID) {
+   iKEGatewayProfileObj.externalID = "";
+}
+if (name) {
+   iKEGatewayProfileObj.name = name;
+} else if (iKEGatewayProfileObj.name) {
+   iKEGatewayProfileObj.name = "";
+}
+iKEGatewayProfileObj.save(session);]]></script>
+<in-binding><bind name='iKEGatewayProfileObj' type='VSPK:IKEGatewayProfile' export-name="iKEGatewayProfileObj" ></bind>
+
+<bind name='IKEGatewayIdentifier' type='string' export-name="IKEGatewayIdentifier" ></bind>
+
+<bind name='IKEGatewayIdentifierType' type='VSPK:IKEGatewayProfileIKEGatewayIdentifierType' export-name="IKEGatewayIdentifierType" ></bind>
+
+<bind name='associatedIKEGatewayID' type='string' export-name="associatedIKEGatewayID" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="iKEGatewayProfileObj"><desc><![CDATA[iKEGatewayProfileObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="IKEGatewayIdentifier"><desc><![CDATA[IKEGatewayIdentifier]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iKEGatewayProfileObj.IKEGatewayIdentifier]]></p-qual></p-param>
+
+<p-param name="IKEGatewayIdentifierType"><desc><![CDATA[IKEGatewayIdentifierType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:IKEGatewayProfileIKEGatewayIdentifierType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getIKEGatewayProfileIKEGatewayIdentifierType").call( #iKEGatewayProfileObj )]]></p-qual></p-param>
+
+<p-param name="associatedIKEGatewayID"><desc><![CDATA[associatedIKEGatewayID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iKEGatewayProfileObj.associatedIKEGatewayID]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iKEGatewayProfileObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iKEGatewayProfileObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iKEGatewayProfileObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="3960c32b-f965-5877-872a-3212dc2fcc04"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit Subnet]]></display-name>
+<ref-types><![CDATA[(VSPK:Subnet)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='subnetObj' type='VSPK:Subnet' >
+</param>
+
+<param name='address' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='gateway' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='netmask' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = subnetObj.session;
+
+if (address) {
+   subnetObj.address = address;
+} else if (subnetObj.address) {
+   subnetObj.address = "";
+}
+if (description) {
+   subnetObj.description = description;
+} else if (subnetObj.description) {
+   subnetObj.description = "";
+}
+if (externalID) {
+   subnetObj.externalID = externalID;
+} else if (subnetObj.externalID) {
+   subnetObj.externalID = "";
+}
+if (gateway) {
+   subnetObj.gateway = gateway;
+} else if (subnetObj.gateway) {
+   subnetObj.gateway = "";
+}
+if (name) {
+   subnetObj.name = name;
+} else if (subnetObj.name) {
+   subnetObj.name = "";
+}
+if (netmask) {
+   subnetObj.netmask = netmask;
+} else if (subnetObj.netmask) {
+   subnetObj.netmask = "";
+}
+subnetObj.save(session);]]></script>
+<in-binding><bind name='subnetObj' type='VSPK:Subnet' export-name="subnetObj" ></bind>
+
+<bind name='address' type='string' export-name="address" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='gateway' type='string' export-name="gateway" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='netmask' type='string' export-name="netmask" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="subnetObj"><desc><![CDATA[subnetObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="address"><desc><![CDATA[address]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetObj.address]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetObj.externalID]]></p-qual></p-param>
+
+<p-param name="gateway"><desc><![CDATA[gateway]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetObj.gateway]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetObj.name]]></p-qual></p-param>
+
+<p-param name="netmask"><desc><![CDATA[netmask]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetObj.netmask]]></p-qual></p-param>
+
+</presentation></workflow>

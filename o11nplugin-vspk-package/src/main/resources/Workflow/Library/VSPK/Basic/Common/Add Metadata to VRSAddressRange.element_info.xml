@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to VRSAddressRange</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3f23ede1-3eff-53fa-8a2b-7805822a4ebc</entry>
+</properties>

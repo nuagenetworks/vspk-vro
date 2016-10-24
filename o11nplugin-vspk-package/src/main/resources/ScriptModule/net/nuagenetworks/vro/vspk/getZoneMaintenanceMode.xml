@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getZoneMaintenanceMode" result-type="VSPK:ZoneMaintenanceMode" api-version="6.0.0"  id="0ac8a27c-e97e-5313-8f9f-f898306afe13"  version="1.0.1"  allowed-operations="vef" ><param n="zoneObj" t="VSPK:Zone"></param><script encoded='false'><![CDATA[return zoneObj.maintenanceMode;]]></script>
+</dunes-script-module>

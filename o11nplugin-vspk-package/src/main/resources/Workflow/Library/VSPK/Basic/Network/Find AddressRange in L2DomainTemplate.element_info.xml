@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Find AddressRange in L2DomainTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3a0db8d1-c726-5380-aa2a-f1cbda4b73d3</entry>
+</properties>

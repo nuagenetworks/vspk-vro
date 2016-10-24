@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="bdb2a4a2-837f-5a9b-b8c2-9aef84abe91c"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit QOS]]></display-name>
+<ref-types><![CDATA[(VSPK:QOS)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='qOSObj' type='VSPK:QOS' >
+</param>
+
+<param name='active' type='boolean' >
+</param>
+
+<param name='burst' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='peak' type='string' >
+</param>
+
+<param name='rateLimitingActive' type='boolean' >
+</param>
+
+<param name='serviceClass' type='VSPK:QOSServiceClass' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = qOSObj.session;
+
+qOSObj.active = active;
+if (burst) {
+   qOSObj.burst = burst;
+} else if (qOSObj.burst) {
+   qOSObj.burst = "";
+}
+if (description) {
+   qOSObj.description = description;
+} else if (qOSObj.description) {
+   qOSObj.description = "";
+}
+if (externalID) {
+   qOSObj.externalID = externalID;
+} else if (qOSObj.externalID) {
+   qOSObj.externalID = "";
+}
+if (name) {
+   qOSObj.name = name;
+} else if (qOSObj.name) {
+   qOSObj.name = "";
+}
+if (peak) {
+   qOSObj.peak = peak;
+} else if (qOSObj.peak) {
+   qOSObj.peak = "";
+}
+qOSObj.rateLimitingActive = rateLimitingActive;
+qOSObj.serviceClass = serviceClass;
+qOSObj.save(session);]]></script>
+<in-binding><bind name='qOSObj' type='VSPK:QOS' export-name="qOSObj" ></bind>
+
+<bind name='active' type='boolean' export-name="active" ></bind>
+
+<bind name='burst' type='string' export-name="burst" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='peak' type='string' export-name="peak" ></bind>
+
+<bind name='rateLimitingActive' type='boolean' export-name="rateLimitingActive" ></bind>
+
+<bind name='serviceClass' type='VSPK:QOSServiceClass' export-name="serviceClass" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="qOSObj"><desc><![CDATA[qOSObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="active"><desc><![CDATA[active]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#qOSObj.active]]></p-qual></p-param>
+
+<p-param name="burst"><desc><![CDATA[burst]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#qOSObj.burst]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#qOSObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#qOSObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#qOSObj.name]]></p-qual></p-param>
+
+<p-param name="peak"><desc><![CDATA[peak]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#qOSObj.peak]]></p-qual></p-param>
+
+<p-param name="rateLimitingActive"><desc><![CDATA[rateLimitingActive]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#qOSObj.rateLimitingActive]]></p-qual></p-param>
+
+<p-param name="serviceClass"><desc><![CDATA[serviceClass]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:QOSServiceClass" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getQOSServiceClass").call( #qOSObj )]]></p-qual></p-param>
+
+</presentation></workflow>

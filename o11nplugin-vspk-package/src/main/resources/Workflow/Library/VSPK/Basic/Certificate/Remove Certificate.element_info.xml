@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Certificate</entry>
+<entry key="name">Remove Certificate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a4f5ccf7-7a40-521f-b394-25c7c004dce9</entry>
+</properties>

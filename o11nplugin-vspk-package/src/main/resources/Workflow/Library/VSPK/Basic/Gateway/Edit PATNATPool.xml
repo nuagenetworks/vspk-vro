@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="3a997e8a-3724-5df7-a759-bb9380230e7d"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit PATNATPool]]></display-name>
+<ref-types><![CDATA[(VSPK:PATNATPool)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='pATNATPoolObj' type='VSPK:PATNATPool' >
+</param>
+
+<param name='defaultPATIP' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='endAddressRange' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='startAddressRange' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = pATNATPoolObj.session;
+
+if (defaultPATIP) {
+   pATNATPoolObj.defaultPATIP = defaultPATIP;
+} else if (pATNATPoolObj.defaultPATIP) {
+   pATNATPoolObj.defaultPATIP = "";
+}
+if (description) {
+   pATNATPoolObj.description = description;
+} else if (pATNATPoolObj.description) {
+   pATNATPoolObj.description = "";
+}
+if (endAddressRange) {
+   pATNATPoolObj.endAddressRange = endAddressRange;
+} else if (pATNATPoolObj.endAddressRange) {
+   pATNATPoolObj.endAddressRange = "";
+}
+if (externalID) {
+   pATNATPoolObj.externalID = externalID;
+} else if (pATNATPoolObj.externalID) {
+   pATNATPoolObj.externalID = "";
+}
+if (name) {
+   pATNATPoolObj.name = name;
+} else if (pATNATPoolObj.name) {
+   pATNATPoolObj.name = "";
+}
+if (startAddressRange) {
+   pATNATPoolObj.startAddressRange = startAddressRange;
+} else if (pATNATPoolObj.startAddressRange) {
+   pATNATPoolObj.startAddressRange = "";
+}
+pATNATPoolObj.save(session);]]></script>
+<in-binding><bind name='pATNATPoolObj' type='VSPK:PATNATPool' export-name="pATNATPoolObj" ></bind>
+
+<bind name='defaultPATIP' type='string' export-name="defaultPATIP" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='endAddressRange' type='string' export-name="endAddressRange" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='startAddressRange' type='string' export-name="startAddressRange" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="pATNATPoolObj"><desc><![CDATA[pATNATPoolObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="defaultPATIP"><desc><![CDATA[defaultPATIP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pATNATPoolObj.defaultPATIP]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pATNATPoolObj.description]]></p-qual></p-param>
+
+<p-param name="endAddressRange"><desc><![CDATA[endAddressRange]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pATNATPoolObj.endAddressRange]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pATNATPoolObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pATNATPoolObj.name]]></p-qual></p-param>
+
+<p-param name="startAddressRange"><desc><![CDATA[startAddressRange]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pATNATPoolObj.startAddressRange]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Keyserver</entry>
+<entry key="name">Edit KeyServerMonitor</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9da9e915-ea43-5d65-b850-2c3b39dbd3c5</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Edit ZoneTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c0ee731a-b679-5f56-967e-90d4c4b3a0bf</entry>
+</properties>

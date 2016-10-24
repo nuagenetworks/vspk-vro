@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in IngressAdvFwdTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">772b74dd-b12e-518e-8123-36607aa6b10d</entry>
+</properties>

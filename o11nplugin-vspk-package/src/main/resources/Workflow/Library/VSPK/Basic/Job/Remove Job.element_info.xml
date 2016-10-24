@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Job</entry>
+<entry key="name">Remove Job</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">315cf877-a3d7-5b92-8181-e9bad03f9595</entry>
+</properties>

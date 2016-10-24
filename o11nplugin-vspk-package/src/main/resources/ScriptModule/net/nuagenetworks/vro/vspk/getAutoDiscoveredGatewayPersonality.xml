@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getAutoDiscoveredGatewayPersonality" result-type="VSPK:AutoDiscoveredGatewayPersonality" api-version="6.0.0"  id="695e795e-c43a-5735-961e-5a9ea34edb92"  version="1.0.1"  allowed-operations="vef" ><param n="autoDiscoveredGatewayObj" t="VSPK:AutoDiscoveredGateway"></param><script encoded='false'><![CDATA[return autoDiscoveredGatewayObj.personality;]]></script>
+</dunes-script-module>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Remove NSPortTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5653ca22-a7a8-59b5-aa6f-1326ff4fb412</entry>
+</properties>

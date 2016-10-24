@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="e745ac8d-71cd-5080-b552-3ace42128d91"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit Permission]]></display-name>
+<ref-types><![CDATA[(VSPK:Permission)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='permissionObj' type='VSPK:Permission' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='permittedAction' type='VSPK:PermissionPermittedAction' >
+</param>
+
+<param name='permittedEntityID' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = permissionObj.session;
+
+if (externalID) {
+   permissionObj.externalID = externalID;
+} else if (permissionObj.externalID) {
+   permissionObj.externalID = "";
+}
+if (name) {
+   permissionObj.name = name;
+} else if (permissionObj.name) {
+   permissionObj.name = "";
+}
+permissionObj.permittedAction = permittedAction;
+if (permittedEntityID) {
+   permissionObj.permittedEntityID = permittedEntityID;
+} else if (permissionObj.permittedEntityID) {
+   permissionObj.permittedEntityID = "";
+}
+permissionObj.save(session);]]></script>
+<in-binding><bind name='permissionObj' type='VSPK:Permission' export-name="permissionObj" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='permittedAction' type='VSPK:PermissionPermittedAction' export-name="permittedAction" ></bind>
+
+<bind name='permittedEntityID' type='string' export-name="permittedEntityID" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="permissionObj"><desc><![CDATA[permissionObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#permissionObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#permissionObj.name]]></p-qual></p-param>
+
+<p-param name="permittedAction"><desc><![CDATA[permittedAction]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:PermissionPermittedAction" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getPermissionPermittedAction").call( #permissionObj )]]></p-qual></p-param>
+
+<p-param name="permittedEntityID"><desc><![CDATA[permittedEntityID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#permissionObj.permittedEntityID]]></p-qual></p-param>
+
+</presentation></workflow>

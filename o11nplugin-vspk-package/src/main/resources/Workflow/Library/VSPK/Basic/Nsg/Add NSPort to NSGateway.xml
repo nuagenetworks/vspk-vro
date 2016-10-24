@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="902da899-7ab1-57c9-9350-e549e394e290"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add NSPort to NSGateway]]></display-name>
+<ref-types><![CDATA[(VSPK:NSGateway)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='nSGatewayObj' type='VSPK:NSGateway' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+<param name='physicalName' type='string' >
+</param>
+<param name='portType' type='VSPK:NSPortPortType' >
+</param>
+<param name='userMnemonic' type='string' >
+</param>
+</input><output><param name='nSPortObj' type='VSPK:NSPort' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = nSGatewayObj.session;
+
+nSPortObj = new VSPKNSPort();
+if (description) {
+   nSPortObj.description = description;
+}
+if (externalID) {
+   nSPortObj.externalID = externalID;
+}
+if (name) {
+   nSPortObj.name = name;
+}
+if (physicalName) {
+   nSPortObj.physicalName = physicalName;
+}
+nSPortObj.portType = portType;
+if (userMnemonic) {
+   nSPortObj.userMnemonic = userMnemonic;
+}
+
+nSGatewayObj.createNSPort(session, nSPortObj);
+]]></script>
+<in-binding><bind name='nSGatewayObj' type='VSPK:NSGateway' export-name="nSGatewayObj" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+<bind name='physicalName' type='string' export-name="physicalName" ></bind>
+<bind name='portType' type='VSPK:NSPortPortType' export-name="portType" ></bind>
+<bind name='userMnemonic' type='string' export-name="userMnemonic" ></bind>
+</in-binding><out-binding><bind name='nSPortObj' type='VSPK:NSPort' export-name="nSPortObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="nSGatewayObj"><desc><![CDATA[nSGatewayObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="physicalName"><desc><![CDATA[physicalName]]></desc>
+</p-param>
+<p-param name="portType"><desc><![CDATA[portType]]></desc>
+</p-param>
+<p-param name="userMnemonic"><desc><![CDATA[userMnemonic]]></desc>
+</p-param>
+</presentation></workflow>

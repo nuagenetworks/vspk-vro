@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getGatewayPersonality" result-type="VSPK:GatewayPersonality" api-version="6.0.0"  id="e803d5d9-acd2-5f0d-b92c-c617c8f62fc6"  version="1.0.1"  allowed-operations="vef" ><param n="gatewayObj" t="VSPK:Gateway"></param><script encoded='false'><![CDATA[return gatewayObj.personality;]]></script>
+</dunes-script-module>

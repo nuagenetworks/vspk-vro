@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/qos</entry>
+<entry key="name">Find EgressQOSPolicy in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2e30b101-285d-5884-ba7a-61d255122c53</entry>
+</properties>

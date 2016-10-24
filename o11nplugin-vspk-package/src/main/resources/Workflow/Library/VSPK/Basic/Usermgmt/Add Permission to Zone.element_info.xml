@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to Zone</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b99e5e83-9147-5c8c-9b32-d55ecdde6826</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Remove PolicyGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5c1c9d4c-75a4-517f-afc4-1fff9c8a7af9</entry>
+</properties>

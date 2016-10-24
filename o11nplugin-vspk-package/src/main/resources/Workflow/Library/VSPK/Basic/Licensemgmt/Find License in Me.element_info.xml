@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Licensemgmt</entry>
+<entry key="name">Find License in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d7587122-70da-57c0-a101-8490633d18ba</entry>
+</properties>

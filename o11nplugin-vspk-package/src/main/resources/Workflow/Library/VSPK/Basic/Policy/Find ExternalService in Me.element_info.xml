@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Find ExternalService in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">574e1849-9d8b-5026-ab36-53b2e837b989</entry>
+</properties>

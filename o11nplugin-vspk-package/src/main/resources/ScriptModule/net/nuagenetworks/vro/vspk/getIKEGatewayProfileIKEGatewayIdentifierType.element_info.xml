@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getIKEGatewayProfileIKEGatewayIdentifierType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">d145bb23-1e18-5324-ac0b-3fa9ca23a36d</entry>
+</properties>

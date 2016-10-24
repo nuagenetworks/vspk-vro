@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ba38bc2e-eb8f-518c-9c50-dc5050245c12"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit User]]></display-name>
+<ref-types><![CDATA[(VSPK:User)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='userObj' type='VSPK:User' >
+</param>
+
+<param name='email' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='firstName' type='string' >
+</param>
+
+<param name='lastName' type='string' >
+</param>
+
+<param name='password' type='string' >
+</param>
+
+<param name='userName' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = userObj.session;
+
+if (email) {
+   userObj.email = email;
+} else if (userObj.email) {
+   userObj.email = "";
+}
+if (externalID) {
+   userObj.externalID = externalID;
+} else if (userObj.externalID) {
+   userObj.externalID = "";
+}
+if (firstName) {
+   userObj.firstName = firstName;
+} else if (userObj.firstName) {
+   userObj.firstName = "";
+}
+if (lastName) {
+   userObj.lastName = lastName;
+} else if (userObj.lastName) {
+   userObj.lastName = "";
+}
+if (password) {
+   userObj.password = password;
+} else if (userObj.password) {
+   userObj.password = "";
+}
+if (userName) {
+   userObj.userName = userName;
+} else if (userObj.userName) {
+   userObj.userName = "";
+}
+userObj.save(session);]]></script>
+<in-binding><bind name='userObj' type='VSPK:User' export-name="userObj" ></bind>
+
+<bind name='email' type='string' export-name="email" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='firstName' type='string' export-name="firstName" ></bind>
+
+<bind name='lastName' type='string' export-name="lastName" ></bind>
+
+<bind name='password' type='string' export-name="password" ></bind>
+
+<bind name='userName' type='string' export-name="userName" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="userObj"><desc><![CDATA[userObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="email"><desc><![CDATA[email]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#userObj.email]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#userObj.externalID]]></p-qual></p-param>
+
+<p-param name="firstName"><desc><![CDATA[firstName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#userObj.firstName]]></p-qual></p-param>
+
+<p-param name="lastName"><desc><![CDATA[lastName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#userObj.lastName]]></p-qual></p-param>
+
+<p-param name="password"><desc><![CDATA[password]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#userObj.password]]></p-qual></p-param>
+
+<p-param name="userName"><desc><![CDATA[userName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#userObj.userName]]></p-qual></p-param>
+
+</presentation></workflow>

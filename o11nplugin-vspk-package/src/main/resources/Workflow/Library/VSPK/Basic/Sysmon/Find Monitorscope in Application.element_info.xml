@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Sysmon</entry>
+<entry key="name">Find Monitorscope in Application</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f1cb7dd6-7cf3-53f9-92ff-944c1d2a8cea</entry>
+</properties>

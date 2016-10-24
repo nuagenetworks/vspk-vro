@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to QOS</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3110b199-f010-58e7-a7bc-65d1645202d9</entry>
+</properties>

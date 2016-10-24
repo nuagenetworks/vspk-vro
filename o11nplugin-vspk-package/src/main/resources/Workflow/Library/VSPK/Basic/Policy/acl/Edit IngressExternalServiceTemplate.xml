@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="c9719a37-9c7e-5ea1-aa39-1ae9d011e6f0"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit IngressExternalServiceTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:IngressExternalServiceTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='ingressExternalServiceTemplateObj' type='VSPK:IngressExternalServiceTemplate' >
+</param>
+
+<param name='active' type='boolean' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='priorityType' type='VSPK:IngressExternalServiceTemplatePriorityType' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = ingressExternalServiceTemplateObj.session;
+
+ingressExternalServiceTemplateObj.active = active;
+if (description) {
+   ingressExternalServiceTemplateObj.description = description;
+} else if (ingressExternalServiceTemplateObj.description) {
+   ingressExternalServiceTemplateObj.description = "";
+}
+if (externalID) {
+   ingressExternalServiceTemplateObj.externalID = externalID;
+} else if (ingressExternalServiceTemplateObj.externalID) {
+   ingressExternalServiceTemplateObj.externalID = "";
+}
+if (name) {
+   ingressExternalServiceTemplateObj.name = name;
+} else if (ingressExternalServiceTemplateObj.name) {
+   ingressExternalServiceTemplateObj.name = "";
+}
+ingressExternalServiceTemplateObj.priorityType = priorityType;
+ingressExternalServiceTemplateObj.save(session);]]></script>
+<in-binding><bind name='ingressExternalServiceTemplateObj' type='VSPK:IngressExternalServiceTemplate' export-name="ingressExternalServiceTemplateObj" ></bind>
+
+<bind name='active' type='boolean' export-name="active" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='priorityType' type='VSPK:IngressExternalServiceTemplatePriorityType' export-name="priorityType" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="ingressExternalServiceTemplateObj"><desc><![CDATA[ingressExternalServiceTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="active"><desc><![CDATA[active]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#ingressExternalServiceTemplateObj.active]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressExternalServiceTemplateObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressExternalServiceTemplateObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressExternalServiceTemplateObj.name]]></p-qual></p-param>
+
+<p-param name="priorityType"><desc><![CDATA[priorityType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:IngressExternalServiceTemplatePriorityType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getIngressExternalServiceTemplatePriorityType").call( #ingressExternalServiceTemplateObj )]]></p-qual></p-param>
+
+</presentation></workflow>

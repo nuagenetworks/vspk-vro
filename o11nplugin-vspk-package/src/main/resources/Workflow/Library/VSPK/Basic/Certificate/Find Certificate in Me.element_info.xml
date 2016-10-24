@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Certificate</entry>
+<entry key="name">Find Certificate in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e644182d-8304-5c87-9331-3e1b7c01c926</entry>
+</properties>

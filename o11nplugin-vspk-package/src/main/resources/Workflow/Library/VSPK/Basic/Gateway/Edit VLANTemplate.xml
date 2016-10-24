@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="cdea2888-7938-53f2-add7-466129a11415"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit VLANTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:VLANTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vLANTemplateObj' type='VSPK:VLANTemplate' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vLANTemplateObj.session;
+
+if (description) {
+   vLANTemplateObj.description = description;
+} else if (vLANTemplateObj.description) {
+   vLANTemplateObj.description = "";
+}
+if (externalID) {
+   vLANTemplateObj.externalID = externalID;
+} else if (vLANTemplateObj.externalID) {
+   vLANTemplateObj.externalID = "";
+}
+vLANTemplateObj.save(session);]]></script>
+<in-binding><bind name='vLANTemplateObj' type='VSPK:VLANTemplate' export-name="vLANTemplateObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vLANTemplateObj"><desc><![CDATA[vLANTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vLANTemplateObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vLANTemplateObj.externalID]]></p-qual></p-param>
+
+</presentation></workflow>

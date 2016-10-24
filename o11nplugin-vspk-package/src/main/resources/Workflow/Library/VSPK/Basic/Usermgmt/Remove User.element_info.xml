@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Remove User</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">1d719578-4b23-5ca1-9268-3a2fb7436a78</entry>
+</properties>

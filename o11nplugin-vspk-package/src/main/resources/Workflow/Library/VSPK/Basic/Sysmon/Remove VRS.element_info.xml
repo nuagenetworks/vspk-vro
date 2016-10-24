@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Sysmon</entry>
+<entry key="name">Remove VRS</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d3cad26e-7ba2-54c3-9f42-2cc63102b0d1</entry>
+</properties>

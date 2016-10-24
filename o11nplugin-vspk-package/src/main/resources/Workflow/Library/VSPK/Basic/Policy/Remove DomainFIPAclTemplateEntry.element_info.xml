@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Remove DomainFIPAclTemplateEntry</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9585045c-70f7-5b18-8670-53442fa3127f</entry>
+</properties>

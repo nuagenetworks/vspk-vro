@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Add VPNConnection to SharedNetworkResource</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ad1cdf5c-ab86-523a-84b6-80c6861b83e0</entry>
+</properties>

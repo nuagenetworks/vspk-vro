@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getTCAScope" result-type="VSPK:TCAScope" api-version="6.0.0"  id="de7c1dfa-3d19-5346-9fff-42e8960cb117"  version="1.0.1"  allowed-operations="vef" ><param n="tCAObj" t="VSPK:TCA"></param><script encoded='false'><![CDATA[return tCAObj.scope;]]></script>
+</dunes-script-module>

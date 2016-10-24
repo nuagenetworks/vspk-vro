@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Remove VirtualIP</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">563d8239-c197-57b5-81ef-0af096458d16</entry>
+</properties>

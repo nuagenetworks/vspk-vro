@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="b1ac60f8-8281-5ee7-b600-8c44e393b7f4"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit DHCPOption]]></display-name>
+<ref-types><![CDATA[(VSPK:DHCPOption)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='dHCPOptionObj' type='VSPK:DHCPOption' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='length' type='string' >
+</param>
+
+<param name='type' type='string' >
+</param>
+
+<param name='value' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = dHCPOptionObj.session;
+
+if (externalID) {
+   dHCPOptionObj.externalID = externalID;
+} else if (dHCPOptionObj.externalID) {
+   dHCPOptionObj.externalID = "";
+}
+if (length) {
+   dHCPOptionObj.length = length;
+} else if (dHCPOptionObj.length) {
+   dHCPOptionObj.length = "";
+}
+if (type) {
+   dHCPOptionObj.type = type;
+} else if (dHCPOptionObj.type) {
+   dHCPOptionObj.type = "";
+}
+if (value) {
+   dHCPOptionObj.value = value;
+} else if (dHCPOptionObj.value) {
+   dHCPOptionObj.value = "";
+}
+dHCPOptionObj.save(session);]]></script>
+<in-binding><bind name='dHCPOptionObj' type='VSPK:DHCPOption' export-name="dHCPOptionObj" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='length' type='string' export-name="length" ></bind>
+
+<bind name='type' type='string' export-name="type" ></bind>
+
+<bind name='value' type='string' export-name="value" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="dHCPOptionObj"><desc><![CDATA[dHCPOptionObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dHCPOptionObj.externalID]]></p-qual></p-param>
+
+<p-param name="length"><desc><![CDATA[length]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dHCPOptionObj.length]]></p-qual></p-param>
+
+<p-param name="type"><desc><![CDATA[type]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dHCPOptionObj.type]]></p-qual></p-param>
+
+<p-param name="value"><desc><![CDATA[value]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dHCPOptionObj.value]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getGlobalMetadataMetadataTagIDs</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">2bda2bac-1ee6-5b8c-8524-0bd7752d8179</entry>
+</properties>

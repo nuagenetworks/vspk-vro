@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to Zone</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">20467b84-0c97-5820-8200-7305d5b46a02</entry>
+</properties>

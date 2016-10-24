@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Container</entry>
+<entry key="name">Add ContainerResync to Subnet</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9194d5a1-c97c-57da-9c75-65008a4f5815</entry>
+</properties>

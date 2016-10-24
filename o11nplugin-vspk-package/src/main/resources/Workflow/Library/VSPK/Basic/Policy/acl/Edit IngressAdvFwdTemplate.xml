@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="074d0a66-d705-5831-a434-6b545b379d82"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit IngressAdvFwdTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:IngressAdvFwdTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='ingressAdvFwdTemplateObj' type='VSPK:IngressAdvFwdTemplate' >
+</param>
+
+<param name='active' type='boolean' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='priority' type='number' >
+</param>
+
+<param name='priorityType' type='VSPK:IngressAdvFwdTemplatePriorityType' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = ingressAdvFwdTemplateObj.session;
+
+ingressAdvFwdTemplateObj.active = active;
+if (description) {
+   ingressAdvFwdTemplateObj.description = description;
+} else if (ingressAdvFwdTemplateObj.description) {
+   ingressAdvFwdTemplateObj.description = "";
+}
+if (externalID) {
+   ingressAdvFwdTemplateObj.externalID = externalID;
+} else if (ingressAdvFwdTemplateObj.externalID) {
+   ingressAdvFwdTemplateObj.externalID = "";
+}
+if (name) {
+   ingressAdvFwdTemplateObj.name = name;
+} else if (ingressAdvFwdTemplateObj.name) {
+   ingressAdvFwdTemplateObj.name = "";
+}
+ingressAdvFwdTemplateObj.priority = priority;
+ingressAdvFwdTemplateObj.priorityType = priorityType;
+ingressAdvFwdTemplateObj.save(session);]]></script>
+<in-binding><bind name='ingressAdvFwdTemplateObj' type='VSPK:IngressAdvFwdTemplate' export-name="ingressAdvFwdTemplateObj" ></bind>
+
+<bind name='active' type='boolean' export-name="active" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='priority' type='number' export-name="priority" ></bind>
+
+<bind name='priorityType' type='VSPK:IngressAdvFwdTemplatePriorityType' export-name="priorityType" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="ingressAdvFwdTemplateObj"><desc><![CDATA[ingressAdvFwdTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="active"><desc><![CDATA[active]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#ingressAdvFwdTemplateObj.active]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdTemplateObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdTemplateObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdTemplateObj.name]]></p-qual></p-param>
+
+<p-param name="priority"><desc><![CDATA[priority]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#ingressAdvFwdTemplateObj.priority]]></p-qual></p-param>
+
+<p-param name="priorityType"><desc><![CDATA[priorityType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:IngressAdvFwdTemplatePriorityType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getIngressAdvFwdTemplatePriorityType").call( #ingressAdvFwdTemplateObj )]]></p-qual></p-param>
+
+</presentation></workflow>

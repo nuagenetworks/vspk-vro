@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vmware</entry>
+<entry key="name">Find VRSAddressRange in VCenterHypervisor</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f5ac379b-aba3-5a84-a897-cc7de8cd6bd4</entry>
+</properties>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="cb61175a-5d8d-519a-9acd-7cd0a5b03b9e"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add EgressACLTemplate to L2Domain]]></display-name>
+<ref-types><![CDATA[(VSPK:L2Domain)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='l2DomainObj' type='VSPK:L2Domain' >
+</param>
+<param name='active' type='boolean' >
+</param>
+<param name='defaultAllowIP' type='boolean' >
+</param>
+<param name='defaultAllowNonIP' type='boolean' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+</input><output><param name='egressACLTemplateObj' type='VSPK:EgressACLTemplate' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = l2DomainObj.session;
+
+egressACLTemplateObj = new VSPKEgressACLTemplate();
+egressACLTemplateObj.active = active;
+egressACLTemplateObj.defaultAllowIP = defaultAllowIP;
+egressACLTemplateObj.defaultAllowNonIP = defaultAllowNonIP;
+if (description) {
+   egressACLTemplateObj.description = description;
+}
+if (externalID) {
+   egressACLTemplateObj.externalID = externalID;
+}
+if (name) {
+   egressACLTemplateObj.name = name;
+}
+
+l2DomainObj.createEgressACLTemplate(session, egressACLTemplateObj);
+]]></script>
+<in-binding><bind name='l2DomainObj' type='VSPK:L2Domain' export-name="l2DomainObj" ></bind>
+<bind name='active' type='boolean' export-name="active" ></bind>
+<bind name='defaultAllowIP' type='boolean' export-name="defaultAllowIP" ></bind>
+<bind name='defaultAllowNonIP' type='boolean' export-name="defaultAllowNonIP" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+</in-binding><out-binding><bind name='egressACLTemplateObj' type='VSPK:EgressACLTemplate' export-name="egressACLTemplateObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="l2DomainObj"><desc><![CDATA[l2DomainObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="active"><desc><![CDATA[active]]></desc>
+</p-param>
+<p-param name="defaultAllowIP"><desc><![CDATA[defaultAllowIP]]></desc>
+</p-param>
+<p-param name="defaultAllowNonIP"><desc><![CDATA[defaultAllowNonIP]]></desc>
+</p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+</presentation></workflow>

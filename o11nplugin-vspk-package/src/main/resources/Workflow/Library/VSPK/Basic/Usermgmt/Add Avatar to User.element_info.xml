@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Avatar to User</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e6cd44d2-824b-5d0e-b96e-f55edaad0ee2</entry>
+</properties>

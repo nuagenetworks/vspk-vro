@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Remove EndPoint</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">1538e68d-a37d-5c0f-b007-76c40b9b7b7b</entry>
+</properties>

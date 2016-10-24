@@ -1,0 +1,64 @@
+Changes from version 4.0.2 to version 4.0.3
+===========================================
+
+- Upgraded to VSD specification version 4.0.5
+- Changed 'id' for each generated enum value to be the same as its 'name'. This is to allow backward compatibility in persisted enum values (in workflows) from this release forward
+- Added generation of getter methods in generated enum classes to expose their (enum) values. As a result of this change, enum values are now accessible through (JavaScript) scripting code and are also visible in vRO's API documentation    
+- Added storing of encrypted password in vspk.xml file
+- Set debug level to DEBUG (instead of INFO) for push channel related logged events
+
+Changes from version 3.2.2 to version 3.2.3
+Changes from version 4.0.1 to version 4.0.2
+===========================================
+
+- Added support for disabling VSD notifications on a per VSPK Session basis
+     - Added "enableNotifications" field to the "Add Session" workflow. All remote VSD notifications can be diabled using this new field (it disables VSPK's push channel internally).
+- Added logic to generated "Add" workflow scripting blocks to prevent fields that have no values specified (i.e. empty string) to be persisted in VSD.
+- Added logic to generated "Edit" workflow scripting blocks to allow fields whose values have been removed (i.e. empty string) to be persisted as empty strings in VSD.
+- Assigned version number to actions and workflows to fix plug-in upgrade issue.
+
+Changes from version 3.2.1 to version 3.2.2
+Changes from version 4.0.0 to version 4.0.1
+===========================================
+
+- Bug fix: Prevent plug-in from being removed from the installed list of plug-ins when it cannot connect to VSD while vRO starts up
+- Bug fix: Fixed JSON mapping for Group.private_ and Subnet.public_ attributes
+- Replaced Fetcher input field with Default Parent in every "Add" workflow
+- Added "Assign User to Group" Advanced workflow
+- Added "Find" workflow to every Nuage object
+- Added support for metadata to every Nuage object
+- Added description and externalID as workflow input fields to every Basic workflow
+- Added input field to add/edit Port workflows: VLANRange
+- Added input fields to Add/Edit IngressACLTemplate workflows: active, defaultAllowIP, defaultAllowNonIP, allowL2AddressSpoof
+- Added input fields to Add/Edit EgressACLTemplate workflows: active, defaultAllowIP, defaultAllowNonIP
+- Added input fields to "Instantiate Domain" workflow: description, externalID 
+- Added input fields to "Instantiate L2Domain" workflow: description, externalID, assocL2Domain
+
+Changes from version 3.2.0 to version 3.2.1
+===========================================
+
+- Added the following workflows:
+   - Library/VSPK/Advanced/Nsg/Send NSG
+   - Library/VSPK/Advanced/Nsg/Assign Installer to NSG
+- Added the following action
+   - net.nuagenetworks/vro/vspk/getNSGatewatInstaller
+- Moved definition of generated enums to separate java files.
+- java-bambou: Fixed issue where fetcher still contained child objects after receiving empty response. Added relevant unit tests.
+- Generated vspk-vro 3.2.1 based on the latest changes made to the for 4.0 version:
+   - EgressACLEntryTemplate, add/edit workflows, added the following attributes: destinationPort, networkType, protocol, sourcePort
+   - EgressFloatingIPACLTemplateEntry, add/edit workflows, added the following attributes: action, DSCP, etherType, locationType, destinationPort, networkType, protocol, sourcePort
+   - InfrastructureGatewayProfile, add/edit workflows, added the following attributes: deadTimer, deadTimerEnabled
+   - InfrastructureVscProfile, add/edit workflows, added the following attributes: firstController, probeInterval, secondController
+   - IngressACLEntryTemplate, add/edit workflows, added the following attributes: destinationPort, networkType, protocol, sourcePort
+   - IngressAdvFwdEntryTemplate, add/edit workflows, added the following attributes: destinationPort, networkType, protocol, sourcePort
+   - IngressExternalServiceTemplateEntry, add/edit workflows, added the following attributes: destinationPort, networkType, protocol, sourcePort
+   - IngressExternalServiceTemplateEntry, add/edit workflows, removed the following attribute: redirectExternalServiceEndPointID
+   - MirrorDestination, add/edit workflows, added the following attributes: destinationIp
+   - NSRedundantGatewayGroup, add/edit workflows, added the following attributes: gatewayPeer1ID, gatewayPeer2ID
+   - PATNATPool, add/edit workflows, added the following attributes: defaultPATIP, endAddressRange, startAddressRange
+   - RedundancyGroup, add/edit workflows, added the following attributes: gatewayPeer1ID, gatewayPeer2ID
+   - SiteInfo, add/edit workflows, added the following attributes: siteIdentifier
+   - VPNConnection, add/edit workflows, added the following attributes: associatedWANServiceID
+   - WANService, add/edit workflows, added the following attributes: WANServiceIdentifier
+- Moved content of README.md to INSTALL.txt.   
+- In Library/VSPK/Basic/Add Session workflow: changed password attribute type from string to SecureString so that the typed password is not visible.

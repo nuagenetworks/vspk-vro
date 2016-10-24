@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Edit IPReservation</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ecf95458-ed2b-5461-9a81-7e7ee238d8ac</entry>
+</properties>

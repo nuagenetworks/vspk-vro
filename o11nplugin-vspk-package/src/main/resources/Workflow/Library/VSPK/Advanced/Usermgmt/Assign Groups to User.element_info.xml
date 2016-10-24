@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Advanced.Usermgmt</entry>
+<entry key="name">Assign Groups to User</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2b8e2f6a-91cf-4fbc-8208-850d4ecea731</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to StatsCollectorInfo</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">49277f54-7f97-5439-acdd-eb98ae61fa10</entry>
+</properties>

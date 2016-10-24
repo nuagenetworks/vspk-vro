@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="17ce4928-c06a-57a0-a4da-524a05f138f4"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add NSRedundantGatewayGroup to Enterprise]]></display-name>
+<ref-types><![CDATA[(VSPK:Enterprise)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='enterpriseObj' type='VSPK:Enterprise' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='gatewayPeer1ID' type='string' >
+</param>
+<param name='gatewayPeer2ID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+</input><output><param name='nSRedundantGatewayGroupObj' type='VSPK:NSRedundantGatewayGroup' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = enterpriseObj.session;
+
+nSRedundantGatewayGroupObj = new VSPKNSRedundantGatewayGroup();
+if (description) {
+   nSRedundantGatewayGroupObj.description = description;
+}
+if (externalID) {
+   nSRedundantGatewayGroupObj.externalID = externalID;
+}
+if (gatewayPeer1ID) {
+   nSRedundantGatewayGroupObj.gatewayPeer1ID = gatewayPeer1ID;
+}
+if (gatewayPeer2ID) {
+   nSRedundantGatewayGroupObj.gatewayPeer2ID = gatewayPeer2ID;
+}
+if (name) {
+   nSRedundantGatewayGroupObj.name = name;
+}
+
+enterpriseObj.createNSRedundantGatewayGroup(session, nSRedundantGatewayGroupObj);
+]]></script>
+<in-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='gatewayPeer1ID' type='string' export-name="gatewayPeer1ID" ></bind>
+<bind name='gatewayPeer2ID' type='string' export-name="gatewayPeer2ID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+</in-binding><out-binding><bind name='nSRedundantGatewayGroupObj' type='VSPK:NSRedundantGatewayGroup' export-name="nSRedundantGatewayGroupObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="enterpriseObj"><desc><![CDATA[enterpriseObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="gatewayPeer1ID"><desc><![CDATA[gatewayPeer1ID]]></desc>
+</p-param>
+<p-param name="gatewayPeer2ID"><desc><![CDATA[gatewayPeer2ID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+</presentation></workflow>

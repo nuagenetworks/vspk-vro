@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Bgp</entry>
+<entry key="name">Add BGPNeighbor to Subnet</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">6069e634-4c2e-5716-9d9b-4ca7e058b374</entry>
+</properties>

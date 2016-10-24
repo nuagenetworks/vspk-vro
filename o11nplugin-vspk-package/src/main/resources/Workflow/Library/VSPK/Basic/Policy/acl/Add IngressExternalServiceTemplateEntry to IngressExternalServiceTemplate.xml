@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="b3742b4a-a33e-5fc9-aa64-47b35f7cd038"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add IngressExternalServiceTemplateEntry to IngressExternalServiceTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:IngressExternalServiceTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='ingressExternalServiceTemplateObj' type='VSPK:IngressExternalServiceTemplate' >
+</param>
+<param name='ACLTemplateName' type='string' >
+</param>
+<param name='DSCP' type='string' >
+</param>
+<param name='action' type='VSPK:IngressExternalServiceTemplateEntryAction' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='destinationPort' type='string' >
+</param>
+<param name='domainName' type='string' >
+</param>
+<param name='enterpriseName' type='string' >
+</param>
+<param name='etherType' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='locationType' type='VSPK:IngressExternalServiceTemplateEntryLocationType' >
+</param>
+<param name='name' type='string' >
+</param>
+<param name='networkType' type='VSPK:IngressExternalServiceTemplateEntryNetworkType' >
+</param>
+<param name='protocol' type='string' >
+</param>
+<param name='sourcePort' type='string' >
+</param>
+</input><output><param name='ingressExternalServiceTemplateEntryObj' type='VSPK:IngressExternalServiceTemplateEntry' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = ingressExternalServiceTemplateObj.session;
+
+ingressExternalServiceTemplateEntryObj = new VSPKIngressExternalServiceTemplateEntry();
+if (ACLTemplateName) {
+   ingressExternalServiceTemplateEntryObj.ACLTemplateName = ACLTemplateName;
+}
+if (DSCP) {
+   ingressExternalServiceTemplateEntryObj.DSCP = DSCP;
+}
+ingressExternalServiceTemplateEntryObj.action = action;
+if (description) {
+   ingressExternalServiceTemplateEntryObj.description = description;
+}
+if (destinationPort) {
+   ingressExternalServiceTemplateEntryObj.destinationPort = destinationPort;
+}
+if (domainName) {
+   ingressExternalServiceTemplateEntryObj.domainName = domainName;
+}
+if (enterpriseName) {
+   ingressExternalServiceTemplateEntryObj.enterpriseName = enterpriseName;
+}
+if (etherType) {
+   ingressExternalServiceTemplateEntryObj.etherType = etherType;
+}
+if (externalID) {
+   ingressExternalServiceTemplateEntryObj.externalID = externalID;
+}
+ingressExternalServiceTemplateEntryObj.locationType = locationType;
+if (name) {
+   ingressExternalServiceTemplateEntryObj.name = name;
+}
+ingressExternalServiceTemplateEntryObj.networkType = networkType;
+if (protocol) {
+   ingressExternalServiceTemplateEntryObj.protocol = protocol;
+}
+if (sourcePort) {
+   ingressExternalServiceTemplateEntryObj.sourcePort = sourcePort;
+}
+
+ingressExternalServiceTemplateObj.createIngressExternalServiceTemplateEntry(session, ingressExternalServiceTemplateEntryObj);
+]]></script>
+<in-binding><bind name='ingressExternalServiceTemplateObj' type='VSPK:IngressExternalServiceTemplate' export-name="ingressExternalServiceTemplateObj" ></bind>
+<bind name='ACLTemplateName' type='string' export-name="ACLTemplateName" ></bind>
+<bind name='DSCP' type='string' export-name="DSCP" ></bind>
+<bind name='action' type='VSPK:IngressExternalServiceTemplateEntryAction' export-name="action" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='destinationPort' type='string' export-name="destinationPort" ></bind>
+<bind name='domainName' type='string' export-name="domainName" ></bind>
+<bind name='enterpriseName' type='string' export-name="enterpriseName" ></bind>
+<bind name='etherType' type='string' export-name="etherType" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='locationType' type='VSPK:IngressExternalServiceTemplateEntryLocationType' export-name="locationType" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+<bind name='networkType' type='VSPK:IngressExternalServiceTemplateEntryNetworkType' export-name="networkType" ></bind>
+<bind name='protocol' type='string' export-name="protocol" ></bind>
+<bind name='sourcePort' type='string' export-name="sourcePort" ></bind>
+</in-binding><out-binding><bind name='ingressExternalServiceTemplateEntryObj' type='VSPK:IngressExternalServiceTemplateEntry' export-name="ingressExternalServiceTemplateEntryObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="ingressExternalServiceTemplateObj"><desc><![CDATA[ingressExternalServiceTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="ACLTemplateName"><desc><![CDATA[ACLTemplateName]]></desc>
+</p-param>
+<p-param name="DSCP"><desc><![CDATA[DSCP]]></desc>
+</p-param>
+<p-param name="action"><desc><![CDATA[action]]></desc>
+</p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="destinationPort"><desc><![CDATA[destinationPort]]></desc>
+</p-param>
+<p-param name="domainName"><desc><![CDATA[domainName]]></desc>
+</p-param>
+<p-param name="enterpriseName"><desc><![CDATA[enterpriseName]]></desc>
+</p-param>
+<p-param name="etherType"><desc><![CDATA[etherType]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="locationType"><desc><![CDATA[locationType]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="networkType"><desc><![CDATA[networkType]]></desc>
+</p-param>
+<p-param name="protocol"><desc><![CDATA[protocol]]></desc>
+</p-param>
+<p-param name="sourcePort"><desc><![CDATA[sourcePort]]></desc>
+</p-param>
+</presentation></workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getGatewayPersonality</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">e803d5d9-acd2-5f0d-b92c-c617c8f62fc6</entry>
+</properties>

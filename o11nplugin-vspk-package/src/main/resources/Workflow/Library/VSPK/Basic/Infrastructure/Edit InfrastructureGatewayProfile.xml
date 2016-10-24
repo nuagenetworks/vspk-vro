@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="530a5a08-e469-5736-885b-855610d3ca25"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit InfrastructureGatewayProfile]]></display-name>
+<ref-types><![CDATA[(VSPK:InfrastructureGatewayProfile)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='infrastructureGatewayProfileObj' type='VSPK:InfrastructureGatewayProfile' >
+</param>
+
+<param name='deadTimer' type='string' >
+</param>
+
+<param name='deadTimerEnabled' type='boolean' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='proxyDNSName' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = infrastructureGatewayProfileObj.session;
+
+if (deadTimer) {
+   infrastructureGatewayProfileObj.deadTimer = deadTimer;
+} else if (infrastructureGatewayProfileObj.deadTimer) {
+   infrastructureGatewayProfileObj.deadTimer = "";
+}
+infrastructureGatewayProfileObj.deadTimerEnabled = deadTimerEnabled;
+if (description) {
+   infrastructureGatewayProfileObj.description = description;
+} else if (infrastructureGatewayProfileObj.description) {
+   infrastructureGatewayProfileObj.description = "";
+}
+if (externalID) {
+   infrastructureGatewayProfileObj.externalID = externalID;
+} else if (infrastructureGatewayProfileObj.externalID) {
+   infrastructureGatewayProfileObj.externalID = "";
+}
+if (name) {
+   infrastructureGatewayProfileObj.name = name;
+} else if (infrastructureGatewayProfileObj.name) {
+   infrastructureGatewayProfileObj.name = "";
+}
+if (proxyDNSName) {
+   infrastructureGatewayProfileObj.proxyDNSName = proxyDNSName;
+} else if (infrastructureGatewayProfileObj.proxyDNSName) {
+   infrastructureGatewayProfileObj.proxyDNSName = "";
+}
+infrastructureGatewayProfileObj.save(session);]]></script>
+<in-binding><bind name='infrastructureGatewayProfileObj' type='VSPK:InfrastructureGatewayProfile' export-name="infrastructureGatewayProfileObj" ></bind>
+
+<bind name='deadTimer' type='string' export-name="deadTimer" ></bind>
+
+<bind name='deadTimerEnabled' type='boolean' export-name="deadTimerEnabled" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='proxyDNSName' type='string' export-name="proxyDNSName" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="infrastructureGatewayProfileObj"><desc><![CDATA[infrastructureGatewayProfileObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="deadTimer"><desc><![CDATA[deadTimer]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#infrastructureGatewayProfileObj.deadTimer]]></p-qual></p-param>
+
+<p-param name="deadTimerEnabled"><desc><![CDATA[deadTimerEnabled]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#infrastructureGatewayProfileObj.deadTimerEnabled]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#infrastructureGatewayProfileObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#infrastructureGatewayProfileObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#infrastructureGatewayProfileObj.name]]></p-qual></p-param>
+
+<p-param name="proxyDNSName"><desc><![CDATA[proxyDNSName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#infrastructureGatewayProfileObj.proxyDNSName]]></p-qual></p-param>
+
+</presentation></workflow>

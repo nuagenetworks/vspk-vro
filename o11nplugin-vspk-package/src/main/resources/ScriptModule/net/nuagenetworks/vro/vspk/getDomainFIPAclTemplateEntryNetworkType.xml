@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getDomainFIPAclTemplateEntryNetworkType" result-type="VSPK:DomainFIPAclTemplateEntryNetworkType" api-version="6.0.0"  id="750ce424-2d7a-5166-a16c-4578b7fc4da0"  version="1.0.1"  allowed-operations="vef" ><param n="domainFIPAclTemplateEntryObj" t="VSPK:DomainFIPAclTemplateEntry"></param><script encoded='false'><![CDATA[return domainFIPAclTemplateEntryObj.networkType;]]></script>
+</dunes-script-module>

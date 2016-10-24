@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Find PolicyGroup in L2Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">95f503fa-c590-5bcb-a51f-30dd447f31c8</entry>
+</properties>

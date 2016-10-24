@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to NetworkMacroGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">be0a9598-5b3c-5d70-9d2d-a52a0ad8806a</entry>
+</properties>

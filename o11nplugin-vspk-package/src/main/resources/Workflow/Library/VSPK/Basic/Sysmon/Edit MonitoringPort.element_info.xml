@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Sysmon</entry>
+<entry key="name">Edit MonitoringPort</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e5f60395-9254-5f16-8d65-c055da0129e8</entry>
+</properties>

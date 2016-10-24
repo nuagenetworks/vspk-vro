@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getEgressQOSPolicyQueue3ForwardingClasses" result-type="Array/VSPK:EgressQOSPolicyQueue3ForwardingClasses" api-version="6.0.0"  id="c39ef584-a790-598b-a8ad-65243b72bce0"  version="1.0.1"  allowed-operations="vef" ><param n="egressQOSPolicyObj" t="VSPK:EgressQOSPolicy"></param><script encoded='false'><![CDATA[return egressQOSPolicyObj.queue3ForwardingClasses;]]></script>
+</dunes-script-module>

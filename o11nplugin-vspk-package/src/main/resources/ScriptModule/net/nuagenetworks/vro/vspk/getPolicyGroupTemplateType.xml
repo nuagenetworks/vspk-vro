@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getPolicyGroupTemplateType" result-type="VSPK:PolicyGroupTemplateType" api-version="6.0.0"  id="98c2480e-86b6-5003-acd2-eaaea9439a24"  version="1.0.1"  allowed-operations="vef" ><param n="policyGroupTemplateObj" t="VSPK:PolicyGroupTemplate"></param><script encoded='false'><![CDATA[return policyGroupTemplateObj.type;]]></script>
+</dunes-script-module>

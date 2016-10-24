@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Find RedundantPort in NSRedundantGatewayGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">10f4e94d-d1cf-5c7d-b832-4bd5442f9f5e</entry>
+</properties>

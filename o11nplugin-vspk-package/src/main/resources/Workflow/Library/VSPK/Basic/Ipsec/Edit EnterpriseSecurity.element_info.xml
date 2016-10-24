@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Ipsec</entry>
+<entry key="name">Edit EnterpriseSecurity</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0d8af7b9-b69a-5d09-8f4a-b572ec46fbd3</entry>
+</properties>

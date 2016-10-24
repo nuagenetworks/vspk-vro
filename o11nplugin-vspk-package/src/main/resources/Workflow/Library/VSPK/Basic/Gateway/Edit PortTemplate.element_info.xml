@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Edit PortTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b929fc32-07ee-5209-bded-180d3318e264</entry>
+</properties>

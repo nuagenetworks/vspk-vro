@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="5208a3d2-495b-5989-b0ce-de4b9775c6ae"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit LDAPConfiguration]]></display-name>
+<ref-types><![CDATA[(VSPK:LDAPConfiguration)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='lDAPConfigurationObj' type='VSPK:LDAPConfiguration' >
+</param>
+
+<param name='authorizingUserDN' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='groupDN' type='string' >
+</param>
+
+<param name='port' type='string' >
+</param>
+
+<param name='server' type='string' >
+</param>
+
+<param name='userDNTemplate' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = lDAPConfigurationObj.session;
+
+if (authorizingUserDN) {
+   lDAPConfigurationObj.authorizingUserDN = authorizingUserDN;
+} else if (lDAPConfigurationObj.authorizingUserDN) {
+   lDAPConfigurationObj.authorizingUserDN = "";
+}
+if (externalID) {
+   lDAPConfigurationObj.externalID = externalID;
+} else if (lDAPConfigurationObj.externalID) {
+   lDAPConfigurationObj.externalID = "";
+}
+if (groupDN) {
+   lDAPConfigurationObj.groupDN = groupDN;
+} else if (lDAPConfigurationObj.groupDN) {
+   lDAPConfigurationObj.groupDN = "";
+}
+if (port) {
+   lDAPConfigurationObj.port = port;
+} else if (lDAPConfigurationObj.port) {
+   lDAPConfigurationObj.port = "";
+}
+if (server) {
+   lDAPConfigurationObj.server = server;
+} else if (lDAPConfigurationObj.server) {
+   lDAPConfigurationObj.server = "";
+}
+if (userDNTemplate) {
+   lDAPConfigurationObj.userDNTemplate = userDNTemplate;
+} else if (lDAPConfigurationObj.userDNTemplate) {
+   lDAPConfigurationObj.userDNTemplate = "";
+}
+lDAPConfigurationObj.save(session);]]></script>
+<in-binding><bind name='lDAPConfigurationObj' type='VSPK:LDAPConfiguration' export-name="lDAPConfigurationObj" ></bind>
+
+<bind name='authorizingUserDN' type='string' export-name="authorizingUserDN" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='groupDN' type='string' export-name="groupDN" ></bind>
+
+<bind name='port' type='string' export-name="port" ></bind>
+
+<bind name='server' type='string' export-name="server" ></bind>
+
+<bind name='userDNTemplate' type='string' export-name="userDNTemplate" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="lDAPConfigurationObj"><desc><![CDATA[lDAPConfigurationObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="authorizingUserDN"><desc><![CDATA[authorizingUserDN]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#lDAPConfigurationObj.authorizingUserDN]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#lDAPConfigurationObj.externalID]]></p-qual></p-param>
+
+<p-param name="groupDN"><desc><![CDATA[groupDN]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#lDAPConfigurationObj.groupDN]]></p-qual></p-param>
+
+<p-param name="port"><desc><![CDATA[port]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#lDAPConfigurationObj.port]]></p-qual></p-param>
+
+<p-param name="server"><desc><![CDATA[server]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#lDAPConfigurationObj.server]]></p-qual></p-param>
+
+<p-param name="userDNTemplate"><desc><![CDATA[userDNTemplate]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#lDAPConfigurationObj.userDNTemplate]]></p-qual></p-param>
+
+</presentation></workflow>

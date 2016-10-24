@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getRedirectionTargetEndPointType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">42908137-c8c5-5c82-a3c2-38f4b732543b</entry>
+</properties>

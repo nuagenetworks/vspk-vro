@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Add VirtualIP to RedirectionTarget</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3e3c2fec-ec1e-53e3-a45a-87990f8a9ed4</entry>
+</properties>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="116f51f3-61d1-5298-954c-edf7b718ea36"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit VRSAddressRange]]></display-name>
+<ref-types><![CDATA[(VSPK:VRSAddressRange)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vRSAddressRangeObj' type='VSPK:VRSAddressRange' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='maxAddress' type='string' >
+</param>
+
+<param name='minAddress' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vRSAddressRangeObj.session;
+
+if (externalID) {
+   vRSAddressRangeObj.externalID = externalID;
+} else if (vRSAddressRangeObj.externalID) {
+   vRSAddressRangeObj.externalID = "";
+}
+if (maxAddress) {
+   vRSAddressRangeObj.maxAddress = maxAddress;
+} else if (vRSAddressRangeObj.maxAddress) {
+   vRSAddressRangeObj.maxAddress = "";
+}
+if (minAddress) {
+   vRSAddressRangeObj.minAddress = minAddress;
+} else if (vRSAddressRangeObj.minAddress) {
+   vRSAddressRangeObj.minAddress = "";
+}
+vRSAddressRangeObj.save(session);]]></script>
+<in-binding><bind name='vRSAddressRangeObj' type='VSPK:VRSAddressRange' export-name="vRSAddressRangeObj" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='maxAddress' type='string' export-name="maxAddress" ></bind>
+
+<bind name='minAddress' type='string' export-name="minAddress" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vRSAddressRangeObj"><desc><![CDATA[vRSAddressRangeObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vRSAddressRangeObj.externalID]]></p-qual></p-param>
+
+<p-param name="maxAddress"><desc><![CDATA[maxAddress]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vRSAddressRangeObj.maxAddress]]></p-qual></p-param>
+
+<p-param name="minAddress"><desc><![CDATA[minAddress]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vRSAddressRangeObj.minAddress]]></p-qual></p-param>
+
+</presentation></workflow>

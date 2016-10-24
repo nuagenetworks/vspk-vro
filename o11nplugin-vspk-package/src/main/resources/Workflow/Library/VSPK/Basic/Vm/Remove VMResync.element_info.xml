@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vm</entry>
+<entry key="name">Remove VMResync</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7e995697-133b-506c-8e56-099e4dd14652</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Edit RedundancyGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d4706324-c8a5-54c0-bf99-9760dd2db780</entry>
+</properties>

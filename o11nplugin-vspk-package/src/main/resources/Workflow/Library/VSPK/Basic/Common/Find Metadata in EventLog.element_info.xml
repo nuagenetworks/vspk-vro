@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in EventLog</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">fde2dda3-ade4-5b66-b2fb-aaca6a7e730d</entry>
+</properties>

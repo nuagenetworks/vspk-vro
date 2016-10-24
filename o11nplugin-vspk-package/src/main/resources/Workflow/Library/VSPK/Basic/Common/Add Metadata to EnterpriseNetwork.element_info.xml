@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to EnterpriseNetwork</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c9070ba3-99a1-5b41-8a50-28767005fb29</entry>
+</properties>

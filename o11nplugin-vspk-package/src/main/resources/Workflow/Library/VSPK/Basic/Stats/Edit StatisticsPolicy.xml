@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="92528c6e-16d1-5532-97bd-08074dc739aa"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit StatisticsPolicy]]></display-name>
+<ref-types><![CDATA[(VSPK:StatisticsPolicy)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='statisticsPolicyObj' type='VSPK:StatisticsPolicy' >
+</param>
+
+<param name='dataCollectionFrequency' type='number' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = statisticsPolicyObj.session;
+
+statisticsPolicyObj.dataCollectionFrequency = dataCollectionFrequency;
+if (description) {
+   statisticsPolicyObj.description = description;
+} else if (statisticsPolicyObj.description) {
+   statisticsPolicyObj.description = "";
+}
+if (externalID) {
+   statisticsPolicyObj.externalID = externalID;
+} else if (statisticsPolicyObj.externalID) {
+   statisticsPolicyObj.externalID = "";
+}
+if (name) {
+   statisticsPolicyObj.name = name;
+} else if (statisticsPolicyObj.name) {
+   statisticsPolicyObj.name = "";
+}
+statisticsPolicyObj.save(session);]]></script>
+<in-binding><bind name='statisticsPolicyObj' type='VSPK:StatisticsPolicy' export-name="statisticsPolicyObj" ></bind>
+
+<bind name='dataCollectionFrequency' type='number' export-name="dataCollectionFrequency" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="statisticsPolicyObj"><desc><![CDATA[statisticsPolicyObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="dataCollectionFrequency"><desc><![CDATA[dataCollectionFrequency]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#statisticsPolicyObj.dataCollectionFrequency]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#statisticsPolicyObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#statisticsPolicyObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#statisticsPolicyObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

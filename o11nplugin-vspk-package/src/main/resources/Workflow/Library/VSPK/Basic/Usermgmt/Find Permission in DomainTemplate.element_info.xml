@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in DomainTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e987b51f-7c15-5cf6-a541-20f720ae66e9</entry>
+</properties>

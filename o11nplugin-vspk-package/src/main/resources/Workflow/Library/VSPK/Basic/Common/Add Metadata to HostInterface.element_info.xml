@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to HostInterface</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9e0b44e5-88b2-555c-9f47-5bd6089a065a</entry>
+</properties>

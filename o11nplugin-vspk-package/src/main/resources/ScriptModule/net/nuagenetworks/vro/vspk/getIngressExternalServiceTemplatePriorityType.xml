@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getIngressExternalServiceTemplatePriorityType" result-type="VSPK:IngressExternalServiceTemplatePriorityType" api-version="6.0.0"  id="afbc8aee-64bd-5d92-bdd4-04081dce6586"  version="1.0.1"  allowed-operations="vef" ><param n="ingressExternalServiceTemplateObj" t="VSPK:IngressExternalServiceTemplate"></param><script encoded='false'><![CDATA[return ingressExternalServiceTemplateObj.priorityType;]]></script>
+</dunes-script-module>

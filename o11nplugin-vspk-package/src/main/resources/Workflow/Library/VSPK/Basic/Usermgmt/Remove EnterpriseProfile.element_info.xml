@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Remove EnterpriseProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ecb1372b-5b8a-5b6f-b019-c0b8bb468096</entry>
+</properties>

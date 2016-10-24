@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Find VPort in Subnet</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">07b1b2d6-2a56-588c-a2d2-a489207c0c6e</entry>
+</properties>

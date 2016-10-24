@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="37aaffea-0486-5ecf-94c7-3b8bd4c96e0f"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add StaticRoute to L2Domain]]></display-name>
+<ref-types><![CDATA[(VSPK:L2Domain)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='l2DomainObj' type='VSPK:L2Domain' >
+</param>
+<param name='address' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='netmask' type='string' >
+</param>
+<param name='nextHopIp' type='string' >
+</param>
+</input><output><param name='staticRouteObj' type='VSPK:StaticRoute' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = l2DomainObj.session;
+
+staticRouteObj = new VSPKStaticRoute();
+if (address) {
+   staticRouteObj.address = address;
+}
+if (externalID) {
+   staticRouteObj.externalID = externalID;
+}
+if (netmask) {
+   staticRouteObj.netmask = netmask;
+}
+if (nextHopIp) {
+   staticRouteObj.nextHopIp = nextHopIp;
+}
+
+l2DomainObj.createStaticRoute(session, staticRouteObj);
+]]></script>
+<in-binding><bind name='l2DomainObj' type='VSPK:L2Domain' export-name="l2DomainObj" ></bind>
+<bind name='address' type='string' export-name="address" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='netmask' type='string' export-name="netmask" ></bind>
+<bind name='nextHopIp' type='string' export-name="nextHopIp" ></bind>
+</in-binding><out-binding><bind name='staticRouteObj' type='VSPK:StaticRoute' export-name="staticRouteObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="l2DomainObj"><desc><![CDATA[l2DomainObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="address"><desc><![CDATA[address]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="netmask"><desc><![CDATA[netmask]]></desc>
+</p-param>
+<p-param name="nextHopIp"><desc><![CDATA[nextHopIp]]></desc>
+</p-param>
+</presentation></workflow>

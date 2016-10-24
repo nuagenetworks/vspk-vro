@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Find VPNConnection in L2Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7e8275d6-cb8c-525e-b7a8-2bd2dc463f6d</entry>
+</properties>

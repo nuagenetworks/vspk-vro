@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Edit InfrastructureConfig</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ad1faa16-d60e-59b8-b252-b5df397313e5</entry>
+</properties>

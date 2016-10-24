@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Remove NetworkMacroGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">80586b03-9cc1-5547-ab18-e4451f9506d5</entry>
+</properties>

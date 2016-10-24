@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in Gateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">77d011f3-38a7-5e96-a659-f54c6a4c0b77</entry>
+</properties>

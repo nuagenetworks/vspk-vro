@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Find VLAN in Port</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">dd2e436e-2b49-54aa-b64f-a2e4a5256e59</entry>
+</properties>

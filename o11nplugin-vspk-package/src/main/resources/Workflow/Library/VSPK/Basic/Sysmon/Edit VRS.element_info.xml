@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Sysmon</entry>
+<entry key="name">Edit VRS</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3961f676-07a4-554e-8c25-b198719986a2</entry>
+</properties>

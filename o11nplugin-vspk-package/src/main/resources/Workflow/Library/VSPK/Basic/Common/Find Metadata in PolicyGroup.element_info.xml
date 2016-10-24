@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in PolicyGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">fbca7668-3961-52cb-b140-73b38b299c07</entry>
+</properties>

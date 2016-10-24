@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Keyserver</entry>
+<entry key="name">Remove KeyServerMonitor</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2943748d-5d83-5c90-89f7-3cd763bc01b4</entry>
+</properties>

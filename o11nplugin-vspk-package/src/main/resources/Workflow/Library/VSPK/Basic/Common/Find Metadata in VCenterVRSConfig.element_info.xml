@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in VCenterVRSConfig</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">76c19308-6710-57b1-acdd-db77f69551a9</entry>
+</properties>

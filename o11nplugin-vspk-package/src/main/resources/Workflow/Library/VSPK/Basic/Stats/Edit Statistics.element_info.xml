@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Stats</entry>
+<entry key="name">Edit Statistics</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f68f416d-6552-54a1-a8f6-285feb1e9373</entry>
+</properties>

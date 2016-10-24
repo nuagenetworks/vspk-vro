@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Edit DHCPOption</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b1ac60f8-8281-5ee7-b600-8c44e393b7f4</entry>
+</properties>

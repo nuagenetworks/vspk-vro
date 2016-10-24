@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getTCAType" result-type="VSPK:TCAType" api-version="6.0.0"  id="ff6ea1d5-e59a-59bb-801b-1d0d532e46e6"  version="1.0.1"  allowed-operations="vef" ><param n="tCAObj" t="VSPK:TCA"></param><script encoded='false'><![CDATA[return tCAObj.type;]]></script>
+</dunes-script-module>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to IKEPSK</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5734e472-39a5-53e6-a411-27f5c78e8dea</entry>
+</properties>

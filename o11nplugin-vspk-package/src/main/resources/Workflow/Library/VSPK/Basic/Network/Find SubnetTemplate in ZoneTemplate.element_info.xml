@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Find SubnetTemplate in ZoneTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f99fcf8e-1307-5b6a-aecd-e1c7a5599967</entry>
+</properties>

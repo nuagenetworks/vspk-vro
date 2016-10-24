@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in IKEGatewayConfig</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5b48a7c6-89d0-50c6-9532-5a9f7daa2a7e</entry>
+</properties>

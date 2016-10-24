@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in Avatar</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">15830b33-0f54-5047-97f1-1e006aad4c03</entry>
+</properties>

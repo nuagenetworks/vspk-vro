@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Find DomainTemplate in Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a5f1a76d-da01-585b-b758-7975f8d0b953</entry>
+</properties>

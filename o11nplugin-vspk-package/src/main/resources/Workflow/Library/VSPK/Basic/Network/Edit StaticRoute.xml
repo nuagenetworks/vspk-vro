@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a5184356-a005-5043-8b17-8605251e85a9"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit StaticRoute]]></display-name>
+<ref-types><![CDATA[(VSPK:StaticRoute)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='staticRouteObj' type='VSPK:StaticRoute' >
+</param>
+
+<param name='address' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='netmask' type='string' >
+</param>
+
+<param name='nextHopIp' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = staticRouteObj.session;
+
+if (address) {
+   staticRouteObj.address = address;
+} else if (staticRouteObj.address) {
+   staticRouteObj.address = "";
+}
+if (externalID) {
+   staticRouteObj.externalID = externalID;
+} else if (staticRouteObj.externalID) {
+   staticRouteObj.externalID = "";
+}
+if (netmask) {
+   staticRouteObj.netmask = netmask;
+} else if (staticRouteObj.netmask) {
+   staticRouteObj.netmask = "";
+}
+if (nextHopIp) {
+   staticRouteObj.nextHopIp = nextHopIp;
+} else if (staticRouteObj.nextHopIp) {
+   staticRouteObj.nextHopIp = "";
+}
+staticRouteObj.save(session);]]></script>
+<in-binding><bind name='staticRouteObj' type='VSPK:StaticRoute' export-name="staticRouteObj" ></bind>
+
+<bind name='address' type='string' export-name="address" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='netmask' type='string' export-name="netmask" ></bind>
+
+<bind name='nextHopIp' type='string' export-name="nextHopIp" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="staticRouteObj"><desc><![CDATA[staticRouteObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="address"><desc><![CDATA[address]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#staticRouteObj.address]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#staticRouteObj.externalID]]></p-qual></p-param>
+
+<p-param name="netmask"><desc><![CDATA[netmask]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#staticRouteObj.netmask]]></p-qual></p-param>
+
+<p-param name="nextHopIp"><desc><![CDATA[nextHopIp]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#staticRouteObj.nextHopIp]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a1a52a0b-cc1d-59a0-855e-c6f454028f54"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add FloatingIp to Domain]]></display-name>
+<ref-types><![CDATA[(VSPK:Domain)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='domainObj' type='VSPK:Domain' >
+</param>
+<param name='associatedSharedNetworkResourceID' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+</input><output><param name='floatingIpObj' type='VSPK:FloatingIp' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = domainObj.session;
+
+floatingIpObj = new VSPKFloatingIp();
+if (associatedSharedNetworkResourceID) {
+   floatingIpObj.associatedSharedNetworkResourceID = associatedSharedNetworkResourceID;
+}
+if (externalID) {
+   floatingIpObj.externalID = externalID;
+}
+
+domainObj.createFloatingIp(session, floatingIpObj);
+]]></script>
+<in-binding><bind name='domainObj' type='VSPK:Domain' export-name="domainObj" ></bind>
+<bind name='associatedSharedNetworkResourceID' type='string' export-name="associatedSharedNetworkResourceID" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+</in-binding><out-binding><bind name='floatingIpObj' type='VSPK:FloatingIp' export-name="floatingIpObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="domainObj"><desc><![CDATA[domainObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="associatedSharedNetworkResourceID"><desc><![CDATA[associatedSharedNetworkResourceID]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+</presentation></workflow>

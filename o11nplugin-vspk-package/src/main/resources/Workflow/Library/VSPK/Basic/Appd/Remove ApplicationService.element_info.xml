@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Appd</entry>
+<entry key="name">Remove ApplicationService</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5fe4f432-c903-5c59-8d6d-92f99dc4cdf7</entry>
+</properties>

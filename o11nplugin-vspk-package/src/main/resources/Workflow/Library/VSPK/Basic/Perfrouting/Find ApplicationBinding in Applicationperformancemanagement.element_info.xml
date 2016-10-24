@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Perfrouting</entry>
+<entry key="name">Find ApplicationBinding in Applicationperformancemanagement</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">8313ddc8-0be4-552a-ba6f-17b145ab1206</entry>
+</properties>

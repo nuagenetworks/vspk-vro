@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getJobCommand</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">b6e78705-421a-5bed-a911-6e68b04290f1</entry>
+</properties>

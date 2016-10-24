@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="783805e5-c63a-46a4-9bf8-a3d118b26645"  version="1.0.0" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Create VM]]></display-name>
+<ref-types><![CDATA[(VSPK:VPort)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vport' type='VSPK:VPort' >
+</param>
+<param name='vmName' type='string' >
+</param>
+<param name='interfaceName' type='string' >
+</param>
+<param name='uuid' type='string' >
+</param>
+<param name='mac' type='string' >
+</param>
+<param name='ipAddress' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+</input><output><param name='vm' type='VSPK:VM' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vport.session;
+
+var vmInterface = new VSPKVMInterface();
+if (interfaceName) {
+   vmInterface.name = interfaceName;
+}
+if (mac) {
+   vmInterface.MAC = mac;
+}
+if (ipAddress) {
+   vmInterface.IPAddress = ipAddress;
+}
+if (vport) {
+   vmInterface.VPortID = vport.id;
+}
+if (externalID) {
+   vmInterface.externalID = externalID;
+}
+var vmInterfaces = [ vmInterface ];
+
+vm = new VSPKVM();
+vm.interfaces = vmInterfaces;
+if (vmName) {
+   vm.name = vmName;
+}
+if (uuid) {
+   vm.UUID = uuid;
+}
+if (externalID) {
+   vm.externalID = externalID;
+}
+
+var me = session.me;
+me.createVM(session, vm);
+
+
+]]></script>
+<in-binding><bind name='vport' type='VSPK:VPort' export-name="vport" ></bind>
+<bind name='vmName' type='string' export-name="vmName" ></bind>
+<bind name='interfaceName' type='string' export-name="interfaceName" ></bind>
+<bind name='uuid' type='string' export-name="uuid" ></bind>
+<bind name='mac' type='string' export-name="mac" ></bind>
+<bind name='ipAddress' type='string' export-name="ipAddress" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+</in-binding><out-binding><bind name='vm' type='VSPK:VM' export-name="vm" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vport"><desc><![CDATA[vport]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="vmName"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="uuid"><desc><![CDATA[uuid]]></desc>
+</p-param>
+<p-param name="mac"><desc><![CDATA[mac]]></desc>
+</p-param>
+<p-param name="ipAddress"><desc><![CDATA[ipAddress]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="interfaceName"><desc><![CDATA[interfaceName]]></desc>
+</p-param>
+</presentation></workflow>

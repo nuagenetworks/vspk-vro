@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="9ea7963b-9b31-5c93-aa09-8029bb146dda"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit FloatingIp]]></display-name>
+<ref-types><![CDATA[(VSPK:FloatingIp)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='floatingIpObj' type='VSPK:FloatingIp' >
+</param>
+
+<param name='associatedSharedNetworkResourceID' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = floatingIpObj.session;
+
+if (associatedSharedNetworkResourceID) {
+   floatingIpObj.associatedSharedNetworkResourceID = associatedSharedNetworkResourceID;
+} else if (floatingIpObj.associatedSharedNetworkResourceID) {
+   floatingIpObj.associatedSharedNetworkResourceID = "";
+}
+if (externalID) {
+   floatingIpObj.externalID = externalID;
+} else if (floatingIpObj.externalID) {
+   floatingIpObj.externalID = "";
+}
+floatingIpObj.save(session);]]></script>
+<in-binding><bind name='floatingIpObj' type='VSPK:FloatingIp' export-name="floatingIpObj" ></bind>
+
+<bind name='associatedSharedNetworkResourceID' type='string' export-name="associatedSharedNetworkResourceID" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="floatingIpObj"><desc><![CDATA[floatingIpObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="associatedSharedNetworkResourceID"><desc><![CDATA[associatedSharedNetworkResourceID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#floatingIpObj.associatedSharedNetworkResourceID]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#floatingIpObj.externalID]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in MultiCastList</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">6e0be973-acc6-5202-84f9-c6a2388ee9bd</entry>
+</properties>

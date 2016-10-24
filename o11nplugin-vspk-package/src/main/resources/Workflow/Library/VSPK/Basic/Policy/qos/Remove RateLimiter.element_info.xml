@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/qos</entry>
+<entry key="name">Remove RateLimiter</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ba96d4be-332a-5cac-827e-0c0831a58e47</entry>
+</properties>

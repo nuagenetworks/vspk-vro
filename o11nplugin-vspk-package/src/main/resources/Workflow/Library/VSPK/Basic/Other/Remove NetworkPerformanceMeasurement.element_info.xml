@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.None</entry>
+<entry key="name">Remove NetworkPerformanceMeasurement</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5912f6ea-d79a-5f78-935c-2ea744b88852</entry>
+</properties>

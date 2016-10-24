@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7e0bfa24-91e8-5d90-ab7f-3cf17482659b"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit IngressAdvFwdEntryTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:IngressAdvFwdEntryTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='ingressAdvFwdEntryTemplateObj' type='VSPK:IngressAdvFwdEntryTemplate' >
+</param>
+
+<param name='ACLTemplateName' type='string' >
+</param>
+
+<param name='DSCP' type='string' >
+</param>
+
+<param name='action' type='VSPK:IngressAdvFwdEntryTemplateAction' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='destinationPort' type='string' >
+</param>
+
+<param name='domainName' type='string' >
+</param>
+
+<param name='enterpriseName' type='string' >
+</param>
+
+<param name='etherType' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='locationType' type='VSPK:IngressAdvFwdEntryTemplateLocationType' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='networkType' type='VSPK:IngressAdvFwdEntryTemplateNetworkType' >
+</param>
+
+<param name='protocol' type='string' >
+</param>
+
+<param name='sourcePort' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = ingressAdvFwdEntryTemplateObj.session;
+
+if (ACLTemplateName) {
+   ingressAdvFwdEntryTemplateObj.ACLTemplateName = ACLTemplateName;
+} else if (ingressAdvFwdEntryTemplateObj.ACLTemplateName) {
+   ingressAdvFwdEntryTemplateObj.ACLTemplateName = "";
+}
+if (DSCP) {
+   ingressAdvFwdEntryTemplateObj.DSCP = DSCP;
+} else if (ingressAdvFwdEntryTemplateObj.DSCP) {
+   ingressAdvFwdEntryTemplateObj.DSCP = "";
+}
+ingressAdvFwdEntryTemplateObj.action = action;
+if (description) {
+   ingressAdvFwdEntryTemplateObj.description = description;
+} else if (ingressAdvFwdEntryTemplateObj.description) {
+   ingressAdvFwdEntryTemplateObj.description = "";
+}
+if (destinationPort) {
+   ingressAdvFwdEntryTemplateObj.destinationPort = destinationPort;
+} else if (ingressAdvFwdEntryTemplateObj.destinationPort) {
+   ingressAdvFwdEntryTemplateObj.destinationPort = "";
+}
+if (domainName) {
+   ingressAdvFwdEntryTemplateObj.domainName = domainName;
+} else if (ingressAdvFwdEntryTemplateObj.domainName) {
+   ingressAdvFwdEntryTemplateObj.domainName = "";
+}
+if (enterpriseName) {
+   ingressAdvFwdEntryTemplateObj.enterpriseName = enterpriseName;
+} else if (ingressAdvFwdEntryTemplateObj.enterpriseName) {
+   ingressAdvFwdEntryTemplateObj.enterpriseName = "";
+}
+if (etherType) {
+   ingressAdvFwdEntryTemplateObj.etherType = etherType;
+} else if (ingressAdvFwdEntryTemplateObj.etherType) {
+   ingressAdvFwdEntryTemplateObj.etherType = "";
+}
+if (externalID) {
+   ingressAdvFwdEntryTemplateObj.externalID = externalID;
+} else if (ingressAdvFwdEntryTemplateObj.externalID) {
+   ingressAdvFwdEntryTemplateObj.externalID = "";
+}
+ingressAdvFwdEntryTemplateObj.locationType = locationType;
+if (name) {
+   ingressAdvFwdEntryTemplateObj.name = name;
+} else if (ingressAdvFwdEntryTemplateObj.name) {
+   ingressAdvFwdEntryTemplateObj.name = "";
+}
+ingressAdvFwdEntryTemplateObj.networkType = networkType;
+if (protocol) {
+   ingressAdvFwdEntryTemplateObj.protocol = protocol;
+} else if (ingressAdvFwdEntryTemplateObj.protocol) {
+   ingressAdvFwdEntryTemplateObj.protocol = "";
+}
+if (sourcePort) {
+   ingressAdvFwdEntryTemplateObj.sourcePort = sourcePort;
+} else if (ingressAdvFwdEntryTemplateObj.sourcePort) {
+   ingressAdvFwdEntryTemplateObj.sourcePort = "";
+}
+ingressAdvFwdEntryTemplateObj.save(session);]]></script>
+<in-binding><bind name='ingressAdvFwdEntryTemplateObj' type='VSPK:IngressAdvFwdEntryTemplate' export-name="ingressAdvFwdEntryTemplateObj" ></bind>
+
+<bind name='ACLTemplateName' type='string' export-name="ACLTemplateName" ></bind>
+
+<bind name='DSCP' type='string' export-name="DSCP" ></bind>
+
+<bind name='action' type='VSPK:IngressAdvFwdEntryTemplateAction' export-name="action" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='destinationPort' type='string' export-name="destinationPort" ></bind>
+
+<bind name='domainName' type='string' export-name="domainName" ></bind>
+
+<bind name='enterpriseName' type='string' export-name="enterpriseName" ></bind>
+
+<bind name='etherType' type='string' export-name="etherType" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='locationType' type='VSPK:IngressAdvFwdEntryTemplateLocationType' export-name="locationType" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='networkType' type='VSPK:IngressAdvFwdEntryTemplateNetworkType' export-name="networkType" ></bind>
+
+<bind name='protocol' type='string' export-name="protocol" ></bind>
+
+<bind name='sourcePort' type='string' export-name="sourcePort" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="ingressAdvFwdEntryTemplateObj"><desc><![CDATA[ingressAdvFwdEntryTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="ACLTemplateName"><desc><![CDATA[ACLTemplateName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.ACLTemplateName]]></p-qual></p-param>
+
+<p-param name="DSCP"><desc><![CDATA[DSCP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.DSCP]]></p-qual></p-param>
+
+<p-param name="action"><desc><![CDATA[action]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:IngressAdvFwdEntryTemplateAction" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getIngressAdvFwdEntryTemplateAction").call( #ingressAdvFwdEntryTemplateObj )]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.description]]></p-qual></p-param>
+
+<p-param name="destinationPort"><desc><![CDATA[destinationPort]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.destinationPort]]></p-qual></p-param>
+
+<p-param name="domainName"><desc><![CDATA[domainName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.domainName]]></p-qual></p-param>
+
+<p-param name="enterpriseName"><desc><![CDATA[enterpriseName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.enterpriseName]]></p-qual></p-param>
+
+<p-param name="etherType"><desc><![CDATA[etherType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.etherType]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.externalID]]></p-qual></p-param>
+
+<p-param name="locationType"><desc><![CDATA[locationType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:IngressAdvFwdEntryTemplateLocationType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getIngressAdvFwdEntryTemplateLocationType").call( #ingressAdvFwdEntryTemplateObj )]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.name]]></p-qual></p-param>
+
+<p-param name="networkType"><desc><![CDATA[networkType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:IngressAdvFwdEntryTemplateNetworkType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getIngressAdvFwdEntryTemplateNetworkType").call( #ingressAdvFwdEntryTemplateObj )]]></p-qual></p-param>
+
+<p-param name="protocol"><desc><![CDATA[protocol]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.protocol]]></p-qual></p-param>
+
+<p-param name="sourcePort"><desc><![CDATA[sourcePort]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.sourcePort]]></p-qual></p-param>
+
+</presentation></workflow>

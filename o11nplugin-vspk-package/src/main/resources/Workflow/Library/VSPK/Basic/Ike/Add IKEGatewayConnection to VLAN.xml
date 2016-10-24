@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="b2352697-aa2c-5710-a12c-b3a4499c19b3"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add IKEGatewayConnection to VLAN]]></display-name>
+<ref-types><![CDATA[(VSPK:VLAN)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vLANObj' type='VSPK:VLAN' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+</input><output><param name='iKEGatewayConnectionObj' type='VSPK:IKEGatewayConnection' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vLANObj.session;
+
+iKEGatewayConnectionObj = new VSPKIKEGatewayConnection();
+if (externalID) {
+   iKEGatewayConnectionObj.externalID = externalID;
+}
+if (name) {
+   iKEGatewayConnectionObj.name = name;
+}
+
+vLANObj.createIKEGatewayConnection(session, iKEGatewayConnectionObj);
+]]></script>
+<in-binding><bind name='vLANObj' type='VSPK:VLAN' export-name="vLANObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+</in-binding><out-binding><bind name='iKEGatewayConnectionObj' type='VSPK:IKEGatewayConnection' export-name="iKEGatewayConnectionObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vLANObj"><desc><![CDATA[vLANObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+</presentation></workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in FloatingIp</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">80b81ad6-1e4c-591f-8d38-cf5054d60f13</entry>
+</properties>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="687b34c7-842e-5439-ad3f-cd6b3728f1ad"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit RateLimiter]]></display-name>
+<ref-types><![CDATA[(VSPK:RateLimiter)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='rateLimiterObj' type='VSPK:RateLimiter' >
+</param>
+
+<param name='committedInformationRate' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='peakBurstSize' type='string' >
+</param>
+
+<param name='peakInformationRate' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = rateLimiterObj.session;
+
+if (committedInformationRate) {
+   rateLimiterObj.committedInformationRate = committedInformationRate;
+} else if (rateLimiterObj.committedInformationRate) {
+   rateLimiterObj.committedInformationRate = "";
+}
+if (description) {
+   rateLimiterObj.description = description;
+} else if (rateLimiterObj.description) {
+   rateLimiterObj.description = "";
+}
+if (externalID) {
+   rateLimiterObj.externalID = externalID;
+} else if (rateLimiterObj.externalID) {
+   rateLimiterObj.externalID = "";
+}
+if (name) {
+   rateLimiterObj.name = name;
+} else if (rateLimiterObj.name) {
+   rateLimiterObj.name = "";
+}
+if (peakBurstSize) {
+   rateLimiterObj.peakBurstSize = peakBurstSize;
+} else if (rateLimiterObj.peakBurstSize) {
+   rateLimiterObj.peakBurstSize = "";
+}
+if (peakInformationRate) {
+   rateLimiterObj.peakInformationRate = peakInformationRate;
+} else if (rateLimiterObj.peakInformationRate) {
+   rateLimiterObj.peakInformationRate = "";
+}
+rateLimiterObj.save(session);]]></script>
+<in-binding><bind name='rateLimiterObj' type='VSPK:RateLimiter' export-name="rateLimiterObj" ></bind>
+
+<bind name='committedInformationRate' type='string' export-name="committedInformationRate" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='peakBurstSize' type='string' export-name="peakBurstSize" ></bind>
+
+<bind name='peakInformationRate' type='string' export-name="peakInformationRate" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="rateLimiterObj"><desc><![CDATA[rateLimiterObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="committedInformationRate"><desc><![CDATA[committedInformationRate]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#rateLimiterObj.committedInformationRate]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#rateLimiterObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#rateLimiterObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#rateLimiterObj.name]]></p-qual></p-param>
+
+<p-param name="peakBurstSize"><desc><![CDATA[peakBurstSize]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#rateLimiterObj.peakBurstSize]]></p-qual></p-param>
+
+<p-param name="peakInformationRate"><desc><![CDATA[peakInformationRate]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#rateLimiterObj.peakInformationRate]]></p-qual></p-param>
+
+</presentation></workflow>

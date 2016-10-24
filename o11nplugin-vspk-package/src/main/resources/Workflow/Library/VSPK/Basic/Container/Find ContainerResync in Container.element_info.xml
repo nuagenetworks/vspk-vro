@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Container</entry>
+<entry key="name">Find ContainerResync in Container</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e9852727-bb82-59cc-93e2-cccaabd0d4c2</entry>
+</properties>

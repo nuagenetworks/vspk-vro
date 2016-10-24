@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="12506be1-0b00-58bf-b345-2d2197c43b82"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add EgressACLEntryTemplate to EgressACLTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:EgressACLTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='egressACLTemplateObj' type='VSPK:EgressACLTemplate' >
+</param>
+<param name='ACLTemplateName' type='string' >
+</param>
+<param name='DSCP' type='string' >
+</param>
+<param name='action' type='VSPK:EgressACLEntryTemplateAction' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='destinationPort' type='string' >
+</param>
+<param name='domainName' type='string' >
+</param>
+<param name='enterpriseName' type='string' >
+</param>
+<param name='etherType' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='locationType' type='VSPK:EgressACLEntryTemplateLocationType' >
+</param>
+<param name='networkType' type='VSPK:EgressACLEntryTemplateNetworkType' >
+</param>
+<param name='protocol' type='string' >
+</param>
+<param name='sourcePort' type='string' >
+</param>
+</input><output><param name='egressACLEntryTemplateObj' type='VSPK:EgressACLEntryTemplate' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = egressACLTemplateObj.session;
+
+egressACLEntryTemplateObj = new VSPKEgressACLEntryTemplate();
+if (ACLTemplateName) {
+   egressACLEntryTemplateObj.ACLTemplateName = ACLTemplateName;
+}
+if (DSCP) {
+   egressACLEntryTemplateObj.DSCP = DSCP;
+}
+egressACLEntryTemplateObj.action = action;
+if (description) {
+   egressACLEntryTemplateObj.description = description;
+}
+if (destinationPort) {
+   egressACLEntryTemplateObj.destinationPort = destinationPort;
+}
+if (domainName) {
+   egressACLEntryTemplateObj.domainName = domainName;
+}
+if (enterpriseName) {
+   egressACLEntryTemplateObj.enterpriseName = enterpriseName;
+}
+if (etherType) {
+   egressACLEntryTemplateObj.etherType = etherType;
+}
+if (externalID) {
+   egressACLEntryTemplateObj.externalID = externalID;
+}
+egressACLEntryTemplateObj.locationType = locationType;
+egressACLEntryTemplateObj.networkType = networkType;
+if (protocol) {
+   egressACLEntryTemplateObj.protocol = protocol;
+}
+if (sourcePort) {
+   egressACLEntryTemplateObj.sourcePort = sourcePort;
+}
+
+egressACLTemplateObj.createEgressACLEntryTemplate(session, egressACLEntryTemplateObj);
+]]></script>
+<in-binding><bind name='egressACLTemplateObj' type='VSPK:EgressACLTemplate' export-name="egressACLTemplateObj" ></bind>
+<bind name='ACLTemplateName' type='string' export-name="ACLTemplateName" ></bind>
+<bind name='DSCP' type='string' export-name="DSCP" ></bind>
+<bind name='action' type='VSPK:EgressACLEntryTemplateAction' export-name="action" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='destinationPort' type='string' export-name="destinationPort" ></bind>
+<bind name='domainName' type='string' export-name="domainName" ></bind>
+<bind name='enterpriseName' type='string' export-name="enterpriseName" ></bind>
+<bind name='etherType' type='string' export-name="etherType" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='locationType' type='VSPK:EgressACLEntryTemplateLocationType' export-name="locationType" ></bind>
+<bind name='networkType' type='VSPK:EgressACLEntryTemplateNetworkType' export-name="networkType" ></bind>
+<bind name='protocol' type='string' export-name="protocol" ></bind>
+<bind name='sourcePort' type='string' export-name="sourcePort" ></bind>
+</in-binding><out-binding><bind name='egressACLEntryTemplateObj' type='VSPK:EgressACLEntryTemplate' export-name="egressACLEntryTemplateObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="egressACLTemplateObj"><desc><![CDATA[egressACLTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="ACLTemplateName"><desc><![CDATA[ACLTemplateName]]></desc>
+</p-param>
+<p-param name="DSCP"><desc><![CDATA[DSCP]]></desc>
+</p-param>
+<p-param name="action"><desc><![CDATA[action]]></desc>
+</p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="destinationPort"><desc><![CDATA[destinationPort]]></desc>
+</p-param>
+<p-param name="domainName"><desc><![CDATA[domainName]]></desc>
+</p-param>
+<p-param name="enterpriseName"><desc><![CDATA[enterpriseName]]></desc>
+</p-param>
+<p-param name="etherType"><desc><![CDATA[etherType]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="locationType"><desc><![CDATA[locationType]]></desc>
+</p-param>
+<p-param name="networkType"><desc><![CDATA[networkType]]></desc>
+</p-param>
+<p-param name="protocol"><desc><![CDATA[protocol]]></desc>
+</p-param>
+<p-param name="sourcePort"><desc><![CDATA[sourcePort]]></desc>
+</p-param>
+</presentation></workflow>

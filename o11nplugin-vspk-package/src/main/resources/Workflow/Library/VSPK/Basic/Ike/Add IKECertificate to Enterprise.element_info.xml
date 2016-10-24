@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Ike</entry>
+<entry key="name">Add IKECertificate to Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">34e3f0a8-91bd-531a-83b0-59ccfa59360c</entry>
+</properties>

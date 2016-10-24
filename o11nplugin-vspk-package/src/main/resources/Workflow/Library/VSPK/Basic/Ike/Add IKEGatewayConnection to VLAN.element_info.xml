@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Ike</entry>
+<entry key="name">Add IKEGatewayConnection to VLAN</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b2352697-aa2c-5710-a12c-b3a4499c19b3</entry>
+</properties>

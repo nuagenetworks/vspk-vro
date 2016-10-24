@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Add EnterprisePermission to PATNATPool</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">72f01c5d-6d7f-5688-9df2-044992c09656</entry>
+</properties>

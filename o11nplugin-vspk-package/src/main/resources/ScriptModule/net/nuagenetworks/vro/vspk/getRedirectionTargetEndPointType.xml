@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getRedirectionTargetEndPointType" result-type="VSPK:RedirectionTargetEndPointType" api-version="6.0.0"  id="42908137-c8c5-5c82-a3c2-38f4b732543b"  version="1.0.1"  allowed-operations="vef" ><param n="redirectionTargetObj" t="VSPK:RedirectionTarget"></param><script encoded='false'><![CDATA[return redirectionTargetObj.endPointType;]]></script>
+</dunes-script-module>

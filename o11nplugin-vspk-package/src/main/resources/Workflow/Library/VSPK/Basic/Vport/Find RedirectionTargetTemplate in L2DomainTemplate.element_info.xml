@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Find RedirectionTargetTemplate in L2DomainTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">20b4a61a-bd6d-5223-aee1-02a54b5c668c</entry>
+</properties>

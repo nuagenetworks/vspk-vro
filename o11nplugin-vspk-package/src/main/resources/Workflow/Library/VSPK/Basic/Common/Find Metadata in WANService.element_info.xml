@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in WANService</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b056a43f-3785-50b0-b7f4-48daf51162a7</entry>
+</properties>

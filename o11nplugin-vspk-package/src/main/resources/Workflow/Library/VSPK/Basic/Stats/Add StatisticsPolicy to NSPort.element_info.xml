@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Stats</entry>
+<entry key="name">Add StatisticsPolicy to NSPort</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7c0168b8-6d4f-51b9-8552-35c88116fde3</entry>
+</properties>

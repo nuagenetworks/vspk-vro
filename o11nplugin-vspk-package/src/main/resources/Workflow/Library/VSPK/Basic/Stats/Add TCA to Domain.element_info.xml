@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Stats</entry>
+<entry key="name">Add TCA to Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b4fb0576-cf9a-5c8f-a6e7-ec112f2c19d9</entry>
+</properties>

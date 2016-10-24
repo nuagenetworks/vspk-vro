@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getIngressACLEntryTemplateAction" result-type="VSPK:IngressACLEntryTemplateAction" api-version="6.0.0"  id="4047f8ac-95cc-581b-97dd-92af25259109"  version="1.0.1"  allowed-operations="vef" ><param n="ingressACLEntryTemplateObj" t="VSPK:IngressACLEntryTemplate"></param><script encoded='false'><![CDATA[return ingressACLEntryTemplateObj.action;]]></script>
+</dunes-script-module>

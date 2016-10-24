@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Add NSGateway to Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">53e65885-eae6-553e-8ed9-c78329bfa969</entry>
+</properties>

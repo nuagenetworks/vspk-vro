@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vmware</entry>
+<entry key="name">Remove VRSRedeploymentpolicy</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9dee37d6-cba6-522b-96b4-2465d9090a62</entry>
+</properties>

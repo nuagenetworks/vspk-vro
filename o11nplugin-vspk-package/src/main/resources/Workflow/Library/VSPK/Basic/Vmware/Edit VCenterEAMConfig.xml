@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a670b2cb-1de8-5f4f-b57d-3f72ce6ce8c1"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit VCenterEAMConfig]]></display-name>
+<ref-types><![CDATA[(VSPK:VCenterEAMConfig)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vCenterEAMConfigObj' type='VSPK:VCenterEAMConfig' >
+</param>
+
+<param name='eamServerIP' type='string' >
+</param>
+
+<param name='eamServerPortNumber' type='number' >
+</param>
+
+<param name='eamServerPortType' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='ovfURL' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vCenterEAMConfigObj.session;
+
+if (eamServerIP) {
+   vCenterEAMConfigObj.eamServerIP = eamServerIP;
+} else if (vCenterEAMConfigObj.eamServerIP) {
+   vCenterEAMConfigObj.eamServerIP = "";
+}
+vCenterEAMConfigObj.eamServerPortNumber = eamServerPortNumber;
+if (eamServerPortType) {
+   vCenterEAMConfigObj.eamServerPortType = eamServerPortType;
+} else if (vCenterEAMConfigObj.eamServerPortType) {
+   vCenterEAMConfigObj.eamServerPortType = "";
+}
+if (externalID) {
+   vCenterEAMConfigObj.externalID = externalID;
+} else if (vCenterEAMConfigObj.externalID) {
+   vCenterEAMConfigObj.externalID = "";
+}
+if (ovfURL) {
+   vCenterEAMConfigObj.ovfURL = ovfURL;
+} else if (vCenterEAMConfigObj.ovfURL) {
+   vCenterEAMConfigObj.ovfURL = "";
+}
+vCenterEAMConfigObj.save(session);]]></script>
+<in-binding><bind name='vCenterEAMConfigObj' type='VSPK:VCenterEAMConfig' export-name="vCenterEAMConfigObj" ></bind>
+
+<bind name='eamServerIP' type='string' export-name="eamServerIP" ></bind>
+
+<bind name='eamServerPortNumber' type='number' export-name="eamServerPortNumber" ></bind>
+
+<bind name='eamServerPortType' type='string' export-name="eamServerPortType" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='ovfURL' type='string' export-name="ovfURL" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vCenterEAMConfigObj"><desc><![CDATA[vCenterEAMConfigObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="eamServerIP"><desc><![CDATA[eamServerIP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterEAMConfigObj.eamServerIP]]></p-qual></p-param>
+
+<p-param name="eamServerPortNumber"><desc><![CDATA[eamServerPortNumber]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#vCenterEAMConfigObj.eamServerPortNumber]]></p-qual></p-param>
+
+<p-param name="eamServerPortType"><desc><![CDATA[eamServerPortType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterEAMConfigObj.eamServerPortType]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterEAMConfigObj.externalID]]></p-qual></p-param>
+
+<p-param name="ovfURL"><desc><![CDATA[ovfURL]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterEAMConfigObj.ovfURL]]></p-qual></p-param>
+
+</presentation></workflow>

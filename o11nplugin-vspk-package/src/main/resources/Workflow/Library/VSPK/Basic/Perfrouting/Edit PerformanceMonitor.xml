@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="bcebe677-262c-579b-be26-e55b7449afdd"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit PerformanceMonitor]]></display-name>
+<ref-types><![CDATA[(VSPK:PerformanceMonitor)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='performanceMonitorObj' type='VSPK:PerformanceMonitor' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='interval' type='number' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='numberOfPackets' type='number' >
+</param>
+
+<param name='payloadSize' type='number' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = performanceMonitorObj.session;
+
+if (description) {
+   performanceMonitorObj.description = description;
+} else if (performanceMonitorObj.description) {
+   performanceMonitorObj.description = "";
+}
+performanceMonitorObj.interval = interval;
+if (name) {
+   performanceMonitorObj.name = name;
+} else if (performanceMonitorObj.name) {
+   performanceMonitorObj.name = "";
+}
+performanceMonitorObj.numberOfPackets = numberOfPackets;
+performanceMonitorObj.payloadSize = payloadSize;
+performanceMonitorObj.save(session);]]></script>
+<in-binding><bind name='performanceMonitorObj' type='VSPK:PerformanceMonitor' export-name="performanceMonitorObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='interval' type='number' export-name="interval" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='numberOfPackets' type='number' export-name="numberOfPackets" ></bind>
+
+<bind name='payloadSize' type='number' export-name="payloadSize" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="performanceMonitorObj"><desc><![CDATA[performanceMonitorObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#performanceMonitorObj.description]]></p-qual></p-param>
+
+<p-param name="interval"><desc><![CDATA[interval]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#performanceMonitorObj.interval]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#performanceMonitorObj.name]]></p-qual></p-param>
+
+<p-param name="numberOfPackets"><desc><![CDATA[numberOfPackets]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#performanceMonitorObj.numberOfPackets]]></p-qual></p-param>
+
+<p-param name="payloadSize"><desc><![CDATA[payloadSize]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#performanceMonitorObj.payloadSize]]></p-qual></p-param>
+
+</presentation></workflow>

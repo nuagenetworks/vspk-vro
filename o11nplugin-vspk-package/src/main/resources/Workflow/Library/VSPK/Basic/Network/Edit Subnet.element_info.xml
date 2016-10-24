@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Edit Subnet</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3960c32b-f965-5877-872a-3212dc2fcc04</entry>
+</properties>

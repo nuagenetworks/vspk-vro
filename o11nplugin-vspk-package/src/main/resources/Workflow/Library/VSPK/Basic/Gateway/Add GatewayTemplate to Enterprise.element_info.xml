@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Add GatewayTemplate to Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">6e41fbc9-032b-5dc5-a629-08647d263540</entry>
+</properties>

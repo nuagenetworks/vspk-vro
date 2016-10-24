@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="70e5b197-4f0b-5090-96bb-147635929831"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit Gateway]]></display-name>
+<ref-types><![CDATA[(VSPK:Gateway)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='gatewayObj' type='VSPK:Gateway' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='personality' type='VSPK:GatewayPersonality' >
+</param>
+
+<param name='systemID' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = gatewayObj.session;
+
+if (description) {
+   gatewayObj.description = description;
+} else if (gatewayObj.description) {
+   gatewayObj.description = "";
+}
+if (externalID) {
+   gatewayObj.externalID = externalID;
+} else if (gatewayObj.externalID) {
+   gatewayObj.externalID = "";
+}
+if (name) {
+   gatewayObj.name = name;
+} else if (gatewayObj.name) {
+   gatewayObj.name = "";
+}
+gatewayObj.personality = personality;
+if (systemID) {
+   gatewayObj.systemID = systemID;
+} else if (gatewayObj.systemID) {
+   gatewayObj.systemID = "";
+}
+gatewayObj.save(session);]]></script>
+<in-binding><bind name='gatewayObj' type='VSPK:Gateway' export-name="gatewayObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='personality' type='VSPK:GatewayPersonality' export-name="personality" ></bind>
+
+<bind name='systemID' type='string' export-name="systemID" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="gatewayObj"><desc><![CDATA[gatewayObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#gatewayObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#gatewayObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#gatewayObj.name]]></p-qual></p-param>
+
+<p-param name="personality"><desc><![CDATA[personality]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:GatewayPersonality" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getGatewayPersonality").call( #gatewayObj )]]></p-qual></p-param>
+
+<p-param name="systemID"><desc><![CDATA[systemID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#gatewayObj.systemID]]></p-qual></p-param>
+
+</presentation></workflow>

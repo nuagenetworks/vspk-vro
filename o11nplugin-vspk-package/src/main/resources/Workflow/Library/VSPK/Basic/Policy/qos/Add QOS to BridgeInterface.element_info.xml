@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/qos</entry>
+<entry key="name">Add QOS to BridgeInterface</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">42202a22-a942-5c05-9ba2-9477925d4a57</entry>
+</properties>

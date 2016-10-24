@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d328be25-4c5c-578d-93ba-52b82b77a45c"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add EgressQOSPolicy to Enterprise]]></display-name>
+<ref-types><![CDATA[(VSPK:Enterprise)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='enterpriseObj' type='VSPK:Enterprise' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+<param name='parentQueueAssociatedRateLimiterID' type='string' >
+</param>
+<param name='queue1AssociatedRateLimiterID' type='string' >
+</param>
+<param name='queue1ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue1ForwardingClasses' >
+</param>
+<param name='queue2AssociatedRateLimiterID' type='string' >
+</param>
+<param name='queue2ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue2ForwardingClasses' >
+</param>
+<param name='queue3AssociatedRateLimiterID' type='string' >
+</param>
+<param name='queue3ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue3ForwardingClasses' >
+</param>
+<param name='queue4AssociatedRateLimiterID' type='string' >
+</param>
+<param name='queue4ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue4ForwardingClasses' >
+</param>
+</input><output><param name='egressQOSPolicyObj' type='VSPK:EgressQOSPolicy' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = enterpriseObj.session;
+
+egressQOSPolicyObj = new VSPKEgressQOSPolicy();
+if (description) {
+   egressQOSPolicyObj.description = description;
+}
+if (externalID) {
+   egressQOSPolicyObj.externalID = externalID;
+}
+if (name) {
+   egressQOSPolicyObj.name = name;
+}
+if (parentQueueAssociatedRateLimiterID) {
+   egressQOSPolicyObj.parentQueueAssociatedRateLimiterID = parentQueueAssociatedRateLimiterID;
+}
+if (queue1AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue1AssociatedRateLimiterID = queue1AssociatedRateLimiterID;
+}
+egressQOSPolicyObj.queue1ForwardingClasses = queue1ForwardingClasses;
+if (queue2AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue2AssociatedRateLimiterID = queue2AssociatedRateLimiterID;
+}
+egressQOSPolicyObj.queue2ForwardingClasses = queue2ForwardingClasses;
+if (queue3AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue3AssociatedRateLimiterID = queue3AssociatedRateLimiterID;
+}
+egressQOSPolicyObj.queue3ForwardingClasses = queue3ForwardingClasses;
+if (queue4AssociatedRateLimiterID) {
+   egressQOSPolicyObj.queue4AssociatedRateLimiterID = queue4AssociatedRateLimiterID;
+}
+egressQOSPolicyObj.queue4ForwardingClasses = queue4ForwardingClasses;
+
+enterpriseObj.createEgressQOSPolicy(session, egressQOSPolicyObj);
+]]></script>
+<in-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+<bind name='parentQueueAssociatedRateLimiterID' type='string' export-name="parentQueueAssociatedRateLimiterID" ></bind>
+<bind name='queue1AssociatedRateLimiterID' type='string' export-name="queue1AssociatedRateLimiterID" ></bind>
+<bind name='queue1ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue1ForwardingClasses' export-name="queue1ForwardingClasses" ></bind>
+<bind name='queue2AssociatedRateLimiterID' type='string' export-name="queue2AssociatedRateLimiterID" ></bind>
+<bind name='queue2ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue2ForwardingClasses' export-name="queue2ForwardingClasses" ></bind>
+<bind name='queue3AssociatedRateLimiterID' type='string' export-name="queue3AssociatedRateLimiterID" ></bind>
+<bind name='queue3ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue3ForwardingClasses' export-name="queue3ForwardingClasses" ></bind>
+<bind name='queue4AssociatedRateLimiterID' type='string' export-name="queue4AssociatedRateLimiterID" ></bind>
+<bind name='queue4ForwardingClasses' type='Array/VSPK:EgressQOSPolicyQueue4ForwardingClasses' export-name="queue4ForwardingClasses" ></bind>
+</in-binding><out-binding><bind name='egressQOSPolicyObj' type='VSPK:EgressQOSPolicy' export-name="egressQOSPolicyObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="enterpriseObj"><desc><![CDATA[enterpriseObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="parentQueueAssociatedRateLimiterID"><desc><![CDATA[parentQueueAssociatedRateLimiterID]]></desc>
+</p-param>
+<p-param name="queue1AssociatedRateLimiterID"><desc><![CDATA[queue1AssociatedRateLimiterID]]></desc>
+</p-param>
+<p-param name="queue1ForwardingClasses"><desc><![CDATA[queue1ForwardingClasses]]></desc>
+</p-param>
+<p-param name="queue2AssociatedRateLimiterID"><desc><![CDATA[queue2AssociatedRateLimiterID]]></desc>
+</p-param>
+<p-param name="queue2ForwardingClasses"><desc><![CDATA[queue2ForwardingClasses]]></desc>
+</p-param>
+<p-param name="queue3AssociatedRateLimiterID"><desc><![CDATA[queue3AssociatedRateLimiterID]]></desc>
+</p-param>
+<p-param name="queue3ForwardingClasses"><desc><![CDATA[queue3ForwardingClasses]]></desc>
+</p-param>
+<p-param name="queue4AssociatedRateLimiterID"><desc><![CDATA[queue4AssociatedRateLimiterID]]></desc>
+</p-param>
+<p-param name="queue4ForwardingClasses"><desc><![CDATA[queue4ForwardingClasses]]></desc>
+</p-param>
+</presentation></workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Find NSRedundantGatewayGroup in Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ac8e6d72-18e6-5b4c-b448-498bdf5564fc</entry>
+</properties>

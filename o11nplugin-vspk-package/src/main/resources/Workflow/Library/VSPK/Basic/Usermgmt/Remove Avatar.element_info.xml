@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Remove Avatar</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a2708c37-f61b-56b3-b54b-29be3df3fc30</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in RedirectionTarget</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c0d591ba-c667-59c3-bdc5-f22073c6bd1a</entry>
+</properties>

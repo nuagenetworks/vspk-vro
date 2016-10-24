@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vmware</entry>
+<entry key="name">Add VRSRedeploymentpolicy to VCenterDataCenter</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">402312ec-cdda-5261-a918-7246d34a31e1</entry>
+</properties>

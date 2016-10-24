@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Remove DemarcationService</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">6cd0b52e-f1a6-55a3-8759-68370db4936b</entry>
+</properties>

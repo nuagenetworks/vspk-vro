@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="fa349cb2-d551-5b00-b351-1debe85f95cb"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit VCenter]]></display-name>
+<ref-types><![CDATA[(VSPK:VCenter)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vCenterObj' type='VSPK:VCenter' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='ipAddress' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='password' type='string' >
+</param>
+
+<param name='userName' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vCenterObj.session;
+
+if (description) {
+   vCenterObj.description = description;
+} else if (vCenterObj.description) {
+   vCenterObj.description = "";
+}
+if (externalID) {
+   vCenterObj.externalID = externalID;
+} else if (vCenterObj.externalID) {
+   vCenterObj.externalID = "";
+}
+if (ipAddress) {
+   vCenterObj.ipAddress = ipAddress;
+} else if (vCenterObj.ipAddress) {
+   vCenterObj.ipAddress = "";
+}
+if (name) {
+   vCenterObj.name = name;
+} else if (vCenterObj.name) {
+   vCenterObj.name = "";
+}
+if (password) {
+   vCenterObj.password = password;
+} else if (vCenterObj.password) {
+   vCenterObj.password = "";
+}
+if (userName) {
+   vCenterObj.userName = userName;
+} else if (vCenterObj.userName) {
+   vCenterObj.userName = "";
+}
+vCenterObj.save(session);]]></script>
+<in-binding><bind name='vCenterObj' type='VSPK:VCenter' export-name="vCenterObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='ipAddress' type='string' export-name="ipAddress" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='password' type='string' export-name="password" ></bind>
+
+<bind name='userName' type='string' export-name="userName" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vCenterObj"><desc><![CDATA[vCenterObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterObj.externalID]]></p-qual></p-param>
+
+<p-param name="ipAddress"><desc><![CDATA[ipAddress]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterObj.ipAddress]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterObj.name]]></p-qual></p-param>
+
+<p-param name="password"><desc><![CDATA[password]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterObj.password]]></p-qual></p-param>
+
+<p-param name="userName"><desc><![CDATA[userName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterObj.userName]]></p-qual></p-param>
+
+</presentation></workflow>

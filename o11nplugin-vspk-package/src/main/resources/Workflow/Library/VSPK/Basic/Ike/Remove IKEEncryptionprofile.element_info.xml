@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Ike</entry>
+<entry key="name">Remove IKEEncryptionprofile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b14561b0-94bb-5df1-81d6-e9acef0b7ef7</entry>
+</properties>

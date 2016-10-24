@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Remove ZoneTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a89b6df6-ebf3-5059-b03c-a59d7b6a7881</entry>
+</properties>

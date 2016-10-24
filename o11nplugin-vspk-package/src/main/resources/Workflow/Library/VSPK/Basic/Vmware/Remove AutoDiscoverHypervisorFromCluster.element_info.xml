@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vmware</entry>
+<entry key="name">Remove AutoDiscoverHypervisorFromCluster</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9e4a8bd0-9ed9-5611-ba34-58a0ea970319</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Edit MultiCastList</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7e02f84c-1722-5673-99e8-b450f743e3c2</entry>
+</properties>

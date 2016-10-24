@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Remove EnterpriseNetwork</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ce353464-a922-5147-9afe-e6f1b1df7097</entry>
+</properties>

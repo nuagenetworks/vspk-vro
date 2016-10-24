@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to RateLimiter</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">4670791a-2877-523a-b220-66c23f5a66b2</entry>
+</properties>

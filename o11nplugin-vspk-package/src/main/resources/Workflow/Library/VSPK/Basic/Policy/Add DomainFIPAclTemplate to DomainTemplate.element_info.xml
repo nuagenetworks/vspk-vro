@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Add DomainFIPAclTemplate to DomainTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">97eea15f-730d-54d8-89bb-5df5770a43f5</entry>
+</properties>

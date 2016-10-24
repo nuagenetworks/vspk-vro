@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Add Port to RedundancyGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">6d00f962-9e38-530c-b7c8-301104c55ed2</entry>
+</properties>

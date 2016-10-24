@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in SharedNetworkResource</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2d4c9948-87f1-5ccd-9c45-dfa521267d6b</entry>
+</properties>

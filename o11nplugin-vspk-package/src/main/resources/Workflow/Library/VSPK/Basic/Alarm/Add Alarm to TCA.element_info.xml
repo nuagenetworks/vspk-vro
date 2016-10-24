@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Alarm</entry>
+<entry key="name">Add Alarm to TCA</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">91c11fbf-59e7-5898-8b77-01ec096feecb</entry>
+</properties>

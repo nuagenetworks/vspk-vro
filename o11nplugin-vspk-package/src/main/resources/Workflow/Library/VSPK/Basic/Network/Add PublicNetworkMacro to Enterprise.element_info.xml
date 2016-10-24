@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Add PublicNetworkMacro to Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">bd56f295-785d-51e2-ae01-912089b34fce</entry>
+</properties>

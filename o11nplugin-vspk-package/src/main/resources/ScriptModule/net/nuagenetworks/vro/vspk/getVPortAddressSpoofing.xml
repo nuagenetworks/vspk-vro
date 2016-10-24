@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getVPortAddressSpoofing" result-type="VSPK:VPortAddressSpoofing" api-version="6.0.0"  id="39cc5a14-788c-56fb-bfb8-7e10c80feb0b"  version="1.0.1"  allowed-operations="vef" ><param n="vPortObj" t="VSPK:VPort"></param><script encoded='false'><![CDATA[return vPortObj.addressSpoofing;]]></script>
+</dunes-script-module>

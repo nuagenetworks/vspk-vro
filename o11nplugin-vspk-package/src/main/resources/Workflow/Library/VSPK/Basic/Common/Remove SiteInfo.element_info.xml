@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Remove SiteInfo</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3d926d1c-163f-5ed7-82c7-aa82948285c8</entry>
+</properties>

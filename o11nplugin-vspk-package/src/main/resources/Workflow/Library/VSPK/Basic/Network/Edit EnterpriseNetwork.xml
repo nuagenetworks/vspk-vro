@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="1874c58e-d377-5280-917f-27e2effc1891"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit EnterpriseNetwork]]></display-name>
+<ref-types><![CDATA[(VSPK:EnterpriseNetwork)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='enterpriseNetworkObj' type='VSPK:EnterpriseNetwork' >
+</param>
+
+<param name='address' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='netmask' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = enterpriseNetworkObj.session;
+
+if (address) {
+   enterpriseNetworkObj.address = address;
+} else if (enterpriseNetworkObj.address) {
+   enterpriseNetworkObj.address = "";
+}
+if (externalID) {
+   enterpriseNetworkObj.externalID = externalID;
+} else if (enterpriseNetworkObj.externalID) {
+   enterpriseNetworkObj.externalID = "";
+}
+if (name) {
+   enterpriseNetworkObj.name = name;
+} else if (enterpriseNetworkObj.name) {
+   enterpriseNetworkObj.name = "";
+}
+if (netmask) {
+   enterpriseNetworkObj.netmask = netmask;
+} else if (enterpriseNetworkObj.netmask) {
+   enterpriseNetworkObj.netmask = "";
+}
+enterpriseNetworkObj.save(session);]]></script>
+<in-binding><bind name='enterpriseNetworkObj' type='VSPK:EnterpriseNetwork' export-name="enterpriseNetworkObj" ></bind>
+
+<bind name='address' type='string' export-name="address" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='netmask' type='string' export-name="netmask" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="enterpriseNetworkObj"><desc><![CDATA[enterpriseNetworkObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="address"><desc><![CDATA[address]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#enterpriseNetworkObj.address]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#enterpriseNetworkObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#enterpriseNetworkObj.name]]></p-qual></p-param>
+
+<p-param name="netmask"><desc><![CDATA[netmask]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#enterpriseNetworkObj.netmask]]></p-qual></p-param>
+
+</presentation></workflow>

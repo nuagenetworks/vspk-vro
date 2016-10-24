@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Remove DSCPForwardingClassTable</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">190494bf-8a67-5d6f-b9e2-9b47b0355580</entry>
+</properties>

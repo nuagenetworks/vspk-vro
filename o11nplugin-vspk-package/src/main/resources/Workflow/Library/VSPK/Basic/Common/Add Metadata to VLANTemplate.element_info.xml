@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to VLANTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c59db9ad-1cdd-519f-8d5c-ab073f8e2373</entry>
+</properties>

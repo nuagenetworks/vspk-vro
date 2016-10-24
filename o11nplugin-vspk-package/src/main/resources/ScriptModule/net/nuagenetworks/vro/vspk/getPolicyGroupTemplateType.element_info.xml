@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getPolicyGroupTemplateType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">98c2480e-86b6-5003-acd2-eaaea9439a24</entry>
+</properties>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getIngressACLEntryTemplateNetworkType" result-type="VSPK:IngressACLEntryTemplateNetworkType" api-version="6.0.0"  id="9dad633f-f809-5198-bfe2-15b34e2e2be6"  version="1.0.1"  allowed-operations="vef" ><param n="ingressACLEntryTemplateObj" t="VSPK:IngressACLEntryTemplate"></param><script encoded='false'><![CDATA[return ingressACLEntryTemplateObj.networkType;]]></script>
+</dunes-script-module>

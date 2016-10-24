@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to IKEEncryptionprofile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">962255ea-130b-576e-a770-214b363d5fbd</entry>
+</properties>

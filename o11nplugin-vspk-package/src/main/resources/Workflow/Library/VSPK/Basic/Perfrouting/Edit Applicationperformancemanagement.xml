@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="c1f20e16-9fe0-5688-aae8-ed5ad38e712b"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit Applicationperformancemanagement]]></display-name>
+<ref-types><![CDATA[(VSPK:Applicationperformancemanagement)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='applicationperformancemanagementObj' type='VSPK:Applicationperformancemanagement' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = applicationperformancemanagementObj.session;
+
+if (description) {
+   applicationperformancemanagementObj.description = description;
+} else if (applicationperformancemanagementObj.description) {
+   applicationperformancemanagementObj.description = "";
+}
+if (name) {
+   applicationperformancemanagementObj.name = name;
+} else if (applicationperformancemanagementObj.name) {
+   applicationperformancemanagementObj.name = "";
+}
+applicationperformancemanagementObj.save(session);]]></script>
+<in-binding><bind name='applicationperformancemanagementObj' type='VSPK:Applicationperformancemanagement' export-name="applicationperformancemanagementObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="applicationperformancemanagementObj"><desc><![CDATA[applicationperformancemanagementObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationperformancemanagementObj.description]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationperformancemanagementObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

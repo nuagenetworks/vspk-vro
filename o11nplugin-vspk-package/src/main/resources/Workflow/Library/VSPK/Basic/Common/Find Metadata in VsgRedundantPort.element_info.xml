@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in VsgRedundantPort</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">501f9ba2-0d6d-5e73-8835-7a3f84f368e1</entry>
+</properties>

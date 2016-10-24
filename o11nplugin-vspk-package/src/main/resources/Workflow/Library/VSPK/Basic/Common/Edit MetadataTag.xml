@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="1f93856d-883f-5773-a5cc-d85d08aeedbc"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit MetadataTag]]></display-name>
+<ref-types><![CDATA[(VSPK:MetadataTag)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='metadataTagObj' type='VSPK:MetadataTag' >
+</param>
+
+<param name='associatedExternalServiceID' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = metadataTagObj.session;
+
+if (associatedExternalServiceID) {
+   metadataTagObj.associatedExternalServiceID = associatedExternalServiceID;
+} else if (metadataTagObj.associatedExternalServiceID) {
+   metadataTagObj.associatedExternalServiceID = "";
+}
+if (description) {
+   metadataTagObj.description = description;
+} else if (metadataTagObj.description) {
+   metadataTagObj.description = "";
+}
+if (externalID) {
+   metadataTagObj.externalID = externalID;
+} else if (metadataTagObj.externalID) {
+   metadataTagObj.externalID = "";
+}
+if (name) {
+   metadataTagObj.name = name;
+} else if (metadataTagObj.name) {
+   metadataTagObj.name = "";
+}
+metadataTagObj.save(session);]]></script>
+<in-binding><bind name='metadataTagObj' type='VSPK:MetadataTag' export-name="metadataTagObj" ></bind>
+
+<bind name='associatedExternalServiceID' type='string' export-name="associatedExternalServiceID" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="metadataTagObj"><desc><![CDATA[metadataTagObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="associatedExternalServiceID"><desc><![CDATA[associatedExternalServiceID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#metadataTagObj.associatedExternalServiceID]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#metadataTagObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#metadataTagObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#metadataTagObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

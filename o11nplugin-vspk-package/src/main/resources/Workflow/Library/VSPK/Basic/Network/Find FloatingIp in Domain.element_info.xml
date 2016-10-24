@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Find FloatingIp in Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ab114ce7-4a2e-5bfc-97a2-b6a86ad2b5bd</entry>
+</properties>

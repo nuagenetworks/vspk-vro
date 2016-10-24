@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Remove VPortMirror</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5336ec07-ea17-5c08-8d4e-73d06a84d5eb</entry>
+</properties>

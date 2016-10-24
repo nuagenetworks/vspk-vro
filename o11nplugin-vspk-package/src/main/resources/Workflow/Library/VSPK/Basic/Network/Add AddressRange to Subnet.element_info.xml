@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Add AddressRange to Subnet</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">94c559ec-6f23-5a7f-b8b7-8621ed7f6e77</entry>
+</properties>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7d39e18d-8583-5430-8b93-a68d54205f39"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add QOS to VPort]]></display-name>
+<ref-types><![CDATA[(VSPK:VPort)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vPortObj' type='VSPK:VPort' >
+</param>
+<param name='active' type='boolean' >
+</param>
+<param name='burst' type='string' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+<param name='peak' type='string' >
+</param>
+<param name='rateLimitingActive' type='boolean' >
+</param>
+<param name='serviceClass' type='VSPK:QOSServiceClass' >
+</param>
+</input><output><param name='qOSObj' type='VSPK:QOS' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vPortObj.session;
+
+qOSObj = new VSPKQOS();
+qOSObj.active = active;
+if (burst) {
+   qOSObj.burst = burst;
+}
+if (description) {
+   qOSObj.description = description;
+}
+if (externalID) {
+   qOSObj.externalID = externalID;
+}
+if (name) {
+   qOSObj.name = name;
+}
+if (peak) {
+   qOSObj.peak = peak;
+}
+qOSObj.rateLimitingActive = rateLimitingActive;
+qOSObj.serviceClass = serviceClass;
+
+vPortObj.createQOS(session, qOSObj);
+]]></script>
+<in-binding><bind name='vPortObj' type='VSPK:VPort' export-name="vPortObj" ></bind>
+<bind name='active' type='boolean' export-name="active" ></bind>
+<bind name='burst' type='string' export-name="burst" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+<bind name='peak' type='string' export-name="peak" ></bind>
+<bind name='rateLimitingActive' type='boolean' export-name="rateLimitingActive" ></bind>
+<bind name='serviceClass' type='VSPK:QOSServiceClass' export-name="serviceClass" ></bind>
+</in-binding><out-binding><bind name='qOSObj' type='VSPK:QOS' export-name="qOSObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vPortObj"><desc><![CDATA[vPortObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="active"><desc><![CDATA[active]]></desc>
+</p-param>
+<p-param name="burst"><desc><![CDATA[burst]]></desc>
+</p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="peak"><desc><![CDATA[peak]]></desc>
+</p-param>
+<p-param name="rateLimitingActive"><desc><![CDATA[rateLimitingActive]]></desc>
+</p-param>
+<p-param name="serviceClass"><desc><![CDATA[serviceClass]]></desc>
+</p-param>
+</presentation></workflow>

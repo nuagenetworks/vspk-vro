@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="550fa518-09d9-5914-8887-b55e4cc1bc5f"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add DHCPOption to Subnet]]></display-name>
+<ref-types><![CDATA[(VSPK:Subnet)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='subnetObj' type='VSPK:Subnet' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='length' type='string' >
+</param>
+<param name='type' type='string' >
+</param>
+<param name='value' type='string' >
+</param>
+</input><output><param name='dHCPOptionObj' type='VSPK:DHCPOption' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = subnetObj.session;
+
+dHCPOptionObj = new VSPKDHCPOption();
+if (externalID) {
+   dHCPOptionObj.externalID = externalID;
+}
+if (length) {
+   dHCPOptionObj.length = length;
+}
+if (type) {
+   dHCPOptionObj.type = type;
+}
+if (value) {
+   dHCPOptionObj.value = value;
+}
+
+subnetObj.createDHCPOption(session, dHCPOptionObj);
+]]></script>
+<in-binding><bind name='subnetObj' type='VSPK:Subnet' export-name="subnetObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='length' type='string' export-name="length" ></bind>
+<bind name='type' type='string' export-name="type" ></bind>
+<bind name='value' type='string' export-name="value" ></bind>
+</in-binding><out-binding><bind name='dHCPOptionObj' type='VSPK:DHCPOption' export-name="dHCPOptionObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="subnetObj"><desc><![CDATA[subnetObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="length"><desc><![CDATA[length]]></desc>
+</p-param>
+<p-param name="type"><desc><![CDATA[type]]></desc>
+</p-param>
+<p-param name="value"><desc><![CDATA[value]]></desc>
+</p-param>
+</presentation></workflow>

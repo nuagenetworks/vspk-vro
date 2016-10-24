@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Edit RedirectionTarget</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b9e1cf72-51ee-5ea5-8e93-ac86c6c5bc85</entry>
+</properties>

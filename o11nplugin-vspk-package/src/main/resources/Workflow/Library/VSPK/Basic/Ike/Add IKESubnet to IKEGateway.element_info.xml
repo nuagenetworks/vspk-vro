@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Ike</entry>
+<entry key="name">Add IKESubnet to IKEGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">199be4ed-684a-5ea9-a496-1fe6bf09f7fb</entry>
+</properties>

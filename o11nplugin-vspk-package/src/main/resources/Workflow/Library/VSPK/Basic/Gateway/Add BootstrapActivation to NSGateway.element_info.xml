@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Add BootstrapActivation to NSGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0e706a58-cbb4-5d1f-9b3a-6914ae15f0a2</entry>
+</properties>

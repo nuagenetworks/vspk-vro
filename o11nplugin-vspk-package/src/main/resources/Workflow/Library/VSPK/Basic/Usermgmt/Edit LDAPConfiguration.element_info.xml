@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Edit LDAPConfiguration</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5208a3d2-495b-5989-b0ce-de4b9775c6ae</entry>
+</properties>

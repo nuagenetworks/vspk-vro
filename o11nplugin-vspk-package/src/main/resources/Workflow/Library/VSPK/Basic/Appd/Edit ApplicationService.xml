@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="753e386a-ea7f-5282-aa8e-ba9fe49a2a21"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit ApplicationService]]></display-name>
+<ref-types><![CDATA[(VSPK:ApplicationService)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='applicationServiceObj' type='VSPK:ApplicationService' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='direction' type='VSPK:ApplicationServiceDirection' >
+</param>
+
+<param name='etherType' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='protocol' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = applicationServiceObj.session;
+
+if (description) {
+   applicationServiceObj.description = description;
+} else if (applicationServiceObj.description) {
+   applicationServiceObj.description = "";
+}
+applicationServiceObj.direction = direction;
+if (etherType) {
+   applicationServiceObj.etherType = etherType;
+} else if (applicationServiceObj.etherType) {
+   applicationServiceObj.etherType = "";
+}
+if (externalID) {
+   applicationServiceObj.externalID = externalID;
+} else if (applicationServiceObj.externalID) {
+   applicationServiceObj.externalID = "";
+}
+if (name) {
+   applicationServiceObj.name = name;
+} else if (applicationServiceObj.name) {
+   applicationServiceObj.name = "";
+}
+if (protocol) {
+   applicationServiceObj.protocol = protocol;
+} else if (applicationServiceObj.protocol) {
+   applicationServiceObj.protocol = "";
+}
+applicationServiceObj.save(session);]]></script>
+<in-binding><bind name='applicationServiceObj' type='VSPK:ApplicationService' export-name="applicationServiceObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='direction' type='VSPK:ApplicationServiceDirection' export-name="direction" ></bind>
+
+<bind name='etherType' type='string' export-name="etherType" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='protocol' type='string' export-name="protocol" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="applicationServiceObj"><desc><![CDATA[applicationServiceObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationServiceObj.description]]></p-qual></p-param>
+
+<p-param name="direction"><desc><![CDATA[direction]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:ApplicationServiceDirection" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getApplicationServiceDirection").call( #applicationServiceObj )]]></p-qual></p-param>
+
+<p-param name="etherType"><desc><![CDATA[etherType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationServiceObj.etherType]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationServiceObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationServiceObj.name]]></p-qual></p-param>
+
+<p-param name="protocol"><desc><![CDATA[protocol]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationServiceObj.protocol]]></p-qual></p-param>
+
+</presentation></workflow>

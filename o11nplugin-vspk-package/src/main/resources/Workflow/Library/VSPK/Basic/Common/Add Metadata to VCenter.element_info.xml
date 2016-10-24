@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to VCenter</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">99be91ac-6782-53a3-8020-9d8ab514c90f</entry>
+</properties>

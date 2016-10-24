@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d11b22aa-7398-5b59-bf43-efcca116e9ca"  version="1.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Find NSPort in NSGateway]]></display-name>
+<ref-types><![CDATA[(VSPK:NSGateway)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='nSGatewayObj' type='VSPK:NSGateway' >
+</param>
+<param name='filter' type='string' >
+</param>
+</input><output><param name='nSPortObj' type='VSPK:NSPort' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = nSGatewayObj.session;
+
+nSPortObj = nSGatewayObj.nSPorts.getFirst(session, filter);
+]]></script>
+<in-binding><bind name='nSGatewayObj' type='VSPK:NSGateway' export-name="nSGatewayObj" ></bind>
+<bind name='filter' type='string' export-name="filter" ></bind>
+</in-binding><out-binding><bind name='nSPortObj' type='VSPK:NSPort' export-name="nSPortObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="nSGatewayObj"><desc><![CDATA[nSGatewayObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="filter"><desc><![CDATA[filter]]></desc>
+</p-param>
+</presentation></workflow>

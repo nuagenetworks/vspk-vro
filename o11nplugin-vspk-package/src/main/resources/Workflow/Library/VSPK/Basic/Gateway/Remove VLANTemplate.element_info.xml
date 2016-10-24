@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Remove VLANTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c817bdec-476e-58f7-a6da-c06f2678bdc2</entry>
+</properties>

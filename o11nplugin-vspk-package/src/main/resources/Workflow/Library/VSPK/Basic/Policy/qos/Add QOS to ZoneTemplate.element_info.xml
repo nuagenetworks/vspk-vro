@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/qos</entry>
+<entry key="name">Add QOS to ZoneTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">908a8175-1c01-5b89-9e3b-c4146f3a8f86</entry>
+</properties>

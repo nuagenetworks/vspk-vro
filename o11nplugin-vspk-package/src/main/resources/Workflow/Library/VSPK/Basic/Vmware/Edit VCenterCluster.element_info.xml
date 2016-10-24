@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vmware</entry>
+<entry key="name">Edit VCenterCluster</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9c84518d-5b9c-5f47-b1de-52477e0f9975</entry>
+</properties>

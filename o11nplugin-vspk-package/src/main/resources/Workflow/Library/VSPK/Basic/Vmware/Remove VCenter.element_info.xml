@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vmware</entry>
+<entry key="name">Remove VCenter</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">17d4a2e2-cdbf-5a5c-ae40-72a34bb193da</entry>
+</properties>
