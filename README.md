@@ -1,8 +1,8 @@
-# vspk-vro
+# VSPK-VRO
 
 VSPK Plug-In for VMWare vRealize Orchestrator (vRO).
 
-# build
+# Build
 
 To build plug-in: 
 
@@ -12,7 +12,7 @@ Example:
 
 * mvn -Dmaven.wagon.http.ssl.insecure=true -Dvco.version=7.0.1 -DrepoUrl=https://192.168.1.15:8281/vco-repo/ -Dbuild.number=1 -Dinstallation.mode=always clean install
 
-# install
+# Install
 
 To install plug-in:
 
