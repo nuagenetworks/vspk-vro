@@ -132,8 +132,6 @@ public class TCA extends BaseObject {
     
     @VsoConstructor
     public TCA() {
-        scope = TCAScope.LOCAL;
-        
         metric = TCAMetric.BYTES_IN;
         
         type = TCAType.ROLLING_AVERAGE;
@@ -154,12 +152,10 @@ public class TCA extends BaseObject {
     public String getRestName() {
         return super.getRestName();
     }
-
     @VsoProperty(displayName = "Id", readOnly = false)
     public String getId() {
         return super.getId();
     }
-
     @VsoProperty(displayName = "ParentId", readOnly = false)
     public String getParentId() {
         return super.getParentId();

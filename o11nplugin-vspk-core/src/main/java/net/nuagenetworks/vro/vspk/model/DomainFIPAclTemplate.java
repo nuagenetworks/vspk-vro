@@ -127,12 +127,10 @@ public class DomainFIPAclTemplate extends BaseObject {
     public String getRestName() {
         return super.getRestName();
     }
-
     @VsoProperty(displayName = "Id", readOnly = false)
     public String getId() {
         return super.getId();
     }
-
     @VsoProperty(displayName = "ParentId", readOnly = false)
     public String getParentId() {
         return super.getParentId();
