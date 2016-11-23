@@ -37,6 +37,8 @@ import net.nuagenetworks.vro.vspk.model.enums.NSGatewayTemplateSSHService;
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayTemplateEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayTemplateInstanceSSHOverride;
+
+import net.nuagenetworks.vro.vspk.model.enums.NSGatewayTemplatePersonality;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -92,6 +94,9 @@ public class NSGatewayTemplate extends BaseObject {
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "personality")
+    protected NSGatewayTemplatePersonality personality;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -259,6 +264,17 @@ public class NSGatewayTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Personality", readOnly = false)   
+    public NSGatewayTemplatePersonality getPersonality() {
+       return personality;
+    }
+
+    @JsonIgnore
+    public void setPersonality(NSGatewayTemplatePersonality value) { 
+        this.personality = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -329,7 +345,7 @@ public class NSGatewayTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.NSPORTTEMPLATES_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGatewayTemplate [" + "SSHService=" + SSHService + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureAccessProfileID=" + infrastructureAccessProfileID + ", infrastructureProfileID=" + infrastructureProfileID + ", instanceSSHOverride=" + instanceSSHOverride + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGatewayTemplate [" + "SSHService=" + SSHService + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureAccessProfileID=" + infrastructureAccessProfileID + ", infrastructureProfileID=" + infrastructureProfileID + ", instanceSSHOverride=" + instanceSSHOverride + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", personality=" + personality + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

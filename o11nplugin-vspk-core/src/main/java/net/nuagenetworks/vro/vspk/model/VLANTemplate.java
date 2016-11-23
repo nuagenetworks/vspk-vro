@@ -72,6 +72,9 @@ public class VLANTemplate extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "ducVlan")
+    protected Boolean ducVlan;
+    
     @JsonProperty(value = "entityScope")
     protected VLANTemplateEntityScope entityScope;
     
@@ -180,6 +183,17 @@ public class VLANTemplate extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DucVlan", readOnly = false)   
+    public Boolean getDucVlan() {
+       return ducVlan;
+    }
+
+    @JsonIgnore
+    public void setDucVlan(Boolean value) { 
+        this.ducVlan = value;
     }
     
     @JsonIgnore
@@ -311,7 +325,7 @@ public class VLANTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UPLINKCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VLANTemplate [" + "associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VLANTemplate [" + "associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

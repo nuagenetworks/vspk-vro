@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum UplinkConnectionRole {
 
-    PRIMARY("PRIMARY", "PRIMARY"), SECONDARY("SECONDARY", "SECONDARY"), TERTIARY("TERTIARY", "TERTIARY"), UNKNOWN("UNKNOWN", "UNKNOWN");
+    NONE("NONE", "NONE"), PRIMARY("PRIMARY", "PRIMARY"), SECONDARY("SECONDARY", "SECONDARY"), TERTIARY("TERTIARY", "TERTIARY"), UNKNOWN("UNKNOWN", "UNKNOWN");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum UplinkConnectionRole {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "NONE", readOnly = true)
+    public UplinkConnectionRole getNONE() {
+        return NONE;
+    }
     
     @VsoProperty(displayName = "PRIMARY", readOnly = true)
     public UplinkConnectionRole getPRIMARY() {

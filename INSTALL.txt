@@ -89,6 +89,22 @@ Installation steps:
    e. Verify that the enterprise is removed from both VSPK plug-in's Inventory as well as from the VSD GUI
 
 
+Advanced workflows package installation:
+========================================
+
+1. Install the package:
+
+   a. In the Orchestrator Client main window, click the "Packages" icon
+   b. Click the "Import Package..." icon
+   c. Select the package file (net.nuagenetworks.vro.vspk.advanced-1.x.x.package)
+   d. Click "Open"
+
+2. Verify package installation:
+
+   a. In the Orchestrator Client main window, click the "Workflows" icon
+   b. Verify that the /Library/VSPK/Advanced folder exists and contains sub-folders and workflows
+
+
 Support information:
 ====================
 

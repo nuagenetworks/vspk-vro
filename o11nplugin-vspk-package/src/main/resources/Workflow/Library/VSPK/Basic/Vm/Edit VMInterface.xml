@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7b0c3b5a-1201-5bfd-a122-5bdd7e3c5fe8"  version="4.0.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7b0c3b5a-1201-5bfd-a122-5bdd7e3c5fe8"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit VMInterface]]></display-name>
 <ref-types><![CDATA[(VSPK:VMInterface)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='vMInterfaceObj' type='VSPK:VMInterface' >
+</param>
+
+<param name='IPAddress' type='string' >
+</param>
+
+<param name='MAC' type='string' >
+</param>
+
+<param name='VPortID' type='string' >
 </param>
 
 <param name='externalID' type='string' >
@@ -19,6 +28,21 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = vMInterfaceObj.session;
 
+if (IPAddress) {
+   vMInterfaceObj.IPAddress = IPAddress;
+} else if (vMInterfaceObj.IPAddress) {
+   vMInterfaceObj.IPAddress = "";
+}
+if (MAC) {
+   vMInterfaceObj.MAC = MAC;
+} else if (vMInterfaceObj.MAC) {
+   vMInterfaceObj.MAC = "";
+}
+if (VPortID) {
+   vMInterfaceObj.VPortID = VPortID;
+} else if (vMInterfaceObj.VPortID) {
+   vMInterfaceObj.VPortID = "";
+}
 if (externalID) {
    vMInterfaceObj.externalID = externalID;
 } else if (vMInterfaceObj.externalID) {
@@ -29,8 +53,14 @@ if (name) {
 } else if (vMInterfaceObj.name) {
    vMInterfaceObj.name = "";
 }
-vMInterfaceObj.save(session);]]></script>
+vMInterfaceObj.save(session, 1);]]></script>
 <in-binding><bind name='vMInterfaceObj' type='VSPK:VMInterface' export-name="vMInterfaceObj" ></bind>
+
+<bind name='IPAddress' type='string' export-name="IPAddress" ></bind>
+
+<bind name='MAC' type='string' export-name="MAC" ></bind>
+
+<bind name='VPortID' type='string' export-name="VPortID" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
@@ -41,6 +71,15 @@ vMInterfaceObj.save(session);]]></script>
 <presentation>
 <p-param name="vMInterfaceObj"><desc><![CDATA[vMInterfaceObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="IPAddress"><desc><![CDATA[IPAddress]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vMInterfaceObj.IPAddress]]></p-qual></p-param>
+
+<p-param name="MAC"><desc><![CDATA[MAC]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vMInterfaceObj.MAC]]></p-qual></p-param>
+
+<p-param name="VPortID"><desc><![CDATA[VPortID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vMInterfaceObj.VPortID]]></p-qual></p-param>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vMInterfaceObj.externalID]]></p-qual></p-param>

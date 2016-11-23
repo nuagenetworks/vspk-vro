@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Systemconfig</entry>
+<entry key="name">Find SystemConfig in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5200d739-6d29-525c-bf99-82ec6d7bb290</entry>
+</properties>

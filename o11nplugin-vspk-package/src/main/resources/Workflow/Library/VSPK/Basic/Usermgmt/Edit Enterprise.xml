@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="4f7e4b8c-b758-5b05-a185-86e49416b549"  version="4.0.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="4f7e4b8c-b758-5b05-a185-86e49416b549"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit Enterprise]]></display-name>
 <ref-types><![CDATA[(VSPK:Enterprise)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -7,6 +7,9 @@
 </param>
 
 <param name='description' type='string' >
+</param>
+
+<param name='enterpriseProfileID' type='string' >
 </param>
 
 <param name='externalID' type='string' >
@@ -27,6 +30,11 @@ if (description) {
 } else if (enterpriseObj.description) {
    enterpriseObj.description = "";
 }
+if (enterpriseProfileID) {
+   enterpriseObj.enterpriseProfileID = enterpriseProfileID;
+} else if (enterpriseObj.enterpriseProfileID) {
+   enterpriseObj.enterpriseProfileID = "";
+}
 if (externalID) {
    enterpriseObj.externalID = externalID;
 } else if (enterpriseObj.externalID) {
@@ -37,10 +45,12 @@ if (name) {
 } else if (enterpriseObj.name) {
    enterpriseObj.name = "";
 }
-enterpriseObj.save(session);]]></script>
+enterpriseObj.save(session, 1);]]></script>
 <in-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='enterpriseProfileID' type='string' export-name="enterpriseProfileID" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
@@ -54,6 +64,9 @@ enterpriseObj.save(session);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#enterpriseObj.description]]></p-qual></p-param>
+
+<p-param name="enterpriseProfileID"><desc><![CDATA[enterpriseProfileID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#enterpriseObj.enterpriseProfileID]]></p-qual></p-param>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#enterpriseObj.externalID]]></p-qual></p-param>

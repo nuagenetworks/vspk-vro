@@ -44,6 +44,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.ContainerInterfacesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DomainsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.DUCGroupsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VCenterEAMConfigsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLEntryTemplatesFetcher;
@@ -108,11 +110,15 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewayTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGGroupsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.NSRedundantGatewayGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PATMappersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
 
@@ -137,6 +143,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.SubnetsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.SystemConfigsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.TCAsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.UnderlaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkRDsFetcher;
 
@@ -183,6 +191,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.CONTAINERS_FETCHER, type = Constants.CONTAINERS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.DUCGROUPS_FETCHER, type = Constants.DUCGROUPS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINFIPACLTEMPLATES_FETCHER, type = Constants.DOMAINFIPACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPACLTEMPLATES_FETCHER, type = Constants.FLOATINGIPACLTEMPLATES_FETCHER), 
@@ -219,9 +229,13 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSGATEWAYTEMPLATES_FETCHER, type = Constants.NSGATEWAYTEMPLATES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.NSGGROUPS_FETCHER, type = Constants.NSGGROUPS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.PATMAPPERS_FETCHER, type = Constants.PATMAPPERS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PATNATPOOLS_FETCHER, type = Constants.PATNATPOOLS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERFORMANCEMONITORS_FETCHER, type = Constants.PERFORMANCEMONITORS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.RATELIMITERS_FETCHER, type = Constants.RATELIMITERS_FETCHER), 
 
@@ -232,6 +246,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.SITEINFOS_FETCHER, type = Constants.SITEINFOS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.SYSTEMCONFIGS_FETCHER, type = Constants.SYSTEMCONFIGS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.UNDERLAYS_FETCHER, type = Constants.UNDERLAYS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VCENTERS_FETCHER, type = Constants.VCENTERS_FETCHER), 
 
@@ -323,6 +339,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private DomainsFetcher domains;
+    
+    @JsonIgnore
+    private DUCGroupsFetcher dUCGroups;
     
     @JsonIgnore
     private VCenterEAMConfigsFetcher vCenterEAMConfigs;
@@ -421,6 +440,9 @@ public class Me extends BaseRootObject {
     private NSGatewayTemplatesFetcher nSGatewayTemplates;
     
     @JsonIgnore
+    private NSGGroupsFetcher nSGGroups;
+    
+    @JsonIgnore
     private NSRedundantGatewayGroupsFetcher nSRedundantGatewayGroups;
     
     @JsonIgnore
@@ -428,6 +450,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private PATNATPoolsFetcher pATNATPools;
+    
+    @JsonIgnore
+    private PerformanceMonitorsFetcher performanceMonitors;
     
     @JsonIgnore
     private PolicyGroupsFetcher policyGroups;
@@ -464,6 +489,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private TCAsFetcher tCAs;
+    
+    @JsonIgnore
+    private UnderlaysFetcher underlays;
     
     @JsonIgnore
     private UplinkRDsFetcher uplinkRDs;
@@ -517,6 +545,8 @@ public class Me extends BaseRootObject {
         containerInterfaces = new ContainerInterfacesFetcher(this);
         
         domains = new DomainsFetcher(this);
+        
+        dUCGroups = new DUCGroupsFetcher(this);
         
         vCenterEAMConfigs = new VCenterEAMConfigsFetcher(this);
         
@@ -582,11 +612,15 @@ public class Me extends BaseRootObject {
         
         nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
         
+        nSGGroups = new NSGGroupsFetcher(this);
+        
         nSRedundantGatewayGroups = new NSRedundantGatewayGroupsFetcher(this);
         
         pATMappers = new PATMappersFetcher(this);
         
         pATNATPools = new PATNATPoolsFetcher(this);
+        
+        performanceMonitors = new PerformanceMonitorsFetcher(this);
         
         policyGroups = new PolicyGroupsFetcher(this);
         
@@ -611,6 +645,8 @@ public class Me extends BaseRootObject {
         systemConfigs = new SystemConfigsFetcher(this);
         
         tCAs = new TCAsFetcher(this);
+        
+        underlays = new UnderlaysFetcher(this);
         
         uplinkRDs = new UplinkRDsFetcher(this);
         
@@ -913,6 +949,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DUCGroups", readOnly = true)   
+    public DUCGroupsFetcher getDUCGroups() {
+        return dUCGroups;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VCenterEAMConfigs", readOnly = true)   
     public VCenterEAMConfigsFetcher getVCenterEAMConfigs() {
         return vCenterEAMConfigs;
@@ -1105,6 +1147,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NSGGroups", readOnly = true)   
+    public NSGGroupsFetcher getNSGGroups() {
+        return nSGGroups;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NSRedundantGatewayGroups", readOnly = true)   
     public NSRedundantGatewayGroupsFetcher getNSRedundantGatewayGroups() {
         return nSRedundantGatewayGroups;
@@ -1120,6 +1168,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "PATNATPools", readOnly = true)   
     public PATNATPoolsFetcher getPATNATPools() {
         return pATNATPools;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PerformanceMonitors", readOnly = true)   
+    public PerformanceMonitorsFetcher getPerformanceMonitors() {
+        return performanceMonitors;
     }
     
     @JsonIgnore
@@ -1192,6 +1246,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "TCAs", readOnly = true)   
     public TCAsFetcher getTCAs() {
         return tCAs;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Underlays", readOnly = true)   
+    public UnderlaysFetcher getUnderlays() {
+        return underlays;
     }
     
     @JsonIgnore
@@ -1310,6 +1370,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.CONTAINERS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createDUCGroup(Session session, DUCGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DUCGROUPS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1482,6 +1550,14 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createNSGGroup(Session session, NSGGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NSGGROUPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createPATMapper(Session session, PATMapper childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1495,6 +1571,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PATNATPOOLS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPerformanceMonitor(Session session, PerformanceMonitor childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERFORMANCEMONITORS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1527,6 +1611,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.SITEINFOS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createUnderlay(Session session, Underlay childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.UNDERLAYS_FETCHER, getId());
         }
     }
     @VsoMethod

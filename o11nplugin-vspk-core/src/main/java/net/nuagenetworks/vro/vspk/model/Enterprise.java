@@ -106,6 +106,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewayTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGGroupsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.NSRedundantGatewayGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
@@ -200,6 +202,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.NETWORKPERFORMANCEMEASUREMENTS_FETCHER, type = Constants.NETWORKPERFORMANCEMEASUREMENTS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSGATEWAYS_FETCHER, type = Constants.NSGATEWAYS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.NSGGROUPS_FETCHER, type = Constants.NSGGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER, type = Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER), 
 
@@ -430,6 +434,9 @@ public class Enterprise extends BaseObject {
     private NSGatewayTemplatesFetcher nSGatewayTemplates;
     
     @JsonIgnore
+    private NSGGroupsFetcher nSGGroups;
+    
+    @JsonIgnore
     private NSRedundantGatewayGroupsFetcher nSRedundantGatewayGroups;
     
     @JsonIgnore
@@ -543,6 +550,8 @@ public class Enterprise extends BaseObject {
         nSGateways = new NSGatewaysFetcher(this);
         
         nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
+        
+        nSGGroups = new NSGGroupsFetcher(this);
         
         nSRedundantGatewayGroups = new NSRedundantGatewayGroupsFetcher(this);
         
@@ -1153,6 +1162,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NSGGroups", readOnly = true)   
+    public NSGGroupsFetcher getNSGGroups() {
+        return nSGGroups;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NSRedundantGatewayGroups", readOnly = true)   
     public NSRedundantGatewayGroupsFetcher getNSRedundantGatewayGroups() {
         return nSRedundantGatewayGroups;
@@ -1498,6 +1513,14 @@ public class Enterprise extends BaseObject {
         }
     }
     
+    @VsoMethod
+    public void createNSGGroup(Session session, NSGGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NSGGROUPS_FETCHER, getId());
+        }
+    }
     @VsoMethod
     public void createNSRedundantGatewayGroup(Session session, NSRedundantGatewayGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;

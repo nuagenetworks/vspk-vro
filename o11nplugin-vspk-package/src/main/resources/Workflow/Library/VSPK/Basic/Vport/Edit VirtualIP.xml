@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d77562d2-28f5-5e32-83a2-4b8b9b830d35"  version="4.0.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d77562d2-28f5-5e32-83a2-4b8b9b830d35"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit VirtualIP]]></display-name>
 <ref-types><![CDATA[(VSPK:VirtualIP)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='virtualIPObj' type='VSPK:VirtualIP' >
+</param>
+
+<param name='MAC' type='string' >
 </param>
 
 <param name='externalID' type='string' >
@@ -19,6 +22,11 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = virtualIPObj.session;
 
+if (MAC) {
+   virtualIPObj.MAC = MAC;
+} else if (virtualIPObj.MAC) {
+   virtualIPObj.MAC = "";
+}
 if (externalID) {
    virtualIPObj.externalID = externalID;
 } else if (virtualIPObj.externalID) {
@@ -29,8 +37,10 @@ if (virtualIP) {
 } else if (virtualIPObj.virtualIP) {
    virtualIPObj.virtualIP = "";
 }
-virtualIPObj.save(session);]]></script>
+virtualIPObj.save(session, 1);]]></script>
 <in-binding><bind name='virtualIPObj' type='VSPK:VirtualIP' export-name="virtualIPObj" ></bind>
+
+<bind name='MAC' type='string' export-name="MAC" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
@@ -41,6 +51,9 @@ virtualIPObj.save(session);]]></script>
 <presentation>
 <p-param name="virtualIPObj"><desc><![CDATA[virtualIPObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="MAC"><desc><![CDATA[MAC]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#virtualIPObj.MAC]]></p-qual></p-param>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#virtualIPObj.externalID]]></p-qual></p-param>

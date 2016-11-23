@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7f6fa62d-3a4c-5a49-a4d6-7f07716901e2"  version="4.0.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7f6fa62d-3a4c-5a49-a4d6-7f07716901e2"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit RedirectionTargetTemplate]]></display-name>
 <ref-types><![CDATA[(VSPK:RedirectionTargetTemplate)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -41,7 +41,7 @@ if (name) {
 } else if (redirectionTargetTemplateObj.name) {
    redirectionTargetTemplateObj.name = "";
 }
-redirectionTargetTemplateObj.save(session);]]></script>
+redirectionTargetTemplateObj.save(session, 1);]]></script>
 <in-binding><bind name='redirectionTargetTemplateObj' type='VSPK:RedirectionTargetTemplate' export-name="redirectionTargetTemplateObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>

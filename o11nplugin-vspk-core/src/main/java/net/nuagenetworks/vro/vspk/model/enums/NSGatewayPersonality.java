@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGatewayPersonality {
 
-    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), OTHER("OTHER", "OTHER"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
+    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), NSGDUC("NSGDUC", "NSGDUC"), OTHER("OTHER", "OTHER"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
 
     private final String id;
     private final String name;
@@ -76,6 +76,11 @@ public enum NSGatewayPersonality {
     @VsoProperty(displayName = "NSGBR", readOnly = true)
     public NSGatewayPersonality getNSGBR() {
         return NSGBR;
+    }
+    
+    @VsoProperty(displayName = "NSGDUC", readOnly = true)
+    public NSGatewayPersonality getNSGDUC() {
+        return NSGDUC;
     }
     
     @VsoProperty(displayName = "OTHER", readOnly = true)

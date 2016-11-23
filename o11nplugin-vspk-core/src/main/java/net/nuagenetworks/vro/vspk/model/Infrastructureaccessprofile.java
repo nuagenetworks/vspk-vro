@@ -33,6 +33,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.enums.InfrastructureaccessprofileSSHAuthMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.InfrastructureaccessprofileEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.InfrastructureaccessprofileSourceIPFilter;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -80,6 +82,9 @@ public class Infrastructureaccessprofile extends BaseObject {
     
     @JsonProperty(value = "password")
     protected String password;
+    
+    @JsonProperty(value = "sourceIPFilter")
+    protected InfrastructureaccessprofileSourceIPFilter sourceIPFilter;
     
     @JsonProperty(value = "userName")
     protected String userName;
@@ -223,6 +228,17 @@ public class Infrastructureaccessprofile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SourceIPFilter", readOnly = false)   
+    public InfrastructureaccessprofileSourceIPFilter getSourceIPFilter() {
+       return sourceIPFilter;
+    }
+
+    @JsonIgnore
+    public void setSourceIPFilter(InfrastructureaccessprofileSourceIPFilter value) { 
+        this.sourceIPFilter = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "UserName", readOnly = false)   
     public String getUserName() {
        return userName;
@@ -290,7 +306,7 @@ public class Infrastructureaccessprofile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Infrastructureaccessprofile [" + "SSHAuthMode=" + SSHAuthMode + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", password=" + password + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Infrastructureaccessprofile [" + "SSHAuthMode=" + SSHAuthMode + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", password=" + password + ", sourceIPFilter=" + sourceIPFilter + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

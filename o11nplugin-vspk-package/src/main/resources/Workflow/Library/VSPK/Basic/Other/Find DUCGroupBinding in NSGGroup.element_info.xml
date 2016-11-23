@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Find DUCGroupBinding in NSGGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2a00fef7-95d2-5c3d-b7b2-494883a50bef</entry>
+</properties>

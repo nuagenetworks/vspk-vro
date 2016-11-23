@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="aeedb81b-14ef-5679-a3be-7e1a460e4953"  version="4.0.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="aeedb81b-14ef-5679-a3be-7e1a460e4953"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit TCA]]></display-name>
 <ref-types><![CDATA[(VSPK:TCA)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='tCAObj' type='VSPK:TCA' >
+</param>
+
+<param name='action' type='VSPK:TCAAction' >
 </param>
 
 <param name='description' type='string' >
@@ -21,9 +24,6 @@
 <param name='period' type='number' >
 </param>
 
-<param name='scope' type='VSPK:TCAScope' >
-</param>
-
 <param name='threshold' type='number' >
 </param>
 
@@ -37,6 +37,7 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = tCAObj.session;
 
+tCAObj.action = action;
 if (description) {
    tCAObj.description = description;
 } else if (tCAObj.description) {
@@ -54,11 +55,12 @@ if (name) {
    tCAObj.name = "";
 }
 tCAObj.period = period;
-tCAObj.scope = scope;
 tCAObj.threshold = threshold;
 tCAObj.type = type;
-tCAObj.save(session);]]></script>
+tCAObj.save(session, 1);]]></script>
 <in-binding><bind name='tCAObj' type='VSPK:TCA' export-name="tCAObj" ></bind>
+
+<bind name='action' type='VSPK:TCAAction' export-name="action" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
 
@@ -70,8 +72,6 @@ tCAObj.save(session);]]></script>
 
 <bind name='period' type='number' export-name="period" ></bind>
 
-<bind name='scope' type='VSPK:TCAScope' export-name="scope" ></bind>
-
 <bind name='threshold' type='number' export-name="threshold" ></bind>
 
 <bind name='type' type='VSPK:TCAType' export-name="type" ></bind>
@@ -81,6 +81,9 @@ tCAObj.save(session);]]></script>
 <presentation>
 <p-param name="tCAObj"><desc><![CDATA[tCAObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="action"><desc><![CDATA[action]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:TCAAction" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getTCAAction").call( #tCAObj )]]></p-qual></p-param>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#tCAObj.description]]></p-qual></p-param>
@@ -96,9 +99,6 @@ tCAObj.save(session);]]></script>
 
 <p-param name="period"><desc><![CDATA[period]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#tCAObj.period]]></p-qual></p-param>
-
-<p-param name="scope"><desc><![CDATA[scope]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="VSPK:TCAScope" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getTCAScope").call( #tCAObj )]]></p-qual></p-param>
 
 <p-param name="threshold"><desc><![CDATA[threshold]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#tCAObj.threshold]]></p-qual></p-param>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/acl</entry>
+<entry key="name">Find EgressACLTemplate in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">73182c40-a61c-58b8-845c-c48bbec99dae</entry>
+</properties>

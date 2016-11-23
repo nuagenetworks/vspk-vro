@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Add NSGGroup to Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">34e4b668-0694-5227-818c-866f5cfdd914</entry>
+</properties>

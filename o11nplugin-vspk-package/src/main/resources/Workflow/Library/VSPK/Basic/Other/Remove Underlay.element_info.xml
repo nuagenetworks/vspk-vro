@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Remove Underlay</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0cf8e0d3-d14c-5224-8151-6b91adc37355</entry>
+</properties>

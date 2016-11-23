@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="e7b51f16-8c62-54f1-a678-085dcb1156ca"  version="4.0.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="e7b51f16-8c62-54f1-a678-085dcb1156ca"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit NSGatewayTemplate]]></display-name>
 <ref-types><![CDATA[(VSPK:NSGatewayTemplate)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -45,7 +45,7 @@ if (name) {
 } else if (nSGatewayTemplateObj.name) {
    nSGatewayTemplateObj.name = "";
 }
-nSGatewayTemplateObj.save(session);]]></script>
+nSGatewayTemplateObj.save(session, 1);]]></script>
 <in-binding><bind name='nSGatewayTemplateObj' type='VSPK:NSGatewayTemplate' export-name="nSGatewayTemplateObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>

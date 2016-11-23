@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a670b2cb-1de8-5f4f-b57d-3f72ce6ce8c1"  version="4.0.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a670b2cb-1de8-5f4f-b57d-3f72ce6ce8c1"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit VCenterEAMConfig]]></display-name>
 <ref-types><![CDATA[(VSPK:VCenterEAMConfig)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -49,7 +49,7 @@ if (ovfURL) {
 } else if (vCenterEAMConfigObj.ovfURL) {
    vCenterEAMConfigObj.ovfURL = "";
 }
-vCenterEAMConfigObj.save(session);]]></script>
+vCenterEAMConfigObj.save(session, 1);]]></script>
 <in-binding><bind name='vCenterEAMConfigObj' type='VSPK:VCenterEAMConfig' export-name="vCenterEAMConfigObj" ></bind>
 
 <bind name='eamServerIP' type='string' export-name="eamServerIP" ></bind>

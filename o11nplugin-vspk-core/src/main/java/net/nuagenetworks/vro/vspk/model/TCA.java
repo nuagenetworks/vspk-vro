@@ -34,11 +34,11 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.TCAAction;
+
 import net.nuagenetworks.vro.vspk.model.enums.TCAEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.TCAMetric;
-
-import net.nuagenetworks.vro.vspk.model.enums.TCAScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.TCAType;
 import net.nuagenetworks.bambou.RestException;
@@ -70,8 +70,20 @@ public class TCA extends BaseObject {
     @JsonProperty(value = "URLEndPoint")
     protected String URLEndPoint;
     
+    @JsonProperty(value = "action")
+    protected TCAAction action;
+    
+    @JsonProperty(value = "count")
+    protected Long count;
+    
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "disable")
+    protected Boolean disable;
+    
+    @JsonProperty(value = "displayStatus")
+    protected String displayStatus;
     
     @JsonProperty(value = "entityScope")
     protected TCAEntityScope entityScope;
@@ -91,11 +103,17 @@ public class TCA extends BaseObject {
     @JsonProperty(value = "period")
     protected Long period;
     
-    @JsonProperty(value = "scope")
-    protected TCAScope scope;
+    @JsonProperty(value = "status")
+    protected Boolean status;
+    
+    @JsonProperty(value = "targetPolicyGroupID")
+    protected String targetPolicyGroupID;
     
     @JsonProperty(value = "threshold")
     protected Long threshold;
+    
+    @JsonProperty(value = "throttleTime")
+    protected Long throttleTime;
     
     @JsonProperty(value = "type")
     protected TCAType type;
@@ -178,6 +196,28 @@ public class TCA extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Action", readOnly = false)   
+    public TCAAction getAction() {
+       return action;
+    }
+
+    @JsonIgnore
+    public void setAction(TCAAction value) { 
+        this.action = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Count", readOnly = false)   
+    public Long getCount() {
+       return count;
+    }
+
+    @JsonIgnore
+    public void setCount(Long value) { 
+        this.count = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -186,6 +226,28 @@ public class TCA extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Disable", readOnly = false)   
+    public Boolean getDisable() {
+       return disable;
+    }
+
+    @JsonIgnore
+    public void setDisable(Boolean value) { 
+        this.disable = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DisplayStatus", readOnly = false)   
+    public String getDisplayStatus() {
+       return displayStatus;
+    }
+
+    @JsonIgnore
+    public void setDisplayStatus(String value) { 
+        this.displayStatus = value;
     }
     
     @JsonIgnore
@@ -255,14 +317,25 @@ public class TCA extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Scope", readOnly = false)   
-    public TCAScope getScope() {
-       return scope;
+    @VsoProperty(displayName = "Status", readOnly = false)   
+    public Boolean getStatus() {
+       return status;
     }
 
     @JsonIgnore
-    public void setScope(TCAScope value) { 
-        this.scope = value;
+    public void setStatus(Boolean value) { 
+        this.status = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "TargetPolicyGroupID", readOnly = false)   
+    public String getTargetPolicyGroupID() {
+       return targetPolicyGroupID;
+    }
+
+    @JsonIgnore
+    public void setTargetPolicyGroupID(String value) { 
+        this.targetPolicyGroupID = value;
     }
     
     @JsonIgnore
@@ -274,6 +347,17 @@ public class TCA extends BaseObject {
     @JsonIgnore
     public void setThreshold(Long value) { 
         this.threshold = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ThrottleTime", readOnly = false)   
+    public Long getThrottleTime() {
+       return throttleTime;
+    }
+
+    @JsonIgnore
+    public void setThrottleTime(Long value) { 
+        this.throttleTime = value;
     }
     
     @JsonIgnore
@@ -364,7 +448,7 @@ public class TCA extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "TCA [" + "URLEndPoint=" + URLEndPoint + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", metric=" + metric + ", name=" + name + ", period=" + period + ", scope=" + scope + ", threshold=" + threshold + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "TCA [" + "URLEndPoint=" + URLEndPoint + ", action=" + action + ", count=" + count + ", description=" + description + ", disable=" + disable + ", displayStatus=" + displayStatus + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", metric=" + metric + ", name=" + name + ", period=" + period + ", status=" + status + ", targetPolicyGroupID=" + targetPolicyGroupID + ", threshold=" + threshold + ", throttleTime=" + throttleTime + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

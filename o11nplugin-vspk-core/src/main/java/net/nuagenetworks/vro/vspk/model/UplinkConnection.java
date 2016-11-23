@@ -26,7 +26,11 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.UnderlaysFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAddress;
+
+import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAdvertisementCriteria;
 
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionMode;
 
@@ -44,7 +48,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.UPLINKCONNECTION, datasource = Constants.DATASOURCE, image = Constants.UPLINKCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.UPLINKCONNECTION, datasource = Constants.DATASOURCE, image = Constants.UPLINKCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.UNDERLAYS_FETCHER, type = Constants.UNDERLAYS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "uplinkconnection", resourceName = "uplinkconnections")
@@ -59,8 +65,17 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "address")
     protected UplinkConnectionAddress address;
     
+    @JsonProperty(value = "advertisementCriteria")
+    protected UplinkConnectionAdvertisementCriteria advertisementCriteria;
+    
+    @JsonProperty(value = "assocUnderlayID")
+    protected String assocUnderlayID;
+    
     @JsonProperty(value = "associatedVSCProfileID")
     protected String associatedVSCProfileID;
+    
+    @JsonProperty(value = "gateway")
+    protected String gateway;
     
     @JsonProperty(value = "mode")
     protected UplinkConnectionMode mode;
@@ -74,11 +89,19 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "role")
     protected UplinkConnectionRole role;
     
+    @JsonProperty(value = "uplinkID")
+    protected String uplinkID;
+    
     @JsonProperty(value = "username")
     protected String username;
     
+    @JsonIgnore
+    private UnderlaysFetcher underlays;
+    
     @VsoConstructor
-    public UplinkConnection() {}
+    public UplinkConnection() {
+        underlays = new UnderlaysFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -145,6 +168,28 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AdvertisementCriteria", readOnly = false)   
+    public UplinkConnectionAdvertisementCriteria getAdvertisementCriteria() {
+       return advertisementCriteria;
+    }
+
+    @JsonIgnore
+    public void setAdvertisementCriteria(UplinkConnectionAdvertisementCriteria value) { 
+        this.advertisementCriteria = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssocUnderlayID", readOnly = false)   
+    public String getAssocUnderlayID() {
+       return assocUnderlayID;
+    }
+
+    @JsonIgnore
+    public void setAssocUnderlayID(String value) { 
+        this.assocUnderlayID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedVSCProfileID", readOnly = false)   
     public String getAssociatedVSCProfileID() {
        return associatedVSCProfileID;
@@ -153,6 +198,17 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setAssociatedVSCProfileID(String value) { 
         this.associatedVSCProfileID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Gateway", readOnly = false)   
+    public String getGateway() {
+       return gateway;
+    }
+
+    @JsonIgnore
+    public void setGateway(String value) { 
+        this.gateway = value;
     }
     
     @JsonIgnore
@@ -200,6 +256,17 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "UplinkID", readOnly = false)   
+    public String getUplinkID() {
+       return uplinkID;
+    }
+
+    @JsonIgnore
+    public void setUplinkID(String value) { 
+        this.uplinkID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Username", readOnly = false)   
     public String getUsername() {
        return username;
@@ -208,6 +275,12 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setUsername(String value) { 
         this.username = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Underlays", readOnly = true)   
+    public UnderlaysFetcher getUnderlays() {
+        return underlays;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -229,8 +302,16 @@ public class UplinkConnection extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.UPLINKCONNECTION, getId());
         }
+    }
+    @VsoMethod
+    public void createUnderlay(Session session, Underlay childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.UNDERLAYS_FETCHER, getId());
+        }
     }public String toString() {
-        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", associatedVSCProfileID=" + associatedVSCProfileID + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", role=" + role + ", username=" + username + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", gateway=" + gateway + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", role=" + role + ", uplinkID=" + uplinkID + ", username=" + username + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

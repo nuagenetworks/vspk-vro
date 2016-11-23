@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Bgp</entry>
+<entry key="name">Find BGPNeighbor in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">af57b102-ad15-5144-a2b4-20e796c9961d</entry>
+</properties>

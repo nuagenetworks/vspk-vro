@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7d52fd5d-4cc7-51dd-81a1-ccf19c39f7db"  version="4.0.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7d52fd5d-4cc7-51dd-81a1-ccf19c39f7db"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add VMInterface to VM]]></display-name>
 <ref-types><![CDATA[(VSPK:VM)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='vMObj' type='VSPK:VM' >
+</param>
+<param name='IPAddress' type='string' >
+</param>
+<param name='MAC' type='string' >
+</param>
+<param name='VPortID' type='string' >
 </param>
 <param name='externalID' type='string' >
 </param>
@@ -19,6 +25,15 @@
 <script encoded='false'><![CDATA[var session = vMObj.session;
 
 vMInterfaceObj = new VSPKVMInterface();
+if (IPAddress) {
+   vMInterfaceObj.IPAddress = IPAddress;
+}
+if (MAC) {
+   vMInterfaceObj.MAC = MAC;
+}
+if (VPortID) {
+   vMInterfaceObj.VPortID = VPortID;
+}
 if (externalID) {
    vMInterfaceObj.externalID = externalID;
 }
@@ -29,6 +44,9 @@ if (name) {
 vMObj.createVMInterface(session, vMInterfaceObj);
 ]]></script>
 <in-binding><bind name='vMObj' type='VSPK:VM' export-name="vMObj" ></bind>
+<bind name='IPAddress' type='string' export-name="IPAddress" ></bind>
+<bind name='MAC' type='string' export-name="MAC" ></bind>
+<bind name='VPortID' type='string' export-name="VPortID" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='vMInterfaceObj' type='VSPK:VMInterface' export-name="vMInterfaceObj" ></bind>
@@ -37,6 +55,12 @@ vMObj.createVMInterface(session, vMInterfaceObj);
 <presentation>
 <p-param name="vMObj"><desc><![CDATA[vMObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="IPAddress"><desc><![CDATA[IPAddress]]></desc>
+</p-param>
+<p-param name="MAC"><desc><![CDATA[MAC]]></desc>
+</p-param>
+<p-param name="VPortID"><desc><![CDATA[VPortID]]></desc>
+</p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>

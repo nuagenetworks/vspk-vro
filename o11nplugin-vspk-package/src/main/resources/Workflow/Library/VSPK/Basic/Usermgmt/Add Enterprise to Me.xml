@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="f252f806-2cb0-5426-8867-65253212a094"  version="4.0.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="f252f806-2cb0-5426-8867-65253212a094"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add Enterprise to Me]]></display-name>
 <ref-types><![CDATA[(VSPK:Me)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='meObj' type='VSPK:Me' >
 </param>
 <param name='description' type='string' >
+</param>
+<param name='enterpriseProfileID' type='string' >
 </param>
 <param name='externalID' type='string' >
 </param>
@@ -24,6 +26,9 @@ enterpriseObj = new VSPKEnterprise();
 if (description) {
    enterpriseObj.description = description;
 }
+if (enterpriseProfileID) {
+   enterpriseObj.enterpriseProfileID = enterpriseProfileID;
+}
 if (externalID) {
    enterpriseObj.externalID = externalID;
 }
@@ -35,6 +40,7 @@ meObj.createEnterprise(session, enterpriseObj);
 ]]></script>
 <in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='enterpriseProfileID' type='string' export-name="enterpriseProfileID" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
@@ -44,6 +50,8 @@ meObj.createEnterprise(session, enterpriseObj);
 <p-param name="meObj"><desc><![CDATA[meObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="enterpriseProfileID"><desc><![CDATA[enterpriseProfileID]]></desc>
 </p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>

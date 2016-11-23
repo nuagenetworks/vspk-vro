@@ -30,7 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.DUCGroup;
+
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.NSGGroup;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
 
@@ -68,11 +72,31 @@ public class NSGatewaysFetcher extends BaseFetcher<NSGateway> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "DUCGroup", readOnly = true)
+    public DUCGroup getDUCGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DUCGroup) {
+            return (DUCGroup) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Me", readOnly = true)
     public Me getMe() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NSGGroup", readOnly = true)
+    public NSGGroup getNSGGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NSGGroup) {
+            return (NSGGroup) obj;
         }
         
         return null;

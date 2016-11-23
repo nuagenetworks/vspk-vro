@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.enums.BRConnectionAdvertisementCriteria;
+
 import net.nuagenetworks.vro.vspk.model.enums.BRConnectionMode;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -55,6 +57,9 @@ public class BRConnection extends BaseObject {
     @JsonProperty(value = "address")
     protected String address;
     
+    @JsonProperty(value = "advertisementCriteria")
+    protected BRConnectionAdvertisementCriteria advertisementCriteria;
+    
     @JsonProperty(value = "gateway")
     protected String gateway;
     
@@ -63,6 +68,9 @@ public class BRConnection extends BaseObject {
     
     @JsonProperty(value = "netmask")
     protected String netmask;
+    
+    @JsonProperty(value = "uplinkID")
+    protected Long uplinkID;
     
     @VsoConstructor
     public BRConnection() {}
@@ -132,6 +140,17 @@ public class BRConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AdvertisementCriteria", readOnly = false)   
+    public BRConnectionAdvertisementCriteria getAdvertisementCriteria() {
+       return advertisementCriteria;
+    }
+
+    @JsonIgnore
+    public void setAdvertisementCriteria(BRConnectionAdvertisementCriteria value) { 
+        this.advertisementCriteria = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Gateway", readOnly = false)   
     public String getGateway() {
        return gateway;
@@ -163,6 +182,17 @@ public class BRConnection extends BaseObject {
     public void setNetmask(String value) { 
         this.netmask = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UplinkID", readOnly = false)   
+    public Long getUplinkID() {
+       return uplinkID;
+    }
+
+    @JsonIgnore
+    public void setUplinkID(Long value) { 
+        this.uplinkID = value;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -184,7 +214,7 @@ public class BRConnection extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.BRCONNECTION, getId());
         }
     }public String toString() {
-        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", gateway=" + gateway + ", mode=" + mode + ", netmask=" + netmask + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", gateway=" + gateway + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

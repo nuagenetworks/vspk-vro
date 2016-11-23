@@ -4,6 +4,11 @@ VSPK Plug-In for VMWare vRealize Orchestrator (vRO).
 
 # Build
 
+The following libraries need to be build (in the order listed) prior to building the plug-in:
+
+* [java-bambou](https://github.com/nuagenetworks/java-bambou)
+* [vro-plugin-base](https://github.com/nuagenetworks/vro-plugin-base)
+
 To build plug-in: 
 
 * mvn -Dmaven.wagon.http.ssl.insecure=true -Dvco.version={vro-version} -DrepoUrl=https://{vro-ip-address}:8281/vco-repo/ -Dbuild.number=1 -Dinstallation.mode=always clean install

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getTCAAction</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">27f1babd-2385-5883-ba56-77970c12ca5a</entry>
+</properties>

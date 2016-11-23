@@ -50,6 +50,8 @@ import net.nuagenetworks.vro.vspk.model.HSC;
 
 import net.nuagenetworks.vro.vspk.model.ZFBRequest;
 
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
+
 import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
 
 import net.nuagenetworks.vro.vspk.model.VCenterCluster;
@@ -77,8 +79,6 @@ import net.nuagenetworks.vro.vspk.model.VSC;
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.EgressACLTemplate;
-
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
 
 import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 
@@ -213,6 +213,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof ZFBRequest) {
             return (ZFBRequest) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressAdvFwdTemplate", readOnly = true)
+    public IngressAdvFwdTemplate getIngressAdvFwdTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressAdvFwdTemplate) {
+            return (IngressAdvFwdTemplate) obj;
         }
         
         return null;
@@ -353,16 +363,6 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof EgressACLTemplate) {
             return (EgressACLTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "IngressAdvFwdTemplate", readOnly = true)
-    public IngressAdvFwdTemplate getIngressAdvFwdTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdTemplate) {
-            return (IngressAdvFwdTemplate) obj;
         }
         
         return null;

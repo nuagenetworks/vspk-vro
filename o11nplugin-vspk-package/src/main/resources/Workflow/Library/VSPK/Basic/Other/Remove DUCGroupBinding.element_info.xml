@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Remove DUCGroupBinding</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f00f126b-17b5-5bab-8a5a-3bfef9e7ddd1</entry>
+</properties>

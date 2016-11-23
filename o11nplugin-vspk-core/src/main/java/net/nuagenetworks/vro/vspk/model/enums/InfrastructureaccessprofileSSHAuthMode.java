@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum InfrastructureaccessprofileSSHAuthMode {
 
-    PASSWORD_BASED("PASSWORD_BASED", "PASSWORD_BASED");
+    KEY_BASED("KEY_BASED", "KEY_BASED"), PASSWORD_AND_KEY_BASED("PASSWORD_AND_KEY_BASED", "PASSWORD_AND_KEY_BASED"), PASSWORD_BASED("PASSWORD_BASED", "PASSWORD_BASED");
 
     private final String id;
     private final String name;
@@ -57,6 +57,16 @@ public enum InfrastructureaccessprofileSSHAuthMode {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "KEY_BASED", readOnly = true)
+    public InfrastructureaccessprofileSSHAuthMode getKEY_BASED() {
+        return KEY_BASED;
+    }
+    
+    @VsoProperty(displayName = "PASSWORD_AND_KEY_BASED", readOnly = true)
+    public InfrastructureaccessprofileSSHAuthMode getPASSWORD_AND_KEY_BASED() {
+        return PASSWORD_AND_KEY_BASED;
+    }
     
     @VsoProperty(displayName = "PASSWORD_BASED", readOnly = true)
     public InfrastructureaccessprofileSSHAuthMode getPASSWORD_BASED() {
