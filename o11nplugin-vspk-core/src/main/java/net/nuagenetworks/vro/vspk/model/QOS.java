@@ -78,6 +78,18 @@ public class QOS extends BaseObject {
     @JsonProperty(value = "BUMRateLimitingActive")
     protected Boolean BUMRateLimitingActive;
     
+    @JsonProperty(value = "EgressFIPCommittedBurstSize")
+    protected String EgressFIPCommittedBurstSize;
+    
+    @JsonProperty(value = "EgressFIPCommittedInformationRate")
+    protected String EgressFIPCommittedInformationRate;
+    
+    @JsonProperty(value = "EgressFIPPeakBurstSize")
+    protected String EgressFIPPeakBurstSize;
+    
+    @JsonProperty(value = "EgressFIPPeakInformationRate")
+    protected String EgressFIPPeakInformationRate;
+    
     @JsonProperty(value = "FIPCommittedBurstSize")
     protected String FIPCommittedBurstSize;
     
@@ -260,6 +272,50 @@ public class QOS extends BaseObject {
     @JsonIgnore
     public void setBUMRateLimitingActive(Boolean value) { 
         this.BUMRateLimitingActive = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EgressFIPCommittedBurstSize", readOnly = false)   
+    public String getEgressFIPCommittedBurstSize() {
+       return EgressFIPCommittedBurstSize;
+    }
+
+    @JsonIgnore
+    public void setEgressFIPCommittedBurstSize(String value) { 
+        this.EgressFIPCommittedBurstSize = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EgressFIPCommittedInformationRate", readOnly = false)   
+    public String getEgressFIPCommittedInformationRate() {
+       return EgressFIPCommittedInformationRate;
+    }
+
+    @JsonIgnore
+    public void setEgressFIPCommittedInformationRate(String value) { 
+        this.EgressFIPCommittedInformationRate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EgressFIPPeakBurstSize", readOnly = false)   
+    public String getEgressFIPPeakBurstSize() {
+       return EgressFIPPeakBurstSize;
+    }
+
+    @JsonIgnore
+    public void setEgressFIPPeakBurstSize(String value) { 
+        this.EgressFIPPeakBurstSize = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EgressFIPPeakInformationRate", readOnly = false)   
+    public String getEgressFIPPeakInformationRate() {
+       return EgressFIPPeakInformationRate;
+    }
+
+    @JsonIgnore
+    public void setEgressFIPPeakInformationRate(String value) { 
+        this.EgressFIPPeakInformationRate = value;
     }
     
     @JsonIgnore
@@ -579,7 +635,7 @@ public class QOS extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "QOS [" + "BUMCommittedBurstSize=" + BUMCommittedBurstSize + ", BUMCommittedInformationRate=" + BUMCommittedInformationRate + ", BUMPeakBurstSize=" + BUMPeakBurstSize + ", BUMPeakInformationRate=" + BUMPeakInformationRate + ", BUMRateLimitingActive=" + BUMRateLimitingActive + ", FIPCommittedBurstSize=" + FIPCommittedBurstSize + ", FIPCommittedInformationRate=" + FIPCommittedInformationRate + ", FIPPeakBurstSize=" + FIPPeakBurstSize + ", FIPPeakInformationRate=" + FIPPeakInformationRate + ", FIPRateLimitingActive=" + FIPRateLimitingActive + ", active=" + active + ", assocQosId=" + assocQosId + ", associatedDSCPForwardingClassTableID=" + associatedDSCPForwardingClassTableID + ", associatedDSCPForwardingClassTableName=" + associatedDSCPForwardingClassTableName + ", burst=" + burst + ", committedBurstSize=" + committedBurstSize + ", committedInformationRate=" + committedInformationRate + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", peak=" + peak + ", rateLimitingActive=" + rateLimitingActive + ", rewriteForwardingClass=" + rewriteForwardingClass + ", serviceClass=" + serviceClass + ", trustedForwardingClass=" + trustedForwardingClass + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "QOS [" + "BUMCommittedBurstSize=" + BUMCommittedBurstSize + ", BUMCommittedInformationRate=" + BUMCommittedInformationRate + ", BUMPeakBurstSize=" + BUMPeakBurstSize + ", BUMPeakInformationRate=" + BUMPeakInformationRate + ", BUMRateLimitingActive=" + BUMRateLimitingActive + ", EgressFIPCommittedBurstSize=" + EgressFIPCommittedBurstSize + ", EgressFIPCommittedInformationRate=" + EgressFIPCommittedInformationRate + ", EgressFIPPeakBurstSize=" + EgressFIPPeakBurstSize + ", EgressFIPPeakInformationRate=" + EgressFIPPeakInformationRate + ", FIPCommittedBurstSize=" + FIPCommittedBurstSize + ", FIPCommittedInformationRate=" + FIPCommittedInformationRate + ", FIPPeakBurstSize=" + FIPPeakBurstSize + ", FIPPeakInformationRate=" + FIPPeakInformationRate + ", FIPRateLimitingActive=" + FIPRateLimitingActive + ", active=" + active + ", assocQosId=" + assocQosId + ", associatedDSCPForwardingClassTableID=" + associatedDSCPForwardingClassTableID + ", associatedDSCPForwardingClassTableName=" + associatedDSCPForwardingClassTableName + ", burst=" + burst + ", committedBurstSize=" + committedBurstSize + ", committedInformationRate=" + committedInformationRate + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", peak=" + peak + ", rateLimitingActive=" + rateLimitingActive + ", rewriteForwardingClass=" + rewriteForwardingClass + ", serviceClass=" + serviceClass + ", trustedForwardingClass=" + trustedForwardingClass + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }
