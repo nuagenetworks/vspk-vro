@@ -1,3 +1,18 @@
+Changes from version 4.0.3 to version 4.0.6
+===========================================
+
+- Upgraded to VSD specification version 4.0.6
+- Aligned plug-in and workflows version with VSD specification version
+- Added build number to .vmoapp and .dar target filenames
+- Fixed VSPKVRO-10: Use "Other" as sub-folder instead of "None" in generated workflow location
+- Fixed VSPKVRO-9: Set responseCode parameter to 1 when calling save() in generated Edit workflows
+- Fixed VSPKVRO-14: Remove advanced workflows from plugin bundle
+- Fixed VSPKVRO-13: Add MAC field to "Add VirtualIP to VPort" Basic workflow
+- Added enterpriseProfileID input parameter to Add/Edit Enterprise workflows.
+- Added generation of Find workflows for all elements under /me
+- Added build dependencies to bambou and vro-plugin-base to README.md
+- Added installation instructions of the Advanced Workflows package in INSTALL.txt
+
 Changes from version 4.0.2 to version 4.0.3
 ===========================================
 
