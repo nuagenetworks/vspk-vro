@@ -25,7 +25,11 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package net.nuagenetworks.vro.vspk.model;import net.nuagenetworks.bambou.RestException;
+package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.DomainsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.FirewallRulesFetcher;
+import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
@@ -38,35 +42,45 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.MONITORSCOPE, datasource = Constants.DATASOURCE, image = Constants.MONITORSCOPE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.FIREWALLACL, datasource = Constants.DATASOURCE, image = Constants.FIREWALLACL_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@RestEntity(restName = "monitorscope", resourceName = "monitorscopes")
-public class Monitorscope extends BaseObject {
+@RestEntity(restName = "firewallacl", resourceName = "firewallacls")
+public class FirewallAcl extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "allowAllDestinationNSGs")
-    protected Boolean allowAllDestinationNSGs;
+    @JsonProperty(value = "active")
+    protected Boolean active;
     
-    @JsonProperty(value = "allowAllSourceNSGs")
-    protected Boolean allowAllSourceNSGs;
+    @JsonProperty(value = "defaultAllowIP")
+    protected Boolean defaultAllowIP;
     
-    @JsonProperty(value = "destinationNSGs")
-    protected java.util.List<String> destinationNSGs;
+    @JsonProperty(value = "defaultAllowNonIP")
+    protected Boolean defaultAllowNonIP;
+    
+    @JsonProperty(value = "description")
+    protected String description;
     
     @JsonProperty(value = "name")
     protected String name;
     
-    @JsonProperty(value = "readOnly")
-    protected Boolean readOnly;
+    @JsonProperty(value = "ruleIds")
+    protected java.util.List<String> ruleIds;
     
-    @JsonProperty(value = "sourceNSGs")
-    protected java.util.List<String> sourceNSGs;
+    @JsonIgnore
+    private DomainsFetcher domains;
+    
+    @JsonIgnore
+    private FirewallRulesFetcher firewallRules;
     
     @VsoConstructor
-    public Monitorscope() {}
+    public FirewallAcl() {
+        domains = new DomainsFetcher(this);
+        
+        firewallRules = new FirewallRulesFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -104,36 +118,47 @@ public class Monitorscope extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "AllowAllDestinationNSGs", readOnly = false)   
-    public Boolean getAllowAllDestinationNSGs() {
-       return allowAllDestinationNSGs;
+    @VsoProperty(displayName = "Active", readOnly = false)   
+    public Boolean getActive() {
+       return active;
     }
 
     @JsonIgnore
-    public void setAllowAllDestinationNSGs(Boolean value) { 
-        this.allowAllDestinationNSGs = value;
+    public void setActive(Boolean value) { 
+        this.active = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "AllowAllSourceNSGs", readOnly = false)   
-    public Boolean getAllowAllSourceNSGs() {
-       return allowAllSourceNSGs;
+    @VsoProperty(displayName = "DefaultAllowIP", readOnly = false)   
+    public Boolean getDefaultAllowIP() {
+       return defaultAllowIP;
     }
 
     @JsonIgnore
-    public void setAllowAllSourceNSGs(Boolean value) { 
-        this.allowAllSourceNSGs = value;
+    public void setDefaultAllowIP(Boolean value) { 
+        this.defaultAllowIP = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "DestinationNSGs", readOnly = false)   
-    public java.util.List<String> getDestinationNSGs() {
-       return destinationNSGs;
+    @VsoProperty(displayName = "DefaultAllowNonIP", readOnly = false)   
+    public Boolean getDefaultAllowNonIP() {
+       return defaultAllowNonIP;
     }
 
     @JsonIgnore
-    public void setDestinationNSGs(java.util.List<String> value) { 
-        this.destinationNSGs = value;
+    public void setDefaultAllowNonIP(Boolean value) { 
+        this.defaultAllowNonIP = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Description", readOnly = false)   
+    public String getDescription() {
+       return description;
+    }
+
+    @JsonIgnore
+    public void setDescription(String value) { 
+        this.description = value;
     }
     
     @JsonIgnore
@@ -148,25 +173,26 @@ public class Monitorscope extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "ReadOnly", readOnly = false)   
-    public Boolean getReadOnly() {
-       return readOnly;
+    @VsoProperty(displayName = "RuleIds", readOnly = false)   
+    public java.util.List<String> getRuleIds() {
+       return ruleIds;
     }
 
     @JsonIgnore
-    public void setReadOnly(Boolean value) { 
-        this.readOnly = value;
+    public void setRuleIds(java.util.List<String> value) { 
+        this.ruleIds = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "SourceNSGs", readOnly = false)   
-    public java.util.List<String> getSourceNSGs() {
-       return sourceNSGs;
+    @VsoProperty(displayName = "Domains", readOnly = true)   
+    public DomainsFetcher getDomains() {
+        return domains;
     }
-
+    
     @JsonIgnore
-    public void setSourceNSGs(java.util.List<String> value) { 
-        this.sourceNSGs = value;
+    @VsoProperty(displayName = "FirewallRules", readOnly = true)   
+    public FirewallRulesFetcher getFirewallRules() {
+        return firewallRules;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -177,7 +203,7 @@ public class Monitorscope extends BaseObject {
     public void save(Session session, Integer responseChoice) throws RestException {
         super.save(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementUpdated(Constants.MONITORSCOPE, getId());
+           SessionManager.getInstance().notifyElementUpdated(Constants.FIREWALLACL, getId());
         }
     }
 
@@ -186,10 +212,10 @@ public class Monitorscope extends BaseObject {
         int responseChoice = (responseChoiceObj != null) ? responseChoiceObj.intValue() : 1;
         super.delete(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementDeleted(Constants.MONITORSCOPE, getId());
+           SessionManager.getInstance().notifyElementDeleted(Constants.FIREWALLACL, getId());
         }
     }public String toString() {
-        return "Monitorscope [" + "allowAllDestinationNSGs=" + allowAllDestinationNSGs + ", allowAllSourceNSGs=" + allowAllSourceNSGs + ", destinationNSGs=" + destinationNSGs + ", name=" + name + ", readOnly=" + readOnly + ", sourceNSGs=" + sourceNSGs + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "FirewallAcl [" + "active=" + active + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", description=" + description + ", name=" + name + ", ruleIds=" + ruleIds + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

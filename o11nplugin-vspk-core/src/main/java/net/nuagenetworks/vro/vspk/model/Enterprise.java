@@ -60,6 +60,10 @@ import net.nuagenetworks.vro.vspk.model.fetchers.ExternalAppServicesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ExternalServicesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.FirewallAclsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.FirewallRulesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GatewaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GatewayTemplatesFetcher;
@@ -172,6 +176,10 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISENETWORKS_FETCHER, type = Constants.ENTERPRISENETWORKS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EXTERNALAPPSERVICES_FETCHER, type = Constants.EXTERNALAPPSERVICES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.FIREWALLACLS_FETCHER, type = Constants.FIREWALLACLS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.FIREWALLRULES_FETCHER, type = Constants.FIREWALLRULES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.GATEWAYS_FETCHER, type = Constants.GATEWAYS_FETCHER), 
 
@@ -365,6 +373,12 @@ public class Enterprise extends BaseObject {
     private ExternalServicesFetcher externalServices;
     
     @JsonIgnore
+    private FirewallAclsFetcher firewallAcls;
+    
+    @JsonIgnore
+    private FirewallRulesFetcher firewallRules;
+    
+    @JsonIgnore
     private GatewaysFetcher gateways;
     
     @JsonIgnore
@@ -504,6 +518,10 @@ public class Enterprise extends BaseObject {
         externalAppServices = new ExternalAppServicesFetcher(this);
         
         externalServices = new ExternalServicesFetcher(this);
+        
+        firewallAcls = new FirewallAclsFetcher(this);
+        
+        firewallRules = new FirewallRulesFetcher(this);
         
         gateways = new GatewaysFetcher(this);
         
@@ -1022,6 +1040,18 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FirewallAcls", readOnly = true)   
+    public FirewallAclsFetcher getFirewallAcls() {
+        return firewallAcls;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FirewallRules", readOnly = true)   
+    public FirewallRulesFetcher getFirewallRules() {
+        return firewallRules;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Gateways", readOnly = true)   
     public GatewaysFetcher getGateways() {
         return gateways;
@@ -1346,6 +1376,22 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.EXTERNALAPPSERVICES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createFirewallAcl(Session session, FirewallAcl childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.FIREWALLACLS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createFirewallRule(Session session, FirewallRule childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.FIREWALLRULES_FETCHER, getId());
         }
     }
     @VsoMethod

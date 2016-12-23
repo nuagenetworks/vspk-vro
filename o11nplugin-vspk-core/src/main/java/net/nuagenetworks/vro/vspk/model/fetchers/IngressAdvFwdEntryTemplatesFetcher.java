@@ -30,11 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
-
 import net.nuagenetworks.vro.vspk.model.MirrorDestination;
 
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -68,16 +68,6 @@ public class IngressAdvFwdEntryTemplatesFetcher extends BaseFetcher<IngressAdvFw
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "IngressAdvFwdTemplate", readOnly = true)
-    public IngressAdvFwdTemplate getIngressAdvFwdTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdTemplate) {
-            return (IngressAdvFwdTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "MirrorDestination", readOnly = true)
     public MirrorDestination getMirrorDestination() {
         RestObject obj = super.getParentRestObj();
@@ -93,6 +83,16 @@ public class IngressAdvFwdEntryTemplatesFetcher extends BaseFetcher<IngressAdvFw
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressAdvFwdTemplate", readOnly = true)
+    public IngressAdvFwdTemplate getIngressAdvFwdTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressAdvFwdTemplate) {
+            return (IngressAdvFwdTemplate) obj;
         }
         
         return null;

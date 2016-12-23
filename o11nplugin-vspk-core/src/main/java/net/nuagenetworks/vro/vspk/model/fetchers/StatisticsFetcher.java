@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.ContainerInterface;
 
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
+
 import net.nuagenetworks.vro.vspk.model.Zone;
 
 import net.nuagenetworks.vro.vspk.model.EgressACLEntryTemplate;
@@ -47,8 +49,6 @@ import net.nuagenetworks.vro.vspk.model.Subnet;
 import net.nuagenetworks.vro.vspk.model.VMInterface;
 
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
-
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Tier;
 
@@ -101,6 +101,16 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof ContainerInterface) {
             return (ContainerInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
+    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressAdvFwdEntryTemplate) {
+            return (IngressAdvFwdEntryTemplate) obj;
         }
         
         return null;
@@ -181,16 +191,6 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof BridgeInterface) {
             return (BridgeInterface) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
-    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdEntryTemplate) {
-            return (IngressAdvFwdEntryTemplate) obj;
         }
         
         return null;

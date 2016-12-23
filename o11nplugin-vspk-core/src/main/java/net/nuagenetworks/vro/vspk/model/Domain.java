@@ -52,6 +52,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ExternalAppServicesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.FirewallAclsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIpsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -363,6 +365,9 @@ public class Domain extends BaseObject {
     private ExternalAppServicesFetcher externalAppServices;
     
     @JsonIgnore
+    private FirewallAclsFetcher firewallAcls;
+    
+    @JsonIgnore
     private FloatingIpsFetcher floatingIps;
     
     @JsonIgnore
@@ -480,6 +485,8 @@ public class Domain extends BaseObject {
         eventLogs = new EventLogsFetcher(this);
         
         externalAppServices = new ExternalAppServicesFetcher(this);
+        
+        firewallAcls = new FirewallAclsFetcher(this);
         
         floatingIps = new FloatingIpsFetcher(this);
         
@@ -1109,6 +1116,12 @@ public class Domain extends BaseObject {
     @VsoProperty(displayName = "ExternalAppServices", readOnly = true)   
     public ExternalAppServicesFetcher getExternalAppServices() {
         return externalAppServices;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FirewallAcls", readOnly = true)   
+    public FirewallAclsFetcher getFirewallAcls() {
+        return firewallAcls;
     }
     
     @JsonIgnore

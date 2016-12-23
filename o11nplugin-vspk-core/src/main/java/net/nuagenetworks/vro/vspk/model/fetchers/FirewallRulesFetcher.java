@@ -27,16 +27,10 @@
 
 package net.nuagenetworks.vro.vspk.model.fetchers;
 
-import net.nuagenetworks.vro.vspk.model.Domain;
+import net.nuagenetworks.vro.vspk.model.FirewallRule;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.FirewallAcl;
-
-import net.nuagenetworks.vro.vspk.model.Domain;
-
-import net.nuagenetworks.vro.vspk.model.Me;
-
-import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
@@ -48,14 +42,14 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.DOMAINS_FETCHER, datasource = Constants.DATASOURCE, image = Constants.FOLDER_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.DOMAINS, type = Constants.DOMAIN) })
+@VsoFinder(name = Constants.FIREWALLRULES_FETCHER, datasource = Constants.DATASOURCE, image = Constants.FOLDER_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.FIREWALLRULES, type = Constants.FIREWALLRULE) })
 @VsoObject(create = false, strict = true)
-public class DomainsFetcher extends BaseFetcher<Domain> {
+public class FirewallRulesFetcher extends BaseFetcher<FirewallRule> {
     private static final long serialVersionUID = 1L;
 
-    public DomainsFetcher(RestObject parentRestObj) {
-        super(parentRestObj, Domain.class);
+    public FirewallRulesFetcher(RestObject parentRestObj) {
+        super(parentRestObj, FirewallRule.class);
     }
 
     @VsoProperty(displayName = "Id", readOnly = true)
@@ -65,7 +59,7 @@ public class DomainsFetcher extends BaseFetcher<Domain> {
 
     @VsoProperty(displayName = "Name", readOnly = true)
     public String getName() {
-        return "Domains";
+        return "FirewallRules";
     }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -82,36 +76,6 @@ public class DomainsFetcher extends BaseFetcher<Domain> {
         return null;
     }
     
-    @VsoProperty(displayName = "Domain", readOnly = true)
-    public Domain getDomain() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Domain) {
-            return (Domain) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Me", readOnly = true)
-    public Me getMe() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Me) {
-            return (Me) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
-    public DomainTemplate getDomainTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof DomainTemplate) {
-            return (DomainTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Enterprise", readOnly = true)
     public Enterprise getEnterprise() {
         RestObject obj = super.getParentRestObj();
@@ -122,19 +86,19 @@ public class DomainsFetcher extends BaseFetcher<Domain> {
         return null;
     }
     @VsoMethod
-    public java.util.List<Domain> fetch(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
+    public java.util.List<FirewallRule> fetch(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         return super.fetch(session, filter, orderBy, groupBy, page, pageSize, queryParameters, commit);
     }
 
     @VsoMethod
-    public java.util.List<Domain> get(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
+    public java.util.List<FirewallRule> get(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         return super.get(session, filter, orderBy, groupBy, page, pageSize, queryParameters, commit);
     }
 
     @VsoMethod
-    public Domain getFirst(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
+    public FirewallRule getFirst(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         return super.getFirst(session, filter, orderBy, groupBy, page, pageSize, queryParameters, commit);
     }

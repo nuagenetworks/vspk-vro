@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Add FirewallRule to Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ef77a1a9-3606-500e-9a15-a7c17d0ad00d</entry>
+</properties>

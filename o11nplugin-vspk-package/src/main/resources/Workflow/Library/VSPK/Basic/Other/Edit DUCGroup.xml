@@ -6,6 +6,9 @@
 <input><param name='dUCGroupObj' type='VSPK:DUCGroup' >
 </param>
 
+<param name='description' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -16,6 +19,11 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = dUCGroupObj.session;
 
+if (description) {
+   dUCGroupObj.description = description;
+} else if (dUCGroupObj.description) {
+   dUCGroupObj.description = "";
+}
 if (name) {
    dUCGroupObj.name = name;
 } else if (dUCGroupObj.name) {
@@ -24,6 +32,8 @@ if (name) {
 dUCGroupObj.save(session, 1);]]></script>
 <in-binding><bind name='dUCGroupObj' type='VSPK:DUCGroup' export-name="dUCGroupObj" ></bind>
 
+<bind name='description' type='string' export-name="description" ></bind>
+
 <bind name='name' type='string' export-name="name" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +41,9 @@ dUCGroupObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="dUCGroupObj"><desc><![CDATA[dUCGroupObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dUCGroupObj.description]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dUCGroupObj.name]]></p-qual></p-param>

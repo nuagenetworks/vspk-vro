@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='meObj' type='VSPK:Me' >
 </param>
+<param name='description' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='dUCGroupObj' type='VSPK:DUCGroup' >
@@ -17,6 +19,9 @@
 <script encoded='false'><![CDATA[var session = meObj.session;
 
 dUCGroupObj = new VSPKDUCGroup();
+if (description) {
+   dUCGroupObj.description = description;
+}
 if (name) {
    dUCGroupObj.name = name;
 }
@@ -24,6 +29,7 @@ if (name) {
 meObj.createDUCGroup(session, dUCGroupObj);
 ]]></script>
 <in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='dUCGroupObj' type='VSPK:DUCGroup' export-name="dUCGroupObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +37,8 @@ meObj.createDUCGroup(session, dUCGroupObj);
 <presentation>
 <p-param name="meObj"><desc><![CDATA[meObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>
 </presentation></workflow>

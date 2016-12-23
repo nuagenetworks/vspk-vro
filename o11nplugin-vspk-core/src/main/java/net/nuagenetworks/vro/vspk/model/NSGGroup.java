@@ -56,11 +56,8 @@ public class NSGGroup extends BaseObject {
     @JsonProperty(value = "associatedNSGs")
     protected java.util.List<String> associatedNSGs;
     
-    @JsonProperty(value = "description ")
-    protected String description ;
-    
-    @JsonProperty(value = "id")
-    protected String id;
+    @JsonProperty(value = "description")
+    protected String description;
     
     @JsonProperty(value = "name")
     protected String name;
@@ -84,7 +81,12 @@ public class NSGGroup extends BaseObject {
     }@VsoProperty(displayName = "RestName", readOnly = true)
     public String getRestName() {
         return super.getRestName();
-    }@VsoProperty(displayName = "ParentId", readOnly = false)
+    }
+    @VsoProperty(displayName = "Id", readOnly = false)
+    public String getId() {
+        return super.getId();
+    }
+    @VsoProperty(displayName = "ParentId", readOnly = false)
     public String getParentId() {
         return super.getParentId();
     }
@@ -120,25 +122,14 @@ public class NSGGroup extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Description ", readOnly = false)   
-    public String getDescription () {
-       return description ;
+    @VsoProperty(displayName = "Description", readOnly = false)   
+    public String getDescription() {
+       return description;
     }
 
     @JsonIgnore
-    public void setDescription (String value) { 
-        this.description  = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Id", readOnly = false)   
-    public String getId() {
-       return id;
-    }
-
-    @JsonIgnore
-    public void setId(String value) { 
-        this.id = value;
+    public void setDescription(String value) { 
+        this.description = value;
     }
     
     @JsonIgnore
@@ -201,7 +192,7 @@ public class NSGGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.DUCGROUPBINDINGS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGGroup [" + "associatedNSGs=" + associatedNSGs + ", description =" + description  + ", id=" + id + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGGroup [" + "associatedNSGs=" + associatedNSGs + ", description=" + description + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

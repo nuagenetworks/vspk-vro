@@ -49,17 +49,14 @@ public class DUCGroup extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "Description ")
-    protected String Description ;
-    
     @JsonProperty(value = "associatedDUCs")
     protected java.util.List<String> associatedDUCs;
     
     @JsonProperty(value = "associatedPerformanceMonitorID")
     protected String associatedPerformanceMonitorID;
     
-    @JsonProperty(value = "id")
-    protected String id;
+    @JsonProperty(value = "description")
+    protected String description;
     
     @JsonProperty(value = "name")
     protected String name;
@@ -78,7 +75,12 @@ public class DUCGroup extends BaseObject {
     }@VsoProperty(displayName = "RestName", readOnly = true)
     public String getRestName() {
         return super.getRestName();
-    }@VsoProperty(displayName = "ParentId", readOnly = false)
+    }
+    @VsoProperty(displayName = "Id", readOnly = false)
+    public String getId() {
+        return super.getId();
+    }
+    @VsoProperty(displayName = "ParentId", readOnly = false)
     public String getParentId() {
         return super.getParentId();
     }
@@ -103,17 +105,6 @@ public class DUCGroup extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "Description ", readOnly = false)   
-    public String getDescription () {
-       return Description ;
-    }
-
-    @JsonIgnore
-    public void setDescription (String value) { 
-        this.Description  = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "AssociatedDUCs", readOnly = false)   
     public java.util.List<String> getAssociatedDUCs() {
        return associatedDUCs;
@@ -136,14 +127,14 @@ public class DUCGroup extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Id", readOnly = false)   
-    public String getId() {
-       return id;
+    @VsoProperty(displayName = "Description", readOnly = false)   
+    public String getDescription() {
+       return description;
     }
 
     @JsonIgnore
-    public void setId(String value) { 
-        this.id = value;
+    public void setDescription(String value) { 
+        this.description = value;
     }
     
     @JsonIgnore
@@ -192,7 +183,7 @@ public class DUCGroup extends BaseObject {
         }
     }
     public String toString() {
-        return "DUCGroup [" + "Description =" + Description  + ", associatedDUCs=" + associatedDUCs + ", associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", id=" + id + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DUCGroup [" + "associatedDUCs=" + associatedDUCs + ", associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

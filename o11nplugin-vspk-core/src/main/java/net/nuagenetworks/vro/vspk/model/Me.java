@@ -295,6 +295,9 @@ public class Me extends BaseRootObject {
     @JsonProperty(value = "firstName")
     protected String firstName;
     
+    @JsonProperty(value = "flowCollectionEnabled")
+    protected Boolean flowCollectionEnabled;
+    
     @JsonProperty(value = "lastName")
     protected String lastName;
     
@@ -309,6 +312,9 @@ public class Me extends BaseRootObject {
     
     @JsonProperty(value = "role")
     protected String role;
+    
+    @JsonProperty(value = "statisticsEnabled")
+    protected Boolean statisticsEnabled;
     
     @JsonProperty(value = "userName")
     protected String userName;
@@ -827,6 +833,17 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FlowCollectionEnabled", readOnly = false)   
+    public Boolean getFlowCollectionEnabled() {
+       return flowCollectionEnabled;
+    }
+
+    @JsonIgnore
+    public void setFlowCollectionEnabled(Boolean value) { 
+        this.flowCollectionEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LastName", readOnly = false)   
     public String getLastName() {
        return lastName;
@@ -879,6 +896,17 @@ public class Me extends BaseRootObject {
     @JsonIgnore
     public void setRole(String value) { 
         this.role = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "StatisticsEnabled", readOnly = false)   
+    public Boolean getStatisticsEnabled() {
+       return statisticsEnabled;
+    }
+
+    @JsonIgnore
+    public void setStatisticsEnabled(Boolean value) { 
+        this.statisticsEnabled = value;
     }
     
     @JsonIgnore
@@ -1659,7 +1687,7 @@ public class Me extends BaseRootObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Me [" + "avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchUIAddress=" + elasticSearchUIAddress + ", email=" + email + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Me [" + "avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchUIAddress=" + elasticSearchUIAddress + ", email=" + email + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + ", apiKey=" + apiKey  + "]";
     }
 }

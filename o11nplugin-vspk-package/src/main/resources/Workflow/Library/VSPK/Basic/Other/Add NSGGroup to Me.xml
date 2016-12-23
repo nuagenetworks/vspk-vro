@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='meObj' type='VSPK:Me' >
 </param>
+<param name='description' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='nSGGroupObj' type='VSPK:NSGGroup' >
@@ -17,6 +19,9 @@
 <script encoded='false'><![CDATA[var session = meObj.session;
 
 nSGGroupObj = new VSPKNSGGroup();
+if (description) {
+   nSGGroupObj.description = description;
+}
 if (name) {
    nSGGroupObj.name = name;
 }
@@ -24,6 +29,7 @@ if (name) {
 meObj.createNSGGroup(session, nSGGroupObj);
 ]]></script>
 <in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='nSGGroupObj' type='VSPK:NSGGroup' export-name="nSGGroupObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +37,8 @@ meObj.createNSGGroup(session, nSGGroupObj);
 <presentation>
 <p-param name="meObj"><desc><![CDATA[meObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>
 </presentation></workflow>

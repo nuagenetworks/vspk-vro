@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Job;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
+
 import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
 
 import net.nuagenetworks.vro.vspk.model.RedirectionTargetTemplate;
@@ -50,13 +52,9 @@ import net.nuagenetworks.vro.vspk.model.HSC;
 
 import net.nuagenetworks.vro.vspk.model.ZFBRequest;
 
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
-
 import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
 
 import net.nuagenetworks.vro.vspk.model.VCenterCluster;
-
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
@@ -79,6 +77,8 @@ import net.nuagenetworks.vro.vspk.model.VSC;
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.EgressACLTemplate;
+
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
 
 import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 
@@ -118,6 +118,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
+    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressAdvFwdEntryTemplate) {
+            return (IngressAdvFwdEntryTemplate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "PolicyGroupTemplate", readOnly = true)
     public PolicyGroupTemplate getPolicyGroupTemplate() {
         RestObject obj = super.getParentRestObj();
@@ -218,16 +228,6 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
-    @VsoProperty(displayName = "IngressAdvFwdTemplate", readOnly = true)
-    public IngressAdvFwdTemplate getIngressAdvFwdTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdTemplate) {
-            return (IngressAdvFwdTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "VCenterHypervisor", readOnly = true)
     public VCenterHypervisor getVCenterHypervisor() {
         RestObject obj = super.getParentRestObj();
@@ -243,16 +243,6 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenterCluster) {
             return (VCenterCluster) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
-    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdEntryTemplate) {
-            return (IngressAdvFwdEntryTemplate) obj;
         }
         
         return null;
@@ -363,6 +353,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof EgressACLTemplate) {
             return (EgressACLTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressAdvFwdTemplate", readOnly = true)
+    public IngressAdvFwdTemplate getIngressAdvFwdTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressAdvFwdTemplate) {
+            return (IngressAdvFwdTemplate) obj;
         }
         
         return null;

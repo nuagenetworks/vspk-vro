@@ -36,7 +36,7 @@ import net.nuagenetworks.vro.vspk.model.GroupKeyEncryptionProfile;
 
 import net.nuagenetworks.vro.vspk.model.QOS;
 
-import net.nuagenetworks.vro.vspk.model.Infrastructureaccessprofile;
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.BGPPeer;
 
@@ -100,8 +100,6 @@ import net.nuagenetworks.vro.vspk.model.EgressACLEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
 
-import net.nuagenetworks.vro.vspk.model.VSDComponent;
-
 import net.nuagenetworks.vro.vspk.model.Avatar;
 
 import net.nuagenetworks.vro.vspk.model.BootstrapActivation;
@@ -152,11 +150,11 @@ import net.nuagenetworks.vro.vspk.model.VLAN;
 
 import net.nuagenetworks.vro.vspk.model.LDAPConfiguration;
 
-import net.nuagenetworks.vro.vspk.model.EnterprisePermission;
+import net.nuagenetworks.vro.vspk.model.VSDComponent;
 
 import net.nuagenetworks.vro.vspk.model.ZFBRequest;
 
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
+import net.nuagenetworks.vro.vspk.model.EnterprisePermission;
 
 import net.nuagenetworks.vro.vspk.model.StaticRoute;
 
@@ -184,7 +182,7 @@ import net.nuagenetworks.vro.vspk.model.MultiCastRange;
 
 import net.nuagenetworks.vro.vspk.model.NetworkMacroGroup;
 
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
+import net.nuagenetworks.vro.vspk.model.Infrastructureaccessprofile;
 
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
@@ -298,6 +296,8 @@ import net.nuagenetworks.vro.vspk.model.ExternalService;
 
 import net.nuagenetworks.vro.vspk.model.KeyServerMonitorSEK;
 
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
+
 import net.nuagenetworks.vro.vspk.model.VPortMirror;
 
 import net.nuagenetworks.vro.vspk.model.PATNATPool;
@@ -406,11 +406,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "Infrastructureaccessprofile", readOnly = true)
-    public Infrastructureaccessprofile getInfrastructureaccessprofile() {
+    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
+    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Infrastructureaccessprofile) {
-            return (Infrastructureaccessprofile) obj;
+        if (obj instanceof IngressAdvFwdEntryTemplate) {
+            return (IngressAdvFwdEntryTemplate) obj;
         }
         
         return null;
@@ -726,16 +726,6 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "VSDComponent", readOnly = true)
-    public VSDComponent getVSDComponent() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSDComponent) {
-            return (VSDComponent) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Avatar", readOnly = true)
     public Avatar getAvatar() {
         RestObject obj = super.getParentRestObj();
@@ -986,11 +976,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "EnterprisePermission", readOnly = true)
-    public EnterprisePermission getEnterprisePermission() {
+    @VsoProperty(displayName = "VSDComponent", readOnly = true)
+    public VSDComponent getVSDComponent() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof EnterprisePermission) {
-            return (EnterprisePermission) obj;
+        if (obj instanceof VSDComponent) {
+            return (VSDComponent) obj;
         }
         
         return null;
@@ -1006,11 +996,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "IngressAdvFwdTemplate", readOnly = true)
-    public IngressAdvFwdTemplate getIngressAdvFwdTemplate() {
+    @VsoProperty(displayName = "EnterprisePermission", readOnly = true)
+    public EnterprisePermission getEnterprisePermission() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdTemplate) {
-            return (IngressAdvFwdTemplate) obj;
+        if (obj instanceof EnterprisePermission) {
+            return (EnterprisePermission) obj;
         }
         
         return null;
@@ -1146,11 +1136,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
-    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
+    @VsoProperty(displayName = "Infrastructureaccessprofile", readOnly = true)
+    public Infrastructureaccessprofile getInfrastructureaccessprofile() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdEntryTemplate) {
-            return (IngressAdvFwdEntryTemplate) obj;
+        if (obj instanceof Infrastructureaccessprofile) {
+            return (Infrastructureaccessprofile) obj;
         }
         
         return null;
@@ -1711,6 +1701,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof KeyServerMonitorSEK) {
             return (KeyServerMonitorSEK) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressAdvFwdTemplate", readOnly = true)
+    public IngressAdvFwdTemplate getIngressAdvFwdTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressAdvFwdTemplate) {
+            return (IngressAdvFwdTemplate) obj;
         }
         
         return null;

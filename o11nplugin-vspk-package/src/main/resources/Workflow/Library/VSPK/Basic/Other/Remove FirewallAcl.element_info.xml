@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Remove FirewallAcl</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b245a6ca-1adb-5dd9-853a-d6ba0d50fec5</entry>
+</properties>
