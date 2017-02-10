@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum BRConnectionAdvertisementCriteria {
 
-    GATEWAY_PING("GATEWAY_PING", "GATEWAY_PING"), LINK_BASED("LINK_BASED", "LINK_BASED"), OPENFLOW("OPENFLOW", "OPENFLOW");
+    FATE_SHARING("FATE_SHARING", "FATE_SHARING"), GATEWAY_PING("GATEWAY_PING", "GATEWAY_PING"), LINK_BASED("LINK_BASED", "LINK_BASED"), OPENFLOW("OPENFLOW", "OPENFLOW");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum BRConnectionAdvertisementCriteria {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "FATE_SHARING", readOnly = true)
+    public BRConnectionAdvertisementCriteria getFATE_SHARING() {
+        return FATE_SHARING;
+    }
     
     @VsoProperty(displayName = "GATEWAY_PING", readOnly = true)
     public BRConnectionAdvertisementCriteria getGATEWAY_PING() {

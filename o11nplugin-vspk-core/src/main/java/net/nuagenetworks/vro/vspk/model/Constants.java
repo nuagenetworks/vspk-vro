@@ -224,8 +224,8 @@ public interface Constants extends BaseConstants {
     String MULTICASTRANGES = "MultiCastRanges";
     String NETWORKMACROGROUP = "NetworkMacroGroup";
     String NETWORKMACROGROUPS = "NetworkMacroGroups";
-    String INFRASTRUCTUREACCESSPROFILE = "Infrastructureaccessprofile";
-    String INFRASTRUCTUREACCESSPROFILES = "Infrastructureaccessprofiles";
+    String INFRASTRUCTUREACCESSPROFILE = "InfrastructureAccessProfile";
+    String INFRASTRUCTUREACCESSPROFILES = "InfrastructureAccessProfiles";
     String APPLICATIONBINDING = "ApplicationBinding";
     String APPLICATIONBINDINGS = "ApplicationBindings";
     String AUTODISCOVEREDGATEWAY = "AutoDiscoveredGateway";
@@ -260,6 +260,10 @@ public interface Constants extends BaseConstants {
     String CERTIFICATES = "Certificates";
     String VCENTERDATACENTER = "VCenterDataCenter";
     String VCENTERDATACENTERS = "VCenterDataCenters";
+    String CUSTOMPROPERTY = "CustomProperty";
+    String CUSTOMPROPERTIES = "CustomProperties";
+    String LTESTATISTICS = "Ltestatistics";
+    
     String L2DOMAINTEMPLATE = "L2DomainTemplate";
     String L2DOMAINTEMPLATES = "L2DomainTemplates";
     String VRSREDEPLOYMENTPOLICY = "VRSRedeploymentpolicy";
@@ -522,7 +526,7 @@ public interface Constants extends BaseConstants {
     String VCENTERCLUSTERS_FETCHER = "VCenterClustersFetcher";
     String MULTICASTRANGES_FETCHER = "MultiCastRangesFetcher";
     String NETWORKMACROGROUPS_FETCHER = "NetworkMacroGroupsFetcher";
-    String INFRASTRUCTUREACCESSPROFILES_FETCHER = "InfrastructureaccessprofilesFetcher";
+    String INFRASTRUCTUREACCESSPROFILES_FETCHER = "InfrastructureAccessProfilesFetcher";
     String APPLICATIONBINDINGS_FETCHER = "ApplicationBindingsFetcher";
     String AUTODISCOVEREDGATEWAYS_FETCHER = "AutoDiscoveredGatewaysFetcher";
     String MULTICASTLISTS_FETCHER = "MultiCastListsFetcher";
@@ -540,6 +544,8 @@ public interface Constants extends BaseConstants {
     String SSHKEYS_FETCHER = "SSHKeysFetcher";
     String CERTIFICATES_FETCHER = "CertificatesFetcher";
     String VCENTERDATACENTERS_FETCHER = "VCenterDataCentersFetcher";
+    String CUSTOMPROPERTIES_FETCHER = "CustomPropertiesFetcher";
+    String LTESTATISTICS_FETCHER = "LtestatisticsFetcher";
     String L2DOMAINTEMPLATES_FETCHER = "L2DomainTemplatesFetcher";
     String VRSREDEPLOYMENTPOLICIES_FETCHER = "VRSRedeploymentpoliciesFetcher";
     String APPLICATIONSERVICES_FETCHER = "ApplicationServicesFetcher";
@@ -858,6 +864,7 @@ public interface Constants extends BaseConstants {
     
     String STATISTICSPOLICY_ENTITYSCOPE_ENUM = "StatisticsPolicyEntityScope";
     
+    String SUBNET_DHCPRELAYSTATUS_ENUM = "SubnetDHCPRelayStatus";
     String SUBNET_DPI_ENUM = "SubnetDPI";
     String SUBNET_IPTYPE_ENUM = "SubnetIPType";
     String SUBNET_PATENABLED_ENUM = "SubnetPATEnabled";
@@ -973,9 +980,9 @@ public interface Constants extends BaseConstants {
     
     String NETWORKMACROGROUP_ENTITYSCOPE_ENUM = "NetworkMacroGroupEntityScope";
     
-    String INFRASTRUCTUREACCESSPROFILE_SSHAUTHMODE_ENUM = "InfrastructureaccessprofileSSHAuthMode";
-    String INFRASTRUCTUREACCESSPROFILE_ENTITYSCOPE_ENUM = "InfrastructureaccessprofileEntityScope";
-    String INFRASTRUCTUREACCESSPROFILE_SOURCEIPFILTER_ENUM = "InfrastructureaccessprofileSourceIPFilter";
+    String INFRASTRUCTUREACCESSPROFILE_SSHAUTHMODE_ENUM = "InfrastructureAccessProfileSSHAuthMode";
+    String INFRASTRUCTUREACCESSPROFILE_ENTITYSCOPE_ENUM = "InfrastructureAccessProfileEntityScope";
+    String INFRASTRUCTUREACCESSPROFILE_SOURCEIPFILTER_ENUM = "InfrastructureAccessProfileSourceIPFilter";
     
     
     String AUTODISCOVEREDGATEWAY_ENTITYSCOPE_ENUM = "AutoDiscoveredGatewayEntityScope";
@@ -1020,6 +1027,8 @@ public interface Constants extends BaseConstants {
     
     String VCENTERDATACENTER_DESTINATIONMIRRORPORT_ENUM = "VCenterDataCenterDestinationMirrorPort";
     String VCENTERDATACENTER_ENTITYSCOPE_ENUM = "VCenterDataCenterEntityScope";
+    
+    
     
     String L2DOMAINTEMPLATE_DPI_ENUM = "L2DomainTemplateDPI";
     String L2DOMAINTEMPLATE_IPTYPE_ENUM = "L2DomainTemplateIPType";
@@ -1170,6 +1179,7 @@ public interface Constants extends BaseConstants {
     
     String UPLINKCONNECTION_ADDRESS_ENUM = "UplinkConnectionAddress";
     String UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM = "UplinkConnectionAdvertisementCriteria";
+    String UPLINKCONNECTION_INTERFACECONNECTIONTYPE_ENUM = "UplinkConnectionInterfaceConnectionType";
     String UPLINKCONNECTION_MODE_ENUM = "UplinkConnectionMode";
     String UPLINKCONNECTION_ROLE_ENUM = "UplinkConnectionRole";
     
@@ -1433,6 +1443,8 @@ public interface Constants extends BaseConstants {
     String SSHKEY_IMAGE_FILENAME = "images/icon-sshkey.png";
     String CERTIFICATE_IMAGE_FILENAME = "images/icon-certificate.png";
     String VCENTERDATACENTER_IMAGE_FILENAME = "images/icon-vcenterdatacenter.png";
+    String CUSTOMPROPERTY_IMAGE_FILENAME = "images/icon-customproperty.png";
+    String LTESTATISTICS_IMAGE_FILENAME = "images/icon-ltestatistics.png";
     String L2DOMAINTEMPLATE_IMAGE_FILENAME = "images/icon-l2domaintemplate.png";
     String VRSREDEPLOYMENTPOLICY_IMAGE_FILENAME = "images/icon-vrsredeploymentpolicy.png";
     String APPLICATIONSERVICE_IMAGE_FILENAME = "images/icon-applicationservice.png";
@@ -1631,6 +1643,8 @@ public interface Constants extends BaseConstants {
     String SSHKEY_ENTITY_TYPE = "sshkey";
     String CERTIFICATE_ENTITY_TYPE = "certificate";
     String VCENTERDATACENTER_ENTITY_TYPE = "vcenterdatacenter";
+    String CUSTOMPROPERTY_ENTITY_TYPE = "customproperty";
+    String LTESTATISTICS_ENTITY_TYPE = "ltestatistics";
     String L2DOMAINTEMPLATE_ENTITY_TYPE = "l2domaintemplate";
     String VRSREDEPLOYMENTPOLICY_ENTITY_TYPE = "vrsredeploymentpolicy";
     String APPLICATIONSERVICE_ENTITY_TYPE = "applicationservice";

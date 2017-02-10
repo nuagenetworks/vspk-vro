@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.INFRASTRUCTUREACCESSPROFILE_SSHAUTHMODE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.INFRASTRUCTUREACCESSPROFILE_SOURCEIPFILTER_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum InfrastructureaccessprofileSSHAuthMode {
+public enum InfrastructureAccessProfileSourceIPFilter {
 
-    KEY_BASED("KEY_BASED", "KEY_BASED"), PASSWORD_AND_KEY_BASED("PASSWORD_AND_KEY_BASED", "PASSWORD_AND_KEY_BASED"), PASSWORD_BASED("PASSWORD_BASED", "PASSWORD_BASED");
+    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
 
     private final String id;
     private final String name;
    
-    InfrastructureaccessprofileSSHAuthMode(String id, String name) {
+    InfrastructureAccessProfileSourceIPFilter(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,24 +58,19 @@ public enum InfrastructureaccessprofileSSHAuthMode {
     }
 
     
-    @VsoProperty(displayName = "KEY_BASED", readOnly = true)
-    public InfrastructureaccessprofileSSHAuthMode getKEY_BASED() {
-        return KEY_BASED;
+    @VsoProperty(displayName = "DISABLED", readOnly = true)
+    public InfrastructureAccessProfileSourceIPFilter getDISABLED() {
+        return DISABLED;
     }
     
-    @VsoProperty(displayName = "PASSWORD_AND_KEY_BASED", readOnly = true)
-    public InfrastructureaccessprofileSSHAuthMode getPASSWORD_AND_KEY_BASED() {
-        return PASSWORD_AND_KEY_BASED;
-    }
-    
-    @VsoProperty(displayName = "PASSWORD_BASED", readOnly = true)
-    public InfrastructureaccessprofileSSHAuthMode getPASSWORD_BASED() {
-        return PASSWORD_BASED;
+    @VsoProperty(displayName = "ENABLED", readOnly = true)
+    public InfrastructureAccessProfileSourceIPFilter getENABLED() {
+        return ENABLED;
     }
     
 
-    public static InfrastructureaccessprofileSSHAuthMode getEnumById(String id) {
-        for (InfrastructureaccessprofileSSHAuthMode item : values()) {
+    public static InfrastructureAccessProfileSourceIPFilter getEnumById(String id) {
+        for (InfrastructureAccessProfileSourceIPFilter item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

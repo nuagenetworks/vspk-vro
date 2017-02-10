@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum DomainDHCPBehavior {
 
-    CONSUME("CONSUME", "CONSUME"), FLOOD("FLOOD", "FLOOD"), RELAY("RELAY", "RELAY");
+    CONSUME("CONSUME", "CONSUME"), FLOOD("FLOOD", "FLOOD"), OVERLAY_RELAY("OVERLAY_RELAY", "OVERLAY_RELAY"), UNDERLAY_RELAY("UNDERLAY_RELAY", "UNDERLAY_RELAY");
 
     private final String id;
     private final String name;
@@ -68,9 +68,14 @@ public enum DomainDHCPBehavior {
         return FLOOD;
     }
     
-    @VsoProperty(displayName = "RELAY", readOnly = true)
-    public DomainDHCPBehavior getRELAY() {
-        return RELAY;
+    @VsoProperty(displayName = "OVERLAY_RELAY", readOnly = true)
+    public DomainDHCPBehavior getOVERLAY_RELAY() {
+        return OVERLAY_RELAY;
+    }
+    
+    @VsoProperty(displayName = "UNDERLAY_RELAY", readOnly = true)
+    public DomainDHCPBehavior getUNDERLAY_RELAY() {
+        return UNDERLAY_RELAY;
     }
     
 

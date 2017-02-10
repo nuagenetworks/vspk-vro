@@ -182,7 +182,7 @@ import net.nuagenetworks.vro.vspk.model.MultiCastRange;
 
 import net.nuagenetworks.vro.vspk.model.NetworkMacroGroup;
 
-import net.nuagenetworks.vro.vspk.model.Infrastructureaccessprofile;
+import net.nuagenetworks.vro.vspk.model.InfrastructureAccessProfile;
 
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
@@ -211,6 +211,8 @@ import net.nuagenetworks.vro.vspk.model.NSPortTemplate;
 import net.nuagenetworks.vro.vspk.model.Certificate;
 
 import net.nuagenetworks.vro.vspk.model.VCenterDataCenter;
+
+import net.nuagenetworks.vro.vspk.model.Ltestatistics;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
@@ -1136,11 +1138,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "Infrastructureaccessprofile", readOnly = true)
-    public Infrastructureaccessprofile getInfrastructureaccessprofile() {
+    @VsoProperty(displayName = "InfrastructureAccessProfile", readOnly = true)
+    public InfrastructureAccessProfile getInfrastructureAccessProfile() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Infrastructureaccessprofile) {
-            return (Infrastructureaccessprofile) obj;
+        if (obj instanceof InfrastructureAccessProfile) {
+            return (InfrastructureAccessProfile) obj;
         }
         
         return null;
@@ -1281,6 +1283,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenterDataCenter) {
             return (VCenterDataCenter) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Ltestatistics", readOnly = true)
+    public Ltestatistics getLtestatistics() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Ltestatistics) {
+            return (Ltestatistics) obj;
         }
         
         return null;

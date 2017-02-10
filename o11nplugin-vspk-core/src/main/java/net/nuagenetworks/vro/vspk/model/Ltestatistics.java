@@ -29,12 +29,6 @@ package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
-
-import net.nuagenetworks.vro.vspk.model.enums.InfrastructureaccessprofileSSHAuthMode;
-
-import net.nuagenetworks.vro.vspk.model.enums.InfrastructureaccessprofileEntityScope;
-
-import net.nuagenetworks.vro.vspk.model.enums.InfrastructureaccessprofileSourceIPFilter;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -48,46 +42,28 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.INFRASTRUCTUREACCESSPROFILE, datasource = Constants.DATASOURCE, image = Constants.INFRASTRUCTUREACCESSPROFILE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+@VsoFinder(name = Constants.LTESTATISTICS, datasource = Constants.DATASOURCE, image = Constants.LTESTATISTICS_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@RestEntity(restName = "infrastructureaccessprofile", resourceName = "infrastructureaccessprofiles")
-public class Infrastructureaccessprofile extends BaseObject {
+@RestEntity(restName = "ltestatistics", resourceName = "ltestatistics")
+public class Ltestatistics extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "SSHAuthMode")
-    protected InfrastructureaccessprofileSSHAuthMode SSHAuthMode;
+    @JsonProperty(value = "endTime")
+    protected Long endTime;
     
-    @JsonProperty(value = "description")
-    protected String description;
+    @JsonProperty(value = "startTime")
+    protected Long startTime;
     
-    @JsonProperty(value = "enterpriseID")
-    protected String enterpriseID;
+    @JsonProperty(value = "statsData")
+    protected java.util.List<com.fasterxml.jackson.databind.JsonNode> statsData;
     
-    @JsonProperty(value = "entityScope")
-    protected InfrastructureaccessprofileEntityScope entityScope;
-    
-    @JsonProperty(value = "externalID")
-    protected String externalID;
-    
-    @JsonProperty(value = "lastUpdatedBy")
-    protected String lastUpdatedBy;
-    
-    @JsonProperty(value = "name")
-    protected String name;
-    
-    @JsonProperty(value = "password")
-    protected String password;
-    
-    @JsonProperty(value = "sourceIPFilter")
-    protected InfrastructureaccessprofileSourceIPFilter sourceIPFilter;
-    
-    @JsonProperty(value = "userName")
-    protected String userName;
+    @JsonProperty(value = "version")
+    protected Long version;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -96,7 +72,7 @@ public class Infrastructureaccessprofile extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @VsoConstructor
-    public Infrastructureaccessprofile() {
+    public Ltestatistics() {
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
@@ -105,7 +81,12 @@ public class Infrastructureaccessprofile extends BaseObject {
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
         return (Session) super.getSession();
-    }@VsoProperty(displayName = "RestName", readOnly = true)
+    }
+    @VsoProperty(displayName = "Name", readOnly = false)
+    public String getName() {
+        return getId();
+    }
+    @VsoProperty(displayName = "RestName", readOnly = true)
     public String getRestName() {
         return super.getRestName();
     }
@@ -138,113 +119,47 @@ public class Infrastructureaccessprofile extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "SSHAuthMode", readOnly = false)   
-    public InfrastructureaccessprofileSSHAuthMode getSSHAuthMode() {
-       return SSHAuthMode;
+    @VsoProperty(displayName = "EndTime", readOnly = false)   
+    public Long getEndTime() {
+       return endTime;
     }
 
     @JsonIgnore
-    public void setSSHAuthMode(InfrastructureaccessprofileSSHAuthMode value) { 
-        this.SSHAuthMode = value;
+    public void setEndTime(Long value) { 
+        this.endTime = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Description", readOnly = false)   
-    public String getDescription() {
-       return description;
+    @VsoProperty(displayName = "StartTime", readOnly = false)   
+    public Long getStartTime() {
+       return startTime;
     }
 
     @JsonIgnore
-    public void setDescription(String value) { 
-        this.description = value;
+    public void setStartTime(Long value) { 
+        this.startTime = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "EnterpriseID", readOnly = false)   
-    public String getEnterpriseID() {
-       return enterpriseID;
+    @VsoProperty(displayName = "StatsData", readOnly = false)   
+    public java.util.List<com.fasterxml.jackson.databind.JsonNode> getStatsData() {
+       return statsData;
     }
 
     @JsonIgnore
-    public void setEnterpriseID(String value) { 
-        this.enterpriseID = value;
+    public void setStatsData(java.util.List<com.fasterxml.jackson.databind.JsonNode> value) { 
+        this.statsData = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "EntityScope", readOnly = false)   
-    public InfrastructureaccessprofileEntityScope getEntityScope() {
-       return entityScope;
+    @VsoProperty(displayName = "Version", readOnly = false)   
+    public Long getVersion() {
+       return version;
     }
 
     @JsonIgnore
-    public void setEntityScope(InfrastructureaccessprofileEntityScope value) { 
-        this.entityScope = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "ExternalID", readOnly = false)   
-    public String getExternalID() {
-       return externalID;
-    }
-
-    @JsonIgnore
-    public void setExternalID(String value) { 
-        this.externalID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
-    public String getLastUpdatedBy() {
-       return lastUpdatedBy;
-    }
-
-    @JsonIgnore
-    public void setLastUpdatedBy(String value) { 
-        this.lastUpdatedBy = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Name", readOnly = false)   
-    public String getName() {
-       return name;
-    }
-
-    @JsonIgnore
-    public void setName(String value) { 
-        this.name = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Password", readOnly = false)   
-    public String getPassword() {
-       return password;
-    }
-
-    @JsonIgnore
-    public void setPassword(String value) { 
-        this.password = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "SourceIPFilter", readOnly = false)   
-    public InfrastructureaccessprofileSourceIPFilter getSourceIPFilter() {
-       return sourceIPFilter;
-    }
-
-    @JsonIgnore
-    public void setSourceIPFilter(InfrastructureaccessprofileSourceIPFilter value) { 
-        this.sourceIPFilter = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "UserName", readOnly = false)   
-    public String getUserName() {
-       return userName;
-    }
-
-    @JsonIgnore
-    public void setUserName(String value) { 
-        this.userName = value;
+    public void setVersion(Long value) { 
+        this.version = value;
     }
     
     @JsonIgnore
@@ -267,7 +182,7 @@ public class Infrastructureaccessprofile extends BaseObject {
     public void save(Session session, Integer responseChoice) throws RestException {
         super.save(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementUpdated(Constants.INFRASTRUCTUREACCESSPROFILE, getId());
+           SessionManager.getInstance().notifyElementUpdated(Constants.LTESTATISTICS, getId());
         }
     }
 
@@ -276,7 +191,7 @@ public class Infrastructureaccessprofile extends BaseObject {
         int responseChoice = (responseChoiceObj != null) ? responseChoiceObj.intValue() : 1;
         super.delete(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementDeleted(Constants.INFRASTRUCTUREACCESSPROFILE, getId());
+           SessionManager.getInstance().notifyElementDeleted(Constants.LTESTATISTICS, getId());
         }
     }
     @VsoMethod
@@ -284,7 +199,7 @@ public class Infrastructureaccessprofile extends BaseObject {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 
-           SessionManager.getInstance().notifyElementUpdated(Constants.INFRASTRUCTUREACCESSPROFILE, getId());
+           SessionManager.getInstance().notifyElementUpdated(Constants.LTESTATISTICS, getId());
         }
     }
     
@@ -304,7 +219,7 @@ public class Infrastructureaccessprofile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Infrastructureaccessprofile [" + "SSHAuthMode=" + SSHAuthMode + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", password=" + password + ", sourceIPFilter=" + sourceIPFilter + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Ltestatistics [" + "endTime=" + endTime + ", startTime=" + startTime + ", statsData=" + statsData + ", version=" + version + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

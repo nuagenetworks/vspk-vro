@@ -100,6 +100,9 @@ public class InfrastructureGatewayProfile extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
+    @JsonProperty(value = "flowEvictionThreshold")
+    protected Long flowEvictionThreshold;
+    
     @JsonProperty(value = "forceImmediateSystemSync")
     protected Boolean forceImmediateSystemSync;
     
@@ -111,6 +114,9 @@ public class InfrastructureGatewayProfile extends BaseObject {
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "openFlowAuditTimer")
+    protected Long openFlowAuditTimer;
     
     @JsonProperty(value = "proxyDNSName")
     protected String proxyDNSName;
@@ -340,6 +346,17 @@ public class InfrastructureGatewayProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FlowEvictionThreshold", readOnly = false)   
+    public Long getFlowEvictionThreshold() {
+       return flowEvictionThreshold;
+    }
+
+    @JsonIgnore
+    public void setFlowEvictionThreshold(Long value) { 
+        this.flowEvictionThreshold = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ForceImmediateSystemSync", readOnly = false)   
     public Boolean getForceImmediateSystemSync() {
        return forceImmediateSystemSync;
@@ -381,6 +398,17 @@ public class InfrastructureGatewayProfile extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "OpenFlowAuditTimer", readOnly = false)   
+    public Long getOpenFlowAuditTimer() {
+       return openFlowAuditTimer;
+    }
+
+    @JsonIgnore
+    public void setOpenFlowAuditTimer(Long value) { 
+        this.openFlowAuditTimer = value;
     }
     
     @JsonIgnore
@@ -528,7 +556,7 @@ public class InfrastructureGatewayProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "InfrastructureGatewayProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", controllerLessDuration=" + controllerLessDuration + ", controllerLessEnabled=" + controllerLessEnabled + ", controllerLessForwardingMode=" + controllerLessForwardingMode + ", controllerLessRemoteDuration=" + controllerLessRemoteDuration + ", datapathSyncTimeout=" + datapathSyncTimeout + ", deadTimer=" + deadTimer + ", deadTimerEnabled=" + deadTimerEnabled + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forceImmediateSystemSync=" + forceImmediateSystemSync + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", proxyDNSName=" + proxyDNSName + ", remoteLogMode=" + remoteLogMode + ", remoteLogServerAddress=" + remoteLogServerAddress + ", remoteLogServerPort=" + remoteLogServerPort + ", statsCollectorPort=" + statsCollectorPort + ", systemSyncScheduler=" + systemSyncScheduler + ", upgradeAction=" + upgradeAction + ", useTwoFactor=" + useTwoFactor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "InfrastructureGatewayProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", controllerLessDuration=" + controllerLessDuration + ", controllerLessEnabled=" + controllerLessEnabled + ", controllerLessForwardingMode=" + controllerLessForwardingMode + ", controllerLessRemoteDuration=" + controllerLessRemoteDuration + ", datapathSyncTimeout=" + datapathSyncTimeout + ", deadTimer=" + deadTimer + ", deadTimerEnabled=" + deadTimerEnabled + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowEvictionThreshold=" + flowEvictionThreshold + ", forceImmediateSystemSync=" + forceImmediateSystemSync + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", openFlowAuditTimer=" + openFlowAuditTimer + ", proxyDNSName=" + proxyDNSName + ", remoteLogMode=" + remoteLogMode + ", remoteLogServerAddress=" + remoteLogServerAddress + ", remoteLogServerPort=" + remoteLogServerPort + ", statsCollectorPort=" + statsCollectorPort + ", systemSyncScheduler=" + systemSyncScheduler + ", upgradeAction=" + upgradeAction + ", useTwoFactor=" + useTwoFactor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

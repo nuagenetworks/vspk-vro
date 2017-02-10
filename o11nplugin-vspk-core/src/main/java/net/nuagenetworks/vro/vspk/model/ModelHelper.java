@@ -5542,7 +5542,7 @@ public class ModelHelper extends BaseModelHelper {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getMetadatasFetcherForInfrastructureaccessprofileId(id)) != null) {
+        if ((fetcher = getMetadatasFetcherForInfrastructureAccessProfileId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -5599,6 +5599,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForVCenterDataCenterId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForLtestatisticsId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -9797,6 +9801,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static LtestatisticsFetcher getLtestatisticsFetcherForVLANId(String id) throws RestException {
+        VLAN obj = getObject(Constants.VLAN, id);
+        if (obj == null) {
+            obj = getVLANById(id);
+        }
+
+        if (obj != null) {
+            LtestatisticsFetcher fetcher = obj.getLtestatistics();
+            return addFetcher(Constants.LTESTATISTICS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static MetadatasFetcher getMetadatasFetcherForVLANId(String id) throws RestException {
         VLAN obj = getObject(Constants.VLAN, id);
         if (obj == null) {
@@ -12645,10 +12663,10 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<NetworkMacroGroupsFetcher> allObjs = new ArrayList<NetworkMacroGroupsFetcher>();
         return allObjs;
     }
-    public static Infrastructureaccessprofile getInfrastructureaccessprofileById(String id) {
+    public static InfrastructureAccessProfile getInfrastructureAccessProfileById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
-            Infrastructureaccessprofile obj = null;
-            obj = new Infrastructureaccessprofile();
+            InfrastructureAccessProfile obj = null;
+            obj = new InfrastructureAccessProfile();
             obj.setId(id);
 
             try {
@@ -12663,10 +12681,10 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
-    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForInfrastructureaccessprofileId(String id) throws RestException {
-        Infrastructureaccessprofile obj = getObject(Constants.INFRASTRUCTUREACCESSPROFILE, id);
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForInfrastructureAccessProfileId(String id) throws RestException {
+        InfrastructureAccessProfile obj = getObject(Constants.INFRASTRUCTUREACCESSPROFILE, id);
         if (obj == null) {
-            obj = getInfrastructureaccessprofileById(id);
+            obj = getInfrastructureAccessProfileById(id);
         }
 
         if (obj != null) {
@@ -12677,10 +12695,10 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static MetadatasFetcher getMetadatasFetcherForInfrastructureaccessprofileId(String id) throws RestException {
-        Infrastructureaccessprofile obj = getObject(Constants.INFRASTRUCTUREACCESSPROFILE, id);
+    public static MetadatasFetcher getMetadatasFetcherForInfrastructureAccessProfileId(String id) throws RestException {
+        InfrastructureAccessProfile obj = getObject(Constants.INFRASTRUCTUREACCESSPROFILE, id);
         if (obj == null) {
-            obj = getInfrastructureaccessprofileById(id);
+            obj = getInfrastructureAccessProfileById(id);
         }
 
         if (obj != null) {
@@ -12690,8 +12708,8 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
-    public static java.util.List<Infrastructureaccessprofile> getInfrastructureaccessprofilesForFetcherId(String id) throws RestException {
-        InfrastructureaccessprofilesFetcher fetcher = getInfrastructureaccessprofilesFetcherById(id);
+    public static java.util.List<InfrastructureAccessProfile> getInfrastructureAccessProfilesForFetcherId(String id) throws RestException {
+        InfrastructureAccessProfilesFetcher fetcher = getInfrastructureAccessProfilesFetcherById(id);
         if (fetcher != null) {
             try {
                 Session session = fetcher.getSession();
@@ -12702,24 +12720,34 @@ public class ModelHelper extends BaseModelHelper {
             }
         }
 
-        return new ArrayList<Infrastructureaccessprofile>();
+        return new ArrayList<InfrastructureAccessProfile>();
     }
 
-    public static InfrastructureaccessprofilesFetcher getInfrastructureaccessprofilesFetcherById(String id) throws RestException {
+    public static InfrastructureAccessProfilesFetcher getInfrastructureAccessProfilesFetcherById(String id) throws RestException {
         BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.INFRASTRUCTUREACCESSPROFILES_FETCHER, id);
         if (fetcher != null) {
-            return (InfrastructureaccessprofilesFetcher) fetcher;
-        }return null;
+            return (InfrastructureAccessProfilesFetcher) fetcher;
+        }
+        if ((fetcher = getInfrastructureAccessProfilesFetcherForMeId(id)) != null) {
+            return (InfrastructureAccessProfilesFetcher) addFetcher(Constants.INFRASTRUCTUREACCESSPROFILES_FETCHER, fetcher);
+        }
+        return null;
     }
 
-    public static java.util.List<Infrastructureaccessprofile> getAllInfrastructureaccessprofiles() throws RestException {
-        java.util.List<Infrastructureaccessprofile> allObjs = new ArrayList<Infrastructureaccessprofile>();
+    public static java.util.List<InfrastructureAccessProfile> getAllInfrastructureAccessProfiles() throws RestException {
+        java.util.List<InfrastructureAccessProfile> allObjs = new ArrayList<InfrastructureAccessProfile>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            InfrastructureAccessProfilesFetcher fetcher = getInfrastructureAccessProfilesFetcherForMeId(session.getId());
+            java.util.List<InfrastructureAccessProfile> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
 
         return allObjs;
     }
 
-    public static java.util.List<InfrastructureaccessprofilesFetcher> getAllInfrastructureaccessprofilesFetchers() throws RestException {
-        java.util.List<InfrastructureaccessprofilesFetcher> allObjs = new ArrayList<InfrastructureaccessprofilesFetcher>();
+    public static java.util.List<InfrastructureAccessProfilesFetcher> getAllInfrastructureAccessProfilesFetchers() throws RestException {
+        java.util.List<InfrastructureAccessProfilesFetcher> allObjs = new ArrayList<InfrastructureAccessProfilesFetcher>();
         return allObjs;
     }
     public static ApplicationBinding getApplicationBindingById(String id) {
@@ -14615,6 +14643,140 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<VCenterDataCentersFetcher> getAllVCenterDataCentersFetchers() throws RestException {
         java.util.List<VCenterDataCentersFetcher> allObjs = new ArrayList<VCenterDataCentersFetcher>();
+        return allObjs;
+    }
+    public static CustomProperty getCustomPropertyById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            CustomProperty obj = null;
+            obj = new CustomProperty();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.CUSTOMPROPERTY, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<CustomProperty> getCustomPropertiesForFetcherId(String id) throws RestException {
+        CustomPropertiesFetcher fetcher = getCustomPropertiesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.CUSTOMPROPERTY);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<CustomProperty>();
+    }
+
+    public static CustomPropertiesFetcher getCustomPropertiesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.CUSTOMPROPERTIES_FETCHER, id);
+        if (fetcher != null) {
+            return (CustomPropertiesFetcher) fetcher;
+        }
+        if ((fetcher = getCustomPropertiesFetcherForUplinkConnectionId(id)) != null) {
+            return (CustomPropertiesFetcher) addFetcher(Constants.CUSTOMPROPERTIES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<CustomProperty> getAllCustomProperties() throws RestException {
+        java.util.List<CustomProperty> allObjs = new ArrayList<CustomProperty>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<CustomPropertiesFetcher> getAllCustomPropertiesFetchers() throws RestException {
+        java.util.List<CustomPropertiesFetcher> allObjs = new ArrayList<CustomPropertiesFetcher>();
+        return allObjs;
+    }
+    public static Ltestatistics getLtestatisticsById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            Ltestatistics obj = null;
+            obj = new Ltestatistics();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.LTESTATISTICS, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForLtestatisticsId(String id) throws RestException {
+        Ltestatistics obj = getObject(Constants.LTESTATISTICS, id);
+        if (obj == null) {
+            obj = getLtestatisticsById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForLtestatisticsId(String id) throws RestException {
+        Ltestatistics obj = getObject(Constants.LTESTATISTICS, id);
+        if (obj == null) {
+            obj = getLtestatisticsById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<Ltestatistics> getLtestatisticsForFetcherId(String id) throws RestException {
+        LtestatisticsFetcher fetcher = getLtestatisticsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.LTESTATISTICS);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<Ltestatistics>();
+    }
+
+    public static LtestatisticsFetcher getLtestatisticsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.LTESTATISTICS_FETCHER, id);
+        if (fetcher != null) {
+            return (LtestatisticsFetcher) fetcher;
+        }
+        if ((fetcher = getLtestatisticsFetcherForVLANId(id)) != null) {
+            return (LtestatisticsFetcher) addFetcher(Constants.LTESTATISTICS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<Ltestatistics> getAllLtestatistics() throws RestException {
+        java.util.List<Ltestatistics> allObjs = new ArrayList<Ltestatistics>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<LtestatisticsFetcher> getAllLtestatisticsFetchers() throws RestException {
+        java.util.List<LtestatisticsFetcher> allObjs = new ArrayList<LtestatisticsFetcher>();
         return allObjs;
     }
     public static L2DomainTemplate getL2DomainTemplateById(String id) {
@@ -17398,6 +17560,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             HostInterfacesFetcher fetcher = obj.getHostInterfaces();
             return addFetcher(Constants.HOSTINTERFACES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static InfrastructureAccessProfilesFetcher getInfrastructureAccessProfilesFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            InfrastructureAccessProfilesFetcher fetcher = obj.getInfrastructureAccessProfiles();
+            return addFetcher(Constants.INFRASTRUCTUREACCESSPROFILES_FETCHER, fetcher);
         }
 
         return null;
@@ -20741,6 +20917,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    public static CustomPropertiesFetcher getCustomPropertiesFetcherForUplinkConnectionId(String id) throws RestException {
+        UplinkConnection obj = getObject(Constants.UPLINKCONNECTION, id);
+        if (obj == null) {
+            obj = getUplinkConnectionById(id);
+        }
+
+        if (obj != null) {
+            CustomPropertiesFetcher fetcher = obj.getCustomProperties();
+            return addFetcher(Constants.CUSTOMPROPERTIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static UnderlaysFetcher getUnderlaysFetcherForUplinkConnectionId(String id) throws RestException {
         UplinkConnection obj = getObject(Constants.UPLINKCONNECTION, id);
         if (obj == null) {
@@ -24756,7 +24946,7 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getGlobalMetadatasFetcherForInfrastructureaccessprofileId(id)) != null) {
+        if ((fetcher = getGlobalMetadatasFetcherForInfrastructureAccessProfileId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
@@ -24813,6 +25003,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getGlobalMetadatasFetcherForVCenterDataCenterId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForLtestatisticsId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         

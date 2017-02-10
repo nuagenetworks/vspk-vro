@@ -71,6 +71,9 @@ public class IngressAdvFwdTemplate extends BaseObject {
     @JsonProperty(value = "associatedLiveEntityID")
     protected String associatedLiveEntityID;
     
+    @JsonProperty(value = "autoGeneratePriority")
+    protected Boolean autoGeneratePriority;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -173,6 +176,17 @@ public class IngressAdvFwdTemplate extends BaseObject {
     @JsonIgnore
     public void setAssociatedLiveEntityID(String value) { 
         this.associatedLiveEntityID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AutoGeneratePriority", readOnly = false)   
+    public Boolean getAutoGeneratePriority() {
+       return autoGeneratePriority;
+    }
+
+    @JsonIgnore
+    public void setAutoGeneratePriority(Boolean value) { 
+        this.autoGeneratePriority = value;
     }
     
     @JsonIgnore
@@ -348,7 +362,7 @@ public class IngressAdvFwdTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IngressAdvFwdTemplate [" + "active=" + active + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IngressAdvFwdTemplate [" + "active=" + active + ", associatedLiveEntityID=" + associatedLiveEntityID + ", autoGeneratePriority=" + autoGeneratePriority + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

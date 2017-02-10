@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.INFRASTRUCTUREACCESSPROFILE_ENTITYSCOPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.SUBNET_DHCPRELAYSTATUS_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum InfrastructureaccessprofileEntityScope {
+public enum SubnetDHCPRelayStatus {
 
-    ENTERPRISE("ENTERPRISE", "ENTERPRISE"), GLOBAL("GLOBAL", "GLOBAL");
+    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
 
     private final String id;
     private final String name;
    
-    InfrastructureaccessprofileEntityScope(String id, String name) {
+    SubnetDHCPRelayStatus(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,19 @@ public enum InfrastructureaccessprofileEntityScope {
     }
 
     
-    @VsoProperty(displayName = "ENTERPRISE", readOnly = true)
-    public InfrastructureaccessprofileEntityScope getENTERPRISE() {
-        return ENTERPRISE;
+    @VsoProperty(displayName = "DISABLED", readOnly = true)
+    public SubnetDHCPRelayStatus getDISABLED() {
+        return DISABLED;
     }
     
-    @VsoProperty(displayName = "GLOBAL", readOnly = true)
-    public InfrastructureaccessprofileEntityScope getGLOBAL() {
-        return GLOBAL;
+    @VsoProperty(displayName = "ENABLED", readOnly = true)
+    public SubnetDHCPRelayStatus getENABLED() {
+        return ENABLED;
     }
     
 
-    public static InfrastructureaccessprofileEntityScope getEnumById(String id) {
-        for (InfrastructureaccessprofileEntityScope item : values()) {
+    public static SubnetDHCPRelayStatus getEnumById(String id) {
+        for (SubnetDHCPRelayStatus item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

@@ -76,6 +76,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.HostInterfacesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.InfrastructureAccessProfilesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.InfrastructureGatewayProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.InfrastructureVscProfilesFetcher;
@@ -212,6 +214,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.GATEWAYTEMPLATES_FETCHER, type = Constants.GATEWAYTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.GLOBALMETADATAS_FETCHER, type = Constants.GLOBALMETADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREACCESSPROFILES_FETCHER, type = Constants.INFRASTRUCTUREACCESSPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREGATEWAYPROFILES_FETCHER, type = Constants.INFRASTRUCTUREGATEWAYPROFILES_FETCHER), 
 
@@ -393,6 +397,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private HostInterfacesFetcher hostInterfaces;
+    
+    @JsonIgnore
+    private InfrastructureAccessProfilesFetcher infrastructureAccessProfiles;
     
     @JsonIgnore
     private InfrastructureGatewayProfilesFetcher infrastructureGatewayProfiles;
@@ -583,6 +590,8 @@ public class Me extends BaseRootObject {
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         hostInterfaces = new HostInterfacesFetcher(this);
+        
+        infrastructureAccessProfiles = new InfrastructureAccessProfilesFetcher(this);
         
         infrastructureGatewayProfiles = new InfrastructureGatewayProfilesFetcher(this);
         
@@ -1071,6 +1080,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "InfrastructureAccessProfiles", readOnly = true)   
+    public InfrastructureAccessProfilesFetcher getInfrastructureAccessProfiles() {
+        return infrastructureAccessProfiles;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "InfrastructureGatewayProfiles", readOnly = true)   
     public InfrastructureGatewayProfilesFetcher getInfrastructureGatewayProfiles() {
         return infrastructureGatewayProfiles;
@@ -1493,6 +1508,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createInfrastructureAccessProfile(Session session, InfrastructureAccessProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INFRASTRUCTUREACCESSPROFILES_FETCHER, getId());
         }
     }
     @VsoMethod

@@ -84,6 +84,14 @@ public class Session extends BaseSession<Me> {
         super.setNotificationsEnabled(notificationsEnabled);
     }
 
+    @VsoProperty(displayName = "useJmsForNotifications")
+    public boolean getUseJmsForNotifications() {
+        return super.getUseJmsForNotifications();
+    }
+    public void setUseJmsForNotifications(boolean useJmsForNotifications) {
+        super.setUseJmsForNotifications(useJmsForNotifications);
+    }
+
     @VsoProperty(displayName = "Id", readOnly = true)
     public String getId() {
         return super.getId();
@@ -703,6 +711,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.VCENTERDATACENTER_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.VCENTERDATACENTERS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.CUSTOMPROPERTY_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.CUSTOMPROPERTIES_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.LTESTATISTICS_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.LTESTATISTICS_FETCHER, entityParentId);
             return;
         }
         
@@ -1685,6 +1703,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.CUSTOMPROPERTY_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.CUSTOMPROPERTY, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.LTESTATISTICS_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.LTESTATISTICS, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.L2DOMAINTEMPLATE_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.L2DOMAINTEMPLATE, entityId);
             return;
@@ -2661,6 +2689,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.VCENTERDATACENTER_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.VCENTERDATACENTER, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.CUSTOMPROPERTY_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.CUSTOMPROPERTY, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.LTESTATISTICS_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.LTESTATISTICS, entityId);
             return;
         }
         

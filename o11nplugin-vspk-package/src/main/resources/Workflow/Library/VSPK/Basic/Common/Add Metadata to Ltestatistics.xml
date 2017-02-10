@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="0c26f7de-1557-5cc0-b860-a1636399aa37"  version="4.0.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
-<display-name><![CDATA[Add Metadata to Infrastructureaccessprofile]]></display-name>
-<ref-types><![CDATA[(VSPK:Infrastructureaccessprofile)]]></ref-types>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="c973150c-0885-5580-a0a8-14d496316ec2"  version="4.0.7" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add Metadata to Ltestatistics]]></display-name>
+<ref-types><![CDATA[(VSPK:Ltestatistics)]]></ref-types>
 <position x='100.0' y='50.0'/>
-<input><param name='infrastructureaccessprofileObj' type='VSPK:Infrastructureaccessprofile' >
+<input><param name='ltestatisticsObj' type='VSPK:Ltestatistics' >
 </param>
 <param name='blob' type='string' >
 </param>
@@ -24,7 +24,7 @@
 </workflow-item>
 <workflow-item name='item1' out-name='item0' type='task' >
 <display-name><![CDATA[Scriptable task]]></display-name>
-<script encoded='false'><![CDATA[var session = infrastructureaccessprofileObj.session;
+<script encoded='false'><![CDATA[var session = ltestatisticsObj.session;
 
 metadataObj = new VSPKMetadata();
 if (blob) {
@@ -42,9 +42,9 @@ if (name) {
 }
 metadataObj.networkNotificationDisabled = networkNotificationDisabled;
 
-infrastructureaccessprofileObj.createMetadata(session, metadataObj);
+ltestatisticsObj.createMetadata(session, metadataObj);
 ]]></script>
-<in-binding><bind name='infrastructureaccessprofileObj' type='VSPK:Infrastructureaccessprofile' export-name="infrastructureaccessprofileObj" ></bind>
+<in-binding><bind name='ltestatisticsObj' type='VSPK:Ltestatistics' export-name="ltestatisticsObj" ></bind>
 <bind name='blob' type='string' export-name="blob" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
@@ -55,7 +55,7 @@ infrastructureaccessprofileObj.createMetadata(session, metadataObj);
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
-<p-param name="infrastructureaccessprofileObj"><desc><![CDATA[infrastructureaccessprofileObj]]></desc>
+<p-param name="ltestatisticsObj"><desc><![CDATA[ltestatisticsObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="blob"><desc><![CDATA[blob]]></desc>
 </p-param>

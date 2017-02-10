@@ -40,6 +40,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IKEGatewayConnectionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.LtestatisticsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
@@ -74,6 +76,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPERMISSIONS_FETCHER, type = Constants.ENTERPRISEPERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.IKEGATEWAYCONNECTIONS_FETCHER, type = Constants.IKEGATEWAYCONNECTIONS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.LTESTATISTICS_FETCHER, type = Constants.LTESTATISTICS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
@@ -168,6 +172,9 @@ public class VLAN extends BaseObject {
     private IKEGatewayConnectionsFetcher iKEGatewayConnections;
     
     @JsonIgnore
+    private LtestatisticsFetcher ltestatistics;
+    
+    @JsonIgnore
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
@@ -194,6 +201,8 @@ public class VLAN extends BaseObject {
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         iKEGatewayConnections = new IKEGatewayConnectionsFetcher(this);
+        
+        ltestatistics = new LtestatisticsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         
@@ -496,6 +505,12 @@ public class VLAN extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Ltestatistics", readOnly = true)   
+    public LtestatisticsFetcher getLtestatistics() {
+        return ltestatistics;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
@@ -595,6 +610,14 @@ public class VLAN extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.IKEGATEWAYCONNECTIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createLtestatistics(Session session, Ltestatistics childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.LTESTATISTICS_FETCHER, getId());
         }
     }
     @VsoMethod

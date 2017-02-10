@@ -72,6 +72,9 @@ public class NetworkMacroGroup extends BaseObject {
     @JsonProperty(value = "name")
     protected String name;
     
+    @JsonProperty(value = "networkMacros")
+    protected java.util.List<String> networkMacros;
+    
     @JsonIgnore
     private EnterpriseNetworksFetcher enterpriseNetworks;
     
@@ -181,6 +184,17 @@ public class NetworkMacroGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetworkMacros", readOnly = false)   
+    public java.util.List<String> getNetworkMacros() {
+       return networkMacros;
+    }
+
+    @JsonIgnore
+    public void setNetworkMacros(java.util.List<String> value) { 
+        this.networkMacros = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EnterpriseNetworks", readOnly = true)   
     public EnterpriseNetworksFetcher getEnterpriseNetworks() {
         return enterpriseNetworks;
@@ -252,7 +266,7 @@ public class NetworkMacroGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NetworkMacroGroup [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NetworkMacroGroup [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", networkMacros=" + networkMacros + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

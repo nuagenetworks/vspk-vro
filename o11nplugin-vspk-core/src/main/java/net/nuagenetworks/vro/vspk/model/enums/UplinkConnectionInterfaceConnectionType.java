@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.INFRASTRUCTUREACCESSPROFILE_SOURCEIPFILTER_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.UPLINKCONNECTION_INTERFACECONNECTIONTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum InfrastructureaccessprofileSourceIPFilter {
+public enum UplinkConnectionInterfaceConnectionType {
 
-    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
+    AUTOMATIC("AUTOMATIC", "AUTOMATIC"), EMBEDDED("EMBEDDED", "EMBEDDED"), PCI_EXPRESS("PCI_EXPRESS", "PCI_EXPRESS"), USB_ETHERNET("USB_ETHERNET", "USB_ETHERNET"), USB_MODEM("USB_MODEM", "USB_MODEM");
 
     private final String id;
     private final String name;
    
-    InfrastructureaccessprofileSourceIPFilter(String id, String name) {
+    UplinkConnectionInterfaceConnectionType(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,34 @@ public enum InfrastructureaccessprofileSourceIPFilter {
     }
 
     
-    @VsoProperty(displayName = "DISABLED", readOnly = true)
-    public InfrastructureaccessprofileSourceIPFilter getDISABLED() {
-        return DISABLED;
+    @VsoProperty(displayName = "AUTOMATIC", readOnly = true)
+    public UplinkConnectionInterfaceConnectionType getAUTOMATIC() {
+        return AUTOMATIC;
     }
     
-    @VsoProperty(displayName = "ENABLED", readOnly = true)
-    public InfrastructureaccessprofileSourceIPFilter getENABLED() {
-        return ENABLED;
+    @VsoProperty(displayName = "EMBEDDED", readOnly = true)
+    public UplinkConnectionInterfaceConnectionType getEMBEDDED() {
+        return EMBEDDED;
+    }
+    
+    @VsoProperty(displayName = "PCI_EXPRESS", readOnly = true)
+    public UplinkConnectionInterfaceConnectionType getPCI_EXPRESS() {
+        return PCI_EXPRESS;
+    }
+    
+    @VsoProperty(displayName = "USB_ETHERNET", readOnly = true)
+    public UplinkConnectionInterfaceConnectionType getUSB_ETHERNET() {
+        return USB_ETHERNET;
+    }
+    
+    @VsoProperty(displayName = "USB_MODEM", readOnly = true)
+    public UplinkConnectionInterfaceConnectionType getUSB_MODEM() {
+        return USB_MODEM;
     }
     
 
-    public static InfrastructureaccessprofileSourceIPFilter getEnumById(String id) {
-        for (InfrastructureaccessprofileSourceIPFilter item : values()) {
+    public static UplinkConnectionInterfaceConnectionType getEnumById(String id) {
+        for (UplinkConnectionInterfaceConnectionType item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }
