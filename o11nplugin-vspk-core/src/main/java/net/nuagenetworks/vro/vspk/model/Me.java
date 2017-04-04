@@ -278,8 +278,8 @@ public class Me extends BaseRootObject {
     @JsonProperty(value = "disabled")
     protected Boolean disabled;
     
-    @JsonProperty(value = "elasticSearchUIAddress")
-    protected String elasticSearchUIAddress;
+    @JsonProperty(value = "elasticSearchAddress")
+    protected String elasticSearchAddress;
     
     @JsonProperty(value = "email")
     protected String email;
@@ -765,14 +765,14 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "ElasticSearchUIAddress", readOnly = false)   
-    public String getElasticSearchUIAddress() {
-       return elasticSearchUIAddress;
+    @VsoProperty(displayName = "ElasticSearchAddress", readOnly = false)   
+    public String getElasticSearchAddress() {
+       return elasticSearchAddress;
     }
 
     @JsonIgnore
-    public void setElasticSearchUIAddress(String value) { 
-        this.elasticSearchUIAddress = value;
+    public void setElasticSearchAddress(String value) { 
+        this.elasticSearchAddress = value;
     }
     
     @JsonIgnore
@@ -1710,7 +1710,7 @@ public class Me extends BaseRootObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Me [" + "avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchUIAddress=" + elasticSearchUIAddress + ", email=" + email + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Me [" + "avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + ", apiKey=" + apiKey  + "]";
     }
 }

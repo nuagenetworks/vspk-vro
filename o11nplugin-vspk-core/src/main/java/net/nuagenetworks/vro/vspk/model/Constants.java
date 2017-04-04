@@ -1081,7 +1081,6 @@ public interface Constants extends BaseConstants {
     
     String ENTERPRISESECUREDDATA_ENTITYSCOPE_ENUM = "EnterpriseSecuredDataEntityScope";
     
-    String APPLICATIONPERFORMANCEMANAGEMENT_APPLICATIONGROUPTYPE_ENUM = "ApplicationperformancemanagementApplicationGroupType";
     
     String IKECERTIFICATE_ENTITYSCOPE_ENUM = "IKECertificateEntityScope";
     
