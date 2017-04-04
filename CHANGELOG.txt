@@ -1,3 +1,14 @@
+Changes from version 4.0.7 to version 4.0.8
+===========================================
+
+- Upgraded to VSD specification version 4.0.8
+
+Changes from version 4.0.6 to version 4.0.7
+===========================================
+
+- Upgraded to VSD specification version 4.0.7
+- Added option to create JMS/Long poll push center at session creation time
+
 Changes from version 4.0.3 to version 4.0.6
 ===========================================
 

@@ -6486,6 +6486,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static NetworkPerformanceBindingsFetcher getNetworkPerformanceBindingsFetcherForDomainId(String id) throws RestException {
+        Domain obj = getObject(Constants.DOMAIN, id);
+        if (obj == null) {
+            obj = getDomainById(id);
+        }
+
+        if (obj != null) {
+            NetworkPerformanceBindingsFetcher fetcher = obj.getNetworkPerformanceBindings();
+            return addFetcher(Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PermissionsFetcher getPermissionsFetcherForDomainId(String id) throws RestException {
         Domain obj = getObject(Constants.DOMAIN, id);
         if (obj == null) {
@@ -15913,6 +15927,10 @@ public class ModelHelper extends BaseModelHelper {
         if (fetcher != null) {
             return (NetworkPerformanceBindingsFetcher) fetcher;
         }
+        if ((fetcher = getNetworkPerformanceBindingsFetcherForDomainId(id)) != null) {
+            return (NetworkPerformanceBindingsFetcher) addFetcher(Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getNetworkPerformanceBindingsFetcherForNetworkPerformanceMeasurementId(id)) != null) {
             return (NetworkPerformanceBindingsFetcher) addFetcher(Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, fetcher);
         }

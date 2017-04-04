@@ -64,6 +64,12 @@ public class License extends BaseObject {
     @JsonProperty(value = "additionalSupportedVersions")
     protected String additionalSupportedVersions;
     
+    @JsonProperty(value = "allowedAVRSGsCount")
+    protected Long allowedAVRSGsCount;
+    
+    @JsonProperty(value = "allowedAVRSsCount")
+    protected Long allowedAVRSsCount;
+    
     @JsonProperty(value = "allowedCPEsCount")
     protected Long allowedCPEsCount;
     
@@ -102,6 +108,9 @@ public class License extends BaseObject {
     
     @JsonProperty(value = "expirationDate")
     protected Float expirationDate;
+    
+    @JsonProperty(value = "expiryTimestamp")
+    protected Long expiryTimestamp;
     
     @JsonProperty(value = "externalID")
     protected String externalID;
@@ -224,6 +233,28 @@ public class License extends BaseObject {
     @JsonIgnore
     public void setAdditionalSupportedVersions(String value) { 
         this.additionalSupportedVersions = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AllowedAVRSGsCount", readOnly = false)   
+    public Long getAllowedAVRSGsCount() {
+       return allowedAVRSGsCount;
+    }
+
+    @JsonIgnore
+    public void setAllowedAVRSGsCount(Long value) { 
+        this.allowedAVRSGsCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AllowedAVRSsCount", readOnly = false)   
+    public Long getAllowedAVRSsCount() {
+       return allowedAVRSsCount;
+    }
+
+    @JsonIgnore
+    public void setAllowedAVRSsCount(Long value) { 
+        this.allowedAVRSsCount = value;
     }
     
     @JsonIgnore
@@ -367,6 +398,17 @@ public class License extends BaseObject {
     @JsonIgnore
     public void setExpirationDate(Float value) { 
         this.expirationDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExpiryTimestamp", readOnly = false)   
+    public Long getExpiryTimestamp() {
+       return expiryTimestamp;
+    }
+
+    @JsonIgnore
+    public void setExpiryTimestamp(Long value) { 
+        this.expiryTimestamp = value;
     }
     
     @JsonIgnore
@@ -630,7 +672,7 @@ public class License extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "License [" + "additionalSupportedVersions=" + additionalSupportedVersions + ", allowedCPEsCount=" + allowedCPEsCount + ", allowedNICsCount=" + allowedNICsCount + ", allowedVMsCount=" + allowedVMsCount + ", allowedVRSGsCount=" + allowedVRSGsCount + ", allowedVRSsCount=" + allowedVRSsCount + ", city=" + city + ", company=" + company + ", country=" + country + ", customerKey=" + customerKey + ", email=" + email + ", encryptionMode=" + encryptionMode + ", entityScope=" + entityScope + ", expirationDate=" + expirationDate + ", externalID=" + externalID + ", isClusterLicense=" + isClusterLicense + ", lastUpdatedBy=" + lastUpdatedBy + ", license=" + license + ", licenseEncryption=" + licenseEncryption + ", licenseEntities=" + licenseEntities + ", licenseID=" + licenseID + ", licenseType=" + licenseType + ", majorRelease=" + majorRelease + ", minorRelease=" + minorRelease + ", phone=" + phone + ", productVersion=" + productVersion + ", provider=" + provider + ", state=" + state + ", street=" + street + ", uniqueLicenseIdentifier=" + uniqueLicenseIdentifier + ", userName=" + userName + ", zip=" + zip + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "License [" + "additionalSupportedVersions=" + additionalSupportedVersions + ", allowedAVRSGsCount=" + allowedAVRSGsCount + ", allowedAVRSsCount=" + allowedAVRSsCount + ", allowedCPEsCount=" + allowedCPEsCount + ", allowedNICsCount=" + allowedNICsCount + ", allowedVMsCount=" + allowedVMsCount + ", allowedVRSGsCount=" + allowedVRSGsCount + ", allowedVRSsCount=" + allowedVRSsCount + ", city=" + city + ", company=" + company + ", country=" + country + ", customerKey=" + customerKey + ", email=" + email + ", encryptionMode=" + encryptionMode + ", entityScope=" + entityScope + ", expirationDate=" + expirationDate + ", expiryTimestamp=" + expiryTimestamp + ", externalID=" + externalID + ", isClusterLicense=" + isClusterLicense + ", lastUpdatedBy=" + lastUpdatedBy + ", license=" + license + ", licenseEncryption=" + licenseEncryption + ", licenseEntities=" + licenseEntities + ", licenseID=" + licenseID + ", licenseType=" + licenseType + ", majorRelease=" + majorRelease + ", minorRelease=" + minorRelease + ", phone=" + phone + ", productVersion=" + productVersion + ", provider=" + provider + ", state=" + state + ", street=" + street + ", uniqueLicenseIdentifier=" + uniqueLicenseIdentifier + ", userName=" + userName + ", zip=" + zip + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

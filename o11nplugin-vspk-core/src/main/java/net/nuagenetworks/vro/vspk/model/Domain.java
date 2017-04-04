@@ -76,6 +76,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.LinksFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceBindingsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
@@ -170,6 +172,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.LINKS_FETCHER, type = Constants.LINKS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, type = Constants.NETWORKPERFORMANCEBINDINGS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
@@ -404,6 +408,9 @@ public class Domain extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private NetworkPerformanceBindingsFetcher networkPerformanceBindings;
+    
+    @JsonIgnore
     private PermissionsFetcher permissions;
     
     @JsonIgnore
@@ -512,6 +519,8 @@ public class Domain extends BaseObject {
         links = new LinksFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
         
         permissions = new PermissionsFetcher(this);
         
@@ -1205,6 +1214,12 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetworkPerformanceBindings", readOnly = true)   
+    public NetworkPerformanceBindingsFetcher getNetworkPerformanceBindings() {
+        return networkPerformanceBindings;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Permissions", readOnly = true)   
     public PermissionsFetcher getPermissions() {
         return permissions;
@@ -1475,6 +1490,14 @@ public class Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createNetworkPerformanceBinding(Session session, NetworkPerformanceBinding childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, getId());
         }
     }
     @VsoMethod
