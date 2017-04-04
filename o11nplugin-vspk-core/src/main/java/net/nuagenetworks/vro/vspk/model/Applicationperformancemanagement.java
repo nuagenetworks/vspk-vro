@@ -27,6 +27,8 @@
 
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationBindingsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.enums.ApplicationperformancemanagementApplicationGroupType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -50,6 +52,9 @@ public class Applicationperformancemanagement extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "applicationGroupType")
+    protected ApplicationperformancemanagementApplicationGroupType applicationGroupType;
     
     @JsonProperty(value = "associatedPerformanceMonitorID")
     protected String associatedPerformanceMonitorID;
@@ -106,6 +111,17 @@ public class Applicationperformancemanagement extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "ApplicationGroupType", readOnly = false)   
+    public ApplicationperformancemanagementApplicationGroupType getApplicationGroupType() {
+       return applicationGroupType;
+    }
+
+    @JsonIgnore
+    public void setApplicationGroupType(ApplicationperformancemanagementApplicationGroupType value) { 
+        this.applicationGroupType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedPerformanceMonitorID", readOnly = false)   
     public String getAssociatedPerformanceMonitorID() {
@@ -184,7 +200,7 @@ public class Applicationperformancemanagement extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.APPLICATIONBINDINGS_FETCHER, getId());
         }
     }public String toString() {
-        return "Applicationperformancemanagement [" + "associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", name=" + name + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Applicationperformancemanagement [" + "applicationGroupType=" + applicationGroupType + ", associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", name=" + name + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

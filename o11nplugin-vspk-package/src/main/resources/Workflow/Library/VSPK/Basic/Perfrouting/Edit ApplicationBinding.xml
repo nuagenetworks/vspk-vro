@@ -6,9 +6,6 @@
 <input><param name='applicationBindingObj' type='VSPK:ApplicationBinding' >
 </param>
 
-<param name='associatedApplicationID' type='string' >
-</param>
-
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -16,23 +13,13 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = applicationBindingObj.session;
 
-if (associatedApplicationID) {
-   applicationBindingObj.associatedApplicationID = associatedApplicationID;
-} else if (applicationBindingObj.associatedApplicationID) {
-   applicationBindingObj.associatedApplicationID = "";
-}
 applicationBindingObj.save(session, 1);]]></script>
 <in-binding><bind name='applicationBindingObj' type='VSPK:ApplicationBinding' export-name="applicationBindingObj" ></bind>
-
-<bind name='associatedApplicationID' type='string' export-name="associatedApplicationID" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="applicationBindingObj"><desc><![CDATA[applicationBindingObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
-
-<p-param name="associatedApplicationID"><desc><![CDATA[associatedApplicationID]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationBindingObj.associatedApplicationID]]></p-qual></p-param>
 
 </presentation></workflow>

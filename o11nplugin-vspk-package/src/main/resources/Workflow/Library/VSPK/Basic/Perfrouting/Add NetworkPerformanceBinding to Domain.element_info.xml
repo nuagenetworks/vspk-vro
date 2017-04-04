@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Perfrouting</entry>
-<entry key="name">Add NetworkPerformanceBinding to Domain</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">aad6747b-331f-50d3-9ce6-a007e5c22b15</entry>
-</properties>

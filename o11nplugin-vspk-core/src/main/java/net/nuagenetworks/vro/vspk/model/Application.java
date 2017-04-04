@@ -66,14 +66,8 @@ public class Application extends BaseObject {
     @JsonProperty(value = "DSCP")
     protected String DSCP;
     
-    @JsonProperty(value = "appId")
-    protected Long appId;
-    
     @JsonProperty(value = "associatedL7ApplicationSignatureID")
     protected String associatedL7ApplicationSignatureID;
-    
-    @JsonProperty(value = "bandwidth")
-    protected Long bandwidth;
     
     @JsonProperty(value = "description")
     protected String description;
@@ -189,17 +183,6 @@ public class Application extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "AppId", readOnly = false)   
-    public Long getAppId() {
-       return appId;
-    }
-
-    @JsonIgnore
-    public void setAppId(Long value) { 
-        this.appId = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "AssociatedL7ApplicationSignatureID", readOnly = false)   
     public String getAssociatedL7ApplicationSignatureID() {
        return associatedL7ApplicationSignatureID;
@@ -208,17 +191,6 @@ public class Application extends BaseObject {
     @JsonIgnore
     public void setAssociatedL7ApplicationSignatureID(String value) { 
         this.associatedL7ApplicationSignatureID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Bandwidth", readOnly = false)   
-    public Long getBandwidth() {
-       return bandwidth;
-    }
-
-    @JsonIgnore
-    public void setBandwidth(Long value) { 
-        this.bandwidth = value;
     }
     
     @JsonIgnore
@@ -459,7 +431,7 @@ public class Application extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.MONITORSCOPES_FETCHER, getId());
         }
     }public String toString() {
-        return "Application [" + "DSCP=" + DSCP + ", appId=" + appId + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", bandwidth=" + bandwidth + ", description=" + description + ", destinationIP=" + destinationIP + ", destinationPort=" + destinationPort + ", enablePPS=" + enablePPS + ", etherType=" + etherType + ", name=" + name + ", oneWayDelay=" + oneWayDelay + ", oneWayJitter=" + oneWayJitter + ", oneWayLoss=" + oneWayLoss + ", optimizePathSelection=" + optimizePathSelection + ", performanceMonitorType=" + performanceMonitorType + ", postClassificationPath=" + postClassificationPath + ", preClassificationPath=" + preClassificationPath + ", protocol=" + protocol + ", readOnly=" + readOnly + ", sourceIP=" + sourceIP + ", sourcePort=" + sourcePort + ", symmetry=" + symmetry + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Application [" + "DSCP=" + DSCP + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", description=" + description + ", destinationIP=" + destinationIP + ", destinationPort=" + destinationPort + ", enablePPS=" + enablePPS + ", etherType=" + etherType + ", name=" + name + ", oneWayDelay=" + oneWayDelay + ", oneWayJitter=" + oneWayJitter + ", oneWayLoss=" + oneWayLoss + ", optimizePathSelection=" + optimizePathSelection + ", performanceMonitorType=" + performanceMonitorType + ", postClassificationPath=" + postClassificationPath + ", preClassificationPath=" + preClassificationPath + ", protocol=" + protocol + ", readOnly=" + readOnly + ", sourceIP=" + sourceIP + ", sourcePort=" + sourcePort + ", symmetry=" + symmetry + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

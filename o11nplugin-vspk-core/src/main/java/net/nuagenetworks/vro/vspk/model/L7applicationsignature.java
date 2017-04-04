@@ -49,6 +49,9 @@ public class L7applicationsignature extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "GUID")
+    protected String GUID;
+    
     @JsonProperty(value = "category")
     protected String category;
     
@@ -58,14 +61,8 @@ public class L7applicationsignature extends BaseObject {
     @JsonProperty(value = "dictionaryVersion")
     protected Long dictionaryVersion;
     
-    @JsonProperty(value = "guidstring")
-    protected String guidstring;
-    
     @JsonProperty(value = "name")
     protected String name;
-    
-    @JsonProperty(value = "readonly")
-    protected Boolean readonly;
     
     @JsonIgnore
     private ApplicationsFetcher applications;
@@ -111,6 +108,17 @@ public class L7applicationsignature extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "GUID", readOnly = false)   
+    public String getGUID() {
+       return GUID;
+    }
+
+    @JsonIgnore
+    public void setGUID(String value) { 
+        this.GUID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Category", readOnly = false)   
     public String getCategory() {
        return category;
@@ -144,17 +152,6 @@ public class L7applicationsignature extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Guidstring", readOnly = false)   
-    public String getGuidstring() {
-       return guidstring;
-    }
-
-    @JsonIgnore
-    public void setGuidstring(String value) { 
-        this.guidstring = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -163,17 +160,6 @@ public class L7applicationsignature extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Readonly", readOnly = false)   
-    public Boolean getReadonly() {
-       return readonly;
-    }
-
-    @JsonIgnore
-    public void setReadonly(Boolean value) { 
-        this.readonly = value;
     }
     
     @JsonIgnore
@@ -202,7 +188,7 @@ public class L7applicationsignature extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.L7APPLICATIONSIGNATURE, getId());
         }
     }public String toString() {
-        return "L7applicationsignature [" + "category=" + category + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", guidstring=" + guidstring + ", name=" + name + ", readonly=" + readonly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L7applicationsignature [" + "GUID=" + GUID + ", category=" + category + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

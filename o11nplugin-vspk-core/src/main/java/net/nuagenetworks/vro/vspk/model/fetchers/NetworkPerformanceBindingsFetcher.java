@@ -30,8 +30,6 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.NetworkPerformanceBinding;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Domain;
-
 import net.nuagenetworks.vro.vspk.model.NetworkPerformanceMeasurement;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -66,16 +64,6 @@ public class NetworkPerformanceBindingsFetcher extends BaseFetcher<NetworkPerfor
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "Domain", readOnly = true)
-    public Domain getDomain() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Domain) {
-            return (Domain) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "NetworkPerformanceMeasurement", readOnly = true)
     public NetworkPerformanceMeasurement getNetworkPerformanceMeasurement() {
         RestObject obj = super.getParentRestObj();

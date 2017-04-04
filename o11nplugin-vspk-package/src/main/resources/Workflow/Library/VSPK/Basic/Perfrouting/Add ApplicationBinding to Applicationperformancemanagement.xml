@@ -5,8 +5,6 @@
 <position x='100.0' y='50.0'/>
 <input><param name='applicationperformancemanagementObj' type='VSPK:Applicationperformancemanagement' >
 </param>
-<param name='associatedApplicationID' type='string' >
-</param>
 </input><output><param name='applicationBindingObj' type='VSPK:ApplicationBinding' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -17,20 +15,14 @@
 <script encoded='false'><![CDATA[var session = applicationperformancemanagementObj.session;
 
 applicationBindingObj = new VSPKApplicationBinding();
-if (associatedApplicationID) {
-   applicationBindingObj.associatedApplicationID = associatedApplicationID;
-}
 
 applicationperformancemanagementObj.createApplicationBinding(session, applicationBindingObj);
 ]]></script>
 <in-binding><bind name='applicationperformancemanagementObj' type='VSPK:Applicationperformancemanagement' export-name="applicationperformancemanagementObj" ></bind>
-<bind name='associatedApplicationID' type='string' export-name="associatedApplicationID" ></bind>
 </in-binding><out-binding><bind name='applicationBindingObj' type='VSPK:ApplicationBinding' export-name="applicationBindingObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="applicationperformancemanagementObj"><desc><![CDATA[applicationperformancemanagementObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
-<p-param name="associatedApplicationID"><desc><![CDATA[associatedApplicationID]]></desc>
-</p-param>
 </presentation></workflow>

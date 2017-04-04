@@ -6,9 +6,6 @@
 <input><param name='applicationperformancemanagementbindingObj' type='VSPK:Applicationperformancemanagementbinding' >
 </param>
 
-<param name='associatedApplicationPerformanceManagementID' type='string' >
-</param>
-
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -16,23 +13,13 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = applicationperformancemanagementbindingObj.session;
 
-if (associatedApplicationPerformanceManagementID) {
-   applicationperformancemanagementbindingObj.associatedApplicationPerformanceManagementID = associatedApplicationPerformanceManagementID;
-} else if (applicationperformancemanagementbindingObj.associatedApplicationPerformanceManagementID) {
-   applicationperformancemanagementbindingObj.associatedApplicationPerformanceManagementID = "";
-}
 applicationperformancemanagementbindingObj.save(session, 1);]]></script>
 <in-binding><bind name='applicationperformancemanagementbindingObj' type='VSPK:Applicationperformancemanagementbinding' export-name="applicationperformancemanagementbindingObj" ></bind>
-
-<bind name='associatedApplicationPerformanceManagementID' type='string' export-name="associatedApplicationPerformanceManagementID" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="applicationperformancemanagementbindingObj"><desc><![CDATA[applicationperformancemanagementbindingObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
-
-<p-param name="associatedApplicationPerformanceManagementID"><desc><![CDATA[associatedApplicationPerformanceManagementID]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationperformancemanagementbindingObj.associatedApplicationPerformanceManagementID]]></p-qual></p-param>
 
 </presentation></workflow>

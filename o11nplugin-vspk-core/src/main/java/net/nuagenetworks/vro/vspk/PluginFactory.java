@@ -2104,6 +2104,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTS_FETCHER)) {
             return ModelHelper.getApplicationperformancemanagementsFetcherById(id);
         }
+        if (type.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENT_APPLICATIONGROUPTYPE_ENUM)) {
+            return ApplicationperformancemanagementApplicationGroupType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.IKECERTIFICATE)) {
             return ModelHelper.getIKECertificateById(id);
         }
@@ -4605,13 +4609,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.NETWORKPERFORMANCEBINDINGS_FETCHER)) {
-            return toList(ModelHelper.getNetworkPerformanceBindingsFetcherForDomainId(id));
-        }
-        if (type.equals(Constants.NETWORKPERFORMANCEBINDINGS_FETCHER) && relationName.equals(Constants.NETWORKPERFORMANCEBINDINGS)) {
-            return ModelHelper.getNetworkPerformanceBindingsForFetcherId(id);
         }
         
         if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
@@ -11932,6 +11929,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<ApplicationperformancemanagementsFetcher> allObjs = ModelHelper.getAllApplicationperformancemanagementsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENT_APPLICATIONGROUPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(ApplicationperformancemanagementApplicationGroupType.values()));
+        }
+        
         if (type.equals(Constants.IKECERTIFICATE)) {
             java.util.List<IKECertificate> allObjs = ModelHelper.getAllIKECertificates();
             return new QueryResult(allObjs);
