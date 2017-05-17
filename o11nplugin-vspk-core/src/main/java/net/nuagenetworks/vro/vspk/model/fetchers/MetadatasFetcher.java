@@ -36,9 +36,11 @@ import net.nuagenetworks.vro.vspk.model.GroupKeyEncryptionProfile;
 
 import net.nuagenetworks.vro.vspk.model.QOS;
 
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
+import net.nuagenetworks.vro.vspk.model.InfrastructureAccessProfile;
 
 import net.nuagenetworks.vro.vspk.model.BGPPeer;
+
+import net.nuagenetworks.vro.vspk.model.IKEPSK;
 
 import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
 
@@ -58,13 +60,13 @@ import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
 
 import net.nuagenetworks.vro.vspk.model.Zone;
 
+import net.nuagenetworks.vro.vspk.model.ExternalService;
+
 import net.nuagenetworks.vro.vspk.model.IKEGatewayProfile;
 
 import net.nuagenetworks.vro.vspk.model.IKESubnet;
 
 import net.nuagenetworks.vro.vspk.model.InfrastructureGatewayProfile;
-
-import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
 
 import net.nuagenetworks.vro.vspk.model.FlowSecurityPolicy;
 
@@ -104,7 +106,9 @@ import net.nuagenetworks.vro.vspk.model.Avatar;
 
 import net.nuagenetworks.vro.vspk.model.BootstrapActivation;
 
-import net.nuagenetworks.vro.vspk.model.CloudMgmtSystem;
+import net.nuagenetworks.vro.vspk.model.GatewayTemplate;
+
+import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
 import net.nuagenetworks.vro.vspk.model.VSP;
 
@@ -114,9 +118,9 @@ import net.nuagenetworks.vro.vspk.model.RedundantPort;
 
 import net.nuagenetworks.vro.vspk.model.DSCPForwardingClassMapping;
 
-import net.nuagenetworks.vro.vspk.model.NetworkLayout;
+import net.nuagenetworks.vro.vspk.model.SystemConfig;
 
-import net.nuagenetworks.vro.vspk.model.WANService;
+import net.nuagenetworks.vro.vspk.model.VSC;
 
 import net.nuagenetworks.vro.vspk.model.VSD;
 
@@ -130,23 +134,19 @@ import net.nuagenetworks.vro.vspk.model.StatisticsPolicy;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
-import net.nuagenetworks.vro.vspk.model.Container;
+import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 
 import net.nuagenetworks.vro.vspk.model.RateLimiter;
 
 import net.nuagenetworks.vro.vspk.model.KeyServerMonitorEncryptedSeed;
 
-import net.nuagenetworks.vro.vspk.model.ZoneTemplate;
+import net.nuagenetworks.vro.vspk.model.UplinkRD;
 
 import net.nuagenetworks.vro.vspk.model.KeyServerMonitorSeed;
-
-import net.nuagenetworks.vro.vspk.model.GatewayTemplate;
 
 import net.nuagenetworks.vro.vspk.model.VRS;
 
 import net.nuagenetworks.vro.vspk.model.HSC;
-
-import net.nuagenetworks.vro.vspk.model.VLAN;
 
 import net.nuagenetworks.vro.vspk.model.LDAPConfiguration;
 
@@ -168,6 +168,8 @@ import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
 
 import net.nuagenetworks.vro.vspk.model.KeyServerMonitor;
 
+import net.nuagenetworks.vro.vspk.model.NetworkLayout;
+
 import net.nuagenetworks.vro.vspk.model.EventLog;
 
 import net.nuagenetworks.vro.vspk.model.License;
@@ -176,13 +178,13 @@ import net.nuagenetworks.vro.vspk.model.EnterpriseProfile;
 
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
 
-import net.nuagenetworks.vro.vspk.model.VCenterCluster;
+import net.nuagenetworks.vro.vspk.model.InfrastructureConfig;
 
 import net.nuagenetworks.vro.vspk.model.MultiCastRange;
 
 import net.nuagenetworks.vro.vspk.model.NetworkMacroGroup;
 
-import net.nuagenetworks.vro.vspk.model.InfrastructureAccessProfile;
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
@@ -194,7 +196,7 @@ import net.nuagenetworks.vro.vspk.model.KeyServerNotification;
 
 import net.nuagenetworks.vro.vspk.model.MirrorDestination;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
+import net.nuagenetworks.vro.vspk.model.NATMapEntry;
 
 import net.nuagenetworks.vro.vspk.model.DomainFIPAclTemplate;
 
@@ -208,17 +210,17 @@ import net.nuagenetworks.vro.vspk.model.Statistics;
 
 import net.nuagenetworks.vro.vspk.model.NSPortTemplate;
 
-import net.nuagenetworks.vro.vspk.model.Certificate;
+import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.VCenterDataCenter;
 
 import net.nuagenetworks.vro.vspk.model.Ltestatistics;
 
-import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
+import net.nuagenetworks.vro.vspk.model.DomainFIPAclTemplateEntry;
 
 import net.nuagenetworks.vro.vspk.model.ApplicationService;
 
-import net.nuagenetworks.vro.vspk.model.IKEGateway;
+import net.nuagenetworks.vro.vspk.model.IKEGatewayConfig;
 
 import net.nuagenetworks.vro.vspk.model.StatsCollectorInfo;
 
@@ -230,15 +232,19 @@ import net.nuagenetworks.vro.vspk.model.IngressACLEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.RoutingPolicy;
 
+import net.nuagenetworks.vro.vspk.model.Certificate;
+
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
-import net.nuagenetworks.vro.vspk.model.IKEGatewayConfig;
+import net.nuagenetworks.vro.vspk.model.IKEGateway;
 
 import net.nuagenetworks.vro.vspk.model.HostInterface;
 
-import net.nuagenetworks.vro.vspk.model.EnterpriseSecuredData;
+import net.nuagenetworks.vro.vspk.model.SiteInfo;
 
-import net.nuagenetworks.vro.vspk.model.IKECertificate;
+import net.nuagenetworks.vro.vspk.model.ExternalAppService;
+
+import net.nuagenetworks.vro.vspk.model.Link;
 
 import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplate;
 
@@ -256,11 +262,7 @@ import net.nuagenetworks.vro.vspk.model.NSGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSGatewayTemplate;
 
-import net.nuagenetworks.vro.vspk.model.VSC;
-
-import net.nuagenetworks.vro.vspk.model.UplinkRD;
-
-import net.nuagenetworks.vro.vspk.model.VM;
+import net.nuagenetworks.vro.vspk.model.ZoneTemplate;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
 
@@ -272,13 +274,17 @@ import net.nuagenetworks.vro.vspk.model.EgressQOSPolicy;
 
 import net.nuagenetworks.vro.vspk.model.PublicNetworkMacro;
 
-import net.nuagenetworks.vro.vspk.model.DomainFIPAclTemplateEntry;
+import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.AddressRange;
 
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
-import net.nuagenetworks.vro.vspk.model.SiteInfo;
+import net.nuagenetworks.vro.vspk.model.VM;
+
+import net.nuagenetworks.vro.vspk.model.FloatingIPACLTemplateEntry;
+
+import net.nuagenetworks.vro.vspk.model.CloudMgmtSystem;
 
 import net.nuagenetworks.vro.vspk.model.VMResync;
 
@@ -294,15 +300,11 @@ import net.nuagenetworks.vro.vspk.model.VPNConnection;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
 
-import net.nuagenetworks.vro.vspk.model.ExternalService;
-
 import net.nuagenetworks.vro.vspk.model.KeyServerMonitorSEK;
 
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
 
 import net.nuagenetworks.vro.vspk.model.VPortMirror;
-
-import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
 import net.nuagenetworks.vro.vspk.model.BGPNeighbor;
 
@@ -310,23 +312,21 @@ import net.nuagenetworks.vro.vspk.model.ContainerResync;
 
 import net.nuagenetworks.vro.vspk.model.AllAlarm;
 
-import net.nuagenetworks.vro.vspk.model.IKEPSK;
-
-import net.nuagenetworks.vro.vspk.model.SystemConfig;
+import net.nuagenetworks.vro.vspk.model.VLAN;
 
 import net.nuagenetworks.vro.vspk.model.IKEEncryptionprofile;
 
-import net.nuagenetworks.vro.vspk.model.FloatingIPACLTemplateEntry;
+import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
 
-import net.nuagenetworks.vro.vspk.model.InfrastructureConfig;
+import net.nuagenetworks.vro.vspk.model.VCenterCluster;
 
 import net.nuagenetworks.vro.vspk.model.User;
 
-import net.nuagenetworks.vro.vspk.model.NATMapEntry;
+import net.nuagenetworks.vro.vspk.model.Tier;
 
-import net.nuagenetworks.vro.vspk.model.PolicyGroup;
+import net.nuagenetworks.vro.vspk.model.Container;
 
-import net.nuagenetworks.vro.vspk.model.ExternalAppService;
+import net.nuagenetworks.vro.vspk.model.EnterpriseSecuredData;
 
 import net.nuagenetworks.vro.vspk.model.Alarm;
 
@@ -342,7 +342,7 @@ import net.nuagenetworks.vro.vspk.model.GlobalMetadata;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
-import net.nuagenetworks.vro.vspk.model.Link;
+import net.nuagenetworks.vro.vspk.model.IKECertificate;
 
 import net.nuagenetworks.vro.vspk.model.IngressACLTemplate;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
@@ -408,11 +408,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
-    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
+    @VsoProperty(displayName = "InfrastructureAccessProfile", readOnly = true)
+    public InfrastructureAccessProfile getInfrastructureAccessProfile() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdEntryTemplate) {
-            return (IngressAdvFwdEntryTemplate) obj;
+        if (obj instanceof InfrastructureAccessProfile) {
+            return (InfrastructureAccessProfile) obj;
         }
         
         return null;
@@ -423,6 +423,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof BGPPeer) {
             return (BGPPeer) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IKEPSK", readOnly = true)
+    public IKEPSK getIKEPSK() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IKEPSK) {
+            return (IKEPSK) obj;
         }
         
         return null;
@@ -518,6 +528,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "ExternalService", readOnly = true)
+    public ExternalService getExternalService() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ExternalService) {
+            return (ExternalService) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "IKEGatewayProfile", readOnly = true)
     public IKEGatewayProfile getIKEGatewayProfile() {
         RestObject obj = super.getParentRestObj();
@@ -543,16 +563,6 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof InfrastructureGatewayProfile) {
             return (InfrastructureGatewayProfile) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "PolicyGroupTemplate", readOnly = true)
-    public PolicyGroupTemplate getPolicyGroupTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroupTemplate) {
-            return (PolicyGroupTemplate) obj;
         }
         
         return null;
@@ -748,11 +758,21 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "CloudMgmtSystem", readOnly = true)
-    public CloudMgmtSystem getCloudMgmtSystem() {
+    @VsoProperty(displayName = "GatewayTemplate", readOnly = true)
+    public GatewayTemplate getGatewayTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof CloudMgmtSystem) {
-            return (CloudMgmtSystem) obj;
+        if (obj instanceof GatewayTemplate) {
+            return (GatewayTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PATNATPool", readOnly = true)
+    public PATNATPool getPATNATPool() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PATNATPool) {
+            return (PATNATPool) obj;
         }
         
         return null;
@@ -798,21 +818,21 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "NetworkLayout", readOnly = true)
-    public NetworkLayout getNetworkLayout() {
+    @VsoProperty(displayName = "SystemConfig", readOnly = true)
+    public SystemConfig getSystemConfig() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof NetworkLayout) {
-            return (NetworkLayout) obj;
+        if (obj instanceof SystemConfig) {
+            return (SystemConfig) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "WANService", readOnly = true)
-    public WANService getWANService() {
+    @VsoProperty(displayName = "VSC", readOnly = true)
+    public VSC getVSC() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof WANService) {
-            return (WANService) obj;
+        if (obj instanceof VSC) {
+            return (VSC) obj;
         }
         
         return null;
@@ -878,11 +898,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "Container", readOnly = true)
-    public Container getContainer() {
+    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
+    public PolicyGroup getPolicyGroup() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Container) {
-            return (Container) obj;
+        if (obj instanceof PolicyGroup) {
+            return (PolicyGroup) obj;
         }
         
         return null;
@@ -908,11 +928,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "ZoneTemplate", readOnly = true)
-    public ZoneTemplate getZoneTemplate() {
+    @VsoProperty(displayName = "UplinkRD", readOnly = true)
+    public UplinkRD getUplinkRD() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof ZoneTemplate) {
-            return (ZoneTemplate) obj;
+        if (obj instanceof UplinkRD) {
+            return (UplinkRD) obj;
         }
         
         return null;
@@ -923,16 +943,6 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof KeyServerMonitorSeed) {
             return (KeyServerMonitorSeed) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "GatewayTemplate", readOnly = true)
-    public GatewayTemplate getGatewayTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof GatewayTemplate) {
-            return (GatewayTemplate) obj;
         }
         
         return null;
@@ -953,16 +963,6 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof HSC) {
             return (HSC) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VLAN", readOnly = true)
-    public VLAN getVLAN() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VLAN) {
-            return (VLAN) obj;
         }
         
         return null;
@@ -1068,6 +1068,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "NetworkLayout", readOnly = true)
+    public NetworkLayout getNetworkLayout() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetworkLayout) {
+            return (NetworkLayout) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "EventLog", readOnly = true)
     public EventLog getEventLog() {
         RestObject obj = super.getParentRestObj();
@@ -1108,11 +1118,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "VCenterCluster", readOnly = true)
-    public VCenterCluster getVCenterCluster() {
+    @VsoProperty(displayName = "InfrastructureConfig", readOnly = true)
+    public InfrastructureConfig getInfrastructureConfig() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VCenterCluster) {
-            return (VCenterCluster) obj;
+        if (obj instanceof InfrastructureConfig) {
+            return (InfrastructureConfig) obj;
         }
         
         return null;
@@ -1138,11 +1148,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "InfrastructureAccessProfile", readOnly = true)
-    public InfrastructureAccessProfile getInfrastructureAccessProfile() {
+    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
+    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof InfrastructureAccessProfile) {
-            return (InfrastructureAccessProfile) obj;
+        if (obj instanceof IngressAdvFwdEntryTemplate) {
+            return (IngressAdvFwdEntryTemplate) obj;
         }
         
         return null;
@@ -1198,11 +1208,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
+    @VsoProperty(displayName = "NATMapEntry", readOnly = true)
+    public NATMapEntry getNATMapEntry() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
+        if (obj instanceof NATMapEntry) {
+            return (NATMapEntry) obj;
         }
         
         return null;
@@ -1268,11 +1278,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "Certificate", readOnly = true)
-    public Certificate getCertificate() {
+    @VsoProperty(displayName = "WANService", readOnly = true)
+    public WANService getWANService() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Certificate) {
-            return (Certificate) obj;
+        if (obj instanceof WANService) {
+            return (WANService) obj;
         }
         
         return null;
@@ -1298,11 +1308,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
-    public L2DomainTemplate getL2DomainTemplate() {
+    @VsoProperty(displayName = "DomainFIPAclTemplateEntry", readOnly = true)
+    public DomainFIPAclTemplateEntry getDomainFIPAclTemplateEntry() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2DomainTemplate) {
-            return (L2DomainTemplate) obj;
+        if (obj instanceof DomainFIPAclTemplateEntry) {
+            return (DomainFIPAclTemplateEntry) obj;
         }
         
         return null;
@@ -1318,11 +1328,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "IKEGateway", readOnly = true)
-    public IKEGateway getIKEGateway() {
+    @VsoProperty(displayName = "IKEGatewayConfig", readOnly = true)
+    public IKEGatewayConfig getIKEGatewayConfig() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof IKEGateway) {
-            return (IKEGateway) obj;
+        if (obj instanceof IKEGatewayConfig) {
+            return (IKEGatewayConfig) obj;
         }
         
         return null;
@@ -1378,6 +1388,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "Certificate", readOnly = true)
+    public Certificate getCertificate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Certificate) {
+            return (Certificate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "L2Domain", readOnly = true)
     public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
@@ -1388,11 +1408,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "IKEGatewayConfig", readOnly = true)
-    public IKEGatewayConfig getIKEGatewayConfig() {
+    @VsoProperty(displayName = "IKEGateway", readOnly = true)
+    public IKEGateway getIKEGateway() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof IKEGatewayConfig) {
-            return (IKEGatewayConfig) obj;
+        if (obj instanceof IKEGateway) {
+            return (IKEGateway) obj;
         }
         
         return null;
@@ -1408,21 +1428,31 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "EnterpriseSecuredData", readOnly = true)
-    public EnterpriseSecuredData getEnterpriseSecuredData() {
+    @VsoProperty(displayName = "SiteInfo", readOnly = true)
+    public SiteInfo getSiteInfo() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof EnterpriseSecuredData) {
-            return (EnterpriseSecuredData) obj;
+        if (obj instanceof SiteInfo) {
+            return (SiteInfo) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "IKECertificate", readOnly = true)
-    public IKECertificate getIKECertificate() {
+    @VsoProperty(displayName = "ExternalAppService", readOnly = true)
+    public ExternalAppService getExternalAppService() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof IKECertificate) {
-            return (IKECertificate) obj;
+        if (obj instanceof ExternalAppService) {
+            return (ExternalAppService) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Link", readOnly = true)
+    public Link getLink() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Link) {
+            return (Link) obj;
         }
         
         return null;
@@ -1508,31 +1538,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "VSC", readOnly = true)
-    public VSC getVSC() {
+    @VsoProperty(displayName = "ZoneTemplate", readOnly = true)
+    public ZoneTemplate getZoneTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSC) {
-            return (VSC) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "UplinkRD", readOnly = true)
-    public UplinkRD getUplinkRD() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof UplinkRD) {
-            return (UplinkRD) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VM", readOnly = true)
-    public VM getVM() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VM) {
-            return (VM) obj;
+        if (obj instanceof ZoneTemplate) {
+            return (ZoneTemplate) obj;
         }
         
         return null;
@@ -1588,11 +1598,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "DomainFIPAclTemplateEntry", readOnly = true)
-    public DomainFIPAclTemplateEntry getDomainFIPAclTemplateEntry() {
+    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
+    public L2DomainTemplate getL2DomainTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof DomainFIPAclTemplateEntry) {
-            return (DomainFIPAclTemplateEntry) obj;
+        if (obj instanceof L2DomainTemplate) {
+            return (L2DomainTemplate) obj;
         }
         
         return null;
@@ -1618,11 +1628,31 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "SiteInfo", readOnly = true)
-    public SiteInfo getSiteInfo() {
+    @VsoProperty(displayName = "VM", readOnly = true)
+    public VM getVM() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof SiteInfo) {
-            return (SiteInfo) obj;
+        if (obj instanceof VM) {
+            return (VM) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "FloatingIPACLTemplateEntry", readOnly = true)
+    public FloatingIPACLTemplateEntry getFloatingIPACLTemplateEntry() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof FloatingIPACLTemplateEntry) {
+            return (FloatingIPACLTemplateEntry) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "CloudMgmtSystem", readOnly = true)
+    public CloudMgmtSystem getCloudMgmtSystem() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof CloudMgmtSystem) {
+            return (CloudMgmtSystem) obj;
         }
         
         return null;
@@ -1698,16 +1728,6 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "ExternalService", readOnly = true)
-    public ExternalService getExternalService() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof ExternalService) {
-            return (ExternalService) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "KeyServerMonitorSEK", readOnly = true)
     public KeyServerMonitorSEK getKeyServerMonitorSEK() {
         RestObject obj = super.getParentRestObj();
@@ -1733,16 +1753,6 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VPortMirror) {
             return (VPortMirror) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "PATNATPool", readOnly = true)
-    public PATNATPool getPATNATPool() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof PATNATPool) {
-            return (PATNATPool) obj;
         }
         
         return null;
@@ -1778,21 +1788,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "IKEPSK", readOnly = true)
-    public IKEPSK getIKEPSK() {
+    @VsoProperty(displayName = "VLAN", readOnly = true)
+    public VLAN getVLAN() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof IKEPSK) {
-            return (IKEPSK) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "SystemConfig", readOnly = true)
-    public SystemConfig getSystemConfig() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof SystemConfig) {
-            return (SystemConfig) obj;
+        if (obj instanceof VLAN) {
+            return (VLAN) obj;
         }
         
         return null;
@@ -1808,21 +1808,21 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "FloatingIPACLTemplateEntry", readOnly = true)
-    public FloatingIPACLTemplateEntry getFloatingIPACLTemplateEntry() {
+    @VsoProperty(displayName = "PolicyGroupTemplate", readOnly = true)
+    public PolicyGroupTemplate getPolicyGroupTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof FloatingIPACLTemplateEntry) {
-            return (FloatingIPACLTemplateEntry) obj;
+        if (obj instanceof PolicyGroupTemplate) {
+            return (PolicyGroupTemplate) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "InfrastructureConfig", readOnly = true)
-    public InfrastructureConfig getInfrastructureConfig() {
+    @VsoProperty(displayName = "VCenterCluster", readOnly = true)
+    public VCenterCluster getVCenterCluster() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof InfrastructureConfig) {
-            return (InfrastructureConfig) obj;
+        if (obj instanceof VCenterCluster) {
+            return (VCenterCluster) obj;
         }
         
         return null;
@@ -1838,31 +1838,31 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "NATMapEntry", readOnly = true)
-    public NATMapEntry getNATMapEntry() {
+    @VsoProperty(displayName = "Tier", readOnly = true)
+    public Tier getTier() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof NATMapEntry) {
-            return (NATMapEntry) obj;
+        if (obj instanceof Tier) {
+            return (Tier) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
-    public PolicyGroup getPolicyGroup() {
+    @VsoProperty(displayName = "Container", readOnly = true)
+    public Container getContainer() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroup) {
-            return (PolicyGroup) obj;
+        if (obj instanceof Container) {
+            return (Container) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "ExternalAppService", readOnly = true)
-    public ExternalAppService getExternalAppService() {
+    @VsoProperty(displayName = "EnterpriseSecuredData", readOnly = true)
+    public EnterpriseSecuredData getEnterpriseSecuredData() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof ExternalAppService) {
-            return (ExternalAppService) obj;
+        if (obj instanceof EnterpriseSecuredData) {
+            return (EnterpriseSecuredData) obj;
         }
         
         return null;
@@ -1938,11 +1938,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "Link", readOnly = true)
-    public Link getLink() {
+    @VsoProperty(displayName = "IKECertificate", readOnly = true)
+    public IKECertificate getIKECertificate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Link) {
-            return (Link) obj;
+        if (obj instanceof IKECertificate) {
+            return (IKECertificate) obj;
         }
         
         return null;

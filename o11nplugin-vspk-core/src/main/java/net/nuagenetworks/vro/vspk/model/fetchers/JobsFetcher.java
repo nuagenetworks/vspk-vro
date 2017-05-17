@@ -30,10 +30,6 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Job;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
-
-import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
-
 import net.nuagenetworks.vro.vspk.model.RedirectionTargetTemplate;
 
 import net.nuagenetworks.vro.vspk.model.RedirectionTarget;
@@ -44,7 +40,11 @@ import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
+import net.nuagenetworks.vro.vspk.model.VSC;
+
 import net.nuagenetworks.vro.vspk.model.VSD;
+
+import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 
 import net.nuagenetworks.vro.vspk.model.VRS;
 
@@ -54,11 +54,9 @@ import net.nuagenetworks.vro.vspk.model.ZFBRequest;
 
 import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
 
-import net.nuagenetworks.vro.vspk.model.VCenterCluster;
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
-
-import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.VCenter;
 
@@ -72,7 +70,7 @@ import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
-import net.nuagenetworks.vro.vspk.model.VSC;
+import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
@@ -80,7 +78,9 @@ import net.nuagenetworks.vro.vspk.model.EgressACLTemplate;
 
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
 
-import net.nuagenetworks.vro.vspk.model.PolicyGroup;
+import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
+
+import net.nuagenetworks.vro.vspk.model.VCenterCluster;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
@@ -118,26 +118,6 @@ public class JobsFetcher extends BaseFetcher<Job> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
-    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdEntryTemplate) {
-            return (IngressAdvFwdEntryTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "PolicyGroupTemplate", readOnly = true)
-    public PolicyGroupTemplate getPolicyGroupTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroupTemplate) {
-            return (PolicyGroupTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "RedirectionTargetTemplate", readOnly = true)
     public RedirectionTargetTemplate getRedirectionTargetTemplate() {
         RestObject obj = super.getParentRestObj();
@@ -188,11 +168,31 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
+    @VsoProperty(displayName = "VSC", readOnly = true)
+    public VSC getVSC() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VSC) {
+            return (VSC) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "VSD", readOnly = true)
     public VSD getVSD() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VSD) {
             return (VSD) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
+    public PolicyGroup getPolicyGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyGroup) {
+            return (PolicyGroup) obj;
         }
         
         return null;
@@ -238,11 +238,11 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
-    @VsoProperty(displayName = "VCenterCluster", readOnly = true)
-    public VCenterCluster getVCenterCluster() {
+    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
+    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VCenterCluster) {
-            return (VCenterCluster) obj;
+        if (obj instanceof IngressAdvFwdEntryTemplate) {
+            return (IngressAdvFwdEntryTemplate) obj;
         }
         
         return null;
@@ -253,16 +253,6 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Gateway) {
             return (Gateway) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
-    public L2DomainTemplate getL2DomainTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2DomainTemplate) {
-            return (L2DomainTemplate) obj;
         }
         
         return null;
@@ -328,11 +318,11 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
-    @VsoProperty(displayName = "VSC", readOnly = true)
-    public VSC getVSC() {
+    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
+    public L2DomainTemplate getL2DomainTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSC) {
-            return (VSC) obj;
+        if (obj instanceof L2DomainTemplate) {
+            return (L2DomainTemplate) obj;
         }
         
         return null;
@@ -368,11 +358,21 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
-    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
-    public PolicyGroup getPolicyGroup() {
+    @VsoProperty(displayName = "PolicyGroupTemplate", readOnly = true)
+    public PolicyGroupTemplate getPolicyGroupTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroup) {
-            return (PolicyGroup) obj;
+        if (obj instanceof PolicyGroupTemplate) {
+            return (PolicyGroupTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VCenterCluster", readOnly = true)
+    public VCenterCluster getVCenterCluster() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VCenterCluster) {
+            return (VCenterCluster) obj;
         }
         
         return null;

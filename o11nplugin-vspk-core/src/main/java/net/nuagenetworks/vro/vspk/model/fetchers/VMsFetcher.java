@@ -42,8 +42,6 @@ import net.nuagenetworks.vro.vspk.model.Subnet;
 
 import net.nuagenetworks.vro.vspk.model.VRS;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
-
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.Me;
@@ -51,6 +49,8 @@ import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.vspk.model.EgressACLTemplate;
 
 import net.nuagenetworks.vro.vspk.model.User;
+
+import net.nuagenetworks.vro.vspk.model.Tier;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
@@ -148,16 +148,6 @@ public class VMsFetcher extends BaseFetcher<VM> {
         return null;
     }
     
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "L2Domain", readOnly = true)
     public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
@@ -193,6 +183,16 @@ public class VMsFetcher extends BaseFetcher<VM> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof User) {
             return (User) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Tier", readOnly = true)
+    public Tier getTier() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Tier) {
+            return (Tier) obj;
         }
         
         return null;

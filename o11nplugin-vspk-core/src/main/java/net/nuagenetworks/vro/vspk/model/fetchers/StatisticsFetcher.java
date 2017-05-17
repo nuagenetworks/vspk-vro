@@ -32,13 +32,13 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.ContainerInterface;
 
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
-
 import net.nuagenetworks.vro.vspk.model.Zone;
 
 import net.nuagenetworks.vro.vspk.model.EgressACLEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
+
+import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
@@ -50,7 +50,7 @@ import net.nuagenetworks.vro.vspk.model.VMInterface;
 
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.AddressMap;
 
@@ -62,7 +62,7 @@ import net.nuagenetworks.vro.vspk.model.HostInterface;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
 
-import net.nuagenetworks.vro.vspk.model.PATNATPool;
+import net.nuagenetworks.vro.vspk.model.Tier;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -106,16 +106,6 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         return null;
     }
     
-    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
-    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdEntryTemplate) {
-            return (IngressAdvFwdEntryTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Zone", readOnly = true)
     public Zone getZone() {
         RestObject obj = super.getParentRestObj();
@@ -141,6 +131,16 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IngressExternalServiceTemplateEntry) {
             return (IngressExternalServiceTemplateEntry) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PATNATPool", readOnly = true)
+    public PATNATPool getPATNATPool() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PATNATPool) {
+            return (PATNATPool) obj;
         }
         
         return null;
@@ -196,11 +196,11 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         return null;
     }
     
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
+    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
+    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
+        if (obj instanceof IngressAdvFwdEntryTemplate) {
+            return (IngressAdvFwdEntryTemplate) obj;
         }
         
         return null;
@@ -256,11 +256,11 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         return null;
     }
     
-    @VsoProperty(displayName = "PATNATPool", readOnly = true)
-    public PATNATPool getPATNATPool() {
+    @VsoProperty(displayName = "Tier", readOnly = true)
+    public Tier getTier() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof PATNATPool) {
-            return (PATNATPool) obj;
+        if (obj instanceof Tier) {
+            return (Tier) obj;
         }
         
         return null;

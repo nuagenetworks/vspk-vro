@@ -38,9 +38,9 @@ import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
-import net.nuagenetworks.vro.vspk.model.VRS;
+import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
+import net.nuagenetworks.vro.vspk.model.VRS;
 
 import net.nuagenetworks.vro.vspk.model.MultiNICVPort;
 
@@ -48,7 +48,7 @@ import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.FloatingIp;
 
-import net.nuagenetworks.vro.vspk.model.PolicyGroup;
+import net.nuagenetworks.vro.vspk.model.Tier;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -122,21 +122,21 @@ public class VPortsFetcher extends BaseFetcher<VPort> {
         return null;
     }
     
-    @VsoProperty(displayName = "VRS", readOnly = true)
-    public VRS getVRS() {
+    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
+    public PolicyGroup getPolicyGroup() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VRS) {
-            return (VRS) obj;
+        if (obj instanceof PolicyGroup) {
+            return (PolicyGroup) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
+    @VsoProperty(displayName = "VRS", readOnly = true)
+    public VRS getVRS() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
+        if (obj instanceof VRS) {
+            return (VRS) obj;
         }
         
         return null;
@@ -172,11 +172,11 @@ public class VPortsFetcher extends BaseFetcher<VPort> {
         return null;
     }
     
-    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
-    public PolicyGroup getPolicyGroup() {
+    @VsoProperty(displayName = "Tier", readOnly = true)
+    public Tier getTier() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroup) {
-            return (PolicyGroup) obj;
+        if (obj instanceof Tier) {
+            return (Tier) obj;
         }
         
         return null;

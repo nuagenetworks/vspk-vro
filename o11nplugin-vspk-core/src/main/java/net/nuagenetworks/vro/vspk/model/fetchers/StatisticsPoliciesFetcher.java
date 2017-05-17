@@ -32,13 +32,13 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Zone;
 
+import net.nuagenetworks.vro.vspk.model.PATNATPool;
+
 import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
-
-import net.nuagenetworks.vro.vspk.model.Tier;
 
 import net.nuagenetworks.vro.vspk.model.AddressMap;
 
@@ -46,7 +46,7 @@ import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
 
-import net.nuagenetworks.vro.vspk.model.PATNATPool;
+import net.nuagenetworks.vro.vspk.model.Tier;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -90,6 +90,16 @@ public class StatisticsPoliciesFetcher extends BaseFetcher<StatisticsPolicy> {
         return null;
     }
     
+    @VsoProperty(displayName = "PATNATPool", readOnly = true)
+    public PATNATPool getPATNATPool() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PATNATPool) {
+            return (PATNATPool) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Domain", readOnly = true)
     public Domain getDomain() {
         RestObject obj = super.getParentRestObj();
@@ -115,16 +125,6 @@ public class StatisticsPoliciesFetcher extends BaseFetcher<StatisticsPolicy> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Subnet) {
             return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
         }
         
         return null;
@@ -160,11 +160,11 @@ public class StatisticsPoliciesFetcher extends BaseFetcher<StatisticsPolicy> {
         return null;
     }
     
-    @VsoProperty(displayName = "PATNATPool", readOnly = true)
-    public PATNATPool getPATNATPool() {
+    @VsoProperty(displayName = "Tier", readOnly = true)
+    public Tier getTier() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof PATNATPool) {
-            return (PATNATPool) obj;
+        if (obj instanceof Tier) {
+            return (Tier) obj;
         }
         
         return null;

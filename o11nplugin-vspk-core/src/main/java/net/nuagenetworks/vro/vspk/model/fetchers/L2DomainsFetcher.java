@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
-
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
@@ -68,21 +68,21 @@ public class L2DomainsFetcher extends BaseFetcher<L2Domain> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
-    public L2DomainTemplate getL2DomainTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2DomainTemplate) {
-            return (L2DomainTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Me", readOnly = true)
     public Me getMe() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
+    public L2DomainTemplate getL2DomainTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2DomainTemplate) {
+            return (L2DomainTemplate) obj;
         }
         
         return null;
