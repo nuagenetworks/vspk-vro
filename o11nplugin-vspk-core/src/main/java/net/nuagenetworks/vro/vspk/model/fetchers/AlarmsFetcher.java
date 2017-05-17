@@ -36,7 +36,7 @@ import net.nuagenetworks.vro.vspk.model.TCA;
 
 import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
 
-import net.nuagenetworks.vro.vspk.model.WANService;
+import net.nuagenetworks.vro.vspk.model.VSC;
 
 import net.nuagenetworks.vro.vspk.model.VSD;
 
@@ -44,25 +44,25 @@ import net.nuagenetworks.vro.vspk.model.VPort;
 
 import net.nuagenetworks.vro.vspk.model.Port;
 
-import net.nuagenetworks.vro.vspk.model.Container;
-
 import net.nuagenetworks.vro.vspk.model.VRS;
 
 import net.nuagenetworks.vro.vspk.model.HSC;
 
-import net.nuagenetworks.vro.vspk.model.VLAN;
-
 import net.nuagenetworks.vro.vspk.model.Gateway;
+
+import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
-import net.nuagenetworks.vro.vspk.model.VSC;
+import net.nuagenetworks.vro.vspk.model.NSPort;
 
 import net.nuagenetworks.vro.vspk.model.VM;
 
-import net.nuagenetworks.vro.vspk.model.NSPort;
-
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
+
+import net.nuagenetworks.vro.vspk.model.VLAN;
+
+import net.nuagenetworks.vro.vspk.model.Container;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
@@ -128,11 +128,11 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         return null;
     }
     
-    @VsoProperty(displayName = "WANService", readOnly = true)
-    public WANService getWANService() {
+    @VsoProperty(displayName = "VSC", readOnly = true)
+    public VSC getVSC() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof WANService) {
-            return (WANService) obj;
+        if (obj instanceof VSC) {
+            return (VSC) obj;
         }
         
         return null;
@@ -168,16 +168,6 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         return null;
     }
     
-    @VsoProperty(displayName = "Container", readOnly = true)
-    public Container getContainer() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Container) {
-            return (Container) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "VRS", readOnly = true)
     public VRS getVRS() {
         RestObject obj = super.getParentRestObj();
@@ -198,21 +188,21 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         return null;
     }
     
-    @VsoProperty(displayName = "VLAN", readOnly = true)
-    public VLAN getVLAN() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VLAN) {
-            return (VLAN) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Gateway", readOnly = true)
     public Gateway getGateway() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Gateway) {
             return (Gateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "WANService", readOnly = true)
+    public WANService getWANService() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof WANService) {
+            return (WANService) obj;
         }
         
         return null;
@@ -228,11 +218,11 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         return null;
     }
     
-    @VsoProperty(displayName = "VSC", readOnly = true)
-    public VSC getVSC() {
+    @VsoProperty(displayName = "NSPort", readOnly = true)
+    public NSPort getNSPort() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSC) {
-            return (VSC) obj;
+        if (obj instanceof NSPort) {
+            return (NSPort) obj;
         }
         
         return null;
@@ -248,21 +238,31 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         return null;
     }
     
-    @VsoProperty(displayName = "NSPort", readOnly = true)
-    public NSPort getNSPort() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof NSPort) {
-            return (NSPort) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "NSRedundantGatewayGroup", readOnly = true)
     public NSRedundantGatewayGroup getNSRedundantGatewayGroup() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSRedundantGatewayGroup) {
             return (NSRedundantGatewayGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VLAN", readOnly = true)
+    public VLAN getVLAN() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VLAN) {
+            return (VLAN) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Container", readOnly = true)
+    public Container getContainer() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Container) {
+            return (Container) obj;
         }
         
         return null;

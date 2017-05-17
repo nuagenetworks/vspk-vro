@@ -34,11 +34,11 @@ import net.nuagenetworks.vro.vspk.model.VCenterVRSConfig;
 
 import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
 
-import net.nuagenetworks.vro.vspk.model.VCenterCluster;
-
 import net.nuagenetworks.vro.vspk.model.VCenterDataCenter;
 
 import net.nuagenetworks.vro.vspk.model.VCenter;
+
+import net.nuagenetworks.vro.vspk.model.VCenterCluster;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -92,16 +92,6 @@ public class VRSRedeploymentpoliciesFetcher extends BaseFetcher<VRSRedeploymentp
         return null;
     }
     
-    @VsoProperty(displayName = "VCenterCluster", readOnly = true)
-    public VCenterCluster getVCenterCluster() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VCenterCluster) {
-            return (VCenterCluster) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "VCenterDataCenter", readOnly = true)
     public VCenterDataCenter getVCenterDataCenter() {
         RestObject obj = super.getParentRestObj();
@@ -117,6 +107,16 @@ public class VRSRedeploymentpoliciesFetcher extends BaseFetcher<VRSRedeploymentp
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenter) {
             return (VCenter) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VCenterCluster", readOnly = true)
+    public VCenterCluster getVCenterCluster() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VCenterCluster) {
+            return (VCenterCluster) obj;
         }
         
         return null;

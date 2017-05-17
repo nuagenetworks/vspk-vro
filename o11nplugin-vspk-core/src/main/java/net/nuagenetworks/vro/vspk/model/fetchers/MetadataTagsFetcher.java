@@ -30,11 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.MetadataTag;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.ExternalService;
+
 import net.nuagenetworks.vro.vspk.model.Metadata;
 
 import net.nuagenetworks.vro.vspk.model.Me;
-
-import net.nuagenetworks.vro.vspk.model.ExternalService;
 
 import net.nuagenetworks.vro.vspk.model.GlobalMetadata;
 
@@ -72,6 +72,16 @@ public class MetadataTagsFetcher extends BaseFetcher<MetadataTag> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "ExternalService", readOnly = true)
+    public ExternalService getExternalService() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ExternalService) {
+            return (ExternalService) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Metadata", readOnly = true)
     public Metadata getMetadata() {
         RestObject obj = super.getParentRestObj();
@@ -87,16 +97,6 @@ public class MetadataTagsFetcher extends BaseFetcher<MetadataTag> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "ExternalService", readOnly = true)
-    public ExternalService getExternalService() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof ExternalService) {
-            return (ExternalService) obj;
         }
         
         return null;

@@ -44,13 +44,13 @@ import net.nuagenetworks.vro.vspk.model.VMInterface;
 
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
-
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.HostInterface;
 
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.Tier;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -154,16 +154,6 @@ public class TCAsFetcher extends BaseFetcher<TCA> {
         return null;
     }
     
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "L2Domain", readOnly = true)
     public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
@@ -189,6 +179,16 @@ public class TCAsFetcher extends BaseFetcher<TCA> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Tier", readOnly = true)
+    public Tier getTier() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Tier) {
+            return (Tier) obj;
         }
         
         return null;

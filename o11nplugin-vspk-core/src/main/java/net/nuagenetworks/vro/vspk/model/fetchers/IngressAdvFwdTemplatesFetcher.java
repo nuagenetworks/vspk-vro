@@ -32,9 +32,9 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Domain;
 
-import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
-
 import net.nuagenetworks.vro.vspk.model.L2Domain;
+
+import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
@@ -80,21 +80,21 @@ public class IngressAdvFwdTemplatesFetcher extends BaseFetcher<IngressAdvFwdTemp
         return null;
     }
     
-    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
-    public L2DomainTemplate getL2DomainTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2DomainTemplate) {
-            return (L2DomainTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "L2Domain", readOnly = true)
     public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2Domain) {
             return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
+    public L2DomainTemplate getL2DomainTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2DomainTemplate) {
+            return (L2DomainTemplate) obj;
         }
         
         return null;

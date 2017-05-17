@@ -46,7 +46,7 @@ import net.nuagenetworks.vro.vspk.model.Group;
 
 import net.nuagenetworks.vro.vspk.model.Zone;
 
-import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
+import net.nuagenetworks.vro.vspk.model.ExternalService;
 
 import net.nuagenetworks.vro.vspk.model.FlowSecurityPolicy;
 
@@ -70,7 +70,7 @@ import net.nuagenetworks.vro.vspk.model.VSP;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
-import net.nuagenetworks.vro.vspk.model.WANService;
+import net.nuagenetworks.vro.vspk.model.VSC;
 
 import net.nuagenetworks.vro.vspk.model.VSD;
 
@@ -82,15 +82,11 @@ import net.nuagenetworks.vro.vspk.model.Port;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
-import net.nuagenetworks.vro.vspk.model.Container;
-
-import net.nuagenetworks.vro.vspk.model.ZoneTemplate;
+import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 
 import net.nuagenetworks.vro.vspk.model.VRS;
 
 import net.nuagenetworks.vro.vspk.model.HSC;
-
-import net.nuagenetworks.vro.vspk.model.VLAN;
 
 import net.nuagenetworks.vro.vspk.model.StaticRoute;
 
@@ -100,17 +96,17 @@ import net.nuagenetworks.vro.vspk.model.License;
 
 import net.nuagenetworks.vro.vspk.model.EnterpriseProfile;
 
+import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
+
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
 
 import net.nuagenetworks.vro.vspk.model.MultiCastRange;
 
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
-
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
-import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
+import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.ApplicationService;
 
@@ -124,17 +120,19 @@ import net.nuagenetworks.vro.vspk.model.DHCPOption;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
-import net.nuagenetworks.vro.vspk.model.VSC;
-
-import net.nuagenetworks.vro.vspk.model.VM;
+import net.nuagenetworks.vro.vspk.model.ZoneTemplate;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
 
 import net.nuagenetworks.vro.vspk.model.PublicNetworkMacro;
 
+import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
+
 import net.nuagenetworks.vro.vspk.model.AddressRange;
 
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
+
+import net.nuagenetworks.vro.vspk.model.VM;
 
 import net.nuagenetworks.vro.vspk.model.FloatingIp;
 
@@ -142,11 +140,13 @@ import net.nuagenetworks.vro.vspk.model.EgressACLTemplate;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
 
-import net.nuagenetworks.vro.vspk.model.ExternalService;
+import net.nuagenetworks.vro.vspk.model.VLAN;
 
 import net.nuagenetworks.vro.vspk.model.User;
 
-import net.nuagenetworks.vro.vspk.model.PolicyGroup;
+import net.nuagenetworks.vro.vspk.model.Tier;
+
+import net.nuagenetworks.vro.vspk.model.Container;
 
 import net.nuagenetworks.vro.vspk.model.Flow;
 
@@ -266,11 +266,11 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
-    @VsoProperty(displayName = "PolicyGroupTemplate", readOnly = true)
-    public PolicyGroupTemplate getPolicyGroupTemplate() {
+    @VsoProperty(displayName = "ExternalService", readOnly = true)
+    public ExternalService getExternalService() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroupTemplate) {
-            return (PolicyGroupTemplate) obj;
+        if (obj instanceof ExternalService) {
+            return (ExternalService) obj;
         }
         
         return null;
@@ -386,11 +386,11 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
-    @VsoProperty(displayName = "WANService", readOnly = true)
-    public WANService getWANService() {
+    @VsoProperty(displayName = "VSC", readOnly = true)
+    public VSC getVSC() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof WANService) {
-            return (WANService) obj;
+        if (obj instanceof VSC) {
+            return (VSC) obj;
         }
         
         return null;
@@ -446,21 +446,11 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
-    @VsoProperty(displayName = "Container", readOnly = true)
-    public Container getContainer() {
+    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
+    public PolicyGroup getPolicyGroup() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Container) {
-            return (Container) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "ZoneTemplate", readOnly = true)
-    public ZoneTemplate getZoneTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof ZoneTemplate) {
-            return (ZoneTemplate) obj;
+        if (obj instanceof PolicyGroup) {
+            return (PolicyGroup) obj;
         }
         
         return null;
@@ -481,16 +471,6 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof HSC) {
             return (HSC) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VLAN", readOnly = true)
-    public VLAN getVLAN() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VLAN) {
-            return (VLAN) obj;
         }
         
         return null;
@@ -536,6 +516,16 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
+    @VsoProperty(displayName = "PolicyGroupTemplate", readOnly = true)
+    public PolicyGroupTemplate getPolicyGroupTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyGroupTemplate) {
+            return (PolicyGroupTemplate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "BridgeInterface", readOnly = true)
     public BridgeInterface getBridgeInterface() {
         RestObject obj = super.getParentRestObj();
@@ -566,16 +556,6 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Gateway", readOnly = true)
     public Gateway getGateway() {
         RestObject obj = super.getParentRestObj();
@@ -586,11 +566,11 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
-    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
-    public L2DomainTemplate getL2DomainTemplate() {
+    @VsoProperty(displayName = "WANService", readOnly = true)
+    public WANService getWANService() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2DomainTemplate) {
-            return (L2DomainTemplate) obj;
+        if (obj instanceof WANService) {
+            return (WANService) obj;
         }
         
         return null;
@@ -656,21 +636,11 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
-    @VsoProperty(displayName = "VSC", readOnly = true)
-    public VSC getVSC() {
+    @VsoProperty(displayName = "ZoneTemplate", readOnly = true)
+    public ZoneTemplate getZoneTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSC) {
-            return (VSC) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VM", readOnly = true)
-    public VM getVM() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VM) {
-            return (VM) obj;
+        if (obj instanceof ZoneTemplate) {
+            return (ZoneTemplate) obj;
         }
         
         return null;
@@ -696,6 +666,16 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
+    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
+    public L2DomainTemplate getL2DomainTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2DomainTemplate) {
+            return (L2DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "AddressRange", readOnly = true)
     public AddressRange getAddressRange() {
         RestObject obj = super.getParentRestObj();
@@ -711,6 +691,16 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof DomainTemplate) {
             return (DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VM", readOnly = true)
+    public VM getVM() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VM) {
+            return (VM) obj;
         }
         
         return null;
@@ -746,11 +736,11 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
-    @VsoProperty(displayName = "ExternalService", readOnly = true)
-    public ExternalService getExternalService() {
+    @VsoProperty(displayName = "VLAN", readOnly = true)
+    public VLAN getVLAN() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof ExternalService) {
-            return (ExternalService) obj;
+        if (obj instanceof VLAN) {
+            return (VLAN) obj;
         }
         
         return null;
@@ -766,11 +756,21 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
-    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
-    public PolicyGroup getPolicyGroup() {
+    @VsoProperty(displayName = "Tier", readOnly = true)
+    public Tier getTier() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroup) {
-            return (PolicyGroup) obj;
+        if (obj instanceof Tier) {
+            return (Tier) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Container", readOnly = true)
+    public Container getContainer() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Container) {
+            return (Container) obj;
         }
         
         return null;

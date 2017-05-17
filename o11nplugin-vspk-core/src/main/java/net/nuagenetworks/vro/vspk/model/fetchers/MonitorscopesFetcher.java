@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Monitorscope;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Application;
-
 import net.nuagenetworks.vro.vspk.model.NSGateway;
+
+import net.nuagenetworks.vro.vspk.model.Application;
 
 import net.nuagenetworks.vro.vspk.model.NetworkPerformanceMeasurement;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
@@ -68,21 +68,21 @@ public class MonitorscopesFetcher extends BaseFetcher<Monitorscope> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "Application", readOnly = true)
-    public Application getApplication() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Application) {
-            return (Application) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "NSGateway", readOnly = true)
     public NSGateway getNSGateway() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSGateway) {
             return (NSGateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Application", readOnly = true)
+    public Application getApplication() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Application) {
+            return (Application) obj;
         }
         
         return null;

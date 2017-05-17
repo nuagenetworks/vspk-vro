@@ -38,15 +38,11 @@ import net.nuagenetworks.vro.vspk.model.Zone;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
-import net.nuagenetworks.vro.vspk.model.WANService;
-
 import net.nuagenetworks.vro.vspk.model.Port;
-
-import net.nuagenetworks.vro.vspk.model.VLAN;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
-import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
+import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
@@ -54,7 +50,11 @@ import net.nuagenetworks.vro.vspk.model.NSGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
 
+import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
+
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
+
+import net.nuagenetworks.vro.vspk.model.VLAN;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -128,31 +128,11 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         return null;
     }
     
-    @VsoProperty(displayName = "WANService", readOnly = true)
-    public WANService getWANService() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof WANService) {
-            return (WANService) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Port", readOnly = true)
     public Port getPort() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Port) {
             return (Port) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VLAN", readOnly = true)
-    public VLAN getVLAN() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VLAN) {
-            return (VLAN) obj;
         }
         
         return null;
@@ -168,11 +148,11 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         return null;
     }
     
-    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
-    public L2DomainTemplate getL2DomainTemplate() {
+    @VsoProperty(displayName = "WANService", readOnly = true)
+    public WANService getWANService() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2DomainTemplate) {
-            return (L2DomainTemplate) obj;
+        if (obj instanceof WANService) {
+            return (WANService) obj;
         }
         
         return null;
@@ -208,11 +188,31 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         return null;
     }
     
+    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
+    public L2DomainTemplate getL2DomainTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2DomainTemplate) {
+            return (L2DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "DomainTemplate", readOnly = true)
     public DomainTemplate getDomainTemplate() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof DomainTemplate) {
             return (DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VLAN", readOnly = true)
+    public VLAN getVLAN() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VLAN) {
+            return (VLAN) obj;
         }
         
         return null;

@@ -38,11 +38,11 @@ import net.nuagenetworks.vro.vspk.model.VPort;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
-import net.nuagenetworks.vro.vspk.model.Container;
-
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.Container;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -116,16 +116,6 @@ public class ContainerInterfacesFetcher extends BaseFetcher<ContainerInterface> 
         return null;
     }
     
-    @VsoProperty(displayName = "Container", readOnly = true)
-    public Container getContainer() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Container) {
-            return (Container) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "L2Domain", readOnly = true)
     public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
@@ -141,6 +131,16 @@ public class ContainerInterfacesFetcher extends BaseFetcher<ContainerInterface> 
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Container", readOnly = true)
+    public Container getContainer() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Container) {
+            return (Container) obj;
         }
         
         return null;
