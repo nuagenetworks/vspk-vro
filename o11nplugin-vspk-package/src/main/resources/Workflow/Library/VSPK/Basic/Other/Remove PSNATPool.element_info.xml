@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Remove PSNATPool</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">81fb0277-29b0-5dde-8dee-f7a6538ed9bb</entry>
+</properties>

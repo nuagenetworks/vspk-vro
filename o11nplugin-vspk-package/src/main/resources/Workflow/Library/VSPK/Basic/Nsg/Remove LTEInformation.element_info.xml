@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Remove LTEInformation</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0e9625e0-c4d7-5ba0-9fda-0ca9ffc032de</entry>
+</properties>

@@ -9,7 +9,7 @@
     <parent>
         <artifactId>vspk-vro</artifactId>
         <groupId>net.nuagenetworks</groupId>
-        <version>4.0.8</version>
+        <version>5.0.1</version>
     </parent>
 
     <dependencies>

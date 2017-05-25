@@ -83,11 +83,11 @@ public class SubnetTemplate extends BaseObject {
     @JsonProperty(value = "IPType")
     protected SubnetTemplateIPType IPType;
     
+    @JsonProperty(value = "IPv6Address")
+    protected String IPv6Address;
+    
     @JsonProperty(value = "IPv6Gateway")
     protected String IPv6Gateway;
-    
-    @JsonProperty(value = "IPv6address")
-    protected String IPv6address;
     
     @JsonProperty(value = "address")
     protected String address;
@@ -97,6 +97,9 @@ public class SubnetTemplate extends BaseObject {
     
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "dynamicIpv6Address")
+    protected Boolean dynamicIpv6Address;
     
     @JsonProperty(value = "encryption")
     protected SubnetTemplateEncryption encryption;
@@ -226,6 +229,17 @@ public class SubnetTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
+    public String getIPv6Address() {
+       return IPv6Address;
+    }
+
+    @JsonIgnore
+    public void setIPv6Address(String value) { 
+        this.IPv6Address = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "IPv6Gateway", readOnly = false)   
     public String getIPv6Gateway() {
        return IPv6Gateway;
@@ -234,17 +248,6 @@ public class SubnetTemplate extends BaseObject {
     @JsonIgnore
     public void setIPv6Gateway(String value) { 
         this.IPv6Gateway = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "IPv6address", readOnly = false)   
-    public String getIPv6address() {
-       return IPv6address;
-    }
-
-    @JsonIgnore
-    public void setIPv6address(String value) { 
-        this.IPv6address = value;
     }
     
     @JsonIgnore
@@ -278,6 +281,17 @@ public class SubnetTemplate extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DynamicIpv6Address", readOnly = false)   
+    public Boolean getDynamicIpv6Address() {
+       return dynamicIpv6Address;
+    }
+
+    @JsonIgnore
+    public void setDynamicIpv6Address(Boolean value) { 
+        this.dynamicIpv6Address = value;
     }
     
     @JsonIgnore
@@ -498,7 +512,7 @@ public class SubnetTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.QOSS_FETCHER, getId());
         }
     }public String toString() {
-        return "SubnetTemplate [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Gateway=" + IPv6Gateway + ", IPv6address=" + IPv6address + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", proxyARP=" + proxyARP + ", splitSubnet=" + splitSubnet + ", useGlobalMAC=" + useGlobalMAC + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "SubnetTemplate [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", proxyARP=" + proxyARP + ", splitSubnet=" + splitSubnet + ", useGlobalMAC=" + useGlobalMAC + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

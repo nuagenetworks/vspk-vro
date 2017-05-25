@@ -30,25 +30,25 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.EnterprisePermission;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
-
-import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
-
-import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
-
-import net.nuagenetworks.vro.vspk.model.PATNATPool;
-
-import net.nuagenetworks.vro.vspk.model.Port;
-
 import net.nuagenetworks.vro.vspk.model.Gateway;
-
-import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
 
+import net.nuagenetworks.vro.vspk.model.PATNATPool;
+
+import net.nuagenetworks.vro.vspk.model.Port;
+
+import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
+
+import net.nuagenetworks.vro.vspk.model.WANService;
+
+import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
+
 import net.nuagenetworks.vro.vspk.model.VLAN;
+
+import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -82,71 +82,11 @@ public class EnterprisePermissionsFetcher extends BaseFetcher<EnterprisePermissi
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "SharedNetworkResource", readOnly = true)
-    public SharedNetworkResource getSharedNetworkResource() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof SharedNetworkResource) {
-            return (SharedNetworkResource) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
-    public RedundancyGroup getRedundancyGroup() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof RedundancyGroup) {
-            return (RedundancyGroup) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VsgRedundantPort", readOnly = true)
-    public VsgRedundantPort getVsgRedundantPort() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VsgRedundantPort) {
-            return (VsgRedundantPort) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "PATNATPool", readOnly = true)
-    public PATNATPool getPATNATPool() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof PATNATPool) {
-            return (PATNATPool) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Port", readOnly = true)
-    public Port getPort() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Port) {
-            return (Port) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Gateway", readOnly = true)
     public Gateway getGateway() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Gateway) {
             return (Gateway) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "WANService", readOnly = true)
-    public WANService getWANService() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof WANService) {
-            return (WANService) obj;
         }
         
         return null;
@@ -172,11 +112,71 @@ public class EnterprisePermissionsFetcher extends BaseFetcher<EnterprisePermissi
         return null;
     }
     
+    @VsoProperty(displayName = "PATNATPool", readOnly = true)
+    public PATNATPool getPATNATPool() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PATNATPool) {
+            return (PATNATPool) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Port", readOnly = true)
+    public Port getPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Port) {
+            return (Port) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
+    public RedundancyGroup getRedundancyGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RedundancyGroup) {
+            return (RedundancyGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "WANService", readOnly = true)
+    public WANService getWANService() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof WANService) {
+            return (WANService) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SharedNetworkResource", readOnly = true)
+    public SharedNetworkResource getSharedNetworkResource() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SharedNetworkResource) {
+            return (SharedNetworkResource) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "VLAN", readOnly = true)
     public VLAN getVLAN() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VLAN) {
             return (VLAN) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VsgRedundantPort", readOnly = true)
+    public VsgRedundantPort getVsgRedundantPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VsgRedundantPort) {
+            return (VsgRedundantPort) obj;
         }
         
         return null;

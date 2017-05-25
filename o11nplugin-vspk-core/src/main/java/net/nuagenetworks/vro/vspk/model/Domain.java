@@ -50,8 +50,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIPACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.ExternalAppServicesFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.FirewallAclsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIpsFetcher;
@@ -76,6 +74,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.LinksFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceBindingsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
@@ -85,6 +85,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.RedirectionTargetsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPoliciesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.SPATSourcesPoolsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.StaticRoutesFetcher;
 
@@ -113,6 +115,8 @@ import net.nuagenetworks.vro.vspk.model.enums.DomainDHCPBehavior;
 import net.nuagenetworks.vro.vspk.model.enums.DomainDPI;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainPATEnabled;
+
+import net.nuagenetworks.vro.vspk.model.enums.DomainAdvertiseCriteria;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainApplicationDeploymentPolicy;
 
@@ -157,8 +161,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPACLTEMPLATES_FETCHER, type = Constants.FLOATINGIPACLTEMPLATES_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.EXTERNALAPPSERVICES_FETCHER, type = Constants.EXTERNALAPPSERVICES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPS_FETCHER, type = Constants.FLOATINGIPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLTEMPLATES_FETCHER, type = Constants.INGRESSACLTEMPLATES_FETCHER), 
@@ -171,6 +173,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, type = Constants.NETWORKPERFORMANCEBINDINGS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.POLICYGROUPS_FETCHER, type = Constants.POLICYGROUPS_FETCHER), 
@@ -180,6 +184,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.REDIRECTIONTARGETS_FETCHER, type = Constants.REDIRECTIONTARGETS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ROUTINGPOLICIES_FETCHER, type = Constants.ROUTINGPOLICIES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.SPATSOURCESPOOLS_FETCHER, type = Constants.SPATSOURCESPOOLS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.STATICROUTES_FETCHER, type = Constants.STATICROUTES_FETCHER), 
 
@@ -216,6 +222,9 @@ public class Domain extends BaseObject {
     
     @JsonProperty(value = "PATEnabled")
     protected DomainPATEnabled PATEnabled;
+    
+    @JsonProperty(value = "advertiseCriteria")
+    protected DomainAdvertiseCriteria advertiseCriteria;
     
     @JsonProperty(value = "applicationDeploymentPolicy")
     protected DomainApplicationDeploymentPolicy applicationDeploymentPolicy;
@@ -365,9 +374,6 @@ public class Domain extends BaseObject {
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
-    private ExternalAppServicesFetcher externalAppServices;
-    
-    @JsonIgnore
     private FirewallAclsFetcher firewallAcls;
     
     @JsonIgnore
@@ -404,6 +410,9 @@ public class Domain extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private NetworkPerformanceBindingsFetcher networkPerformanceBindings;
+    
+    @JsonIgnore
     private PermissionsFetcher permissions;
     
     @JsonIgnore
@@ -417,6 +426,9 @@ public class Domain extends BaseObject {
     
     @JsonIgnore
     private RoutingPoliciesFetcher routingPolicies;
+    
+    @JsonIgnore
+    private SPATSourcesPoolsFetcher sPATSourcesPools;
     
     @JsonIgnore
     private StaticRoutesFetcher staticRoutes;
@@ -487,8 +499,6 @@ public class Domain extends BaseObject {
         
         eventLogs = new EventLogsFetcher(this);
         
-        externalAppServices = new ExternalAppServicesFetcher(this);
-        
         firewallAcls = new FirewallAclsFetcher(this);
         
         floatingIps = new FloatingIpsFetcher(this);
@@ -513,6 +523,8 @@ public class Domain extends BaseObject {
         
         metadatas = new MetadatasFetcher(this);
         
+        networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
+        
         permissions = new PermissionsFetcher(this);
         
         policyGroups = new PolicyGroupsFetcher(this);
@@ -522,6 +534,8 @@ public class Domain extends BaseObject {
         redirectionTargets = new RedirectionTargetsFetcher(this);
         
         routingPolicies = new RoutingPoliciesFetcher(this);
+        
+        sPATSourcesPools = new SPATSourcesPoolsFetcher(this);
         
         staticRoutes = new StaticRoutesFetcher(this);
         
@@ -645,6 +659,17 @@ public class Domain extends BaseObject {
     @JsonIgnore
     public void setPATEnabled(DomainPATEnabled value) { 
         this.PATEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AdvertiseCriteria", readOnly = false)   
+    public DomainAdvertiseCriteria getAdvertiseCriteria() {
+       return advertiseCriteria;
+    }
+
+    @JsonIgnore
+    public void setAdvertiseCriteria(DomainAdvertiseCriteria value) { 
+        this.advertiseCriteria = value;
     }
     
     @JsonIgnore
@@ -1127,12 +1152,6 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "ExternalAppServices", readOnly = true)   
-    public ExternalAppServicesFetcher getExternalAppServices() {
-        return externalAppServices;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "FirewallAcls", readOnly = true)   
     public FirewallAclsFetcher getFirewallAcls() {
         return firewallAcls;
@@ -1205,6 +1224,12 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetworkPerformanceBindings", readOnly = true)   
+    public NetworkPerformanceBindingsFetcher getNetworkPerformanceBindings() {
+        return networkPerformanceBindings;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Permissions", readOnly = true)   
     public PermissionsFetcher getPermissions() {
         return permissions;
@@ -1232,6 +1257,12 @@ public class Domain extends BaseObject {
     @VsoProperty(displayName = "RoutingPolicies", readOnly = true)   
     public RoutingPoliciesFetcher getRoutingPolicies() {
         return routingPolicies;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SPATSourcesPools", readOnly = true)   
+    public SPATSourcesPoolsFetcher getSPATSourcesPools() {
+        return sPATSourcesPools;
     }
     
     @JsonIgnore
@@ -1406,14 +1437,6 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
-    public void createExternalAppService(Session session, ExternalAppService childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.EXTERNALAPPSERVICES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createFloatingIp(Session session, FloatingIp childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1478,6 +1501,14 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createNetworkPerformanceBinding(Session session, NetworkPerformanceBinding childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1536,6 +1567,14 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createSPATSourcesPool(Session session, SPATSourcesPool childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.SPATSOURCESPOOLS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createStaticRoute(Session session, StaticRoute childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1584,7 +1623,7 @@ public class Domain extends BaseObject {
         }
     }
     public String toString() {
-        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", PATEnabled=" + PATEnabled + ", applicationDeploymentPolicy=" + applicationDeploymentPolicy + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulSubnetIPAddress=" + backHaulSubnetIPAddress + ", backHaulSubnetMask=" + backHaulSubnetMask + ", backHaulVNID=" + backHaulVNID + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", encryption=" + encryption + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", leakingEnabled=" + leakingEnabled + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", PATEnabled=" + PATEnabled + ", advertiseCriteria=" + advertiseCriteria + ", applicationDeploymentPolicy=" + applicationDeploymentPolicy + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulSubnetIPAddress=" + backHaulSubnetIPAddress + ", backHaulSubnetMask=" + backHaulSubnetMask + ", backHaulVNID=" + backHaulVNID + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", encryption=" + encryption + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", leakingEnabled=" + leakingEnabled + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

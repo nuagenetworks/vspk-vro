@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.LTEInformationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
@@ -117,6 +119,9 @@ public class NSPort extends BaseObject {
     @JsonProperty(value = "name")
     protected String name;
     
+    @JsonProperty(value = "networkAccelerationEnabled")
+    protected Boolean networkAccelerationEnabled;
+    
     @JsonProperty(value = "permittedAction")
     protected NSPortPermittedAction permittedAction;
     
@@ -154,6 +159,9 @@ public class NSPort extends BaseObject {
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
+    private LTEInformationsFetcher lTEInformations;
+    
+    @JsonIgnore
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
@@ -177,6 +185,8 @@ public class NSPort extends BaseObject {
         eventLogs = new EventLogsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        lTEInformations = new LTEInformationsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         
@@ -335,6 +345,17 @@ public class NSPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetworkAccelerationEnabled", readOnly = false)   
+    public Boolean getNetworkAccelerationEnabled() {
+       return networkAccelerationEnabled;
+    }
+
+    @JsonIgnore
+    public void setNetworkAccelerationEnabled(Boolean value) { 
+        this.networkAccelerationEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PermittedAction", readOnly = false)   
     public NSPortPermittedAction getPermittedAction() {
        return permittedAction;
@@ -444,6 +465,12 @@ public class NSPort extends BaseObject {
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LTEInformations", readOnly = true)   
+    public LTEInformationsFetcher getLTEInformations() {
+        return lTEInformations;
     }
     
     @JsonIgnore
@@ -562,7 +589,7 @@ public class NSPort extends BaseObject {
         }
     }
     public String toString() {
-        return "NSPort [" + "NATTraversal=" + NATTraversal + ", VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", speed=" + speed + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSPort [" + "NATTraversal=" + NATTraversal + ", VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", networkAccelerationEnabled=" + networkAccelerationEnabled + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", speed=" + speed + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

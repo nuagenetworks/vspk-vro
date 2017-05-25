@@ -79,6 +79,9 @@ public class ZoneTemplate extends BaseObject {
     @JsonProperty(value = "IPType")
     protected ZoneTemplateIPType IPType;
     
+    @JsonProperty(value = "IPv6Address")
+    protected String IPv6Address;
+    
     @JsonProperty(value = "address")
     protected String address;
     
@@ -87,6 +90,9 @@ public class ZoneTemplate extends BaseObject {
     
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "dynamicIpv6Address")
+    protected Boolean dynamicIpv6Address;
     
     @JsonProperty(value = "encryption")
     protected ZoneTemplateEncryption encryption;
@@ -203,6 +209,17 @@ public class ZoneTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
+    public String getIPv6Address() {
+       return IPv6Address;
+    }
+
+    @JsonIgnore
+    public void setIPv6Address(String value) { 
+        this.IPv6Address = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
     public String getAddress() {
        return address;
@@ -233,6 +250,17 @@ public class ZoneTemplate extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DynamicIpv6Address", readOnly = false)   
+    public Boolean getDynamicIpv6Address() {
+       return dynamicIpv6Address;
+    }
+
+    @JsonIgnore
+    public void setDynamicIpv6Address(Boolean value) { 
+        this.dynamicIpv6Address = value;
     }
     
     @JsonIgnore
@@ -425,7 +453,7 @@ public class ZoneTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.SUBNETTEMPLATES_FETCHER, getId());
         }
     }public String toString() {
-        return "ZoneTemplate [" + "DPI=" + DPI + ", IPType=" + IPType + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", publicZone=" + publicZone + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ZoneTemplate [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", publicZone=" + publicZone + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

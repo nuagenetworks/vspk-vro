@@ -1,3 +1,13 @@
+Changes from version 4.0.8 to 5.0.1
+===================================
+
+- Upgraded to VSD specification version 5.0.1
+
+Changes from version 4.0.7 to version 4.0.8 (2)
+===========================================
+
+- Added support for certificate based authentication
+
 Changes from version 4.0.7 to version 4.0.8
 ===========================================
 

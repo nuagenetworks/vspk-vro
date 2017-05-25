@@ -49,9 +49,6 @@ public class DUCGroup extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "associatedDUCs")
-    protected java.util.List<String> associatedDUCs;
-    
     @JsonProperty(value = "associatedPerformanceMonitorID")
     protected String associatedPerformanceMonitorID;
     
@@ -104,17 +101,6 @@ public class DUCGroup extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedDUCs", readOnly = false)   
-    public java.util.List<String> getAssociatedDUCs() {
-       return associatedDUCs;
-    }
-
-    @JsonIgnore
-    public void setAssociatedDUCs(java.util.List<String> value) { 
-        this.associatedDUCs = value;
-    }
-    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedPerformanceMonitorID", readOnly = false)   
     public String getAssociatedPerformanceMonitorID() {
@@ -183,7 +169,7 @@ public class DUCGroup extends BaseObject {
         }
     }
     public String toString() {
-        return "DUCGroup [" + "associatedDUCs=" + associatedDUCs + ", associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DUCGroup [" + "associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

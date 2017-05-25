@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Edit PSNATPool</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ed137fa2-0388-5b56-8b76-54797f597a10</entry>
+</properties>

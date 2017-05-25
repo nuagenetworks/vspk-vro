@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="70e5b197-4f0b-5090-96bb-147635929831"  version="4.0.8" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="70e5b197-4f0b-5090-96bb-147635929831"  version="5.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit Gateway]]></display-name>
 <ref-types><![CDATA[(VSPK:Gateway)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -13,9 +13,6 @@
 </param>
 
 <param name='name' type='string' >
-</param>
-
-<param name='personality' type='VSPK:GatewayPersonality' >
 </param>
 
 <param name='systemID' type='string' >
@@ -43,7 +40,6 @@ if (name) {
 } else if (gatewayObj.name) {
    gatewayObj.name = "";
 }
-gatewayObj.personality = personality;
 if (systemID) {
    gatewayObj.systemID = systemID;
 } else if (gatewayObj.systemID) {
@@ -57,8 +53,6 @@ gatewayObj.save(session, 1);]]></script>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
-
-<bind name='personality' type='VSPK:GatewayPersonality' export-name="personality" ></bind>
 
 <bind name='systemID' type='string' export-name="systemID" ></bind>
 
@@ -76,9 +70,6 @@ gatewayObj.save(session, 1);]]></script>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#gatewayObj.name]]></p-qual></p-param>
-
-<p-param name="personality"><desc><![CDATA[personality]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="VSPK:GatewayPersonality" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getGatewayPersonality").call( #gatewayObj )]]></p-qual></p-param>
 
 <p-param name="systemID"><desc><![CDATA[systemID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#gatewayObj.systemID]]></p-qual></p-param>

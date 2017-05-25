@@ -30,21 +30,21 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.BridgeInterface;
+
 import net.nuagenetworks.vro.vspk.model.ContainerInterface;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
-import net.nuagenetworks.vro.vspk.model.VPort;
-
-import net.nuagenetworks.vro.vspk.model.VMInterface;
-
-import net.nuagenetworks.vro.vspk.model.BridgeInterface;
+import net.nuagenetworks.vro.vspk.model.HostInterface;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
-import net.nuagenetworks.vro.vspk.model.HostInterface;
-
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.VMInterface;
+
+import net.nuagenetworks.vro.vspk.model.VPort;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -78,6 +78,16 @@ public class PolicyGroupsFetcher extends BaseFetcher<PolicyGroup> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "BridgeInterface", readOnly = true)
+    public BridgeInterface getBridgeInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof BridgeInterface) {
+            return (BridgeInterface) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "ContainerInterface", readOnly = true)
     public ContainerInterface getContainerInterface() {
         RestObject obj = super.getParentRestObj();
@@ -98,31 +108,11 @@ public class PolicyGroupsFetcher extends BaseFetcher<PolicyGroup> {
         return null;
     }
     
-    @VsoProperty(displayName = "VPort", readOnly = true)
-    public VPort getVPort() {
+    @VsoProperty(displayName = "HostInterface", readOnly = true)
+    public HostInterface getHostInterface() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VPort) {
-            return (VPort) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VMInterface", readOnly = true)
-    public VMInterface getVMInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VMInterface) {
-            return (VMInterface) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "BridgeInterface", readOnly = true)
-    public BridgeInterface getBridgeInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof BridgeInterface) {
-            return (BridgeInterface) obj;
+        if (obj instanceof HostInterface) {
+            return (HostInterface) obj;
         }
         
         return null;
@@ -138,21 +128,31 @@ public class PolicyGroupsFetcher extends BaseFetcher<PolicyGroup> {
         return null;
     }
     
-    @VsoProperty(displayName = "HostInterface", readOnly = true)
-    public HostInterface getHostInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof HostInterface) {
-            return (HostInterface) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Me", readOnly = true)
     public Me getMe() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VMInterface", readOnly = true)
+    public VMInterface getVMInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VMInterface) {
+            return (VMInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VPort) {
+            return (VPort) obj;
         }
         
         return null;

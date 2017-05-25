@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Avatar;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.User;
-
 import net.nuagenetworks.vro.vspk.model.Enterprise;
+
+import net.nuagenetworks.vro.vspk.model.User;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,21 +66,21 @@ public class AvatarsFetcher extends BaseFetcher<Avatar> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "User", readOnly = true)
-    public User getUser() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof User) {
-            return (User) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Enterprise", readOnly = true)
     public Enterprise getEnterprise() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "User", readOnly = true)
+    public User getUser() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof User) {
+            return (User) obj;
         }
         
         return null;

@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.ContainerResync;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Subnet;
-
 import net.nuagenetworks.vro.vspk.model.Container;
+
+import net.nuagenetworks.vro.vspk.model.Subnet;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,21 +66,21 @@ public class ContainerResyncsFetcher extends BaseFetcher<ContainerResync> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "Subnet", readOnly = true)
-    public Subnet getSubnet() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Subnet) {
-            return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Container", readOnly = true)
     public Container getContainer() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Container) {
             return (Container) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
         }
         
         return null;

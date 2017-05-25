@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vm</entry>
+<entry key="name">Find VMInterface in VPort</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a692d83b-ea98-569f-a050-9cd7ac4a7958</entry>
+</properties>

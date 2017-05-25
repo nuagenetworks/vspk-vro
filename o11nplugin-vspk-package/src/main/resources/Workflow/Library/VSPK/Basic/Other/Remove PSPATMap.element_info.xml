@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Remove PSPATMap</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">945c9796-cbdf-5165-aa4d-8d2d377d53d6</entry>
+</properties>

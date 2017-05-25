@@ -96,6 +96,8 @@ import net.nuagenetworks.vro.vspk.model.enums.L2DomainEncryption;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainEntityScope;
 
+import net.nuagenetworks.vro.vspk.model.enums.L2DomainEntityState;
+
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainMaintenanceMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainMulticast;
@@ -103,6 +105,8 @@ import net.nuagenetworks.vro.vspk.model.enums.L2DomainMulticast;
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainPolicyChangeStatus;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainUplinkPreference;
+
+import net.nuagenetworks.vro.vspk.model.enums.L2DomainUseGlobalMAC;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -166,6 +170,12 @@ public class L2Domain extends BaseObject {
     @JsonProperty(value = "IPType")
     protected L2DomainIPType IPType;
     
+    @JsonProperty(value = "IPv6Address")
+    protected String IPv6Address;
+    
+    @JsonProperty(value = "IPv6Gateway")
+    protected String IPv6Gateway;
+    
     @JsonProperty(value = "address")
     protected String address;
     
@@ -183,6 +193,9 @@ public class L2Domain extends BaseObject {
     
     @JsonProperty(value = "entityScope")
     protected L2DomainEntityScope entityScope;
+    
+    @JsonProperty(value = "entityState")
+    protected L2DomainEntityState entityState;
     
     @JsonProperty(value = "externalID")
     protected String externalID;
@@ -228,6 +241,9 @@ public class L2Domain extends BaseObject {
     
     @JsonProperty(value = "uplinkPreference")
     protected L2DomainUplinkPreference uplinkPreference;
+    
+    @JsonProperty(value = "useGlobalMAC")
+    protected L2DomainUseGlobalMAC useGlobalMAC;
     
     @JsonProperty(value = "vnId")
     protected Long vnId;
@@ -461,6 +477,28 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
+    public String getIPv6Address() {
+       return IPv6Address;
+    }
+
+    @JsonIgnore
+    public void setIPv6Address(String value) { 
+        this.IPv6Address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6Gateway", readOnly = false)   
+    public String getIPv6Gateway() {
+       return IPv6Gateway;
+    }
+
+    @JsonIgnore
+    public void setIPv6Gateway(String value) { 
+        this.IPv6Gateway = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
     public String getAddress() {
        return address;
@@ -524,6 +562,17 @@ public class L2Domain extends BaseObject {
     @JsonIgnore
     public void setEntityScope(L2DomainEntityScope value) { 
         this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EntityState", readOnly = false)   
+    public L2DomainEntityState getEntityState() {
+       return entityState;
+    }
+
+    @JsonIgnore
+    public void setEntityState(L2DomainEntityState value) { 
+        this.entityState = value;
     }
     
     @JsonIgnore
@@ -689,6 +738,17 @@ public class L2Domain extends BaseObject {
     @JsonIgnore
     public void setUplinkPreference(L2DomainUplinkPreference value) { 
         this.uplinkPreference = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UseGlobalMAC", readOnly = false)   
+    public L2DomainUseGlobalMAC getUseGlobalMAC() {
+       return useGlobalMAC;
+    }
+
+    @JsonIgnore
+    public void setUseGlobalMAC(L2DomainUseGlobalMAC value) { 
+        this.useGlobalMAC = value;
     }
     
     @JsonIgnore
@@ -1088,7 +1148,7 @@ public class L2Domain extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", description=" + description + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", uplinkPreference=" + uplinkPreference + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", description=" + description + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

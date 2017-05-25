@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="873295db-6d1f-5e33-a678-fd5d408f9307"  version="5.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add PTranslationMap to PSNATPool]]></display-name>
+<ref-types><![CDATA[(VSPK:PSNATPool)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='pSNATPoolObj' type='VSPK:PSNATPool' >
+</param>
+<param name='mappingType' type='VSPK:PTranslationMapMappingType' >
+</param>
+<param name='providerAliasIP' type='string' >
+</param>
+<param name='providerIP' type='string' >
+</param>
+</input><output><param name='pTranslationMapObj' type='VSPK:PTranslationMap' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = pSNATPoolObj.session;
+
+pTranslationMapObj = new VSPKPTranslationMap();
+pTranslationMapObj.mappingType = mappingType;
+if (providerAliasIP) {
+   pTranslationMapObj.providerAliasIP = providerAliasIP;
+}
+if (providerIP) {
+   pTranslationMapObj.providerIP = providerIP;
+}
+
+pSNATPoolObj.createPTranslationMap(session, pTranslationMapObj);
+]]></script>
+<in-binding><bind name='pSNATPoolObj' type='VSPK:PSNATPool' export-name="pSNATPoolObj" ></bind>
+<bind name='mappingType' type='VSPK:PTranslationMapMappingType' export-name="mappingType" ></bind>
+<bind name='providerAliasIP' type='string' export-name="providerAliasIP" ></bind>
+<bind name='providerIP' type='string' export-name="providerIP" ></bind>
+</in-binding><out-binding><bind name='pTranslationMapObj' type='VSPK:PTranslationMap' export-name="pTranslationMapObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="pSNATPoolObj"><desc><![CDATA[pSNATPoolObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="mappingType"><desc><![CDATA[mappingType]]></desc>
+</p-param>
+<p-param name="providerAliasIP"><desc><![CDATA[providerAliasIP]]></desc>
+</p-param>
+<p-param name="providerIP"><desc><![CDATA[providerIP]]></desc>
+</p-param>
+</presentation></workflow>

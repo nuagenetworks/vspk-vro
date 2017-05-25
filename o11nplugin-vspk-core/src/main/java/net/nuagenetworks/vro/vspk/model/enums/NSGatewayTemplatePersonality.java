@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGatewayTemplatePersonality {
 
-    NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR");
+    NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), NSGDUC("NSGDUC", "NSGDUC");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum NSGatewayTemplatePersonality {
     @VsoProperty(displayName = "NSGBR", readOnly = true)
     public NSGatewayTemplatePersonality getNSGBR() {
         return NSGBR;
+    }
+    
+    @VsoProperty(displayName = "NSGDUC", readOnly = true)
+    public NSGatewayTemplatePersonality getNSGDUC() {
+        return NSGDUC;
     }
     
 

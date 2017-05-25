@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Application;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.L7applicationsignature;
-
 import net.nuagenetworks.vro.vspk.model.Enterprise;
+
+import net.nuagenetworks.vro.vspk.model.L7applicationsignature;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,21 +66,21 @@ public class ApplicationsFetcher extends BaseFetcher<Application> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "L7applicationsignature", readOnly = true)
-    public L7applicationsignature getL7applicationsignature() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof L7applicationsignature) {
-            return (L7applicationsignature) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Enterprise", readOnly = true)
     public Enterprise getEnterprise() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L7applicationsignature", readOnly = true)
+    public L7applicationsignature getL7applicationsignature() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L7applicationsignature) {
+            return (L7applicationsignature) obj;
         }
         
         return null;

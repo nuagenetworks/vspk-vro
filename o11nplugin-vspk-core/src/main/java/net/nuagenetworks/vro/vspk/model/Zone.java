@@ -113,6 +113,9 @@ public class Zone extends BaseObject {
     @JsonProperty(value = "IPType")
     protected ZoneIPType IPType;
     
+    @JsonProperty(value = "IPv6Address")
+    protected String IPv6Address;
+    
     @JsonProperty(value = "address")
     protected String address;
     
@@ -130,6 +133,9 @@ public class Zone extends BaseObject {
     
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "dynamicIpv6Address")
+    protected Boolean dynamicIpv6Address;
     
     @JsonProperty(value = "encryption")
     protected ZoneEncryption encryption;
@@ -312,6 +318,17 @@ public class Zone extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
+    public String getIPv6Address() {
+       return IPv6Address;
+    }
+
+    @JsonIgnore
+    public void setIPv6Address(String value) { 
+        this.IPv6Address = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
     public String getAddress() {
        return address;
@@ -375,6 +392,17 @@ public class Zone extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DynamicIpv6Address", readOnly = false)   
+    public Boolean getDynamicIpv6Address() {
+       return dynamicIpv6Address;
+    }
+
+    @JsonIgnore
+    public void setDynamicIpv6Address(Boolean value) { 
+        this.dynamicIpv6Address = value;
     }
     
     @JsonIgnore
@@ -716,7 +744,7 @@ public class Zone extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.TCAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", address=" + address + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

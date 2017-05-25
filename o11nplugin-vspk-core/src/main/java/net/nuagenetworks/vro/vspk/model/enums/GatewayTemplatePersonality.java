@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum GatewayTemplatePersonality {
 
-    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NSG("NSG", "NSG"), OTHER("OTHER", "OTHER"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
+    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NSG("NSG", "NSG"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), OTHER("OTHER", "OTHER"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
 
     private final String id;
     private final String name;
@@ -71,6 +71,16 @@ public enum GatewayTemplatePersonality {
     @VsoProperty(displayName = "NSG", readOnly = true)
     public GatewayTemplatePersonality getNSG() {
         return NSG;
+    }
+    
+    @VsoProperty(displayName = "NUAGE_210_WBX_32_Q", readOnly = true)
+    public GatewayTemplatePersonality getNUAGE_210_WBX_32_Q() {
+        return NUAGE_210_WBX_32_Q;
+    }
+    
+    @VsoProperty(displayName = "NUAGE_210_WBX_48_S", readOnly = true)
+    public GatewayTemplatePersonality getNUAGE_210_WBX_48_S() {
+        return NUAGE_210_WBX_48_S;
     }
     
     @VsoProperty(displayName = "OTHER", readOnly = true)

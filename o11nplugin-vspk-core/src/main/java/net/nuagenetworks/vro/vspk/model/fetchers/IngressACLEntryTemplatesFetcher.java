@@ -32,13 +32,15 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Domain;
 
-import net.nuagenetworks.vro.vspk.model.MirrorDestination;
+import net.nuagenetworks.vro.vspk.model.IngressACLTemplate;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.Me;
 
-import net.nuagenetworks.vro.vspk.model.IngressACLTemplate;
+import net.nuagenetworks.vro.vspk.model.MirrorDestination;
+
+import net.nuagenetworks.vro.vspk.model.VPort;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -82,11 +84,11 @@ public class IngressACLEntryTemplatesFetcher extends BaseFetcher<IngressACLEntry
         return null;
     }
     
-    @VsoProperty(displayName = "MirrorDestination", readOnly = true)
-    public MirrorDestination getMirrorDestination() {
+    @VsoProperty(displayName = "IngressACLTemplate", readOnly = true)
+    public IngressACLTemplate getIngressACLTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof MirrorDestination) {
-            return (MirrorDestination) obj;
+        if (obj instanceof IngressACLTemplate) {
+            return (IngressACLTemplate) obj;
         }
         
         return null;
@@ -112,11 +114,21 @@ public class IngressACLEntryTemplatesFetcher extends BaseFetcher<IngressACLEntry
         return null;
     }
     
-    @VsoProperty(displayName = "IngressACLTemplate", readOnly = true)
-    public IngressACLTemplate getIngressACLTemplate() {
+    @VsoProperty(displayName = "MirrorDestination", readOnly = true)
+    public MirrorDestination getMirrorDestination() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressACLTemplate) {
-            return (IngressACLTemplate) obj;
+        if (obj instanceof MirrorDestination) {
+            return (MirrorDestination) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VPort) {
+            return (VPort) obj;
         }
         
         return null;

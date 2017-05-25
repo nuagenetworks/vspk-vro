@@ -30,29 +30,29 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.QOS;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Zone;
-
-import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
+import net.nuagenetworks.vro.vspk.model.BridgeInterface;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
-import net.nuagenetworks.vro.vspk.model.VPort;
-
-import net.nuagenetworks.vro.vspk.model.Subnet;
-
-import net.nuagenetworks.vro.vspk.model.BridgeInterface;
-
-import net.nuagenetworks.vro.vspk.model.L2Domain;
+import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.HostInterface;
 
-import net.nuagenetworks.vro.vspk.model.ZoneTemplate;
+import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
-import net.nuagenetworks.vro.vspk.model.DomainTemplate;
-
 import net.nuagenetworks.vro.vspk.model.PolicyDecision;
+
+import net.nuagenetworks.vro.vspk.model.Subnet;
+
+import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
+
+import net.nuagenetworks.vro.vspk.model.VPort;
+
+import net.nuagenetworks.vro.vspk.model.Zone;
+
+import net.nuagenetworks.vro.vspk.model.ZoneTemplate;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -86,21 +86,11 @@ public class QOSsFetcher extends BaseFetcher<QOS> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "Zone", readOnly = true)
-    public Zone getZone() {
+    @VsoProperty(displayName = "BridgeInterface", readOnly = true)
+    public BridgeInterface getBridgeInterface() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Zone) {
-            return (Zone) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "SubnetTemplate", readOnly = true)
-    public SubnetTemplate getSubnetTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof SubnetTemplate) {
-            return (SubnetTemplate) obj;
+        if (obj instanceof BridgeInterface) {
+            return (BridgeInterface) obj;
         }
         
         return null;
@@ -116,41 +106,11 @@ public class QOSsFetcher extends BaseFetcher<QOS> {
         return null;
     }
     
-    @VsoProperty(displayName = "VPort", readOnly = true)
-    public VPort getVPort() {
+    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
+    public DomainTemplate getDomainTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VPort) {
-            return (VPort) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Subnet", readOnly = true)
-    public Subnet getSubnet() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Subnet) {
-            return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "BridgeInterface", readOnly = true)
-    public BridgeInterface getBridgeInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof BridgeInterface) {
-            return (BridgeInterface) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "L2Domain", readOnly = true)
-    public L2Domain getL2Domain() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2Domain) {
-            return (L2Domain) obj;
+        if (obj instanceof DomainTemplate) {
+            return (DomainTemplate) obj;
         }
         
         return null;
@@ -166,11 +126,11 @@ public class QOSsFetcher extends BaseFetcher<QOS> {
         return null;
     }
     
-    @VsoProperty(displayName = "ZoneTemplate", readOnly = true)
-    public ZoneTemplate getZoneTemplate() {
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof ZoneTemplate) {
-            return (ZoneTemplate) obj;
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
         }
         
         return null;
@@ -186,21 +146,61 @@ public class QOSsFetcher extends BaseFetcher<QOS> {
         return null;
     }
     
-    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
-    public DomainTemplate getDomainTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof DomainTemplate) {
-            return (DomainTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "PolicyDecision", readOnly = true)
     public PolicyDecision getPolicyDecision() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof PolicyDecision) {
             return (PolicyDecision) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SubnetTemplate", readOnly = true)
+    public SubnetTemplate getSubnetTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SubnetTemplate) {
+            return (SubnetTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VPort) {
+            return (VPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Zone", readOnly = true)
+    public Zone getZone() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Zone) {
+            return (Zone) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "ZoneTemplate", readOnly = true)
+    public ZoneTemplate getZoneTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ZoneTemplate) {
+            return (ZoneTemplate) obj;
         }
         
         return null;

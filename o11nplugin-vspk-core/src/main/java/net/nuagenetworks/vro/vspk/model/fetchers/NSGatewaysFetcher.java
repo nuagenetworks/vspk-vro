@@ -32,13 +32,13 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.DUCGroup;
 
+import net.nuagenetworks.vro.vspk.model.Enterprise;
+
 import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.NSGGroup;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
-
-import net.nuagenetworks.vro.vspk.model.Enterprise;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -82,6 +82,16 @@ public class NSGatewaysFetcher extends BaseFetcher<NSGateway> {
         return null;
     }
     
+    @VsoProperty(displayName = "Enterprise", readOnly = true)
+    public Enterprise getEnterprise() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Enterprise) {
+            return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Me", readOnly = true)
     public Me getMe() {
         RestObject obj = super.getParentRestObj();
@@ -107,16 +117,6 @@ public class NSGatewaysFetcher extends BaseFetcher<NSGateway> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSRedundantGatewayGroup) {
             return (NSRedundantGatewayGroup) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Enterprise", readOnly = true)
-    public Enterprise getEnterprise() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Enterprise) {
-            return (Enterprise) obj;
         }
         
         return null;

@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.UplinkConnection;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.NSGateway;
+
 import net.nuagenetworks.vro.vspk.model.VLAN;
 
 import net.nuagenetworks.vro.vspk.model.VLANTemplate;
@@ -66,6 +68,16 @@ public class UplinkConnectionsFetcher extends BaseFetcher<UplinkConnection> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "NSGateway", readOnly = true)
+    public NSGateway getNSGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NSGateway) {
+            return (NSGateway) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "VLAN", readOnly = true)
     public VLAN getVLAN() {
         RestObject obj = super.getParentRestObj();

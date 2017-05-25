@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Edit LTEInformation</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d542d384-ce47-5731-b8df-bf9bf974b599</entry>
+</properties>

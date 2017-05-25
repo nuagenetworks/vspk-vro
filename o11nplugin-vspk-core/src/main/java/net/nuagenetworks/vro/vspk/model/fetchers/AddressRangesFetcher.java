@@ -30,15 +30,15 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.AddressRange;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
-
-import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
-
-import net.nuagenetworks.vro.vspk.model.Subnet;
-
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
+
+import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
+
+import net.nuagenetworks.vro.vspk.model.Subnet;
+
+import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -72,36 +72,6 @@ public class AddressRangesFetcher extends BaseFetcher<AddressRange> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "SharedNetworkResource", readOnly = true)
-    public SharedNetworkResource getSharedNetworkResource() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof SharedNetworkResource) {
-            return (SharedNetworkResource) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "SubnetTemplate", readOnly = true)
-    public SubnetTemplate getSubnetTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof SubnetTemplate) {
-            return (SubnetTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Subnet", readOnly = true)
-    public Subnet getSubnet() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Subnet) {
-            return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "L2Domain", readOnly = true)
     public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
@@ -117,6 +87,36 @@ public class AddressRangesFetcher extends BaseFetcher<AddressRange> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2DomainTemplate) {
             return (L2DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SharedNetworkResource", readOnly = true)
+    public SharedNetworkResource getSharedNetworkResource() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SharedNetworkResource) {
+            return (SharedNetworkResource) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SubnetTemplate", readOnly = true)
+    public SubnetTemplate getSubnetTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SubnetTemplate) {
+            return (SubnetTemplate) obj;
         }
         
         return null;

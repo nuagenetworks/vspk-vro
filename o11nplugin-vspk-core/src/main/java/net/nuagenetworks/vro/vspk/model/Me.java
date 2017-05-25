@@ -62,10 +62,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EnterpriseProfilesFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.ExternalAppServicesFetcher;
-
-import net.nuagenetworks.vro.vspk.model.fetchers.ExternalServicesFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIpsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GatewaysFetcher;
@@ -99,8 +95,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.LicensesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.LicenseStatusFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
-
-import net.nuagenetworks.vro.vspk.model.fetchers.MetadataTagsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MirrorDestinationsFetcher;
 
@@ -205,10 +199,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPROFILES_FETCHER, type = Constants.ENTERPRISEPROFILES_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.EXTERNALAPPSERVICES_FETCHER, type = Constants.EXTERNALAPPSERVICES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.EXTERNALSERVICES_FETCHER, type = Constants.EXTERNALSERVICES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.GATEWAYS_FETCHER, type = Constants.GATEWAYS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.GATEWAYTEMPLATES_FETCHER, type = Constants.GATEWAYTEMPLATES_FETCHER), 
@@ -224,8 +214,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.KEYSERVERMEMBERS_FETCHER, type = Constants.KEYSERVERMEMBERS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.LICENSES_FETCHER, type = Constants.LICENSES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.METADATATAGS_FETCHER, type = Constants.METADATATAGS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.MIRRORDESTINATIONS_FETCHER, type = Constants.MIRRORDESTINATIONS_FETCHER), 
 
@@ -278,8 +266,8 @@ public class Me extends BaseRootObject {
     @JsonProperty(value = "disabled")
     protected Boolean disabled;
     
-    @JsonProperty(value = "elasticSearchUIAddress")
-    protected String elasticSearchUIAddress;
+    @JsonProperty(value = "elasticSearchAddress")
+    protected String elasticSearchAddress;
     
     @JsonProperty(value = "email")
     protected String email;
@@ -378,12 +366,6 @@ public class Me extends BaseRootObject {
     private EnterpriseProfilesFetcher enterpriseProfiles;
     
     @JsonIgnore
-    private ExternalAppServicesFetcher externalAppServices;
-    
-    @JsonIgnore
-    private ExternalServicesFetcher externalServices;
-    
-    @JsonIgnore
     private FloatingIpsFetcher floatingIps;
     
     @JsonIgnore
@@ -433,9 +415,6 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
-    
-    @JsonIgnore
-    private MetadataTagsFetcher metadataTags;
     
     @JsonIgnore
     private MirrorDestinationsFetcher mirrorDestinations;
@@ -577,10 +556,6 @@ public class Me extends BaseRootObject {
         
         enterpriseProfiles = new EnterpriseProfilesFetcher(this);
         
-        externalAppServices = new ExternalAppServicesFetcher(this);
-        
-        externalServices = new ExternalServicesFetcher(this);
-        
         floatingIps = new FloatingIpsFetcher(this);
         
         gateways = new GatewaysFetcher(this);
@@ -614,8 +589,6 @@ public class Me extends BaseRootObject {
         licenseStatus = new LicenseStatusFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
-        
-        metadataTags = new MetadataTagsFetcher(this);
         
         mirrorDestinations = new MirrorDestinationsFetcher(this);
         
@@ -765,14 +738,14 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "ElasticSearchUIAddress", readOnly = false)   
-    public String getElasticSearchUIAddress() {
-       return elasticSearchUIAddress;
+    @VsoProperty(displayName = "ElasticSearchAddress", readOnly = false)   
+    public String getElasticSearchAddress() {
+       return elasticSearchAddress;
     }
 
     @JsonIgnore
-    public void setElasticSearchUIAddress(String value) { 
-        this.elasticSearchUIAddress = value;
+    public void setElasticSearchAddress(String value) { 
+        this.elasticSearchAddress = value;
     }
     
     @JsonIgnore
@@ -1038,18 +1011,6 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "ExternalAppServices", readOnly = true)   
-    public ExternalAppServicesFetcher getExternalAppServices() {
-        return externalAppServices;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "ExternalServices", readOnly = true)   
-    public ExternalServicesFetcher getExternalServices() {
-        return externalServices;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "FloatingIps", readOnly = true)   
     public FloatingIpsFetcher getFloatingIps() {
         return floatingIps;
@@ -1149,12 +1110,6 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "MetadataTags", readOnly = true)   
-    public MetadataTagsFetcher getMetadataTags() {
-        return metadataTags;
     }
     
     @JsonIgnore
@@ -1462,22 +1417,6 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
-    public void createExternalAppService(Session session, ExternalAppService childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.EXTERNALAPPSERVICES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createExternalService(Session session, ExternalService childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.EXTERNALSERVICES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createGateway(Session session, Gateway childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1564,14 +1503,6 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createMetadataTag(Session session, MetadataTag childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATATAGS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1710,7 +1641,7 @@ public class Me extends BaseRootObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Me [" + "avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchUIAddress=" + elasticSearchUIAddress + ", email=" + email + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Me [" + "avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + ", apiKey=" + apiKey  + "]";
     }
 }

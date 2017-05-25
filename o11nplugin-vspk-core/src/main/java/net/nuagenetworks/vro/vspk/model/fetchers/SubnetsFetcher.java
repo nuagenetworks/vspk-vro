@@ -30,17 +30,17 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Subnet;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Zone;
-
-import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
+import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.IKEGatewayConnection;
-
-import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
+
+import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
+
+import net.nuagenetworks.vro.vspk.model.Zone;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -74,21 +74,11 @@ public class SubnetsFetcher extends BaseFetcher<Subnet> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "Zone", readOnly = true)
-    public Zone getZone() {
+    @VsoProperty(displayName = "Domain", readOnly = true)
+    public Domain getDomain() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Zone) {
-            return (Zone) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "SubnetTemplate", readOnly = true)
-    public SubnetTemplate getSubnetTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof SubnetTemplate) {
-            return (SubnetTemplate) obj;
+        if (obj instanceof Domain) {
+            return (Domain) obj;
         }
         
         return null;
@@ -99,16 +89,6 @@ public class SubnetsFetcher extends BaseFetcher<Subnet> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IKEGatewayConnection) {
             return (IKEGatewayConnection) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Domain", readOnly = true)
-    public Domain getDomain() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Domain) {
-            return (Domain) obj;
         }
         
         return null;
@@ -129,6 +109,26 @@ public class SubnetsFetcher extends BaseFetcher<Subnet> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSGateway) {
             return (NSGateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SubnetTemplate", readOnly = true)
+    public SubnetTemplate getSubnetTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SubnetTemplate) {
+            return (SubnetTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Zone", readOnly = true)
+    public Zone getZone() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Zone) {
+            return (Zone) obj;
         }
         
         return null;

@@ -30,11 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.VCenterDataCenter;
-
 import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.VCenterCluster;
+
+import net.nuagenetworks.vro.vspk.model.VCenterDataCenter;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -68,16 +68,6 @@ public class VCenterHypervisorsFetcher extends BaseFetcher<VCenterHypervisor> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "VCenterDataCenter", readOnly = true)
-    public VCenterDataCenter getVCenterDataCenter() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VCenterDataCenter) {
-            return (VCenterDataCenter) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Me", readOnly = true)
     public Me getMe() {
         RestObject obj = super.getParentRestObj();
@@ -93,6 +83,16 @@ public class VCenterHypervisorsFetcher extends BaseFetcher<VCenterHypervisor> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenterCluster) {
             return (VCenterCluster) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VCenterDataCenter", readOnly = true)
+    public VCenterDataCenter getVCenterDataCenter() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VCenterDataCenter) {
+            return (VCenterDataCenter) obj;
         }
         
         return null;

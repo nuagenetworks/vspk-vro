@@ -30,8 +30,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.ExternalServicesFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
@@ -72,9 +70,6 @@ public class EnterpriseProfile extends BaseObject {
     
     @JsonProperty(value = "DHCPLeaseInterval")
     protected Long DHCPLeaseInterval;
-    
-    @JsonProperty(value = "DPIEnabled")
-    protected Boolean DPIEnabled;
     
     @JsonProperty(value = "allowAdvancedQOSConfiguration")
     protected Boolean allowAdvancedQOSConfiguration;
@@ -125,9 +120,6 @@ public class EnterpriseProfile extends BaseObject {
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
-    private ExternalServicesFetcher externalServices;
-    
-    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
@@ -145,8 +137,6 @@ public class EnterpriseProfile extends BaseObject {
         enterprises = new EnterprisesFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
-        
-        externalServices = new ExternalServicesFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
@@ -210,17 +200,6 @@ public class EnterpriseProfile extends BaseObject {
     @JsonIgnore
     public void setDHCPLeaseInterval(Long value) { 
         this.DHCPLeaseInterval = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "DPIEnabled", readOnly = false)   
-    public Boolean getDPIEnabled() {
-       return DPIEnabled;
-    }
-
-    @JsonIgnore
-    public void setDPIEnabled(Boolean value) { 
-        this.DPIEnabled = value;
     }
     
     @JsonIgnore
@@ -390,12 +369,6 @@ public class EnterpriseProfile extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "ExternalServices", readOnly = true)   
-    public ExternalServicesFetcher getExternalServices() {
-        return externalServices;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -434,15 +407,6 @@ public class EnterpriseProfile extends BaseObject {
         }
     }
     @VsoMethod
-    public void assignExternalServices(Session session, ExternalService[] childRestObjs, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
-        if (!session.getNotificationsEnabled()) { 
-           SessionManager.getInstance().notifyElementUpdated(Constants.ENTERPRISEPROFILE, getId());
-        }
-    }
-    
-    @VsoMethod
     public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
@@ -467,7 +431,7 @@ public class EnterpriseProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EnterpriseProfile [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", DPIEnabled=" + DPIEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", description=" + description + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EnterpriseProfile [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", description=" + description + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

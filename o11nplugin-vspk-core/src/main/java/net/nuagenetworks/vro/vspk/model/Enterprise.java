@@ -56,10 +56,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EnterpriseSecuritiesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.ExternalAppServicesFetcher;
-
-import net.nuagenetworks.vro.vspk.model.fetchers.ExternalServicesFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.FirewallAclsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.FirewallRulesFetcher;
@@ -98,8 +94,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.LDAPConfigurationsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.MetadataTagsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.MultiCastListsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetworkMacroGroupsFetcher;
@@ -127,6 +121,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.RedundancyGroupsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPoliciesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SharedNetworkResourcesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.TrunksFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UsersFetcher;
 
@@ -175,8 +171,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISENETWORKS_FETCHER, type = Constants.ENTERPRISENETWORKS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.EXTERNALAPPSERVICES_FETCHER, type = Constants.EXTERNALAPPSERVICES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.FIREWALLACLS_FETCHER, type = Constants.FIREWALLACLS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.FIREWALLRULES_FETCHER, type = Constants.FIREWALLRULES_FETCHER), 
@@ -203,8 +197,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.METADATATAGS_FETCHER, type = Constants.METADATATAGS_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.NETWORKMACROGROUPS_FETCHER, type = Constants.NETWORKMACROGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NETWORKPERFORMANCEMEASUREMENTS_FETCHER, type = Constants.NETWORKPERFORMANCEMEASUREMENTS_FETCHER), 
@@ -224,6 +216,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.REDUNDANCYGROUPS_FETCHER, type = Constants.REDUNDANCYGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ROUTINGPOLICIES_FETCHER, type = Constants.ROUTINGPOLICIES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.TRUNKS_FETCHER, type = Constants.TRUNKS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.USERS_FETCHER, type = Constants.USERS_FETCHER), 
 
@@ -367,12 +361,6 @@ public class Enterprise extends BaseObject {
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
-    private ExternalAppServicesFetcher externalAppServices;
-    
-    @JsonIgnore
-    private ExternalServicesFetcher externalServices;
-    
-    @JsonIgnore
     private FirewallAclsFetcher firewallAcls;
     
     @JsonIgnore
@@ -430,9 +418,6 @@ public class Enterprise extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
-    private MetadataTagsFetcher metadataTags;
-    
-    @JsonIgnore
     private MultiCastListsFetcher multiCastLists;
     
     @JsonIgnore
@@ -475,6 +460,9 @@ public class Enterprise extends BaseObject {
     private SharedNetworkResourcesFetcher sharedNetworkResources;
     
     @JsonIgnore
+    private TrunksFetcher trunks;
+    
+    @JsonIgnore
     private UsersFetcher users;
     
     @JsonIgnore
@@ -515,10 +503,6 @@ public class Enterprise extends BaseObject {
         
         eventLogs = new EventLogsFetcher(this);
         
-        externalAppServices = new ExternalAppServicesFetcher(this);
-        
-        externalServices = new ExternalServicesFetcher(this);
-        
         firewallAcls = new FirewallAclsFetcher(this);
         
         firewallRules = new FirewallRulesFetcher(this);
@@ -557,8 +541,6 @@ public class Enterprise extends BaseObject {
         
         metadatas = new MetadatasFetcher(this);
         
-        metadataTags = new MetadataTagsFetcher(this);
-        
         multiCastLists = new MultiCastListsFetcher(this);
         
         networkMacroGroups = new NetworkMacroGroupsFetcher(this);
@@ -586,6 +568,8 @@ public class Enterprise extends BaseObject {
         routingPolicies = new RoutingPoliciesFetcher(this);
         
         sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
+        
+        trunks = new TrunksFetcher(this);
         
         users = new UsersFetcher(this);
         
@@ -1028,18 +1012,6 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "ExternalAppServices", readOnly = true)   
-    public ExternalAppServicesFetcher getExternalAppServices() {
-        return externalAppServices;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "ExternalServices", readOnly = true)   
-    public ExternalServicesFetcher getExternalServices() {
-        return externalServices;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "FirewallAcls", readOnly = true)   
     public FirewallAclsFetcher getFirewallAcls() {
         return firewallAcls;
@@ -1154,12 +1126,6 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "MetadataTags", readOnly = true)   
-    public MetadataTagsFetcher getMetadataTags() {
-        return metadataTags;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "MultiCastLists", readOnly = true)   
     public MultiCastListsFetcher getMultiCastLists() {
         return multiCastLists;
@@ -1241,6 +1207,12 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "SharedNetworkResources", readOnly = true)   
     public SharedNetworkResourcesFetcher getSharedNetworkResources() {
         return sharedNetworkResources;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Trunks", readOnly = true)   
+    public TrunksFetcher getTrunks() {
+        return trunks;
     }
     
     @JsonIgnore
@@ -1368,14 +1340,6 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ENTERPRISENETWORKS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createExternalAppService(Session session, ExternalAppService childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.EXTERNALAPPSERVICES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1517,14 +1481,6 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
-    public void createMetadataTag(Session session, MetadataTag childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATATAGS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createNetworkMacroGroup(Session session, NetworkMacroGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1611,6 +1567,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ROUTINGPOLICIES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createTrunk(Session session, Trunk childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.TRUNKS_FETCHER, getId());
         }
     }
     @VsoMethod

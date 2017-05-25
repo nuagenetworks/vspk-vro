@@ -67,6 +67,9 @@ public class VRSMetrics extends BaseObject {
     @JsonProperty(value = "associatedVCenterHypervisorID")
     protected String associatedVCenterHypervisorID;
     
+    @JsonProperty(value = "currentVersion")
+    protected String currentVersion;
+    
     @JsonProperty(value = "entityScope")
     protected VRSMetricsEntityScope entityScope;
     
@@ -198,6 +201,17 @@ public class VRSMetrics extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CurrentVersion", readOnly = false)   
+    public String getCurrentVersion() {
+       return currentVersion;
+    }
+
+    @JsonIgnore
+    public void setCurrentVersion(String value) { 
+        this.currentVersion = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public VRSMetricsEntityScope getEntityScope() {
        return entityScope;
@@ -294,7 +308,7 @@ public class VRSMetrics extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.VRSMETRICS, getId());
         }
     }public String toString() {
-        return "VRSMetrics [" + "ALUbr0Status=" + ALUbr0Status + ", CPUUtilization=" + CPUUtilization + ", VRSProcess=" + VRSProcess + ", VRSVSCStatus=" + VRSVSCStatus + ", agentName=" + agentName + ", associatedVCenterHypervisorID=" + associatedVCenterHypervisorID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcess=" + jesxmonProcess + ", lastUpdatedBy=" + lastUpdatedBy + ", memoryUtilization=" + memoryUtilization + ", reDeploy=" + reDeploy + ", receivingMetrics=" + receivingMetrics + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VRSMetrics [" + "ALUbr0Status=" + ALUbr0Status + ", CPUUtilization=" + CPUUtilization + ", VRSProcess=" + VRSProcess + ", VRSVSCStatus=" + VRSVSCStatus + ", agentName=" + agentName + ", associatedVCenterHypervisorID=" + associatedVCenterHypervisorID + ", currentVersion=" + currentVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcess=" + jesxmonProcess + ", lastUpdatedBy=" + lastUpdatedBy + ", memoryUtilization=" + memoryUtilization + ", reDeploy=" + reDeploy + ", receivingMetrics=" + receivingMetrics + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

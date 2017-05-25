@@ -30,15 +30,15 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.VRS;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.VSC;
-
-import net.nuagenetworks.vro.vspk.model.VPort;
+import net.nuagenetworks.vro.vspk.model.Container;
 
 import net.nuagenetworks.vro.vspk.model.HSC;
 
 import net.nuagenetworks.vro.vspk.model.VM;
 
-import net.nuagenetworks.vro.vspk.model.Container;
+import net.nuagenetworks.vro.vspk.model.VPort;
+
+import net.nuagenetworks.vro.vspk.model.VSC;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -72,21 +72,11 @@ public class VRSsFetcher extends BaseFetcher<VRS> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "VSC", readOnly = true)
-    public VSC getVSC() {
+    @VsoProperty(displayName = "Container", readOnly = true)
+    public Container getContainer() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSC) {
-            return (VSC) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VPort", readOnly = true)
-    public VPort getVPort() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VPort) {
-            return (VPort) obj;
+        if (obj instanceof Container) {
+            return (Container) obj;
         }
         
         return null;
@@ -112,11 +102,21 @@ public class VRSsFetcher extends BaseFetcher<VRS> {
         return null;
     }
     
-    @VsoProperty(displayName = "Container", readOnly = true)
-    public Container getContainer() {
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Container) {
-            return (Container) obj;
+        if (obj instanceof VPort) {
+            return (VPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VSC", readOnly = true)
+    public VSC getVSC() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VSC) {
+            return (VSC) obj;
         }
         
         return null;

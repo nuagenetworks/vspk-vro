@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="82491eea-0780-5dc5-b757-1ad089f2e93d"  version="5.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit PTranslationMap]]></display-name>
+<ref-types><![CDATA[(VSPK:PTranslationMap)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='pTranslationMapObj' type='VSPK:PTranslationMap' >
+</param>
+
+<param name='mappingType' type='VSPK:PTranslationMapMappingType' >
+</param>
+
+<param name='providerAliasIP' type='string' >
+</param>
+
+<param name='providerIP' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = pTranslationMapObj.session;
+
+pTranslationMapObj.mappingType = mappingType;
+if (providerAliasIP) {
+   pTranslationMapObj.providerAliasIP = providerAliasIP;
+} else if (pTranslationMapObj.providerAliasIP) {
+   pTranslationMapObj.providerAliasIP = "";
+}
+if (providerIP) {
+   pTranslationMapObj.providerIP = providerIP;
+} else if (pTranslationMapObj.providerIP) {
+   pTranslationMapObj.providerIP = "";
+}
+pTranslationMapObj.save(session, 1);]]></script>
+<in-binding><bind name='pTranslationMapObj' type='VSPK:PTranslationMap' export-name="pTranslationMapObj" ></bind>
+
+<bind name='mappingType' type='VSPK:PTranslationMapMappingType' export-name="mappingType" ></bind>
+
+<bind name='providerAliasIP' type='string' export-name="providerAliasIP" ></bind>
+
+<bind name='providerIP' type='string' export-name="providerIP" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="pTranslationMapObj"><desc><![CDATA[pTranslationMapObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="mappingType"><desc><![CDATA[mappingType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:PTranslationMapMappingType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getPTranslationMapMappingType").call( #pTranslationMapObj )]]></p-qual></p-param>
+
+<p-param name="providerAliasIP"><desc><![CDATA[providerAliasIP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pTranslationMapObj.providerAliasIP]]></p-qual></p-param>
+
+<p-param name="providerIP"><desc><![CDATA[providerIP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pTranslationMapObj.providerIP]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -30,19 +30,19 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.VMInterface;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Zone;
-
 import net.nuagenetworks.vro.vspk.model.Domain;
-
-import net.nuagenetworks.vro.vspk.model.VPort;
-
-import net.nuagenetworks.vro.vspk.model.Subnet;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.Me;
 
+import net.nuagenetworks.vro.vspk.model.Subnet;
+
 import net.nuagenetworks.vro.vspk.model.VM;
+
+import net.nuagenetworks.vro.vspk.model.VPort;
+
+import net.nuagenetworks.vro.vspk.model.Zone;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -76,41 +76,11 @@ public class VMInterfacesFetcher extends BaseFetcher<VMInterface> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "Zone", readOnly = true)
-    public Zone getZone() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Zone) {
-            return (Zone) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Domain", readOnly = true)
     public Domain getDomain() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Domain) {
             return (Domain) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VPort", readOnly = true)
-    public VPort getVPort() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VPort) {
-            return (VPort) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Subnet", readOnly = true)
-    public Subnet getSubnet() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Subnet) {
-            return (Subnet) obj;
         }
         
         return null;
@@ -136,11 +106,41 @@ public class VMInterfacesFetcher extends BaseFetcher<VMInterface> {
         return null;
     }
     
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "VM", readOnly = true)
     public VM getVM() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VM) {
             return (VM) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VPort) {
+            return (VPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Zone", readOnly = true)
+    public Zone getZone() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Zone) {
+            return (Zone) obj;
         }
         
         return null;

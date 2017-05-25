@@ -90,6 +90,9 @@ public class NSPortTemplate extends BaseObject {
     @JsonProperty(value = "name")
     protected String name;
     
+    @JsonProperty(value = "networkAccelerationEnabled")
+    protected Boolean networkAccelerationEnabled;
+    
     @JsonProperty(value = "physicalName")
     protected String physicalName;
     
@@ -252,6 +255,17 @@ public class NSPortTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetworkAccelerationEnabled", readOnly = false)   
+    public Boolean getNetworkAccelerationEnabled() {
+       return networkAccelerationEnabled;
+    }
+
+    @JsonIgnore
+    public void setNetworkAccelerationEnabled(Boolean value) { 
+        this.networkAccelerationEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PhysicalName", readOnly = false)   
     public String getPhysicalName() {
        return physicalName;
@@ -355,7 +369,7 @@ public class NSPortTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VLANTEMPLATES_FETCHER, getId());
         }
     }public String toString() {
-        return "NSPortTemplate [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureProfileID=" + infrastructureProfileID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", physicalName=" + physicalName + ", portType=" + portType + ", speed=" + speed + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSPortTemplate [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureProfileID=" + infrastructureProfileID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", networkAccelerationEnabled=" + networkAccelerationEnabled + ", physicalName=" + physicalName + ", portType=" + portType + ", speed=" + speed + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

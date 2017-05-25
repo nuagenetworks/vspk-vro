@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum LinkType {
 
-    BORDER_ROUTER("BORDER_ROUTER", "BORDER_ROUTER"), HUB_AND_SPOKE("HUB_AND_SPOKE", "HUB_AND_SPOKE"), OVERLAY_ADDRESS_TRANSLATION("OVERLAY_ADDRESS_TRANSLATION", "OVERLAY_ADDRESS_TRANSLATION"), SERVICE_CHAINING("SERVICE_CHAINING", "SERVICE_CHAINING");
+    BIDIR("BIDIR", "BIDIR"), BORDER_ROUTER("BORDER_ROUTER", "BORDER_ROUTER"), HUB_AND_SPOKE("HUB_AND_SPOKE", "HUB_AND_SPOKE"), OVERLAY_ADDRESS_TRANSLATION("OVERLAY_ADDRESS_TRANSLATION", "OVERLAY_ADDRESS_TRANSLATION"), SERVICE_CHAINING("SERVICE_CHAINING", "SERVICE_CHAINING");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum LinkType {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "BIDIR", readOnly = true)
+    public LinkType getBIDIR() {
+        return BIDIR;
+    }
     
     @VsoProperty(displayName = "BORDER_ROUTER", readOnly = true)
     public LinkType getBORDER_ROUTER() {

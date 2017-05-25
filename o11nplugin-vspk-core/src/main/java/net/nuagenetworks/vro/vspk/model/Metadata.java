@@ -28,8 +28,6 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.MetadataTagsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.enums.MetadataEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -80,14 +78,9 @@ public class Metadata extends BaseObject {
     @JsonIgnore
     private EventLogsFetcher eventLogs;
     
-    @JsonIgnore
-    private MetadataTagsFetcher metadataTags;
-    
     @VsoConstructor
     public Metadata() {
         eventLogs = new EventLogsFetcher(this);
-        
-        metadataTags = new MetadataTagsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -218,12 +211,6 @@ public class Metadata extends BaseObject {
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
     }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "MetadataTags", readOnly = true)   
-    public MetadataTagsFetcher getMetadataTags() {
-        return metadataTags;
-    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -244,16 +231,7 @@ public class Metadata extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.METADATA, getId());
         }
-    }
-    @VsoMethod
-    public void assignMetadataTags(Session session, MetadataTag[] childRestObjs, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
-        if (!session.getNotificationsEnabled()) { 
-           SessionManager.getInstance().notifyElementUpdated(Constants.METADATA, getId());
-        }
-    }
-    public String toString() {
+    }public String toString() {
         return "Metadata [" + "blob=" + blob + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", globalMetadata=" + globalMetadata + ", metadataTagIDs=" + metadataTagIDs + ", name=" + name + ", networkNotificationDisabled=" + networkNotificationDisabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }

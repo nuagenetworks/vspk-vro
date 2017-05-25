@@ -30,8 +30,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.MetadataTagsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.enums.GlobalMetadataEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -47,7 +45,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.GLOBALMETADATA, datasource = Constants.DATASOURCE, image = Constants.GLOBALMETADATA_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -90,16 +88,11 @@ public class GlobalMetadata extends BaseObject {
     @JsonIgnore
     private MetadatasFetcher metadatas;
     
-    @JsonIgnore
-    private MetadataTagsFetcher metadataTags;
-    
     @VsoConstructor
     public GlobalMetadata() {
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
-        
-        metadataTags = new MetadataTagsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -247,12 +240,6 @@ public class GlobalMetadata extends BaseObject {
     public MetadatasFetcher getMetadatas() {
         return metadatas;
     }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "MetadataTags", readOnly = true)   
-    public MetadataTagsFetcher getMetadataTags() {
-        return metadataTags;
-    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -276,15 +263,6 @@ public class GlobalMetadata extends BaseObject {
     }
     @VsoMethod
     public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
-        if (!session.getNotificationsEnabled()) { 
-           SessionManager.getInstance().notifyElementUpdated(Constants.GLOBALMETADATA, getId());
-        }
-    }
-    
-    @VsoMethod
-    public void assignMetadataTags(Session session, MetadataTag[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 

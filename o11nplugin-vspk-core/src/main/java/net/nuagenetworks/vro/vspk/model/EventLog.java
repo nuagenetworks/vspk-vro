@@ -85,6 +85,9 @@ public class EventLog extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
+    @JsonProperty(value = "requestID")
+    protected String requestID;
+    
     @JsonProperty(value = "type")
     protected String type;
     
@@ -255,6 +258,17 @@ public class EventLog extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "RequestID", readOnly = false)   
+    public String getRequestID() {
+       return requestID;
+    }
+
+    @JsonIgnore
+    public void setRequestID(String value) { 
+        this.requestID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Type", readOnly = false)   
     public String getType() {
        return type;
@@ -333,7 +347,7 @@ public class EventLog extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EventLog [" + "diff=" + diff + ", enterprise=" + enterprise + ", entities=" + entities + ", entityID=" + entityID + ", entityParentID=" + entityParentID + ", entityParentType=" + entityParentType + ", entityScope=" + entityScope + ", entityType=" + entityType + ", eventReceivedTime=" + eventReceivedTime + ", externalID=" + externalID + ", type=" + type + ", user=" + user + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EventLog [" + "diff=" + diff + ", enterprise=" + enterprise + ", entities=" + entities + ", entityID=" + entityID + ", entityParentID=" + entityParentID + ", entityParentType=" + entityParentType + ", entityScope=" + entityScope + ", entityType=" + entityType + ", eventReceivedTime=" + eventReceivedTime + ", externalID=" + externalID + ", requestID=" + requestID + ", type=" + type + ", user=" + user + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -30,11 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.User;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Enterprise;
+
 import net.nuagenetworks.vro.vspk.model.Group;
 
 import net.nuagenetworks.vro.vspk.model.Me;
-
-import net.nuagenetworks.vro.vspk.model.Enterprise;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -68,6 +68,16 @@ public class UsersFetcher extends BaseFetcher<User> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Enterprise", readOnly = true)
+    public Enterprise getEnterprise() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Enterprise) {
+            return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Group", readOnly = true)
     public Group getGroup() {
         RestObject obj = super.getParentRestObj();
@@ -83,16 +93,6 @@ public class UsersFetcher extends BaseFetcher<User> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Enterprise", readOnly = true)
-    public Enterprise getEnterprise() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Enterprise) {
-            return (Enterprise) obj;
         }
         
         return null;

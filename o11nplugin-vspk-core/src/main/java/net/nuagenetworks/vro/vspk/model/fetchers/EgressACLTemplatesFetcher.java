@@ -32,13 +32,13 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Domain;
 
-import net.nuagenetworks.vro.vspk.model.L2Domain;
+import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
-import net.nuagenetworks.vro.vspk.model.Me;
+import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
-import net.nuagenetworks.vro.vspk.model.DomainTemplate;
+import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -82,21 +82,21 @@ public class EgressACLTemplatesFetcher extends BaseFetcher<EgressACLTemplate> {
         return null;
     }
     
-    @VsoProperty(displayName = "L2Domain", readOnly = true)
-    public L2Domain getL2Domain() {
+    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
+    public DomainTemplate getDomainTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2Domain) {
-            return (L2Domain) obj;
+        if (obj instanceof DomainTemplate) {
+            return (DomainTemplate) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "Me", readOnly = true)
-    public Me getMe() {
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Me) {
-            return (Me) obj;
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
         }
         
         return null;
@@ -112,11 +112,11 @@ public class EgressACLTemplatesFetcher extends BaseFetcher<EgressACLTemplate> {
         return null;
     }
     
-    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
-    public DomainTemplate getDomainTemplate() {
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof DomainTemplate) {
-            return (DomainTemplate) obj;
+        if (obj instanceof Me) {
+            return (Me) obj;
         }
         
         return null;

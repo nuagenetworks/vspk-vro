@@ -81,6 +81,9 @@ public class DomainFIPAclTemplateEntry extends BaseObject {
     @JsonProperty(value = "ICMPType")
     protected String ICMPType;
     
+    @JsonProperty(value = "IPv6AddressOverride")
+    protected String IPv6AddressOverride;
+    
     @JsonProperty(value = "action")
     protected DomainFIPAclTemplateEntryAction action;
     
@@ -164,9 +167,6 @@ public class DomainFIPAclTemplateEntry extends BaseObject {
     
     @JsonProperty(value = "protocol")
     protected String protocol;
-    
-    @JsonProperty(value = "reflexive")
-    protected Boolean reflexive;
     
     @JsonProperty(value = "sourcePgId")
     protected String sourcePgId;
@@ -287,6 +287,17 @@ public class DomainFIPAclTemplateEntry extends BaseObject {
     @JsonIgnore
     public void setICMPType(String value) { 
         this.ICMPType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6AddressOverride", readOnly = false)   
+    public String getIPv6AddressOverride() {
+       return IPv6AddressOverride;
+    }
+
+    @JsonIgnore
+    public void setIPv6AddressOverride(String value) { 
+        this.IPv6AddressOverride = value;
     }
     
     @JsonIgnore
@@ -598,17 +609,6 @@ public class DomainFIPAclTemplateEntry extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Reflexive", readOnly = false)   
-    public Boolean getReflexive() {
-       return reflexive;
-    }
-
-    @JsonIgnore
-    public void setReflexive(Boolean value) { 
-        this.reflexive = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "SourcePgId", readOnly = false)   
     public String getSourcePgId() {
        return sourcePgId;
@@ -753,7 +753,7 @@ public class DomainFIPAclTemplateEntry extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DomainFIPAclTemplateEntry [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", action=" + action + ", actionDetails=" + actionDetails + ", addressOverride=" + addressOverride + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destPgId=" + destPgId + ", destPgType=" + destPgType + ", destinationPort=" + destinationPort + ", destinationType=" + destinationType + ", destinationValue=" + destinationValue + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", reflexive=" + reflexive + ", sourcePgId=" + sourcePgId + ", sourcePgType=" + sourcePgType + ", sourcePort=" + sourcePort + ", sourceType=" + sourceType + ", sourceValue=" + sourceValue + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DomainFIPAclTemplateEntry [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", actionDetails=" + actionDetails + ", addressOverride=" + addressOverride + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destPgId=" + destPgId + ", destPgType=" + destPgType + ", destinationPort=" + destinationPort + ", destinationType=" + destinationType + ", destinationValue=" + destinationValue + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePgId=" + sourcePgId + ", sourcePgType=" + sourcePgType + ", sourcePort=" + sourcePort + ", sourceType=" + sourceType + ", sourceValue=" + sourceValue + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

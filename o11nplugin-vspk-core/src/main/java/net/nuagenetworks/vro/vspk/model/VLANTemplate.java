@@ -35,6 +35,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkConnectionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.VLANTemplateEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.VLANTemplateType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -83,6 +85,9 @@ public class VLANTemplate extends BaseObject {
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "type")
+    protected VLANTemplateType type;
     
     @JsonProperty(value = "value")
     protected Long value;
@@ -228,6 +233,17 @@ public class VLANTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Type", readOnly = false)   
+    public VLANTemplateType getType() {
+       return type;
+    }
+
+    @JsonIgnore
+    public void setType(VLANTemplateType value) { 
+        this.type = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Value", readOnly = false)   
     public Long getValue() {
        return value;
@@ -323,7 +339,7 @@ public class VLANTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UPLINKCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VLANTemplate [" + "associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VLANTemplate [" + "associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", type=" + type + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

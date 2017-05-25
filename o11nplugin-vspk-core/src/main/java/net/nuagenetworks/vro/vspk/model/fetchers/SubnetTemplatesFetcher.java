@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.ZoneTemplate;
-
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
+
+import net.nuagenetworks.vro.vspk.model.ZoneTemplate;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,21 +66,21 @@ public class SubnetTemplatesFetcher extends BaseFetcher<SubnetTemplate> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "ZoneTemplate", readOnly = true)
-    public ZoneTemplate getZoneTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof ZoneTemplate) {
-            return (ZoneTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "DomainTemplate", readOnly = true)
     public DomainTemplate getDomainTemplate() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof DomainTemplate) {
             return (DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "ZoneTemplate", readOnly = true)
+    public ZoneTemplate getZoneTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ZoneTemplate) {
+            return (ZoneTemplate) obj;
         }
         
         return null;

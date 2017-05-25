@@ -82,6 +82,8 @@ import net.nuagenetworks.vro.vspk.model.enums.SubnetEncryption;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetEntityScope;
 
+import net.nuagenetworks.vro.vspk.model.enums.SubnetEntityState;
+
 import net.nuagenetworks.vro.vspk.model.enums.SubnetMaintenanceMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetMulticast;
@@ -175,11 +177,17 @@ public class Subnet extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "dynamicIpv6Address")
+    protected Boolean dynamicIpv6Address;
+    
     @JsonProperty(value = "encryption")
     protected SubnetEncryption encryption;
     
     @JsonProperty(value = "entityScope")
     protected SubnetEntityScope entityScope;
+    
+    @JsonProperty(value = "entityState")
+    protected SubnetEntityState entityState;
     
     @JsonProperty(value = "externalID")
     protected String externalID;
@@ -542,6 +550,17 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DynamicIpv6Address", readOnly = false)   
+    public Boolean getDynamicIpv6Address() {
+       return dynamicIpv6Address;
+    }
+
+    @JsonIgnore
+    public void setDynamicIpv6Address(Boolean value) { 
+        this.dynamicIpv6Address = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Encryption", readOnly = false)   
     public SubnetEncryption getEncryption() {
        return encryption;
@@ -561,6 +580,17 @@ public class Subnet extends BaseObject {
     @JsonIgnore
     public void setEntityScope(SubnetEntityScope value) { 
         this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EntityState", readOnly = false)   
+    public SubnetEntityState getEntityState() {
+       return entityState;
+    }
+
+    @JsonIgnore
+    public void setEntityState(SubnetEntityState value) { 
+        this.entityState = value;
     }
     
     @JsonIgnore
@@ -1037,7 +1067,7 @@ public class Subnet extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", address=" + address + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", defaultAction=" + defaultAction + ", description=" + description + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", address=" + address + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", defaultAction=" + defaultAction + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

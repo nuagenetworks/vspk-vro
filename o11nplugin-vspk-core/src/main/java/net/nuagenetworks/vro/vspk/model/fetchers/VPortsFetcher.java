@@ -30,25 +30,27 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.VPort;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Zone;
-
-import net.nuagenetworks.vro.vspk.model.RedirectionTarget;
-
 import net.nuagenetworks.vro.vspk.model.Domain;
-
-import net.nuagenetworks.vro.vspk.model.Subnet;
-
-import net.nuagenetworks.vro.vspk.model.PolicyGroup;
-
-import net.nuagenetworks.vro.vspk.model.VRS;
-
-import net.nuagenetworks.vro.vspk.model.MultiNICVPort;
-
-import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.FloatingIp;
 
+import net.nuagenetworks.vro.vspk.model.L2Domain;
+
+import net.nuagenetworks.vro.vspk.model.MultiNICVPort;
+
+import net.nuagenetworks.vro.vspk.model.PolicyGroup;
+
+import net.nuagenetworks.vro.vspk.model.RedirectionTarget;
+
+import net.nuagenetworks.vro.vspk.model.Subnet;
+
 import net.nuagenetworks.vro.vspk.model.Tier;
+
+import net.nuagenetworks.vro.vspk.model.Trunk;
+
+import net.nuagenetworks.vro.vspk.model.VRS;
+
+import net.nuagenetworks.vro.vspk.model.Zone;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -82,81 +84,11 @@ public class VPortsFetcher extends BaseFetcher<VPort> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "Zone", readOnly = true)
-    public Zone getZone() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Zone) {
-            return (Zone) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "RedirectionTarget", readOnly = true)
-    public RedirectionTarget getRedirectionTarget() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof RedirectionTarget) {
-            return (RedirectionTarget) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Domain", readOnly = true)
     public Domain getDomain() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Domain) {
             return (Domain) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Subnet", readOnly = true)
-    public Subnet getSubnet() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Subnet) {
-            return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
-    public PolicyGroup getPolicyGroup() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroup) {
-            return (PolicyGroup) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VRS", readOnly = true)
-    public VRS getVRS() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VRS) {
-            return (VRS) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "MultiNICVPort", readOnly = true)
-    public MultiNICVPort getMultiNICVPort() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof MultiNICVPort) {
-            return (MultiNICVPort) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "L2Domain", readOnly = true)
-    public L2Domain getL2Domain() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2Domain) {
-            return (L2Domain) obj;
         }
         
         return null;
@@ -172,11 +104,91 @@ public class VPortsFetcher extends BaseFetcher<VPort> {
         return null;
     }
     
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "MultiNICVPort", readOnly = true)
+    public MultiNICVPort getMultiNICVPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof MultiNICVPort) {
+            return (MultiNICVPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
+    public PolicyGroup getPolicyGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyGroup) {
+            return (PolicyGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "RedirectionTarget", readOnly = true)
+    public RedirectionTarget getRedirectionTarget() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RedirectionTarget) {
+            return (RedirectionTarget) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Tier", readOnly = true)
     public Tier getTier() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Tier) {
             return (Tier) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Trunk", readOnly = true)
+    public Trunk getTrunk() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Trunk) {
+            return (Trunk) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VRS", readOnly = true)
+    public VRS getVRS() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VRS) {
+            return (VRS) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Zone", readOnly = true)
+    public Zone getZone() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Zone) {
+            return (Zone) obj;
         }
         
         return null;

@@ -77,9 +77,6 @@ public class IngressACLTemplate extends BaseObject {
     @JsonProperty(value = "allowAddressSpoof")
     protected Boolean allowAddressSpoof;
     
-    @JsonProperty(value = "allowL2AddressSpoof")
-    protected Boolean allowL2AddressSpoof;
-    
     @JsonProperty(value = "assocAclTemplateId")
     protected String assocAclTemplateId;
     
@@ -212,17 +209,6 @@ public class IngressACLTemplate extends BaseObject {
     @JsonIgnore
     public void setAllowAddressSpoof(Boolean value) { 
         this.allowAddressSpoof = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AllowL2AddressSpoof", readOnly = false)   
-    public Boolean getAllowL2AddressSpoof() {
-       return allowL2AddressSpoof;
-    }
-
-    @JsonIgnore
-    public void setAllowL2AddressSpoof(Boolean value) { 
-        this.allowL2AddressSpoof = value;
     }
     
     @JsonIgnore
@@ -471,7 +457,7 @@ public class IngressACLTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IngressACLTemplate [" + "active=" + active + ", allowAddressSpoof=" + allowAddressSpoof + ", allowL2AddressSpoof=" + allowL2AddressSpoof + ", assocAclTemplateId=" + assocAclTemplateId + ", associatedLiveEntityID=" + associatedLiveEntityID + ", autoGeneratePriority=" + autoGeneratePriority + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IngressACLTemplate [" + "active=" + active + ", allowAddressSpoof=" + allowAddressSpoof + ", assocAclTemplateId=" + assocAclTemplateId + ", associatedLiveEntityID=" + associatedLiveEntityID + ", autoGeneratePriority=" + autoGeneratePriority + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -64,6 +64,8 @@ import net.nuagenetworks.vro.vspk.model.enums.L2DomainTemplateEncryption;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainTemplateEntityScope;
 
+import net.nuagenetworks.vro.vspk.model.enums.L2DomainTemplateEntityState;
+
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainTemplateMulticast;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainTemplatePolicyChangeStatus;
@@ -120,6 +122,12 @@ public class L2DomainTemplate extends BaseObject {
     @JsonProperty(value = "IPType")
     protected L2DomainTemplateIPType IPType;
     
+    @JsonProperty(value = "IPv6Address")
+    protected String IPv6Address;
+    
+    @JsonProperty(value = "IPv6Gateway")
+    protected String IPv6Gateway;
+    
     @JsonProperty(value = "address")
     protected String address;
     
@@ -135,14 +143,14 @@ public class L2DomainTemplate extends BaseObject {
     @JsonProperty(value = "entityScope")
     protected L2DomainTemplateEntityScope entityScope;
     
+    @JsonProperty(value = "entityState")
+    protected L2DomainTemplateEntityState entityState;
+    
     @JsonProperty(value = "externalID")
     protected String externalID;
     
     @JsonProperty(value = "gateway")
     protected String gateway;
-    
-    @JsonProperty(value = "gatewayMACAddress")
-    protected String gatewayMACAddress;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -309,6 +317,28 @@ public class L2DomainTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
+    public String getIPv6Address() {
+       return IPv6Address;
+    }
+
+    @JsonIgnore
+    public void setIPv6Address(String value) { 
+        this.IPv6Address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6Gateway", readOnly = false)   
+    public String getIPv6Gateway() {
+       return IPv6Gateway;
+    }
+
+    @JsonIgnore
+    public void setIPv6Gateway(String value) { 
+        this.IPv6Gateway = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
     public String getAddress() {
        return address;
@@ -364,6 +394,17 @@ public class L2DomainTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EntityState", readOnly = false)   
+    public L2DomainTemplateEntityState getEntityState() {
+       return entityState;
+    }
+
+    @JsonIgnore
+    public void setEntityState(L2DomainTemplateEntityState value) { 
+        this.entityState = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ExternalID", readOnly = false)   
     public String getExternalID() {
        return externalID;
@@ -383,17 +424,6 @@ public class L2DomainTemplate extends BaseObject {
     @JsonIgnore
     public void setGateway(String value) { 
         this.gateway = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "GatewayMACAddress", readOnly = false)   
-    public String getGatewayMACAddress() {
-       return gatewayMACAddress;
-    }
-
-    @JsonIgnore
-    public void setGatewayMACAddress(String value) { 
-        this.gatewayMACAddress = value;
     }
     
     @JsonIgnore
@@ -686,7 +716,7 @@ public class L2DomainTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.REDIRECTIONTARGETTEMPLATES_FETCHER, getId());
         }
     }public String toString() {
-        return "L2DomainTemplate [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", useGlobalMAC=" + useGlobalMAC + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L2DomainTemplate [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", useGlobalMAC=" + useGlobalMAC + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

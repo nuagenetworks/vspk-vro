@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.PATNATPool;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Enterprise;
+
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.Me;
@@ -37,8 +39,6 @@ import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
 import net.nuagenetworks.vro.vspk.model.VLAN;
-
-import net.nuagenetworks.vro.vspk.model.Enterprise;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -72,6 +72,16 @@ public class PATNATPoolsFetcher extends BaseFetcher<PATNATPool> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Enterprise", readOnly = true)
+    public Enterprise getEnterprise() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Enterprise) {
+            return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Gateway", readOnly = true)
     public Gateway getGateway() {
         RestObject obj = super.getParentRestObj();
@@ -107,16 +117,6 @@ public class PATNATPoolsFetcher extends BaseFetcher<PATNATPool> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VLAN) {
             return (VLAN) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Enterprise", readOnly = true)
-    public Enterprise getEnterprise() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Enterprise) {
-            return (Enterprise) obj;
         }
         
         return null;

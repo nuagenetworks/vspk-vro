@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ed137fa2-0388-5b56-8b76-54797f597a10"  version="5.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit PSNATPool]]></display-name>
+<ref-types><![CDATA[(VSPK:PSNATPool)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='pSNATPoolObj' type='VSPK:PSNATPool' >
+</param>
+
+<param name='endAddress' type='string' >
+</param>
+
+<param name='startAddress' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = pSNATPoolObj.session;
+
+if (endAddress) {
+   pSNATPoolObj.endAddress = endAddress;
+} else if (pSNATPoolObj.endAddress) {
+   pSNATPoolObj.endAddress = "";
+}
+if (startAddress) {
+   pSNATPoolObj.startAddress = startAddress;
+} else if (pSNATPoolObj.startAddress) {
+   pSNATPoolObj.startAddress = "";
+}
+pSNATPoolObj.save(session, 1);]]></script>
+<in-binding><bind name='pSNATPoolObj' type='VSPK:PSNATPool' export-name="pSNATPoolObj" ></bind>
+
+<bind name='endAddress' type='string' export-name="endAddress" ></bind>
+
+<bind name='startAddress' type='string' export-name="startAddress" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="pSNATPoolObj"><desc><![CDATA[pSNATPoolObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="endAddress"><desc><![CDATA[endAddress]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pSNATPoolObj.endAddress]]></p-qual></p-param>
+
+<p-param name="startAddress"><desc><![CDATA[startAddress]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pSNATPoolObj.startAddress]]></p-qual></p-param>
+
+</presentation></workflow>

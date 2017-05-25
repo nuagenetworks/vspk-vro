@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.CSNATPoolsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.DemarcationServicesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -35,6 +37,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.NextHopAddressFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.OverlayAddressPoolsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.PSNATPoolsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.LinkAcceptanceCriteria;
 
@@ -57,13 +61,17 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.LINK, datasource = Constants.DATASOURCE, image = Constants.LINK_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.CSNATPOOLS_FETCHER, type = Constants.CSNATPOOLS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.DEMARCATIONSERVICES_FETCHER, type = Constants.DEMARCATIONSERVICES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NEXTHOPADDRESS_FETCHER, type = Constants.NEXTHOPADDRESS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYADDRESSPOOLS_FETCHER, type = Constants.OVERLAYADDRESSPOOLS_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYADDRESSPOOLS_FETCHER, type = Constants.OVERLAYADDRESSPOOLS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PSNATPOOLS_FETCHER, type = Constants.PSNATPOOLS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -110,6 +118,9 @@ public class Link extends BaseObject {
     protected LinkType type;
     
     @JsonIgnore
+    private CSNATPoolsFetcher cSNATPools;
+    
+    @JsonIgnore
     private DemarcationServicesFetcher demarcationServices;
     
     @JsonIgnore
@@ -124,8 +135,13 @@ public class Link extends BaseObject {
     @JsonIgnore
     private OverlayAddressPoolsFetcher overlayAddressPools;
     
+    @JsonIgnore
+    private PSNATPoolsFetcher pSNATPools;
+    
     @VsoConstructor
     public Link() {
+        cSNATPools = new CSNATPoolsFetcher(this);
+        
         demarcationServices = new DemarcationServicesFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -135,6 +151,8 @@ public class Link extends BaseObject {
         nextHopAddress = new NextHopAddressFetcher(this);
         
         overlayAddressPools = new OverlayAddressPoolsFetcher(this);
+        
+        pSNATPools = new PSNATPoolsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -310,6 +328,12 @@ public class Link extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CSNATPools", readOnly = true)   
+    public CSNATPoolsFetcher getCSNATPools() {
+        return cSNATPools;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DemarcationServices", readOnly = true)   
     public DemarcationServicesFetcher getDemarcationServices() {
         return demarcationServices;
@@ -337,6 +361,12 @@ public class Link extends BaseObject {
     @VsoProperty(displayName = "OverlayAddressPools", readOnly = true)   
     public OverlayAddressPoolsFetcher getOverlayAddressPools() {
         return overlayAddressPools;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PSNATPools", readOnly = true)   
+    public PSNATPoolsFetcher getPSNATPools() {
+        return pSNATPools;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -368,6 +398,14 @@ public class Link extends BaseObject {
         }
     }
     
+    @VsoMethod
+    public void createCSNATPool(Session session, CSNATPool childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.CSNATPOOLS_FETCHER, getId());
+        }
+    }
     @VsoMethod
     public void createDemarcationService(Session session, DemarcationService childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
@@ -406,6 +444,14 @@ public class Link extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.OVERLAYADDRESSPOOLS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPSNATPool(Session session, PSNATPool childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PSNATPOOLS_FETCHER, getId());
         }
     }public String toString() {
         return "Link [" + "acceptanceCriteria=" + acceptanceCriteria + ", associatedDestinationID=" + associatedDestinationID + ", associatedDestinationName=" + associatedDestinationName + ", associatedDestinationType=" + associatedDestinationType + ", associatedSourceID=" + associatedSourceID + ", associatedSourceName=" + associatedSourceName + ", associatedSourceType=" + associatedSourceType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", readOnly=" + readOnly + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

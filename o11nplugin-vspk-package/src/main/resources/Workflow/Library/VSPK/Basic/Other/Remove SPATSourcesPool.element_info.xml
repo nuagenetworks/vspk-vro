@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Remove SPATSourcesPool</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b56c836c-be5a-5992-bebf-846eb2f79313</entry>
+</properties>

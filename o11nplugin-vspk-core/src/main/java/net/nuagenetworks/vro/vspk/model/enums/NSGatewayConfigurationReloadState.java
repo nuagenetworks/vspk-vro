@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGatewayConfigurationReloadState {
 
-    APPLIED("APPLIED", "APPLIED"), PENDING("PENDING", "PENDING"), SENT("SENT", "SENT"), UNKNOWN("UNKNOWN", "UNKNOWN");
+    APPLIED("APPLIED", "APPLIED"), FAILED_TO_APPLY("FAILED_TO_APPLY", "FAILED_TO_APPLY"), PENDING("PENDING", "PENDING"), SENT("SENT", "SENT"), UNKNOWN("UNKNOWN", "UNKNOWN");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum NSGatewayConfigurationReloadState {
     @VsoProperty(displayName = "APPLIED", readOnly = true)
     public NSGatewayConfigurationReloadState getAPPLIED() {
         return APPLIED;
+    }
+    
+    @VsoProperty(displayName = "FAILED_TO_APPLY", readOnly = true)
+    public NSGatewayConfigurationReloadState getFAILED_TO_APPLY() {
+        return FAILED_TO_APPLY;
     }
     
     @VsoProperty(displayName = "PENDING", readOnly = true)

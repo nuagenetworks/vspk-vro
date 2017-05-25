@@ -30,11 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Gateway;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
+import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.Me;
 
-import net.nuagenetworks.vro.vspk.model.Enterprise;
+import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -68,11 +68,11 @@ public class GatewaysFetcher extends BaseFetcher<Gateway> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
-    public RedundancyGroup getRedundancyGroup() {
+    @VsoProperty(displayName = "Enterprise", readOnly = true)
+    public Enterprise getEnterprise() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof RedundancyGroup) {
-            return (RedundancyGroup) obj;
+        if (obj instanceof Enterprise) {
+            return (Enterprise) obj;
         }
         
         return null;
@@ -88,11 +88,11 @@ public class GatewaysFetcher extends BaseFetcher<Gateway> {
         return null;
     }
     
-    @VsoProperty(displayName = "Enterprise", readOnly = true)
-    public Enterprise getEnterprise() {
+    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
+    public RedundancyGroup getRedundancyGroup() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Enterprise) {
-            return (Enterprise) obj;
+        if (obj instanceof RedundancyGroup) {
+            return (RedundancyGroup) obj;
         }
         
         return null;

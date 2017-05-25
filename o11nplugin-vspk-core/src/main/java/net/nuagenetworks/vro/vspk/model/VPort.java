@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.BGPNeighborsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.BridgeInterfacesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainersFetcher;
@@ -40,11 +42,17 @@ import net.nuagenetworks.vro.vspk.model.fetchers.ContainerInterfacesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DHCPOptionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLEntryTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.HostInterfacesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLEntryTemplatesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdEntryTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
@@ -61,6 +69,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsPoliciesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.TCAsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.TrunksFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VirtualIPsFetcher;
 
@@ -82,7 +92,11 @@ import net.nuagenetworks.vro.vspk.model.enums.VPortMulticast;
 
 import net.nuagenetworks.vro.vspk.model.enums.VPortOperationalState;
 
+import net.nuagenetworks.vro.vspk.model.enums.VPortSegmentationType;
+
 import net.nuagenetworks.vro.vspk.model.enums.VPortSystemType;
+
+import net.nuagenetworks.vro.vspk.model.enums.VPortTrunkRole;
 
 import net.nuagenetworks.vro.vspk.model.enums.VPortType;
 import net.nuagenetworks.bambou.RestException;
@@ -99,6 +113,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.VPORT, datasource = Constants.DATASOURCE, image = Constants.VPORT_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.BGPNEIGHBORS_FETCHER, type = Constants.BGPNEIGHBORS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.BRIDGEINTERFACES_FETCHER, type = Constants.BRIDGEINTERFACES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
@@ -150,6 +166,9 @@ public class VPort extends BaseObject {
     @JsonProperty(value = "associatedSendMulticastChannelMapID")
     protected String associatedSendMulticastChannelMapID;
     
+    @JsonProperty(value = "associatedTrunkID")
+    protected String associatedTrunkID;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -180,8 +199,17 @@ public class VPort extends BaseObject {
     @JsonProperty(value = "operationalState")
     protected VPortOperationalState operationalState;
     
+    @JsonProperty(value = "segmentationID")
+    protected Long segmentationID;
+    
+    @JsonProperty(value = "segmentationType")
+    protected VPortSegmentationType segmentationType;
+    
     @JsonProperty(value = "systemType")
     protected VPortSystemType systemType;
+    
+    @JsonProperty(value = "trunkRole")
+    protected VPortTrunkRole trunkRole;
     
     @JsonProperty(value = "type")
     protected VPortType type;
@@ -199,6 +227,9 @@ public class VPort extends BaseObject {
     private ApplicationperformancemanagementsFetcher applicationperformancemanagements;
     
     @JsonIgnore
+    private BGPNeighborsFetcher bGPNeighbors;
+    
+    @JsonIgnore
     private BridgeInterfacesFetcher bridgeInterfaces;
     
     @JsonIgnore
@@ -211,6 +242,9 @@ public class VPort extends BaseObject {
     private DHCPOptionsFetcher dHCPOptions;
     
     @JsonIgnore
+    private EgressACLEntryTemplatesFetcher egressACLEntryTemplates;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -218,6 +252,12 @@ public class VPort extends BaseObject {
     
     @JsonIgnore
     private HostInterfacesFetcher hostInterfaces;
+    
+    @JsonIgnore
+    private IngressACLEntryTemplatesFetcher ingressACLEntryTemplates;
+    
+    @JsonIgnore
+    private IngressAdvFwdEntryTemplatesFetcher ingressAdvFwdEntryTemplates;
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
@@ -242,6 +282,9 @@ public class VPort extends BaseObject {
     
     @JsonIgnore
     private TCAsFetcher tCAs;
+    
+    @JsonIgnore
+    private TrunksFetcher trunks;
     
     @JsonIgnore
     private VirtualIPsFetcher virtualIPs;
@@ -274,6 +317,8 @@ public class VPort extends BaseObject {
         
         applicationperformancemanagements = new ApplicationperformancemanagementsFetcher(this);
         
+        bGPNeighbors = new BGPNeighborsFetcher(this);
+        
         bridgeInterfaces = new BridgeInterfacesFetcher(this);
         
         containers = new ContainersFetcher(this);
@@ -282,11 +327,17 @@ public class VPort extends BaseObject {
         
         dHCPOptions = new DHCPOptionsFetcher(this);
         
+        egressACLEntryTemplates = new EgressACLEntryTemplatesFetcher(this);
+        
         eventLogs = new EventLogsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         hostInterfaces = new HostInterfacesFetcher(this);
+        
+        ingressACLEntryTemplates = new IngressACLEntryTemplatesFetcher(this);
+        
+        ingressAdvFwdEntryTemplates = new IngressAdvFwdEntryTemplatesFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         
@@ -303,6 +354,8 @@ public class VPort extends BaseObject {
         statisticsPolicies = new StatisticsPoliciesFetcher(this);
         
         tCAs = new TCAsFetcher(this);
+        
+        trunks = new TrunksFetcher(this);
         
         virtualIPs = new VirtualIPsFetcher(this);
         
@@ -428,6 +481,17 @@ public class VPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedTrunkID", readOnly = false)   
+    public String getAssociatedTrunkID() {
+       return associatedTrunkID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedTrunkID(String value) { 
+        this.associatedTrunkID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -538,6 +602,28 @@ public class VPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SegmentationID", readOnly = false)   
+    public Long getSegmentationID() {
+       return segmentationID;
+    }
+
+    @JsonIgnore
+    public void setSegmentationID(Long value) { 
+        this.segmentationID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SegmentationType", readOnly = false)   
+    public VPortSegmentationType getSegmentationType() {
+       return segmentationType;
+    }
+
+    @JsonIgnore
+    public void setSegmentationType(VPortSegmentationType value) { 
+        this.segmentationType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "SystemType", readOnly = false)   
     public VPortSystemType getSystemType() {
        return systemType;
@@ -546,6 +632,17 @@ public class VPort extends BaseObject {
     @JsonIgnore
     public void setSystemType(VPortSystemType value) { 
         this.systemType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "TrunkRole", readOnly = false)   
+    public VPortTrunkRole getTrunkRole() {
+       return trunkRole;
+    }
+
+    @JsonIgnore
+    public void setTrunkRole(VPortTrunkRole value) { 
+        this.trunkRole = value;
     }
     
     @JsonIgnore
@@ -589,6 +686,12 @@ public class VPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "BGPNeighbors", readOnly = true)   
+    public BGPNeighborsFetcher getBGPNeighbors() {
+        return bGPNeighbors;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "BridgeInterfaces", readOnly = true)   
     public BridgeInterfacesFetcher getBridgeInterfaces() {
         return bridgeInterfaces;
@@ -613,6 +716,12 @@ public class VPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EgressACLEntryTemplates", readOnly = true)   
+    public EgressACLEntryTemplatesFetcher getEgressACLEntryTemplates() {
+        return egressACLEntryTemplates;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -628,6 +737,18 @@ public class VPort extends BaseObject {
     @VsoProperty(displayName = "HostInterfaces", readOnly = true)   
     public HostInterfacesFetcher getHostInterfaces() {
         return hostInterfaces;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IngressACLEntryTemplates", readOnly = true)   
+    public IngressACLEntryTemplatesFetcher getIngressACLEntryTemplates() {
+        return ingressACLEntryTemplates;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IngressAdvFwdEntryTemplates", readOnly = true)   
+    public IngressAdvFwdEntryTemplatesFetcher getIngressAdvFwdEntryTemplates() {
+        return ingressAdvFwdEntryTemplates;
     }
     
     @JsonIgnore
@@ -676,6 +797,12 @@ public class VPort extends BaseObject {
     @VsoProperty(displayName = "TCAs", readOnly = true)   
     public TCAsFetcher getTCAs() {
         return tCAs;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Trunks", readOnly = true)   
+    public TrunksFetcher getTrunks() {
+        return trunks;
     }
     
     @JsonIgnore
@@ -765,6 +892,14 @@ public class VPort extends BaseObject {
     }
     
     @VsoMethod
+    public void createBGPNeighbor(Session session, BGPNeighbor childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.BGPNEIGHBORS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createBridgeInterface(Session session, BridgeInterface childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -837,6 +972,14 @@ public class VPort extends BaseObject {
         }
     }
     @VsoMethod
+    public void createVMInterface(Session session, VMInterface childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VMINTERFACES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createVPortMirror(Session session, VPortMirror childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -844,7 +987,7 @@ public class VPort extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTMIRRORS_FETCHER, getId());
         }
     }public String toString() {
-        return "VPort [" + "DPI=" + DPI + ", VLANID=" + VLANID + ", active=" + active + ", addressSpoofing=" + addressSpoofing + ", associatedFloatingIPID=" + associatedFloatingIPID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSendMulticastChannelMapID=" + associatedSendMulticastChannelMapID + ", description=" + description + ", domainID=" + domainID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hasAttachedInterfaces=" + hasAttachedInterfaces + ", lastUpdatedBy=" + lastUpdatedBy + ", multiNICVPortID=" + multiNICVPortID + ", multicast=" + multicast + ", name=" + name + ", operationalState=" + operationalState + ", systemType=" + systemType + ", type=" + type + ", zoneID=" + zoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VPort [" + "DPI=" + DPI + ", VLANID=" + VLANID + ", active=" + active + ", addressSpoofing=" + addressSpoofing + ", associatedFloatingIPID=" + associatedFloatingIPID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSendMulticastChannelMapID=" + associatedSendMulticastChannelMapID + ", associatedTrunkID=" + associatedTrunkID + ", description=" + description + ", domainID=" + domainID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hasAttachedInterfaces=" + hasAttachedInterfaces + ", lastUpdatedBy=" + lastUpdatedBy + ", multiNICVPortID=" + multiNICVPortID + ", multicast=" + multicast + ", name=" + name + ", operationalState=" + operationalState + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", systemType=" + systemType + ", trunkRole=" + trunkRole + ", type=" + type + ", zoneID=" + zoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

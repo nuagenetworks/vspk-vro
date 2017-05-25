@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
-<entry key="name">getExternalServiceServiceType</entry>
-<entry key="type">ScriptModule</entry>
-<entry key="id">c0a0978d-7c4e-5023-be23-798e2badcb76</entry>
-</properties>

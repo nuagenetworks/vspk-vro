@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
-<entry key="name">Add Metadata to ExternalAppService</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">0e5e09d1-ca28-547f-bcec-0cba85b92370</entry>
-</properties>

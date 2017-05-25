@@ -30,11 +30,13 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.BGPNeighbor;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Subnet;
-
 import net.nuagenetworks.vro.vspk.model.Me;
 
+import net.nuagenetworks.vro.vspk.model.Subnet;
+
 import net.nuagenetworks.vro.vspk.model.VLAN;
+
+import net.nuagenetworks.vro.vspk.model.VPort;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -68,16 +70,6 @@ public class BGPNeighborsFetcher extends BaseFetcher<BGPNeighbor> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "Subnet", readOnly = true)
-    public Subnet getSubnet() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Subnet) {
-            return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Me", readOnly = true)
     public Me getMe() {
         RestObject obj = super.getParentRestObj();
@@ -88,11 +80,31 @@ public class BGPNeighborsFetcher extends BaseFetcher<BGPNeighbor> {
         return null;
     }
     
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "VLAN", readOnly = true)
     public VLAN getVLAN() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VLAN) {
             return (VLAN) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VPort) {
+            return (VPort) obj;
         }
         
         return null;

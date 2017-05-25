@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Add PTranslationMap to PSNATPool</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">873295db-6d1f-5e33-a678-fd5d408f9307</entry>
+</properties>
