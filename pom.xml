@@ -5,7 +5,7 @@
     <groupId>net.nuagenetworks</groupId>
     <artifactId>vspk-vro</artifactId>
     <packaging>pom</packaging>
-    <version>4.0.8</version>
+    <version>4.0.9</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
