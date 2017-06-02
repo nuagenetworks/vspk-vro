@@ -30,31 +30,31 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Permission;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
-
-import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
-
-import net.nuagenetworks.vro.vspk.model.Zone;
-
 import net.nuagenetworks.vro.vspk.model.Domain;
 
-import net.nuagenetworks.vro.vspk.model.Port;
+import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
-import net.nuagenetworks.vro.vspk.model.WANService;
-
 import net.nuagenetworks.vro.vspk.model.L2Domain;
+
+import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
 
-import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
+import net.nuagenetworks.vro.vspk.model.Port;
 
-import net.nuagenetworks.vro.vspk.model.DomainTemplate;
+import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
+
+import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.VLAN;
+
+import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
+
+import net.nuagenetworks.vro.vspk.model.Zone;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -88,36 +88,6 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
-    public RedundancyGroup getRedundancyGroup() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof RedundancyGroup) {
-            return (RedundancyGroup) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VsgRedundantPort", readOnly = true)
-    public VsgRedundantPort getVsgRedundantPort() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VsgRedundantPort) {
-            return (VsgRedundantPort) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Zone", readOnly = true)
-    public Zone getZone() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Zone) {
-            return (Zone) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Domain", readOnly = true)
     public Domain getDomain() {
         RestObject obj = super.getParentRestObj();
@@ -128,11 +98,11 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         return null;
     }
     
-    @VsoProperty(displayName = "Port", readOnly = true)
-    public Port getPort() {
+    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
+    public DomainTemplate getDomainTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Port) {
-            return (Port) obj;
+        if (obj instanceof DomainTemplate) {
+            return (DomainTemplate) obj;
         }
         
         return null;
@@ -148,21 +118,21 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         return null;
     }
     
-    @VsoProperty(displayName = "WANService", readOnly = true)
-    public WANService getWANService() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof WANService) {
-            return (WANService) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "L2Domain", readOnly = true)
     public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2Domain) {
             return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
+    public L2DomainTemplate getL2DomainTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2DomainTemplate) {
+            return (L2DomainTemplate) obj;
         }
         
         return null;
@@ -188,21 +158,31 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         return null;
     }
     
-    @VsoProperty(displayName = "L2DomainTemplate", readOnly = true)
-    public L2DomainTemplate getL2DomainTemplate() {
+    @VsoProperty(displayName = "Port", readOnly = true)
+    public Port getPort() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2DomainTemplate) {
-            return (L2DomainTemplate) obj;
+        if (obj instanceof Port) {
+            return (Port) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
-    public DomainTemplate getDomainTemplate() {
+    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
+    public RedundancyGroup getRedundancyGroup() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof DomainTemplate) {
-            return (DomainTemplate) obj;
+        if (obj instanceof RedundancyGroup) {
+            return (RedundancyGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "WANService", readOnly = true)
+    public WANService getWANService() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof WANService) {
+            return (WANService) obj;
         }
         
         return null;
@@ -213,6 +193,26 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VLAN) {
             return (VLAN) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VsgRedundantPort", readOnly = true)
+    public VsgRedundantPort getVsgRedundantPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VsgRedundantPort) {
+            return (VsgRedundantPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Zone", readOnly = true)
+    public Zone getZone() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Zone) {
+            return (Zone) obj;
         }
         
         return null;

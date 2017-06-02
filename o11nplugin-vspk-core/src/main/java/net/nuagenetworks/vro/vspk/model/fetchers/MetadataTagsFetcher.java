@@ -30,15 +30,15 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.MetadataTag;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Enterprise;
+
 import net.nuagenetworks.vro.vspk.model.ExternalService;
-
-import net.nuagenetworks.vro.vspk.model.Metadata;
-
-import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.GlobalMetadata;
 
-import net.nuagenetworks.vro.vspk.model.Enterprise;
+import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.Metadata;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -72,31 +72,21 @@ public class MetadataTagsFetcher extends BaseFetcher<MetadataTag> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Enterprise", readOnly = true)
+    public Enterprise getEnterprise() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Enterprise) {
+            return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "ExternalService", readOnly = true)
     public ExternalService getExternalService() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof ExternalService) {
             return (ExternalService) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Metadata", readOnly = true)
-    public Metadata getMetadata() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Metadata) {
-            return (Metadata) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Me", readOnly = true)
-    public Me getMe() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Me) {
-            return (Me) obj;
         }
         
         return null;
@@ -112,11 +102,21 @@ public class MetadataTagsFetcher extends BaseFetcher<MetadataTag> {
         return null;
     }
     
-    @VsoProperty(displayName = "Enterprise", readOnly = true)
-    public Enterprise getEnterprise() {
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Enterprise) {
-            return (Enterprise) obj;
+        if (obj instanceof Me) {
+            return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Metadata", readOnly = true)
+    public Metadata getMetadata() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Metadata) {
+            return (Metadata) obj;
         }
         
         return null;

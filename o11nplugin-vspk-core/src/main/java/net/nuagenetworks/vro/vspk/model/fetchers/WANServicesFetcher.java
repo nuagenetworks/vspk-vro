@@ -30,11 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.WANService;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
-
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
+
+import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -68,16 +68,6 @@ public class WANServicesFetcher extends BaseFetcher<WANService> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
-    public RedundancyGroup getRedundancyGroup() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof RedundancyGroup) {
-            return (RedundancyGroup) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "AutoDiscoveredGateway", readOnly = true)
     public AutoDiscoveredGateway getAutoDiscoveredGateway() {
         RestObject obj = super.getParentRestObj();
@@ -93,6 +83,16 @@ public class WANServicesFetcher extends BaseFetcher<WANService> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Gateway) {
             return (Gateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
+    public RedundancyGroup getRedundancyGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RedundancyGroup) {
+            return (RedundancyGroup) obj;
         }
         
         return null;

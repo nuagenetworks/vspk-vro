@@ -45,7 +45,7 @@ Installation steps:
 3. Verify that VSPK plug-in is properly installed in vRO:
 
    a. In the Orchestrator Client main window, select Help->Installed plug-ins...
-   b. Check that VSPK (version 3.2.x or 4.0.x) shows up in the list of installed plug-ins
+   b. Check that VSPK (version 3.2.x, 4.0.x or 5.0.x) shows up in the list of installed plug-ins
 
 4. Create a session to a VSD:
 

@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.BGPNeighborsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.BridgeInterfacesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainersFetcher;
@@ -99,6 +101,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.VPORT, datasource = Constants.DATASOURCE, image = Constants.VPORT_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.BGPNEIGHBORS_FETCHER, type = Constants.BGPNEIGHBORS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.BRIDGEINTERFACES_FETCHER, type = Constants.BRIDGEINTERFACES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
@@ -199,6 +203,9 @@ public class VPort extends BaseObject {
     private ApplicationperformancemanagementsFetcher applicationperformancemanagements;
     
     @JsonIgnore
+    private BGPNeighborsFetcher bGPNeighbors;
+    
+    @JsonIgnore
     private BridgeInterfacesFetcher bridgeInterfaces;
     
     @JsonIgnore
@@ -273,6 +280,8 @@ public class VPort extends BaseObject {
         alarms = new AlarmsFetcher(this);
         
         applicationperformancemanagements = new ApplicationperformancemanagementsFetcher(this);
+        
+        bGPNeighbors = new BGPNeighborsFetcher(this);
         
         bridgeInterfaces = new BridgeInterfacesFetcher(this);
         
@@ -589,6 +598,12 @@ public class VPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "BGPNeighbors", readOnly = true)   
+    public BGPNeighborsFetcher getBGPNeighbors() {
+        return bGPNeighbors;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "BridgeInterfaces", readOnly = true)   
     public BridgeInterfacesFetcher getBridgeInterfaces() {
         return bridgeInterfaces;
@@ -764,6 +779,14 @@ public class VPort extends BaseObject {
         }
     }
     
+    @VsoMethod
+    public void createBGPNeighbor(Session session, BGPNeighbor childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.BGPNEIGHBORS_FETCHER, getId());
+        }
+    }
     @VsoMethod
     public void createBridgeInterface(Session session, BridgeInterface childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;

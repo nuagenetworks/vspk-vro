@@ -40,6 +40,8 @@ import net.nuagenetworks.vro.vspk.model.enums.RedundantPortPermittedAction;
 
 import net.nuagenetworks.vro.vspk.model.enums.RedundantPortPortType;
 
+import net.nuagenetworks.vro.vspk.model.enums.RedundantPortSpeed;
+
 import net.nuagenetworks.vro.vspk.model.enums.RedundantPortStatus;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -66,6 +68,9 @@ public class RedundantPort extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "MTU")
+    protected Long MTU;
     
     @JsonProperty(value = "VLANRange")
     protected String VLANRange;
@@ -105,6 +110,9 @@ public class RedundantPort extends BaseObject {
     
     @JsonProperty(value = "portType")
     protected RedundantPortPortType portType;
+    
+    @JsonProperty(value = "speed")
+    protected RedundantPortSpeed speed;
     
     @JsonProperty(value = "status")
     protected RedundantPortStatus status;
@@ -176,6 +184,17 @@ public class RedundantPort extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "MTU", readOnly = false)   
+    public Long getMTU() {
+       return MTU;
+    }
+
+    @JsonIgnore
+    public void setMTU(Long value) { 
+        this.MTU = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "VLANRange", readOnly = false)   
     public String getVLANRange() {
@@ -320,6 +339,17 @@ public class RedundantPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Speed", readOnly = false)   
+    public RedundantPortSpeed getSpeed() {
+       return speed;
+    }
+
+    @JsonIgnore
+    public void setSpeed(RedundantPortSpeed value) { 
+        this.speed = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Status", readOnly = false)   
     public RedundantPortStatus getStatus() {
        return status;
@@ -449,7 +479,7 @@ public class RedundantPort extends BaseObject {
         }
     }
     public String toString() {
-        return "RedundantPort [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureProfileID=" + infrastructureProfileID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portPeer1ID=" + portPeer1ID + ", portPeer2ID=" + portPeer2ID + ", portType=" + portType + ", status=" + status + ", useUntaggedHeartbeatVlan=" + useUntaggedHeartbeatVlan + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "RedundantPort [" + "MTU=" + MTU + ", VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureProfileID=" + infrastructureProfileID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portPeer1ID=" + portPeer1ID + ", portPeer2ID=" + portPeer2ID + ", portType=" + portType + ", speed=" + speed + ", status=" + status + ", useUntaggedHeartbeatVlan=" + useUntaggedHeartbeatVlan + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -30,13 +30,13 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.PolicyDecision;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.ContainerInterface;
-
-import net.nuagenetworks.vro.vspk.model.VMInterface;
-
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
 
+import net.nuagenetworks.vro.vspk.model.ContainerInterface;
+
 import net.nuagenetworks.vro.vspk.model.HostInterface;
+
+import net.nuagenetworks.vro.vspk.model.VMInterface;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -70,26 +70,6 @@ public class PolicyDecisionsFetcher extends BaseFetcher<PolicyDecision> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "ContainerInterface", readOnly = true)
-    public ContainerInterface getContainerInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof ContainerInterface) {
-            return (ContainerInterface) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VMInterface", readOnly = true)
-    public VMInterface getVMInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VMInterface) {
-            return (VMInterface) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "BridgeInterface", readOnly = true)
     public BridgeInterface getBridgeInterface() {
         RestObject obj = super.getParentRestObj();
@@ -100,11 +80,31 @@ public class PolicyDecisionsFetcher extends BaseFetcher<PolicyDecision> {
         return null;
     }
     
+    @VsoProperty(displayName = "ContainerInterface", readOnly = true)
+    public ContainerInterface getContainerInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ContainerInterface) {
+            return (ContainerInterface) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "HostInterface", readOnly = true)
     public HostInterface getHostInterface() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof HostInterface) {
             return (HostInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VMInterface", readOnly = true)
+    public VMInterface getVMInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VMInterface) {
+            return (VMInterface) obj;
         }
         
         return null;

@@ -30,19 +30,19 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Group;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Zone;
-
 import net.nuagenetworks.vro.vspk.model.Domain;
+
+import net.nuagenetworks.vro.vspk.model.DomainTemplate;
+
+import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
-import net.nuagenetworks.vro.vspk.model.DomainTemplate;
-
 import net.nuagenetworks.vro.vspk.model.User;
 
-import net.nuagenetworks.vro.vspk.model.Enterprise;
+import net.nuagenetworks.vro.vspk.model.Zone;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -76,21 +76,31 @@ public class GroupsFetcher extends BaseFetcher<Group> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "Zone", readOnly = true)
-    public Zone getZone() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Zone) {
-            return (Zone) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Domain", readOnly = true)
     public Domain getDomain() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Domain) {
             return (Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
+    public DomainTemplate getDomainTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DomainTemplate) {
+            return (DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Enterprise", readOnly = true)
+    public Enterprise getEnterprise() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Enterprise) {
+            return (Enterprise) obj;
         }
         
         return null;
@@ -116,16 +126,6 @@ public class GroupsFetcher extends BaseFetcher<Group> {
         return null;
     }
     
-    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
-    public DomainTemplate getDomainTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof DomainTemplate) {
-            return (DomainTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "User", readOnly = true)
     public User getUser() {
         RestObject obj = super.getParentRestObj();
@@ -136,11 +136,11 @@ public class GroupsFetcher extends BaseFetcher<Group> {
         return null;
     }
     
-    @VsoProperty(displayName = "Enterprise", readOnly = true)
-    public Enterprise getEnterprise() {
+    @VsoProperty(displayName = "Zone", readOnly = true)
+    public Zone getZone() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof Enterprise) {
-            return (Enterprise) obj;
+        if (obj instanceof Zone) {
+            return (Zone) obj;
         }
         
         return null;

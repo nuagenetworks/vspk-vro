@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.NSGATEWAYTEMPLATE_PERSONALITY_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.DOMAIN_ADVERTISECRITERIA_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum NSGatewayTemplatePersonality {
+public enum DomainAdvertiseCriteria {
 
-    NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), NSGDUC("NSGDUC", "NSGDUC");
+    HUB_ROUTES("HUB_ROUTES", "HUB_ROUTES");
 
     private final String id;
     private final String name;
    
-    NSGatewayTemplatePersonality(String id, String name) {
+    DomainAdvertiseCriteria(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,24 +58,14 @@ public enum NSGatewayTemplatePersonality {
     }
 
     
-    @VsoProperty(displayName = "NSG", readOnly = true)
-    public NSGatewayTemplatePersonality getNSG() {
-        return NSG;
-    }
-    
-    @VsoProperty(displayName = "NSGBR", readOnly = true)
-    public NSGatewayTemplatePersonality getNSGBR() {
-        return NSGBR;
-    }
-    
-    @VsoProperty(displayName = "NSGDUC", readOnly = true)
-    public NSGatewayTemplatePersonality getNSGDUC() {
-        return NSGDUC;
+    @VsoProperty(displayName = "HUB_ROUTES", readOnly = true)
+    public DomainAdvertiseCriteria getHUB_ROUTES() {
+        return HUB_ROUTES;
     }
     
 
-    public static NSGatewayTemplatePersonality getEnumById(String id) {
-        for (NSGatewayTemplatePersonality item : values()) {
+    public static DomainAdvertiseCriteria getEnumById(String id) {
+        for (DomainAdvertiseCriteria item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

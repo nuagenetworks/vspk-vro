@@ -30,11 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.MonitoringPort;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.VSC;
+import net.nuagenetworks.vro.vspk.model.HSC;
 
 import net.nuagenetworks.vro.vspk.model.VRS;
 
-import net.nuagenetworks.vro.vspk.model.HSC;
+import net.nuagenetworks.vro.vspk.model.VSC;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -68,11 +68,11 @@ public class MonitoringPortsFetcher extends BaseFetcher<MonitoringPort> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "VSC", readOnly = true)
-    public VSC getVSC() {
+    @VsoProperty(displayName = "HSC", readOnly = true)
+    public HSC getHSC() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSC) {
-            return (VSC) obj;
+        if (obj instanceof HSC) {
+            return (HSC) obj;
         }
         
         return null;
@@ -88,11 +88,11 @@ public class MonitoringPortsFetcher extends BaseFetcher<MonitoringPort> {
         return null;
     }
     
-    @VsoProperty(displayName = "HSC", readOnly = true)
-    public HSC getHSC() {
+    @VsoProperty(displayName = "VSC", readOnly = true)
+    public VSC getVSC() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof HSC) {
-            return (HSC) obj;
+        if (obj instanceof VSC) {
+            return (VSC) obj;
         }
         
         return null;

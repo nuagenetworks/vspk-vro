@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.BGPPeer;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.VSC;
-
 import net.nuagenetworks.vro.vspk.model.HSC;
+
+import net.nuagenetworks.vro.vspk.model.VSC;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,21 +66,21 @@ public class BGPPeersFetcher extends BaseFetcher<BGPPeer> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "VSC", readOnly = true)
-    public VSC getVSC() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSC) {
-            return (VSC) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "HSC", readOnly = true)
     public HSC getHSC() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof HSC) {
             return (HSC) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VSC", readOnly = true)
+    public VSC getVSC() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VSC) {
+            return (VSC) obj;
         }
         
         return null;

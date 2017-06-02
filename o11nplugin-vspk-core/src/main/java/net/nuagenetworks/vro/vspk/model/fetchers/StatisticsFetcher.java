@@ -30,39 +30,39 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Statistics;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.AddressMap;
+
+import net.nuagenetworks.vro.vspk.model.BridgeInterface;
+
 import net.nuagenetworks.vro.vspk.model.ContainerInterface;
-
-import net.nuagenetworks.vro.vspk.model.Zone;
-
-import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
-
-import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.EgressACLEntryTemplate;
 
-import net.nuagenetworks.vro.vspk.model.VPort;
-
-import net.nuagenetworks.vro.vspk.model.Subnet;
-
-import net.nuagenetworks.vro.vspk.model.VMInterface;
-
-import net.nuagenetworks.vro.vspk.model.BridgeInterface;
-
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
-
-import net.nuagenetworks.vro.vspk.model.AddressMap;
+import net.nuagenetworks.vro.vspk.model.HostInterface;
 
 import net.nuagenetworks.vro.vspk.model.IngressACLEntryTemplate;
 
-import net.nuagenetworks.vro.vspk.model.L2Domain;
+import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
-import net.nuagenetworks.vro.vspk.model.HostInterface;
+import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
+
+import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
 
+import net.nuagenetworks.vro.vspk.model.PATNATPool;
+
+import net.nuagenetworks.vro.vspk.model.Subnet;
+
 import net.nuagenetworks.vro.vspk.model.Tier;
+
+import net.nuagenetworks.vro.vspk.model.VMInterface;
+
+import net.nuagenetworks.vro.vspk.model.VPort;
+
+import net.nuagenetworks.vro.vspk.model.Zone;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -96,41 +96,31 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "AddressMap", readOnly = true)
+    public AddressMap getAddressMap() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AddressMap) {
+            return (AddressMap) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "BridgeInterface", readOnly = true)
+    public BridgeInterface getBridgeInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof BridgeInterface) {
+            return (BridgeInterface) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "ContainerInterface", readOnly = true)
     public ContainerInterface getContainerInterface() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof ContainerInterface) {
             return (ContainerInterface) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Zone", readOnly = true)
-    public Zone getZone() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Zone) {
-            return (Zone) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "IngressExternalServiceTemplateEntry", readOnly = true)
-    public IngressExternalServiceTemplateEntry getIngressExternalServiceTemplateEntry() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressExternalServiceTemplateEntry) {
-            return (IngressExternalServiceTemplateEntry) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "PATNATPool", readOnly = true)
-    public PATNATPool getPATNATPool() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof PATNATPool) {
-            return (PATNATPool) obj;
         }
         
         return null;
@@ -156,61 +146,11 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         return null;
     }
     
-    @VsoProperty(displayName = "VPort", readOnly = true)
-    public VPort getVPort() {
+    @VsoProperty(displayName = "HostInterface", readOnly = true)
+    public HostInterface getHostInterface() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VPort) {
-            return (VPort) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Subnet", readOnly = true)
-    public Subnet getSubnet() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Subnet) {
-            return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VMInterface", readOnly = true)
-    public VMInterface getVMInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VMInterface) {
-            return (VMInterface) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "BridgeInterface", readOnly = true)
-    public BridgeInterface getBridgeInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof BridgeInterface) {
-            return (BridgeInterface) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
-    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdEntryTemplate) {
-            return (IngressAdvFwdEntryTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "AddressMap", readOnly = true)
-    public AddressMap getAddressMap() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof AddressMap) {
-            return (AddressMap) obj;
+        if (obj instanceof HostInterface) {
+            return (HostInterface) obj;
         }
         
         return null;
@@ -226,21 +166,31 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         return null;
     }
     
-    @VsoProperty(displayName = "L2Domain", readOnly = true)
-    public L2Domain getL2Domain() {
+    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
+    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2Domain) {
-            return (L2Domain) obj;
+        if (obj instanceof IngressAdvFwdEntryTemplate) {
+            return (IngressAdvFwdEntryTemplate) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "HostInterface", readOnly = true)
-    public HostInterface getHostInterface() {
+    @VsoProperty(displayName = "IngressExternalServiceTemplateEntry", readOnly = true)
+    public IngressExternalServiceTemplateEntry getIngressExternalServiceTemplateEntry() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof HostInterface) {
-            return (HostInterface) obj;
+        if (obj instanceof IngressExternalServiceTemplateEntry) {
+            return (IngressExternalServiceTemplateEntry) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
         }
         
         return null;
@@ -256,11 +206,61 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         return null;
     }
     
+    @VsoProperty(displayName = "PATNATPool", readOnly = true)
+    public PATNATPool getPATNATPool() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PATNATPool) {
+            return (PATNATPool) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Tier", readOnly = true)
     public Tier getTier() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Tier) {
             return (Tier) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VMInterface", readOnly = true)
+    public VMInterface getVMInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VMInterface) {
+            return (VMInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VPort) {
+            return (VPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Zone", readOnly = true)
+    public Zone getZone() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Zone) {
+            return (Zone) obj;
         }
         
         return null;

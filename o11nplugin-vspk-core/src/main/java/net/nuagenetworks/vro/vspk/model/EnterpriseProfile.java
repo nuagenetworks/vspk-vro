@@ -73,9 +73,6 @@ public class EnterpriseProfile extends BaseObject {
     @JsonProperty(value = "DHCPLeaseInterval")
     protected Long DHCPLeaseInterval;
     
-    @JsonProperty(value = "DPIEnabled")
-    protected Boolean DPIEnabled;
-    
     @JsonProperty(value = "allowAdvancedQOSConfiguration")
     protected Boolean allowAdvancedQOSConfiguration;
     
@@ -210,17 +207,6 @@ public class EnterpriseProfile extends BaseObject {
     @JsonIgnore
     public void setDHCPLeaseInterval(Long value) { 
         this.DHCPLeaseInterval = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "DPIEnabled", readOnly = false)   
-    public Boolean getDPIEnabled() {
-       return DPIEnabled;
-    }
-
-    @JsonIgnore
-    public void setDPIEnabled(Boolean value) { 
-        this.DPIEnabled = value;
     }
     
     @JsonIgnore
@@ -467,7 +453,7 @@ public class EnterpriseProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EnterpriseProfile [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", DPIEnabled=" + DPIEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", description=" + description + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EnterpriseProfile [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", description=" + description + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

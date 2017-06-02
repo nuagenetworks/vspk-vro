@@ -32,11 +32,11 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Domain;
 
+import net.nuagenetworks.vro.vspk.model.DomainTemplate;
+
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
-
-import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -80,6 +80,16 @@ public class IngressExternalServiceTemplatesFetcher extends BaseFetcher<IngressE
         return null;
     }
     
+    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
+    public DomainTemplate getDomainTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DomainTemplate) {
+            return (DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "L2Domain", readOnly = true)
     public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
@@ -95,16 +105,6 @@ public class IngressExternalServiceTemplatesFetcher extends BaseFetcher<IngressE
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2DomainTemplate) {
             return (L2DomainTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "DomainTemplate", readOnly = true)
-    public DomainTemplate getDomainTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof DomainTemplate) {
-            return (DomainTemplate) obj;
         }
         
         return null;

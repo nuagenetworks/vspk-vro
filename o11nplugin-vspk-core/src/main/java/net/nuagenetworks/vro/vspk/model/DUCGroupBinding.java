@@ -50,9 +50,6 @@ public class DUCGroupBinding extends BaseObject {
     @JsonProperty(value = "associatedDUCGroupID")
     protected String associatedDUCGroupID;
     
-    @JsonProperty(value = "id")
-    protected String id;
-    
     @JsonProperty(value = "oneWayDelay")
     protected Long oneWayDelay;
     
@@ -73,7 +70,12 @@ public class DUCGroupBinding extends BaseObject {
     @VsoProperty(displayName = "RestName", readOnly = true)
     public String getRestName() {
         return super.getRestName();
-    }@VsoProperty(displayName = "ParentId", readOnly = false)
+    }
+    @VsoProperty(displayName = "Id", readOnly = false)
+    public String getId() {
+        return super.getId();
+    }
+    @VsoProperty(displayName = "ParentId", readOnly = false)
     public String getParentId() {
         return super.getParentId();
     }
@@ -106,17 +108,6 @@ public class DUCGroupBinding extends BaseObject {
     @JsonIgnore
     public void setAssociatedDUCGroupID(String value) { 
         this.associatedDUCGroupID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Id", readOnly = false)   
-    public String getId() {
-       return id;
-    }
-
-    @JsonIgnore
-    public void setId(String value) { 
-        this.id = value;
     }
     
     @JsonIgnore
@@ -161,7 +152,7 @@ public class DUCGroupBinding extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.DUCGROUPBINDING, getId());
         }
     }public String toString() {
-        return "DUCGroupBinding [" + "associatedDUCGroupID=" + associatedDUCGroupID + ", id=" + id + ", oneWayDelay=" + oneWayDelay + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DUCGroupBinding [" + "associatedDUCGroupID=" + associatedDUCGroupID + ", oneWayDelay=" + oneWayDelay + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

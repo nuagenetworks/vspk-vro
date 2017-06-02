@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.FirewallRule;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.FirewallAcl;
-
 import net.nuagenetworks.vro.vspk.model.Enterprise;
+
+import net.nuagenetworks.vro.vspk.model.FirewallAcl;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,21 +66,21 @@ public class FirewallRulesFetcher extends BaseFetcher<FirewallRule> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "FirewallAcl", readOnly = true)
-    public FirewallAcl getFirewallAcl() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof FirewallAcl) {
-            return (FirewallAcl) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Enterprise", readOnly = true)
     public Enterprise getEnterprise() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "FirewallAcl", readOnly = true)
+    public FirewallAcl getFirewallAcl() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof FirewallAcl) {
+            return (FirewallAcl) obj;
         }
         
         return null;

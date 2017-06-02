@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.HSC;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.VSP;
-
 import net.nuagenetworks.vro.vspk.model.VRS;
+
+import net.nuagenetworks.vro.vspk.model.VSP;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,21 +66,21 @@ public class HSCsFetcher extends BaseFetcher<HSC> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "VSP", readOnly = true)
-    public VSP getVSP() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSP) {
-            return (VSP) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "VRS", readOnly = true)
     public VRS getVRS() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VRS) {
             return (VRS) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VSP", readOnly = true)
+    public VSP getVSP() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VSP) {
+            return (VSP) obj;
         }
         
         return null;

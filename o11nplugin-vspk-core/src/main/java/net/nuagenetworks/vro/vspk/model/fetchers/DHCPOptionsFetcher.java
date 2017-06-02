@@ -30,25 +30,25 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.DHCPOption;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.BridgeInterface;
+
 import net.nuagenetworks.vro.vspk.model.ContainerInterface;
-
-import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
-
-import net.nuagenetworks.vro.vspk.model.Zone;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
-import net.nuagenetworks.vro.vspk.model.VPort;
+import net.nuagenetworks.vro.vspk.model.HostInterface;
+
+import net.nuagenetworks.vro.vspk.model.L2Domain;
+
+import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
 import net.nuagenetworks.vro.vspk.model.VMInterface;
 
-import net.nuagenetworks.vro.vspk.model.BridgeInterface;
+import net.nuagenetworks.vro.vspk.model.VPort;
 
-import net.nuagenetworks.vro.vspk.model.L2Domain;
-
-import net.nuagenetworks.vro.vspk.model.HostInterface;
+import net.nuagenetworks.vro.vspk.model.Zone;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -82,31 +82,21 @@ public class DHCPOptionsFetcher extends BaseFetcher<DHCPOption> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "BridgeInterface", readOnly = true)
+    public BridgeInterface getBridgeInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof BridgeInterface) {
+            return (BridgeInterface) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "ContainerInterface", readOnly = true)
     public ContainerInterface getContainerInterface() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof ContainerInterface) {
             return (ContainerInterface) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "SharedNetworkResource", readOnly = true)
-    public SharedNetworkResource getSharedNetworkResource() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof SharedNetworkResource) {
-            return (SharedNetworkResource) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Zone", readOnly = true)
-    public Zone getZone() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Zone) {
-            return (Zone) obj;
         }
         
         return null;
@@ -122,11 +112,31 @@ public class DHCPOptionsFetcher extends BaseFetcher<DHCPOption> {
         return null;
     }
     
-    @VsoProperty(displayName = "VPort", readOnly = true)
-    public VPort getVPort() {
+    @VsoProperty(displayName = "HostInterface", readOnly = true)
+    public HostInterface getHostInterface() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VPort) {
-            return (VPort) obj;
+        if (obj instanceof HostInterface) {
+            return (HostInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SharedNetworkResource", readOnly = true)
+    public SharedNetworkResource getSharedNetworkResource() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SharedNetworkResource) {
+            return (SharedNetworkResource) obj;
         }
         
         return null;
@@ -152,31 +162,21 @@ public class DHCPOptionsFetcher extends BaseFetcher<DHCPOption> {
         return null;
     }
     
-    @VsoProperty(displayName = "BridgeInterface", readOnly = true)
-    public BridgeInterface getBridgeInterface() {
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof BridgeInterface) {
-            return (BridgeInterface) obj;
+        if (obj instanceof VPort) {
+            return (VPort) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "L2Domain", readOnly = true)
-    public L2Domain getL2Domain() {
+    @VsoProperty(displayName = "Zone", readOnly = true)
+    public Zone getZone() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof L2Domain) {
-            return (L2Domain) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "HostInterface", readOnly = true)
-    public HostInterface getHostInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof HostInterface) {
-            return (HostInterface) obj;
+        if (obj instanceof Zone) {
+            return (Zone) obj;
         }
         
         return null;

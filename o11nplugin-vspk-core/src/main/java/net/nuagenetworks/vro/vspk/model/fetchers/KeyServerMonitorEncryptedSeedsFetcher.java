@@ -30,9 +30,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.KeyServerMonitorEncryptedSeed;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.KeyServerMonitorSeed;
-
 import net.nuagenetworks.vro.vspk.model.KeyServerMonitor;
+
+import net.nuagenetworks.vro.vspk.model.KeyServerMonitorSeed;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,21 +66,21 @@ public class KeyServerMonitorEncryptedSeedsFetcher extends BaseFetcher<KeyServer
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "KeyServerMonitorSeed", readOnly = true)
-    public KeyServerMonitorSeed getKeyServerMonitorSeed() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof KeyServerMonitorSeed) {
-            return (KeyServerMonitorSeed) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "KeyServerMonitor", readOnly = true)
     public KeyServerMonitor getKeyServerMonitor() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof KeyServerMonitor) {
             return (KeyServerMonitor) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "KeyServerMonitorSeed", readOnly = true)
+    public KeyServerMonitorSeed getKeyServerMonitorSeed() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof KeyServerMonitorSeed) {
+            return (KeyServerMonitorSeed) obj;
         }
         
         return null;

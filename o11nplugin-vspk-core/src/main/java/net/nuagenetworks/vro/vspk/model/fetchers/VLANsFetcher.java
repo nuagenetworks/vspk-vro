@@ -30,13 +30,13 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.VLAN;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
+import net.nuagenetworks.vro.vspk.model.NSPort;
 
 import net.nuagenetworks.vro.vspk.model.RedundantPort;
 
 import net.nuagenetworks.vro.vspk.model.Port;
 
-import net.nuagenetworks.vro.vspk.model.NSPort;
+import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -70,11 +70,11 @@ public class VLANsFetcher extends BaseFetcher<VLAN> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "VsgRedundantPort", readOnly = true)
-    public VsgRedundantPort getVsgRedundantPort() {
+    @VsoProperty(displayName = "NSPort", readOnly = true)
+    public NSPort getNSPort() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VsgRedundantPort) {
-            return (VsgRedundantPort) obj;
+        if (obj instanceof NSPort) {
+            return (NSPort) obj;
         }
         
         return null;
@@ -100,11 +100,11 @@ public class VLANsFetcher extends BaseFetcher<VLAN> {
         return null;
     }
     
-    @VsoProperty(displayName = "NSPort", readOnly = true)
-    public NSPort getNSPort() {
+    @VsoProperty(displayName = "VsgRedundantPort", readOnly = true)
+    public VsgRedundantPort getVsgRedundantPort() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof NSPort) {
-            return (NSPort) obj;
+        if (obj instanceof VsgRedundantPort) {
+            return (VsgRedundantPort) obj;
         }
         
         return null;

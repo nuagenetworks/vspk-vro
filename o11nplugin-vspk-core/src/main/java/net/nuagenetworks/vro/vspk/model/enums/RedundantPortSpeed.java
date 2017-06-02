@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.NSGATEWAYTEMPLATE_PERSONALITY_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.REDUNDANTPORT_SPEED_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum NSGatewayTemplatePersonality {
+public enum RedundantPortSpeed {
 
-    NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), NSGDUC("NSGDUC", "NSGDUC");
+    AUTONEGOTIATE("AUTONEGOTIATE", "AUTONEGOTIATE"), BASE10("BASE10", "BASE10"), BASET1000("BASET1000", "BASET1000"), BASETX100("BASETX100", "BASETX100"), BASEX10G("BASEX10G", "BASEX10G");
 
     private final String id;
     private final String name;
    
-    NSGatewayTemplatePersonality(String id, String name) {
+    RedundantPortSpeed(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,24 +58,34 @@ public enum NSGatewayTemplatePersonality {
     }
 
     
-    @VsoProperty(displayName = "NSG", readOnly = true)
-    public NSGatewayTemplatePersonality getNSG() {
-        return NSG;
+    @VsoProperty(displayName = "AUTONEGOTIATE", readOnly = true)
+    public RedundantPortSpeed getAUTONEGOTIATE() {
+        return AUTONEGOTIATE;
     }
     
-    @VsoProperty(displayName = "NSGBR", readOnly = true)
-    public NSGatewayTemplatePersonality getNSGBR() {
-        return NSGBR;
+    @VsoProperty(displayName = "BASE10", readOnly = true)
+    public RedundantPortSpeed getBASE10() {
+        return BASE10;
     }
     
-    @VsoProperty(displayName = "NSGDUC", readOnly = true)
-    public NSGatewayTemplatePersonality getNSGDUC() {
-        return NSGDUC;
+    @VsoProperty(displayName = "BASET1000", readOnly = true)
+    public RedundantPortSpeed getBASET1000() {
+        return BASET1000;
+    }
+    
+    @VsoProperty(displayName = "BASETX100", readOnly = true)
+    public RedundantPortSpeed getBASETX100() {
+        return BASETX100;
+    }
+    
+    @VsoProperty(displayName = "BASEX10G", readOnly = true)
+    public RedundantPortSpeed getBASEX10G() {
+        return BASEX10G;
     }
     
 
-    public static NSGatewayTemplatePersonality getEnumById(String id) {
-        for (NSGatewayTemplatePersonality item : values()) {
+    public static RedundantPortSpeed getEnumById(String id) {
+        for (RedundantPortSpeed item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

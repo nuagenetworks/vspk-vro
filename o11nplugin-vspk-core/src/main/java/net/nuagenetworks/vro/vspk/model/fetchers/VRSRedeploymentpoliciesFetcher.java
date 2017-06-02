@@ -30,15 +30,15 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.VRSRedeploymentpolicy;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.VCenterVRSConfig;
-
-import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
-
-import net.nuagenetworks.vro.vspk.model.VCenterDataCenter;
-
 import net.nuagenetworks.vro.vspk.model.VCenter;
 
 import net.nuagenetworks.vro.vspk.model.VCenterCluster;
+
+import net.nuagenetworks.vro.vspk.model.VCenterDataCenter;
+
+import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
+
+import net.nuagenetworks.vro.vspk.model.VCenterVRSConfig;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -72,36 +72,6 @@ public class VRSRedeploymentpoliciesFetcher extends BaseFetcher<VRSRedeploymentp
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "VCenterVRSConfig", readOnly = true)
-    public VCenterVRSConfig getVCenterVRSConfig() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VCenterVRSConfig) {
-            return (VCenterVRSConfig) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VCenterHypervisor", readOnly = true)
-    public VCenterHypervisor getVCenterHypervisor() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VCenterHypervisor) {
-            return (VCenterHypervisor) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VCenterDataCenter", readOnly = true)
-    public VCenterDataCenter getVCenterDataCenter() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VCenterDataCenter) {
-            return (VCenterDataCenter) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "VCenter", readOnly = true)
     public VCenter getVCenter() {
         RestObject obj = super.getParentRestObj();
@@ -117,6 +87,36 @@ public class VRSRedeploymentpoliciesFetcher extends BaseFetcher<VRSRedeploymentp
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenterCluster) {
             return (VCenterCluster) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VCenterDataCenter", readOnly = true)
+    public VCenterDataCenter getVCenterDataCenter() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VCenterDataCenter) {
+            return (VCenterDataCenter) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VCenterHypervisor", readOnly = true)
+    public VCenterHypervisor getVCenterHypervisor() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VCenterHypervisor) {
+            return (VCenterHypervisor) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VCenterVRSConfig", readOnly = true)
+    public VCenterVRSConfig getVCenterVRSConfig() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VCenterVRSConfig) {
+            return (VCenterVRSConfig) obj;
         }
         
         return null;

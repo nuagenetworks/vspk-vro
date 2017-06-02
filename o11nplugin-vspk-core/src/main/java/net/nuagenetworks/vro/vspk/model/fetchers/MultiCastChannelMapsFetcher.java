@@ -32,13 +32,13 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.ContainerInterface;
 
-import net.nuagenetworks.vro.vspk.model.VMInterface;
-
-import net.nuagenetworks.vro.vspk.model.MultiCastList;
-
 import net.nuagenetworks.vro.vspk.model.HostInterface;
 
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.MultiCastList;
+
+import net.nuagenetworks.vro.vspk.model.VMInterface;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -82,26 +82,6 @@ public class MultiCastChannelMapsFetcher extends BaseFetcher<MultiCastChannelMap
         return null;
     }
     
-    @VsoProperty(displayName = "VMInterface", readOnly = true)
-    public VMInterface getVMInterface() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VMInterface) {
-            return (VMInterface) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "MultiCastList", readOnly = true)
-    public MultiCastList getMultiCastList() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof MultiCastList) {
-            return (MultiCastList) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "HostInterface", readOnly = true)
     public HostInterface getHostInterface() {
         RestObject obj = super.getParentRestObj();
@@ -117,6 +97,26 @@ public class MultiCastChannelMapsFetcher extends BaseFetcher<MultiCastChannelMap
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "MultiCastList", readOnly = true)
+    public MultiCastList getMultiCastList() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof MultiCastList) {
+            return (MultiCastList) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VMInterface", readOnly = true)
+    public VMInterface getVMInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VMInterface) {
+            return (VMInterface) obj;
         }
         
         return null;

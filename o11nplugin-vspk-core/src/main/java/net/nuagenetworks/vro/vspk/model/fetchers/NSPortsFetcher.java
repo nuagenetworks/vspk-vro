@@ -30,11 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.NSPort;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.RedundantPort;
-
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
+
+import net.nuagenetworks.vro.vspk.model.RedundantPort;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -68,16 +68,6 @@ public class NSPortsFetcher extends BaseFetcher<NSPort> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "RedundantPort", readOnly = true)
-    public RedundantPort getRedundantPort() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof RedundantPort) {
-            return (RedundantPort) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "AutoDiscoveredGateway", readOnly = true)
     public AutoDiscoveredGateway getAutoDiscoveredGateway() {
         RestObject obj = super.getParentRestObj();
@@ -93,6 +83,16 @@ public class NSPortsFetcher extends BaseFetcher<NSPort> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSGateway) {
             return (NSGateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "RedundantPort", readOnly = true)
+    public RedundantPort getRedundantPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RedundantPort) {
+            return (RedundantPort) obj;
         }
         
         return null;

@@ -30,11 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.VPNConnection;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
-
 import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
+
+import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -68,16 +68,6 @@ public class VPNConnectionsFetcher extends BaseFetcher<VPNConnection> {
     public Session getSession() {
         return (Session) super.getSession();
     }
-    @VsoProperty(displayName = "SharedNetworkResource", readOnly = true)
-    public SharedNetworkResource getSharedNetworkResource() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof SharedNetworkResource) {
-            return (SharedNetworkResource) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "Domain", readOnly = true)
     public Domain getDomain() {
         RestObject obj = super.getParentRestObj();
@@ -93,6 +83,16 @@ public class VPNConnectionsFetcher extends BaseFetcher<VPNConnection> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2Domain) {
             return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SharedNetworkResource", readOnly = true)
+    public SharedNetworkResource getSharedNetworkResource() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SharedNetworkResource) {
+            return (SharedNetworkResource) obj;
         }
         
         return null;
