@@ -51,6 +51,9 @@ public class Applicationperformancemanagement extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "appGroupUniqueId")
+    protected String appGroupUniqueId;
+    
     @JsonProperty(value = "associatedPerformanceMonitorID")
     protected String associatedPerformanceMonitorID;
     
@@ -106,6 +109,17 @@ public class Applicationperformancemanagement extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AppGroupUniqueId", readOnly = false)   
+    public String getAppGroupUniqueId() {
+       return appGroupUniqueId;
+    }
+
+    @JsonIgnore
+    public void setAppGroupUniqueId(String value) { 
+        this.appGroupUniqueId = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedPerformanceMonitorID", readOnly = false)   
     public String getAssociatedPerformanceMonitorID() {
@@ -184,7 +198,7 @@ public class Applicationperformancemanagement extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.APPLICATIONBINDINGS_FETCHER, getId());
         }
     }public String toString() {
-        return "Applicationperformancemanagement [" + "associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", name=" + name + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Applicationperformancemanagement [" + "appGroupUniqueId=" + appGroupUniqueId + ", associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", name=" + name + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

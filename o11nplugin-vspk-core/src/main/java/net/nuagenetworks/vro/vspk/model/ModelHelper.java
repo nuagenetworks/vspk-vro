@@ -1320,6 +1320,91 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<AvatarsFetcher> allObjs = new ArrayList<AvatarsFetcher>();
         return allObjs;
     }
+    public static BFDSession getBFDSessionById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            BFDSession obj = null;
+            obj = new BFDSession();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.BFDSESSION, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForBFDSessionId(String id) throws RestException {
+        BFDSession obj = getObject(Constants.BFDSESSION, id);
+        if (obj == null) {
+            obj = getBFDSessionById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForBFDSessionId(String id) throws RestException {
+        BFDSession obj = getObject(Constants.BFDSESSION, id);
+        if (obj == null) {
+            obj = getBFDSessionById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<BFDSession> getBFDSessionsForFetcherId(String id) throws RestException {
+        BFDSessionsFetcher fetcher = getBFDSessionsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.BFDSESSION);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<BFDSession>();
+    }
+
+    public static BFDSessionsFetcher getBFDSessionsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.BFDSESSIONS_FETCHER, id);
+        if (fetcher != null) {
+            return (BFDSessionsFetcher) fetcher;
+        }
+        if ((fetcher = getBFDSessionsFetcherForBRConnectionId(id)) != null) {
+            return (BFDSessionsFetcher) addFetcher(Constants.BFDSESSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getBFDSessionsFetcherForUplinkConnectionId(id)) != null) {
+            return (BFDSessionsFetcher) addFetcher(Constants.BFDSESSIONS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<BFDSession> getAllBFDSessions() throws RestException {
+        java.util.List<BFDSession> allObjs = new ArrayList<BFDSession>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<BFDSessionsFetcher> getAllBFDSessionsFetchers() throws RestException {
+        java.util.List<BFDSessionsFetcher> allObjs = new ArrayList<BFDSessionsFetcher>();
+        return allObjs;
+    }
     public static BGPNeighbor getBGPNeighborById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             BGPNeighbor obj = null;
@@ -1774,7 +1859,21 @@ public class ModelHelper extends BaseModelHelper {
         }
 
         return null;
-    }public static java.util.List<BRConnection> getBRConnectionsForFetcherId(String id) throws RestException {
+    }
+    public static BFDSessionsFetcher getBFDSessionsFetcherForBRConnectionId(String id) throws RestException {
+        BRConnection obj = getObject(Constants.BRCONNECTION, id);
+        if (obj == null) {
+            obj = getBRConnectionById(id);
+        }
+
+        if (obj != null) {
+            BFDSessionsFetcher fetcher = obj.getBFDSessions();
+            return addFetcher(Constants.BFDSESSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<BRConnection> getBRConnectionsForFetcherId(String id) throws RestException {
         BRConnectionsFetcher fetcher = getBRConnectionsFetcherById(id);
         if (fetcher != null) {
             try {
@@ -8534,6 +8633,10 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForBFDSessionId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForBGPNeighborId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -14928,6 +15031,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForAvatarId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForBFDSessionId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -22303,6 +22410,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    public static BFDSessionsFetcher getBFDSessionsFetcherForUplinkConnectionId(String id) throws RestException {
+        UplinkConnection obj = getObject(Constants.UPLINKCONNECTION, id);
+        if (obj == null) {
+            obj = getUplinkConnectionById(id);
+        }
+
+        if (obj != null) {
+            BFDSessionsFetcher fetcher = obj.getBFDSessions();
+            return addFetcher(Constants.BFDSESSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static CustomPropertiesFetcher getCustomPropertiesFetcherForUplinkConnectionId(String id) throws RestException {
         UplinkConnection obj = getObject(Constants.UPLINKCONNECTION, id);
         if (obj == null) {

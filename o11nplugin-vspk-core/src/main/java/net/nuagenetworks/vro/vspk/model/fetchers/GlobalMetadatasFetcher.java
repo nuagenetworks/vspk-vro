@@ -44,6 +44,8 @@ import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.Avatar;
 
+import net.nuagenetworks.vro.vspk.model.BFDSession;
+
 import net.nuagenetworks.vro.vspk.model.BGPNeighbor;
 
 import net.nuagenetworks.vro.vspk.model.BGPPeer;
@@ -443,6 +445,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Avatar) {
             return (Avatar) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "BFDSession", readOnly = true)
+    public BFDSession getBFDSession() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof BFDSession) {
+            return (BFDSession) obj;
         }
         
         return null;

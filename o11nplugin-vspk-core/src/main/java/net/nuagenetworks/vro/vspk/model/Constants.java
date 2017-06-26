@@ -66,6 +66,8 @@ public interface Constants extends BaseConstants {
     String AUTODISCOVERHYPERVISORFROMCLUSTERS = "AutoDiscoverHypervisorFromClusters";
     String AVATAR = "Avatar";
     String AVATARS = "Avatars";
+    String BFDSESSION = "BFDSession";
+    String BFDSESSIONS = "BFDSessions";
     String BGPNEIGHBOR = "BGPNeighbor";
     String BGPNEIGHBORS = "BGPNeighbors";
     String BGPPEER = "BGPPeer";
@@ -447,6 +449,7 @@ public interface Constants extends BaseConstants {
     String AUTODISCOVEREDGATEWAYS_FETCHER = "AutoDiscoveredGatewaysFetcher";
     String AUTODISCOVERHYPERVISORFROMCLUSTERS_FETCHER = "AutoDiscoverHypervisorFromClustersFetcher";
     String AVATARS_FETCHER = "AvatarsFetcher";
+    String BFDSESSIONS_FETCHER = "BFDSessionsFetcher";
     String BGPNEIGHBORS_FETCHER = "BGPNeighborsFetcher";
     String BGPPEERS_FETCHER = "BGPPeersFetcher";
     String BGPPROFILES_FETCHER = "BGPProfilesFetcher";
@@ -669,6 +672,8 @@ public interface Constants extends BaseConstants {
     String AUTODISCOVERHYPERVISORFROMCLUSTER_ENTITYSCOPE_ENUM = "AutoDiscoverHypervisorFromClusterEntityScope";
     
     String AVATAR_ENTITYSCOPE_ENUM = "AvatarEntityScope";
+    
+    String BFDSESSION_ENTITYSCOPE_ENUM = "BFDSessionEntityScope";
     
     String BGPNEIGHBOR_ENTITYSCOPE_ENUM = "BGPNeighborEntityScope";
     
@@ -1347,6 +1352,7 @@ public interface Constants extends BaseConstants {
     String AUTODISCOVEREDGATEWAY_IMAGE_FILENAME = "images/icon-autodiscoveredgateway.png";
     String AUTODISCOVERHYPERVISORFROMCLUSTER_IMAGE_FILENAME = "images/icon-autodiscoverhypervisorfromcluster.png";
     String AVATAR_IMAGE_FILENAME = "images/icon-avatar.png";
+    String BFDSESSION_IMAGE_FILENAME = "images/icon-bfdsession.png";
     String BGPNEIGHBOR_IMAGE_FILENAME = "images/icon-bgpneighbor.png";
     String BGPPEER_IMAGE_FILENAME = "images/icon-bgppeer.png";
     String BGPPROFILE_IMAGE_FILENAME = "images/icon-bgpprofile.png";
@@ -1547,6 +1553,7 @@ public interface Constants extends BaseConstants {
     String AUTODISCOVEREDGATEWAY_ENTITY_TYPE = "autodiscoveredgateway";
     String AUTODISCOVERHYPERVISORFROMCLUSTER_ENTITY_TYPE = "autodiscoveredhypervisor";
     String AVATAR_ENTITY_TYPE = "avatar";
+    String BFDSESSION_ENTITY_TYPE = "bfdsession";
     String BGPNEIGHBOR_ENTITY_TYPE = "bgpneighbor";
     String BGPPEER_ENTITY_TYPE = "bgppeer";
     String BGPPROFILE_ENTITY_TYPE = "bgpprofile";

@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.BFDSessionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.CustomPropertiesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UnderlaysFetcher;
@@ -53,6 +55,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.UPLINKCONNECTION, datasource = Constants.DATASOURCE, image = Constants.UPLINKCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.BFDSESSIONS_FETCHER, type = Constants.BFDSESSIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.CUSTOMPROPERTIES_FETCHER, type = Constants.CUSTOMPROPERTIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.UNDERLAYS_FETCHER, type = Constants.UNDERLAYS_FETCHER)
@@ -111,6 +115,9 @@ public class UplinkConnection extends BaseObject {
     protected String username;
     
     @JsonIgnore
+    private BFDSessionsFetcher bFDSessions;
+    
+    @JsonIgnore
     private CustomPropertiesFetcher customProperties;
     
     @JsonIgnore
@@ -118,6 +125,8 @@ public class UplinkConnection extends BaseObject {
     
     @VsoConstructor
     public UplinkConnection() {
+        bFDSessions = new BFDSessionsFetcher(this);
+        
         customProperties = new CustomPropertiesFetcher(this);
         
         underlays = new UnderlaysFetcher(this);
@@ -329,6 +338,12 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "BFDSessions", readOnly = true)   
+    public BFDSessionsFetcher getBFDSessions() {
+        return bFDSessions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "CustomProperties", readOnly = true)   
     public CustomPropertiesFetcher getCustomProperties() {
         return customProperties;
@@ -358,6 +373,14 @@ public class UplinkConnection extends BaseObject {
         super.delete(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.UPLINKCONNECTION, getId());
+        }
+    }
+    @VsoMethod
+    public void createBFDSession(Session session, BFDSession childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.BFDSESSIONS_FETCHER, getId());
         }
     }
     @VsoMethod

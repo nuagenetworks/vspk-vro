@@ -71,6 +71,9 @@ public class User extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "LDAPUserDN")
+    protected String LDAPUserDN;
+    
     @JsonProperty(value = "avatarData")
     protected String avatarData;
     
@@ -188,6 +191,17 @@ public class User extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "LDAPUserDN", readOnly = false)   
+    public String getLDAPUserDN() {
+       return LDAPUserDN;
+    }
+
+    @JsonIgnore
+    public void setLDAPUserDN(String value) { 
+        this.LDAPUserDN = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AvatarData", readOnly = false)   
     public String getAvatarData() {
@@ -426,7 +440,7 @@ public class User extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "User [" + "avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", email=" + email + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", managementMode=" + managementMode + ", mobileNumber=" + mobileNumber + ", password=" + password + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "User [" + "LDAPUserDN=" + LDAPUserDN + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", email=" + email + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", managementMode=" + managementMode + ", mobileNumber=" + mobileNumber + ", password=" + password + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

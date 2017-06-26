@@ -243,6 +243,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.BFDSESSION_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.BFDSESSIONS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.BGPNEIGHBOR_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.BGPNEIGHBORS_FETCHER, entityParentId);
             return;
@@ -1232,6 +1237,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.BFDSESSION_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.BFDSESSION, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.BGPNEIGHBOR_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.BGPNEIGHBOR, entityId);
             return;
@@ -2218,6 +2228,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.AVATAR_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.AVATAR, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.BFDSESSION_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.BFDSESSION, entityId);
             return;
         }
         

@@ -228,6 +228,16 @@ public final class PluginFactory extends BasePluginFactory {
             return AvatarEntityScope.getEnumById(id);
         }
         
+        if (type.equals(Constants.BFDSESSION)) {
+            return ModelHelper.getBFDSessionById(id);
+        }
+        if (type.equals(Constants.BFDSESSIONS_FETCHER)) {
+            return ModelHelper.getBFDSessionsFetcherById(id);
+        }
+        if (type.equals(Constants.BFDSESSION_ENTITYSCOPE_ENUM)) {
+            return BFDSessionEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.BGPNEIGHBOR)) {
             return ModelHelper.getBGPNeighborById(id);
         }
@@ -3418,6 +3428,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.BFDSESSION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForBFDSessionId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.BFDSESSION) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForBFDSessionId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.BGPNEIGHBOR) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
             return toList(ModelHelper.getGlobalMetadatasFetcherForBGPNeighborId(id));
         }
@@ -3486,6 +3510,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.BRCONNECTION) && relationName.equals(Constants.BFDSESSIONS_FETCHER)) {
+            return toList(ModelHelper.getBFDSessionsFetcherForBRConnectionId(id));
+        }
+        if (type.equals(Constants.BFDSESSIONS_FETCHER) && relationName.equals(Constants.BFDSESSIONS)) {
+            return ModelHelper.getBFDSessionsForFetcherId(id);
         }
         
         if (type.equals(Constants.BRIDGEINTERFACE) && relationName.equals(Constants.DHCPOPTIONS_FETCHER)) {
@@ -8419,6 +8450,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVPortsForFetcherId(id);
         }
         
+        if (type.equals(Constants.UPLINKCONNECTION) && relationName.equals(Constants.BFDSESSIONS_FETCHER)) {
+            return toList(ModelHelper.getBFDSessionsFetcherForUplinkConnectionId(id));
+        }
+        if (type.equals(Constants.BFDSESSIONS_FETCHER) && relationName.equals(Constants.BFDSESSIONS)) {
+            return ModelHelper.getBFDSessionsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.UPLINKCONNECTION) && relationName.equals(Constants.CUSTOMPROPERTIES_FETCHER)) {
             return toList(ModelHelper.getCustomPropertiesFetcherForUplinkConnectionId(id));
         }
@@ -9841,6 +9879,18 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.AVATAR_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(AvatarEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.BFDSESSION)) {
+            java.util.List<BFDSession> allObjs = ModelHelper.getAllBFDSessions();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.BFDSESSIONS_FETCHER)) {
+            java.util.List<BFDSessionsFetcher> allObjs = ModelHelper.getAllBFDSessionsFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.BFDSESSION_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(BFDSessionEntityScope.values()));
         }
         
         if (type.equals(Constants.BGPNEIGHBOR)) {

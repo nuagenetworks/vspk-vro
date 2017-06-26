@@ -63,6 +63,9 @@ public class Group extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "LDAPGroupDN")
+    protected String LDAPGroupDN;
+    
     @JsonProperty(value = "accountRestrictions")
     protected Boolean accountRestrictions;
     
@@ -151,6 +154,17 @@ public class Group extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "LDAPGroupDN", readOnly = false)   
+    public String getLDAPGroupDN() {
+       return LDAPGroupDN;
+    }
+
+    @JsonIgnore
+    public void setLDAPGroupDN(String value) { 
+        this.LDAPGroupDN = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AccountRestrictions", readOnly = false)   
     public Boolean getAccountRestrictions() {
@@ -339,7 +353,7 @@ public class Group extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Group [" + "accountRestrictions=" + accountRestrictions + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", managementMode=" + managementMode + ", name=" + name + ", private_=" + private_ + ", restrictionDate=" + restrictionDate + ", role=" + role + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Group [" + "LDAPGroupDN=" + LDAPGroupDN + ", accountRestrictions=" + accountRestrictions + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", managementMode=" + managementMode + ", name=" + name + ", private_=" + private_ + ", restrictionDate=" + restrictionDate + ", role=" + role + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

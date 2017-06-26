@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.BFDSessionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.BRConnectionAdvertisementCriteria;
 
 import net.nuagenetworks.vro.vspk.model.enums.BRConnectionMode;
@@ -42,7 +44,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.BRCONNECTION, datasource = Constants.DATASOURCE, image = Constants.BRCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.BRCONNECTION, datasource = Constants.DATASOURCE, image = Constants.BRCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.BFDSESSIONS_FETCHER, type = Constants.BFDSESSIONS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "brconnections", resourceName = "brconnections")
@@ -72,8 +76,13 @@ public class BRConnection extends BaseObject {
     @JsonProperty(value = "uplinkID")
     protected Long uplinkID;
     
+    @JsonIgnore
+    private BFDSessionsFetcher bFDSessions;
+    
     @VsoConstructor
-    public BRConnection() {}
+    public BRConnection() {
+        bFDSessions = new BFDSessionsFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -191,6 +200,12 @@ public class BRConnection extends BaseObject {
     public void setUplinkID(Long value) { 
         this.uplinkID = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "BFDSessions", readOnly = true)   
+    public BFDSessionsFetcher getBFDSessions() {
+        return bFDSessions;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -210,6 +225,14 @@ public class BRConnection extends BaseObject {
         super.delete(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.BRCONNECTION, getId());
+        }
+    }
+    @VsoMethod
+    public void createBFDSession(Session session, BFDSession childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.BFDSESSIONS_FETCHER, getId());
         }
     }public String toString() {
         return "BRConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", gateway=" + gateway + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
