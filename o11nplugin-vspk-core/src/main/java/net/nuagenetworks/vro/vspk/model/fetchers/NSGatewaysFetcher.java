@@ -39,6 +39,8 @@ import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.vspk.model.NSGGroup;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
+
+import net.nuagenetworks.vro.vspk.model.PolicyObjectGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -117,6 +119,16 @@ public class NSGatewaysFetcher extends BaseFetcher<NSGateway> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSRedundantGatewayGroup) {
             return (NSRedundantGatewayGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PolicyObjectGroup", readOnly = true)
+    public PolicyObjectGroup getPolicyObjectGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyObjectGroup) {
+            return (PolicyObjectGroup) obj;
         }
         
         return null;

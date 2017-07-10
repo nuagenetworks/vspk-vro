@@ -6,6 +6,9 @@
 <input><param name='redundantPortObj' type='VSPK:RedundantPort' >
 </param>
 
+<param name='VLANRange' type='string' >
+</param>
+
 <param name='description' type='string' >
 </param>
 
@@ -28,6 +31,11 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = redundantPortObj.session;
 
+if (VLANRange) {
+   redundantPortObj.VLANRange = VLANRange;
+} else if (redundantPortObj.VLANRange) {
+   redundantPortObj.VLANRange = "";
+}
 if (description) {
    redundantPortObj.description = description;
 } else if (redundantPortObj.description) {
@@ -52,6 +60,8 @@ redundantPortObj.portType = portType;
 redundantPortObj.save(session, 1);]]></script>
 <in-binding><bind name='redundantPortObj' type='VSPK:RedundantPort' export-name="redundantPortObj" ></bind>
 
+<bind name='VLANRange' type='string' export-name="VLANRange" ></bind>
+
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
@@ -67,6 +77,9 @@ redundantPortObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="redundantPortObj"><desc><![CDATA[redundantPortObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="VLANRange"><desc><![CDATA[VLANRange]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#redundantPortObj.VLANRange]]></p-qual></p-param>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#redundantPortObj.description]]></p-qual></p-param>

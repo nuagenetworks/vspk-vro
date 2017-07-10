@@ -42,6 +42,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLEntryTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -62,6 +64,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.OverlayMirrorDestinationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
@@ -69,8 +73,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RedirectionTargetsFetcher;
-
-import net.nuagenetworks.vro.vspk.model.fetchers.StaticRoutesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
 
@@ -127,6 +129,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSACLTEMPLATES_FETCHER, type = Constants.EGRESSACLTEMPLATES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.EGRESSADVFWDTEMPLATES_FETCHER, type = Constants.EGRESSADVFWDTEMPLATES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLTEMPLATES_FETCHER, type = Constants.INGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSADVFWDTEMPLATES_FETCHER, type = Constants.INGRESSADVFWDTEMPLATES_FETCHER), 
@@ -135,6 +139,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYMIRRORDESTINATIONS_FETCHER, type = Constants.OVERLAYMIRRORDESTINATIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.POLICYGROUPS_FETCHER, type = Constants.POLICYGROUPS_FETCHER), 
@@ -142,8 +148,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.QOSS_FETCHER, type = Constants.QOSS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.REDIRECTIONTARGETS_FETCHER, type = Constants.REDIRECTIONTARGETS_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.STATICROUTES_FETCHER, type = Constants.STATICROUTES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.STATISTICSPOLICIES_FETCHER, type = Constants.STATISTICSPOLICIES_FETCHER), 
 
@@ -273,6 +277,9 @@ public class L2Domain extends BaseObject {
     private EgressACLTemplatesFetcher egressACLTemplates;
     
     @JsonIgnore
+    private EgressAdvFwdTemplatesFetcher egressAdvFwdTemplates;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -303,6 +310,9 @@ public class L2Domain extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private OverlayMirrorDestinationsFetcher overlayMirrorDestinations;
+    
+    @JsonIgnore
     private PermissionsFetcher permissions;
     
     @JsonIgnore
@@ -313,9 +323,6 @@ public class L2Domain extends BaseObject {
     
     @JsonIgnore
     private RedirectionTargetsFetcher redirectionTargets;
-    
-    @JsonIgnore
-    private StaticRoutesFetcher staticRoutes;
     
     @JsonIgnore
     private StatisticsFetcher statistics;
@@ -361,6 +368,8 @@ public class L2Domain extends BaseObject {
         
         egressACLTemplates = new EgressACLTemplatesFetcher(this);
         
+        egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
+        
         eventLogs = new EventLogsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -381,6 +390,8 @@ public class L2Domain extends BaseObject {
         
         metadatas = new MetadatasFetcher(this);
         
+        overlayMirrorDestinations = new OverlayMirrorDestinationsFetcher(this);
+        
         permissions = new PermissionsFetcher(this);
         
         policyGroups = new PolicyGroupsFetcher(this);
@@ -388,8 +399,6 @@ public class L2Domain extends BaseObject {
         qOSs = new QOSsFetcher(this);
         
         redirectionTargets = new RedirectionTargetsFetcher(this);
-        
-        staticRoutes = new StaticRoutesFetcher(this);
         
         statistics = new StatisticsFetcher(this);
         
@@ -811,6 +820,12 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EgressAdvFwdTemplates", readOnly = true)   
+    public EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplates() {
+        return egressAdvFwdTemplates;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -871,6 +886,12 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "OverlayMirrorDestinations", readOnly = true)   
+    public OverlayMirrorDestinationsFetcher getOverlayMirrorDestinations() {
+        return overlayMirrorDestinations;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Permissions", readOnly = true)   
     public PermissionsFetcher getPermissions() {
         return permissions;
@@ -892,12 +913,6 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "RedirectionTargets", readOnly = true)   
     public RedirectionTargetsFetcher getRedirectionTargets() {
         return redirectionTargets;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "StaticRoutes", readOnly = true)   
-    public StaticRoutesFetcher getStaticRoutes() {
-        return staticRoutes;
     }
     
     @JsonIgnore
@@ -1011,6 +1026,14 @@ public class L2Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createEgressAdvFwdTemplate(Session session, EgressAdvFwdTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.EGRESSADVFWDTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1058,6 +1081,23 @@ public class L2Domain extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }
+    @VsoMethod
+    public void createOverlayMirrorDestination(Session session, OverlayMirrorDestination childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.OVERLAYMIRRORDESTINATIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void instantiateOverlayMirrorDestination(Session session, OverlayMirrorDestination childRestObj, OverlayMirrorDestinationTemplate fromTemplate, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.instantiateChild(session, childRestObj, fromTemplate, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.OVERLAYMIRRORDESTINATIONS_FETCHER, getId());
+        }
+    }
+    
     @VsoMethod
     public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
@@ -1108,14 +1148,6 @@ public class L2Domain extends BaseObject {
         }
     }
     
-    @VsoMethod
-    public void createStaticRoute(Session session, StaticRoute childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.STATICROUTES_FETCHER, getId());
-        }
-    }
     @VsoMethod
     public void createStatisticsPolicy(Session session, StatisticsPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;

@@ -34,8 +34,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationServicesFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.AvatarsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.BGPProfilesFetcher;
@@ -112,6 +110,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PolicyObjectGroupsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PublicNetworkMacrosFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RateLimitersFetcher;
@@ -127,6 +127,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.TrunksFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.UsersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VNFsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ZFBRequestsFetcher;
 
@@ -154,8 +156,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.APPLICATIONS_FETCHER, type = Constants.APPLICATIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.APPLICATIONPERFORMANCEMANAGEMENTS_FETCHER, type = Constants.APPLICATIONPERFORMANCEMANAGEMENTS_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.APPLICATIONSERVICES_FETCHER, type = Constants.APPLICATIONSERVICES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.AVATARS_FETCHER, type = Constants.AVATARS_FETCHER), 
 
@@ -209,6 +209,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERFORMANCEMONITORS_FETCHER, type = Constants.PERFORMANCEMONITORS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.POLICYOBJECTGROUPS_FETCHER, type = Constants.POLICYOBJECTGROUPS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.PUBLICNETWORKMACROS_FETCHER, type = Constants.PUBLICNETWORKMACROS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.RATELIMITERS_FETCHER, type = Constants.RATELIMITERS_FETCHER), 
@@ -220,6 +222,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.TRUNKS_FETCHER, type = Constants.TRUNKS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.USERS_FETCHER, type = Constants.USERS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VNFS_FETCHER, type = Constants.VNFS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ZFBREQUESTS_FETCHER, type = Constants.ZFBREQUESTS_FETCHER)
 })
@@ -326,9 +330,6 @@ public class Enterprise extends BaseObject {
     
     @JsonIgnore
     private ApplicationperformancemanagementsFetcher applicationperformancemanagements;
-    
-    @JsonIgnore
-    private ApplicationServicesFetcher applicationServices;
     
     @JsonIgnore
     private AvatarsFetcher avatars;
@@ -445,6 +446,9 @@ public class Enterprise extends BaseObject {
     private PerformanceMonitorsFetcher performanceMonitors;
     
     @JsonIgnore
+    private PolicyObjectGroupsFetcher policyObjectGroups;
+    
+    @JsonIgnore
     private PublicNetworkMacrosFetcher publicNetworkMacros;
     
     @JsonIgnore
@@ -469,6 +473,9 @@ public class Enterprise extends BaseObject {
     private VMsFetcher vMs;
     
     @JsonIgnore
+    private VNFsFetcher vNFs;
+    
+    @JsonIgnore
     private ZFBRequestsFetcher zFBRequests;
     
     @VsoConstructor
@@ -480,8 +487,6 @@ public class Enterprise extends BaseObject {
         applications = new ApplicationsFetcher(this);
         
         applicationperformancemanagements = new ApplicationperformancemanagementsFetcher(this);
-        
-        applicationServices = new ApplicationServicesFetcher(this);
         
         avatars = new AvatarsFetcher(this);
         
@@ -559,6 +564,8 @@ public class Enterprise extends BaseObject {
         
         performanceMonitors = new PerformanceMonitorsFetcher(this);
         
+        policyObjectGroups = new PolicyObjectGroupsFetcher(this);
+        
         publicNetworkMacros = new PublicNetworkMacrosFetcher(this);
         
         rateLimiters = new RateLimitersFetcher(this);
@@ -574,6 +581,8 @@ public class Enterprise extends BaseObject {
         users = new UsersFetcher(this);
         
         vMs = new VMsFetcher(this);
+        
+        vNFs = new VNFsFetcher(this);
         
         zFBRequests = new ZFBRequestsFetcher(this);
         }
@@ -946,12 +955,6 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "ApplicationServices", readOnly = true)   
-    public ApplicationServicesFetcher getApplicationServices() {
-        return applicationServices;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Avatars", readOnly = true)   
     public AvatarsFetcher getAvatars() {
         return avatars;
@@ -1180,6 +1183,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PolicyObjectGroups", readOnly = true)   
+    public PolicyObjectGroupsFetcher getPolicyObjectGroups() {
+        return policyObjectGroups;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PublicNetworkMacros", readOnly = true)   
     public PublicNetworkMacrosFetcher getPublicNetworkMacros() {
         return publicNetworkMacros;
@@ -1228,6 +1237,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VNFs", readOnly = true)   
+    public VNFsFetcher getVNFs() {
+        return vNFs;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ZFBRequests", readOnly = true)   
     public ZFBRequestsFetcher getZFBRequests() {
         return zFBRequests;
@@ -1267,14 +1282,6 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.APPLICATIONPERFORMANCEMANAGEMENTS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createApplicationService(Session session, ApplicationService childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.APPLICATIONSERVICES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1538,6 +1545,14 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createPolicyObjectGroup(Session session, PolicyObjectGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.POLICYOBJECTGROUPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createPublicNetworkMacro(Session session, PublicNetworkMacro childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1583,6 +1598,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.USERS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createVNF(Session session, VNF childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VNFS_FETCHER, getId());
         }
     }
     @VsoMethod

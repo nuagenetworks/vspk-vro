@@ -44,6 +44,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLEntryTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.DomainFIPAclTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIPACLTemplatesFetcher;
@@ -118,8 +120,6 @@ import net.nuagenetworks.vro.vspk.model.enums.DomainPATEnabled;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainAdvertiseCriteria;
 
-import net.nuagenetworks.vro.vspk.model.enums.DomainApplicationDeploymentPolicy;
-
 import net.nuagenetworks.vro.vspk.model.enums.DomainEncryption;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainEntityScope;
@@ -156,6 +156,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSACLTEMPLATES_FETCHER, type = Constants.EGRESSACLTEMPLATES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.EGRESSADVFWDTEMPLATES_FETCHER, type = Constants.EGRESSADVFWDTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINFIPACLTEMPLATES_FETCHER, type = Constants.DOMAINFIPACLTEMPLATES_FETCHER), 
 
@@ -226,9 +228,6 @@ public class Domain extends BaseObject {
     @JsonProperty(value = "advertiseCriteria")
     protected DomainAdvertiseCriteria advertiseCriteria;
     
-    @JsonProperty(value = "applicationDeploymentPolicy")
-    protected DomainApplicationDeploymentPolicy applicationDeploymentPolicy;
-    
     @JsonProperty(value = "associatedBGPProfileID")
     protected String associatedBGPProfileID;
     
@@ -294,6 +293,9 @@ public class Domain extends BaseObject {
     
     @JsonProperty(value = "leakingEnabled")
     protected Boolean leakingEnabled;
+    
+    @JsonProperty(value = "localAS")
+    protected Long localAS;
     
     @JsonProperty(value = "maintenanceMode")
     protected DomainMaintenanceMode maintenanceMode;
@@ -363,6 +365,9 @@ public class Domain extends BaseObject {
     
     @JsonIgnore
     private EgressACLTemplatesFetcher egressACLTemplates;
+    
+    @JsonIgnore
+    private EgressAdvFwdTemplatesFetcher egressAdvFwdTemplates;
     
     @JsonIgnore
     private DomainFIPAclTemplatesFetcher domainFIPAclTemplates;
@@ -492,6 +497,8 @@ public class Domain extends BaseObject {
         egressACLEntryTemplates = new EgressACLEntryTemplatesFetcher(this);
         
         egressACLTemplates = new EgressACLTemplatesFetcher(this);
+        
+        egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
         
         domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
         
@@ -670,17 +677,6 @@ public class Domain extends BaseObject {
     @JsonIgnore
     public void setAdvertiseCriteria(DomainAdvertiseCriteria value) { 
         this.advertiseCriteria = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "ApplicationDeploymentPolicy", readOnly = false)   
-    public DomainApplicationDeploymentPolicy getApplicationDeploymentPolicy() {
-       return applicationDeploymentPolicy;
-    }
-
-    @JsonIgnore
-    public void setApplicationDeploymentPolicy(DomainApplicationDeploymentPolicy value) { 
-        this.applicationDeploymentPolicy = value;
     }
     
     @JsonIgnore
@@ -926,6 +922,17 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LocalAS", readOnly = false)   
+    public Long getLocalAS() {
+       return localAS;
+    }
+
+    @JsonIgnore
+    public void setLocalAS(Long value) { 
+        this.localAS = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MaintenanceMode", readOnly = false)   
     public DomainMaintenanceMode getMaintenanceMode() {
        return maintenanceMode;
@@ -1131,6 +1138,12 @@ public class Domain extends BaseObject {
     @VsoProperty(displayName = "EgressACLTemplates", readOnly = true)   
     public EgressACLTemplatesFetcher getEgressACLTemplates() {
         return egressACLTemplates;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EgressAdvFwdTemplates", readOnly = true)   
+    public EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplates() {
+        return egressAdvFwdTemplates;
     }
     
     @JsonIgnore
@@ -1421,6 +1434,14 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createEgressAdvFwdTemplate(Session session, EgressAdvFwdTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.EGRESSADVFWDTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createDomainFIPAclTemplate(Session session, DomainFIPAclTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1623,7 +1644,7 @@ public class Domain extends BaseObject {
         }
     }
     public String toString() {
-        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", PATEnabled=" + PATEnabled + ", advertiseCriteria=" + advertiseCriteria + ", applicationDeploymentPolicy=" + applicationDeploymentPolicy + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulSubnetIPAddress=" + backHaulSubnetIPAddress + ", backHaulSubnetMask=" + backHaulSubnetMask + ", backHaulVNID=" + backHaulVNID + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", encryption=" + encryption + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", leakingEnabled=" + leakingEnabled + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", PATEnabled=" + PATEnabled + ", advertiseCriteria=" + advertiseCriteria + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulSubnetIPAddress=" + backHaulSubnetIPAddress + ", backHaulSubnetMask=" + backHaulSubnetMask + ", backHaulVNID=" + backHaulVNID + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", encryption=" + encryption + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", leakingEnabled=" + leakingEnabled + ", localAS=" + localAS + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

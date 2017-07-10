@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vnf</entry>
+<entry key="name">Edit VNF</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ef0e2bb9-a31a-59b1-b1fe-0b71d4b6063a</entry>
+</properties>

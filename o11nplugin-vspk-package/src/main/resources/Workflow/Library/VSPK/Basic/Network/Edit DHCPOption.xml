@@ -12,9 +12,6 @@
 <param name='length' type='string' >
 </param>
 
-<param name='type' type='string' >
-</param>
-
 <param name='value' type='string' >
 </param>
 
@@ -35,11 +32,6 @@ if (length) {
 } else if (dHCPOptionObj.length) {
    dHCPOptionObj.length = "";
 }
-if (type) {
-   dHCPOptionObj.type = type;
-} else if (dHCPOptionObj.type) {
-   dHCPOptionObj.type = "";
-}
 if (value) {
    dHCPOptionObj.value = value;
 } else if (dHCPOptionObj.value) {
@@ -51,8 +43,6 @@ dHCPOptionObj.save(session, 1);]]></script>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='length' type='string' export-name="length" ></bind>
-
-<bind name='type' type='string' export-name="type" ></bind>
 
 <bind name='value' type='string' export-name="value" ></bind>
 
@@ -67,9 +57,6 @@ dHCPOptionObj.save(session, 1);]]></script>
 
 <p-param name="length"><desc><![CDATA[length]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dHCPOptionObj.length]]></p-qual></p-param>
-
-<p-param name="type"><desc><![CDATA[type]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dHCPOptionObj.type]]></p-qual></p-param>
 
 <p-param name="value"><desc><![CDATA[value]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dHCPOptionObj.value]]></p-qual></p-param>

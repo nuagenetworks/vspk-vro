@@ -50,6 +50,8 @@ import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 
 import net.nuagenetworks.vro.vspk.model.WANService;
 
+import net.nuagenetworks.vro.vspk.model.SSIDConnection;
+
 import net.nuagenetworks.vro.vspk.model.TCA;
 
 import net.nuagenetworks.vro.vspk.model.VLAN;
@@ -65,6 +67,8 @@ import net.nuagenetworks.vro.vspk.model.VSC;
 import net.nuagenetworks.vro.vspk.model.VSD;
 
 import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
+
+import net.nuagenetworks.vro.vspk.model.WirelessPort;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -198,6 +202,16 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         return null;
     }
     
+    @VsoProperty(displayName = "SSIDConnection", readOnly = true)
+    public SSIDConnection getSSIDConnection() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SSIDConnection) {
+            return (SSIDConnection) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "TCA", readOnly = true)
     public TCA getTCA() {
         RestObject obj = super.getParentRestObj();
@@ -273,6 +287,16 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VsgRedundantPort) {
             return (VsgRedundantPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "WirelessPort", readOnly = true)
+    public WirelessPort getWirelessPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof WirelessPort) {
+            return (WirelessPort) obj;
         }
         
         return null;

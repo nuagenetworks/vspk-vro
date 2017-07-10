@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.AddressRangesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -47,6 +49,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.L2DomainsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.OverlayMirrorDestinationTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
@@ -89,6 +93,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSACLTEMPLATES_FETCHER, type = Constants.EGRESSACLTEMPLATES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.EGRESSADVFWDTEMPLATES_FETCHER, type = Constants.EGRESSADVFWDTEMPLATES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLTEMPLATES_FETCHER, type = Constants.INGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSADVFWDTEMPLATES_FETCHER, type = Constants.INGRESSADVFWDTEMPLATES_FETCHER), 
@@ -96,6 +102,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER, type = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER, type = Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
@@ -177,6 +185,9 @@ public class L2DomainTemplate extends BaseObject {
     private EgressACLTemplatesFetcher egressACLTemplates;
     
     @JsonIgnore
+    private EgressAdvFwdTemplatesFetcher egressAdvFwdTemplates;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -204,6 +215,9 @@ public class L2DomainTemplate extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private OverlayMirrorDestinationTemplatesFetcher overlayMirrorDestinationTemplates;
+    
+    @JsonIgnore
     private PermissionsFetcher permissions;
     
     @JsonIgnore
@@ -220,6 +234,8 @@ public class L2DomainTemplate extends BaseObject {
         addressRanges = new AddressRangesFetcher(this);
         
         egressACLTemplates = new EgressACLTemplatesFetcher(this);
+        
+        egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
         
@@ -238,6 +254,8 @@ public class L2DomainTemplate extends BaseObject {
         l2Domains = new L2DomainsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        overlayMirrorDestinationTemplates = new OverlayMirrorDestinationTemplatesFetcher(this);
         
         permissions = new PermissionsFetcher(this);
         
@@ -505,6 +523,12 @@ public class L2DomainTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EgressAdvFwdTemplates", readOnly = true)   
+    public EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplates() {
+        return egressAdvFwdTemplates;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -556,6 +580,12 @@ public class L2DomainTemplate extends BaseObject {
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "OverlayMirrorDestinationTemplates", readOnly = true)   
+    public OverlayMirrorDestinationTemplatesFetcher getOverlayMirrorDestinationTemplates() {
+        return overlayMirrorDestinationTemplates;
     }
     
     @JsonIgnore
@@ -637,6 +667,14 @@ public class L2DomainTemplate extends BaseObject {
         }
     }
     @VsoMethod
+    public void createEgressAdvFwdTemplate(Session session, EgressAdvFwdTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.EGRESSADVFWDTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -682,6 +720,14 @@ public class L2DomainTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createOverlayMirrorDestinationTemplate(Session session, OverlayMirrorDestinationTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod

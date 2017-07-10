@@ -21,9 +21,6 @@
 <param name='portType' type='VSPK:NSPortPortType' >
 </param>
 
-<param name='userMnemonic' type='string' >
-</param>
-
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -52,11 +49,6 @@ if (physicalName) {
    nSPortObj.physicalName = "";
 }
 nSPortObj.portType = portType;
-if (userMnemonic) {
-   nSPortObj.userMnemonic = userMnemonic;
-} else if (nSPortObj.userMnemonic) {
-   nSPortObj.userMnemonic = "";
-}
 nSPortObj.save(session, 1);]]></script>
 <in-binding><bind name='nSPortObj' type='VSPK:NSPort' export-name="nSPortObj" ></bind>
 
@@ -69,8 +61,6 @@ nSPortObj.save(session, 1);]]></script>
 <bind name='physicalName' type='string' export-name="physicalName" ></bind>
 
 <bind name='portType' type='VSPK:NSPortPortType' export-name="portType" ></bind>
-
-<bind name='userMnemonic' type='string' export-name="userMnemonic" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -92,8 +82,5 @@ nSPortObj.save(session, 1);]]></script>
 
 <p-param name="portType"><desc><![CDATA[portType]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="VSPK:NSPortPortType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getNSPortPortType").call( #nSPortObj )]]></p-qual></p-param>
-
-<p-param name="userMnemonic"><desc><![CDATA[userMnemonic]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSPortObj.userMnemonic]]></p-qual></p-param>
 
 </presentation></workflow>

@@ -32,8 +32,6 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.AddressRange;
 
-import net.nuagenetworks.vro.vspk.model.ApplicationService;
-
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
@@ -57,12 +55,6 @@ import net.nuagenetworks.vro.vspk.model.EnterpriseNetwork;
 import net.nuagenetworks.vro.vspk.model.EnterpriseProfile;
 
 import net.nuagenetworks.vro.vspk.model.FloatingIp;
-
-import net.nuagenetworks.vro.vspk.model.Flow;
-
-import net.nuagenetworks.vro.vspk.model.FlowForwardingPolicy;
-
-import net.nuagenetworks.vro.vspk.model.FlowSecurityPolicy;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
@@ -114,6 +106,8 @@ import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 
 import net.nuagenetworks.vro.vspk.model.WANService;
 
+import net.nuagenetworks.vro.vspk.model.SSIDConnection;
+
 import net.nuagenetworks.vro.vspk.model.StaticRoute;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
@@ -121,8 +115,6 @@ import net.nuagenetworks.vro.vspk.model.Subnet;
 import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
 
 import net.nuagenetworks.vro.vspk.model.TCA;
-
-import net.nuagenetworks.vro.vspk.model.Tier;
 
 import net.nuagenetworks.vro.vspk.model.User;
 
@@ -143,6 +135,8 @@ import net.nuagenetworks.vro.vspk.model.VSC;
 import net.nuagenetworks.vro.vspk.model.VSD;
 
 import net.nuagenetworks.vro.vspk.model.VSP;
+
+import net.nuagenetworks.vro.vspk.model.WirelessPort;
 
 import net.nuagenetworks.vro.vspk.model.Zone;
 
@@ -185,16 +179,6 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof AddressRange) {
             return (AddressRange) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "ApplicationService", readOnly = true)
-    public ApplicationService getApplicationService() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof ApplicationService) {
-            return (ApplicationService) obj;
         }
         
         return null;
@@ -315,36 +299,6 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof FloatingIp) {
             return (FloatingIp) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Flow", readOnly = true)
-    public Flow getFlow() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Flow) {
-            return (Flow) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "FlowForwardingPolicy", readOnly = true)
-    public FlowForwardingPolicy getFlowForwardingPolicy() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof FlowForwardingPolicy) {
-            return (FlowForwardingPolicy) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "FlowSecurityPolicy", readOnly = true)
-    public FlowSecurityPolicy getFlowSecurityPolicy() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof FlowSecurityPolicy) {
-            return (FlowSecurityPolicy) obj;
         }
         
         return null;
@@ -600,6 +554,16 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
+    @VsoProperty(displayName = "SSIDConnection", readOnly = true)
+    public SSIDConnection getSSIDConnection() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SSIDConnection) {
+            return (SSIDConnection) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "StaticRoute", readOnly = true)
     public StaticRoute getStaticRoute() {
         RestObject obj = super.getParentRestObj();
@@ -635,16 +599,6 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof TCA) {
             return (TCA) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
         }
         
         return null;
@@ -745,6 +699,16 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VSP) {
             return (VSP) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "WirelessPort", readOnly = true)
+    public WirelessPort getWirelessPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof WirelessPort) {
+            return (WirelessPort) obj;
         }
         
         return null;

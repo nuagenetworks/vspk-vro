@@ -32,8 +32,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.FloatingIPACLTemplateEntryAction;
 
-import net.nuagenetworks.vro.vspk.model.enums.FloatingIPACLTemplateEntryAssociatedApplicationObjectType;
-
 import net.nuagenetworks.vro.vspk.model.enums.FloatingIPACLTemplateEntryEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.FloatingIPACLTemplateEntryLocationType;
@@ -85,15 +83,6 @@ public class FloatingIPACLTemplateEntry extends BaseObject {
     
     @JsonProperty(value = "addressOverride")
     protected String addressOverride;
-    
-    @JsonProperty(value = "associatedApplicationID")
-    protected String associatedApplicationID;
-    
-    @JsonProperty(value = "associatedApplicationObjectID")
-    protected String associatedApplicationObjectID;
-    
-    @JsonProperty(value = "associatedApplicationObjectType")
-    protected FloatingIPACLTemplateEntryAssociatedApplicationObjectType associatedApplicationObjectType;
     
     @JsonProperty(value = "associatedLiveEntityID")
     protected String associatedLiveEntityID;
@@ -289,39 +278,6 @@ public class FloatingIPACLTemplateEntry extends BaseObject {
     @JsonIgnore
     public void setAddressOverride(String value) { 
         this.addressOverride = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationID", readOnly = false)   
-    public String getAssociatedApplicationID() {
-       return associatedApplicationID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationID(String value) { 
-        this.associatedApplicationID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationObjectID", readOnly = false)   
-    public String getAssociatedApplicationObjectID() {
-       return associatedApplicationObjectID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationObjectID(String value) { 
-        this.associatedApplicationObjectID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationObjectType", readOnly = false)   
-    public FloatingIPACLTemplateEntryAssociatedApplicationObjectType getAssociatedApplicationObjectType() {
-       return associatedApplicationObjectType;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationObjectType(FloatingIPACLTemplateEntryAssociatedApplicationObjectType value) { 
-        this.associatedApplicationObjectType = value;
     }
     
     @JsonIgnore
@@ -623,7 +579,7 @@ public class FloatingIPACLTemplateEntry extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "FloatingIPACLTemplateEntry [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "FloatingIPACLTemplateEntry [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

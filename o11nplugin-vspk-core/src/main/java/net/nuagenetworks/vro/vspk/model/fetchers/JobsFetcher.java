@@ -38,6 +38,10 @@ import net.nuagenetworks.vro.vspk.model.EgressACLEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.EgressACLTemplate;
 
+import net.nuagenetworks.vro.vspk.model.EgressAdvFwdEntryTemplate;
+
+import net.nuagenetworks.vro.vspk.model.EgressAdvFwdTemplate;
+
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
@@ -77,6 +81,8 @@ import net.nuagenetworks.vro.vspk.model.VCenter;
 import net.nuagenetworks.vro.vspk.model.VCenterCluster;
 
 import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
+
+import net.nuagenetworks.vro.vspk.model.VNF;
 
 import net.nuagenetworks.vro.vspk.model.VRS;
 
@@ -153,6 +159,26 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof EgressACLTemplate) {
             return (EgressACLTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EgressAdvFwdEntryTemplate", readOnly = true)
+    public EgressAdvFwdEntryTemplate getEgressAdvFwdEntryTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EgressAdvFwdEntryTemplate) {
+            return (EgressAdvFwdEntryTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EgressAdvFwdTemplate", readOnly = true)
+    public EgressAdvFwdTemplate getEgressAdvFwdTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EgressAdvFwdTemplate) {
+            return (EgressAdvFwdTemplate) obj;
         }
         
         return null;
@@ -353,6 +379,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenterHypervisor) {
             return (VCenterHypervisor) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VNF", readOnly = true)
+    public VNF getVNF() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNF) {
+            return (VNF) obj;
         }
         
         return null;

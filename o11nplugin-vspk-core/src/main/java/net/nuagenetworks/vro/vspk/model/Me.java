@@ -26,8 +26,6 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
-import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationServicesFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.AutoDiscoveredGatewaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.BGPNeighborsFetcher;
@@ -154,6 +152,10 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMInterfacesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VNFCatalogsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VNFMetadatasFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VCenterVRSConfigsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VSPsFetcher;
@@ -181,8 +183,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.ME, datasource = Constants.DATASOURCE, image = Constants.ME_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.APPLICATIONSERVICES_FETCHER, type = Constants.APPLICATIONSERVICES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.CLOUDMGMTSYSTEMS_FETCHER, type = Constants.CLOUDMGMTSYSTEMS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.CONTAINERS_FETCHER, type = Constants.CONTAINERS_FETCHER), 
@@ -244,6 +244,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.VCENTERS_FETCHER, type = Constants.VCENTERS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VMS_FETCHER, type = Constants.VMS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VNFMETADATAS_FETCHER, type = Constants.VNFMETADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ZFBAUTOASSIGNMENTS_FETCHER, type = Constants.ZFBAUTOASSIGNMENTS_FETCHER), 
 
@@ -310,9 +312,6 @@ public class Me extends BaseRootObject {
     
     @JsonProperty(value = "userName")
     protected String userName;
-    
-    @JsonIgnore
-    private ApplicationServicesFetcher applicationServices;
     
     @JsonIgnore
     private AutoDiscoveredGatewaysFetcher autoDiscoveredGateways;
@@ -504,6 +503,12 @@ public class Me extends BaseRootObject {
     private VMInterfacesFetcher vMInterfaces;
     
     @JsonIgnore
+    private VNFCatalogsFetcher vNFCatalogs;
+    
+    @JsonIgnore
+    private VNFMetadatasFetcher vNFMetadatas;
+    
+    @JsonIgnore
     private VCenterVRSConfigsFetcher vCenterVRSConfigs;
     
     @JsonIgnore
@@ -520,8 +525,6 @@ public class Me extends BaseRootObject {
     
     @VsoConstructor
     public Me() {
-        applicationServices = new ApplicationServicesFetcher(this);
-        
         autoDiscoveredGateways = new AutoDiscoveredGatewaysFetcher(this);
         
         bGPNeighbors = new BGPNeighborsFetcher(this);
@@ -647,6 +650,10 @@ public class Me extends BaseRootObject {
         vMs = new VMsFetcher(this);
         
         vMInterfaces = new VMInterfacesFetcher(this);
+        
+        vNFCatalogs = new VNFCatalogsFetcher(this);
+        
+        vNFMetadatas = new VNFMetadatasFetcher(this);
         
         vCenterVRSConfigs = new VCenterVRSConfigsFetcher(this);
         
@@ -900,12 +907,6 @@ public class Me extends BaseRootObject {
     @JsonIgnore
     public void setUserName(String value) { 
         this.userName = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "ApplicationServices", readOnly = true)   
-    public ApplicationServicesFetcher getApplicationServices() {
-        return applicationServices;
     }
     
     @JsonIgnore
@@ -1287,6 +1288,18 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VNFCatalogs", readOnly = true)   
+    public VNFCatalogsFetcher getVNFCatalogs() {
+        return vNFCatalogs;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VNFMetadatas", readOnly = true)   
+    public VNFMetadatasFetcher getVNFMetadatas() {
+        return vNFMetadatas;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VCenterVRSConfigs", readOnly = true)   
     public VCenterVRSConfigsFetcher getVCenterVRSConfigs() {
         return vCenterVRSConfigs;
@@ -1334,14 +1347,6 @@ public class Me extends BaseRootObject {
         super.delete(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.ME, getId());
-        }
-    }
-    @VsoMethod
-    public void createApplicationService(Session session, ApplicationService childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.APPLICATIONSERVICES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1602,14 +1607,6 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
-    public void createUser(Session session, User childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.USERS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createVCenter(Session session, VCenter childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1623,6 +1620,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VMS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createVNFMetadata(Session session, VNFMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VNFMETADATAS_FETCHER, getId());
         }
     }
     @VsoMethod

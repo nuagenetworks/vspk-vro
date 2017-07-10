@@ -34,9 +34,11 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.NextHopAddressFetcher;
+import net.nuagenetworks.vro.vspk.model.fetchers.NextHopsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.OverlayAddressPoolsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.PolicyStatementsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PSNATPoolsFetcher;
 
@@ -67,9 +69,11 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.NEXTHOPADDRESS_FETCHER, type = Constants.NEXTHOPADDRESS_FETCHER), 
+        @VsoRelation(inventoryChildren = true, name = Constants.NEXTHOPS_FETCHER, type = Constants.NEXTHOPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYADDRESSPOOLS_FETCHER, type = Constants.OVERLAYADDRESSPOOLS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.POLICYSTATEMENTS_FETCHER, type = Constants.POLICYSTATEMENTS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PSNATPOOLS_FETCHER, type = Constants.PSNATPOOLS_FETCHER)
 })
@@ -130,10 +134,13 @@ public class Link extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
-    private NextHopAddressFetcher nextHopAddress;
+    private NextHopsFetcher nextHops;
     
     @JsonIgnore
     private OverlayAddressPoolsFetcher overlayAddressPools;
+    
+    @JsonIgnore
+    private PolicyStatementsFetcher policyStatements;
     
     @JsonIgnore
     private PSNATPoolsFetcher pSNATPools;
@@ -148,9 +155,11 @@ public class Link extends BaseObject {
         
         metadatas = new MetadatasFetcher(this);
         
-        nextHopAddress = new NextHopAddressFetcher(this);
+        nextHops = new NextHopsFetcher(this);
         
         overlayAddressPools = new OverlayAddressPoolsFetcher(this);
+        
+        policyStatements = new PolicyStatementsFetcher(this);
         
         pSNATPools = new PSNATPoolsFetcher(this);
         }
@@ -352,15 +361,21 @@ public class Link extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "NextHopAddress", readOnly = true)   
-    public NextHopAddressFetcher getNextHopAddress() {
-        return nextHopAddress;
+    @VsoProperty(displayName = "NextHops", readOnly = true)   
+    public NextHopsFetcher getNextHops() {
+        return nextHops;
     }
     
     @JsonIgnore
     @VsoProperty(displayName = "OverlayAddressPools", readOnly = true)   
     public OverlayAddressPoolsFetcher getOverlayAddressPools() {
         return overlayAddressPools;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PolicyStatements", readOnly = true)   
+    public PolicyStatementsFetcher getPolicyStatements() {
+        return policyStatements;
     }
     
     @JsonIgnore
@@ -431,11 +446,11 @@ public class Link extends BaseObject {
         }
     }
     @VsoMethod
-    public void createNextHopAddress(Session session, NextHopAddress childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+    public void createNextHop(Session session, NextHop childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.NEXTHOPADDRESS_FETCHER, getId());
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NEXTHOPS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -444,6 +459,14 @@ public class Link extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.OVERLAYADDRESSPOOLS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPolicyStatement(Session session, PolicyStatement childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.POLICYSTATEMENTS_FETCHER, getId());
         }
     }
     @VsoMethod

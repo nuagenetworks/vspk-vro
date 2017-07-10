@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getWirelessPortFrequencyChannel</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">b1795b72-3b4b-529c-82ca-93c045652f4d</entry>
+</properties>

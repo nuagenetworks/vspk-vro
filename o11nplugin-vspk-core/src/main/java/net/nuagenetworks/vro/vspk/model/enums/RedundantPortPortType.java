@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum RedundantPortPortType {
 
-    ACCESS("ACCESS", "ACCESS"), NETWORK("NETWORK", "NETWORK");
+    ACCESS("ACCESS", "ACCESS");
 
     private final String id;
     private final String name;
@@ -61,11 +61,6 @@ public enum RedundantPortPortType {
     @VsoProperty(displayName = "ACCESS", readOnly = true)
     public RedundantPortPortType getACCESS() {
         return ACCESS;
-    }
-    
-    @VsoProperty(displayName = "NETWORK", readOnly = true)
-    public RedundantPortPortType getNETWORK() {
-        return NETWORK;
     }
     
 

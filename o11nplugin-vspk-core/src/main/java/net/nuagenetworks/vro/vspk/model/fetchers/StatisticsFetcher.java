@@ -40,6 +40,8 @@ import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.EgressACLEntryTemplate;
 
+import net.nuagenetworks.vro.vspk.model.EgressAdvFwdEntryTemplate;
+
 import net.nuagenetworks.vro.vspk.model.HostInterface;
 
 import net.nuagenetworks.vro.vspk.model.IngressACLEntryTemplate;
@@ -56,11 +58,11 @@ import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
-
 import net.nuagenetworks.vro.vspk.model.VMInterface;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
+
+import net.nuagenetworks.vro.vspk.model.WirelessPort;
 
 import net.nuagenetworks.vro.vspk.model.Zone;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
@@ -146,6 +148,16 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         return null;
     }
     
+    @VsoProperty(displayName = "EgressAdvFwdEntryTemplate", readOnly = true)
+    public EgressAdvFwdEntryTemplate getEgressAdvFwdEntryTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EgressAdvFwdEntryTemplate) {
+            return (EgressAdvFwdEntryTemplate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "HostInterface", readOnly = true)
     public HostInterface getHostInterface() {
         RestObject obj = super.getParentRestObj();
@@ -226,16 +238,6 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         return null;
     }
     
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "VMInterface", readOnly = true)
     public VMInterface getVMInterface() {
         RestObject obj = super.getParentRestObj();
@@ -251,6 +253,16 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VPort) {
             return (VPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "WirelessPort", readOnly = true)
+    public WirelessPort getWirelessPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof WirelessPort) {
+            return (WirelessPort) obj;
         }
         
         return null;

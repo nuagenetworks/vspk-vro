@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="f8cc1764-ef8b-5720-a34c-4c449ba54701"  version="5.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Find VNFDescriptor in VNFCatalog]]></display-name>
+<ref-types><![CDATA[(VSPK:VNFCatalog)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='vNFCatalogObj' type='VSPK:VNFCatalog' >
+</param>
+<param name='filter' type='string' >
+</param>
+</input><output><param name='vNFDescriptorObj' type='VSPK:VNFDescriptor' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = vNFCatalogObj.session;
+
+vNFDescriptorObj = vNFCatalogObj.vNFDescriptors.getFirst(session, filter);
+]]></script>
+<in-binding><bind name='vNFCatalogObj' type='VSPK:VNFCatalog' export-name="vNFCatalogObj" ></bind>
+<bind name='filter' type='string' export-name="filter" ></bind>
+</in-binding><out-binding><bind name='vNFDescriptorObj' type='VSPK:VNFDescriptor' export-name="vNFDescriptorObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="vNFCatalogObj"><desc><![CDATA[vNFCatalogObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="filter"><desc><![CDATA[filter]]></desc>
+</p-param>
+</presentation></workflow>

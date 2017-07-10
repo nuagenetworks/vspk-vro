@@ -54,8 +54,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.UPLINKCONNECTION, datasource = Constants.DATASOURCE, image = Constants.UPLINKCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.CUSTOMPROPERTIES_FETCHER, type = Constants.CUSTOMPROPERTIES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.UNDERLAYS_FETCHER, type = Constants.UNDERLAYS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -83,11 +81,11 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "associatedUnderlayName")
     protected String associatedUnderlayName;
     
-    @JsonProperty(value = "associatedVSCProfileID")
-    protected String associatedVSCProfileID;
-    
     @JsonProperty(value = "auxiliaryLink")
     protected Boolean auxiliaryLink;
+    
+    @JsonProperty(value = "downloadRateLimit")
+    protected Float downloadRateLimit;
     
     @JsonProperty(value = "gateway")
     protected String gateway;
@@ -245,17 +243,6 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "AssociatedVSCProfileID", readOnly = false)   
-    public String getAssociatedVSCProfileID() {
-       return associatedVSCProfileID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedVSCProfileID(String value) { 
-        this.associatedVSCProfileID = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "AuxiliaryLink", readOnly = false)   
     public Boolean getAuxiliaryLink() {
        return auxiliaryLink;
@@ -264,6 +251,17 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setAuxiliaryLink(Boolean value) { 
         this.auxiliaryLink = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DownloadRateLimit", readOnly = false)   
+    public Float getDownloadRateLimit() {
+       return downloadRateLimit;
+    }
+
+    @JsonIgnore
+    public void setDownloadRateLimit(Float value) { 
+        this.downloadRateLimit = value;
     }
     
     @JsonIgnore
@@ -437,16 +435,8 @@ public class UplinkConnection extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.CUSTOMPROPERTIES_FETCHER, getId());
         }
-    }
-    @VsoMethod
-    public void createUnderlay(Session session, Underlay childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.UNDERLAYS_FETCHER, getId());
-        }
     }public String toString() {
-        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", associatedVSCProfileID=" + associatedVSCProfileID + ", auxiliaryLink=" + auxiliaryLink + ", gateway=" + gateway + ", interfaceConnectionType=" + interfaceConnectionType + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", portName=" + portName + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", uplinkID=" + uplinkID + ", username=" + username + ", vlanId=" + vlanId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxiliaryLink=" + auxiliaryLink + ", downloadRateLimit=" + downloadRateLimit + ", gateway=" + gateway + ", interfaceConnectionType=" + interfaceConnectionType + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", portName=" + portName + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", uplinkID=" + uplinkID + ", username=" + username + ", vlanId=" + vlanId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

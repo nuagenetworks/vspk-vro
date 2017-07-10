@@ -44,8 +44,6 @@ import net.nuagenetworks.vro.vspk.model.RedirectionTarget;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
-
 import net.nuagenetworks.vro.vspk.model.Trunk;
 
 import net.nuagenetworks.vro.vspk.model.VRS;
@@ -149,16 +147,6 @@ public class VPortsFetcher extends BaseFetcher<VPort> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Subnet) {
             return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
         }
         
         return null;

@@ -32,8 +32,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainFIPAclTemplateEntryAction;
 
-import net.nuagenetworks.vro.vspk.model.enums.DomainFIPAclTemplateEntryAssociatedApplicationObjectType;
-
 import net.nuagenetworks.vro.vspk.model.enums.DomainFIPAclTemplateEntryDestinationType;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainFIPAclTemplateEntryEntityScope;
@@ -92,15 +90,6 @@ public class DomainFIPAclTemplateEntry extends BaseObject {
     
     @JsonProperty(value = "addressOverride")
     protected String addressOverride;
-    
-    @JsonProperty(value = "associatedApplicationID")
-    protected String associatedApplicationID;
-    
-    @JsonProperty(value = "associatedApplicationObjectID")
-    protected String associatedApplicationObjectID;
-    
-    @JsonProperty(value = "associatedApplicationObjectType")
-    protected DomainFIPAclTemplateEntryAssociatedApplicationObjectType associatedApplicationObjectType;
     
     @JsonProperty(value = "associatedLiveEntityID")
     protected String associatedLiveEntityID;
@@ -331,39 +320,6 @@ public class DomainFIPAclTemplateEntry extends BaseObject {
     @JsonIgnore
     public void setAddressOverride(String value) { 
         this.addressOverride = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationID", readOnly = false)   
-    public String getAssociatedApplicationID() {
-       return associatedApplicationID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationID(String value) { 
-        this.associatedApplicationID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationObjectID", readOnly = false)   
-    public String getAssociatedApplicationObjectID() {
-       return associatedApplicationObjectID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationObjectID(String value) { 
-        this.associatedApplicationObjectID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationObjectType", readOnly = false)   
-    public DomainFIPAclTemplateEntryAssociatedApplicationObjectType getAssociatedApplicationObjectType() {
-       return associatedApplicationObjectType;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationObjectType(DomainFIPAclTemplateEntryAssociatedApplicationObjectType value) { 
-        this.associatedApplicationObjectType = value;
     }
     
     @JsonIgnore
@@ -753,7 +709,7 @@ public class DomainFIPAclTemplateEntry extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DomainFIPAclTemplateEntry [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", actionDetails=" + actionDetails + ", addressOverride=" + addressOverride + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destPgId=" + destPgId + ", destPgType=" + destPgType + ", destinationPort=" + destinationPort + ", destinationType=" + destinationType + ", destinationValue=" + destinationValue + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePgId=" + sourcePgId + ", sourcePgType=" + sourcePgType + ", sourcePort=" + sourcePort + ", sourceType=" + sourceType + ", sourceValue=" + sourceValue + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DomainFIPAclTemplateEntry [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", actionDetails=" + actionDetails + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destPgId=" + destPgId + ", destPgType=" + destPgType + ", destinationPort=" + destinationPort + ", destinationType=" + destinationType + ", destinationValue=" + destinationValue + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePgId=" + sourcePgId + ", sourcePgType=" + sourcePgType + ", sourcePort=" + sourcePort + ", sourceType=" + sourceType + ", sourceValue=" + sourceValue + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

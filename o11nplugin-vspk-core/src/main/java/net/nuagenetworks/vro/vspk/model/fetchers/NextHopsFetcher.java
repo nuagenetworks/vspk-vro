@@ -29,7 +29,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 
 import net.nuagenetworks.vro.vspk.model.NextHop;
 import net.nuagenetworks.vro.vspk.model.Session;
-import net.nuagenetworks.vro.vspk.model.Constants;import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
+import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Link;
+import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
@@ -61,7 +63,17 @@ public class NextHopsFetcher extends BaseFetcher<NextHop> {
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
         return (Session) super.getSession();
-    }@VsoMethod
+    }
+    @VsoProperty(displayName = "Link", readOnly = true)
+    public Link getLink() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Link) {
+            return (Link) obj;
+        }
+        
+        return null;
+    }
+    @VsoMethod
     public java.util.List<NextHop> fetch(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         return super.fetch(session, filter, orderBy, groupBy, page, pageSize, queryParameters, commit);

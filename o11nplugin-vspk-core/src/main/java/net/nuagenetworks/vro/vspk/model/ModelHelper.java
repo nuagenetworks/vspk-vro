@@ -425,6 +425,10 @@ public class ModelHelper extends BaseModelHelper {
             return (AlarmsFetcher) addFetcher(Constants.ALARMS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getAlarmsFetcherForSSIDConnectionId(id)) != null) {
+            return (AlarmsFetcher) addFetcher(Constants.ALARMS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getAlarmsFetcherForTCAId(id)) != null) {
             return (AlarmsFetcher) addFetcher(Constants.ALARMS_FETCHER, fetcher);
         }
@@ -454,6 +458,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getAlarmsFetcherForVsgRedundantPortId(id)) != null) {
+            return (AlarmsFetcher) addFetcher(Constants.ALARMS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getAlarmsFetcherForWirelessPortId(id)) != null) {
             return (AlarmsFetcher) addFetcher(Constants.ALARMS_FETCHER, fetcher);
         }
         return null;
@@ -822,111 +830,6 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<ApplicationperformancemanagementbindingsFetcher> getAllApplicationperformancemanagementbindingsFetchers() throws RestException {
         java.util.List<ApplicationperformancemanagementbindingsFetcher> allObjs = new ArrayList<ApplicationperformancemanagementbindingsFetcher>();
-        return allObjs;
-    }
-    public static ApplicationService getApplicationServiceById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            ApplicationService obj = null;
-            obj = new ApplicationService();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.APPLICATIONSERVICE, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }
-    public static EventLogsFetcher getEventLogsFetcherForApplicationServiceId(String id) throws RestException {
-        ApplicationService obj = getObject(Constants.APPLICATIONSERVICE, id);
-        if (obj == null) {
-            obj = getApplicationServiceById(id);
-        }
-
-        if (obj != null) {
-            EventLogsFetcher fetcher = obj.getEventLogs();
-            return addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForApplicationServiceId(String id) throws RestException {
-        ApplicationService obj = getObject(Constants.APPLICATIONSERVICE, id);
-        if (obj == null) {
-            obj = getApplicationServiceById(id);
-        }
-
-        if (obj != null) {
-            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
-            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static MetadatasFetcher getMetadatasFetcherForApplicationServiceId(String id) throws RestException {
-        ApplicationService obj = getObject(Constants.APPLICATIONSERVICE, id);
-        if (obj == null) {
-            obj = getApplicationServiceById(id);
-        }
-
-        if (obj != null) {
-            MetadatasFetcher fetcher = obj.getMetadatas();
-            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    public static java.util.List<ApplicationService> getApplicationServicesForFetcherId(String id) throws RestException {
-        ApplicationServicesFetcher fetcher = getApplicationServicesFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.APPLICATIONSERVICE);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<ApplicationService>();
-    }
-
-    public static ApplicationServicesFetcher getApplicationServicesFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.APPLICATIONSERVICES_FETCHER, id);
-        if (fetcher != null) {
-            return (ApplicationServicesFetcher) fetcher;
-        }
-        if ((fetcher = getApplicationServicesFetcherForEnterpriseId(id)) != null) {
-            return (ApplicationServicesFetcher) addFetcher(Constants.APPLICATIONSERVICES_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getApplicationServicesFetcherForMeId(id)) != null) {
-            return (ApplicationServicesFetcher) addFetcher(Constants.APPLICATIONSERVICES_FETCHER, fetcher);
-        }
-        return null;
-    }
-
-    public static java.util.List<ApplicationService> getAllApplicationServices() throws RestException {
-        java.util.List<ApplicationService> allObjs = new ArrayList<ApplicationService>();
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            ApplicationServicesFetcher fetcher = getApplicationServicesFetcherForMeId(session.getId());
-            java.util.List<ApplicationService> objs = session.fetch(fetcher);
-            allObjs.addAll(objs);
-        }
-        
-
-        return allObjs;
-    }
-
-    public static java.util.List<ApplicationServicesFetcher> getAllApplicationServicesFetchers() throws RestException {
-        java.util.List<ApplicationServicesFetcher> allObjs = new ArrayList<ApplicationServicesFetcher>();
         return allObjs;
     }
     public static AutoDiscoverCluster getAutoDiscoverClusterById(String id) {
@@ -2567,10 +2470,6 @@ public class ModelHelper extends BaseModelHelper {
             return (ContainersFetcher) addFetcher(Constants.CONTAINERS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getContainersFetcherForTierId(id)) != null) {
-            return (ContainersFetcher) addFetcher(Constants.CONTAINERS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getContainersFetcherForUserId(id)) != null) {
             return (ContainersFetcher) addFetcher(Constants.CONTAINERS_FETCHER, fetcher);
         }
@@ -3477,6 +3376,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplatesFetcherForDomainId(String id) throws RestException {
+        Domain obj = getObject(Constants.DOMAIN, id);
+        if (obj == null) {
+            obj = getDomainById(id);
+        }
+
+        if (obj != null) {
+            EgressAdvFwdTemplatesFetcher fetcher = obj.getEgressAdvFwdTemplates();
+            return addFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static DomainFIPAclTemplatesFetcher getDomainFIPAclTemplatesFetcherForDomainId(String id) throws RestException {
         Domain obj = getObject(Constants.DOMAIN, id);
         if (obj == null) {
@@ -4037,6 +3950,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             EgressACLTemplatesFetcher fetcher = obj.getEgressACLTemplates();
             return addFetcher(Constants.EGRESSACLTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplatesFetcherForDomainTemplateId(String id) throws RestException {
+        DomainTemplate obj = getObject(Constants.DOMAINTEMPLATE, id);
+        if (obj == null) {
+            obj = getDomainTemplateById(id);
+        }
+
+        if (obj != null) {
+            EgressAdvFwdTemplatesFetcher fetcher = obj.getEgressAdvFwdTemplates();
+            return addFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, fetcher);
         }
 
         return null;
@@ -5002,6 +4929,236 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<EgressACLTemplatesFetcher> allObjs = new ArrayList<EgressACLTemplatesFetcher>();
         return allObjs;
     }
+    public static EgressAdvFwdEntryTemplate getEgressAdvFwdEntryTemplateById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            EgressAdvFwdEntryTemplate obj = null;
+            obj = new EgressAdvFwdEntryTemplate();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.EGRESSADVFWDENTRYTEMPLATE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForEgressAdvFwdEntryTemplateId(String id) throws RestException {
+        EgressAdvFwdEntryTemplate obj = getObject(Constants.EGRESSADVFWDENTRYTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdEntryTemplateById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static JobsFetcher getJobsFetcherForEgressAdvFwdEntryTemplateId(String id) throws RestException {
+        EgressAdvFwdEntryTemplate obj = getObject(Constants.EGRESSADVFWDENTRYTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdEntryTemplateById(id);
+        }
+
+        if (obj != null) {
+            JobsFetcher fetcher = obj.getJobs();
+            return addFetcher(Constants.JOBS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForEgressAdvFwdEntryTemplateId(String id) throws RestException {
+        EgressAdvFwdEntryTemplate obj = getObject(Constants.EGRESSADVFWDENTRYTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdEntryTemplateById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static StatisticsFetcher getStatisticsFetcherForEgressAdvFwdEntryTemplateId(String id) throws RestException {
+        EgressAdvFwdEntryTemplate obj = getObject(Constants.EGRESSADVFWDENTRYTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdEntryTemplateById(id);
+        }
+
+        if (obj != null) {
+            StatisticsFetcher fetcher = obj.getStatistics();
+            return addFetcher(Constants.STATISTICS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<EgressAdvFwdEntryTemplate> getEgressAdvFwdEntryTemplatesForFetcherId(String id) throws RestException {
+        EgressAdvFwdEntryTemplatesFetcher fetcher = getEgressAdvFwdEntryTemplatesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.EGRESSADVFWDENTRYTEMPLATE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<EgressAdvFwdEntryTemplate>();
+    }
+
+    public static EgressAdvFwdEntryTemplatesFetcher getEgressAdvFwdEntryTemplatesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.EGRESSADVFWDENTRYTEMPLATES_FETCHER, id);
+        if (fetcher != null) {
+            return (EgressAdvFwdEntryTemplatesFetcher) fetcher;
+        }
+        if ((fetcher = getEgressAdvFwdEntryTemplatesFetcherForEgressAdvFwdTemplateId(id)) != null) {
+            return (EgressAdvFwdEntryTemplatesFetcher) addFetcher(Constants.EGRESSADVFWDENTRYTEMPLATES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<EgressAdvFwdEntryTemplate> getAllEgressAdvFwdEntryTemplates() throws RestException {
+        java.util.List<EgressAdvFwdEntryTemplate> allObjs = new ArrayList<EgressAdvFwdEntryTemplate>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<EgressAdvFwdEntryTemplatesFetcher> getAllEgressAdvFwdEntryTemplatesFetchers() throws RestException {
+        java.util.List<EgressAdvFwdEntryTemplatesFetcher> allObjs = new ArrayList<EgressAdvFwdEntryTemplatesFetcher>();
+        return allObjs;
+    }
+    public static EgressAdvFwdTemplate getEgressAdvFwdTemplateById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            EgressAdvFwdTemplate obj = null;
+            obj = new EgressAdvFwdTemplate();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.EGRESSADVFWDTEMPLATE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static EgressAdvFwdEntryTemplatesFetcher getEgressAdvFwdEntryTemplatesFetcherForEgressAdvFwdTemplateId(String id) throws RestException {
+        EgressAdvFwdTemplate obj = getObject(Constants.EGRESSADVFWDTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdTemplateById(id);
+        }
+
+        if (obj != null) {
+            EgressAdvFwdEntryTemplatesFetcher fetcher = obj.getEgressAdvFwdEntryTemplates();
+            return addFetcher(Constants.EGRESSADVFWDENTRYTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForEgressAdvFwdTemplateId(String id) throws RestException {
+        EgressAdvFwdTemplate obj = getObject(Constants.EGRESSADVFWDTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdTemplateById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static JobsFetcher getJobsFetcherForEgressAdvFwdTemplateId(String id) throws RestException {
+        EgressAdvFwdTemplate obj = getObject(Constants.EGRESSADVFWDTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdTemplateById(id);
+        }
+
+        if (obj != null) {
+            JobsFetcher fetcher = obj.getJobs();
+            return addFetcher(Constants.JOBS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForEgressAdvFwdTemplateId(String id) throws RestException {
+        EgressAdvFwdTemplate obj = getObject(Constants.EGRESSADVFWDTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdTemplateById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<EgressAdvFwdTemplate> getEgressAdvFwdTemplatesForFetcherId(String id) throws RestException {
+        EgressAdvFwdTemplatesFetcher fetcher = getEgressAdvFwdTemplatesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.EGRESSADVFWDTEMPLATE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<EgressAdvFwdTemplate>();
+    }
+
+    public static EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplatesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, id);
+        if (fetcher != null) {
+            return (EgressAdvFwdTemplatesFetcher) fetcher;
+        }
+        if ((fetcher = getEgressAdvFwdTemplatesFetcherForDomainId(id)) != null) {
+            return (EgressAdvFwdTemplatesFetcher) addFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getEgressAdvFwdTemplatesFetcherForDomainTemplateId(id)) != null) {
+            return (EgressAdvFwdTemplatesFetcher) addFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getEgressAdvFwdTemplatesFetcherForL2DomainId(id)) != null) {
+            return (EgressAdvFwdTemplatesFetcher) addFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getEgressAdvFwdTemplatesFetcherForL2DomainTemplateId(id)) != null) {
+            return (EgressAdvFwdTemplatesFetcher) addFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<EgressAdvFwdTemplate> getAllEgressAdvFwdTemplates() throws RestException {
+        java.util.List<EgressAdvFwdTemplate> allObjs = new ArrayList<EgressAdvFwdTemplate>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<EgressAdvFwdTemplatesFetcher> getAllEgressAdvFwdTemplatesFetchers() throws RestException {
+        java.util.List<EgressAdvFwdTemplatesFetcher> allObjs = new ArrayList<EgressAdvFwdTemplatesFetcher>();
+        return allObjs;
+    }
     public static DomainFIPAclTemplateEntry getDomainFIPAclTemplateEntryById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             DomainFIPAclTemplateEntry obj = null;
@@ -5547,20 +5704,6 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static ApplicationServicesFetcher getApplicationServicesFetcherForEnterpriseId(String id) throws RestException {
-        Enterprise obj = getObject(Constants.ENTERPRISE, id);
-        if (obj == null) {
-            obj = getEnterpriseById(id);
-        }
-
-        if (obj != null) {
-            ApplicationServicesFetcher fetcher = obj.getApplicationServices();
-            return addFetcher(Constants.APPLICATIONSERVICES_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
     public static AvatarsFetcher getAvatarsFetcherForEnterpriseId(String id) throws RestException {
         Enterprise obj = getObject(Constants.ENTERPRISE, id);
         if (obj == null) {
@@ -6093,6 +6236,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PolicyObjectGroupsFetcher getPolicyObjectGroupsFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            PolicyObjectGroupsFetcher fetcher = obj.getPolicyObjectGroups();
+            return addFetcher(Constants.POLICYOBJECTGROUPS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PublicNetworkMacrosFetcher getPublicNetworkMacrosFetcherForEnterpriseId(String id) throws RestException {
         Enterprise obj = getObject(Constants.ENTERPRISE, id);
         if (obj == null) {
@@ -6200,6 +6357,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             VMsFetcher fetcher = obj.getVMs();
             return addFetcher(Constants.VMS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static VNFsFetcher getVNFsFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            VNFsFetcher fetcher = obj.getVNFs();
+            return addFetcher(Constants.VNFS_FETCHER, fetcher);
         }
 
         return null;
@@ -6868,10 +7039,6 @@ public class ModelHelper extends BaseModelHelper {
             return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getEventLogsFetcherForApplicationServiceId(id)) != null) {
-            return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getEventLogsFetcherForAutoDiscoveredGatewayId(id)) != null) {
             return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
         }
@@ -6917,18 +7084,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getEventLogsFetcherForFloatingIpId(id)) != null) {
-            return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getEventLogsFetcherForFlowId(id)) != null) {
-            return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getEventLogsFetcherForFlowForwardingPolicyId(id)) != null) {
-            return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getEventLogsFetcherForFlowSecurityPolicyId(id)) != null) {
             return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
         }
         
@@ -7032,6 +7187,10 @@ public class ModelHelper extends BaseModelHelper {
             return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getEventLogsFetcherForSSIDConnectionId(id)) != null) {
+            return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getEventLogsFetcherForStaticRouteId(id)) != null) {
             return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
         }
@@ -7045,10 +7204,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getEventLogsFetcherForTCAId(id)) != null) {
-            return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getEventLogsFetcherForTierId(id)) != null) {
             return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
         }
         
@@ -7089,6 +7244,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getEventLogsFetcherForVSPId(id)) != null) {
+            return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getEventLogsFetcherForWirelessPortId(id)) != null) {
             return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
         }
         
@@ -7371,315 +7530,6 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<FloatingIpsFetcher> getAllFloatingIpsFetchers() throws RestException {
         java.util.List<FloatingIpsFetcher> allObjs = new ArrayList<FloatingIpsFetcher>();
-        return allObjs;
-    }
-    public static Flow getFlowById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            Flow obj = null;
-            obj = new Flow();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.FLOW, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }
-    public static EventLogsFetcher getEventLogsFetcherForFlowId(String id) throws RestException {
-        Flow obj = getObject(Constants.FLOW, id);
-        if (obj == null) {
-            obj = getFlowById(id);
-        }
-
-        if (obj != null) {
-            EventLogsFetcher fetcher = obj.getEventLogs();
-            return addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static FlowForwardingPoliciesFetcher getFlowForwardingPoliciesFetcherForFlowId(String id) throws RestException {
-        Flow obj = getObject(Constants.FLOW, id);
-        if (obj == null) {
-            obj = getFlowById(id);
-        }
-
-        if (obj != null) {
-            FlowForwardingPoliciesFetcher fetcher = obj.getFlowForwardingPolicies();
-            return addFetcher(Constants.FLOWFORWARDINGPOLICIES_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static FlowSecurityPoliciesFetcher getFlowSecurityPoliciesFetcherForFlowId(String id) throws RestException {
-        Flow obj = getObject(Constants.FLOW, id);
-        if (obj == null) {
-            obj = getFlowById(id);
-        }
-
-        if (obj != null) {
-            FlowSecurityPoliciesFetcher fetcher = obj.getFlowSecurityPolicies();
-            return addFetcher(Constants.FLOWSECURITYPOLICIES_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForFlowId(String id) throws RestException {
-        Flow obj = getObject(Constants.FLOW, id);
-        if (obj == null) {
-            obj = getFlowById(id);
-        }
-
-        if (obj != null) {
-            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
-            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static MetadatasFetcher getMetadatasFetcherForFlowId(String id) throws RestException {
-        Flow obj = getObject(Constants.FLOW, id);
-        if (obj == null) {
-            obj = getFlowById(id);
-        }
-
-        if (obj != null) {
-            MetadatasFetcher fetcher = obj.getMetadatas();
-            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    public static java.util.List<Flow> getFlowsForFetcherId(String id) throws RestException {
-        FlowsFetcher fetcher = getFlowsFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.FLOW);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<Flow>();
-    }
-
-    public static FlowsFetcher getFlowsFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.FLOWS_FETCHER, id);
-        if (fetcher != null) {
-            return (FlowsFetcher) fetcher;
-        }return null;
-    }
-
-    public static java.util.List<Flow> getAllFlows() throws RestException {
-        java.util.List<Flow> allObjs = new ArrayList<Flow>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<FlowsFetcher> getAllFlowsFetchers() throws RestException {
-        java.util.List<FlowsFetcher> allObjs = new ArrayList<FlowsFetcher>();
-        return allObjs;
-    }
-    public static FlowForwardingPolicy getFlowForwardingPolicyById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            FlowForwardingPolicy obj = null;
-            obj = new FlowForwardingPolicy();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.FLOWFORWARDINGPOLICY, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }
-    public static EventLogsFetcher getEventLogsFetcherForFlowForwardingPolicyId(String id) throws RestException {
-        FlowForwardingPolicy obj = getObject(Constants.FLOWFORWARDINGPOLICY, id);
-        if (obj == null) {
-            obj = getFlowForwardingPolicyById(id);
-        }
-
-        if (obj != null) {
-            EventLogsFetcher fetcher = obj.getEventLogs();
-            return addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForFlowForwardingPolicyId(String id) throws RestException {
-        FlowForwardingPolicy obj = getObject(Constants.FLOWFORWARDINGPOLICY, id);
-        if (obj == null) {
-            obj = getFlowForwardingPolicyById(id);
-        }
-
-        if (obj != null) {
-            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
-            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static MetadatasFetcher getMetadatasFetcherForFlowForwardingPolicyId(String id) throws RestException {
-        FlowForwardingPolicy obj = getObject(Constants.FLOWFORWARDINGPOLICY, id);
-        if (obj == null) {
-            obj = getFlowForwardingPolicyById(id);
-        }
-
-        if (obj != null) {
-            MetadatasFetcher fetcher = obj.getMetadatas();
-            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    public static java.util.List<FlowForwardingPolicy> getFlowForwardingPoliciesForFetcherId(String id) throws RestException {
-        FlowForwardingPoliciesFetcher fetcher = getFlowForwardingPoliciesFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.FLOWFORWARDINGPOLICY);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<FlowForwardingPolicy>();
-    }
-
-    public static FlowForwardingPoliciesFetcher getFlowForwardingPoliciesFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.FLOWFORWARDINGPOLICIES_FETCHER, id);
-        if (fetcher != null) {
-            return (FlowForwardingPoliciesFetcher) fetcher;
-        }
-        if ((fetcher = getFlowForwardingPoliciesFetcherForFlowId(id)) != null) {
-            return (FlowForwardingPoliciesFetcher) addFetcher(Constants.FLOWFORWARDINGPOLICIES_FETCHER, fetcher);
-        }
-        return null;
-    }
-
-    public static java.util.List<FlowForwardingPolicy> getAllFlowForwardingPolicies() throws RestException {
-        java.util.List<FlowForwardingPolicy> allObjs = new ArrayList<FlowForwardingPolicy>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<FlowForwardingPoliciesFetcher> getAllFlowForwardingPoliciesFetchers() throws RestException {
-        java.util.List<FlowForwardingPoliciesFetcher> allObjs = new ArrayList<FlowForwardingPoliciesFetcher>();
-        return allObjs;
-    }
-    public static FlowSecurityPolicy getFlowSecurityPolicyById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            FlowSecurityPolicy obj = null;
-            obj = new FlowSecurityPolicy();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.FLOWSECURITYPOLICY, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }
-    public static EventLogsFetcher getEventLogsFetcherForFlowSecurityPolicyId(String id) throws RestException {
-        FlowSecurityPolicy obj = getObject(Constants.FLOWSECURITYPOLICY, id);
-        if (obj == null) {
-            obj = getFlowSecurityPolicyById(id);
-        }
-
-        if (obj != null) {
-            EventLogsFetcher fetcher = obj.getEventLogs();
-            return addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForFlowSecurityPolicyId(String id) throws RestException {
-        FlowSecurityPolicy obj = getObject(Constants.FLOWSECURITYPOLICY, id);
-        if (obj == null) {
-            obj = getFlowSecurityPolicyById(id);
-        }
-
-        if (obj != null) {
-            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
-            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static MetadatasFetcher getMetadatasFetcherForFlowSecurityPolicyId(String id) throws RestException {
-        FlowSecurityPolicy obj = getObject(Constants.FLOWSECURITYPOLICY, id);
-        if (obj == null) {
-            obj = getFlowSecurityPolicyById(id);
-        }
-
-        if (obj != null) {
-            MetadatasFetcher fetcher = obj.getMetadatas();
-            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    public static java.util.List<FlowSecurityPolicy> getFlowSecurityPoliciesForFetcherId(String id) throws RestException {
-        FlowSecurityPoliciesFetcher fetcher = getFlowSecurityPoliciesFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.FLOWSECURITYPOLICY);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<FlowSecurityPolicy>();
-    }
-
-    public static FlowSecurityPoliciesFetcher getFlowSecurityPoliciesFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.FLOWSECURITYPOLICIES_FETCHER, id);
-        if (fetcher != null) {
-            return (FlowSecurityPoliciesFetcher) fetcher;
-        }
-        if ((fetcher = getFlowSecurityPoliciesFetcherForFlowId(id)) != null) {
-            return (FlowSecurityPoliciesFetcher) addFetcher(Constants.FLOWSECURITYPOLICIES_FETCHER, fetcher);
-        }
-        return null;
-    }
-
-    public static java.util.List<FlowSecurityPolicy> getAllFlowSecurityPolicies() throws RestException {
-        java.util.List<FlowSecurityPolicy> allObjs = new ArrayList<FlowSecurityPolicy>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<FlowSecurityPoliciesFetcher> getAllFlowSecurityPoliciesFetchers() throws RestException {
-        java.util.List<FlowSecurityPoliciesFetcher> allObjs = new ArrayList<FlowSecurityPoliciesFetcher>();
         return allObjs;
     }
     public static Gateway getGatewayById(String id) {
@@ -8251,10 +8101,6 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getGlobalMetadatasFetcherForApplicationServiceId(id)) != null) {
-            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getGlobalMetadatasFetcherForAutoDiscoveredGatewayId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -8347,6 +8193,14 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForEgressAdvFwdEntryTemplateId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForEgressAdvFwdTemplateId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForDomainFIPAclTemplateEntryId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -8396,18 +8250,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getGlobalMetadatasFetcherForFloatingIpId(id)) != null) {
-            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getGlobalMetadatasFetcherForFlowId(id)) != null) {
-            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getGlobalMetadatasFetcherForFlowForwardingPolicyId(id)) != null) {
-            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getGlobalMetadatasFetcherForFlowSecurityPolicyId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
@@ -8748,10 +8590,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getGlobalMetadatasFetcherForTCAId(id)) != null) {
-            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getGlobalMetadatasFetcherForTierId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
@@ -11489,6 +11327,14 @@ public class ModelHelper extends BaseModelHelper {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getJobsFetcherForEgressAdvFwdEntryTemplateId(id)) != null) {
+            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getJobsFetcherForEgressAdvFwdTemplateId(id)) != null) {
+            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getJobsFetcherForEnterpriseId(id)) != null) {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
@@ -11566,6 +11412,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getJobsFetcherForVCenterHypervisorId(id)) != null) {
+            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getJobsFetcherForVNFId(id)) != null) {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
@@ -12281,6 +12131,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplatesFetcherForL2DomainId(String id) throws RestException {
+        L2Domain obj = getObject(Constants.L2DOMAIN, id);
+        if (obj == null) {
+            obj = getL2DomainById(id);
+        }
+
+        if (obj != null) {
+            EgressAdvFwdTemplatesFetcher fetcher = obj.getEgressAdvFwdTemplates();
+            return addFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static EventLogsFetcher getEventLogsFetcherForL2DomainId(String id) throws RestException {
         L2Domain obj = getObject(Constants.L2DOMAIN, id);
         if (obj == null) {
@@ -12421,6 +12285,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static OverlayMirrorDestinationsFetcher getOverlayMirrorDestinationsFetcherForL2DomainId(String id) throws RestException {
+        L2Domain obj = getObject(Constants.L2DOMAIN, id);
+        if (obj == null) {
+            obj = getL2DomainById(id);
+        }
+
+        if (obj != null) {
+            OverlayMirrorDestinationsFetcher fetcher = obj.getOverlayMirrorDestinations();
+            return addFetcher(Constants.OVERLAYMIRRORDESTINATIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PermissionsFetcher getPermissionsFetcherForL2DomainId(String id) throws RestException {
         L2Domain obj = getObject(Constants.L2DOMAIN, id);
         if (obj == null) {
@@ -12472,20 +12350,6 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             RedirectionTargetsFetcher fetcher = obj.getRedirectionTargets();
             return addFetcher(Constants.REDIRECTIONTARGETS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static StaticRoutesFetcher getStaticRoutesFetcherForL2DomainId(String id) throws RestException {
-        L2Domain obj = getObject(Constants.L2DOMAIN, id);
-        if (obj == null) {
-            obj = getL2DomainById(id);
-        }
-
-        if (obj != null) {
-            StaticRoutesFetcher fetcher = obj.getStaticRoutes();
-            return addFetcher(Constants.STATICROUTES_FETCHER, fetcher);
         }
 
         return null;
@@ -12698,6 +12562,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplatesFetcherForL2DomainTemplateId(String id) throws RestException {
+        L2DomainTemplate obj = getObject(Constants.L2DOMAINTEMPLATE, id);
+        if (obj == null) {
+            obj = getL2DomainTemplateById(id);
+        }
+
+        if (obj != null) {
+            EgressAdvFwdTemplatesFetcher fetcher = obj.getEgressAdvFwdTemplates();
+            return addFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static EventLogsFetcher getEventLogsFetcherForL2DomainTemplateId(String id) throws RestException {
         L2DomainTemplate obj = getObject(Constants.L2DOMAINTEMPLATE, id);
         if (obj == null) {
@@ -12819,6 +12697,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static OverlayMirrorDestinationTemplatesFetcher getOverlayMirrorDestinationTemplatesFetcherForL2DomainTemplateId(String id) throws RestException {
+        L2DomainTemplate obj = getObject(Constants.L2DOMAINTEMPLATE, id);
+        if (obj == null) {
+            obj = getL2DomainTemplateById(id);
+        }
+
+        if (obj != null) {
+            OverlayMirrorDestinationTemplatesFetcher fetcher = obj.getOverlayMirrorDestinationTemplates();
+            return addFetcher(Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER, fetcher);
         }
 
         return null;
@@ -13297,15 +13189,15 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static NextHopAddressFetcher getNextHopAddressFetcherForLinkId(String id) throws RestException {
+    public static NextHopsFetcher getNextHopsFetcherForLinkId(String id) throws RestException {
         Link obj = getObject(Constants.LINK, id);
         if (obj == null) {
             obj = getLinkById(id);
         }
 
         if (obj != null) {
-            NextHopAddressFetcher fetcher = obj.getNextHopAddress();
-            return addFetcher(Constants.NEXTHOPADDRESS_FETCHER, fetcher);
+            NextHopsFetcher fetcher = obj.getNextHops();
+            return addFetcher(Constants.NEXTHOPS_FETCHER, fetcher);
         }
 
         return null;
@@ -13320,6 +13212,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             OverlayAddressPoolsFetcher fetcher = obj.getOverlayAddressPools();
             return addFetcher(Constants.OVERLAYADDRESSPOOLS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PolicyStatementsFetcher getPolicyStatementsFetcherForLinkId(String id) throws RestException {
+        Link obj = getObject(Constants.LINK, id);
+        if (obj == null) {
+            obj = getLinkById(id);
+        }
+
+        if (obj != null) {
+            PolicyStatementsFetcher fetcher = obj.getPolicyStatements();
+            return addFetcher(Constants.POLICYSTATEMENTS_FETCHER, fetcher);
         }
 
         return null;
@@ -13601,20 +13507,6 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
-    public static ApplicationServicesFetcher getApplicationServicesFetcherForMeId(String id) throws RestException {
-        Me obj = getObject(Constants.ME, id);
-        if (obj == null) {
-            obj = getMeById(id);
-        }
-
-        if (obj != null) {
-            ApplicationServicesFetcher fetcher = obj.getApplicationServices();
-            return addFetcher(Constants.APPLICATIONSERVICES_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
     public static AutoDiscoveredGatewaysFetcher getAutoDiscoveredGatewaysFetcherForMeId(String id) throws RestException {
         Me obj = getObject(Constants.ME, id);
         if (obj == null) {
@@ -14497,6 +14389,34 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static VNFCatalogsFetcher getVNFCatalogsFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            VNFCatalogsFetcher fetcher = obj.getVNFCatalogs();
+            return addFetcher(Constants.VNFCATALOGS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static VNFMetadatasFetcher getVNFMetadatasFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            VNFMetadatasFetcher fetcher = obj.getVNFMetadatas();
+            return addFetcher(Constants.VNFMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VCenterVRSConfigsFetcher getVCenterVRSConfigsFetcherForMeId(String id) throws RestException {
         Me obj = getObject(Constants.ME, id);
         if (obj == null) {
@@ -14665,10 +14585,6 @@ public class ModelHelper extends BaseModelHelper {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getMetadatasFetcherForApplicationServiceId(id)) != null) {
-            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getMetadatasFetcherForAutoDiscoveredGatewayId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
@@ -14761,6 +14677,14 @@ public class ModelHelper extends BaseModelHelper {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getMetadatasFetcherForEgressAdvFwdEntryTemplateId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForEgressAdvFwdTemplateId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getMetadatasFetcherForDomainFIPAclTemplateEntryId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
@@ -14810,18 +14734,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForFloatingIpId(id)) != null) {
-            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getMetadatasFetcherForFlowId(id)) != null) {
-            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getMetadatasFetcherForFlowForwardingPolicyId(id)) != null) {
-            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getMetadatasFetcherForFlowSecurityPolicyId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -15162,10 +15074,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForTCAId(id)) != null) {
-            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getMetadatasFetcherForTierId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -16465,7 +16373,11 @@ public class ModelHelper extends BaseModelHelper {
         BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.NEXTHOPS_FETCHER, id);
         if (fetcher != null) {
             return (NextHopsFetcher) fetcher;
-        }return null;
+        }
+        if ((fetcher = getNextHopsFetcherForLinkId(id)) != null) {
+            return (NextHopsFetcher) addFetcher(Constants.NEXTHOPS_FETCHER, fetcher);
+        }
+        return null;
     }
 
     public static java.util.List<NextHop> getAllNextHops() throws RestException {
@@ -16476,59 +16388,6 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<NextHopsFetcher> getAllNextHopsFetchers() throws RestException {
         java.util.List<NextHopsFetcher> allObjs = new ArrayList<NextHopsFetcher>();
-        return allObjs;
-    }
-    public static NextHopAddress getNextHopAddressById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            NextHopAddress obj = null;
-            obj = new NextHopAddress();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.NEXTHOPADDRESS, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }public static java.util.List<NextHopAddress> getNextHopAddressForFetcherId(String id) throws RestException {
-        NextHopAddressFetcher fetcher = getNextHopAddressFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.NEXTHOPADDRESS);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<NextHopAddress>();
-    }
-
-    public static NextHopAddressFetcher getNextHopAddressFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.NEXTHOPADDRESS_FETCHER, id);
-        if (fetcher != null) {
-            return (NextHopAddressFetcher) fetcher;
-        }
-        if ((fetcher = getNextHopAddressFetcherForLinkId(id)) != null) {
-            return (NextHopAddressFetcher) addFetcher(Constants.NEXTHOPADDRESS_FETCHER, fetcher);
-        }
-        return null;
-    }
-
-    public static java.util.List<NextHopAddress> getAllNextHopAddress() throws RestException {
-        java.util.List<NextHopAddress> allObjs = new ArrayList<NextHopAddress>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<NextHopAddressFetcher> getAllNextHopAddressFetchers() throws RestException {
-        java.util.List<NextHopAddressFetcher> allObjs = new ArrayList<NextHopAddressFetcher>();
         return allObjs;
     }
     public static NSGateway getNSGatewayById(String id) {
@@ -16800,6 +16659,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static WirelessPortsFetcher getWirelessPortsFetcherForNSGatewayId(String id) throws RestException {
+        NSGateway obj = getObject(Constants.NSGATEWAY, id);
+        if (obj == null) {
+            obj = getNSGatewayById(id);
+        }
+
+        if (obj != null) {
+            WirelessPortsFetcher fetcher = obj.getWirelessPorts();
+            return addFetcher(Constants.WIRELESSPORTS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<NSGateway> getNSGatewaysForFetcherId(String id) throws RestException {
         NSGatewaysFetcher fetcher = getNSGatewaysFetcherById(id);
         if (fetcher != null) {
@@ -16837,6 +16710,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getNSGatewaysFetcherForNSRedundantGatewayGroupId(id)) != null) {
+            return (NSGatewaysFetcher) addFetcher(Constants.NSGATEWAYS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getNSGatewaysFetcherForPolicyObjectGroupId(id)) != null) {
             return (NSGatewaysFetcher) addFetcher(Constants.NSGATEWAYS_FETCHER, fetcher);
         }
         return null;
@@ -17726,6 +17603,112 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<OverlayAddressPoolsFetcher> allObjs = new ArrayList<OverlayAddressPoolsFetcher>();
         return allObjs;
     }
+    public static OverlayMirrorDestination getOverlayMirrorDestinationById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            OverlayMirrorDestination obj = null;
+            obj = new OverlayMirrorDestination();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.OVERLAYMIRRORDESTINATION, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<OverlayMirrorDestination> getOverlayMirrorDestinationsForFetcherId(String id) throws RestException {
+        OverlayMirrorDestinationsFetcher fetcher = getOverlayMirrorDestinationsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.OVERLAYMIRRORDESTINATION);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<OverlayMirrorDestination>();
+    }
+
+    public static OverlayMirrorDestinationsFetcher getOverlayMirrorDestinationsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.OVERLAYMIRRORDESTINATIONS_FETCHER, id);
+        if (fetcher != null) {
+            return (OverlayMirrorDestinationsFetcher) fetcher;
+        }
+        if ((fetcher = getOverlayMirrorDestinationsFetcherForL2DomainId(id)) != null) {
+            return (OverlayMirrorDestinationsFetcher) addFetcher(Constants.OVERLAYMIRRORDESTINATIONS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<OverlayMirrorDestination> getAllOverlayMirrorDestinations() throws RestException {
+        java.util.List<OverlayMirrorDestination> allObjs = new ArrayList<OverlayMirrorDestination>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<OverlayMirrorDestinationsFetcher> getAllOverlayMirrorDestinationsFetchers() throws RestException {
+        java.util.List<OverlayMirrorDestinationsFetcher> allObjs = new ArrayList<OverlayMirrorDestinationsFetcher>();
+        return allObjs;
+    }
+    public static OverlayMirrorDestinationTemplate getOverlayMirrorDestinationTemplateById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            OverlayMirrorDestinationTemplate obj = null;
+            obj = new OverlayMirrorDestinationTemplate();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<OverlayMirrorDestinationTemplate> getOverlayMirrorDestinationTemplatesForFetcherId(String id) throws RestException {
+        OverlayMirrorDestinationTemplatesFetcher fetcher = getOverlayMirrorDestinationTemplatesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.OVERLAYMIRRORDESTINATIONTEMPLATE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<OverlayMirrorDestinationTemplate>();
+    }
+
+    public static OverlayMirrorDestinationTemplatesFetcher getOverlayMirrorDestinationTemplatesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER, id);
+        if (fetcher != null) {
+            return (OverlayMirrorDestinationTemplatesFetcher) fetcher;
+        }
+        if ((fetcher = getOverlayMirrorDestinationTemplatesFetcherForL2DomainTemplateId(id)) != null) {
+            return (OverlayMirrorDestinationTemplatesFetcher) addFetcher(Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<OverlayMirrorDestinationTemplate> getAllOverlayMirrorDestinationTemplates() throws RestException {
+        java.util.List<OverlayMirrorDestinationTemplate> allObjs = new ArrayList<OverlayMirrorDestinationTemplate>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<OverlayMirrorDestinationTemplatesFetcher> getAllOverlayMirrorDestinationTemplatesFetchers() throws RestException {
+        java.util.List<OverlayMirrorDestinationTemplatesFetcher> allObjs = new ArrayList<OverlayMirrorDestinationTemplatesFetcher>();
+        return allObjs;
+    }
     public static OverlayPATNATEntry getOverlayPATNATEntryById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             OverlayPATNATEntry obj = null;
@@ -18419,6 +18402,59 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<PolicyDecisionsFetcher> allObjs = new ArrayList<PolicyDecisionsFetcher>();
         return allObjs;
     }
+    public static PolicyEntry getPolicyEntryById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            PolicyEntry obj = null;
+            obj = new PolicyEntry();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.POLICYENTRY, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<PolicyEntry> getPolicyEntriesForFetcherId(String id) throws RestException {
+        PolicyEntriesFetcher fetcher = getPolicyEntriesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.POLICYENTRY);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<PolicyEntry>();
+    }
+
+    public static PolicyEntriesFetcher getPolicyEntriesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.POLICYENTRIES_FETCHER, id);
+        if (fetcher != null) {
+            return (PolicyEntriesFetcher) fetcher;
+        }
+        if ((fetcher = getPolicyEntriesFetcherForPolicyStatementId(id)) != null) {
+            return (PolicyEntriesFetcher) addFetcher(Constants.POLICYENTRIES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<PolicyEntry> getAllPolicyEntries() throws RestException {
+        java.util.List<PolicyEntry> allObjs = new ArrayList<PolicyEntry>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<PolicyEntriesFetcher> getAllPolicyEntriesFetchers() throws RestException {
+        java.util.List<PolicyEntriesFetcher> allObjs = new ArrayList<PolicyEntriesFetcher>();
+        return allObjs;
+    }
     public static PolicyGroup getPolicyGroupById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             PolicyGroup obj = null;
@@ -18687,6 +18723,140 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<PolicyGroupTemplatesFetcher> getAllPolicyGroupTemplatesFetchers() throws RestException {
         java.util.List<PolicyGroupTemplatesFetcher> allObjs = new ArrayList<PolicyGroupTemplatesFetcher>();
+        return allObjs;
+    }
+    public static PolicyObjectGroup getPolicyObjectGroupById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            PolicyObjectGroup obj = null;
+            obj = new PolicyObjectGroup();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.POLICYOBJECTGROUP, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static NSGatewaysFetcher getNSGatewaysFetcherForPolicyObjectGroupId(String id) throws RestException {
+        PolicyObjectGroup obj = getObject(Constants.POLICYOBJECTGROUP, id);
+        if (obj == null) {
+            obj = getPolicyObjectGroupById(id);
+        }
+
+        if (obj != null) {
+            NSGatewaysFetcher fetcher = obj.getNSGateways();
+            return addFetcher(Constants.NSGATEWAYS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<PolicyObjectGroup> getPolicyObjectGroupsForFetcherId(String id) throws RestException {
+        PolicyObjectGroupsFetcher fetcher = getPolicyObjectGroupsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.POLICYOBJECTGROUP);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<PolicyObjectGroup>();
+    }
+
+    public static PolicyObjectGroupsFetcher getPolicyObjectGroupsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.POLICYOBJECTGROUPS_FETCHER, id);
+        if (fetcher != null) {
+            return (PolicyObjectGroupsFetcher) fetcher;
+        }
+        if ((fetcher = getPolicyObjectGroupsFetcherForEnterpriseId(id)) != null) {
+            return (PolicyObjectGroupsFetcher) addFetcher(Constants.POLICYOBJECTGROUPS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<PolicyObjectGroup> getAllPolicyObjectGroups() throws RestException {
+        java.util.List<PolicyObjectGroup> allObjs = new ArrayList<PolicyObjectGroup>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<PolicyObjectGroupsFetcher> getAllPolicyObjectGroupsFetchers() throws RestException {
+        java.util.List<PolicyObjectGroupsFetcher> allObjs = new ArrayList<PolicyObjectGroupsFetcher>();
+        return allObjs;
+    }
+    public static PolicyStatement getPolicyStatementById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            PolicyStatement obj = null;
+            obj = new PolicyStatement();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.POLICYSTATEMENT, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static PolicyEntriesFetcher getPolicyEntriesFetcherForPolicyStatementId(String id) throws RestException {
+        PolicyStatement obj = getObject(Constants.POLICYSTATEMENT, id);
+        if (obj == null) {
+            obj = getPolicyStatementById(id);
+        }
+
+        if (obj != null) {
+            PolicyEntriesFetcher fetcher = obj.getPolicyEntries();
+            return addFetcher(Constants.POLICYENTRIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<PolicyStatement> getPolicyStatementsForFetcherId(String id) throws RestException {
+        PolicyStatementsFetcher fetcher = getPolicyStatementsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.POLICYSTATEMENT);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<PolicyStatement>();
+    }
+
+    public static PolicyStatementsFetcher getPolicyStatementsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.POLICYSTATEMENTS_FETCHER, id);
+        if (fetcher != null) {
+            return (PolicyStatementsFetcher) fetcher;
+        }
+        if ((fetcher = getPolicyStatementsFetcherForLinkId(id)) != null) {
+            return (PolicyStatementsFetcher) addFetcher(Constants.POLICYSTATEMENTS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<PolicyStatement> getAllPolicyStatements() throws RestException {
+        java.util.List<PolicyStatement> allObjs = new ArrayList<PolicyStatement>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<PolicyStatementsFetcher> getAllPolicyStatementsFetchers() throws RestException {
+        java.util.List<PolicyStatementsFetcher> allObjs = new ArrayList<PolicyStatementsFetcher>();
         return allObjs;
     }
     public static Port getPortById(String id) {
@@ -20716,6 +20886,87 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<SSHKeysFetcher> allObjs = new ArrayList<SSHKeysFetcher>();
         return allObjs;
     }
+    public static SSIDConnection getSSIDConnectionById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            SSIDConnection obj = null;
+            obj = new SSIDConnection();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.SSIDCONNECTION, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static AlarmsFetcher getAlarmsFetcherForSSIDConnectionId(String id) throws RestException {
+        SSIDConnection obj = getObject(Constants.SSIDCONNECTION, id);
+        if (obj == null) {
+            obj = getSSIDConnectionById(id);
+        }
+
+        if (obj != null) {
+            AlarmsFetcher fetcher = obj.getAlarms();
+            return addFetcher(Constants.ALARMS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static EventLogsFetcher getEventLogsFetcherForSSIDConnectionId(String id) throws RestException {
+        SSIDConnection obj = getObject(Constants.SSIDCONNECTION, id);
+        if (obj == null) {
+            obj = getSSIDConnectionById(id);
+        }
+
+        if (obj != null) {
+            EventLogsFetcher fetcher = obj.getEventLogs();
+            return addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<SSIDConnection> getSSIDConnectionsForFetcherId(String id) throws RestException {
+        SSIDConnectionsFetcher fetcher = getSSIDConnectionsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.SSIDCONNECTION);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<SSIDConnection>();
+    }
+
+    public static SSIDConnectionsFetcher getSSIDConnectionsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.SSIDCONNECTIONS_FETCHER, id);
+        if (fetcher != null) {
+            return (SSIDConnectionsFetcher) fetcher;
+        }
+        if ((fetcher = getSSIDConnectionsFetcherForWirelessPortId(id)) != null) {
+            return (SSIDConnectionsFetcher) addFetcher(Constants.SSIDCONNECTIONS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<SSIDConnection> getAllSSIDConnections() throws RestException {
+        java.util.List<SSIDConnection> allObjs = new ArrayList<SSIDConnection>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<SSIDConnectionsFetcher> getAllSSIDConnectionsFetchers() throws RestException {
+        java.util.List<SSIDConnectionsFetcher> allObjs = new ArrayList<SSIDConnectionsFetcher>();
+        return allObjs;
+    }
     public static StaticRoute getStaticRouteById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             StaticRoute obj = null;
@@ -20804,10 +21055,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getStaticRoutesFetcherForHostInterfaceId(id)) != null) {
-            return (StaticRoutesFetcher) addFetcher(Constants.STATICROUTES_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getStaticRoutesFetcherForL2DomainId(id)) != null) {
             return (StaticRoutesFetcher) addFetcher(Constants.STATICROUTES_FETCHER, fetcher);
         }
         
@@ -20926,6 +21173,10 @@ public class ModelHelper extends BaseModelHelper {
             return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getStatisticsFetcherForEgressAdvFwdEntryTemplateId(id)) != null) {
+            return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getStatisticsFetcherForHostInterfaceId(id)) != null) {
             return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
         }
@@ -20958,15 +21209,15 @@ public class ModelHelper extends BaseModelHelper {
             return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getStatisticsFetcherForTierId(id)) != null) {
-            return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getStatisticsFetcherForVMInterfaceId(id)) != null) {
             return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
         }
         
         if ((fetcher = getStatisticsFetcherForVPortId(id)) != null) {
+            return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getStatisticsFetcherForWirelessPortId(id)) != null) {
             return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
         }
         
@@ -21159,10 +21410,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getStatisticsPoliciesFetcherForSubnetId(id)) != null) {
-            return (StatisticsPoliciesFetcher) addFetcher(Constants.STATISTICSPOLICIES_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getStatisticsPoliciesFetcherForTierId(id)) != null) {
             return (StatisticsPoliciesFetcher) addFetcher(Constants.STATISTICSPOLICIES_FETCHER, fetcher);
         }
         
@@ -21894,10 +22141,6 @@ public class ModelHelper extends BaseModelHelper {
             return (TCAsFetcher) addFetcher(Constants.TCAS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getTCAsFetcherForTierId(id)) != null) {
-            return (TCAsFetcher) addFetcher(Constants.TCAS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getTCAsFetcherForVMInterfaceId(id)) != null) {
             return (TCAsFetcher) addFetcher(Constants.TCAS_FETCHER, fetcher);
         }
@@ -21926,181 +22169,6 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<TCAsFetcher> getAllTCAsFetchers() throws RestException {
         java.util.List<TCAsFetcher> allObjs = new ArrayList<TCAsFetcher>();
-        return allObjs;
-    }
-    public static Tier getTierById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            Tier obj = null;
-            obj = new Tier();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.TIER, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }
-    public static ContainersFetcher getContainersFetcherForTierId(String id) throws RestException {
-        Tier obj = getObject(Constants.TIER, id);
-        if (obj == null) {
-            obj = getTierById(id);
-        }
-
-        if (obj != null) {
-            ContainersFetcher fetcher = obj.getContainers();
-            return addFetcher(Constants.CONTAINERS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static EventLogsFetcher getEventLogsFetcherForTierId(String id) throws RestException {
-        Tier obj = getObject(Constants.TIER, id);
-        if (obj == null) {
-            obj = getTierById(id);
-        }
-
-        if (obj != null) {
-            EventLogsFetcher fetcher = obj.getEventLogs();
-            return addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForTierId(String id) throws RestException {
-        Tier obj = getObject(Constants.TIER, id);
-        if (obj == null) {
-            obj = getTierById(id);
-        }
-
-        if (obj != null) {
-            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
-            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static MetadatasFetcher getMetadatasFetcherForTierId(String id) throws RestException {
-        Tier obj = getObject(Constants.TIER, id);
-        if (obj == null) {
-            obj = getTierById(id);
-        }
-
-        if (obj != null) {
-            MetadatasFetcher fetcher = obj.getMetadatas();
-            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static StatisticsFetcher getStatisticsFetcherForTierId(String id) throws RestException {
-        Tier obj = getObject(Constants.TIER, id);
-        if (obj == null) {
-            obj = getTierById(id);
-        }
-
-        if (obj != null) {
-            StatisticsFetcher fetcher = obj.getStatistics();
-            return addFetcher(Constants.STATISTICS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static StatisticsPoliciesFetcher getStatisticsPoliciesFetcherForTierId(String id) throws RestException {
-        Tier obj = getObject(Constants.TIER, id);
-        if (obj == null) {
-            obj = getTierById(id);
-        }
-
-        if (obj != null) {
-            StatisticsPoliciesFetcher fetcher = obj.getStatisticsPolicies();
-            return addFetcher(Constants.STATISTICSPOLICIES_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static TCAsFetcher getTCAsFetcherForTierId(String id) throws RestException {
-        Tier obj = getObject(Constants.TIER, id);
-        if (obj == null) {
-            obj = getTierById(id);
-        }
-
-        if (obj != null) {
-            TCAsFetcher fetcher = obj.getTCAs();
-            return addFetcher(Constants.TCAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static VMsFetcher getVMsFetcherForTierId(String id) throws RestException {
-        Tier obj = getObject(Constants.TIER, id);
-        if (obj == null) {
-            obj = getTierById(id);
-        }
-
-        if (obj != null) {
-            VMsFetcher fetcher = obj.getVMs();
-            return addFetcher(Constants.VMS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static VPortsFetcher getVPortsFetcherForTierId(String id) throws RestException {
-        Tier obj = getObject(Constants.TIER, id);
-        if (obj == null) {
-            obj = getTierById(id);
-        }
-
-        if (obj != null) {
-            VPortsFetcher fetcher = obj.getVPorts();
-            return addFetcher(Constants.VPORTS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    public static java.util.List<Tier> getTiersForFetcherId(String id) throws RestException {
-        TiersFetcher fetcher = getTiersFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.TIER);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<Tier>();
-    }
-
-    public static TiersFetcher getTiersFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.TIERS_FETCHER, id);
-        if (fetcher != null) {
-            return (TiersFetcher) fetcher;
-        }return null;
-    }
-
-    public static java.util.List<Tier> getAllTiers() throws RestException {
-        java.util.List<Tier> allObjs = new ArrayList<Tier>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<TiersFetcher> getAllTiersFetchers() throws RestException {
-        java.util.List<TiersFetcher> allObjs = new ArrayList<TiersFetcher>();
         return allObjs;
     }
     public static Trunk getTrunkById(String id) {
@@ -23875,10 +23943,6 @@ public class ModelHelper extends BaseModelHelper {
             return (VMsFetcher) addFetcher(Constants.VMS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getVMsFetcherForTierId(id)) != null) {
-            return (VMsFetcher) addFetcher(Constants.VMS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getVMsFetcherForUserId(id)) != null) {
             return (VMsFetcher) addFetcher(Constants.VMS_FETCHER, fetcher);
         }
@@ -24148,6 +24212,414 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<VMInterfacesFetcher> getAllVMInterfacesFetchers() throws RestException {
         java.util.List<VMInterfacesFetcher> allObjs = new ArrayList<VMInterfacesFetcher>();
+        return allObjs;
+    }
+    public static VNF getVNFById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VNF obj = null;
+            obj = new VNF();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.VNF, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static JobsFetcher getJobsFetcherForVNFId(String id) throws RestException {
+        VNF obj = getObject(Constants.VNF, id);
+        if (obj == null) {
+            obj = getVNFById(id);
+        }
+
+        if (obj != null) {
+            JobsFetcher fetcher = obj.getJobs();
+            return addFetcher(Constants.JOBS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static VNFInterfacesFetcher getVNFInterfacesFetcherForVNFId(String id) throws RestException {
+        VNF obj = getObject(Constants.VNF, id);
+        if (obj == null) {
+            obj = getVNFById(id);
+        }
+
+        if (obj != null) {
+            VNFInterfacesFetcher fetcher = obj.getVNFInterfaces();
+            return addFetcher(Constants.VNFINTERFACES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static VNFMetadatasFetcher getVNFMetadatasFetcherForVNFId(String id) throws RestException {
+        VNF obj = getObject(Constants.VNF, id);
+        if (obj == null) {
+            obj = getVNFById(id);
+        }
+
+        if (obj != null) {
+            VNFMetadatasFetcher fetcher = obj.getVNFMetadatas();
+            return addFetcher(Constants.VNFMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<VNF> getVNFsForFetcherId(String id) throws RestException {
+        VNFsFetcher fetcher = getVNFsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.VNF);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<VNF>();
+    }
+
+    public static VNFsFetcher getVNFsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.VNFS_FETCHER, id);
+        if (fetcher != null) {
+            return (VNFsFetcher) fetcher;
+        }
+        if ((fetcher = getVNFsFetcherForEnterpriseId(id)) != null) {
+            return (VNFsFetcher) addFetcher(Constants.VNFS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<VNF> getAllVNFs() throws RestException {
+        java.util.List<VNF> allObjs = new ArrayList<VNF>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<VNFsFetcher> getAllVNFsFetchers() throws RestException {
+        java.util.List<VNFsFetcher> allObjs = new ArrayList<VNFsFetcher>();
+        return allObjs;
+    }
+    public static VNFCatalog getVNFCatalogById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VNFCatalog obj = null;
+            obj = new VNFCatalog();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.VNFCATALOG, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static VNFDescriptorsFetcher getVNFDescriptorsFetcherForVNFCatalogId(String id) throws RestException {
+        VNFCatalog obj = getObject(Constants.VNFCATALOG, id);
+        if (obj == null) {
+            obj = getVNFCatalogById(id);
+        }
+
+        if (obj != null) {
+            VNFDescriptorsFetcher fetcher = obj.getVNFDescriptors();
+            return addFetcher(Constants.VNFDESCRIPTORS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<VNFCatalog> getVNFCatalogsForFetcherId(String id) throws RestException {
+        VNFCatalogsFetcher fetcher = getVNFCatalogsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.VNFCATALOG);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<VNFCatalog>();
+    }
+
+    public static VNFCatalogsFetcher getVNFCatalogsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.VNFCATALOGS_FETCHER, id);
+        if (fetcher != null) {
+            return (VNFCatalogsFetcher) fetcher;
+        }
+        if ((fetcher = getVNFCatalogsFetcherForMeId(id)) != null) {
+            return (VNFCatalogsFetcher) addFetcher(Constants.VNFCATALOGS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<VNFCatalog> getAllVNFCatalogs() throws RestException {
+        java.util.List<VNFCatalog> allObjs = new ArrayList<VNFCatalog>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VNFCatalogsFetcher fetcher = getVNFCatalogsFetcherForMeId(session.getId());
+            java.util.List<VNFCatalog> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<VNFCatalogsFetcher> getAllVNFCatalogsFetchers() throws RestException {
+        java.util.List<VNFCatalogsFetcher> allObjs = new ArrayList<VNFCatalogsFetcher>();
+        return allObjs;
+    }
+    public static VNFDescriptor getVNFDescriptorById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VNFDescriptor obj = null;
+            obj = new VNFDescriptor();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.VNFDESCRIPTOR, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static VNFInterfaceDescriptorsFetcher getVNFInterfaceDescriptorsFetcherForVNFDescriptorId(String id) throws RestException {
+        VNFDescriptor obj = getObject(Constants.VNFDESCRIPTOR, id);
+        if (obj == null) {
+            obj = getVNFDescriptorById(id);
+        }
+
+        if (obj != null) {
+            VNFInterfaceDescriptorsFetcher fetcher = obj.getVNFInterfaceDescriptors();
+            return addFetcher(Constants.VNFINTERFACEDESCRIPTORS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<VNFDescriptor> getVNFDescriptorsForFetcherId(String id) throws RestException {
+        VNFDescriptorsFetcher fetcher = getVNFDescriptorsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.VNFDESCRIPTOR);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<VNFDescriptor>();
+    }
+
+    public static VNFDescriptorsFetcher getVNFDescriptorsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.VNFDESCRIPTORS_FETCHER, id);
+        if (fetcher != null) {
+            return (VNFDescriptorsFetcher) fetcher;
+        }
+        if ((fetcher = getVNFDescriptorsFetcherForVNFCatalogId(id)) != null) {
+            return (VNFDescriptorsFetcher) addFetcher(Constants.VNFDESCRIPTORS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<VNFDescriptor> getAllVNFDescriptors() throws RestException {
+        java.util.List<VNFDescriptor> allObjs = new ArrayList<VNFDescriptor>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<VNFDescriptorsFetcher> getAllVNFDescriptorsFetchers() throws RestException {
+        java.util.List<VNFDescriptorsFetcher> allObjs = new ArrayList<VNFDescriptorsFetcher>();
+        return allObjs;
+    }
+    public static VNFInterface getVNFInterfaceById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VNFInterface obj = null;
+            obj = new VNFInterface();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.VNFINTERFACE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<VNFInterface> getVNFInterfacesForFetcherId(String id) throws RestException {
+        VNFInterfacesFetcher fetcher = getVNFInterfacesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.VNFINTERFACE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<VNFInterface>();
+    }
+
+    public static VNFInterfacesFetcher getVNFInterfacesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.VNFINTERFACES_FETCHER, id);
+        if (fetcher != null) {
+            return (VNFInterfacesFetcher) fetcher;
+        }
+        if ((fetcher = getVNFInterfacesFetcherForVNFId(id)) != null) {
+            return (VNFInterfacesFetcher) addFetcher(Constants.VNFINTERFACES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getVNFInterfacesFetcherForVPortId(id)) != null) {
+            return (VNFInterfacesFetcher) addFetcher(Constants.VNFINTERFACES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<VNFInterface> getAllVNFInterfaces() throws RestException {
+        java.util.List<VNFInterface> allObjs = new ArrayList<VNFInterface>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<VNFInterfacesFetcher> getAllVNFInterfacesFetchers() throws RestException {
+        java.util.List<VNFInterfacesFetcher> allObjs = new ArrayList<VNFInterfacesFetcher>();
+        return allObjs;
+    }
+    public static VNFInterfaceDescriptor getVNFInterfaceDescriptorById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VNFInterfaceDescriptor obj = null;
+            obj = new VNFInterfaceDescriptor();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.VNFINTERFACEDESCRIPTOR, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<VNFInterfaceDescriptor> getVNFInterfaceDescriptorsForFetcherId(String id) throws RestException {
+        VNFInterfaceDescriptorsFetcher fetcher = getVNFInterfaceDescriptorsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.VNFINTERFACEDESCRIPTOR);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<VNFInterfaceDescriptor>();
+    }
+
+    public static VNFInterfaceDescriptorsFetcher getVNFInterfaceDescriptorsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.VNFINTERFACEDESCRIPTORS_FETCHER, id);
+        if (fetcher != null) {
+            return (VNFInterfaceDescriptorsFetcher) fetcher;
+        }
+        if ((fetcher = getVNFInterfaceDescriptorsFetcherForVNFDescriptorId(id)) != null) {
+            return (VNFInterfaceDescriptorsFetcher) addFetcher(Constants.VNFINTERFACEDESCRIPTORS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<VNFInterfaceDescriptor> getAllVNFInterfaceDescriptors() throws RestException {
+        java.util.List<VNFInterfaceDescriptor> allObjs = new ArrayList<VNFInterfaceDescriptor>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<VNFInterfaceDescriptorsFetcher> getAllVNFInterfaceDescriptorsFetchers() throws RestException {
+        java.util.List<VNFInterfaceDescriptorsFetcher> allObjs = new ArrayList<VNFInterfaceDescriptorsFetcher>();
+        return allObjs;
+    }
+    public static VNFMetadata getVNFMetadataById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VNFMetadata obj = null;
+            obj = new VNFMetadata();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.VNFMETADATA, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<VNFMetadata> getVNFMetadatasForFetcherId(String id) throws RestException {
+        VNFMetadatasFetcher fetcher = getVNFMetadatasFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.VNFMETADATA);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<VNFMetadata>();
+    }
+
+    public static VNFMetadatasFetcher getVNFMetadatasFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.VNFMETADATAS_FETCHER, id);
+        if (fetcher != null) {
+            return (VNFMetadatasFetcher) fetcher;
+        }
+        if ((fetcher = getVNFMetadatasFetcherForMeId(id)) != null) {
+            return (VNFMetadatasFetcher) addFetcher(Constants.VNFMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getVNFMetadatasFetcherForVNFId(id)) != null) {
+            return (VNFMetadatasFetcher) addFetcher(Constants.VNFMETADATAS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<VNFMetadata> getAllVNFMetadatas() throws RestException {
+        java.util.List<VNFMetadata> allObjs = new ArrayList<VNFMetadata>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VNFMetadatasFetcher fetcher = getVNFMetadatasFetcherForMeId(session.getId());
+            java.util.List<VNFMetadata> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<VNFMetadatasFetcher> getAllVNFMetadatasFetchers() throws RestException {
+        java.util.List<VNFMetadatasFetcher> allObjs = new ArrayList<VNFMetadatasFetcher>();
         return allObjs;
     }
     public static VPNConnection getVPNConnectionById(String id) {
@@ -24621,6 +25093,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static VNFInterfacesFetcher getVNFInterfacesFetcherForVPortId(String id) throws RestException {
+        VPort obj = getObject(Constants.VPORT, id);
+        if (obj == null) {
+            obj = getVPortById(id);
+        }
+
+        if (obj != null) {
+            VNFInterfacesFetcher fetcher = obj.getVNFInterfaces();
+            return addFetcher(Constants.VNFINTERFACES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VPortMirrorsFetcher getVPortMirrorsFetcherForVPortId(String id) throws RestException {
         VPort obj = getObject(Constants.VPORT, id);
         if (obj == null) {
@@ -24693,10 +25179,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getVPortsFetcherForSubnetId(id)) != null) {
-            return (VPortsFetcher) addFetcher(Constants.VPORTS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getVPortsFetcherForTierId(id)) != null) {
             return (VPortsFetcher) addFetcher(Constants.VPORTS_FETCHER, fetcher);
         }
         
@@ -25964,6 +26446,164 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<VSPsFetcher> getAllVSPsFetchers() throws RestException {
         java.util.List<VSPsFetcher> allObjs = new ArrayList<VSPsFetcher>();
+        return allObjs;
+    }
+    public static WirelessPort getWirelessPortById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            WirelessPort obj = null;
+            obj = new WirelessPort();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.WIRELESSPORT, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static AlarmsFetcher getAlarmsFetcherForWirelessPortId(String id) throws RestException {
+        WirelessPort obj = getObject(Constants.WIRELESSPORT, id);
+        if (obj == null) {
+            obj = getWirelessPortById(id);
+        }
+
+        if (obj != null) {
+            AlarmsFetcher fetcher = obj.getAlarms();
+            return addFetcher(Constants.ALARMS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static EventLogsFetcher getEventLogsFetcherForWirelessPortId(String id) throws RestException {
+        WirelessPort obj = getObject(Constants.WIRELESSPORT, id);
+        if (obj == null) {
+            obj = getWirelessPortById(id);
+        }
+
+        if (obj != null) {
+            EventLogsFetcher fetcher = obj.getEventLogs();
+            return addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static SSIDConnectionsFetcher getSSIDConnectionsFetcherForWirelessPortId(String id) throws RestException {
+        WirelessPort obj = getObject(Constants.WIRELESSPORT, id);
+        if (obj == null) {
+            obj = getWirelessPortById(id);
+        }
+
+        if (obj != null) {
+            SSIDConnectionsFetcher fetcher = obj.getSSIDConnections();
+            return addFetcher(Constants.SSIDCONNECTIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static StatisticsFetcher getStatisticsFetcherForWirelessPortId(String id) throws RestException {
+        WirelessPort obj = getObject(Constants.WIRELESSPORT, id);
+        if (obj == null) {
+            obj = getWirelessPortById(id);
+        }
+
+        if (obj != null) {
+            StatisticsFetcher fetcher = obj.getStatistics();
+            return addFetcher(Constants.STATISTICS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<WirelessPort> getWirelessPortsForFetcherId(String id) throws RestException {
+        WirelessPortsFetcher fetcher = getWirelessPortsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.WIRELESSPORT);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<WirelessPort>();
+    }
+
+    public static WirelessPortsFetcher getWirelessPortsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.WIRELESSPORTS_FETCHER, id);
+        if (fetcher != null) {
+            return (WirelessPortsFetcher) fetcher;
+        }
+        if ((fetcher = getWirelessPortsFetcherForNSGatewayId(id)) != null) {
+            return (WirelessPortsFetcher) addFetcher(Constants.WIRELESSPORTS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<WirelessPort> getAllWirelessPorts() throws RestException {
+        java.util.List<WirelessPort> allObjs = new ArrayList<WirelessPort>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<WirelessPortsFetcher> getAllWirelessPortsFetchers() throws RestException {
+        java.util.List<WirelessPortsFetcher> allObjs = new ArrayList<WirelessPortsFetcher>();
+        return allObjs;
+    }
+    public static WirelessPortTemplate getWirelessPortTemplateById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            WirelessPortTemplate obj = null;
+            obj = new WirelessPortTemplate();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.WIRELESSPORTTEMPLATE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<WirelessPortTemplate> getWirelessPortTemplatesForFetcherId(String id) throws RestException {
+        WirelessPortTemplatesFetcher fetcher = getWirelessPortTemplatesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.WIRELESSPORTTEMPLATE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<WirelessPortTemplate>();
+    }
+
+    public static WirelessPortTemplatesFetcher getWirelessPortTemplatesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.WIRELESSPORTTEMPLATES_FETCHER, id);
+        if (fetcher != null) {
+            return (WirelessPortTemplatesFetcher) fetcher;
+        }return null;
+    }
+
+    public static java.util.List<WirelessPortTemplate> getAllWirelessPortTemplates() throws RestException {
+        java.util.List<WirelessPortTemplate> allObjs = new ArrayList<WirelessPortTemplate>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<WirelessPortTemplatesFetcher> getAllWirelessPortTemplatesFetchers() throws RestException {
+        java.util.List<WirelessPortTemplatesFetcher> allObjs = new ArrayList<WirelessPortTemplatesFetcher>();
         return allObjs;
     }
     public static ZFBAutoAssignment getZFBAutoAssignmentById(String id) {

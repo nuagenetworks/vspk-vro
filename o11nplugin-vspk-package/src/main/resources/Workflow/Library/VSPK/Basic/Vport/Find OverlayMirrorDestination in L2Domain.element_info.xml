@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Find OverlayMirrorDestination in L2Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">14291563-6e6f-5633-a807-03a54a274cd8</entry>
+</properties>

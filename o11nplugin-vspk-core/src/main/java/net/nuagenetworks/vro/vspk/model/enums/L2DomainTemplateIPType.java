@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum L2DomainTemplateIPType {
 
-    IPV4("IPV4", "IPV4"), IPV6("IPV6", "IPV6");
+    IPV4("IPV4", "IPV4"), DUALSTACK("DUALSTACK", "DUALSTACK");
 
     private final String id;
     private final String name;
@@ -63,9 +63,9 @@ public enum L2DomainTemplateIPType {
         return IPV4;
     }
     
-    @VsoProperty(displayName = "IPV6", readOnly = true)
-    public L2DomainTemplateIPType getIPV6() {
-        return IPV6;
+    @VsoProperty(displayName = "DUALSTACK", readOnly = true)
+    public L2DomainTemplateIPType getDUALSTACK() {
+        return DUALSTACK;
     }
     
 

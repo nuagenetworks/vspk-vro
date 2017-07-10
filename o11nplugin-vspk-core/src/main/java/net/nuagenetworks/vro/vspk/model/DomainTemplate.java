@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.DomainsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.DomainFIPAclTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIPACLTemplatesFetcher;
@@ -86,6 +88,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.DOMAINTEMPLATE, datasource = Constants.DATASOURCE, image = Constants.DOMAINTEMPLATE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSACLTEMPLATES_FETCHER, type = Constants.EGRESSACLTEMPLATES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.EGRESSADVFWDTEMPLATES_FETCHER, type = Constants.EGRESSADVFWDTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINFIPACLTEMPLATES_FETCHER, type = Constants.DOMAINFIPACLTEMPLATES_FETCHER), 
 
@@ -160,6 +164,9 @@ public class DomainTemplate extends BaseObject {
     private EgressACLTemplatesFetcher egressACLTemplates;
     
     @JsonIgnore
+    private EgressAdvFwdTemplatesFetcher egressAdvFwdTemplates;
+    
+    @JsonIgnore
     private DomainFIPAclTemplatesFetcher domainFIPAclTemplates;
     
     @JsonIgnore
@@ -212,6 +219,8 @@ public class DomainTemplate extends BaseObject {
         domains = new DomainsFetcher(this);
         
         egressACLTemplates = new EgressACLTemplatesFetcher(this);
+        
+        egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
         
         domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
         
@@ -426,6 +435,12 @@ public class DomainTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EgressAdvFwdTemplates", readOnly = true)   
+    public EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplates() {
+        return egressAdvFwdTemplates;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DomainFIPAclTemplates", readOnly = true)   
     public DomainFIPAclTemplatesFetcher getDomainFIPAclTemplates() {
         return domainFIPAclTemplates;
@@ -574,6 +589,14 @@ public class DomainTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.EGRESSACLTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createEgressAdvFwdTemplate(Session session, EgressAdvFwdTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.EGRESSADVFWDTEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod

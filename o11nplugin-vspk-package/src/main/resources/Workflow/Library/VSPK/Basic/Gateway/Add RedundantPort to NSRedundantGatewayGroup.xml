@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='nSRedundantGatewayGroupObj' type='VSPK:NSRedundantGatewayGroup' >
 </param>
+<param name='VLANRange' type='string' >
+</param>
 <param name='description' type='string' >
 </param>
 <param name='externalID' type='string' >
@@ -25,6 +27,9 @@
 <script encoded='false'><![CDATA[var session = nSRedundantGatewayGroupObj.session;
 
 redundantPortObj = new VSPKRedundantPort();
+if (VLANRange) {
+   redundantPortObj.VLANRange = VLANRange;
+}
 if (description) {
    redundantPortObj.description = description;
 }
@@ -42,6 +47,7 @@ redundantPortObj.portType = portType;
 nSRedundantGatewayGroupObj.createRedundantPort(session, redundantPortObj);
 ]]></script>
 <in-binding><bind name='nSRedundantGatewayGroupObj' type='VSPK:NSRedundantGatewayGroup' export-name="nSRedundantGatewayGroupObj" ></bind>
+<bind name='VLANRange' type='string' export-name="VLANRange" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
@@ -53,6 +59,8 @@ nSRedundantGatewayGroupObj.createRedundantPort(session, redundantPortObj);
 <presentation>
 <p-param name="nSRedundantGatewayGroupObj"><desc><![CDATA[nSRedundantGatewayGroupObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="VLANRange"><desc><![CDATA[VLANRange]]></desc>
+</p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>

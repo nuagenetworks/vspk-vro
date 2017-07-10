@@ -21,9 +21,6 @@
 <param name='destinationPort' type='string' >
 </param>
 
-<param name='domainName' type='string' >
-</param>
-
 <param name='enterpriseName' type='string' >
 </param>
 
@@ -73,11 +70,6 @@ if (destinationPort) {
 } else if (domainFIPAclTemplateEntryObj.destinationPort) {
    domainFIPAclTemplateEntryObj.destinationPort = "";
 }
-if (domainName) {
-   domainFIPAclTemplateEntryObj.domainName = domainName;
-} else if (domainFIPAclTemplateEntryObj.domainName) {
-   domainFIPAclTemplateEntryObj.domainName = "";
-}
 if (enterpriseName) {
    domainFIPAclTemplateEntryObj.enterpriseName = enterpriseName;
 } else if (domainFIPAclTemplateEntryObj.enterpriseName) {
@@ -118,8 +110,6 @@ domainFIPAclTemplateEntryObj.save(session, 1);]]></script>
 
 <bind name='destinationPort' type='string' export-name="destinationPort" ></bind>
 
-<bind name='domainName' type='string' export-name="domainName" ></bind>
-
 <bind name='enterpriseName' type='string' export-name="enterpriseName" ></bind>
 
 <bind name='etherType' type='string' export-name="etherType" ></bind>
@@ -154,9 +144,6 @@ domainFIPAclTemplateEntryObj.save(session, 1);]]></script>
 
 <p-param name="destinationPort"><desc><![CDATA[destinationPort]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.destinationPort]]></p-qual></p-param>
-
-<p-param name="domainName"><desc><![CDATA[domainName]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.domainName]]></p-qual></p-param>
 
 <p-param name="enterpriseName"><desc><![CDATA[enterpriseName]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#domainFIPAclTemplateEntryObj.enterpriseName]]></p-qual></p-param>

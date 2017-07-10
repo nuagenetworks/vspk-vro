@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Edit OverlayMirrorDestination</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2d8323fc-8d35-551d-87c9-a2021b7ce411</entry>
+</properties>

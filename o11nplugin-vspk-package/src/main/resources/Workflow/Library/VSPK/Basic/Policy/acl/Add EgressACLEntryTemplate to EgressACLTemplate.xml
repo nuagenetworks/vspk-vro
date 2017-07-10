@@ -5,8 +5,6 @@
 <position x='100.0' y='50.0'/>
 <input><param name='egressACLTemplateObj' type='VSPK:EgressACLTemplate' >
 </param>
-<param name='ACLTemplateName' type='string' >
-</param>
 <param name='DSCP' type='string' >
 </param>
 <param name='action' type='VSPK:EgressACLEntryTemplateAction' >
@@ -14,10 +12,6 @@
 <param name='description' type='string' >
 </param>
 <param name='destinationPort' type='string' >
-</param>
-<param name='domainName' type='string' >
-</param>
-<param name='enterpriseName' type='string' >
 </param>
 <param name='etherType' type='string' >
 </param>
@@ -41,9 +35,6 @@
 <script encoded='false'><![CDATA[var session = egressACLTemplateObj.session;
 
 egressACLEntryTemplateObj = new VSPKEgressACLEntryTemplate();
-if (ACLTemplateName) {
-   egressACLEntryTemplateObj.ACLTemplateName = ACLTemplateName;
-}
 if (DSCP) {
    egressACLEntryTemplateObj.DSCP = DSCP;
 }
@@ -53,12 +44,6 @@ if (description) {
 }
 if (destinationPort) {
    egressACLEntryTemplateObj.destinationPort = destinationPort;
-}
-if (domainName) {
-   egressACLEntryTemplateObj.domainName = domainName;
-}
-if (enterpriseName) {
-   egressACLEntryTemplateObj.enterpriseName = enterpriseName;
 }
 if (etherType) {
    egressACLEntryTemplateObj.etherType = etherType;
@@ -78,13 +63,10 @@ if (sourcePort) {
 egressACLTemplateObj.createEgressACLEntryTemplate(session, egressACLEntryTemplateObj);
 ]]></script>
 <in-binding><bind name='egressACLTemplateObj' type='VSPK:EgressACLTemplate' export-name="egressACLTemplateObj" ></bind>
-<bind name='ACLTemplateName' type='string' export-name="ACLTemplateName" ></bind>
 <bind name='DSCP' type='string' export-name="DSCP" ></bind>
 <bind name='action' type='VSPK:EgressACLEntryTemplateAction' export-name="action" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='destinationPort' type='string' export-name="destinationPort" ></bind>
-<bind name='domainName' type='string' export-name="domainName" ></bind>
-<bind name='enterpriseName' type='string' export-name="enterpriseName" ></bind>
 <bind name='etherType' type='string' export-name="etherType" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='locationType' type='VSPK:EgressACLEntryTemplateLocationType' export-name="locationType" ></bind>
@@ -97,8 +79,6 @@ egressACLTemplateObj.createEgressACLEntryTemplate(session, egressACLEntryTemplat
 <presentation>
 <p-param name="egressACLTemplateObj"><desc><![CDATA[egressACLTemplateObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
-<p-param name="ACLTemplateName"><desc><![CDATA[ACLTemplateName]]></desc>
-</p-param>
 <p-param name="DSCP"><desc><![CDATA[DSCP]]></desc>
 </p-param>
 <p-param name="action"><desc><![CDATA[action]]></desc>
@@ -106,10 +86,6 @@ egressACLTemplateObj.createEgressACLEntryTemplate(session, egressACLEntryTemplat
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>
 <p-param name="destinationPort"><desc><![CDATA[destinationPort]]></desc>
-</p-param>
-<p-param name="domainName"><desc><![CDATA[domainName]]></desc>
-</p-param>
-<p-param name="enterpriseName"><desc><![CDATA[enterpriseName]]></desc>
 </p-param>
 <p-param name="etherType"><desc><![CDATA[etherType]]></desc>
 </p-param>

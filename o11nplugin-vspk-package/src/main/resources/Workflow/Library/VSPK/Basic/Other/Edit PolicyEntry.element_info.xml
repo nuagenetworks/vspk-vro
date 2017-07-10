@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Edit PolicyEntry</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3d1e0945-767f-5b2c-8e84-60dc6b7940d1</entry>
+</properties>

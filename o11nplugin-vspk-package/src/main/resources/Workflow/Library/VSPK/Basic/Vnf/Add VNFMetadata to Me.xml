@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="20025ede-4134-5d5d-8737-5e62bef0ac86"  version="5.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add VNFMetadata to Me]]></display-name>
+<ref-types><![CDATA[(VSPK:Me)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='meObj' type='VSPK:Me' >
+</param>
+<param name='blob' type='string' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+</input><output><param name='vNFMetadataObj' type='VSPK:VNFMetadata' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = meObj.session;
+
+vNFMetadataObj = new VSPKVNFMetadata();
+if (blob) {
+   vNFMetadataObj.blob = blob;
+}
+if (description) {
+   vNFMetadataObj.description = description;
+}
+if (name) {
+   vNFMetadataObj.name = name;
+}
+
+meObj.createVNFMetadata(session, vNFMetadataObj);
+]]></script>
+<in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
+<bind name='blob' type='string' export-name="blob" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+</in-binding><out-binding><bind name='vNFMetadataObj' type='VSPK:VNFMetadata' export-name="vNFMetadataObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="meObj"><desc><![CDATA[meObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="blob"><desc><![CDATA[blob]]></desc>
+</p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+</presentation></workflow>

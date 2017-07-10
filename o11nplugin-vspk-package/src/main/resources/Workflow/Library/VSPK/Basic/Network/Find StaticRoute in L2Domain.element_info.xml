@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
-<entry key="name">Find StaticRoute in L2Domain</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">a51c5bc8-d39c-5111-ad60-6ab26b2ccf82</entry>
-</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getOverlayMirrorDestinationTemplateEndPointType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">47ac4239-35e6-5ca8-a84a-08913b0e7322</entry>
+</properties>

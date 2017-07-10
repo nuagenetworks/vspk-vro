@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Appd</entry>
-<entry key="name">Edit FlowSecurityPolicy</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">5ba0b198-75be-54be-bf64-fd338e899ac6</entry>
-</properties>

@@ -9,8 +9,6 @@
 </param>
 <param name='length' type='string' >
 </param>
-<param name='type' type='string' >
-</param>
 <param name='value' type='string' >
 </param>
 </input><output><param name='dHCPOptionObj' type='VSPK:DHCPOption' >
@@ -29,9 +27,6 @@ if (externalID) {
 if (length) {
    dHCPOptionObj.length = length;
 }
-if (type) {
-   dHCPOptionObj.type = type;
-}
 if (value) {
    dHCPOptionObj.value = value;
 }
@@ -41,7 +36,6 @@ domainObj.createDHCPOption(session, dHCPOptionObj);
 <in-binding><bind name='domainObj' type='VSPK:Domain' export-name="domainObj" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='length' type='string' export-name="length" ></bind>
-<bind name='type' type='string' export-name="type" ></bind>
 <bind name='value' type='string' export-name="value" ></bind>
 </in-binding><out-binding><bind name='dHCPOptionObj' type='VSPK:DHCPOption' export-name="dHCPOptionObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -52,8 +46,6 @@ domainObj.createDHCPOption(session, dHCPOptionObj);
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="length"><desc><![CDATA[length]]></desc>
-</p-param>
-<p-param name="type"><desc><![CDATA[type]]></desc>
 </p-param>
 <p-param name="value"><desc><![CDATA[value]]></desc>
 </p-param>

@@ -74,8 +74,6 @@ import net.nuagenetworks.vro.vspk.model.enums.SubnetIPType;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetPATEnabled;
 
-import net.nuagenetworks.vro.vspk.model.enums.SubnetAssociatedApplicationObjectType;
-
 import net.nuagenetworks.vro.vspk.model.enums.SubnetDefaultAction;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetEncryption;
@@ -155,15 +153,6 @@ public class Subnet extends BaseObject {
     
     @JsonProperty(value = "address")
     protected String address;
-    
-    @JsonProperty(value = "associatedApplicationID")
-    protected String associatedApplicationID;
-    
-    @JsonProperty(value = "associatedApplicationObjectID")
-    protected String associatedApplicationObjectID;
-    
-    @JsonProperty(value = "associatedApplicationObjectType")
-    protected SubnetAssociatedApplicationObjectType associatedApplicationObjectType;
     
     @JsonProperty(value = "associatedMulticastChannelMapID")
     protected String associatedMulticastChannelMapID;
@@ -470,39 +459,6 @@ public class Subnet extends BaseObject {
     @JsonIgnore
     public void setAddress(String value) { 
         this.address = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationID", readOnly = false)   
-    public String getAssociatedApplicationID() {
-       return associatedApplicationID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationID(String value) { 
-        this.associatedApplicationID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationObjectID", readOnly = false)   
-    public String getAssociatedApplicationObjectID() {
-       return associatedApplicationObjectID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationObjectID(String value) { 
-        this.associatedApplicationObjectID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationObjectType", readOnly = false)   
-    public SubnetAssociatedApplicationObjectType getAssociatedApplicationObjectType() {
-       return associatedApplicationObjectType;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationObjectType(SubnetAssociatedApplicationObjectType value) { 
-        this.associatedApplicationObjectType = value;
     }
     
     @JsonIgnore
@@ -1067,7 +1023,7 @@ public class Subnet extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", address=" + address + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", defaultAction=" + defaultAction + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", defaultAction=" + defaultAction + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

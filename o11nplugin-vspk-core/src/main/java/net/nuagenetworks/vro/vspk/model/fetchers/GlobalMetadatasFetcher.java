@@ -38,8 +38,6 @@ import net.nuagenetworks.vro.vspk.model.Alarm;
 
 import net.nuagenetworks.vro.vspk.model.AllAlarm;
 
-import net.nuagenetworks.vro.vspk.model.ApplicationService;
-
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.Avatar;
@@ -86,6 +84,10 @@ import net.nuagenetworks.vro.vspk.model.EgressACLEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.EgressACLTemplate;
 
+import net.nuagenetworks.vro.vspk.model.EgressAdvFwdEntryTemplate;
+
+import net.nuagenetworks.vro.vspk.model.EgressAdvFwdTemplate;
+
 import net.nuagenetworks.vro.vspk.model.DomainFIPAclTemplateEntry;
 
 import net.nuagenetworks.vro.vspk.model.DomainFIPAclTemplate;
@@ -111,12 +113,6 @@ import net.nuagenetworks.vro.vspk.model.EnterpriseSecurity;
 import net.nuagenetworks.vro.vspk.model.EventLog;
 
 import net.nuagenetworks.vro.vspk.model.FloatingIp;
-
-import net.nuagenetworks.vro.vspk.model.Flow;
-
-import net.nuagenetworks.vro.vspk.model.FlowForwardingPolicy;
-
-import net.nuagenetworks.vro.vspk.model.FlowSecurityPolicy;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
@@ -288,8 +284,6 @@ import net.nuagenetworks.vro.vspk.model.SystemConfig;
 
 import net.nuagenetworks.vro.vspk.model.TCA;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
-
 import net.nuagenetworks.vro.vspk.model.UplinkRD;
 
 import net.nuagenetworks.vro.vspk.model.User;
@@ -405,16 +399,6 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof AllAlarm) {
             return (AllAlarm) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "ApplicationService", readOnly = true)
-    public ApplicationService getApplicationService() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof ApplicationService) {
-            return (ApplicationService) obj;
         }
         
         return null;
@@ -650,6 +634,26 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "EgressAdvFwdEntryTemplate", readOnly = true)
+    public EgressAdvFwdEntryTemplate getEgressAdvFwdEntryTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EgressAdvFwdEntryTemplate) {
+            return (EgressAdvFwdEntryTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EgressAdvFwdTemplate", readOnly = true)
+    public EgressAdvFwdTemplate getEgressAdvFwdTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EgressAdvFwdTemplate) {
+            return (EgressAdvFwdTemplate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "DomainFIPAclTemplateEntry", readOnly = true)
     public DomainFIPAclTemplateEntry getDomainFIPAclTemplateEntry() {
         RestObject obj = super.getParentRestObj();
@@ -775,36 +779,6 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof FloatingIp) {
             return (FloatingIp) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Flow", readOnly = true)
-    public Flow getFlow() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Flow) {
-            return (Flow) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "FlowForwardingPolicy", readOnly = true)
-    public FlowForwardingPolicy getFlowForwardingPolicy() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof FlowForwardingPolicy) {
-            return (FlowForwardingPolicy) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "FlowSecurityPolicy", readOnly = true)
-    public FlowSecurityPolicy getFlowSecurityPolicy() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof FlowSecurityPolicy) {
-            return (FlowSecurityPolicy) obj;
         }
         
         return null;
@@ -1655,16 +1629,6 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof TCA) {
             return (TCA) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
         }
         
         return null;

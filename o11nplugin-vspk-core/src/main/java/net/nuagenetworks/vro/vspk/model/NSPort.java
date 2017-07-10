@@ -119,9 +119,6 @@ public class NSPort extends BaseObject {
     @JsonProperty(value = "name")
     protected String name;
     
-    @JsonProperty(value = "networkAccelerationEnabled")
-    protected Boolean networkAccelerationEnabled;
-    
     @JsonProperty(value = "permittedAction")
     protected NSPortPermittedAction permittedAction;
     
@@ -342,17 +339,6 @@ public class NSPort extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "NetworkAccelerationEnabled", readOnly = false)   
-    public Boolean getNetworkAccelerationEnabled() {
-       return networkAccelerationEnabled;
-    }
-
-    @JsonIgnore
-    public void setNetworkAccelerationEnabled(Boolean value) { 
-        this.networkAccelerationEnabled = value;
     }
     
     @JsonIgnore
@@ -589,7 +575,7 @@ public class NSPort extends BaseObject {
         }
     }
     public String toString() {
-        return "NSPort [" + "NATTraversal=" + NATTraversal + ", VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", networkAccelerationEnabled=" + networkAccelerationEnabled + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", speed=" + speed + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSPort [" + "NATTraversal=" + NATTraversal + ", VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", speed=" + speed + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -18,9 +18,6 @@
 <param name='name' type='string' >
 </param>
 
-<param name='redundancyEnabled' type='boolean' >
-</param>
-
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -44,7 +41,6 @@ if (name) {
 } else if (redirectionTargetObj.name) {
    redirectionTargetObj.name = "";
 }
-redirectionTargetObj.redundancyEnabled = redundancyEnabled;
 redirectionTargetObj.save(session, 1);]]></script>
 <in-binding><bind name='redirectionTargetObj' type='VSPK:RedirectionTarget' export-name="redirectionTargetObj" ></bind>
 
@@ -55,8 +51,6 @@ redirectionTargetObj.save(session, 1);]]></script>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
-
-<bind name='redundancyEnabled' type='boolean' export-name="redundancyEnabled" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -75,8 +69,5 @@ redirectionTargetObj.save(session, 1);]]></script>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#redirectionTargetObj.name]]></p-qual></p-param>
-
-<p-param name="redundancyEnabled"><desc><![CDATA[redundancyEnabled]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#redirectionTargetObj.redundancyEnabled]]></p-qual></p-param>
 
 </presentation></workflow>

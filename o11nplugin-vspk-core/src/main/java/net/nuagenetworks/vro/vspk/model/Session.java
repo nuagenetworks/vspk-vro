@@ -213,11 +213,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.APPLICATIONSERVICE_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.APPLICATIONSERVICES_FETCHER, entityParentId);
-            return;
-        }
-        
         if (entityType.equals(Constants.AUTODISCOVERCLUSTER_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.AUTODISCOVERCLUSTERS_FETCHER, entityParentId);
             return;
@@ -393,6 +388,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.EGRESSADVFWDENTRYTEMPLATE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.EGRESSADVFWDENTRYTEMPLATES_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.EGRESSADVFWDTEMPLATE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.EGRESSADVFWDTEMPLATES_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.DOMAINFIPACLTEMPLATEENTRIES_FETCHER, entityParentId);
             return;
@@ -465,21 +470,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.FLOATINGIP_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.FLOATINGIPS_FETCHER, entityParentId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.FLOW_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.FLOWS_FETCHER, entityParentId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.FLOWFORWARDINGPOLICY_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.FLOWFORWARDINGPOLICIES_FETCHER, entityParentId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.FLOWSECURITYPOLICY_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.FLOWSECURITYPOLICIES_FETCHER, entityParentId);
             return;
         }
         
@@ -783,11 +773,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.NEXTHOPADDRESS_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.NEXTHOPADDRESS_FETCHER, entityParentId);
-            return;
-        }
-        
         if (entityType.equals(Constants.NSGATEWAY_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.NSGATEWAYS_FETCHER, entityParentId);
             return;
@@ -833,6 +818,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.OVERLAYMIRRORDESTINATION_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.OVERLAYMIRRORDESTINATIONS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.OVERLAYPATNATENTRY_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.OVERLAYPATNATENTRIES_FETCHER, entityParentId);
             return;
@@ -868,6 +863,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.POLICYENTRY_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.POLICYENTRIES_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.POLICYGROUP_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.POLICYGROUPS_FETCHER, entityParentId);
             return;
@@ -875,6 +875,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.POLICYGROUPTEMPLATE_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.POLICYGROUPTEMPLATES_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.POLICYOBJECTGROUP_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.POLICYOBJECTGROUPS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.POLICYSTATEMENT_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.POLICYSTATEMENTS_FETCHER, entityParentId);
             return;
         }
         
@@ -973,6 +983,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.SSIDCONNECTION_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.SSIDCONNECTIONS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.STATICROUTE_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.STATICROUTES_FETCHER, entityParentId);
             return;
@@ -1010,11 +1025,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.TCA_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.TCAS_FETCHER, entityParentId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.TIER_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.TIERS_FETCHER, entityParentId);
             return;
         }
         
@@ -1093,6 +1103,36 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.VNF_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.VNFS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFCATALOG_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.VNFCATALOGS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFDESCRIPTOR_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.VNFDESCRIPTORS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFINTERFACE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.VNFINTERFACES_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFINTERFACEDESCRIPTOR_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.VNFINTERFACEDESCRIPTORS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFMETADATA_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.VNFMETADATAS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.VPNCONNECTION_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.VPNCONNECTIONS_FETCHER, entityParentId);
             return;
@@ -1150,6 +1190,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.VSP_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.VSPS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WIRELESSPORT_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.WIRELESSPORTS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WIRELESSPORTTEMPLATE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.WIRELESSPORTTEMPLATES_FETCHER, entityParentId);
             return;
         }
         
@@ -1219,11 +1269,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.APPLICATIONSERVICE_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.APPLICATIONSERVICE, entityId);
             return;
         }
         
@@ -1402,6 +1447,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.EGRESSADVFWDENTRYTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.EGRESSADVFWDENTRYTEMPLATE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.EGRESSADVFWDTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.EGRESSADVFWDTEMPLATE, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.DOMAINFIPACLTEMPLATEENTRY, entityId);
             return;
@@ -1474,21 +1529,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.FLOATINGIP_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.FLOATINGIP, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.FLOW_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.FLOW, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.FLOWFORWARDINGPOLICY_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.FLOWFORWARDINGPOLICY, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.FLOWSECURITYPOLICY_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.FLOWSECURITYPOLICY, entityId);
             return;
         }
         
@@ -1792,11 +1832,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.NEXTHOPADDRESS_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.NEXTHOPADDRESS, entityId);
-            return;
-        }
-        
         if (entityType.equals(Constants.NSGATEWAY_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.NSGATEWAY, entityId);
             return;
@@ -1842,6 +1877,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.OVERLAYMIRRORDESTINATION_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.OVERLAYMIRRORDESTINATION, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.OVERLAYPATNATENTRY_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.OVERLAYPATNATENTRY, entityId);
             return;
@@ -1877,6 +1922,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.POLICYENTRY_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.POLICYENTRY, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.POLICYGROUP_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.POLICYGROUP, entityId);
             return;
@@ -1884,6 +1934,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.POLICYGROUPTEMPLATE_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.POLICYGROUPTEMPLATE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.POLICYOBJECTGROUP_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.POLICYOBJECTGROUP, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.POLICYSTATEMENT_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.POLICYSTATEMENT, entityId);
             return;
         }
         
@@ -1982,6 +2042,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.SSIDCONNECTION_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.SSIDCONNECTION, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.STATICROUTE_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.STATICROUTE, entityId);
             return;
@@ -2019,11 +2084,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.TCA_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.TCA, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.TIER_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.TIER, entityId);
             return;
         }
         
@@ -2102,6 +2162,36 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.VNF_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.VNF, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFCATALOG_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.VNFCATALOG, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFDESCRIPTOR_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.VNFDESCRIPTOR, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFINTERFACE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.VNFINTERFACE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFINTERFACEDESCRIPTOR_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.VNFINTERFACEDESCRIPTOR, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFMETADATA_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.VNFMETADATA, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.VPNCONNECTION_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.VPNCONNECTION, entityId);
             return;
@@ -2159,6 +2249,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.VSP_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.VSP, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WIRELESSPORT_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.WIRELESSPORT, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WIRELESSPORTTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.WIRELESSPORTTEMPLATE, entityId);
             return;
         }
         
@@ -2228,11 +2328,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.APPLICATIONSERVICE_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.APPLICATIONSERVICE, entityId);
             return;
         }
         
@@ -2411,6 +2506,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.EGRESSADVFWDENTRYTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.EGRESSADVFWDENTRYTEMPLATE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.EGRESSADVFWDTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.EGRESSADVFWDTEMPLATE, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.DOMAINFIPACLTEMPLATEENTRY, entityId);
             return;
@@ -2483,21 +2588,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.FLOATINGIP_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.FLOATINGIP, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.FLOW_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.FLOW, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.FLOWFORWARDINGPOLICY_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.FLOWFORWARDINGPOLICY, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.FLOWSECURITYPOLICY_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.FLOWSECURITYPOLICY, entityId);
             return;
         }
         
@@ -2801,11 +2891,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.NEXTHOPADDRESS_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.NEXTHOPADDRESS, entityId);
-            return;
-        }
-        
         if (entityType.equals(Constants.NSGATEWAY_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.NSGATEWAY, entityId);
             return;
@@ -2851,6 +2936,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.OVERLAYMIRRORDESTINATION_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.OVERLAYMIRRORDESTINATION, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.OVERLAYPATNATENTRY_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.OVERLAYPATNATENTRY, entityId);
             return;
@@ -2886,6 +2981,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.POLICYENTRY_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.POLICYENTRY, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.POLICYGROUP_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.POLICYGROUP, entityId);
             return;
@@ -2893,6 +2993,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.POLICYGROUPTEMPLATE_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.POLICYGROUPTEMPLATE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.POLICYOBJECTGROUP_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.POLICYOBJECTGROUP, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.POLICYSTATEMENT_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.POLICYSTATEMENT, entityId);
             return;
         }
         
@@ -2991,6 +3101,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.SSIDCONNECTION_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.SSIDCONNECTION, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.STATICROUTE_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.STATICROUTE, entityId);
             return;
@@ -3028,11 +3143,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.TCA_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.TCA, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.TIER_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.TIER, entityId);
             return;
         }
         
@@ -3111,6 +3221,36 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.VNF_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.VNF, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFCATALOG_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.VNFCATALOG, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFDESCRIPTOR_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.VNFDESCRIPTOR, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFINTERFACE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.VNFINTERFACE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFINTERFACEDESCRIPTOR_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.VNFINTERFACEDESCRIPTOR, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFMETADATA_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.VNFMETADATA, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.VPNCONNECTION_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.VPNCONNECTION, entityId);
             return;
@@ -3168,6 +3308,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.VSP_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.VSP, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WIRELESSPORT_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.WIRELESSPORT, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WIRELESSPORTTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.WIRELESSPORTTEMPLATE, entityId);
             return;
         }
         

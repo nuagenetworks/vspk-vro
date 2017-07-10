@@ -6,9 +6,6 @@
 <input><param name='addressMapObj' type='VSPK:AddressMap' >
 </param>
 
-<param name='associatedPATNATPoolID' type='string' >
-</param>
-
 <param name='externalID' type='string' >
 </param>
 
@@ -25,11 +22,6 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = addressMapObj.session;
 
-if (associatedPATNATPoolID) {
-   addressMapObj.associatedPATNATPoolID = associatedPATNATPoolID;
-} else if (addressMapObj.associatedPATNATPoolID) {
-   addressMapObj.associatedPATNATPoolID = "";
-}
 if (externalID) {
    addressMapObj.externalID = externalID;
 } else if (addressMapObj.externalID) {
@@ -48,8 +40,6 @@ if (publicIP) {
 addressMapObj.save(session, 1);]]></script>
 <in-binding><bind name='addressMapObj' type='VSPK:AddressMap' export-name="addressMapObj" ></bind>
 
-<bind name='associatedPATNATPoolID' type='string' export-name="associatedPATNATPoolID" ></bind>
-
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='privateIP' type='string' export-name="privateIP" ></bind>
@@ -61,9 +51,6 @@ addressMapObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="addressMapObj"><desc><![CDATA[addressMapObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
-
-<p-param name="associatedPATNATPoolID"><desc><![CDATA[associatedPATNATPoolID]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#addressMapObj.associatedPATNATPoolID]]></p-qual></p-param>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#addressMapObj.externalID]]></p-qual></p-param>

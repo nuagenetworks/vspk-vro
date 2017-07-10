@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Remove SSIDConnection</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2d1af92e-daec-59da-8ce0-4283f853d6aa</entry>
+</properties>

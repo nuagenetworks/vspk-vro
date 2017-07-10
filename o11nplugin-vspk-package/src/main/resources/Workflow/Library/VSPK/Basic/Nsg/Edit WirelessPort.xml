@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="11dd3e6d-bfea-5df3-b858-6ad8f2ef5782"  version="5.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit WirelessPort]]></display-name>
+<ref-types><![CDATA[(VSPK:WirelessPort)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='wirelessPortObj' type='VSPK:WirelessPort' >
+</param>
+
+<param name='countryCode' type='VSPK:WirelessPortCountryCode' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='frequencyChannel' type='VSPK:WirelessPortFrequencyChannel' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='physicalName' type='string' >
+</param>
+
+<param name='portType' type='VSPK:WirelessPortPortType' >
+</param>
+
+<param name='wifiFrequencyBand' type='VSPK:WirelessPortWifiFrequencyBand' >
+</param>
+
+<param name='wifiMode' type='VSPK:WirelessPortWifiMode' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = wirelessPortObj.session;
+
+wirelessPortObj.countryCode = countryCode;
+if (description) {
+   wirelessPortObj.description = description;
+} else if (wirelessPortObj.description) {
+   wirelessPortObj.description = "";
+}
+wirelessPortObj.frequencyChannel = frequencyChannel;
+if (name) {
+   wirelessPortObj.name = name;
+} else if (wirelessPortObj.name) {
+   wirelessPortObj.name = "";
+}
+if (physicalName) {
+   wirelessPortObj.physicalName = physicalName;
+} else if (wirelessPortObj.physicalName) {
+   wirelessPortObj.physicalName = "";
+}
+wirelessPortObj.portType = portType;
+wirelessPortObj.wifiFrequencyBand = wifiFrequencyBand;
+wirelessPortObj.wifiMode = wifiMode;
+wirelessPortObj.save(session, 1);]]></script>
+<in-binding><bind name='wirelessPortObj' type='VSPK:WirelessPort' export-name="wirelessPortObj" ></bind>
+
+<bind name='countryCode' type='VSPK:WirelessPortCountryCode' export-name="countryCode" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='frequencyChannel' type='VSPK:WirelessPortFrequencyChannel' export-name="frequencyChannel" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='physicalName' type='string' export-name="physicalName" ></bind>
+
+<bind name='portType' type='VSPK:WirelessPortPortType' export-name="portType" ></bind>
+
+<bind name='wifiFrequencyBand' type='VSPK:WirelessPortWifiFrequencyBand' export-name="wifiFrequencyBand" ></bind>
+
+<bind name='wifiMode' type='VSPK:WirelessPortWifiMode' export-name="wifiMode" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="wirelessPortObj"><desc><![CDATA[wirelessPortObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="countryCode"><desc><![CDATA[countryCode]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:WirelessPortCountryCode" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getWirelessPortCountryCode").call( #wirelessPortObj )]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#wirelessPortObj.description]]></p-qual></p-param>
+
+<p-param name="frequencyChannel"><desc><![CDATA[frequencyChannel]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:WirelessPortFrequencyChannel" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getWirelessPortFrequencyChannel").call( #wirelessPortObj )]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#wirelessPortObj.name]]></p-qual></p-param>
+
+<p-param name="physicalName"><desc><![CDATA[physicalName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#wirelessPortObj.physicalName]]></p-qual></p-param>
+
+<p-param name="portType"><desc><![CDATA[portType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:WirelessPortPortType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getWirelessPortPortType").call( #wirelessPortObj )]]></p-qual></p-param>
+
+<p-param name="wifiFrequencyBand"><desc><![CDATA[wifiFrequencyBand]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:WirelessPortWifiFrequencyBand" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getWirelessPortWifiFrequencyBand").call( #wirelessPortObj )]]></p-qual></p-param>
+
+<p-param name="wifiMode"><desc><![CDATA[wifiMode]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:WirelessPortWifiMode" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getWirelessPortWifiMode").call( #wirelessPortObj )]]></p-qual></p-param>
+
+</presentation></workflow>

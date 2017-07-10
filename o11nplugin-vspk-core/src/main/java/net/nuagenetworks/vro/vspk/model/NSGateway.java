@@ -62,6 +62,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.SubnetsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkConnectionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.WirelessPortsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewaySSHService;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayTPMStatus;
@@ -79,6 +81,8 @@ import net.nuagenetworks.vro.vspk.model.enums.NSGatewayEntityScope;
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayFamily;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayInheritedSSHServiceState;
+
+import net.nuagenetworks.vro.vspk.model.enums.NSGatewayNetworkAcceleration;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayPermittedAction;
 
@@ -102,6 +106,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.NSPORTS_FETCHER, type = Constants.NSPORTS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.WIRELESSPORTS_FETCHER, type = Constants.WIRELESSPORTS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -110,6 +116,9 @@ public class NSGateway extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "BIOSVersion")
+    protected String BIOSVersion;
     
     @JsonProperty(value = "CPUType")
     protected String CPUType;
@@ -204,6 +213,9 @@ public class NSGateway extends BaseObject {
     @JsonProperty(value = "name")
     protected String name;
     
+    @JsonProperty(value = "networkAcceleration")
+    protected NSGatewayNetworkAcceleration networkAcceleration;
+    
     @JsonProperty(value = "operationMode")
     protected String operationMode;
     
@@ -218,6 +230,9 @@ public class NSGateway extends BaseObject {
     
     @JsonProperty(value = "personality")
     protected NSGatewayPersonality personality;
+    
+    @JsonProperty(value = "productName")
+    protected String productName;
     
     @JsonProperty(value = "redundancyGroupID")
     protected String redundancyGroupID;
@@ -285,6 +300,9 @@ public class NSGateway extends BaseObject {
     @JsonIgnore
     private UplinkConnectionsFetcher uplinkConnections;
     
+    @JsonIgnore
+    private WirelessPortsFetcher wirelessPorts;
+    
     @VsoConstructor
     public NSGateway() {
         alarms = new AlarmsFetcher(this);
@@ -322,6 +340,8 @@ public class NSGateway extends BaseObject {
         subnets = new SubnetsFetcher(this);
         
         uplinkConnections = new UplinkConnectionsFetcher(this);
+        
+        wirelessPorts = new WirelessPortsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -359,6 +379,17 @@ public class NSGateway extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "BIOSVersion", readOnly = false)   
+    public String getBIOSVersion() {
+       return BIOSVersion;
+    }
+
+    @JsonIgnore
+    public void setBIOSVersion(String value) { 
+        this.BIOSVersion = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "CPUType", readOnly = false)   
     public String getCPUType() {
@@ -701,6 +732,17 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetworkAcceleration", readOnly = false)   
+    public NSGatewayNetworkAcceleration getNetworkAcceleration() {
+       return networkAcceleration;
+    }
+
+    @JsonIgnore
+    public void setNetworkAcceleration(NSGatewayNetworkAcceleration value) { 
+        this.networkAcceleration = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "OperationMode", readOnly = false)   
     public String getOperationMode() {
        return operationMode;
@@ -753,6 +795,17 @@ public class NSGateway extends BaseObject {
     @JsonIgnore
     public void setPersonality(NSGatewayPersonality value) { 
         this.personality = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ProductName", readOnly = false)   
+    public String getProductName() {
+       return productName;
+    }
+
+    @JsonIgnore
+    public void setProductName(String value) { 
+        this.productName = value;
     }
     
     @JsonIgnore
@@ -906,6 +959,12 @@ public class NSGateway extends BaseObject {
     public UplinkConnectionsFetcher getUplinkConnections() {
         return uplinkConnections;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "WirelessPorts", readOnly = true)   
+    public WirelessPortsFetcher getWirelessPorts() {
+        return wirelessPorts;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -1019,8 +1078,25 @@ public class NSGateway extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
-    }public String toString() {
-        return "NSGateway [" + "CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", UUID=" + UUID + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+    }
+    @VsoMethod
+    public void createWirelessPort(Session session, WirelessPort childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.WIRELESSPORTS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void instantiateWirelessPort(Session session, WirelessPort childRestObj, WirelessPortTemplate fromTemplate, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.instantiateChild(session, childRestObj, fromTemplate, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.WIRELESSPORTS_FETCHER, getId());
+        }
+    }
+    public String toString() {
+        return "NSGateway [" + "BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", UUID=" + UUID + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", networkAcceleration=" + networkAcceleration + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

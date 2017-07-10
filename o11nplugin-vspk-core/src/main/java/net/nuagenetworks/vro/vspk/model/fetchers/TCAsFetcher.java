@@ -44,8 +44,6 @@ import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
-import net.nuagenetworks.vro.vspk.model.Tier;
-
 import net.nuagenetworks.vro.vspk.model.VMInterface;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
@@ -149,16 +147,6 @@ public class TCAsFetcher extends BaseFetcher<TCA> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Subnet) {
             return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Tier", readOnly = true)
-    public Tier getTier() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Tier) {
-            return (Tier) obj;
         }
         
         return null;

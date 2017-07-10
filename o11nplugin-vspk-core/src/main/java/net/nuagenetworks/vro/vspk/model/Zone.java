@@ -62,8 +62,6 @@ import net.nuagenetworks.vro.vspk.model.enums.ZoneDPI;
 
 import net.nuagenetworks.vro.vspk.model.enums.ZoneIPType;
 
-import net.nuagenetworks.vro.vspk.model.enums.ZoneAssociatedApplicationObjectType;
-
 import net.nuagenetworks.vro.vspk.model.enums.ZoneEncryption;
 
 import net.nuagenetworks.vro.vspk.model.enums.ZoneEntityScope;
@@ -118,15 +116,6 @@ public class Zone extends BaseObject {
     
     @JsonProperty(value = "address")
     protected String address;
-    
-    @JsonProperty(value = "associatedApplicationID")
-    protected String associatedApplicationID;
-    
-    @JsonProperty(value = "associatedApplicationObjectID")
-    protected String associatedApplicationObjectID;
-    
-    @JsonProperty(value = "associatedApplicationObjectType")
-    protected ZoneAssociatedApplicationObjectType associatedApplicationObjectType;
     
     @JsonProperty(value = "associatedMulticastChannelMapID")
     protected String associatedMulticastChannelMapID;
@@ -337,39 +326,6 @@ public class Zone extends BaseObject {
     @JsonIgnore
     public void setAddress(String value) { 
         this.address = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationID", readOnly = false)   
-    public String getAssociatedApplicationID() {
-       return associatedApplicationID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationID(String value) { 
-        this.associatedApplicationID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationObjectID", readOnly = false)   
-    public String getAssociatedApplicationObjectID() {
-       return associatedApplicationObjectID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationObjectID(String value) { 
-        this.associatedApplicationObjectID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationObjectType", readOnly = false)   
-    public ZoneAssociatedApplicationObjectType getAssociatedApplicationObjectType() {
-       return associatedApplicationObjectType;
-    }
-
-    @JsonIgnore
-    public void setAssociatedApplicationObjectType(ZoneAssociatedApplicationObjectType value) { 
-        this.associatedApplicationObjectType = value;
     }
     
     @JsonIgnore
@@ -744,7 +700,7 @@ public class Zone extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.TCAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedApplicationObjectType=" + associatedApplicationObjectType + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

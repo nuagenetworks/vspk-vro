@@ -78,6 +78,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMInterfacesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VNFInterfacesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VPortMirrorsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VRSsFetcher;
@@ -93,6 +95,8 @@ import net.nuagenetworks.vro.vspk.model.enums.VPortMulticast;
 import net.nuagenetworks.vro.vspk.model.enums.VPortOperationalState;
 
 import net.nuagenetworks.vro.vspk.model.enums.VPortSegmentationType;
+
+import net.nuagenetworks.vro.vspk.model.enums.VPortSubType;
 
 import net.nuagenetworks.vro.vspk.model.enums.VPortSystemType;
 
@@ -163,6 +167,9 @@ public class VPort extends BaseObject {
     @JsonProperty(value = "associatedMulticastChannelMapID")
     protected String associatedMulticastChannelMapID;
     
+    @JsonProperty(value = "associatedSSID")
+    protected String associatedSSID;
+    
     @JsonProperty(value = "associatedSendMulticastChannelMapID")
     protected String associatedSendMulticastChannelMapID;
     
@@ -204,6 +211,9 @@ public class VPort extends BaseObject {
     
     @JsonProperty(value = "segmentationType")
     protected VPortSegmentationType segmentationType;
+    
+    @JsonProperty(value = "subType")
+    protected VPortSubType subType;
     
     @JsonProperty(value = "systemType")
     protected VPortSystemType systemType;
@@ -296,6 +306,9 @@ public class VPort extends BaseObject {
     private VMInterfacesFetcher vMInterfaces;
     
     @JsonIgnore
+    private VNFInterfacesFetcher vNFInterfaces;
+    
+    @JsonIgnore
     private VPortMirrorsFetcher vPortMirrors;
     
     @JsonIgnore
@@ -362,6 +375,8 @@ public class VPort extends BaseObject {
         vMs = new VMsFetcher(this);
         
         vMInterfaces = new VMInterfacesFetcher(this);
+        
+        vNFInterfaces = new VNFInterfacesFetcher(this);
         
         vPortMirrors = new VPortMirrorsFetcher(this);
         
@@ -467,6 +482,17 @@ public class VPort extends BaseObject {
     @JsonIgnore
     public void setAssociatedMulticastChannelMapID(String value) { 
         this.associatedMulticastChannelMapID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedSSID", readOnly = false)   
+    public String getAssociatedSSID() {
+       return associatedSSID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedSSID(String value) { 
+        this.associatedSSID = value;
     }
     
     @JsonIgnore
@@ -621,6 +647,17 @@ public class VPort extends BaseObject {
     @JsonIgnore
     public void setSegmentationType(VPortSegmentationType value) { 
         this.segmentationType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SubType", readOnly = false)   
+    public VPortSubType getSubType() {
+       return subType;
+    }
+
+    @JsonIgnore
+    public void setSubType(VPortSubType value) { 
+        this.subType = value;
     }
     
     @JsonIgnore
@@ -824,6 +861,12 @@ public class VPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VNFInterfaces", readOnly = true)   
+    public VNFInterfacesFetcher getVNFInterfaces() {
+        return vNFInterfaces;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VPortMirrors", readOnly = true)   
     public VPortMirrorsFetcher getVPortMirrors() {
         return vPortMirrors;
@@ -987,7 +1030,7 @@ public class VPort extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTMIRRORS_FETCHER, getId());
         }
     }public String toString() {
-        return "VPort [" + "DPI=" + DPI + ", VLANID=" + VLANID + ", active=" + active + ", addressSpoofing=" + addressSpoofing + ", associatedFloatingIPID=" + associatedFloatingIPID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSendMulticastChannelMapID=" + associatedSendMulticastChannelMapID + ", associatedTrunkID=" + associatedTrunkID + ", description=" + description + ", domainID=" + domainID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hasAttachedInterfaces=" + hasAttachedInterfaces + ", lastUpdatedBy=" + lastUpdatedBy + ", multiNICVPortID=" + multiNICVPortID + ", multicast=" + multicast + ", name=" + name + ", operationalState=" + operationalState + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", systemType=" + systemType + ", trunkRole=" + trunkRole + ", type=" + type + ", zoneID=" + zoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VPort [" + "DPI=" + DPI + ", VLANID=" + VLANID + ", active=" + active + ", addressSpoofing=" + addressSpoofing + ", associatedFloatingIPID=" + associatedFloatingIPID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSSID=" + associatedSSID + ", associatedSendMulticastChannelMapID=" + associatedSendMulticastChannelMapID + ", associatedTrunkID=" + associatedTrunkID + ", description=" + description + ", domainID=" + domainID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hasAttachedInterfaces=" + hasAttachedInterfaces + ", lastUpdatedBy=" + lastUpdatedBy + ", multiNICVPortID=" + multiNICVPortID + ", multicast=" + multicast + ", name=" + name + ", operationalState=" + operationalState + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", subType=" + subType + ", systemType=" + systemType + ", trunkRole=" + trunkRole + ", type=" + type + ", zoneID=" + zoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

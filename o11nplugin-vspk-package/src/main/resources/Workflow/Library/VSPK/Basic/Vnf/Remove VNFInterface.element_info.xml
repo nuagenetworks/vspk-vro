@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vnf</entry>
+<entry key="name">Remove VNFInterface</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">281d6b37-0fdd-533e-a6cf-9f782ba2e523</entry>
+</properties>

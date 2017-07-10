@@ -56,7 +56,7 @@ public class DemarcationService extends BaseObject {
     protected String associatedVLANID;
     
     @JsonProperty(value = "priority")
-    protected String priority;
+    protected Long priority;
     
     @JsonProperty(value = "routeDistinguisher")
     protected String routeDistinguisher;
@@ -131,12 +131,12 @@ public class DemarcationService extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "Priority", readOnly = false)   
-    public String getPriority() {
+    public Long getPriority() {
        return priority;
     }
 
     @JsonIgnore
-    public void setPriority(String value) { 
+    public void setPriority(Long value) { 
         this.priority = value;
     }
     

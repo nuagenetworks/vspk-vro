@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
-<entry key="name">Find NextHopAddress in Link</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">35c5366a-c93d-5484-b9a2-d4d98be27302</entry>
-</properties>

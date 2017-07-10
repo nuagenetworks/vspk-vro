@@ -54,8 +54,6 @@ public interface Constants extends BaseConstants {
     String APPLICATIONPERFORMANCEMANAGEMENTS = "Applicationperformancemanagements";
     String APPLICATIONPERFORMANCEMANAGEMENTBINDING = "Applicationperformancemanagementbinding";
     String APPLICATIONPERFORMANCEMANAGEMENTBINDINGS = "Applicationperformancemanagementbindings";
-    String APPLICATIONSERVICE = "ApplicationService";
-    String APPLICATIONSERVICES = "ApplicationServices";
     String AUTODISCOVERCLUSTER = "AutoDiscoverCluster";
     String AUTODISCOVERCLUSTERS = "AutoDiscoverClusters";
     String AUTODISCOVEREDDATACENTER = "Autodiscovereddatacenter";
@@ -126,6 +124,10 @@ public interface Constants extends BaseConstants {
     String EGRESSACLENTRYTEMPLATES = "EgressACLEntryTemplates";
     String EGRESSACLTEMPLATE = "EgressACLTemplate";
     String EGRESSACLTEMPLATES = "EgressACLTemplates";
+    String EGRESSADVFWDENTRYTEMPLATE = "EgressAdvFwdEntryTemplate";
+    String EGRESSADVFWDENTRYTEMPLATES = "EgressAdvFwdEntryTemplates";
+    String EGRESSADVFWDTEMPLATE = "EgressAdvFwdTemplate";
+    String EGRESSADVFWDTEMPLATES = "EgressAdvFwdTemplates";
     String DOMAINFIPACLTEMPLATEENTRY = "DomainFIPAclTemplateEntry";
     String DOMAINFIPACLTEMPLATEENTRIES = "DomainFIPAclTemplateEntries";
     String DOMAINFIPACLTEMPLATE = "DomainFIPAclTemplate";
@@ -156,12 +158,6 @@ public interface Constants extends BaseConstants {
     String FIREWALLRULES = "FirewallRules";
     String FLOATINGIP = "FloatingIp";
     String FLOATINGIPS = "FloatingIps";
-    String FLOW = "Flow";
-    String FLOWS = "Flows";
-    String FLOWFORWARDINGPOLICY = "FlowForwardingPolicy";
-    String FLOWFORWARDINGPOLICIES = "FlowForwardingPolicies";
-    String FLOWSECURITYPOLICY = "FlowSecurityPolicy";
-    String FLOWSECURITYPOLICIES = "FlowSecurityPolicies";
     String GATEWAY = "Gateway";
     String GATEWAYS = "Gateways";
     String GATEWAYSECUREDDATA = "GatewaySecuredData";
@@ -282,8 +278,6 @@ public interface Constants extends BaseConstants {
     String NETWORKPERFORMANCEMEASUREMENTS = "NetworkPerformanceMeasurements";
     String NEXTHOP = "NextHop";
     String NEXTHOPS = "NextHops";
-    String NEXTHOPADDRESS = "NextHopAddress";
-    
     String NSGATEWAY = "NSGateway";
     String NSGATEWAYS = "NSGateways";
     String NSGATEWAYTEMPLATE = "NSGatewayTemplate";
@@ -302,6 +296,10 @@ public interface Constants extends BaseConstants {
     String REDUNDANTPORTS = "RedundantPorts";
     String OVERLAYADDRESSPOOL = "OverlayAddressPool";
     String OVERLAYADDRESSPOOLS = "OverlayAddressPools";
+    String OVERLAYMIRRORDESTINATION = "OverlayMirrorDestination";
+    String OVERLAYMIRRORDESTINATIONS = "OverlayMirrorDestinations";
+    String OVERLAYMIRRORDESTINATIONTEMPLATE = "OverlayMirrorDestinationTemplate";
+    String OVERLAYMIRRORDESTINATIONTEMPLATES = "OverlayMirrorDestinationTemplates";
     String OVERLAYPATNATENTRY = "OverlayPATNATEntry";
     String OVERLAYPATNATENTRIES = "OverlayPATNATEntries";
     String PATIPENTRY = "PATIPEntry";
@@ -316,10 +314,16 @@ public interface Constants extends BaseConstants {
     String PERMISSIONS = "Permissions";
     String POLICYDECISION = "PolicyDecision";
     String POLICYDECISIONS = "PolicyDecisions";
+    String POLICYENTRY = "PolicyEntry";
+    String POLICYENTRIES = "PolicyEntries";
     String POLICYGROUP = "PolicyGroup";
     String POLICYGROUPS = "PolicyGroups";
     String POLICYGROUPTEMPLATE = "PolicyGroupTemplate";
     String POLICYGROUPTEMPLATES = "PolicyGroupTemplates";
+    String POLICYOBJECTGROUP = "PolicyObjectGroup";
+    String POLICYOBJECTGROUPS = "PolicyObjectGroups";
+    String POLICYSTATEMENT = "PolicyStatement";
+    String POLICYSTATEMENTS = "PolicyStatements";
     String PORT = "Port";
     String PORTS = "Ports";
     String PORTMAPPING = "PortMapping";
@@ -358,6 +362,8 @@ public interface Constants extends BaseConstants {
     String SPATSOURCESPOOLS = "SPATSourcesPools";
     String SSHKEY = "SSHKey";
     String SSHKEYS = "SSHKeys";
+    String SSIDCONNECTION = "SSIDConnection";
+    String SSIDCONNECTIONS = "SSIDConnections";
     String STATICROUTE = "StaticRoute";
     String STATICROUTES = "StaticRoutes";
     String STATISTICS = "Statistics";
@@ -374,8 +380,6 @@ public interface Constants extends BaseConstants {
     String SYSTEMCONFIGS = "SystemConfigs";
     String TCA = "TCA";
     String TCAS = "TCAs";
-    String TIER = "Tier";
-    String TIERS = "Tiers";
     String TRUNK = "Trunk";
     String TRUNKS = "Trunks";
     String UNDERLAY = "Underlay";
@@ -406,6 +410,18 @@ public interface Constants extends BaseConstants {
     String VMS = "VMs";
     String VMINTERFACE = "VMInterface";
     String VMINTERFACES = "VMInterfaces";
+    String VNF = "VNF";
+    String VNFS = "VNFs";
+    String VNFCATALOG = "VNFCatalog";
+    String VNFCATALOGS = "VNFCatalogs";
+    String VNFDESCRIPTOR = "VNFDescriptor";
+    String VNFDESCRIPTORS = "VNFDescriptors";
+    String VNFINTERFACE = "VNFInterface";
+    String VNFINTERFACES = "VNFInterfaces";
+    String VNFINTERFACEDESCRIPTOR = "VNFInterfaceDescriptor";
+    String VNFINTERFACEDESCRIPTORS = "VNFInterfaceDescriptors";
+    String VNFMETADATA = "VNFMetadata";
+    String VNFMETADATAS = "VNFMetadatas";
     String VPNCONNECTION = "VPNConnection";
     String VPNCONNECTIONS = "VPNConnections";
     String VPORT = "VPort";
@@ -430,6 +446,10 @@ public interface Constants extends BaseConstants {
     String VSGREDUNDANTPORTS = "VsgRedundantPorts";
     String VSP = "VSP";
     String VSPS = "VSPs";
+    String WIRELESSPORT = "WirelessPort";
+    String WIRELESSPORTS = "WirelessPorts";
+    String WIRELESSPORTTEMPLATE = "WirelessPortTemplate";
+    String WIRELESSPORTTEMPLATES = "WirelessPortTemplates";
     String ZFBAUTOASSIGNMENT = "ZFBAutoAssignment";
     String ZFBAUTOASSIGNMENTS = "ZFBAutoAssignments";
     String ZFBREQUEST = "ZFBRequest";
@@ -449,7 +469,6 @@ public interface Constants extends BaseConstants {
     String APPLICATIONBINDINGS_FETCHER = "ApplicationBindingsFetcher";
     String APPLICATIONPERFORMANCEMANAGEMENTS_FETCHER = "ApplicationperformancemanagementsFetcher";
     String APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER = "ApplicationperformancemanagementbindingsFetcher";
-    String APPLICATIONSERVICES_FETCHER = "ApplicationServicesFetcher";
     String AUTODISCOVERCLUSTERS_FETCHER = "AutoDiscoverClustersFetcher";
     String AUTODISCOVEREDDATACENTERS_FETCHER = "AutodiscovereddatacentersFetcher";
     String AUTODISCOVEREDGATEWAYS_FETCHER = "AutoDiscoveredGatewaysFetcher";
@@ -485,6 +504,8 @@ public interface Constants extends BaseConstants {
     String VCENTEREAMCONFIGS_FETCHER = "VCenterEAMConfigsFetcher";
     String EGRESSACLENTRYTEMPLATES_FETCHER = "EgressACLEntryTemplatesFetcher";
     String EGRESSACLTEMPLATES_FETCHER = "EgressACLTemplatesFetcher";
+    String EGRESSADVFWDENTRYTEMPLATES_FETCHER = "EgressAdvFwdEntryTemplatesFetcher";
+    String EGRESSADVFWDTEMPLATES_FETCHER = "EgressAdvFwdTemplatesFetcher";
     String DOMAINFIPACLTEMPLATEENTRIES_FETCHER = "DomainFIPAclTemplateEntriesFetcher";
     String DOMAINFIPACLTEMPLATES_FETCHER = "DomainFIPAclTemplatesFetcher";
     String FLOATINGIPACLTEMPLATEENTRIES_FETCHER = "FloatingIPACLTemplateEntriesFetcher";
@@ -500,9 +521,6 @@ public interface Constants extends BaseConstants {
     String FIREWALLACLS_FETCHER = "FirewallAclsFetcher";
     String FIREWALLRULES_FETCHER = "FirewallRulesFetcher";
     String FLOATINGIPS_FETCHER = "FloatingIpsFetcher";
-    String FLOWS_FETCHER = "FlowsFetcher";
-    String FLOWFORWARDINGPOLICIES_FETCHER = "FlowForwardingPoliciesFetcher";
-    String FLOWSECURITYPOLICIES_FETCHER = "FlowSecurityPoliciesFetcher";
     String GATEWAYS_FETCHER = "GatewaysFetcher";
     String GATEWAYSECUREDDATAS_FETCHER = "GatewaySecuredDatasFetcher";
     String GATEWAYSECURITIES_FETCHER = "GatewaySecuritiesFetcher";
@@ -563,7 +581,6 @@ public interface Constants extends BaseConstants {
     String NETWORKPERFORMANCEBINDINGS_FETCHER = "NetworkPerformanceBindingsFetcher";
     String NETWORKPERFORMANCEMEASUREMENTS_FETCHER = "NetworkPerformanceMeasurementsFetcher";
     String NEXTHOPS_FETCHER = "NextHopsFetcher";
-    String NEXTHOPADDRESS_FETCHER = "NextHopAddressFetcher";
     String NSGATEWAYS_FETCHER = "NSGatewaysFetcher";
     String NSGATEWAYTEMPLATES_FETCHER = "NSGatewayTemplatesFetcher";
     String NSGGROUPS_FETCHER = "NSGGroupsFetcher";
@@ -573,6 +590,8 @@ public interface Constants extends BaseConstants {
     String NSPORTTEMPLATES_FETCHER = "NSPortTemplatesFetcher";
     String REDUNDANTPORTS_FETCHER = "RedundantPortsFetcher";
     String OVERLAYADDRESSPOOLS_FETCHER = "OverlayAddressPoolsFetcher";
+    String OVERLAYMIRRORDESTINATIONS_FETCHER = "OverlayMirrorDestinationsFetcher";
+    String OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER = "OverlayMirrorDestinationTemplatesFetcher";
     String OVERLAYPATNATENTRIES_FETCHER = "OverlayPATNATEntriesFetcher";
     String PATIPENTRIES_FETCHER = "PATIPEntriesFetcher";
     String PATMAPPERS_FETCHER = "PATMappersFetcher";
@@ -580,8 +599,11 @@ public interface Constants extends BaseConstants {
     String PERFORMANCEMONITORS_FETCHER = "PerformanceMonitorsFetcher";
     String PERMISSIONS_FETCHER = "PermissionsFetcher";
     String POLICYDECISIONS_FETCHER = "PolicyDecisionsFetcher";
+    String POLICYENTRIES_FETCHER = "PolicyEntriesFetcher";
     String POLICYGROUPS_FETCHER = "PolicyGroupsFetcher";
     String POLICYGROUPTEMPLATES_FETCHER = "PolicyGroupTemplatesFetcher";
+    String POLICYOBJECTGROUPS_FETCHER = "PolicyObjectGroupsFetcher";
+    String POLICYSTATEMENTS_FETCHER = "PolicyStatementsFetcher";
     String PORTS_FETCHER = "PortsFetcher";
     String PORTMAPPINGS_FETCHER = "PortMappingsFetcher";
     String PORTTEMPLATES_FETCHER = "PortTemplatesFetcher";
@@ -601,6 +623,7 @@ public interface Constants extends BaseConstants {
     String SITEINFOS_FETCHER = "SiteInfosFetcher";
     String SPATSOURCESPOOLS_FETCHER = "SPATSourcesPoolsFetcher";
     String SSHKEYS_FETCHER = "SSHKeysFetcher";
+    String SSIDCONNECTIONS_FETCHER = "SSIDConnectionsFetcher";
     String STATICROUTES_FETCHER = "StaticRoutesFetcher";
     String STATISTICS_FETCHER = "StatisticsFetcher";
     String STATSCOLLECTORINFOS_FETCHER = "StatsCollectorInfosFetcher";
@@ -609,7 +632,6 @@ public interface Constants extends BaseConstants {
     String SUBNETTEMPLATES_FETCHER = "SubnetTemplatesFetcher";
     String SYSTEMCONFIGS_FETCHER = "SystemConfigsFetcher";
     String TCAS_FETCHER = "TCAsFetcher";
-    String TIERS_FETCHER = "TiersFetcher";
     String TRUNKS_FETCHER = "TrunksFetcher";
     String UNDERLAYS_FETCHER = "UnderlaysFetcher";
     String UPLINKCONNECTIONS_FETCHER = "UplinkConnectionsFetcher";
@@ -625,6 +647,12 @@ public interface Constants extends BaseConstants {
     String VLANTEMPLATES_FETCHER = "VLANTemplatesFetcher";
     String VMS_FETCHER = "VMsFetcher";
     String VMINTERFACES_FETCHER = "VMInterfacesFetcher";
+    String VNFS_FETCHER = "VNFsFetcher";
+    String VNFCATALOGS_FETCHER = "VNFCatalogsFetcher";
+    String VNFDESCRIPTORS_FETCHER = "VNFDescriptorsFetcher";
+    String VNFINTERFACES_FETCHER = "VNFInterfacesFetcher";
+    String VNFINTERFACEDESCRIPTORS_FETCHER = "VNFInterfaceDescriptorsFetcher";
+    String VNFMETADATAS_FETCHER = "VNFMetadatasFetcher";
     String VPNCONNECTIONS_FETCHER = "VPNConnectionsFetcher";
     String VPORTS_FETCHER = "VPortsFetcher";
     String VPORTMIRRORS_FETCHER = "VPortMirrorsFetcher";
@@ -637,6 +665,8 @@ public interface Constants extends BaseConstants {
     String VSDS_FETCHER = "VSDsFetcher";
     String VSGREDUNDANTPORTS_FETCHER = "VsgRedundantPortsFetcher";
     String VSPS_FETCHER = "VSPsFetcher";
+    String WIRELESSPORTS_FETCHER = "WirelessPortsFetcher";
+    String WIRELESSPORTTEMPLATES_FETCHER = "WirelessPortTemplatesFetcher";
     String ZFBAUTOASSIGNMENTS_FETCHER = "ZFBAutoAssignmentsFetcher";
     String ZFBREQUESTS_FETCHER = "ZFBRequestsFetcher";
     String ZONES_FETCHER = "ZonesFetcher";
@@ -667,9 +697,6 @@ public interface Constants extends BaseConstants {
     
     
     
-    
-    String APPLICATIONSERVICE_DIRECTION_ENUM = "ApplicationServiceDirection";
-    String APPLICATIONSERVICE_ENTITYSCOPE_ENUM = "ApplicationServiceEntityScope";
     
     String AUTODISCOVERCLUSTER_ENTITYSCOPE_ENUM = "AutoDiscoverClusterEntityScope";
     
@@ -740,7 +767,6 @@ public interface Constants extends BaseConstants {
     String DOMAIN_DPI_ENUM = "DomainDPI";
     String DOMAIN_PATENABLED_ENUM = "DomainPATEnabled";
     String DOMAIN_ADVERTISECRITERIA_ENUM = "DomainAdvertiseCriteria";
-    String DOMAIN_APPLICATIONDEPLOYMENTPOLICY_ENUM = "DomainApplicationDeploymentPolicy";
     String DOMAIN_ENCRYPTION_ENUM = "DomainEncryption";
     String DOMAIN_ENTITYSCOPE_ENUM = "DomainEntityScope";
     String DOMAIN_MAINTENANCEMODE_ENUM = "DomainMaintenanceMode";
@@ -767,7 +793,6 @@ public interface Constants extends BaseConstants {
     String VCENTEREAMCONFIG_ENTITYSCOPE_ENUM = "VCenterEAMConfigEntityScope";
     
     String EGRESSACLENTRYTEMPLATE_ACTION_ENUM = "EgressACLEntryTemplateAction";
-    String EGRESSACLENTRYTEMPLATE_ASSOCIATEDAPPLICATIONOBJECTTYPE_ENUM = "EgressACLEntryTemplateAssociatedApplicationObjectType";
     String EGRESSACLENTRYTEMPLATE_ENTITYSCOPE_ENUM = "EgressACLEntryTemplateEntityScope";
     String EGRESSACLENTRYTEMPLATE_LOCATIONTYPE_ENUM = "EgressACLEntryTemplateLocationType";
     String EGRESSACLENTRYTEMPLATE_NETWORKTYPE_ENUM = "EgressACLEntryTemplateNetworkType";
@@ -777,8 +802,19 @@ public interface Constants extends BaseConstants {
     String EGRESSACLTEMPLATE_POLICYSTATE_ENUM = "EgressACLTemplatePolicyState";
     String EGRESSACLTEMPLATE_PRIORITYTYPE_ENUM = "EgressACLTemplatePriorityType";
     
+    String EGRESSADVFWDENTRYTEMPLATE_FCOVERRIDE_ENUM = "EgressAdvFwdEntryTemplateFCOverride";
+    String EGRESSADVFWDENTRYTEMPLATE_ACTION_ENUM = "EgressAdvFwdEntryTemplateAction";
+    String EGRESSADVFWDENTRYTEMPLATE_ENTITYSCOPE_ENUM = "EgressAdvFwdEntryTemplateEntityScope";
+    String EGRESSADVFWDENTRYTEMPLATE_LOCATIONTYPE_ENUM = "EgressAdvFwdEntryTemplateLocationType";
+    String EGRESSADVFWDENTRYTEMPLATE_NETWORKTYPE_ENUM = "EgressAdvFwdEntryTemplateNetworkType";
+    String EGRESSADVFWDENTRYTEMPLATE_POLICYSTATE_ENUM = "EgressAdvFwdEntryTemplatePolicyState";
+    String EGRESSADVFWDENTRYTEMPLATE_UPLINKPREFERENCE_ENUM = "EgressAdvFwdEntryTemplateUplinkPreference";
+    
+    String EGRESSADVFWDTEMPLATE_ENTITYSCOPE_ENUM = "EgressAdvFwdTemplateEntityScope";
+    String EGRESSADVFWDTEMPLATE_POLICYSTATE_ENUM = "EgressAdvFwdTemplatePolicyState";
+    String EGRESSADVFWDTEMPLATE_PRIORITYTYPE_ENUM = "EgressAdvFwdTemplatePriorityType";
+    
     String DOMAINFIPACLTEMPLATEENTRY_ACTION_ENUM = "DomainFIPAclTemplateEntryAction";
-    String DOMAINFIPACLTEMPLATEENTRY_ASSOCIATEDAPPLICATIONOBJECTTYPE_ENUM = "DomainFIPAclTemplateEntryAssociatedApplicationObjectType";
     String DOMAINFIPACLTEMPLATEENTRY_DESTINATIONTYPE_ENUM = "DomainFIPAclTemplateEntryDestinationType";
     String DOMAINFIPACLTEMPLATEENTRY_ENTITYSCOPE_ENUM = "DomainFIPAclTemplateEntryEntityScope";
     String DOMAINFIPACLTEMPLATEENTRY_LOCATIONTYPE_ENUM = "DomainFIPAclTemplateEntryLocationType";
@@ -791,7 +827,6 @@ public interface Constants extends BaseConstants {
     String DOMAINFIPACLTEMPLATE_PRIORITYTYPE_ENUM = "DomainFIPAclTemplatePriorityType";
     
     String FLOATINGIPACLTEMPLATEENTRY_ACTION_ENUM = "FloatingIPACLTemplateEntryAction";
-    String FLOATINGIPACLTEMPLATEENTRY_ASSOCIATEDAPPLICATIONOBJECTTYPE_ENUM = "FloatingIPACLTemplateEntryAssociatedApplicationObjectType";
     String FLOATINGIPACLTEMPLATEENTRY_ENTITYSCOPE_ENUM = "FloatingIPACLTemplateEntryEntityScope";
     String FLOATINGIPACLTEMPLATEENTRY_LOCATIONTYPE_ENUM = "FloatingIPACLTemplateEntryLocationType";
     String FLOATINGIPACLTEMPLATEENTRY_NETWORKTYPE_ENUM = "FloatingIPACLTemplateEntryNetworkType";
@@ -836,16 +871,6 @@ public interface Constants extends BaseConstants {
     String FIREWALLRULE_SOURCETYPE_ENUM = "FirewallRuleSourceType";
     
     String FLOATINGIP_ENTITYSCOPE_ENUM = "FloatingIpEntityScope";
-    
-    String FLOW_ENTITYSCOPE_ENUM = "FlowEntityScope";
-    
-    String FLOWFORWARDINGPOLICY_ASSOCIATEDNETWORKOBJECTTYPE_ENUM = "FlowForwardingPolicyAssociatedNetworkObjectType";
-    String FLOWFORWARDINGPOLICY_ENTITYSCOPE_ENUM = "FlowForwardingPolicyEntityScope";
-    String FLOWFORWARDINGPOLICY_TYPE_ENUM = "FlowForwardingPolicyType";
-    
-    String FLOWSECURITYPOLICY_ACTION_ENUM = "FlowSecurityPolicyAction";
-    String FLOWSECURITYPOLICY_ASSOCIATEDNETWORKOBJECTTYPE_ENUM = "FlowSecurityPolicyAssociatedNetworkObjectType";
-    String FLOWSECURITYPOLICY_ENTITYSCOPE_ENUM = "FlowSecurityPolicyEntityScope";
     
     String GATEWAY_ENTITYSCOPE_ENUM = "GatewayEntityScope";
     String GATEWAY_PERMITTEDACTION_ENUM = "GatewayPermittedAction";
@@ -927,7 +952,6 @@ public interface Constants extends BaseConstants {
     String INFRASTRUCTUREVSCPROFILE_ENTITYSCOPE_ENUM = "InfrastructureVscProfileEntityScope";
     
     String INGRESSACLENTRYTEMPLATE_ACTION_ENUM = "IngressACLEntryTemplateAction";
-    String INGRESSACLENTRYTEMPLATE_ASSOCIATEDAPPLICATIONOBJECTTYPE_ENUM = "IngressACLEntryTemplateAssociatedApplicationObjectType";
     String INGRESSACLENTRYTEMPLATE_ENTITYSCOPE_ENUM = "IngressACLEntryTemplateEntityScope";
     String INGRESSACLENTRYTEMPLATE_LOCATIONTYPE_ENUM = "IngressACLEntryTemplateLocationType";
     String INGRESSACLENTRYTEMPLATE_NETWORKTYPE_ENUM = "IngressACLEntryTemplateNetworkType";
@@ -939,11 +963,11 @@ public interface Constants extends BaseConstants {
     
     String INGRESSADVFWDENTRYTEMPLATE_FCOVERRIDE_ENUM = "IngressAdvFwdEntryTemplateFCOverride";
     String INGRESSADVFWDENTRYTEMPLATE_ACTION_ENUM = "IngressAdvFwdEntryTemplateAction";
-    String INGRESSADVFWDENTRYTEMPLATE_ASSOCIATEDAPPLICATIONOBJECTTYPE_ENUM = "IngressAdvFwdEntryTemplateAssociatedApplicationObjectType";
     String INGRESSADVFWDENTRYTEMPLATE_ENTITYSCOPE_ENUM = "IngressAdvFwdEntryTemplateEntityScope";
     String INGRESSADVFWDENTRYTEMPLATE_LOCATIONTYPE_ENUM = "IngressAdvFwdEntryTemplateLocationType";
     String INGRESSADVFWDENTRYTEMPLATE_NETWORKTYPE_ENUM = "IngressAdvFwdEntryTemplateNetworkType";
     String INGRESSADVFWDENTRYTEMPLATE_POLICYSTATE_ENUM = "IngressAdvFwdEntryTemplatePolicyState";
+    String INGRESSADVFWDENTRYTEMPLATE_REDIRECTREWRITETYPE_ENUM = "IngressAdvFwdEntryTemplateRedirectRewriteType";
     String INGRESSADVFWDENTRYTEMPLATE_UPLINKPREFERENCE_ENUM = "IngressAdvFwdEntryTemplateUplinkPreference";
     
     String INGRESSADVFWDTEMPLATE_ENTITYSCOPE_ENUM = "IngressAdvFwdTemplateEntityScope";
@@ -951,7 +975,6 @@ public interface Constants extends BaseConstants {
     String INGRESSADVFWDTEMPLATE_PRIORITYTYPE_ENUM = "IngressAdvFwdTemplatePriorityType";
     
     String INGRESSEXTERNALSERVICETEMPLATEENTRY_ACTION_ENUM = "IngressExternalServiceTemplateEntryAction";
-    String INGRESSEXTERNALSERVICETEMPLATEENTRY_ASSOCIATEDAPPLICATIONOBJECTTYPE_ENUM = "IngressExternalServiceTemplateEntryAssociatedApplicationObjectType";
     String INGRESSEXTERNALSERVICETEMPLATEENTRY_ENTITYSCOPE_ENUM = "IngressExternalServiceTemplateEntryEntityScope";
     String INGRESSEXTERNALSERVICETEMPLATEENTRY_LOCATIONTYPE_ENUM = "IngressExternalServiceTemplateEntryLocationType";
     String INGRESSEXTERNALSERVICETEMPLATEENTRY_NETWORKTYPE_ENUM = "IngressExternalServiceTemplateEntryNetworkType";
@@ -1055,7 +1078,6 @@ public interface Constants extends BaseConstants {
     
     String NEXTHOP_ENTITYSCOPE_ENUM = "NextHopEntityScope";
     
-    
     String NSGATEWAY_SSHSERVICE_ENUM = "NSGatewaySSHService";
     String NSGATEWAY_TPMSTATUS_ENUM = "NSGatewayTPMStatus";
     String NSGATEWAY_BOOTSTRAPSTATUS_ENUM = "NSGatewayBootstrapStatus";
@@ -1065,6 +1087,7 @@ public interface Constants extends BaseConstants {
     String NSGATEWAY_ENTITYSCOPE_ENUM = "NSGatewayEntityScope";
     String NSGATEWAY_FAMILY_ENUM = "NSGatewayFamily";
     String NSGATEWAY_INHERITEDSSHSERVICESTATE_ENUM = "NSGatewayInheritedSSHServiceState";
+    String NSGATEWAY_NETWORKACCELERATION_ENUM = "NSGatewayNetworkAcceleration";
     String NSGATEWAY_PERMITTEDACTION_ENUM = "NSGatewayPermittedAction";
     String NSGATEWAY_PERSONALITY_ENUM = "NSGatewayPersonality";
     
@@ -1101,6 +1124,12 @@ public interface Constants extends BaseConstants {
     String REDUNDANTPORT_STATUS_ENUM = "RedundantPortStatus";
     
     
+    String OVERLAYMIRRORDESTINATION_ENDPOINTTYPE_ENUM = "OverlayMirrorDestinationEndPointType";
+    String OVERLAYMIRRORDESTINATION_TRIGGERTYPE_ENUM = "OverlayMirrorDestinationTriggerType";
+    
+    String OVERLAYMIRRORDESTINATIONTEMPLATE_ENDPOINTTYPE_ENUM = "OverlayMirrorDestinationTemplateEndPointType";
+    String OVERLAYMIRRORDESTINATIONTEMPLATE_TRIGGERTYPE_ENUM = "OverlayMirrorDestinationTemplateTriggerType";
+    
     
     String PATIPENTRY_IPTYPE_ENUM = "PATIPEntryIPType";
     String PATIPENTRY_ENTITYSCOPE_ENUM = "PATIPEntryEntityScope";
@@ -1118,11 +1147,15 @@ public interface Constants extends BaseConstants {
     
     String POLICYDECISION_ENTITYSCOPE_ENUM = "PolicyDecisionEntityScope";
     
+    
     String POLICYGROUP_ENTITYSCOPE_ENUM = "PolicyGroupEntityScope";
     String POLICYGROUP_TYPE_ENUM = "PolicyGroupType";
     
     String POLICYGROUPTEMPLATE_ENTITYSCOPE_ENUM = "PolicyGroupTemplateEntityScope";
     String POLICYGROUPTEMPLATE_TYPE_ENUM = "PolicyGroupTemplateType";
+    
+    String POLICYOBJECTGROUP_TYPE_ENUM = "PolicyObjectGroupType";
+    
     
     String PORT_ENTITYSCOPE_ENUM = "PortEntityScope";
     String PORT_PERMITTEDACTION_ENUM = "PortPermittedAction";
@@ -1182,6 +1215,8 @@ public interface Constants extends BaseConstants {
     
     String SSHKEY_KEYTYPE_ENUM = "SSHKeyKeyType";
     
+    String SSIDCONNECTION_AUTHENTICATIONMODE_ENUM = "SSIDConnectionAuthenticationMode";
+    
     String STATICROUTE_IPTYPE_ENUM = "StaticRouteIPType";
     String STATICROUTE_ENTITYSCOPE_ENUM = "StaticRouteEntityScope";
     String STATICROUTE_TYPE_ENUM = "StaticRouteType";
@@ -1196,7 +1231,6 @@ public interface Constants extends BaseConstants {
     String SUBNET_DPI_ENUM = "SubnetDPI";
     String SUBNET_IPTYPE_ENUM = "SubnetIPType";
     String SUBNET_PATENABLED_ENUM = "SubnetPATEnabled";
-    String SUBNET_ASSOCIATEDAPPLICATIONOBJECTTYPE_ENUM = "SubnetAssociatedApplicationObjectType";
     String SUBNET_DEFAULTACTION_ENUM = "SubnetDefaultAction";
     String SUBNET_ENCRYPTION_ENUM = "SubnetEncryption";
     String SUBNET_ENTITYSCOPE_ENUM = "SubnetEntityScope";
@@ -1229,10 +1263,6 @@ public interface Constants extends BaseConstants {
     String TCA_ENTITYSCOPE_ENUM = "TCAEntityScope";
     String TCA_METRIC_ENUM = "TCAMetric";
     String TCA_TYPE_ENUM = "TCAType";
-    
-    String TIER_ASSOCIATEDNETWORKOBJECTTYPE_ENUM = "TierAssociatedNetworkObjectType";
-    String TIER_ENTITYSCOPE_ENUM = "TierEntityScope";
-    String TIER_TYPE_ENUM = "TierType";
     
     
     
@@ -1281,6 +1311,16 @@ public interface Constants extends BaseConstants {
     String VMINTERFACE_ATTACHEDNETWORKTYPE_ENUM = "VMInterfaceAttachedNetworkType";
     String VMINTERFACE_ENTITYSCOPE_ENUM = "VMInterfaceEntityScope";
     
+    String VNF_ALLOWEDACTIONS_ENUM = "VNFAllowedActions";
+    String VNF_STATUS_ENUM = "VNFStatus";
+    String VNF_TASKSTATE_ENUM = "VNFTaskState";
+    
+    
+    
+    String VNFINTERFACE_ATTACHEDNETWORKTYPE_ENUM = "VNFInterfaceAttachedNetworkType";
+    
+    
+    
     String VPNCONNECTION_ENTITYSCOPE_ENUM = "VPNConnectionEntityScope";
     
     String VPORT_DPI_ENUM = "VPortDPI";
@@ -1289,6 +1329,7 @@ public interface Constants extends BaseConstants {
     String VPORT_MULTICAST_ENUM = "VPortMulticast";
     String VPORT_OPERATIONALSTATE_ENUM = "VPortOperationalState";
     String VPORT_SEGMENTATIONTYPE_ENUM = "VPortSegmentationType";
+    String VPORT_SUBTYPE_ENUM = "VPortSubType";
     String VPORT_SYSTEMTYPE_ENUM = "VPortSystemType";
     String VPORT_TRUNKROLE_ENUM = "VPortTrunkRole";
     String VPORT_TYPE_ENUM = "VPortType";
@@ -1329,6 +1370,18 @@ public interface Constants extends BaseConstants {
     
     String VSP_ENTITYSCOPE_ENUM = "VSPEntityScope";
     
+    String WIRELESSPORT_COUNTRYCODE_ENUM = "WirelessPortCountryCode";
+    String WIRELESSPORT_FREQUENCYCHANNEL_ENUM = "WirelessPortFrequencyChannel";
+    String WIRELESSPORT_PORTTYPE_ENUM = "WirelessPortPortType";
+    String WIRELESSPORT_WIFIFREQUENCYBAND_ENUM = "WirelessPortWifiFrequencyBand";
+    String WIRELESSPORT_WIFIMODE_ENUM = "WirelessPortWifiMode";
+    
+    String WIRELESSPORTTEMPLATE_COUNTRYCODE_ENUM = "WirelessPortTemplateCountryCode";
+    String WIRELESSPORTTEMPLATE_FREQUENCYCHANNEL_ENUM = "WirelessPortTemplateFrequencyChannel";
+    String WIRELESSPORTTEMPLATE_PORTTYPE_ENUM = "WirelessPortTemplatePortType";
+    String WIRELESSPORTTEMPLATE_WIFIFREQUENCYBAND_ENUM = "WirelessPortTemplateWifiFrequencyBand";
+    String WIRELESSPORTTEMPLATE_WIFIMODE_ENUM = "WirelessPortTemplateWifiMode";
+    
     String ZFBAUTOASSIGNMENT_ZFBMATCHATTRIBUTE_ENUM = "ZFBAutoAssignmentZFBMatchAttribute";
     String ZFBAUTOASSIGNMENT_ENTITYSCOPE_ENUM = "ZFBAutoAssignmentEntityScope";
     
@@ -1337,7 +1390,6 @@ public interface Constants extends BaseConstants {
     
     String ZONE_DPI_ENUM = "ZoneDPI";
     String ZONE_IPTYPE_ENUM = "ZoneIPType";
-    String ZONE_ASSOCIATEDAPPLICATIONOBJECTTYPE_ENUM = "ZoneAssociatedApplicationObjectType";
     String ZONE_ENCRYPTION_ENUM = "ZoneEncryption";
     String ZONE_ENTITYSCOPE_ENUM = "ZoneEntityScope";
     String ZONE_MAINTENANCEMODE_ENUM = "ZoneMaintenanceMode";
@@ -1359,7 +1411,6 @@ public interface Constants extends BaseConstants {
     String APPLICATIONBINDING_IMAGE_FILENAME = "images/icon-applicationbinding.png";
     String APPLICATIONPERFORMANCEMANAGEMENT_IMAGE_FILENAME = "images/icon-applicationperformancemanagement.png";
     String APPLICATIONPERFORMANCEMANAGEMENTBINDING_IMAGE_FILENAME = "images/icon-applicationperformancemanagementbinding.png";
-    String APPLICATIONSERVICE_IMAGE_FILENAME = "images/icon-applicationservice.png";
     String AUTODISCOVERCLUSTER_IMAGE_FILENAME = "images/icon-autodiscovercluster.png";
     String AUTODISCOVEREDDATACENTER_IMAGE_FILENAME = "images/icon-autodiscovereddatacenter.png";
     String AUTODISCOVEREDGATEWAY_IMAGE_FILENAME = "images/icon-autodiscoveredgateway.png";
@@ -1395,6 +1446,8 @@ public interface Constants extends BaseConstants {
     String VCENTEREAMCONFIG_IMAGE_FILENAME = "images/icon-vcentereamconfig.png";
     String EGRESSACLENTRYTEMPLATE_IMAGE_FILENAME = "images/icon-egressaclentrytemplate.png";
     String EGRESSACLTEMPLATE_IMAGE_FILENAME = "images/icon-egressacltemplate.png";
+    String EGRESSADVFWDENTRYTEMPLATE_IMAGE_FILENAME = "images/icon-egressadvfwdentrytemplate.png";
+    String EGRESSADVFWDTEMPLATE_IMAGE_FILENAME = "images/icon-egressadvfwdtemplate.png";
     String DOMAINFIPACLTEMPLATEENTRY_IMAGE_FILENAME = "images/icon-domainfipacltemplateentry.png";
     String DOMAINFIPACLTEMPLATE_IMAGE_FILENAME = "images/icon-domainfipacltemplate.png";
     String FLOATINGIPACLTEMPLATEENTRY_IMAGE_FILENAME = "images/icon-floatingipacltemplateentry.png";
@@ -1410,9 +1463,6 @@ public interface Constants extends BaseConstants {
     String FIREWALLACL_IMAGE_FILENAME = "images/icon-firewallacl.png";
     String FIREWALLRULE_IMAGE_FILENAME = "images/icon-firewallrule.png";
     String FLOATINGIP_IMAGE_FILENAME = "images/icon-floatingip.png";
-    String FLOW_IMAGE_FILENAME = "images/icon-flow.png";
-    String FLOWFORWARDINGPOLICY_IMAGE_FILENAME = "images/icon-flowforwardingpolicy.png";
-    String FLOWSECURITYPOLICY_IMAGE_FILENAME = "images/icon-flowsecuritypolicy.png";
     String GATEWAY_IMAGE_FILENAME = "images/icon-gateway.png";
     String GATEWAYSECUREDDATA_IMAGE_FILENAME = "images/icon-gatewaysecureddata.png";
     String GATEWAYSECURITY_IMAGE_FILENAME = "images/icon-gatewaysecurity.png";
@@ -1473,7 +1523,6 @@ public interface Constants extends BaseConstants {
     String NETWORKPERFORMANCEBINDING_IMAGE_FILENAME = "images/icon-networkperformancebinding.png";
     String NETWORKPERFORMANCEMEASUREMENT_IMAGE_FILENAME = "images/icon-networkperformancemeasurement.png";
     String NEXTHOP_IMAGE_FILENAME = "images/icon-nexthop.png";
-    String NEXTHOPADDRESS_IMAGE_FILENAME = "images/icon-nexthopaddress.png";
     String NSGATEWAY_IMAGE_FILENAME = "images/icon-nsgateway.png";
     String NSGATEWAYTEMPLATE_IMAGE_FILENAME = "images/icon-nsgatewaytemplate.png";
     String NSGGROUP_IMAGE_FILENAME = "images/icon-nsggroup.png";
@@ -1483,6 +1532,8 @@ public interface Constants extends BaseConstants {
     String NSPORTTEMPLATE_IMAGE_FILENAME = "images/icon-nsporttemplate.png";
     String REDUNDANTPORT_IMAGE_FILENAME = "images/icon-redundantport.png";
     String OVERLAYADDRESSPOOL_IMAGE_FILENAME = "images/icon-overlayaddresspool.png";
+    String OVERLAYMIRRORDESTINATION_IMAGE_FILENAME = "images/icon-overlaymirrordestination.png";
+    String OVERLAYMIRRORDESTINATIONTEMPLATE_IMAGE_FILENAME = "images/icon-overlaymirrordestinationtemplate.png";
     String OVERLAYPATNATENTRY_IMAGE_FILENAME = "images/icon-overlaypatnatentry.png";
     String PATIPENTRY_IMAGE_FILENAME = "images/icon-patipentry.png";
     String PATMAPPER_IMAGE_FILENAME = "images/icon-patmapper.png";
@@ -1490,8 +1541,11 @@ public interface Constants extends BaseConstants {
     String PERFORMANCEMONITOR_IMAGE_FILENAME = "images/icon-performancemonitor.png";
     String PERMISSION_IMAGE_FILENAME = "images/icon-permission.png";
     String POLICYDECISION_IMAGE_FILENAME = "images/icon-policydecision.png";
+    String POLICYENTRY_IMAGE_FILENAME = "images/icon-policyentry.png";
     String POLICYGROUP_IMAGE_FILENAME = "images/icon-policygroup.png";
     String POLICYGROUPTEMPLATE_IMAGE_FILENAME = "images/icon-policygrouptemplate.png";
+    String POLICYOBJECTGROUP_IMAGE_FILENAME = "images/icon-policyobjectgroup.png";
+    String POLICYSTATEMENT_IMAGE_FILENAME = "images/icon-policystatement.png";
     String PORT_IMAGE_FILENAME = "images/icon-port.png";
     String PORTMAPPING_IMAGE_FILENAME = "images/icon-portmapping.png";
     String PORTTEMPLATE_IMAGE_FILENAME = "images/icon-porttemplate.png";
@@ -1511,6 +1565,7 @@ public interface Constants extends BaseConstants {
     String SITEINFO_IMAGE_FILENAME = "images/icon-siteinfo.png";
     String SPATSOURCESPOOL_IMAGE_FILENAME = "images/icon-spatsourcespool.png";
     String SSHKEY_IMAGE_FILENAME = "images/icon-sshkey.png";
+    String SSIDCONNECTION_IMAGE_FILENAME = "images/icon-ssidconnection.png";
     String STATICROUTE_IMAGE_FILENAME = "images/icon-staticroute.png";
     String STATISTICS_IMAGE_FILENAME = "images/icon-statistics.png";
     String STATSCOLLECTORINFO_IMAGE_FILENAME = "images/icon-statscollectorinfo.png";
@@ -1519,7 +1574,6 @@ public interface Constants extends BaseConstants {
     String SUBNETTEMPLATE_IMAGE_FILENAME = "images/icon-subnettemplate.png";
     String SYSTEMCONFIG_IMAGE_FILENAME = "images/icon-systemconfig.png";
     String TCA_IMAGE_FILENAME = "images/icon-tca.png";
-    String TIER_IMAGE_FILENAME = "images/icon-tier.png";
     String TRUNK_IMAGE_FILENAME = "images/icon-trunk.png";
     String UNDERLAY_IMAGE_FILENAME = "images/icon-underlay.png";
     String UPLINKCONNECTION_IMAGE_FILENAME = "images/icon-uplinkconnection.png";
@@ -1535,6 +1589,12 @@ public interface Constants extends BaseConstants {
     String VLANTEMPLATE_IMAGE_FILENAME = "images/icon-vlantemplate.png";
     String VM_IMAGE_FILENAME = "images/icon-vm.png";
     String VMINTERFACE_IMAGE_FILENAME = "images/icon-vminterface.png";
+    String VNF_IMAGE_FILENAME = "images/icon-vnf.png";
+    String VNFCATALOG_IMAGE_FILENAME = "images/icon-vnfcatalog.png";
+    String VNFDESCRIPTOR_IMAGE_FILENAME = "images/icon-vnfdescriptor.png";
+    String VNFINTERFACE_IMAGE_FILENAME = "images/icon-vnfinterface.png";
+    String VNFINTERFACEDESCRIPTOR_IMAGE_FILENAME = "images/icon-vnfinterfacedescriptor.png";
+    String VNFMETADATA_IMAGE_FILENAME = "images/icon-vnfmetadata.png";
     String VPNCONNECTION_IMAGE_FILENAME = "images/icon-vpnconnection.png";
     String VPORT_IMAGE_FILENAME = "images/icon-vport.png";
     String VPORTMIRROR_IMAGE_FILENAME = "images/icon-vportmirror.png";
@@ -1547,6 +1607,8 @@ public interface Constants extends BaseConstants {
     String VSD_IMAGE_FILENAME = "images/icon-vsd.png";
     String VSGREDUNDANTPORT_IMAGE_FILENAME = "images/icon-vsgredundantport.png";
     String VSP_IMAGE_FILENAME = "images/icon-vsp.png";
+    String WIRELESSPORT_IMAGE_FILENAME = "images/icon-wirelessport.png";
+    String WIRELESSPORTTEMPLATE_IMAGE_FILENAME = "images/icon-wirelessporttemplate.png";
     String ZFBAUTOASSIGNMENT_IMAGE_FILENAME = "images/icon-zfbautoassignment.png";
     String ZFBREQUEST_IMAGE_FILENAME = "images/icon-zfbrequest.png";
     String ZONE_IMAGE_FILENAME = "images/icon-zone.png";
@@ -1563,7 +1625,6 @@ public interface Constants extends BaseConstants {
     String APPLICATIONBINDING_ENTITY_TYPE = "applicationbinding";
     String APPLICATIONPERFORMANCEMANAGEMENT_ENTITY_TYPE = "applicationperformancemanagement";
     String APPLICATIONPERFORMANCEMANAGEMENTBINDING_ENTITY_TYPE = "applicationperformancemanagementbinding";
-    String APPLICATIONSERVICE_ENTITY_TYPE = "applicationservice";
     String AUTODISCOVERCLUSTER_ENTITY_TYPE = "autodiscoveredcluster";
     String AUTODISCOVEREDDATACENTER_ENTITY_TYPE = "autodiscovereddatacenter";
     String AUTODISCOVEREDGATEWAY_ENTITY_TYPE = "autodiscoveredgateway";
@@ -1599,6 +1660,8 @@ public interface Constants extends BaseConstants {
     String VCENTEREAMCONFIG_ENTITY_TYPE = "eamconfig";
     String EGRESSACLENTRYTEMPLATE_ENTITY_TYPE = "egressaclentrytemplate";
     String EGRESSACLTEMPLATE_ENTITY_TYPE = "egressacltemplate";
+    String EGRESSADVFWDENTRYTEMPLATE_ENTITY_TYPE = "egressadvfwdentrytemplate";
+    String EGRESSADVFWDTEMPLATE_ENTITY_TYPE = "egressadvfwdtemplate";
     String DOMAINFIPACLTEMPLATEENTRY_ENTITY_TYPE = "egressdomainfloatingipaclentrytemplate";
     String DOMAINFIPACLTEMPLATE_ENTITY_TYPE = "egressdomainfloatingipacltemplate";
     String FLOATINGIPACLTEMPLATEENTRY_ENTITY_TYPE = "egressfloatingipaclentrytemplate";
@@ -1614,9 +1677,6 @@ public interface Constants extends BaseConstants {
     String FIREWALLACL_ENTITY_TYPE = "firewallacl";
     String FIREWALLRULE_ENTITY_TYPE = "firewallrule";
     String FLOATINGIP_ENTITY_TYPE = "floatingip";
-    String FLOW_ENTITY_TYPE = "flow";
-    String FLOWFORWARDINGPOLICY_ENTITY_TYPE = "flowforwardingpolicy";
-    String FLOWSECURITYPOLICY_ENTITY_TYPE = "flowsecuritypolicy";
     String GATEWAY_ENTITY_TYPE = "gateway";
     String GATEWAYSECUREDDATA_ENTITY_TYPE = "gatewaysecureddata";
     String GATEWAYSECURITY_ENTITY_TYPE = "gatewaysecurity";
@@ -1677,7 +1737,6 @@ public interface Constants extends BaseConstants {
     String NETWORKPERFORMANCEBINDING_ENTITY_TYPE = "networkperformancebinding";
     String NETWORKPERFORMANCEMEASUREMENT_ENTITY_TYPE = "networkperformancemeasurement";
     String NEXTHOP_ENTITY_TYPE = "nexthop";
-    String NEXTHOPADDRESS_ENTITY_TYPE = "nexthopaddress";
     String NSGATEWAY_ENTITY_TYPE = "nsgateway";
     String NSGATEWAYTEMPLATE_ENTITY_TYPE = "nsgatewaytemplate";
     String NSGGROUP_ENTITY_TYPE = "nsggroup";
@@ -1687,6 +1746,8 @@ public interface Constants extends BaseConstants {
     String NSPORTTEMPLATE_ENTITY_TYPE = "nsporttemplate";
     String REDUNDANTPORT_ENTITY_TYPE = "nsredundantport";
     String OVERLAYADDRESSPOOL_ENTITY_TYPE = "overlayaddresspool";
+    String OVERLAYMIRRORDESTINATION_ENTITY_TYPE = "overlaymirrordestination";
+    String OVERLAYMIRRORDESTINATIONTEMPLATE_ENTITY_TYPE = "overlaymirrordestinationtemplate";
     String OVERLAYPATNATENTRY_ENTITY_TYPE = "overlaypatnatentry";
     String PATIPENTRY_ENTITY_TYPE = "patipentry";
     String PATMAPPER_ENTITY_TYPE = "patmapper";
@@ -1694,8 +1755,11 @@ public interface Constants extends BaseConstants {
     String PERFORMANCEMONITOR_ENTITY_TYPE = "performancemonitor";
     String PERMISSION_ENTITY_TYPE = "permission";
     String POLICYDECISION_ENTITY_TYPE = "policydecision";
+    String POLICYENTRY_ENTITY_TYPE = "policyentry";
     String POLICYGROUP_ENTITY_TYPE = "policygroup";
     String POLICYGROUPTEMPLATE_ENTITY_TYPE = "policygrouptemplate";
+    String POLICYOBJECTGROUP_ENTITY_TYPE = "policyobjectgroup";
+    String POLICYSTATEMENT_ENTITY_TYPE = "policystatement";
     String PORT_ENTITY_TYPE = "port";
     String PORTMAPPING_ENTITY_TYPE = "portmapping";
     String PORTTEMPLATE_ENTITY_TYPE = "porttemplate";
@@ -1715,6 +1779,7 @@ public interface Constants extends BaseConstants {
     String SITEINFO_ENTITY_TYPE = "site";
     String SPATSOURCESPOOL_ENTITY_TYPE = "spatsourcespool";
     String SSHKEY_ENTITY_TYPE = "sshkey";
+    String SSIDCONNECTION_ENTITY_TYPE = "ssidconnection";
     String STATICROUTE_ENTITY_TYPE = "staticroute";
     String STATISTICS_ENTITY_TYPE = "statistics";
     String STATSCOLLECTORINFO_ENTITY_TYPE = "statisticscollector";
@@ -1723,7 +1788,6 @@ public interface Constants extends BaseConstants {
     String SUBNETTEMPLATE_ENTITY_TYPE = "subnettemplate";
     String SYSTEMCONFIG_ENTITY_TYPE = "systemconfig";
     String TCA_ENTITY_TYPE = "tca";
-    String TIER_ENTITY_TYPE = "tier";
     String TRUNK_ENTITY_TYPE = "trunk";
     String UNDERLAY_ENTITY_TYPE = "underlay";
     String UPLINKCONNECTION_ENTITY_TYPE = "uplinkconnection";
@@ -1739,6 +1803,12 @@ public interface Constants extends BaseConstants {
     String VLANTEMPLATE_ENTITY_TYPE = "vlantemplate";
     String VM_ENTITY_TYPE = "vm";
     String VMINTERFACE_ENTITY_TYPE = "vminterface";
+    String VNF_ENTITY_TYPE = "vnf";
+    String VNFCATALOG_ENTITY_TYPE = "vnfcatalog";
+    String VNFDESCRIPTOR_ENTITY_TYPE = "vnfdescriptor";
+    String VNFINTERFACE_ENTITY_TYPE = "vnfinterface";
+    String VNFINTERFACEDESCRIPTOR_ENTITY_TYPE = "vnfinterfacedescriptor";
+    String VNFMETADATA_ENTITY_TYPE = "vnfmetadata";
     String VPNCONNECTION_ENTITY_TYPE = "vpnconnection";
     String VPORT_ENTITY_TYPE = "vport";
     String VPORTMIRROR_ENTITY_TYPE = "vportmirror";
@@ -1751,6 +1821,8 @@ public interface Constants extends BaseConstants {
     String VSD_ENTITY_TYPE = "vsd";
     String VSGREDUNDANTPORT_ENTITY_TYPE = "vsgredundantport";
     String VSP_ENTITY_TYPE = "vsp";
+    String WIRELESSPORT_ENTITY_TYPE = "wirelessport";
+    String WIRELESSPORTTEMPLATE_ENTITY_TYPE = "wirelessporttemplate";
     String ZFBAUTOASSIGNMENT_ENTITY_TYPE = "zfbautoassignment";
     String ZFBREQUEST_ENTITY_TYPE = "zfbrequest";
     String ZONE_ENTITY_TYPE = "zone";
