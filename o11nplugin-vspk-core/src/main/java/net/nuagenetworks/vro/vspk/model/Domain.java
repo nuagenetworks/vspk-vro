@@ -476,8 +476,6 @@ public class Domain extends BaseObject {
         
         tunnelType = DomainTunnelType.DC_DEFAULT;
         
-        applicationDeploymentPolicy = DomainApplicationDeploymentPolicy.ZONE;
-        
         maintenanceMode = DomainMaintenanceMode.DISABLED;
         
         applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
