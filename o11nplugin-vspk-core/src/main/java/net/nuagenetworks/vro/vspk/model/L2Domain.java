@@ -68,6 +68,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.OverlayMirrorDestinationsFetche
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PGExpressionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
@@ -142,6 +144,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYMIRRORDESTINATIONS_FETCHER, type = Constants.OVERLAYMIRRORDESTINATIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PGEXPRESSIONS_FETCHER, type = Constants.PGEXPRESSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.POLICYGROUPS_FETCHER, type = Constants.POLICYGROUPS_FETCHER), 
 
@@ -316,6 +320,9 @@ public class L2Domain extends BaseObject {
     private PermissionsFetcher permissions;
     
     @JsonIgnore
+    private PGExpressionsFetcher pGExpressions;
+    
+    @JsonIgnore
     private PolicyGroupsFetcher policyGroups;
     
     @JsonIgnore
@@ -393,6 +400,8 @@ public class L2Domain extends BaseObject {
         overlayMirrorDestinations = new OverlayMirrorDestinationsFetcher(this);
         
         permissions = new PermissionsFetcher(this);
+        
+        pGExpressions = new PGExpressionsFetcher(this);
         
         policyGroups = new PolicyGroupsFetcher(this);
         
@@ -898,6 +907,12 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PGExpressions", readOnly = true)   
+    public PGExpressionsFetcher getPGExpressions() {
+        return pGExpressions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PolicyGroups", readOnly = true)   
     public PolicyGroupsFetcher getPolicyGroups() {
         return policyGroups;
@@ -1106,6 +1121,23 @@ public class L2Domain extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }
+    @VsoMethod
+    public void createPGExpression(Session session, PGExpression childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PGEXPRESSIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void instantiatePGExpression(Session session, PGExpression childRestObj, PGExpressionTemplate fromTemplate, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.instantiateChild(session, childRestObj, fromTemplate, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PGEXPRESSIONS_FETCHER, getId());
+        }
+    }
+    
     @VsoMethod
     public void createPolicyGroup(Session session, PolicyGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;

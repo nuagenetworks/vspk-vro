@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.EgressQOSPolicyDefaultServiceClass;
+
 import net.nuagenetworks.vro.vspk.model.enums.EgressQOSPolicyEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressQOSPolicyQueue1ForwardingClasses;
@@ -65,6 +67,15 @@ public class EgressQOSPolicy extends BaseObject {
     
     @JsonProperty(value = "assocEgressQosId")
     protected String assocEgressQosId;
+    
+    @JsonProperty(value = "associatedCOSRemarkingPolicyTableID")
+    protected String associatedCOSRemarkingPolicyTableID;
+    
+    @JsonProperty(value = "associatedDSCPRemarkingPolicyTableID")
+    protected String associatedDSCPRemarkingPolicyTableID;
+    
+    @JsonProperty(value = "defaultServiceClass")
+    protected EgressQOSPolicyDefaultServiceClass defaultServiceClass;
     
     @JsonProperty(value = "description")
     protected String description;
@@ -165,6 +176,39 @@ public class EgressQOSPolicy extends BaseObject {
     @JsonIgnore
     public void setAssocEgressQosId(String value) { 
         this.assocEgressQosId = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedCOSRemarkingPolicyTableID", readOnly = false)   
+    public String getAssociatedCOSRemarkingPolicyTableID() {
+       return associatedCOSRemarkingPolicyTableID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedCOSRemarkingPolicyTableID(String value) { 
+        this.associatedCOSRemarkingPolicyTableID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedDSCPRemarkingPolicyTableID", readOnly = false)   
+    public String getAssociatedDSCPRemarkingPolicyTableID() {
+       return associatedDSCPRemarkingPolicyTableID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedDSCPRemarkingPolicyTableID(String value) { 
+        this.associatedDSCPRemarkingPolicyTableID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DefaultServiceClass", readOnly = false)   
+    public EgressQOSPolicyDefaultServiceClass getDefaultServiceClass() {
+       return defaultServiceClass;
+    }
+
+    @JsonIgnore
+    public void setDefaultServiceClass(EgressQOSPolicyDefaultServiceClass value) { 
+        this.defaultServiceClass = value;
     }
     
     @JsonIgnore
@@ -378,7 +422,7 @@ public class EgressQOSPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressQOSPolicy [" + "assocEgressQosId=" + assocEgressQosId + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", parentQueueAssociatedRateLimiterID=" + parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + queue4ForwardingClasses + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressQOSPolicy [" + "assocEgressQosId=" + assocEgressQosId + ", associatedCOSRemarkingPolicyTableID=" + associatedCOSRemarkingPolicyTableID + ", associatedDSCPRemarkingPolicyTableID=" + associatedDSCPRemarkingPolicyTableID + ", defaultServiceClass=" + defaultServiceClass + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", parentQueueAssociatedRateLimiterID=" + parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + queue4ForwardingClasses + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

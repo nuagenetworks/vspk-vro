@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to DSCPRemarkingPolicy</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">fc18f218-66f8-5d09-8927-5a4e0e7dab0e</entry>
+</properties>

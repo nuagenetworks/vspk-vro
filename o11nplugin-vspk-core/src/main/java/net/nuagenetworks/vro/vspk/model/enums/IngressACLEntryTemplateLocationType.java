@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum IngressACLEntryTemplateLocationType {
 
-    ANY("ANY", "ANY"), POLICYGROUP("POLICYGROUP", "POLICYGROUP"), REDIRECTIONTARGET("REDIRECTIONTARGET", "REDIRECTIONTARGET"), SUBNET("SUBNET", "SUBNET"), VPORTTAG("VPORTTAG", "VPORTTAG"), ZONE("ZONE", "ZONE");
+    ANY("ANY", "ANY"), PGEXPRESSION("PGEXPRESSION", "PGEXPRESSION"), POLICYGROUP("POLICYGROUP", "POLICYGROUP"), REDIRECTIONTARGET("REDIRECTIONTARGET", "REDIRECTIONTARGET"), SUBNET("SUBNET", "SUBNET"), VPORTTAG("VPORTTAG", "VPORTTAG"), ZONE("ZONE", "ZONE");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum IngressACLEntryTemplateLocationType {
     @VsoProperty(displayName = "ANY", readOnly = true)
     public IngressACLEntryTemplateLocationType getANY() {
         return ANY;
+    }
+    
+    @VsoProperty(displayName = "PGEXPRESSION", readOnly = true)
+    public IngressACLEntryTemplateLocationType getPGEXPRESSION() {
+        return PGEXPRESSION;
     }
     
     @VsoProperty(displayName = "POLICYGROUP", readOnly = true)

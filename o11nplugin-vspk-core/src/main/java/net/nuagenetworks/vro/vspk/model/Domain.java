@@ -80,6 +80,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceBindingsFetch
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PGExpressionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
@@ -105,6 +107,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.UplinkRDsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMInterfacesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VNFDomainMappingsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VPNConnectionsFetcher;
 
@@ -179,6 +183,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.PGEXPRESSIONS_FETCHER, type = Constants.PGEXPRESSIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.POLICYGROUPS_FETCHER, type = Constants.POLICYGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.QOSS_FETCHER, type = Constants.QOSS_FETCHER), 
@@ -194,6 +200,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.STATISTICSPOLICIES_FETCHER, type = Constants.STATISTICSPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.TCAS_FETCHER, type = Constants.TCAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VNFDOMAINMAPPINGS_FETCHER, type = Constants.VNFDOMAINMAPPINGS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VPNCONNECTIONS_FETCHER, type = Constants.VPNCONNECTIONS_FETCHER), 
 
@@ -222,6 +230,9 @@ public class Domain extends BaseObject {
     @JsonProperty(value = "ECMPCount")
     protected Long ECMPCount;
     
+    @JsonProperty(value = "FIPUnderlay")
+    protected Boolean FIPUnderlay;
+    
     @JsonProperty(value = "PATEnabled")
     protected DomainPATEnabled PATEnabled;
     
@@ -236,6 +247,9 @@ public class Domain extends BaseObject {
     
     @JsonProperty(value = "associatedPATMapperID")
     protected String associatedPATMapperID;
+    
+    @JsonProperty(value = "associatedSharedPATMapperID")
+    protected String associatedSharedPATMapperID;
     
     @JsonProperty(value = "backHaulRouteDistinguisher")
     protected String backHaulRouteDistinguisher;
@@ -421,6 +435,9 @@ public class Domain extends BaseObject {
     private PermissionsFetcher permissions;
     
     @JsonIgnore
+    private PGExpressionsFetcher pGExpressions;
+    
+    @JsonIgnore
     private PolicyGroupsFetcher policyGroups;
     
     @JsonIgnore
@@ -458,6 +475,9 @@ public class Domain extends BaseObject {
     
     @JsonIgnore
     private VMInterfacesFetcher vMInterfaces;
+    
+    @JsonIgnore
+    private VNFDomainMappingsFetcher vNFDomainMappings;
     
     @JsonIgnore
     private VPNConnectionsFetcher vPNConnections;
@@ -532,6 +552,8 @@ public class Domain extends BaseObject {
         
         permissions = new PermissionsFetcher(this);
         
+        pGExpressions = new PGExpressionsFetcher(this);
+        
         policyGroups = new PolicyGroupsFetcher(this);
         
         qOSs = new QOSsFetcher(this);
@@ -557,6 +579,8 @@ public class Domain extends BaseObject {
         vMs = new VMsFetcher(this);
         
         vMInterfaces = new VMInterfacesFetcher(this);
+        
+        vNFDomainMappings = new VNFDomainMappingsFetcher(this);
         
         vPNConnections = new VPNConnectionsFetcher(this);
         
@@ -656,6 +680,17 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FIPUnderlay", readOnly = false)   
+    public Boolean getFIPUnderlay() {
+       return FIPUnderlay;
+    }
+
+    @JsonIgnore
+    public void setFIPUnderlay(Boolean value) { 
+        this.FIPUnderlay = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PATEnabled", readOnly = false)   
     public DomainPATEnabled getPATEnabled() {
        return PATEnabled;
@@ -708,6 +743,17 @@ public class Domain extends BaseObject {
     @JsonIgnore
     public void setAssociatedPATMapperID(String value) { 
         this.associatedPATMapperID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedSharedPATMapperID", readOnly = false)   
+    public String getAssociatedSharedPATMapperID() {
+       return associatedSharedPATMapperID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedSharedPATMapperID(String value) { 
+        this.associatedSharedPATMapperID = value;
     }
     
     @JsonIgnore
@@ -1247,6 +1293,12 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PGExpressions", readOnly = true)   
+    public PGExpressionsFetcher getPGExpressions() {
+        return pGExpressions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PolicyGroups", readOnly = true)   
     public PolicyGroupsFetcher getPolicyGroups() {
         return policyGroups;
@@ -1322,6 +1374,12 @@ public class Domain extends BaseObject {
     @VsoProperty(displayName = "VMInterfaces", readOnly = true)   
     public VMInterfacesFetcher getVMInterfaces() {
         return vMInterfaces;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VNFDomainMappings", readOnly = true)   
+    public VNFDomainMappingsFetcher getVNFDomainMappings() {
+        return vNFDomainMappings;
     }
     
     @JsonIgnore
@@ -1536,6 +1594,23 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createPGExpression(Session session, PGExpression childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PGEXPRESSIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void instantiatePGExpression(Session session, PGExpression childRestObj, PGExpressionTemplate fromTemplate, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.instantiateChild(session, childRestObj, fromTemplate, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PGEXPRESSIONS_FETCHER, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createPolicyGroup(Session session, PolicyGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1618,6 +1693,14 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createVNFDomainMapping(Session session, VNFDomainMapping childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VNFDOMAINMAPPINGS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createVPNConnection(Session session, VPNConnection childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1642,7 +1725,7 @@ public class Domain extends BaseObject {
         }
     }
     public String toString() {
-        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", PATEnabled=" + PATEnabled + ", advertiseCriteria=" + advertiseCriteria + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulSubnetIPAddress=" + backHaulSubnetIPAddress + ", backHaulSubnetMask=" + backHaulSubnetMask + ", backHaulVNID=" + backHaulVNID + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", encryption=" + encryption + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", leakingEnabled=" + leakingEnabled + ", localAS=" + localAS + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", FIPUnderlay=" + FIPUnderlay + ", PATEnabled=" + PATEnabled + ", advertiseCriteria=" + advertiseCriteria + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", associatedSharedPATMapperID=" + associatedSharedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulSubnetIPAddress=" + backHaulSubnetIPAddress + ", backHaulSubnetMask=" + backHaulSubnetMask + ", backHaulVNID=" + backHaulVNID + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", encryption=" + encryption + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", leakingEnabled=" + leakingEnabled + ", localAS=" + localAS + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

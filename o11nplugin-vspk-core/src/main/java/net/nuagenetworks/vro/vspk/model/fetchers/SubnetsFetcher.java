@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
+import net.nuagenetworks.vro.vspk.model.PATMapper;
+
 import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Zone;
@@ -109,6 +111,16 @@ public class SubnetsFetcher extends BaseFetcher<Subnet> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSGateway) {
             return (NSGateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PATMapper", readOnly = true)
+    public PATMapper getPATMapper() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PATMapper) {
+            return (PATMapper) obj;
         }
         
         return null;

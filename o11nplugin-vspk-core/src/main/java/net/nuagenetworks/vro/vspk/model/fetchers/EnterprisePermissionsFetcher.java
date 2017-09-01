@@ -46,6 +46,8 @@ import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
 
+import net.nuagenetworks.vro.vspk.model.Subnet;
+
 import net.nuagenetworks.vro.vspk.model.VLAN;
 
 import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
@@ -157,6 +159,16 @@ public class EnterprisePermissionsFetcher extends BaseFetcher<EnterprisePermissi
         RestObject obj = super.getParentRestObj();
         if (obj instanceof SharedNetworkResource) {
             return (SharedNetworkResource) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
         }
         
         return null;

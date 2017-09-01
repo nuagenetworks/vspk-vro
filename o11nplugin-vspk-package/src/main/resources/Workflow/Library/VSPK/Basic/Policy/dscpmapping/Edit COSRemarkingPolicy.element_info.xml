@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/dscpmapping</entry>
+<entry key="name">Edit COSRemarkingPolicy</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">98881737-f162-5a8b-83bd-c54558f49850</entry>
+</properties>

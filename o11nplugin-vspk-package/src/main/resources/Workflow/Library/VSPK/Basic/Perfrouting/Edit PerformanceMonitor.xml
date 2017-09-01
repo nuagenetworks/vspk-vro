@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='interval' type='number' >
 </param>
 
@@ -16,9 +19,6 @@
 </param>
 
 <param name='numberOfPackets' type='number' >
-</param>
-
-<param name='payloadSize' type='number' >
 </param>
 
 </input><workflow-item name='item0' type='end' end-mode='0' >
@@ -33,6 +33,11 @@ if (description) {
 } else if (performanceMonitorObj.description) {
    performanceMonitorObj.description = "";
 }
+if (externalID) {
+   performanceMonitorObj.externalID = externalID;
+} else if (performanceMonitorObj.externalID) {
+   performanceMonitorObj.externalID = "";
+}
 performanceMonitorObj.interval = interval;
 if (name) {
    performanceMonitorObj.name = name;
@@ -40,19 +45,18 @@ if (name) {
    performanceMonitorObj.name = "";
 }
 performanceMonitorObj.numberOfPackets = numberOfPackets;
-performanceMonitorObj.payloadSize = payloadSize;
 performanceMonitorObj.save(session, 1);]]></script>
 <in-binding><bind name='performanceMonitorObj' type='VSPK:PerformanceMonitor' export-name="performanceMonitorObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='interval' type='number' export-name="interval" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
 <bind name='numberOfPackets' type='number' export-name="numberOfPackets" ></bind>
-
-<bind name='payloadSize' type='number' export-name="payloadSize" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -63,6 +67,9 @@ performanceMonitorObj.save(session, 1);]]></script>
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#performanceMonitorObj.description]]></p-qual></p-param>
 
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#performanceMonitorObj.externalID]]></p-qual></p-param>
+
 <p-param name="interval"><desc><![CDATA[interval]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#performanceMonitorObj.interval]]></p-qual></p-param>
 
@@ -71,8 +78,5 @@ performanceMonitorObj.save(session, 1);]]></script>
 
 <p-param name="numberOfPackets"><desc><![CDATA[numberOfPackets]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#performanceMonitorObj.numberOfPackets]]></p-qual></p-param>
-
-<p-param name="payloadSize"><desc><![CDATA[payloadSize]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#performanceMonitorObj.payloadSize]]></p-qual></p-param>
 
 </presentation></workflow>

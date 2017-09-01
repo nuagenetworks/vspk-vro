@@ -21,9 +21,6 @@
 <param name='server' type='string' >
 </param>
 
-<param name='userDNTemplate' type='string' >
-</param>
-
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -56,11 +53,6 @@ if (server) {
 } else if (lDAPConfigurationObj.server) {
    lDAPConfigurationObj.server = "";
 }
-if (userDNTemplate) {
-   lDAPConfigurationObj.userDNTemplate = userDNTemplate;
-} else if (lDAPConfigurationObj.userDNTemplate) {
-   lDAPConfigurationObj.userDNTemplate = "";
-}
 lDAPConfigurationObj.save(session, 1);]]></script>
 <in-binding><bind name='lDAPConfigurationObj' type='VSPK:LDAPConfiguration' export-name="lDAPConfigurationObj" ></bind>
 
@@ -73,8 +65,6 @@ lDAPConfigurationObj.save(session, 1);]]></script>
 <bind name='port' type='string' export-name="port" ></bind>
 
 <bind name='server' type='string' export-name="server" ></bind>
-
-<bind name='userDNTemplate' type='string' export-name="userDNTemplate" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -96,8 +86,5 @@ lDAPConfigurationObj.save(session, 1);]]></script>
 
 <p-param name="server"><desc><![CDATA[server]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#lDAPConfigurationObj.server]]></p-qual></p-param>
-
-<p-param name="userDNTemplate"><desc><![CDATA[userDNTemplate]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#lDAPConfigurationObj.userDNTemplate]]></p-qual></p-param>
 
 </presentation></workflow>

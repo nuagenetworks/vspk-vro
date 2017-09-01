@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="3c7b1432-2e84-55de-8399-7d47203509db"  version="5.0.2.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit CaptivePortalProfile]]></display-name>
+<ref-types><![CDATA[(VSPK:CaptivePortalProfile)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='captivePortalProfileObj' type='VSPK:CaptivePortalProfile' >
+</param>
+
+<param name='captivePage' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = captivePortalProfileObj.session;
+
+if (captivePage) {
+   captivePortalProfileObj.captivePage = captivePage;
+} else if (captivePortalProfileObj.captivePage) {
+   captivePortalProfileObj.captivePage = "";
+}
+if (description) {
+   captivePortalProfileObj.description = description;
+} else if (captivePortalProfileObj.description) {
+   captivePortalProfileObj.description = "";
+}
+if (externalID) {
+   captivePortalProfileObj.externalID = externalID;
+} else if (captivePortalProfileObj.externalID) {
+   captivePortalProfileObj.externalID = "";
+}
+if (name) {
+   captivePortalProfileObj.name = name;
+} else if (captivePortalProfileObj.name) {
+   captivePortalProfileObj.name = "";
+}
+captivePortalProfileObj.save(session, 1);]]></script>
+<in-binding><bind name='captivePortalProfileObj' type='VSPK:CaptivePortalProfile' export-name="captivePortalProfileObj" ></bind>
+
+<bind name='captivePage' type='string' export-name="captivePage" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="captivePortalProfileObj"><desc><![CDATA[captivePortalProfileObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="captivePage"><desc><![CDATA[captivePage]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#captivePortalProfileObj.captivePage]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#captivePortalProfileObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#captivePortalProfileObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#captivePortalProfileObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -36,6 +36,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressACLEntryTemplateAction;
 
+import net.nuagenetworks.vro.vspk.model.enums.EgressACLEntryTemplateAssociatedTrafficType;
+
 import net.nuagenetworks.vro.vspk.model.enums.EgressACLEntryTemplateEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressACLEntryTemplateLocationType;
@@ -88,8 +90,17 @@ public class EgressACLEntryTemplate extends BaseObject {
     @JsonProperty(value = "addressOverride")
     protected String addressOverride;
     
+    @JsonProperty(value = "associatedL7ApplicationSignatureID")
+    protected String associatedL7ApplicationSignatureID;
+    
     @JsonProperty(value = "associatedLiveEntityID")
     protected String associatedLiveEntityID;
+    
+    @JsonProperty(value = "associatedTrafficType")
+    protected EgressACLEntryTemplateAssociatedTrafficType associatedTrafficType;
+    
+    @JsonProperty(value = "associatedTrafficTypeID")
+    protected String associatedTrafficTypeID;
     
     @JsonProperty(value = "description")
     protected String description;
@@ -307,6 +318,17 @@ public class EgressACLEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedL7ApplicationSignatureID", readOnly = false)   
+    public String getAssociatedL7ApplicationSignatureID() {
+       return associatedL7ApplicationSignatureID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedL7ApplicationSignatureID(String value) { 
+        this.associatedL7ApplicationSignatureID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedLiveEntityID", readOnly = false)   
     public String getAssociatedLiveEntityID() {
        return associatedLiveEntityID;
@@ -315,6 +337,28 @@ public class EgressACLEntryTemplate extends BaseObject {
     @JsonIgnore
     public void setAssociatedLiveEntityID(String value) { 
         this.associatedLiveEntityID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedTrafficType", readOnly = false)   
+    public EgressACLEntryTemplateAssociatedTrafficType getAssociatedTrafficType() {
+       return associatedTrafficType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedTrafficType(EgressACLEntryTemplateAssociatedTrafficType value) { 
+        this.associatedTrafficType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedTrafficTypeID", readOnly = false)   
+    public String getAssociatedTrafficTypeID() {
+       return associatedTrafficTypeID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedTrafficTypeID(String value) { 
+        this.associatedTrafficTypeID = value;
     }
     
     @JsonIgnore
@@ -625,7 +669,7 @@ public class EgressACLEntryTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressACLEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressACLEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

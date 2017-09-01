@@ -7,13 +7,13 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='interval' type='number' >
 </param>
 <param name='name' type='string' >
 </param>
 <param name='numberOfPackets' type='number' >
-</param>
-<param name='payloadSize' type='number' >
 </param>
 </input><output><param name='performanceMonitorObj' type='VSPK:PerformanceMonitor' >
 </param>
@@ -28,21 +28,23 @@ performanceMonitorObj = new VSPKPerformanceMonitor();
 if (description) {
    performanceMonitorObj.description = description;
 }
+if (externalID) {
+   performanceMonitorObj.externalID = externalID;
+}
 performanceMonitorObj.interval = interval;
 if (name) {
    performanceMonitorObj.name = name;
 }
 performanceMonitorObj.numberOfPackets = numberOfPackets;
-performanceMonitorObj.payloadSize = payloadSize;
 
 meObj.createPerformanceMonitor(session, performanceMonitorObj);
 ]]></script>
 <in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='interval' type='number' export-name="interval" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 <bind name='numberOfPackets' type='number' export-name="numberOfPackets" ></bind>
-<bind name='payloadSize' type='number' export-name="payloadSize" ></bind>
 </in-binding><out-binding><bind name='performanceMonitorObj' type='VSPK:PerformanceMonitor' export-name="performanceMonitorObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -51,12 +53,12 @@ meObj.createPerformanceMonitor(session, performanceMonitorObj);
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 <p-param name="interval"><desc><![CDATA[interval]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>
 <p-param name="numberOfPackets"><desc><![CDATA[numberOfPackets]]></desc>
-</p-param>
-<p-param name="payloadSize"><desc><![CDATA[payloadSize]]></desc>
 </p-param>
 </presentation></workflow>

@@ -28,9 +28,13 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.CaptivePortalProfilesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.SSIDConnectionAuthenticationMode;
+
+import net.nuagenetworks.vro.vspk.model.enums.SSIDConnectionRedirectOption;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -52,6 +56,9 @@ public class SSIDConnection extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "associatedCaptivePortalProfileID")
+    protected String associatedCaptivePortalProfileID;
     
     @JsonProperty(value = "associatedEgressQOSPolicyID")
     protected String associatedEgressQOSPolicyID;
@@ -80,6 +87,12 @@ public class SSIDConnection extends BaseObject {
     @JsonProperty(value = "passphrase")
     protected String passphrase;
     
+    @JsonProperty(value = "redirectOption")
+    protected SSIDConnectionRedirectOption redirectOption;
+    
+    @JsonProperty(value = "redirectURL")
+    protected String redirectURL;
+    
     @JsonProperty(value = "whiteList")
     protected java.util.List<String> whiteList;
     
@@ -87,11 +100,16 @@ public class SSIDConnection extends BaseObject {
     private AlarmsFetcher alarms;
     
     @JsonIgnore
+    private CaptivePortalProfilesFetcher captivePortalProfiles;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @VsoConstructor
     public SSIDConnection() {
         alarms = new AlarmsFetcher(this);
+        
+        captivePortalProfiles = new CaptivePortalProfilesFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
         }
@@ -131,6 +149,17 @@ public class SSIDConnection extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedCaptivePortalProfileID", readOnly = false)   
+    public String getAssociatedCaptivePortalProfileID() {
+       return associatedCaptivePortalProfileID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedCaptivePortalProfileID(String value) { 
+        this.associatedCaptivePortalProfileID = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedEgressQOSPolicyID", readOnly = false)   
     public String getAssociatedEgressQOSPolicyID() {
@@ -231,6 +260,28 @@ public class SSIDConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "RedirectOption", readOnly = false)   
+    public SSIDConnectionRedirectOption getRedirectOption() {
+       return redirectOption;
+    }
+
+    @JsonIgnore
+    public void setRedirectOption(SSIDConnectionRedirectOption value) { 
+        this.redirectOption = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RedirectURL", readOnly = false)   
+    public String getRedirectURL() {
+       return redirectURL;
+    }
+
+    @JsonIgnore
+    public void setRedirectURL(String value) { 
+        this.redirectURL = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "WhiteList", readOnly = false)   
     public java.util.List<String> getWhiteList() {
        return whiteList;
@@ -245,6 +296,12 @@ public class SSIDConnection extends BaseObject {
     @VsoProperty(displayName = "Alarms", readOnly = true)   
     public AlarmsFetcher getAlarms() {
         return alarms;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CaptivePortalProfiles", readOnly = true)   
+    public CaptivePortalProfilesFetcher getCaptivePortalProfiles() {
+        return captivePortalProfiles;
     }
     
     @JsonIgnore
@@ -272,8 +329,17 @@ public class SSIDConnection extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.SSIDCONNECTION, getId());
         }
-    }public String toString() {
-        return "SSIDConnection [" + "associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", authenticationMode=" + authenticationMode + ", blackList=" + blackList + ", broadcastSSID=" + broadcastSSID + ", description=" + description + ", genericConfig=" + genericConfig + ", interfaceName=" + interfaceName + ", name=" + name + ", passphrase=" + passphrase + ", whiteList=" + whiteList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+    }
+    @VsoMethod
+    public void assignCaptivePortalProfiles(Session session, CaptivePortalProfile[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.SSIDCONNECTION, getId());
+        }
+    }
+    public String toString() {
+        return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", authenticationMode=" + authenticationMode + ", blackList=" + blackList + ", broadcastSSID=" + broadcastSSID + ", description=" + description + ", genericConfig=" + genericConfig + ", interfaceName=" + interfaceName + ", name=" + name + ", passphrase=" + passphrase + ", redirectOption=" + redirectOption + ", redirectURL=" + redirectURL + ", whiteList=" + whiteList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

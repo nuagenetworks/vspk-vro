@@ -42,6 +42,8 @@ import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.Avatar;
 
+import net.nuagenetworks.vro.vspk.model.BFDSession;
+
 import net.nuagenetworks.vro.vspk.model.BGPNeighbor;
 
 import net.nuagenetworks.vro.vspk.model.BGPPeer;
@@ -68,6 +70,10 @@ import net.nuagenetworks.vro.vspk.model.ContainerInterface;
 
 import net.nuagenetworks.vro.vspk.model.ContainerResync;
 
+import net.nuagenetworks.vro.vspk.model.COSRemarkingPolicy;
+
+import net.nuagenetworks.vro.vspk.model.COSRemarkingPolicyTable;
+
 import net.nuagenetworks.vro.vspk.model.DHCPOption;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
@@ -77,6 +83,10 @@ import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 import net.nuagenetworks.vro.vspk.model.DSCPForwardingClassMapping;
 
 import net.nuagenetworks.vro.vspk.model.DSCPForwardingClassTable;
+
+import net.nuagenetworks.vro.vspk.model.DSCPRemarkingPolicy;
+
+import net.nuagenetworks.vro.vspk.model.DSCPRemarkingPolicyTable;
 
 import net.nuagenetworks.vro.vspk.model.VCenterEAMConfig;
 
@@ -167,6 +177,8 @@ import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
 import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
 
 import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplate;
+
+import net.nuagenetworks.vro.vspk.model.IngressQOSPolicy;
 
 import net.nuagenetworks.vro.vspk.model.IPReservation;
 
@@ -424,6 +436,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "BFDSession", readOnly = true)
+    public BFDSession getBFDSession() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof BFDSession) {
+            return (BFDSession) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "BGPNeighbor", readOnly = true)
     public BGPNeighbor getBGPNeighbor() {
         RestObject obj = super.getParentRestObj();
@@ -554,6 +576,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "COSRemarkingPolicy", readOnly = true)
+    public COSRemarkingPolicy getCOSRemarkingPolicy() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof COSRemarkingPolicy) {
+            return (COSRemarkingPolicy) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "COSRemarkingPolicyTable", readOnly = true)
+    public COSRemarkingPolicyTable getCOSRemarkingPolicyTable() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof COSRemarkingPolicyTable) {
+            return (COSRemarkingPolicyTable) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "DHCPOption", readOnly = true)
     public DHCPOption getDHCPOption() {
         RestObject obj = super.getParentRestObj();
@@ -599,6 +641,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof DSCPForwardingClassTable) {
             return (DSCPForwardingClassTable) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DSCPRemarkingPolicy", readOnly = true)
+    public DSCPRemarkingPolicy getDSCPRemarkingPolicy() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DSCPRemarkingPolicy) {
+            return (DSCPRemarkingPolicy) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DSCPRemarkingPolicyTable", readOnly = true)
+    public DSCPRemarkingPolicyTable getDSCPRemarkingPolicyTable() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DSCPRemarkingPolicyTable) {
+            return (DSCPRemarkingPolicyTable) obj;
         }
         
         return null;
@@ -1049,6 +1111,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IngressExternalServiceTemplate) {
             return (IngressExternalServiceTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressQOSPolicy", readOnly = true)
+    public IngressQOSPolicy getIngressQOSPolicy() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressQOSPolicy) {
+            return (IngressQOSPolicy) obj;
         }
         
         return null;

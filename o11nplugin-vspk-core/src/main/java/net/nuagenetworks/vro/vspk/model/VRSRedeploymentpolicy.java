@@ -82,6 +82,12 @@ public class VRSRedeploymentpolicy extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "logDiskUtilizationRedeploymentEnabled")
+    protected Boolean logDiskUtilizationRedeploymentEnabled;
+    
+    @JsonProperty(value = "logDiskUtilizationThreshold")
+    protected Float logDiskUtilizationThreshold;
+    
     @JsonProperty(value = "memoryUtilizationRedeploymentEnabled")
     protected Boolean memoryUtilizationRedeploymentEnabled;
     
@@ -90,6 +96,12 @@ public class VRSRedeploymentpolicy extends BaseObject {
     
     @JsonProperty(value = "redeploymentDelay")
     protected Long redeploymentDelay;
+    
+    @JsonProperty(value = "rootDiskUtilizationRedeploymentEnabled")
+    protected Boolean rootDiskUtilizationRedeploymentEnabled;
+    
+    @JsonProperty(value = "rootDiskUtilizationThreshold")
+    protected Float rootDiskUtilizationThreshold;
     
     @VsoConstructor
     public VRSRedeploymentpolicy() {}
@@ -256,6 +268,28 @@ public class VRSRedeploymentpolicy extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LogDiskUtilizationRedeploymentEnabled", readOnly = false)   
+    public Boolean getLogDiskUtilizationRedeploymentEnabled() {
+       return logDiskUtilizationRedeploymentEnabled;
+    }
+
+    @JsonIgnore
+    public void setLogDiskUtilizationRedeploymentEnabled(Boolean value) { 
+        this.logDiskUtilizationRedeploymentEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LogDiskUtilizationThreshold", readOnly = false)   
+    public Float getLogDiskUtilizationThreshold() {
+       return logDiskUtilizationThreshold;
+    }
+
+    @JsonIgnore
+    public void setLogDiskUtilizationThreshold(Float value) { 
+        this.logDiskUtilizationThreshold = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MemoryUtilizationRedeploymentEnabled", readOnly = false)   
     public Boolean getMemoryUtilizationRedeploymentEnabled() {
        return memoryUtilizationRedeploymentEnabled;
@@ -287,6 +321,28 @@ public class VRSRedeploymentpolicy extends BaseObject {
     public void setRedeploymentDelay(Long value) { 
         this.redeploymentDelay = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RootDiskUtilizationRedeploymentEnabled", readOnly = false)   
+    public Boolean getRootDiskUtilizationRedeploymentEnabled() {
+       return rootDiskUtilizationRedeploymentEnabled;
+    }
+
+    @JsonIgnore
+    public void setRootDiskUtilizationRedeploymentEnabled(Boolean value) { 
+        this.rootDiskUtilizationRedeploymentEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RootDiskUtilizationThreshold", readOnly = false)   
+    public Float getRootDiskUtilizationThreshold() {
+       return rootDiskUtilizationThreshold;
+    }
+
+    @JsonIgnore
+    public void setRootDiskUtilizationThreshold(Float value) { 
+        this.rootDiskUtilizationThreshold = value;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -308,7 +364,7 @@ public class VRSRedeploymentpolicy extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.VRSREDEPLOYMENTPOLICY, getId());
         }
     }public String toString() {
-        return "VRSRedeploymentpolicy [" + "ALUbr0StatusRedeploymentEnabled=" + ALUbr0StatusRedeploymentEnabled + ", CPUUtilizationRedeploymentEnabled=" + CPUUtilizationRedeploymentEnabled + ", CPUUtilizationThreshold=" + CPUUtilizationThreshold + ", VRSCorrectiveActionDelay=" + VRSCorrectiveActionDelay + ", VRSProcessRedeploymentEnabled=" + VRSProcessRedeploymentEnabled + ", VRSVSCStatusRedeploymentEnabled=" + VRSVSCStatusRedeploymentEnabled + ", deploymentCountThreshold=" + deploymentCountThreshold + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcessRedeploymentEnabled=" + jesxmonProcessRedeploymentEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", memoryUtilizationRedeploymentEnabled=" + memoryUtilizationRedeploymentEnabled + ", memoryUtilizationThreshold=" + memoryUtilizationThreshold + ", redeploymentDelay=" + redeploymentDelay + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VRSRedeploymentpolicy [" + "ALUbr0StatusRedeploymentEnabled=" + ALUbr0StatusRedeploymentEnabled + ", CPUUtilizationRedeploymentEnabled=" + CPUUtilizationRedeploymentEnabled + ", CPUUtilizationThreshold=" + CPUUtilizationThreshold + ", VRSCorrectiveActionDelay=" + VRSCorrectiveActionDelay + ", VRSProcessRedeploymentEnabled=" + VRSProcessRedeploymentEnabled + ", VRSVSCStatusRedeploymentEnabled=" + VRSVSCStatusRedeploymentEnabled + ", deploymentCountThreshold=" + deploymentCountThreshold + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcessRedeploymentEnabled=" + jesxmonProcessRedeploymentEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", logDiskUtilizationRedeploymentEnabled=" + logDiskUtilizationRedeploymentEnabled + ", logDiskUtilizationThreshold=" + logDiskUtilizationThreshold + ", memoryUtilizationRedeploymentEnabled=" + memoryUtilizationRedeploymentEnabled + ", memoryUtilizationThreshold=" + memoryUtilizationThreshold + ", redeploymentDelay=" + redeploymentDelay + ", rootDiskUtilizationRedeploymentEnabled=" + rootDiskUtilizationRedeploymentEnabled + ", rootDiskUtilizationThreshold=" + rootDiskUtilizationThreshold + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

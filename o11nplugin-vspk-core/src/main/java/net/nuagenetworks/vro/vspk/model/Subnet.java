@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.ContainerResyncsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DHCPOptionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisePermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -47,6 +49,10 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IKEGatewayConnectionsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.IPReservationsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.PATIPEntriesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.ProxyARPFiltersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
 
@@ -86,6 +92,8 @@ import net.nuagenetworks.vro.vspk.model.enums.SubnetMaintenanceMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetMulticast;
 
+import net.nuagenetworks.vro.vspk.model.enums.SubnetResourceType;
+
 import net.nuagenetworks.vro.vspk.model.enums.SubnetUnderlayEnabled;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetUseGlobalMAC;
@@ -111,9 +119,13 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPERMISSIONS_FETCHER, type = Constants.ENTERPRISEPERMISSIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.IPRESERVATIONS_FETCHER, type = Constants.IPRESERVATIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PROXYARPFILTERS_FETCHER, type = Constants.PROXYARPFILTERS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.QOSS_FETCHER, type = Constants.QOSS_FETCHER), 
 
@@ -151,8 +163,14 @@ public class Subnet extends BaseObject {
     @JsonProperty(value = "PATEnabled")
     protected SubnetPATEnabled PATEnabled;
     
+    @JsonProperty(value = "accessRestrictionEnabled")
+    protected Boolean accessRestrictionEnabled;
+    
     @JsonProperty(value = "address")
     protected String address;
+    
+    @JsonProperty(value = "advertise")
+    protected Boolean advertise;
     
     @JsonProperty(value = "associatedMulticastChannelMapID")
     protected String associatedMulticastChannelMapID;
@@ -211,6 +229,9 @@ public class Subnet extends BaseObject {
     @JsonProperty(value = "public")
     protected Boolean public_;
     
+    @JsonProperty(value = "resourceType")
+    protected SubnetResourceType resourceType;
+    
     @JsonProperty(value = "routeDistinguisher")
     protected String routeDistinguisher;
     
@@ -257,6 +278,9 @@ public class Subnet extends BaseObject {
     private DHCPOptionsFetcher dHCPOptions;
     
     @JsonIgnore
+    private EnterprisePermissionsFetcher enterprisePermissions;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -270,6 +294,12 @@ public class Subnet extends BaseObject {
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
+    
+    @JsonIgnore
+    private PATIPEntriesFetcher pATIPEntries;
+    
+    @JsonIgnore
+    private ProxyARPFiltersFetcher proxyARPFilters;
     
     @JsonIgnore
     private QOSsFetcher qOSs;
@@ -320,6 +350,8 @@ public class Subnet extends BaseObject {
         
         dHCPOptions = new DHCPOptionsFetcher(this);
         
+        enterprisePermissions = new EnterprisePermissionsFetcher(this);
+        
         eventLogs = new EventLogsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -329,6 +361,10 @@ public class Subnet extends BaseObject {
         iPReservations = new IPReservationsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        pATIPEntries = new PATIPEntriesFetcher(this);
+        
+        proxyARPFilters = new ProxyARPFiltersFetcher(this);
         
         qOSs = new QOSsFetcher(this);
         
@@ -451,6 +487,17 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AccessRestrictionEnabled", readOnly = false)   
+    public Boolean getAccessRestrictionEnabled() {
+       return accessRestrictionEnabled;
+    }
+
+    @JsonIgnore
+    public void setAccessRestrictionEnabled(Boolean value) { 
+        this.accessRestrictionEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
     public String getAddress() {
        return address;
@@ -459,6 +506,17 @@ public class Subnet extends BaseObject {
     @JsonIgnore
     public void setAddress(String value) { 
         this.address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Advertise", readOnly = false)   
+    public Boolean getAdvertise() {
+       return advertise;
+    }
+
+    @JsonIgnore
+    public void setAdvertise(Boolean value) { 
+        this.advertise = value;
     }
     
     @JsonIgnore
@@ -671,6 +729,17 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ResourceType", readOnly = false)   
+    public SubnetResourceType getResourceType() {
+       return resourceType;
+    }
+
+    @JsonIgnore
+    public void setResourceType(SubnetResourceType value) { 
+        this.resourceType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "RouteDistinguisher", readOnly = false)   
     public String getRouteDistinguisher() {
        return routeDistinguisher;
@@ -806,6 +875,12 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EnterprisePermissions", readOnly = true)   
+    public EnterprisePermissionsFetcher getEnterprisePermissions() {
+        return enterprisePermissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -833,6 +908,18 @@ public class Subnet extends BaseObject {
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PATIPEntries", readOnly = true)   
+    public PATIPEntriesFetcher getPATIPEntries() {
+        return pATIPEntries;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ProxyARPFilters", readOnly = true)   
+    public ProxyARPFiltersFetcher getProxyARPFilters() {
+        return proxyARPFilters;
     }
     
     @JsonIgnore
@@ -960,6 +1047,14 @@ public class Subnet extends BaseObject {
         }
     }
     @VsoMethod
+    public void createEnterprisePermission(Session session, EnterprisePermission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ENTERPRISEPERMISSIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -981,6 +1076,14 @@ public class Subnet extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createProxyARPFilter(Session session, ProxyARPFilter childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PROXYARPFILTERS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1023,7 +1126,7 @@ public class Subnet extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", defaultAction=" + defaultAction + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", advertise=" + advertise + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", defaultAction=" + defaultAction + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", resourceType=" + resourceType + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

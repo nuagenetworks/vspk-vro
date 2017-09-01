@@ -28,6 +28,8 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.SharedNetworkResourcesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.SubnetsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.PATMapperEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -69,9 +71,14 @@ public class PATMapper extends BaseObject {
     @JsonIgnore
     private SharedNetworkResourcesFetcher sharedNetworkResources;
     
+    @JsonIgnore
+    private SubnetsFetcher subnets;
+    
     @VsoConstructor
     public PATMapper() {
         sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
+        
+        subnets = new SubnetsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -168,6 +175,12 @@ public class PATMapper extends BaseObject {
     @VsoProperty(displayName = "SharedNetworkResources", readOnly = true)   
     public SharedNetworkResourcesFetcher getSharedNetworkResources() {
         return sharedNetworkResources;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Subnets", readOnly = true)   
+    public SubnetsFetcher getSubnets() {
+        return subnets;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {

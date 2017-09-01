@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum RedirectionTargetTemplateEndPointType {
 
-    L3("L3", "L3"), NONE("NONE", "NONE"), VIRTUAL_WIRE("VIRTUAL_WIRE", "VIRTUAL_WIRE");
+    L3("L3", "L3"), NONE("NONE", "NONE"), NSG_VNF("NSG_VNF", "NSG_VNF"), VIRTUAL_WIRE("VIRTUAL_WIRE", "VIRTUAL_WIRE");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum RedirectionTargetTemplateEndPointType {
     @VsoProperty(displayName = "NONE", readOnly = true)
     public RedirectionTargetTemplateEndPointType getNONE() {
         return NONE;
+    }
+    
+    @VsoProperty(displayName = "NSG_VNF", readOnly = true)
+    public RedirectionTargetTemplateEndPointType getNSG_VNF() {
+        return NSG_VNF;
     }
     
     @VsoProperty(displayName = "VIRTUAL_WIRE", readOnly = true)

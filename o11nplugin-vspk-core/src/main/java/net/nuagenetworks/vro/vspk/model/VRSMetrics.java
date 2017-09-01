@@ -61,9 +61,6 @@ public class VRSMetrics extends BaseObject {
     @JsonProperty(value = "VRSVSCStatus")
     protected Boolean VRSVSCStatus;
     
-    @JsonProperty(value = "agentName")
-    protected String agentName;
-    
     @JsonProperty(value = "associatedVCenterHypervisorID")
     protected String associatedVCenterHypervisorID;
     
@@ -82,6 +79,9 @@ public class VRSMetrics extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "logDiskPartitionUtilization")
+    protected Float logDiskPartitionUtilization;
+    
     @JsonProperty(value = "memoryUtilization")
     protected Float memoryUtilization;
     
@@ -90,6 +90,9 @@ public class VRSMetrics extends BaseObject {
     
     @JsonProperty(value = "receivingMetrics")
     protected Boolean receivingMetrics;
+    
+    @JsonProperty(value = "rootDiskPartitionUtilization")
+    protected Float rootDiskPartitionUtilization;
     
     @VsoConstructor
     public VRSMetrics() {}
@@ -179,17 +182,6 @@ public class VRSMetrics extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "AgentName", readOnly = false)   
-    public String getAgentName() {
-       return agentName;
-    }
-
-    @JsonIgnore
-    public void setAgentName(String value) { 
-        this.agentName = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "AssociatedVCenterHypervisorID", readOnly = false)   
     public String getAssociatedVCenterHypervisorID() {
        return associatedVCenterHypervisorID;
@@ -256,6 +248,17 @@ public class VRSMetrics extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LogDiskPartitionUtilization", readOnly = false)   
+    public Float getLogDiskPartitionUtilization() {
+       return logDiskPartitionUtilization;
+    }
+
+    @JsonIgnore
+    public void setLogDiskPartitionUtilization(Float value) { 
+        this.logDiskPartitionUtilization = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MemoryUtilization", readOnly = false)   
     public Float getMemoryUtilization() {
        return memoryUtilization;
@@ -287,6 +290,17 @@ public class VRSMetrics extends BaseObject {
     public void setReceivingMetrics(Boolean value) { 
         this.receivingMetrics = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RootDiskPartitionUtilization", readOnly = false)   
+    public Float getRootDiskPartitionUtilization() {
+       return rootDiskPartitionUtilization;
+    }
+
+    @JsonIgnore
+    public void setRootDiskPartitionUtilization(Float value) { 
+        this.rootDiskPartitionUtilization = value;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -308,7 +322,7 @@ public class VRSMetrics extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.VRSMETRICS, getId());
         }
     }public String toString() {
-        return "VRSMetrics [" + "ALUbr0Status=" + ALUbr0Status + ", CPUUtilization=" + CPUUtilization + ", VRSProcess=" + VRSProcess + ", VRSVSCStatus=" + VRSVSCStatus + ", agentName=" + agentName + ", associatedVCenterHypervisorID=" + associatedVCenterHypervisorID + ", currentVersion=" + currentVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcess=" + jesxmonProcess + ", lastUpdatedBy=" + lastUpdatedBy + ", memoryUtilization=" + memoryUtilization + ", reDeploy=" + reDeploy + ", receivingMetrics=" + receivingMetrics + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VRSMetrics [" + "ALUbr0Status=" + ALUbr0Status + ", CPUUtilization=" + CPUUtilization + ", VRSProcess=" + VRSProcess + ", VRSVSCStatus=" + VRSVSCStatus + ", associatedVCenterHypervisorID=" + associatedVCenterHypervisorID + ", currentVersion=" + currentVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcess=" + jesxmonProcess + ", lastUpdatedBy=" + lastUpdatedBy + ", logDiskPartitionUtilization=" + logDiskPartitionUtilization + ", memoryUtilization=" + memoryUtilization + ", reDeploy=" + reDeploy + ", receivingMetrics=" + receivingMetrics + ", rootDiskPartitionUtilization=" + rootDiskPartitionUtilization + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

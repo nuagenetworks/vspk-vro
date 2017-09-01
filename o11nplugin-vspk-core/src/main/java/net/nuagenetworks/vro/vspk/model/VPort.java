@@ -54,6 +54,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLEntryTemplatesFetcher
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdEntryTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
@@ -89,6 +91,8 @@ import net.nuagenetworks.vro.vspk.model.enums.VPortDPI;
 import net.nuagenetworks.vro.vspk.model.enums.VPortAddressSpoofing;
 
 import net.nuagenetworks.vro.vspk.model.enums.VPortEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.VPortGatewayMACMoveRole;
 
 import net.nuagenetworks.vro.vspk.model.enums.VPortMulticast;
 
@@ -188,6 +192,9 @@ public class VPort extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
+    @JsonProperty(value = "gatewayMACMoveRole")
+    protected VPortGatewayMACMoveRole gatewayMACMoveRole;
+    
     @JsonProperty(value = "hasAttachedInterfaces")
     protected Boolean hasAttachedInterfaces;
     
@@ -268,6 +275,9 @@ public class VPort extends BaseObject {
     
     @JsonIgnore
     private IngressAdvFwdEntryTemplatesFetcher ingressAdvFwdEntryTemplates;
+    
+    @JsonIgnore
+    private JobsFetcher jobs;
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
@@ -351,6 +361,8 @@ public class VPort extends BaseObject {
         ingressACLEntryTemplates = new IngressACLEntryTemplatesFetcher(this);
         
         ingressAdvFwdEntryTemplates = new IngressAdvFwdEntryTemplatesFetcher(this);
+        
+        jobs = new JobsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         
@@ -559,6 +571,17 @@ public class VPort extends BaseObject {
     @JsonIgnore
     public void setExternalID(String value) { 
         this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayMACMoveRole", readOnly = false)   
+    public VPortGatewayMACMoveRole getGatewayMACMoveRole() {
+       return gatewayMACMoveRole;
+    }
+
+    @JsonIgnore
+    public void setGatewayMACMoveRole(VPortGatewayMACMoveRole value) { 
+        this.gatewayMACMoveRole = value;
     }
     
     @JsonIgnore
@@ -789,6 +812,12 @@ public class VPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Jobs", readOnly = true)   
+    public JobsFetcher getJobs() {
+        return jobs;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
@@ -975,6 +1004,14 @@ public class VPort extends BaseObject {
         }
     }
     @VsoMethod
+    public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1030,7 +1067,7 @@ public class VPort extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTMIRRORS_FETCHER, getId());
         }
     }public String toString() {
-        return "VPort [" + "DPI=" + DPI + ", VLANID=" + VLANID + ", active=" + active + ", addressSpoofing=" + addressSpoofing + ", associatedFloatingIPID=" + associatedFloatingIPID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSSID=" + associatedSSID + ", associatedSendMulticastChannelMapID=" + associatedSendMulticastChannelMapID + ", associatedTrunkID=" + associatedTrunkID + ", description=" + description + ", domainID=" + domainID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hasAttachedInterfaces=" + hasAttachedInterfaces + ", lastUpdatedBy=" + lastUpdatedBy + ", multiNICVPortID=" + multiNICVPortID + ", multicast=" + multicast + ", name=" + name + ", operationalState=" + operationalState + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", subType=" + subType + ", systemType=" + systemType + ", trunkRole=" + trunkRole + ", type=" + type + ", zoneID=" + zoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VPort [" + "DPI=" + DPI + ", VLANID=" + VLANID + ", active=" + active + ", addressSpoofing=" + addressSpoofing + ", associatedFloatingIPID=" + associatedFloatingIPID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSSID=" + associatedSSID + ", associatedSendMulticastChannelMapID=" + associatedSendMulticastChannelMapID + ", associatedTrunkID=" + associatedTrunkID + ", description=" + description + ", domainID=" + domainID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayMACMoveRole=" + gatewayMACMoveRole + ", hasAttachedInterfaces=" + hasAttachedInterfaces + ", lastUpdatedBy=" + lastUpdatedBy + ", multiNICVPortID=" + multiNICVPortID + ", multicast=" + multicast + ", name=" + name + ", operationalState=" + operationalState + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", subType=" + subType + ", systemType=" + systemType + ", trunkRole=" + trunkRole + ", type=" + type + ", zoneID=" + zoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

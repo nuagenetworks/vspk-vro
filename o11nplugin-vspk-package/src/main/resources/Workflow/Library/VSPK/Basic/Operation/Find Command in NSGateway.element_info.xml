@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Operation</entry>
+<entry key="name">Find Command in NSGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0511ff9f-14f4-50f6-bad1-188df0e12a22</entry>
+</properties>

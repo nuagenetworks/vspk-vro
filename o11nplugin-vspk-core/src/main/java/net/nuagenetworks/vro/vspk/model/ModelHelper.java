@@ -1223,6 +1223,91 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<AvatarsFetcher> allObjs = new ArrayList<AvatarsFetcher>();
         return allObjs;
     }
+    public static BFDSession getBFDSessionById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            BFDSession obj = null;
+            obj = new BFDSession();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.BFDSESSION, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForBFDSessionId(String id) throws RestException {
+        BFDSession obj = getObject(Constants.BFDSESSION, id);
+        if (obj == null) {
+            obj = getBFDSessionById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForBFDSessionId(String id) throws RestException {
+        BFDSession obj = getObject(Constants.BFDSESSION, id);
+        if (obj == null) {
+            obj = getBFDSessionById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<BFDSession> getBFDSessionsForFetcherId(String id) throws RestException {
+        BFDSessionsFetcher fetcher = getBFDSessionsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.BFDSESSION);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<BFDSession>();
+    }
+
+    public static BFDSessionsFetcher getBFDSessionsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.BFDSESSIONS_FETCHER, id);
+        if (fetcher != null) {
+            return (BFDSessionsFetcher) fetcher;
+        }
+        if ((fetcher = getBFDSessionsFetcherForBRConnectionId(id)) != null) {
+            return (BFDSessionsFetcher) addFetcher(Constants.BFDSESSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getBFDSessionsFetcherForUplinkConnectionId(id)) != null) {
+            return (BFDSessionsFetcher) addFetcher(Constants.BFDSESSIONS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<BFDSession> getAllBFDSessions() throws RestException {
+        java.util.List<BFDSession> allObjs = new ArrayList<BFDSession>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<BFDSessionsFetcher> getAllBFDSessionsFetchers() throws RestException {
+        java.util.List<BFDSessionsFetcher> allObjs = new ArrayList<BFDSessionsFetcher>();
+        return allObjs;
+    }
     public static BGPNeighbor getBGPNeighborById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             BGPNeighbor obj = null;
@@ -1677,7 +1762,21 @@ public class ModelHelper extends BaseModelHelper {
         }
 
         return null;
-    }public static java.util.List<BRConnection> getBRConnectionsForFetcherId(String id) throws RestException {
+    }
+    public static BFDSessionsFetcher getBFDSessionsFetcherForBRConnectionId(String id) throws RestException {
+        BRConnection obj = getObject(Constants.BRCONNECTION, id);
+        if (obj == null) {
+            obj = getBRConnectionById(id);
+        }
+
+        if (obj != null) {
+            BFDSessionsFetcher fetcher = obj.getBFDSessions();
+            return addFetcher(Constants.BFDSESSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<BRConnection> getBRConnectionsForFetcherId(String id) throws RestException {
         BRConnectionsFetcher fetcher = getBRConnectionsFetcherById(id);
         if (fetcher != null) {
             try {
@@ -1999,6 +2098,63 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<BulkStatisticsFetcher> allObjs = new ArrayList<BulkStatisticsFetcher>();
         return allObjs;
     }
+    public static CaptivePortalProfile getCaptivePortalProfileById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            CaptivePortalProfile obj = null;
+            obj = new CaptivePortalProfile();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.CAPTIVEPORTALPROFILE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<CaptivePortalProfile> getCaptivePortalProfilesForFetcherId(String id) throws RestException {
+        CaptivePortalProfilesFetcher fetcher = getCaptivePortalProfilesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.CAPTIVEPORTALPROFILE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<CaptivePortalProfile>();
+    }
+
+    public static CaptivePortalProfilesFetcher getCaptivePortalProfilesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.CAPTIVEPORTALPROFILES_FETCHER, id);
+        if (fetcher != null) {
+            return (CaptivePortalProfilesFetcher) fetcher;
+        }
+        if ((fetcher = getCaptivePortalProfilesFetcherForEnterpriseId(id)) != null) {
+            return (CaptivePortalProfilesFetcher) addFetcher(Constants.CAPTIVEPORTALPROFILES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getCaptivePortalProfilesFetcherForSSIDConnectionId(id)) != null) {
+            return (CaptivePortalProfilesFetcher) addFetcher(Constants.CAPTIVEPORTALPROFILES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<CaptivePortalProfile> getAllCaptivePortalProfiles() throws RestException {
+        java.util.List<CaptivePortalProfile> allObjs = new ArrayList<CaptivePortalProfile>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<CaptivePortalProfilesFetcher> getAllCaptivePortalProfilesFetchers() throws RestException {
+        java.util.List<CaptivePortalProfilesFetcher> allObjs = new ArrayList<CaptivePortalProfilesFetcher>();
+        return allObjs;
+    }
     public static Certificate getCertificateById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             Certificate obj = null;
@@ -2171,6 +2327,59 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<CloudMgmtSystemsFetcher> getAllCloudMgmtSystemsFetchers() throws RestException {
         java.util.List<CloudMgmtSystemsFetcher> allObjs = new ArrayList<CloudMgmtSystemsFetcher>();
+        return allObjs;
+    }
+    public static Command getCommandById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            Command obj = null;
+            obj = new Command();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.COMMAND, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<Command> getCommandsForFetcherId(String id) throws RestException {
+        CommandsFetcher fetcher = getCommandsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.COMMAND);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<Command>();
+    }
+
+    public static CommandsFetcher getCommandsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.COMMANDS_FETCHER, id);
+        if (fetcher != null) {
+            return (CommandsFetcher) fetcher;
+        }
+        if ((fetcher = getCommandsFetcherForNSGatewayId(id)) != null) {
+            return (CommandsFetcher) addFetcher(Constants.COMMANDS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<Command> getAllCommands() throws RestException {
+        java.util.List<Command> allObjs = new ArrayList<Command>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<CommandsFetcher> getAllCommandsFetchers() throws RestException {
+        java.util.List<CommandsFetcher> allObjs = new ArrayList<CommandsFetcher>();
         return allObjs;
     }
     public static VSDComponent getVSDComponentById(String id) {
@@ -2824,6 +3033,192 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<ContainerResyncsFetcher> getAllContainerResyncsFetchers() throws RestException {
         java.util.List<ContainerResyncsFetcher> allObjs = new ArrayList<ContainerResyncsFetcher>();
+        return allObjs;
+    }
+    public static COSRemarkingPolicy getCOSRemarkingPolicyById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            COSRemarkingPolicy obj = null;
+            obj = new COSRemarkingPolicy();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.COSREMARKINGPOLICY, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForCOSRemarkingPolicyId(String id) throws RestException {
+        COSRemarkingPolicy obj = getObject(Constants.COSREMARKINGPOLICY, id);
+        if (obj == null) {
+            obj = getCOSRemarkingPolicyById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForCOSRemarkingPolicyId(String id) throws RestException {
+        COSRemarkingPolicy obj = getObject(Constants.COSREMARKINGPOLICY, id);
+        if (obj == null) {
+            obj = getCOSRemarkingPolicyById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<COSRemarkingPolicy> getCOSRemarkingPoliciesForFetcherId(String id) throws RestException {
+        COSRemarkingPoliciesFetcher fetcher = getCOSRemarkingPoliciesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.COSREMARKINGPOLICY);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<COSRemarkingPolicy>();
+    }
+
+    public static COSRemarkingPoliciesFetcher getCOSRemarkingPoliciesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.COSREMARKINGPOLICIES_FETCHER, id);
+        if (fetcher != null) {
+            return (COSRemarkingPoliciesFetcher) fetcher;
+        }
+        if ((fetcher = getCOSRemarkingPoliciesFetcherForCOSRemarkingPolicyTableId(id)) != null) {
+            return (COSRemarkingPoliciesFetcher) addFetcher(Constants.COSREMARKINGPOLICIES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<COSRemarkingPolicy> getAllCOSRemarkingPolicies() throws RestException {
+        java.util.List<COSRemarkingPolicy> allObjs = new ArrayList<COSRemarkingPolicy>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<COSRemarkingPoliciesFetcher> getAllCOSRemarkingPoliciesFetchers() throws RestException {
+        java.util.List<COSRemarkingPoliciesFetcher> allObjs = new ArrayList<COSRemarkingPoliciesFetcher>();
+        return allObjs;
+    }
+    public static COSRemarkingPolicyTable getCOSRemarkingPolicyTableById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            COSRemarkingPolicyTable obj = null;
+            obj = new COSRemarkingPolicyTable();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.COSREMARKINGPOLICYTABLE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static COSRemarkingPoliciesFetcher getCOSRemarkingPoliciesFetcherForCOSRemarkingPolicyTableId(String id) throws RestException {
+        COSRemarkingPolicyTable obj = getObject(Constants.COSREMARKINGPOLICYTABLE, id);
+        if (obj == null) {
+            obj = getCOSRemarkingPolicyTableById(id);
+        }
+
+        if (obj != null) {
+            COSRemarkingPoliciesFetcher fetcher = obj.getCOSRemarkingPolicies();
+            return addFetcher(Constants.COSREMARKINGPOLICIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForCOSRemarkingPolicyTableId(String id) throws RestException {
+        COSRemarkingPolicyTable obj = getObject(Constants.COSREMARKINGPOLICYTABLE, id);
+        if (obj == null) {
+            obj = getCOSRemarkingPolicyTableById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForCOSRemarkingPolicyTableId(String id) throws RestException {
+        COSRemarkingPolicyTable obj = getObject(Constants.COSREMARKINGPOLICYTABLE, id);
+        if (obj == null) {
+            obj = getCOSRemarkingPolicyTableById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<COSRemarkingPolicyTable> getCOSRemarkingPolicyTablesForFetcherId(String id) throws RestException {
+        COSRemarkingPolicyTablesFetcher fetcher = getCOSRemarkingPolicyTablesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.COSREMARKINGPOLICYTABLE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<COSRemarkingPolicyTable>();
+    }
+
+    public static COSRemarkingPolicyTablesFetcher getCOSRemarkingPolicyTablesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.COSREMARKINGPOLICYTABLES_FETCHER, id);
+        if (fetcher != null) {
+            return (COSRemarkingPolicyTablesFetcher) fetcher;
+        }
+        if ((fetcher = getCOSRemarkingPolicyTablesFetcherForEnterpriseId(id)) != null) {
+            return (COSRemarkingPolicyTablesFetcher) addFetcher(Constants.COSREMARKINGPOLICYTABLES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getCOSRemarkingPolicyTablesFetcherForMeId(id)) != null) {
+            return (COSRemarkingPolicyTablesFetcher) addFetcher(Constants.COSREMARKINGPOLICYTABLES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<COSRemarkingPolicyTable> getAllCOSRemarkingPolicyTables() throws RestException {
+        java.util.List<COSRemarkingPolicyTable> allObjs = new ArrayList<COSRemarkingPolicyTable>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            COSRemarkingPolicyTablesFetcher fetcher = getCOSRemarkingPolicyTablesFetcherForMeId(session.getId());
+            java.util.List<COSRemarkingPolicyTable> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<COSRemarkingPolicyTablesFetcher> getAllCOSRemarkingPolicyTablesFetchers() throws RestException {
+        java.util.List<COSRemarkingPolicyTablesFetcher> allObjs = new ArrayList<COSRemarkingPolicyTablesFetcher>();
         return allObjs;
     }
     public static CSNATPool getCSNATPoolById(String id) {
@@ -3628,6 +4023,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PGExpressionsFetcher getPGExpressionsFetcherForDomainId(String id) throws RestException {
+        Domain obj = getObject(Constants.DOMAIN, id);
+        if (obj == null) {
+            obj = getDomainById(id);
+        }
+
+        if (obj != null) {
+            PGExpressionsFetcher fetcher = obj.getPGExpressions();
+            return addFetcher(Constants.PGEXPRESSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PolicyGroupsFetcher getPolicyGroupsFetcherForDomainId(String id) throws RestException {
         Domain obj = getObject(Constants.DOMAIN, id);
         if (obj == null) {
@@ -3805,6 +4214,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             VMInterfacesFetcher fetcher = obj.getVMInterfaces();
             return addFetcher(Constants.VMINTERFACES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static VNFDomainMappingsFetcher getVNFDomainMappingsFetcherForDomainId(String id) throws RestException {
+        Domain obj = getObject(Constants.DOMAIN, id);
+        if (obj == null) {
+            obj = getDomainById(id);
+        }
+
+        if (obj != null) {
+            VNFDomainMappingsFetcher fetcher = obj.getVNFDomainMappings();
+            return addFetcher(Constants.VNFDOMAINMAPPINGS_FETCHER, fetcher);
         }
 
         return null;
@@ -4123,6 +4546,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PGExpressionTemplatesFetcher getPGExpressionTemplatesFetcherForDomainTemplateId(String id) throws RestException {
+        DomainTemplate obj = getObject(Constants.DOMAINTEMPLATE, id);
+        if (obj == null) {
+            obj = getDomainTemplateById(id);
+        }
+
+        if (obj != null) {
+            PGExpressionTemplatesFetcher fetcher = obj.getPGExpressionTemplates();
+            return addFetcher(Constants.PGEXPRESSIONTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PolicyGroupTemplatesFetcher getPolicyGroupTemplatesFetcherForDomainTemplateId(String id) throws RestException {
         DomainTemplate obj = getObject(Constants.DOMAINTEMPLATE, id);
         if (obj == null) {
@@ -4406,6 +4843,192 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<DSCPForwardingClassTablesFetcher> getAllDSCPForwardingClassTablesFetchers() throws RestException {
         java.util.List<DSCPForwardingClassTablesFetcher> allObjs = new ArrayList<DSCPForwardingClassTablesFetcher>();
+        return allObjs;
+    }
+    public static DSCPRemarkingPolicy getDSCPRemarkingPolicyById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            DSCPRemarkingPolicy obj = null;
+            obj = new DSCPRemarkingPolicy();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.DSCPREMARKINGPOLICY, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForDSCPRemarkingPolicyId(String id) throws RestException {
+        DSCPRemarkingPolicy obj = getObject(Constants.DSCPREMARKINGPOLICY, id);
+        if (obj == null) {
+            obj = getDSCPRemarkingPolicyById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForDSCPRemarkingPolicyId(String id) throws RestException {
+        DSCPRemarkingPolicy obj = getObject(Constants.DSCPREMARKINGPOLICY, id);
+        if (obj == null) {
+            obj = getDSCPRemarkingPolicyById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<DSCPRemarkingPolicy> getDSCPRemarkingPoliciesForFetcherId(String id) throws RestException {
+        DSCPRemarkingPoliciesFetcher fetcher = getDSCPRemarkingPoliciesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.DSCPREMARKINGPOLICY);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<DSCPRemarkingPolicy>();
+    }
+
+    public static DSCPRemarkingPoliciesFetcher getDSCPRemarkingPoliciesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.DSCPREMARKINGPOLICIES_FETCHER, id);
+        if (fetcher != null) {
+            return (DSCPRemarkingPoliciesFetcher) fetcher;
+        }
+        if ((fetcher = getDSCPRemarkingPoliciesFetcherForDSCPRemarkingPolicyTableId(id)) != null) {
+            return (DSCPRemarkingPoliciesFetcher) addFetcher(Constants.DSCPREMARKINGPOLICIES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<DSCPRemarkingPolicy> getAllDSCPRemarkingPolicies() throws RestException {
+        java.util.List<DSCPRemarkingPolicy> allObjs = new ArrayList<DSCPRemarkingPolicy>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<DSCPRemarkingPoliciesFetcher> getAllDSCPRemarkingPoliciesFetchers() throws RestException {
+        java.util.List<DSCPRemarkingPoliciesFetcher> allObjs = new ArrayList<DSCPRemarkingPoliciesFetcher>();
+        return allObjs;
+    }
+    public static DSCPRemarkingPolicyTable getDSCPRemarkingPolicyTableById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            DSCPRemarkingPolicyTable obj = null;
+            obj = new DSCPRemarkingPolicyTable();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.DSCPREMARKINGPOLICYTABLE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static DSCPRemarkingPoliciesFetcher getDSCPRemarkingPoliciesFetcherForDSCPRemarkingPolicyTableId(String id) throws RestException {
+        DSCPRemarkingPolicyTable obj = getObject(Constants.DSCPREMARKINGPOLICYTABLE, id);
+        if (obj == null) {
+            obj = getDSCPRemarkingPolicyTableById(id);
+        }
+
+        if (obj != null) {
+            DSCPRemarkingPoliciesFetcher fetcher = obj.getDSCPRemarkingPolicies();
+            return addFetcher(Constants.DSCPREMARKINGPOLICIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForDSCPRemarkingPolicyTableId(String id) throws RestException {
+        DSCPRemarkingPolicyTable obj = getObject(Constants.DSCPREMARKINGPOLICYTABLE, id);
+        if (obj == null) {
+            obj = getDSCPRemarkingPolicyTableById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForDSCPRemarkingPolicyTableId(String id) throws RestException {
+        DSCPRemarkingPolicyTable obj = getObject(Constants.DSCPREMARKINGPOLICYTABLE, id);
+        if (obj == null) {
+            obj = getDSCPRemarkingPolicyTableById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<DSCPRemarkingPolicyTable> getDSCPRemarkingPolicyTablesForFetcherId(String id) throws RestException {
+        DSCPRemarkingPolicyTablesFetcher fetcher = getDSCPRemarkingPolicyTablesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.DSCPREMARKINGPOLICYTABLE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<DSCPRemarkingPolicyTable>();
+    }
+
+    public static DSCPRemarkingPolicyTablesFetcher getDSCPRemarkingPolicyTablesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.DSCPREMARKINGPOLICYTABLES_FETCHER, id);
+        if (fetcher != null) {
+            return (DSCPRemarkingPolicyTablesFetcher) fetcher;
+        }
+        if ((fetcher = getDSCPRemarkingPolicyTablesFetcherForEnterpriseId(id)) != null) {
+            return (DSCPRemarkingPolicyTablesFetcher) addFetcher(Constants.DSCPREMARKINGPOLICYTABLES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getDSCPRemarkingPolicyTablesFetcherForMeId(id)) != null) {
+            return (DSCPRemarkingPolicyTablesFetcher) addFetcher(Constants.DSCPREMARKINGPOLICYTABLES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<DSCPRemarkingPolicyTable> getAllDSCPRemarkingPolicyTables() throws RestException {
+        java.util.List<DSCPRemarkingPolicyTable> allObjs = new ArrayList<DSCPRemarkingPolicyTable>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            DSCPRemarkingPolicyTablesFetcher fetcher = getDSCPRemarkingPolicyTablesFetcherForMeId(session.getId());
+            java.util.List<DSCPRemarkingPolicyTable> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<DSCPRemarkingPolicyTablesFetcher> getAllDSCPRemarkingPolicyTablesFetchers() throws RestException {
+        java.util.List<DSCPRemarkingPolicyTablesFetcher> allObjs = new ArrayList<DSCPRemarkingPolicyTablesFetcher>();
         return allObjs;
     }
     public static DUCGroup getDUCGroupById(String id) {
@@ -5732,6 +6355,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static CaptivePortalProfilesFetcher getCaptivePortalProfilesFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            CaptivePortalProfilesFetcher fetcher = obj.getCaptivePortalProfiles();
+            return addFetcher(Constants.CAPTIVEPORTALPROFILES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static ContainersFetcher getContainersFetcherForEnterpriseId(String id) throws RestException {
         Enterprise obj = getObject(Constants.ENTERPRISE, id);
         if (obj == null) {
@@ -5741,6 +6378,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             ContainersFetcher fetcher = obj.getContainers();
             return addFetcher(Constants.CONTAINERS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static COSRemarkingPolicyTablesFetcher getCOSRemarkingPolicyTablesFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            COSRemarkingPolicyTablesFetcher fetcher = obj.getCOSRemarkingPolicyTables();
+            return addFetcher(Constants.COSREMARKINGPOLICYTABLES_FETCHER, fetcher);
         }
 
         return null;
@@ -5783,6 +6434,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             DSCPForwardingClassTablesFetcher fetcher = obj.getDSCPForwardingClassTables();
             return addFetcher(Constants.DSCPFORWARDINGCLASSTABLES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static DSCPRemarkingPolicyTablesFetcher getDSCPRemarkingPolicyTablesFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            DSCPRemarkingPolicyTablesFetcher fetcher = obj.getDSCPRemarkingPolicyTables();
+            return addFetcher(Constants.DSCPREMARKINGPOLICYTABLES_FETCHER, fetcher);
         }
 
         return null;
@@ -6012,6 +6677,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static IngressQOSPoliciesFetcher getIngressQOSPoliciesFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            IngressQOSPoliciesFetcher fetcher = obj.getIngressQOSPolicies();
+            return addFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static JobsFetcher getJobsFetcherForEnterpriseId(String id) throws RestException {
         Enterprise obj = getObject(Constants.ENTERPRISE, id);
         if (obj == null) {
@@ -6063,6 +6742,34 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             L2DomainTemplatesFetcher fetcher = obj.getL2DomainTemplates();
             return addFetcher(Constants.L2DOMAINTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static L4ServicesFetcher getL4ServicesFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            L4ServicesFetcher fetcher = obj.getL4Services();
+            return addFetcher(Constants.L4SERVICES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static L4ServiceGroupsFetcher getL4ServiceGroupsFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            L4ServiceGroupsFetcher fetcher = obj.getL4ServiceGroups();
+            return addFetcher(Constants.L4SERVICEGROUPS_FETCHER, fetcher);
         }
 
         return null;
@@ -6376,6 +7083,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static VNFMetadatasFetcher getVNFMetadatasFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            VNFMetadatasFetcher fetcher = obj.getVNFMetadatas();
+            return addFetcher(Constants.VNFMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static ZFBRequestsFetcher getZFBRequestsFetcherForEnterpriseId(String id) throws RestException {
         Enterprise obj = getObject(Constants.ENTERPRISE, id);
         if (obj == null) {
@@ -6642,6 +7363,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getEnterprisePermissionsFetcherForSharedNetworkResourceId(id)) != null) {
+            return (EnterprisePermissionsFetcher) addFetcher(Constants.ENTERPRISEPERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getEnterprisePermissionsFetcherForSubnetId(id)) != null) {
             return (EnterprisePermissionsFetcher) addFetcher(Constants.ENTERPRISEPERMISSIONS_FETCHER, fetcher);
         }
         
@@ -7160,6 +7885,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getEventLogsFetcherForPortId(id)) != null) {
+            return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getEventLogsFetcherForProxyARPFilterId(id)) != null) {
             return (EventLogsFetcher) addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
         }
         
@@ -8109,6 +8838,10 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForBFDSessionId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForBGPNeighborId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -8161,6 +8894,14 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForCOSRemarkingPolicyId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForCOSRemarkingPolicyTableId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForDHCPOptionId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -8178,6 +8919,14 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getGlobalMetadatasFetcherForDSCPForwardingClassTableId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForDSCPRemarkingPolicyId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForDSCPRemarkingPolicyTableId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
@@ -8358,6 +9107,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getGlobalMetadatasFetcherForIngressExternalServiceTemplateId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForIngressQOSPolicyId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
@@ -11151,6 +11904,97 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<IngressExternalServiceTemplatesFetcher> allObjs = new ArrayList<IngressExternalServiceTemplatesFetcher>();
         return allObjs;
     }
+    public static IngressQOSPolicy getIngressQOSPolicyById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            IngressQOSPolicy obj = null;
+            obj = new IngressQOSPolicy();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.INGRESSQOSPOLICY, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForIngressQOSPolicyId(String id) throws RestException {
+        IngressQOSPolicy obj = getObject(Constants.INGRESSQOSPOLICY, id);
+        if (obj == null) {
+            obj = getIngressQOSPolicyById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForIngressQOSPolicyId(String id) throws RestException {
+        IngressQOSPolicy obj = getObject(Constants.INGRESSQOSPOLICY, id);
+        if (obj == null) {
+            obj = getIngressQOSPolicyById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<IngressQOSPolicy> getIngressQOSPoliciesForFetcherId(String id) throws RestException {
+        IngressQOSPoliciesFetcher fetcher = getIngressQOSPoliciesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.INGRESSQOSPOLICY);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<IngressQOSPolicy>();
+    }
+
+    public static IngressQOSPoliciesFetcher getIngressQOSPoliciesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, id);
+        if (fetcher != null) {
+            return (IngressQOSPoliciesFetcher) fetcher;
+        }
+        if ((fetcher = getIngressQOSPoliciesFetcherForEnterpriseId(id)) != null) {
+            return (IngressQOSPoliciesFetcher) addFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getIngressQOSPoliciesFetcherForMeId(id)) != null) {
+            return (IngressQOSPoliciesFetcher) addFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<IngressQOSPolicy> getAllIngressQOSPolicies() throws RestException {
+        java.util.List<IngressQOSPolicy> allObjs = new ArrayList<IngressQOSPolicy>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            IngressQOSPoliciesFetcher fetcher = getIngressQOSPoliciesFetcherForMeId(session.getId());
+            java.util.List<IngressQOSPolicy> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<IngressQOSPoliciesFetcher> getAllIngressQOSPoliciesFetchers() throws RestException {
+        java.util.List<IngressQOSPoliciesFetcher> allObjs = new ArrayList<IngressQOSPoliciesFetcher>();
+        return allObjs;
+    }
     public static IPReservation getIPReservationById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             IPReservation obj = null;
@@ -11416,6 +12260,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getJobsFetcherForVNFId(id)) != null) {
+            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getJobsFetcherForVPortId(id)) != null) {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
@@ -12313,6 +13161,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PGExpressionsFetcher getPGExpressionsFetcherForL2DomainId(String id) throws RestException {
+        L2Domain obj = getObject(Constants.L2DOMAIN, id);
+        if (obj == null) {
+            obj = getL2DomainById(id);
+        }
+
+        if (obj != null) {
+            PGExpressionsFetcher fetcher = obj.getPGExpressions();
+            return addFetcher(Constants.PGEXPRESSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PolicyGroupsFetcher getPolicyGroupsFetcherForL2DomainId(String id) throws RestException {
         L2Domain obj = getObject(Constants.L2DOMAIN, id);
         if (obj == null) {
@@ -12730,6 +13592,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PGExpressionTemplatesFetcher getPGExpressionTemplatesFetcherForL2DomainTemplateId(String id) throws RestException {
+        L2DomainTemplate obj = getObject(Constants.L2DOMAINTEMPLATE, id);
+        if (obj == null) {
+            obj = getL2DomainTemplateById(id);
+        }
+
+        if (obj != null) {
+            PGExpressionTemplatesFetcher fetcher = obj.getPGExpressionTemplates();
+            return addFetcher(Constants.PGEXPRESSIONTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PolicyGroupTemplatesFetcher getPolicyGroupTemplatesFetcherForL2DomainTemplateId(String id) throws RestException {
         L2DomainTemplate obj = getObject(Constants.L2DOMAINTEMPLATE, id);
         if (obj == null) {
@@ -12805,6 +13681,130 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<L2DomainTemplatesFetcher> getAllL2DomainTemplatesFetchers() throws RestException {
         java.util.List<L2DomainTemplatesFetcher> allObjs = new ArrayList<L2DomainTemplatesFetcher>();
+        return allObjs;
+    }
+    public static L4Service getL4ServiceById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            L4Service obj = null;
+            obj = new L4Service();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.L4SERVICE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<L4Service> getL4ServicesForFetcherId(String id) throws RestException {
+        L4ServicesFetcher fetcher = getL4ServicesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.L4SERVICE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<L4Service>();
+    }
+
+    public static L4ServicesFetcher getL4ServicesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.L4SERVICES_FETCHER, id);
+        if (fetcher != null) {
+            return (L4ServicesFetcher) fetcher;
+        }
+        if ((fetcher = getL4ServicesFetcherForEnterpriseId(id)) != null) {
+            return (L4ServicesFetcher) addFetcher(Constants.L4SERVICES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getL4ServicesFetcherForL4ServiceGroupId(id)) != null) {
+            return (L4ServicesFetcher) addFetcher(Constants.L4SERVICES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<L4Service> getAllL4Services() throws RestException {
+        java.util.List<L4Service> allObjs = new ArrayList<L4Service>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<L4ServicesFetcher> getAllL4ServicesFetchers() throws RestException {
+        java.util.List<L4ServicesFetcher> allObjs = new ArrayList<L4ServicesFetcher>();
+        return allObjs;
+    }
+    public static L4ServiceGroup getL4ServiceGroupById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            L4ServiceGroup obj = null;
+            obj = new L4ServiceGroup();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.L4SERVICEGROUP, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static L4ServicesFetcher getL4ServicesFetcherForL4ServiceGroupId(String id) throws RestException {
+        L4ServiceGroup obj = getObject(Constants.L4SERVICEGROUP, id);
+        if (obj == null) {
+            obj = getL4ServiceGroupById(id);
+        }
+
+        if (obj != null) {
+            L4ServicesFetcher fetcher = obj.getL4Services();
+            return addFetcher(Constants.L4SERVICES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<L4ServiceGroup> getL4ServiceGroupsForFetcherId(String id) throws RestException {
+        L4ServiceGroupsFetcher fetcher = getL4ServiceGroupsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.L4SERVICEGROUP);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<L4ServiceGroup>();
+    }
+
+    public static L4ServiceGroupsFetcher getL4ServiceGroupsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.L4SERVICEGROUPS_FETCHER, id);
+        if (fetcher != null) {
+            return (L4ServiceGroupsFetcher) fetcher;
+        }
+        if ((fetcher = getL4ServiceGroupsFetcherForEnterpriseId(id)) != null) {
+            return (L4ServiceGroupsFetcher) addFetcher(Constants.L4SERVICEGROUPS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<L4ServiceGroup> getAllL4ServiceGroups() throws RestException {
+        java.util.List<L4ServiceGroup> allObjs = new ArrayList<L4ServiceGroup>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<L4ServiceGroupsFetcher> getAllL4ServiceGroupsFetchers() throws RestException {
+        java.util.List<L4ServiceGroupsFetcher> allObjs = new ArrayList<L4ServiceGroupsFetcher>();
         return allObjs;
     }
     public static L7applicationsignature getL7applicationsignatureById(String id) {
@@ -13605,6 +14605,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static COSRemarkingPolicyTablesFetcher getCOSRemarkingPolicyTablesFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            COSRemarkingPolicyTablesFetcher fetcher = obj.getCOSRemarkingPolicyTables();
+            return addFetcher(Constants.COSREMARKINGPOLICYTABLES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static DomainsFetcher getDomainsFetcherForMeId(String id) throws RestException {
         Me obj = getObject(Constants.ME, id);
         if (obj == null) {
@@ -13614,6 +14628,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             DomainsFetcher fetcher = obj.getDomains();
             return addFetcher(Constants.DOMAINS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static DSCPRemarkingPolicyTablesFetcher getDSCPRemarkingPolicyTablesFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            DSCPRemarkingPolicyTablesFetcher fetcher = obj.getDSCPRemarkingPolicyTables();
+            return addFetcher(Constants.DSCPREMARKINGPOLICYTABLES_FETCHER, fetcher);
         }
 
         return null;
@@ -13899,6 +14927,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static IngressQOSPoliciesFetcher getIngressQOSPoliciesFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            IngressQOSPoliciesFetcher fetcher = obj.getIngressQOSPolicies();
+            return addFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static JobsFetcher getJobsFetcherForMeId(String id) throws RestException {
         Me obj = getObject(Constants.ME, id);
         if (obj == null) {
@@ -14076,6 +15118,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             NSRedundantGatewayGroupsFetcher fetcher = obj.getNSRedundantGatewayGroups();
             return addFetcher(Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static NSGUpgradeProfilesFetcher getNSGUpgradeProfilesFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            NSGUpgradeProfilesFetcher fetcher = obj.getNSGUpgradeProfiles();
+            return addFetcher(Constants.NSGUPGRADEPROFILES_FETCHER, fetcher);
         }
 
         return null;
@@ -14593,6 +15649,10 @@ public class ModelHelper extends BaseModelHelper {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getMetadatasFetcherForBFDSessionId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getMetadatasFetcherForBGPNeighborId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
@@ -14645,6 +15705,14 @@ public class ModelHelper extends BaseModelHelper {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getMetadatasFetcherForCOSRemarkingPolicyId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForCOSRemarkingPolicyTableId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getMetadatasFetcherForDHCPOptionId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
@@ -14662,6 +15730,14 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForDSCPForwardingClassTableId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForDSCPRemarkingPolicyId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForDSCPRemarkingPolicyTableId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -14842,6 +15918,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForIngressExternalServiceTemplateId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForIngressQOSPolicyId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -16450,6 +17530,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static CommandsFetcher getCommandsFetcherForNSGatewayId(String id) throws RestException {
+        NSGateway obj = getObject(Constants.NSGATEWAY, id);
+        if (obj == null) {
+            obj = getNSGatewayById(id);
+        }
+
+        if (obj != null) {
+            CommandsFetcher fetcher = obj.getCommands();
+            return addFetcher(Constants.COMMANDS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static EnterprisePermissionsFetcher getEnterprisePermissionsFetcherForNSGatewayId(String id) throws RestException {
         NSGateway obj = getObject(Constants.NSGATEWAY, id);
         if (obj == null) {
@@ -16710,6 +17804,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getNSGatewaysFetcherForNSRedundantGatewayGroupId(id)) != null) {
+            return (NSGatewaysFetcher) addFetcher(Constants.NSGATEWAYS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getNSGatewaysFetcherForPerformanceMonitorId(id)) != null) {
             return (NSGatewaysFetcher) addFetcher(Constants.NSGATEWAYS_FETCHER, fetcher);
         }
         
@@ -17129,6 +18227,65 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<NSRedundantGatewayGroupsFetcher> getAllNSRedundantGatewayGroupsFetchers() throws RestException {
         java.util.List<NSRedundantGatewayGroupsFetcher> allObjs = new ArrayList<NSRedundantGatewayGroupsFetcher>();
+        return allObjs;
+    }
+    public static NSGUpgradeProfile getNSGUpgradeProfileById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            NSGUpgradeProfile obj = null;
+            obj = new NSGUpgradeProfile();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.NSGUPGRADEPROFILE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<NSGUpgradeProfile> getNSGUpgradeProfilesForFetcherId(String id) throws RestException {
+        NSGUpgradeProfilesFetcher fetcher = getNSGUpgradeProfilesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.NSGUPGRADEPROFILE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<NSGUpgradeProfile>();
+    }
+
+    public static NSGUpgradeProfilesFetcher getNSGUpgradeProfilesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.NSGUPGRADEPROFILES_FETCHER, id);
+        if (fetcher != null) {
+            return (NSGUpgradeProfilesFetcher) fetcher;
+        }
+        if ((fetcher = getNSGUpgradeProfilesFetcherForMeId(id)) != null) {
+            return (NSGUpgradeProfilesFetcher) addFetcher(Constants.NSGUPGRADEPROFILES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<NSGUpgradeProfile> getAllNSGUpgradeProfiles() throws RestException {
+        java.util.List<NSGUpgradeProfile> allObjs = new ArrayList<NSGUpgradeProfile>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            NSGUpgradeProfilesFetcher fetcher = getNSGUpgradeProfilesFetcherForMeId(session.getId());
+            java.util.List<NSGUpgradeProfile> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<NSGUpgradeProfilesFetcher> getAllNSGUpgradeProfilesFetchers() throws RestException {
+        java.util.List<NSGUpgradeProfilesFetcher> allObjs = new ArrayList<NSGUpgradeProfilesFetcher>();
         return allObjs;
     }
     public static NSPort getNSPortById(String id) {
@@ -17802,6 +18959,10 @@ public class ModelHelper extends BaseModelHelper {
         if ((fetcher = getPATIPEntriesFetcherForSharedNetworkResourceId(id)) != null) {
             return (PATIPEntriesFetcher) addFetcher(Constants.PATIPENTRIES_FETCHER, fetcher);
         }
+        
+        if ((fetcher = getPATIPEntriesFetcherForSubnetId(id)) != null) {
+            return (PATIPEntriesFetcher) addFetcher(Constants.PATIPENTRIES_FETCHER, fetcher);
+        }
         return null;
     }
 
@@ -17842,6 +19003,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             SharedNetworkResourcesFetcher fetcher = obj.getSharedNetworkResources();
             return addFetcher(Constants.SHAREDNETWORKRESOURCES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static SubnetsFetcher getSubnetsFetcherForPATMapperId(String id) throws RestException {
+        PATMapper obj = getObject(Constants.PATMAPPER, id);
+        if (obj == null) {
+            obj = getPATMapperById(id);
+        }
+
+        if (obj != null) {
+            SubnetsFetcher fetcher = obj.getSubnets();
+            return addFetcher(Constants.SUBNETS_FETCHER, fetcher);
         }
 
         return null;
@@ -18106,6 +19281,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static NSGatewaysFetcher getNSGatewaysFetcherForPerformanceMonitorId(String id) throws RestException {
+        PerformanceMonitor obj = getObject(Constants.PERFORMANCEMONITOR, id);
+        if (obj == null) {
+            obj = getPerformanceMonitorById(id);
+        }
+
+        if (obj != null) {
+            NSGatewaysFetcher fetcher = obj.getNSGateways();
+            return addFetcher(Constants.NSGATEWAYS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<PerformanceMonitor> getPerformanceMonitorsForFetcherId(String id) throws RestException {
         PerformanceMonitorsFetcher fetcher = getPerformanceMonitorsFetcherById(id);
         if (fetcher != null) {
@@ -18293,6 +19482,120 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<PermissionsFetcher> getAllPermissionsFetchers() throws RestException {
         java.util.List<PermissionsFetcher> allObjs = new ArrayList<PermissionsFetcher>();
+        return allObjs;
+    }
+    public static PGExpression getPGExpressionById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            PGExpression obj = null;
+            obj = new PGExpression();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.PGEXPRESSION, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<PGExpression> getPGExpressionsForFetcherId(String id) throws RestException {
+        PGExpressionsFetcher fetcher = getPGExpressionsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.PGEXPRESSION);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<PGExpression>();
+    }
+
+    public static PGExpressionsFetcher getPGExpressionsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.PGEXPRESSIONS_FETCHER, id);
+        if (fetcher != null) {
+            return (PGExpressionsFetcher) fetcher;
+        }
+        if ((fetcher = getPGExpressionsFetcherForDomainId(id)) != null) {
+            return (PGExpressionsFetcher) addFetcher(Constants.PGEXPRESSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPGExpressionsFetcherForL2DomainId(id)) != null) {
+            return (PGExpressionsFetcher) addFetcher(Constants.PGEXPRESSIONS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<PGExpression> getAllPGExpressions() throws RestException {
+        java.util.List<PGExpression> allObjs = new ArrayList<PGExpression>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<PGExpressionsFetcher> getAllPGExpressionsFetchers() throws RestException {
+        java.util.List<PGExpressionsFetcher> allObjs = new ArrayList<PGExpressionsFetcher>();
+        return allObjs;
+    }
+    public static PGExpressionTemplate getPGExpressionTemplateById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            PGExpressionTemplate obj = null;
+            obj = new PGExpressionTemplate();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.PGEXPRESSIONTEMPLATE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<PGExpressionTemplate> getPGExpressionTemplatesForFetcherId(String id) throws RestException {
+        PGExpressionTemplatesFetcher fetcher = getPGExpressionTemplatesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.PGEXPRESSIONTEMPLATE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<PGExpressionTemplate>();
+    }
+
+    public static PGExpressionTemplatesFetcher getPGExpressionTemplatesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.PGEXPRESSIONTEMPLATES_FETCHER, id);
+        if (fetcher != null) {
+            return (PGExpressionTemplatesFetcher) fetcher;
+        }
+        if ((fetcher = getPGExpressionTemplatesFetcherForDomainTemplateId(id)) != null) {
+            return (PGExpressionTemplatesFetcher) addFetcher(Constants.PGEXPRESSIONTEMPLATES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPGExpressionTemplatesFetcherForL2DomainTemplateId(id)) != null) {
+            return (PGExpressionTemplatesFetcher) addFetcher(Constants.PGEXPRESSIONTEMPLATES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<PGExpressionTemplate> getAllPGExpressionTemplates() throws RestException {
+        java.util.List<PGExpressionTemplate> allObjs = new ArrayList<PGExpressionTemplate>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<PGExpressionTemplatesFetcher> getAllPGExpressionTemplatesFetchers() throws RestException {
+        java.util.List<PGExpressionTemplatesFetcher> allObjs = new ArrayList<PGExpressionTemplatesFetcher>();
         return allObjs;
     }
     public static PolicyDecision getPolicyDecisionById(String id) {
@@ -19164,6 +20467,73 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<PortTemplatesFetcher> getAllPortTemplatesFetchers() throws RestException {
         java.util.List<PortTemplatesFetcher> allObjs = new ArrayList<PortTemplatesFetcher>();
+        return allObjs;
+    }
+    public static ProxyARPFilter getProxyARPFilterById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            ProxyARPFilter obj = null;
+            obj = new ProxyARPFilter();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.PROXYARPFILTER, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static EventLogsFetcher getEventLogsFetcherForProxyARPFilterId(String id) throws RestException {
+        ProxyARPFilter obj = getObject(Constants.PROXYARPFILTER, id);
+        if (obj == null) {
+            obj = getProxyARPFilterById(id);
+        }
+
+        if (obj != null) {
+            EventLogsFetcher fetcher = obj.getEventLogs();
+            return addFetcher(Constants.EVENTLOGS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<ProxyARPFilter> getProxyARPFiltersForFetcherId(String id) throws RestException {
+        ProxyARPFiltersFetcher fetcher = getProxyARPFiltersFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.PROXYARPFILTER);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<ProxyARPFilter>();
+    }
+
+    public static ProxyARPFiltersFetcher getProxyARPFiltersFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.PROXYARPFILTERS_FETCHER, id);
+        if (fetcher != null) {
+            return (ProxyARPFiltersFetcher) fetcher;
+        }
+        if ((fetcher = getProxyARPFiltersFetcherForSubnetId(id)) != null) {
+            return (ProxyARPFiltersFetcher) addFetcher(Constants.PROXYARPFILTERS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<ProxyARPFilter> getAllProxyARPFilters() throws RestException {
+        java.util.List<ProxyARPFilter> allObjs = new ArrayList<ProxyARPFilter>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<ProxyARPFiltersFetcher> getAllProxyARPFiltersFetchers() throws RestException {
+        java.util.List<ProxyARPFiltersFetcher> allObjs = new ArrayList<ProxyARPFiltersFetcher>();
         return allObjs;
     }
     public static PSNATPool getPSNATPoolById(String id) {
@@ -20918,6 +22288,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static CaptivePortalProfilesFetcher getCaptivePortalProfilesFetcherForSSIDConnectionId(String id) throws RestException {
+        SSIDConnection obj = getObject(Constants.SSIDCONNECTION, id);
+        if (obj == null) {
+            obj = getSSIDConnectionById(id);
+        }
+
+        if (obj != null) {
+            CaptivePortalProfilesFetcher fetcher = obj.getCaptivePortalProfiles();
+            return addFetcher(Constants.CAPTIVEPORTALPROFILES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static EventLogsFetcher getEventLogsFetcherForSSIDConnectionId(String id) throws RestException {
         SSIDConnection obj = getObject(Constants.SSIDCONNECTION, id);
         if (obj == null) {
@@ -21535,6 +22919,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static EnterprisePermissionsFetcher getEnterprisePermissionsFetcherForSubnetId(String id) throws RestException {
+        Subnet obj = getObject(Constants.SUBNET, id);
+        if (obj == null) {
+            obj = getSubnetById(id);
+        }
+
+        if (obj != null) {
+            EnterprisePermissionsFetcher fetcher = obj.getEnterprisePermissions();
+            return addFetcher(Constants.ENTERPRISEPERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static EventLogsFetcher getEventLogsFetcherForSubnetId(String id) throws RestException {
         Subnet obj = getObject(Constants.SUBNET, id);
         if (obj == null) {
@@ -21600,6 +22998,34 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PATIPEntriesFetcher getPATIPEntriesFetcherForSubnetId(String id) throws RestException {
+        Subnet obj = getObject(Constants.SUBNET, id);
+        if (obj == null) {
+            obj = getSubnetById(id);
+        }
+
+        if (obj != null) {
+            PATIPEntriesFetcher fetcher = obj.getPATIPEntries();
+            return addFetcher(Constants.PATIPENTRIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static ProxyARPFiltersFetcher getProxyARPFiltersFetcherForSubnetId(String id) throws RestException {
+        Subnet obj = getObject(Constants.SUBNET, id);
+        if (obj == null) {
+            obj = getSubnetById(id);
+        }
+
+        if (obj != null) {
+            ProxyARPFiltersFetcher fetcher = obj.getProxyARPFilters();
+            return addFetcher(Constants.PROXYARPFILTERS_FETCHER, fetcher);
         }
 
         return null;
@@ -21763,6 +23189,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getSubnetsFetcherForNSGatewayId(id)) != null) {
+            return (SubnetsFetcher) addFetcher(Constants.SUBNETS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getSubnetsFetcherForPATMapperId(id)) != null) {
             return (SubnetsFetcher) addFetcher(Constants.SUBNETS_FETCHER, fetcher);
         }
         
@@ -22323,6 +23753,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    public static BFDSessionsFetcher getBFDSessionsFetcherForUplinkConnectionId(String id) throws RestException {
+        UplinkConnection obj = getObject(Constants.UPLINKCONNECTION, id);
+        if (obj == null) {
+            obj = getUplinkConnectionById(id);
+        }
+
+        if (obj != null) {
+            BFDSessionsFetcher fetcher = obj.getBFDSessions();
+            return addFetcher(Constants.BFDSESSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static CustomPropertiesFetcher getCustomPropertiesFetcherForUplinkConnectionId(String id) throws RestException {
         UplinkConnection obj = getObject(Constants.UPLINKCONNECTION, id);
         if (obj == null) {
@@ -22652,6 +24096,55 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<UsersFetcher> getAllUsersFetchers() throws RestException {
         java.util.List<UsersFetcher> allObjs = new ArrayList<UsersFetcher>();
+        return allObjs;
+    }
+    public static UserContext getUserContextById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            UserContext obj = null;
+            obj = new UserContext();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.USERCONTEXT, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<UserContext> getUserContextsForFetcherId(String id) throws RestException {
+        UserContextsFetcher fetcher = getUserContextsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.USERCONTEXT);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<UserContext>();
+    }
+
+    public static UserContextsFetcher getUserContextsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.USERCONTEXTS_FETCHER, id);
+        if (fetcher != null) {
+            return (UserContextsFetcher) fetcher;
+        }return null;
+    }
+
+    public static java.util.List<UserContext> getAllUserContexts() throws RestException {
+        java.util.List<UserContext> allObjs = new ArrayList<UserContext>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<UserContextsFetcher> getAllUserContextsFetchers() throws RestException {
+        java.util.List<UserContextsFetcher> allObjs = new ArrayList<UserContextsFetcher>();
         return allObjs;
     }
     public static VCenter getVCenterById(String id) {
@@ -24449,6 +25942,59 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<VNFDescriptorsFetcher> allObjs = new ArrayList<VNFDescriptorsFetcher>();
         return allObjs;
     }
+    public static VNFDomainMapping getVNFDomainMappingById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VNFDomainMapping obj = null;
+            obj = new VNFDomainMapping();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.VNFDOMAINMAPPING, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<VNFDomainMapping> getVNFDomainMappingsForFetcherId(String id) throws RestException {
+        VNFDomainMappingsFetcher fetcher = getVNFDomainMappingsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.VNFDOMAINMAPPING);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<VNFDomainMapping>();
+    }
+
+    public static VNFDomainMappingsFetcher getVNFDomainMappingsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.VNFDOMAINMAPPINGS_FETCHER, id);
+        if (fetcher != null) {
+            return (VNFDomainMappingsFetcher) fetcher;
+        }
+        if ((fetcher = getVNFDomainMappingsFetcherForDomainId(id)) != null) {
+            return (VNFDomainMappingsFetcher) addFetcher(Constants.VNFDOMAINMAPPINGS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<VNFDomainMapping> getAllVNFDomainMappings() throws RestException {
+        java.util.List<VNFDomainMapping> allObjs = new ArrayList<VNFDomainMapping>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<VNFDomainMappingsFetcher> getAllVNFDomainMappingsFetchers() throws RestException {
+        java.util.List<VNFDomainMappingsFetcher> allObjs = new ArrayList<VNFDomainMappingsFetcher>();
+        return allObjs;
+    }
     public static VNFInterface getVNFInterfaceById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             VNFInterface obj = null;
@@ -24596,6 +26142,10 @@ public class ModelHelper extends BaseModelHelper {
         if (fetcher != null) {
             return (VNFMetadatasFetcher) fetcher;
         }
+        if ((fetcher = getVNFMetadatasFetcherForEnterpriseId(id)) != null) {
+            return (VNFMetadatasFetcher) addFetcher(Constants.VNFMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getVNFMetadatasFetcherForMeId(id)) != null) {
             return (VNFMetadatasFetcher) addFetcher(Constants.VNFMETADATAS_FETCHER, fetcher);
         }
@@ -24920,6 +26470,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             IngressAdvFwdEntryTemplatesFetcher fetcher = obj.getIngressAdvFwdEntryTemplates();
             return addFetcher(Constants.INGRESSADVFWDENTRYTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static JobsFetcher getJobsFetcherForVPortId(String id) throws RestException {
+        VPort obj = getObject(Constants.VPORT, id);
+        if (obj == null) {
+            obj = getVPortById(id);
+        }
+
+        if (obj != null) {
+            JobsFetcher fetcher = obj.getJobs();
+            return addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
 
         return null;

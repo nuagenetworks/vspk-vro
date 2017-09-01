@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Operation</entry>
+<entry key="name">Remove Command</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">06af9864-3363-5575-a82f-7ca58c2625a4</entry>
+</properties>

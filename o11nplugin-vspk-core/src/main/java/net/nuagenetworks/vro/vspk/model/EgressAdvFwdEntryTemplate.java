@@ -40,6 +40,8 @@ import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateAction;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateEntityScope;
 
+import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateFailsafeDatapath;
+
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateLocationType;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateNetworkType;
@@ -118,6 +120,9 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     
     @JsonProperty(value = "externalID")
     protected String externalID;
+    
+    @JsonProperty(value = "failsafeDatapath")
+    protected EgressAdvFwdEntryTemplateFailsafeDatapath failsafeDatapath;
     
     @JsonProperty(value = "flowLoggingEnabled")
     protected Boolean flowLoggingEnabled;
@@ -402,6 +407,17 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FailsafeDatapath", readOnly = false)   
+    public EgressAdvFwdEntryTemplateFailsafeDatapath getFailsafeDatapath() {
+       return failsafeDatapath;
+    }
+
+    @JsonIgnore
+    public void setFailsafeDatapath(EgressAdvFwdEntryTemplateFailsafeDatapath value) { 
+        this.failsafeDatapath = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "FlowLoggingEnabled", readOnly = false)   
     public Boolean getFlowLoggingEnabled() {
        return flowLoggingEnabled;
@@ -654,7 +670,7 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", name=" + name + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectVPortTagID=" + redirectVPortTagID + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", name=" + name + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectVPortTagID=" + redirectVPortTagID + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum SSIDConnectionAuthenticationMode {
 
-    OPEN("OPEN", "OPEN"), WEP("WEP", "WEP"), WPA("WPA", "WPA"), WPA2("WPA2", "WPA2"), WPA_OTP("WPA_OTP", "WPA_OTP"), WPA_WPA2("WPA_WPA2", "WPA_WPA2");
+    CAPTIVE_PORTAL("CAPTIVE_PORTAL", "CAPTIVE_PORTAL"), OPEN("OPEN", "OPEN"), WEP("WEP", "WEP"), WPA("WPA", "WPA"), WPA2("WPA2", "WPA2"), WPA_OTP("WPA_OTP", "WPA_OTP"), WPA_WPA2("WPA_WPA2", "WPA_WPA2");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum SSIDConnectionAuthenticationMode {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "CAPTIVE_PORTAL", readOnly = true)
+    public SSIDConnectionAuthenticationMode getCAPTIVE_PORTAL() {
+        return CAPTIVE_PORTAL;
+    }
     
     @VsoProperty(displayName = "OPEN", readOnly = true)
     public SSIDConnectionAuthenticationMode getOPEN() {

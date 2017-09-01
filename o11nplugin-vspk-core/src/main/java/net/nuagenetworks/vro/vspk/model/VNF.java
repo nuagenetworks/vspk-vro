@@ -80,11 +80,17 @@ public class VNF extends BaseObject {
     @JsonProperty(value = "allowedActions")
     protected VNFAllowedActions allowedActions;
     
+    @JsonProperty(value = "associatedVNFMetadataID")
+    protected String associatedVNFMetadataID;
+    
     @JsonProperty(value = "description")
     protected String description;
     
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
+    
+    @JsonProperty(value = "isAttachedToDescriptor")
+    protected Boolean isAttachedToDescriptor;
     
     @JsonProperty(value = "lastKnownError")
     protected String lastKnownError;
@@ -241,6 +247,17 @@ public class VNF extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedVNFMetadataID", readOnly = false)   
+    public String getAssociatedVNFMetadataID() {
+       return associatedVNFMetadataID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedVNFMetadataID(String value) { 
+        this.associatedVNFMetadataID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -260,6 +277,17 @@ public class VNF extends BaseObject {
     @JsonIgnore
     public void setEnterpriseID(String value) { 
         this.enterpriseID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IsAttachedToDescriptor", readOnly = false)   
+    public Boolean getIsAttachedToDescriptor() {
+       return isAttachedToDescriptor;
+    }
+
+    @JsonIgnore
+    public void setIsAttachedToDescriptor(Boolean value) { 
+        this.isAttachedToDescriptor = value;
     }
     
     @JsonIgnore
@@ -396,7 +424,7 @@ public class VNF extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNF [" + "CPUCount=" + CPUCount + ", NSGName=" + NSGName + ", NSGSystemID=" + NSGSystemID + ", NSGatewayID=" + NSGatewayID + ", VNFDescriptorID=" + VNFDescriptorID + ", VNFDescriptorName=" + VNFDescriptorName + ", allowedActions=" + allowedActions + ", description=" + description + ", enterpriseID=" + enterpriseID + ", lastKnownError=" + lastKnownError + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", status=" + status + ", storageGB=" + storageGB + ", taskState=" + taskState + ", vendor=" + vendor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNF [" + "CPUCount=" + CPUCount + ", NSGName=" + NSGName + ", NSGSystemID=" + NSGSystemID + ", NSGatewayID=" + NSGatewayID + ", VNFDescriptorID=" + VNFDescriptorID + ", VNFDescriptorName=" + VNFDescriptorName + ", allowedActions=" + allowedActions + ", associatedVNFMetadataID=" + associatedVNFMetadataID + ", description=" + description + ", enterpriseID=" + enterpriseID + ", isAttachedToDescriptor=" + isAttachedToDescriptor + ", lastKnownError=" + lastKnownError + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", status=" + status + ", storageGB=" + storageGB + ", taskState=" + taskState + ", vendor=" + vendor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

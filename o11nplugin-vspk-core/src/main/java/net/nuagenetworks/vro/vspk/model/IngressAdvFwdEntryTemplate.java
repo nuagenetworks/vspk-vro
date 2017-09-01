@@ -38,7 +38,13 @@ import net.nuagenetworks.vro.vspk.model.enums.IngressAdvFwdEntryTemplateFCOverri
 
 import net.nuagenetworks.vro.vspk.model.enums.IngressAdvFwdEntryTemplateAction;
 
+import net.nuagenetworks.vro.vspk.model.enums.IngressAdvFwdEntryTemplateAppType;
+
+import net.nuagenetworks.vro.vspk.model.enums.IngressAdvFwdEntryTemplateAssociatedTrafficType;
+
 import net.nuagenetworks.vro.vspk.model.enums.IngressAdvFwdEntryTemplateEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.IngressAdvFwdEntryTemplateFailsafeDatapath;
 
 import net.nuagenetworks.vro.vspk.model.enums.IngressAdvFwdEntryTemplateLocationType;
 
@@ -97,8 +103,20 @@ public class IngressAdvFwdEntryTemplate extends BaseObject {
     @JsonProperty(value = "addressOverride")
     protected String addressOverride;
     
+    @JsonProperty(value = "appType")
+    protected IngressAdvFwdEntryTemplateAppType appType;
+    
+    @JsonProperty(value = "associatedApplicationID")
+    protected String associatedApplicationID;
+    
     @JsonProperty(value = "associatedLiveEntityID")
     protected String associatedLiveEntityID;
+    
+    @JsonProperty(value = "associatedTrafficType")
+    protected IngressAdvFwdEntryTemplateAssociatedTrafficType associatedTrafficType;
+    
+    @JsonProperty(value = "associatedTrafficTypeID")
+    protected String associatedTrafficTypeID;
     
     @JsonProperty(value = "description")
     protected String description;
@@ -121,8 +139,14 @@ public class IngressAdvFwdEntryTemplate extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
+    @JsonProperty(value = "failsafeDatapath")
+    protected IngressAdvFwdEntryTemplateFailsafeDatapath failsafeDatapath;
+    
     @JsonProperty(value = "flowLoggingEnabled")
     protected Boolean flowLoggingEnabled;
+    
+    @JsonProperty(value = "isSLAAware")
+    protected Boolean isSLAAware;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -337,6 +361,28 @@ public class IngressAdvFwdEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AppType", readOnly = false)   
+    public IngressAdvFwdEntryTemplateAppType getAppType() {
+       return appType;
+    }
+
+    @JsonIgnore
+    public void setAppType(IngressAdvFwdEntryTemplateAppType value) { 
+        this.appType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedApplicationID", readOnly = false)   
+    public String getAssociatedApplicationID() {
+       return associatedApplicationID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedApplicationID(String value) { 
+        this.associatedApplicationID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedLiveEntityID", readOnly = false)   
     public String getAssociatedLiveEntityID() {
        return associatedLiveEntityID;
@@ -345,6 +391,28 @@ public class IngressAdvFwdEntryTemplate extends BaseObject {
     @JsonIgnore
     public void setAssociatedLiveEntityID(String value) { 
         this.associatedLiveEntityID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedTrafficType", readOnly = false)   
+    public IngressAdvFwdEntryTemplateAssociatedTrafficType getAssociatedTrafficType() {
+       return associatedTrafficType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedTrafficType(IngressAdvFwdEntryTemplateAssociatedTrafficType value) { 
+        this.associatedTrafficType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedTrafficTypeID", readOnly = false)   
+    public String getAssociatedTrafficTypeID() {
+       return associatedTrafficTypeID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedTrafficTypeID(String value) { 
+        this.associatedTrafficTypeID = value;
     }
     
     @JsonIgnore
@@ -425,6 +493,17 @@ public class IngressAdvFwdEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FailsafeDatapath", readOnly = false)   
+    public IngressAdvFwdEntryTemplateFailsafeDatapath getFailsafeDatapath() {
+       return failsafeDatapath;
+    }
+
+    @JsonIgnore
+    public void setFailsafeDatapath(IngressAdvFwdEntryTemplateFailsafeDatapath value) { 
+        this.failsafeDatapath = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "FlowLoggingEnabled", readOnly = false)   
     public Boolean getFlowLoggingEnabled() {
        return flowLoggingEnabled;
@@ -433,6 +512,17 @@ public class IngressAdvFwdEntryTemplate extends BaseObject {
     @JsonIgnore
     public void setFlowLoggingEnabled(Boolean value) { 
         this.flowLoggingEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IsSLAAware", readOnly = false)   
+    public Boolean getIsSLAAware() {
+       return isSLAAware;
+    }
+
+    @JsonIgnore
+    public void setIsSLAAware(Boolean value) { 
+        this.isSLAAware = value;
     }
     
     @JsonIgnore
@@ -710,7 +800,7 @@ public class IngressAdvFwdEntryTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IngressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", name=" + name + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectRewriteType=" + redirectRewriteType + ", redirectRewriteValue=" + redirectRewriteValue + ", redirectVPortTagID=" + redirectVPortTagID + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", vlanRange=" + vlanRange + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IngressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", appType=" + appType + ", associatedApplicationID=" + associatedApplicationID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", isSLAAware=" + isSLAAware + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", name=" + name + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectRewriteType=" + redirectRewriteType + ", redirectRewriteValue=" + redirectRewriteValue + ", redirectVPortTagID=" + redirectVPortTagID + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", vlanRange=" + vlanRange + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

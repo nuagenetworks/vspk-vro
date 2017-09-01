@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Remove L4Service</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">6d6ec3d5-73ca-5ad0-8c65-f4ea00848611</entry>
+</properties>

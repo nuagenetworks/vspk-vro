@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VNFAllowedActions {
 
-    DEPLOY("DEPLOY", "DEPLOY"), START("START", "START"), STOP("STOP", "STOP"), UNDEPLOY("UNDEPLOY", "UNDEPLOY");
+    DEPLOY("DEPLOY", "DEPLOY"), REDEPLOY("REDEPLOY", "REDEPLOY"), RESTART("RESTART", "RESTART"), START("START", "START"), STOP("STOP", "STOP"), UNDEPLOY("UNDEPLOY", "UNDEPLOY");
 
     private final String id;
     private final String name;
@@ -61,6 +61,16 @@ public enum VNFAllowedActions {
     @VsoProperty(displayName = "DEPLOY", readOnly = true)
     public VNFAllowedActions getDEPLOY() {
         return DEPLOY;
+    }
+    
+    @VsoProperty(displayName = "REDEPLOY", readOnly = true)
+    public VNFAllowedActions getREDEPLOY() {
+        return REDEPLOY;
+    }
+    
+    @VsoProperty(displayName = "RESTART", readOnly = true)
+    public VNFAllowedActions getRESTART() {
+        return RESTART;
     }
     
     @VsoProperty(displayName = "START", readOnly = true)

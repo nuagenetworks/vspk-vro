@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="270b80e6-96e2-555d-81ab-5c9c1c48f174"  version="5.0.2.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit DSCPRemarkingPolicyTable]]></display-name>
+<ref-types><![CDATA[(VSPK:DSCPRemarkingPolicyTable)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='dSCPRemarkingPolicyTableObj' type='VSPK:DSCPRemarkingPolicyTable' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = dSCPRemarkingPolicyTableObj.session;
+
+if (description) {
+   dSCPRemarkingPolicyTableObj.description = description;
+} else if (dSCPRemarkingPolicyTableObj.description) {
+   dSCPRemarkingPolicyTableObj.description = "";
+}
+if (externalID) {
+   dSCPRemarkingPolicyTableObj.externalID = externalID;
+} else if (dSCPRemarkingPolicyTableObj.externalID) {
+   dSCPRemarkingPolicyTableObj.externalID = "";
+}
+if (name) {
+   dSCPRemarkingPolicyTableObj.name = name;
+} else if (dSCPRemarkingPolicyTableObj.name) {
+   dSCPRemarkingPolicyTableObj.name = "";
+}
+dSCPRemarkingPolicyTableObj.save(session, 1);]]></script>
+<in-binding><bind name='dSCPRemarkingPolicyTableObj' type='VSPK:DSCPRemarkingPolicyTable' export-name="dSCPRemarkingPolicyTableObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="dSCPRemarkingPolicyTableObj"><desc><![CDATA[dSCPRemarkingPolicyTableObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dSCPRemarkingPolicyTableObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dSCPRemarkingPolicyTableObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dSCPRemarkingPolicyTableObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

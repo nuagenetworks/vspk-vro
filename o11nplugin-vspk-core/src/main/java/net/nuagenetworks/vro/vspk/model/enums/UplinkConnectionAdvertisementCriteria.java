@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum UplinkConnectionAdvertisementCriteria {
 
-    CONTROL_SESSION("CONTROL_SESSION", "CONTROL_SESSION"), FATE_SHARING("FATE_SHARING", "FATE_SHARING"), GATEWAY_PING("GATEWAY_PING", "GATEWAY_PING"), OPERATIONAL_LINK("OPERATIONAL_LINK", "OPERATIONAL_LINK");
+    BFD("BFD", "BFD"), CONTROL_SESSION("CONTROL_SESSION", "CONTROL_SESSION"), OPERATIONAL_LINK("OPERATIONAL_LINK", "OPERATIONAL_LINK");
 
     private final String id;
     private final String name;
@@ -58,19 +58,14 @@ public enum UplinkConnectionAdvertisementCriteria {
     }
 
     
+    @VsoProperty(displayName = "BFD", readOnly = true)
+    public UplinkConnectionAdvertisementCriteria getBFD() {
+        return BFD;
+    }
+    
     @VsoProperty(displayName = "CONTROL_SESSION", readOnly = true)
     public UplinkConnectionAdvertisementCriteria getCONTROL_SESSION() {
         return CONTROL_SESSION;
-    }
-    
-    @VsoProperty(displayName = "FATE_SHARING", readOnly = true)
-    public UplinkConnectionAdvertisementCriteria getFATE_SHARING() {
-        return FATE_SHARING;
-    }
-    
-    @VsoProperty(displayName = "GATEWAY_PING", readOnly = true)
-    public UplinkConnectionAdvertisementCriteria getGATEWAY_PING() {
-        return GATEWAY_PING;
     }
     
     @VsoProperty(displayName = "OPERATIONAL_LINK", readOnly = true)

@@ -54,6 +54,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.OverlayMirrorDestinationTemplat
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PGExpressionTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
@@ -106,6 +108,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER, type = Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PGEXPRESSIONTEMPLATES_FETCHER, type = Constants.PGEXPRESSIONTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.POLICYGROUPTEMPLATES_FETCHER, type = Constants.POLICYGROUPTEMPLATES_FETCHER), 
 
@@ -221,6 +225,9 @@ public class L2DomainTemplate extends BaseObject {
     private PermissionsFetcher permissions;
     
     @JsonIgnore
+    private PGExpressionTemplatesFetcher pGExpressionTemplates;
+    
+    @JsonIgnore
     private PolicyGroupTemplatesFetcher policyGroupTemplates;
     
     @JsonIgnore
@@ -258,6 +265,8 @@ public class L2DomainTemplate extends BaseObject {
         overlayMirrorDestinationTemplates = new OverlayMirrorDestinationTemplatesFetcher(this);
         
         permissions = new PermissionsFetcher(this);
+        
+        pGExpressionTemplates = new PGExpressionTemplatesFetcher(this);
         
         policyGroupTemplates = new PolicyGroupTemplatesFetcher(this);
         
@@ -595,6 +604,12 @@ public class L2DomainTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PGExpressionTemplates", readOnly = true)   
+    public PGExpressionTemplatesFetcher getPGExpressionTemplates() {
+        return pGExpressionTemplates;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PolicyGroupTemplates", readOnly = true)   
     public PolicyGroupTemplatesFetcher getPolicyGroupTemplates() {
         return policyGroupTemplates;
@@ -736,6 +751,14 @@ public class L2DomainTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPGExpressionTemplate(Session session, PGExpressionTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PGEXPRESSIONTEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod

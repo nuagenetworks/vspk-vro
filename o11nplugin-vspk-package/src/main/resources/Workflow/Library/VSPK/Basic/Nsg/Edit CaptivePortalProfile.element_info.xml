@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Edit CaptivePortalProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3c7b1432-2e84-55de-8399-7d47203509db</entry>
+</properties>

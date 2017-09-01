@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.PATIPEntry;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
+
+import net.nuagenetworks.vro.vspk.model.Subnet;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -69,6 +71,16 @@ public class PATIPEntriesFetcher extends BaseFetcher<PATIPEntry> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof SharedNetworkResource) {
             return (SharedNetworkResource) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
         }
         
         return null;

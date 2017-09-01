@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to COSRemarkingPolicy</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e90427b7-90c7-56c5-a13a-26a5c033da8d</entry>
+</properties>

@@ -84,6 +84,8 @@ import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
 
 import net.nuagenetworks.vro.vspk.model.VNF;
 
+import net.nuagenetworks.vro.vspk.model.VPort;
+
 import net.nuagenetworks.vro.vspk.model.VRS;
 
 import net.nuagenetworks.vro.vspk.model.VSC;
@@ -389,6 +391,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VNF) {
             return (VNF) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VPort) {
+            return (VPort) obj;
         }
         
         return null;

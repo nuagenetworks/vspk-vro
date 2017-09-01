@@ -40,6 +40,8 @@ import net.nuagenetworks.vro.vspk.model.NSGGroup;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
 
+import net.nuagenetworks.vro.vspk.model.PerformanceMonitor;
+
 import net.nuagenetworks.vro.vspk.model.PolicyObjectGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -119,6 +121,16 @@ public class NSGatewaysFetcher extends BaseFetcher<NSGateway> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSRedundantGatewayGroup) {
             return (NSRedundantGatewayGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PerformanceMonitor", readOnly = true)
+    public PerformanceMonitor getPerformanceMonitor() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PerformanceMonitor) {
+            return (PerformanceMonitor) obj;
         }
         
         return null;

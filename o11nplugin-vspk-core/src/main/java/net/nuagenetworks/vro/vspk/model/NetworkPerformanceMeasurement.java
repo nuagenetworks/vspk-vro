@@ -29,6 +29,8 @@ package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.MonitorscopesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceBindingsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.enums.NetworkPerformanceMeasurementNPMType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -52,6 +54,9 @@ public class NetworkPerformanceMeasurement extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "NPMType")
+    protected NetworkPerformanceMeasurementNPMType NPMType;
     
     @JsonProperty(value = "associatedPerformanceMonitorID")
     protected String associatedPerformanceMonitorID;
@@ -113,6 +118,17 @@ public class NetworkPerformanceMeasurement extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "NPMType", readOnly = false)   
+    public NetworkPerformanceMeasurementNPMType getNPMType() {
+       return NPMType;
+    }
+
+    @JsonIgnore
+    public void setNPMType(NetworkPerformanceMeasurementNPMType value) { 
+        this.NPMType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedPerformanceMonitorID", readOnly = false)   
     public String getAssociatedPerformanceMonitorID() {
@@ -206,7 +222,7 @@ public class NetworkPerformanceMeasurement extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.MONITORSCOPES_FETCHER, getId());
         }
     }public String toString() {
-        return "NetworkPerformanceMeasurement [" + "associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", name=" + name + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NetworkPerformanceMeasurement [" + "NPMType=" + NPMType + ", associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", name=" + name + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Find PGExpressionTemplate in DomainTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b08449c4-7f1d-5e7b-bc68-f3660b1a313c</entry>
+</properties>

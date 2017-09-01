@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="c9408566-f53c-57e5-af11-f4522bc970f2"  version="5.0.2.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit ProxyARPFilter]]></display-name>
+<ref-types><![CDATA[(VSPK:ProxyARPFilter)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='proxyARPFilterObj' type='VSPK:ProxyARPFilter' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='maxAddress' type='string' >
+</param>
+
+<param name='minAddress' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = proxyARPFilterObj.session;
+
+if (externalID) {
+   proxyARPFilterObj.externalID = externalID;
+} else if (proxyARPFilterObj.externalID) {
+   proxyARPFilterObj.externalID = "";
+}
+if (maxAddress) {
+   proxyARPFilterObj.maxAddress = maxAddress;
+} else if (proxyARPFilterObj.maxAddress) {
+   proxyARPFilterObj.maxAddress = "";
+}
+if (minAddress) {
+   proxyARPFilterObj.minAddress = minAddress;
+} else if (proxyARPFilterObj.minAddress) {
+   proxyARPFilterObj.minAddress = "";
+}
+proxyARPFilterObj.save(session, 1);]]></script>
+<in-binding><bind name='proxyARPFilterObj' type='VSPK:ProxyARPFilter' export-name="proxyARPFilterObj" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='maxAddress' type='string' export-name="maxAddress" ></bind>
+
+<bind name='minAddress' type='string' export-name="minAddress" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="proxyARPFilterObj"><desc><![CDATA[proxyARPFilterObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#proxyARPFilterObj.externalID]]></p-qual></p-param>
+
+<p-param name="maxAddress"><desc><![CDATA[maxAddress]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#proxyARPFilterObj.maxAddress]]></p-qual></p-param>
+
+<p-param name="minAddress"><desc><![CDATA[minAddress]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#proxyARPFilterObj.minAddress]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -38,13 +38,19 @@ import net.nuagenetworks.vro.vspk.model.fetchers.AvatarsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.BGPProfilesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.CaptivePortalProfilesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainersFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.COSRemarkingPolicyTablesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DomainsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DomainTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DSCPForwardingClassTablesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.DSCPRemarkingPolicyTablesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressQOSPoliciesFetcher;
 
@@ -78,6 +84,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IKEGatewayProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IKEPSKsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressQOSPoliciesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.KeyServerMonitorsFetcher;
@@ -85,6 +93,10 @@ import net.nuagenetworks.vro.vspk.model.fetchers.KeyServerMonitorsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.L2DomainsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.L2DomainTemplatesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.L4ServicesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.L4ServiceGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.L7applicationsignaturesFetcher;
 
@@ -130,6 +142,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VNFMetadatasFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ZFBRequestsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.EnterpriseAllowedForwardingClasses;
@@ -161,11 +175,17 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.BGPPROFILES_FETCHER, type = Constants.BGPPROFILES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.CAPTIVEPORTALPROFILES_FETCHER, type = Constants.CAPTIVEPORTALPROFILES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.COSREMARKINGPOLICYTABLES_FETCHER, type = Constants.COSREMARKINGPOLICYTABLES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINS_FETCHER, type = Constants.DOMAINS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINTEMPLATES_FETCHER, type = Constants.DOMAINTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.DSCPFORWARDINGCLASSTABLES_FETCHER, type = Constants.DSCPFORWARDINGCLASSTABLES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.DSCPREMARKINGPOLICYTABLES_FETCHER, type = Constants.DSCPREMARKINGPOLICYTABLES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSQOSPOLICIES_FETCHER, type = Constants.EGRESSQOSPOLICIES_FETCHER), 
 
@@ -191,9 +211,15 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.IKEPSKS_FETCHER, type = Constants.IKEPSKS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSQOSPOLICIES_FETCHER, type = Constants.INGRESSQOSPOLICIES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.L2DOMAINS_FETCHER, type = Constants.L2DOMAINS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.L2DOMAINTEMPLATES_FETCHER, type = Constants.L2DOMAINTEMPLATES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.L4SERVICES_FETCHER, type = Constants.L4SERVICES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.L4SERVICEGROUPS_FETCHER, type = Constants.L4SERVICEGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
@@ -225,6 +251,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.VNFS_FETCHER, type = Constants.VNFS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.VNFMETADATAS_FETCHER, type = Constants.VNFMETADATAS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.ZFBREQUESTS_FETCHER, type = Constants.ZFBREQUESTS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
@@ -246,6 +274,9 @@ public class Enterprise extends BaseObject {
     
     @JsonProperty(value = "LDAPEnabled")
     protected Boolean LDAPEnabled;
+    
+    @JsonProperty(value = "VNFManagementEnabled")
+    protected Boolean VNFManagementEnabled;
     
     @JsonProperty(value = "allowAdvancedQOSConfiguration")
     protected Boolean allowAdvancedQOSConfiguration;
@@ -319,6 +350,9 @@ public class Enterprise extends BaseObject {
     @JsonProperty(value = "sendMultiCastListID")
     protected String sendMultiCastListID;
     
+    @JsonProperty(value = "sharedEnterprise")
+    protected Boolean sharedEnterprise;
+    
     @JsonIgnore
     private AlarmsFetcher alarms;
     
@@ -338,7 +372,13 @@ public class Enterprise extends BaseObject {
     private BGPProfilesFetcher bGPProfiles;
     
     @JsonIgnore
+    private CaptivePortalProfilesFetcher captivePortalProfiles;
+    
+    @JsonIgnore
     private ContainersFetcher containers;
+    
+    @JsonIgnore
+    private COSRemarkingPolicyTablesFetcher cOSRemarkingPolicyTables;
     
     @JsonIgnore
     private DomainsFetcher domains;
@@ -348,6 +388,9 @@ public class Enterprise extends BaseObject {
     
     @JsonIgnore
     private DSCPForwardingClassTablesFetcher dSCPForwardingClassTables;
+    
+    @JsonIgnore
+    private DSCPRemarkingPolicyTablesFetcher dSCPRemarkingPolicyTables;
     
     @JsonIgnore
     private EgressQOSPoliciesFetcher egressQOSPolicies;
@@ -398,6 +441,9 @@ public class Enterprise extends BaseObject {
     private IKEPSKsFetcher iKEPSKs;
     
     @JsonIgnore
+    private IngressQOSPoliciesFetcher ingressQOSPolicies;
+    
+    @JsonIgnore
     private JobsFetcher jobs;
     
     @JsonIgnore
@@ -408,6 +454,12 @@ public class Enterprise extends BaseObject {
     
     @JsonIgnore
     private L2DomainTemplatesFetcher l2DomainTemplates;
+    
+    @JsonIgnore
+    private L4ServicesFetcher l4Services;
+    
+    @JsonIgnore
+    private L4ServiceGroupsFetcher l4ServiceGroups;
     
     @JsonIgnore
     private L7applicationsignaturesFetcher l7applicationsignatures;
@@ -476,6 +528,9 @@ public class Enterprise extends BaseObject {
     private VNFsFetcher vNFs;
     
     @JsonIgnore
+    private VNFMetadatasFetcher vNFMetadatas;
+    
+    @JsonIgnore
     private ZFBRequestsFetcher zFBRequests;
     
     @VsoConstructor
@@ -492,13 +547,19 @@ public class Enterprise extends BaseObject {
         
         bGPProfiles = new BGPProfilesFetcher(this);
         
+        captivePortalProfiles = new CaptivePortalProfilesFetcher(this);
+        
         containers = new ContainersFetcher(this);
+        
+        cOSRemarkingPolicyTables = new COSRemarkingPolicyTablesFetcher(this);
         
         domains = new DomainsFetcher(this);
         
         domainTemplates = new DomainTemplatesFetcher(this);
         
         dSCPForwardingClassTables = new DSCPForwardingClassTablesFetcher(this);
+        
+        dSCPRemarkingPolicyTables = new DSCPRemarkingPolicyTablesFetcher(this);
         
         egressQOSPolicies = new EgressQOSPoliciesFetcher(this);
         
@@ -532,6 +593,8 @@ public class Enterprise extends BaseObject {
         
         iKEPSKs = new IKEPSKsFetcher(this);
         
+        ingressQOSPolicies = new IngressQOSPoliciesFetcher(this);
+        
         jobs = new JobsFetcher(this);
         
         keyServerMonitors = new KeyServerMonitorsFetcher(this);
@@ -539,6 +602,10 @@ public class Enterprise extends BaseObject {
         l2Domains = new L2DomainsFetcher(this);
         
         l2DomainTemplates = new L2DomainTemplatesFetcher(this);
+        
+        l4Services = new L4ServicesFetcher(this);
+        
+        l4ServiceGroups = new L4ServiceGroupsFetcher(this);
         
         l7applicationsignatures = new L7applicationsignaturesFetcher(this);
         
@@ -583,6 +650,8 @@ public class Enterprise extends BaseObject {
         vMs = new VMsFetcher(this);
         
         vNFs = new VNFsFetcher(this);
+        
+        vNFMetadatas = new VNFMetadatasFetcher(this);
         
         zFBRequests = new ZFBRequestsFetcher(this);
         }
@@ -664,6 +733,17 @@ public class Enterprise extends BaseObject {
     @JsonIgnore
     public void setLDAPEnabled(Boolean value) { 
         this.LDAPEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VNFManagementEnabled", readOnly = false)   
+    public Boolean getVNFManagementEnabled() {
+       return VNFManagementEnabled;
+    }
+
+    @JsonIgnore
+    public void setVNFManagementEnabled(Boolean value) { 
+        this.VNFManagementEnabled = value;
     }
     
     @JsonIgnore
@@ -931,6 +1011,17 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SharedEnterprise", readOnly = false)   
+    public Boolean getSharedEnterprise() {
+       return sharedEnterprise;
+    }
+
+    @JsonIgnore
+    public void setSharedEnterprise(Boolean value) { 
+        this.sharedEnterprise = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Alarms", readOnly = true)   
     public AlarmsFetcher getAlarms() {
         return alarms;
@@ -967,9 +1058,21 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CaptivePortalProfiles", readOnly = true)   
+    public CaptivePortalProfilesFetcher getCaptivePortalProfiles() {
+        return captivePortalProfiles;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Containers", readOnly = true)   
     public ContainersFetcher getContainers() {
         return containers;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "COSRemarkingPolicyTables", readOnly = true)   
+    public COSRemarkingPolicyTablesFetcher getCOSRemarkingPolicyTables() {
+        return cOSRemarkingPolicyTables;
     }
     
     @JsonIgnore
@@ -988,6 +1091,12 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "DSCPForwardingClassTables", readOnly = true)   
     public DSCPForwardingClassTablesFetcher getDSCPForwardingClassTables() {
         return dSCPForwardingClassTables;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DSCPRemarkingPolicyTables", readOnly = true)   
+    public DSCPRemarkingPolicyTablesFetcher getDSCPRemarkingPolicyTables() {
+        return dSCPRemarkingPolicyTables;
     }
     
     @JsonIgnore
@@ -1087,6 +1196,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IngressQOSPolicies", readOnly = true)   
+    public IngressQOSPoliciesFetcher getIngressQOSPolicies() {
+        return ingressQOSPolicies;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Jobs", readOnly = true)   
     public JobsFetcher getJobs() {
         return jobs;
@@ -1108,6 +1223,18 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "L2DomainTemplates", readOnly = true)   
     public L2DomainTemplatesFetcher getL2DomainTemplates() {
         return l2DomainTemplates;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "L4Services", readOnly = true)   
+    public L4ServicesFetcher getL4Services() {
+        return l4Services;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "L4ServiceGroups", readOnly = true)   
+    public L4ServiceGroupsFetcher getL4ServiceGroups() {
+        return l4ServiceGroups;
     }
     
     @JsonIgnore
@@ -1243,6 +1370,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VNFMetadatas", readOnly = true)   
+    public VNFMetadatasFetcher getVNFMetadatas() {
+        return vNFMetadatas;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ZFBRequests", readOnly = true)   
     public ZFBRequestsFetcher getZFBRequests() {
         return zFBRequests;
@@ -1301,6 +1434,22 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createCaptivePortalProfile(Session session, CaptivePortalProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.CAPTIVEPORTALPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createCOSRemarkingPolicyTable(Session session, COSRemarkingPolicyTable childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.COSREMARKINGPOLICYTABLES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createDomain(Session session, Domain childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1331,6 +1480,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.DSCPFORWARDINGCLASSTABLES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createDSCPRemarkingPolicyTable(Session session, DSCPRemarkingPolicyTable childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DSCPREMARKINGPOLICYTABLES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1447,6 +1604,14 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createIngressQOSPolicy(Session session, IngressQOSPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSQOSPOLICIES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1477,6 +1642,22 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.L2DOMAINTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createL4Service(Session session, L4Service childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.L4SERVICES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createL4ServiceGroup(Session session, L4ServiceGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.L4SERVICEGROUPS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1609,6 +1790,14 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createVNFMetadata(Session session, VNFMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VNFMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createZFBRequest(Session session, ZFBRequest childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1616,7 +1805,7 @@ public class Enterprise extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", lastUpdatedBy=" + lastUpdatedBy + ", localAS=" + localAS + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", lastUpdatedBy=" + lastUpdatedBy + ", localAS=" + localAS + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", sharedEnterprise=" + sharedEnterprise + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

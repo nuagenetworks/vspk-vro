@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Edit PGExpressionTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">15d3b4d3-941f-5584-be64-58c681e7297d</entry>
+</properties>

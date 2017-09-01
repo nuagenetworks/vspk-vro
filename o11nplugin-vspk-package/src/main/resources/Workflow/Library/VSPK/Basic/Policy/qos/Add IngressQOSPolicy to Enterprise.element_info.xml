@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/qos</entry>
+<entry key="name">Add IngressQOSPolicy to Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">af283a58-71e5-5fa7-b174-d662d8e2081b</entry>
+</properties>

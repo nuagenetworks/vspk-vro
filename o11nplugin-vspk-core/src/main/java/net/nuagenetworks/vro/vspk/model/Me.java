@@ -40,7 +40,11 @@ import net.nuagenetworks.vro.vspk.model.fetchers.ContainersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainerInterfacesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.COSRemarkingPolicyTablesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.DomainsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.DSCPRemarkingPolicyTablesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DUCGroupsFetcher;
 
@@ -82,6 +86,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdEntryTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressQOSPoliciesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.KeyServerMembersFetcher;
@@ -107,6 +113,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewayTemplatesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSRedundantGatewayGroupsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGUpgradeProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PATMappersFetcher;
 
@@ -187,6 +195,10 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.CONTAINERS_FETCHER, type = Constants.CONTAINERS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.COSREMARKINGPOLICYTABLES_FETCHER, type = Constants.COSREMARKINGPOLICYTABLES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.DSCPREMARKINGPOLICYTABLES_FETCHER, type = Constants.DSCPREMARKINGPOLICYTABLES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.DUCGROUPS_FETCHER, type = Constants.DUCGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINFIPACLTEMPLATES_FETCHER, type = Constants.DOMAINFIPACLTEMPLATES_FETCHER), 
@@ -211,6 +223,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER, type = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSQOSPOLICIES_FETCHER, type = Constants.INGRESSQOSPOLICIES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.KEYSERVERMEMBERS_FETCHER, type = Constants.KEYSERVERMEMBERS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.LICENSES_FETCHER, type = Constants.LICENSES_FETCHER), 
@@ -222,6 +236,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.NSGATEWAYTEMPLATES_FETCHER, type = Constants.NSGATEWAYTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSGGROUPS_FETCHER, type = Constants.NSGGROUPS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.NSGUPGRADEPROFILES_FETCHER, type = Constants.NSGUPGRADEPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PATMAPPERS_FETCHER, type = Constants.PATMAPPERS_FETCHER), 
 
@@ -258,6 +274,15 @@ public class Me extends BaseRootObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "AARFlowStatsInterval")
+    protected Long AARFlowStatsInterval;
+    
+    @JsonProperty(value = "AARProbeStatsInterval")
+    protected Long AARProbeStatsInterval;
+    
+    @JsonProperty(value = "VSSStatsInterval")
+    protected Long VSSStatsInterval;
     
     @JsonProperty(value = "avatarData")
     protected String avatarData;
@@ -335,7 +360,13 @@ public class Me extends BaseRootObject {
     private ContainerInterfacesFetcher containerInterfaces;
     
     @JsonIgnore
+    private COSRemarkingPolicyTablesFetcher cOSRemarkingPolicyTables;
+    
+    @JsonIgnore
     private DomainsFetcher domains;
+    
+    @JsonIgnore
+    private DSCPRemarkingPolicyTablesFetcher dSCPRemarkingPolicyTables;
     
     @JsonIgnore
     private DUCGroupsFetcher dUCGroups;
@@ -398,6 +429,9 @@ public class Me extends BaseRootObject {
     private IngressAdvFwdEntryTemplatesFetcher ingressAdvFwdEntryTemplates;
     
     @JsonIgnore
+    private IngressQOSPoliciesFetcher ingressQOSPolicies;
+    
+    @JsonIgnore
     private JobsFetcher jobs;
     
     @JsonIgnore
@@ -435,6 +469,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private NSRedundantGatewayGroupsFetcher nSRedundantGatewayGroups;
+    
+    @JsonIgnore
+    private NSGUpgradeProfilesFetcher nSGUpgradeProfiles;
     
     @JsonIgnore
     private PATMappersFetcher pATMappers;
@@ -539,7 +576,11 @@ public class Me extends BaseRootObject {
         
         containerInterfaces = new ContainerInterfacesFetcher(this);
         
+        cOSRemarkingPolicyTables = new COSRemarkingPolicyTablesFetcher(this);
+        
         domains = new DomainsFetcher(this);
+        
+        dSCPRemarkingPolicyTables = new DSCPRemarkingPolicyTablesFetcher(this);
         
         dUCGroups = new DUCGroupsFetcher(this);
         
@@ -581,6 +622,8 @@ public class Me extends BaseRootObject {
         
         ingressAdvFwdEntryTemplates = new IngressAdvFwdEntryTemplatesFetcher(this);
         
+        ingressQOSPolicies = new IngressQOSPoliciesFetcher(this);
+        
         jobs = new JobsFetcher(this);
         
         keyServerMembers = new KeyServerMembersFetcher(this);
@@ -606,6 +649,8 @@ public class Me extends BaseRootObject {
         nSGGroups = new NSGGroupsFetcher(this);
         
         nSRedundantGatewayGroups = new NSRedundantGatewayGroupsFetcher(this);
+        
+        nSGUpgradeProfiles = new NSGUpgradeProfilesFetcher(this);
         
         pATMappers = new PATMappersFetcher(this);
         
@@ -709,6 +754,39 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "ApiKey", readOnly = false)
     public String getApiKey() {
         return super.getApiKey();
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AARFlowStatsInterval", readOnly = false)   
+    public Long getAARFlowStatsInterval() {
+       return AARFlowStatsInterval;
+    }
+
+    @JsonIgnore
+    public void setAARFlowStatsInterval(Long value) { 
+        this.AARFlowStatsInterval = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AARProbeStatsInterval", readOnly = false)   
+    public Long getAARProbeStatsInterval() {
+       return AARProbeStatsInterval;
+    }
+
+    @JsonIgnore
+    public void setAARProbeStatsInterval(Long value) { 
+        this.AARProbeStatsInterval = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VSSStatsInterval", readOnly = false)   
+    public Long getVSSStatsInterval() {
+       return VSSStatsInterval;
+    }
+
+    @JsonIgnore
+    public void setVSSStatsInterval(Long value) { 
+        this.VSSStatsInterval = value;
     }
     
     @JsonIgnore
@@ -952,9 +1030,21 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "COSRemarkingPolicyTables", readOnly = true)   
+    public COSRemarkingPolicyTablesFetcher getCOSRemarkingPolicyTables() {
+        return cOSRemarkingPolicyTables;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Domains", readOnly = true)   
     public DomainsFetcher getDomains() {
         return domains;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DSCPRemarkingPolicyTables", readOnly = true)   
+    public DSCPRemarkingPolicyTablesFetcher getDSCPRemarkingPolicyTables() {
+        return dSCPRemarkingPolicyTables;
     }
     
     @JsonIgnore
@@ -1078,6 +1168,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IngressQOSPolicies", readOnly = true)   
+    public IngressQOSPoliciesFetcher getIngressQOSPolicies() {
+        return ingressQOSPolicies;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Jobs", readOnly = true)   
     public JobsFetcher getJobs() {
         return jobs;
@@ -1153,6 +1249,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "NSRedundantGatewayGroups", readOnly = true)   
     public NSRedundantGatewayGroupsFetcher getNSRedundantGatewayGroups() {
         return nSRedundantGatewayGroups;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NSGUpgradeProfiles", readOnly = true)   
+    public NSGUpgradeProfilesFetcher getNSGUpgradeProfiles() {
+        return nSGUpgradeProfiles;
     }
     
     @JsonIgnore
@@ -1374,6 +1476,22 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createCOSRemarkingPolicyTable(Session session, COSRemarkingPolicyTable childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.COSREMARKINGPOLICYTABLES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createDSCPRemarkingPolicyTable(Session session, DSCPRemarkingPolicyTable childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DSCPREMARKINGPOLICYTABLES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createDUCGroup(Session session, DUCGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1479,6 +1597,14 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createIngressQOSPolicy(Session session, IngressQOSPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSQOSPOLICIES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1540,6 +1666,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.NSGGROUPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createNSGUpgradeProfile(Session session, NSGUpgradeProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NSGUPGRADEPROFILES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1646,7 +1780,7 @@ public class Me extends BaseRootObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Me [" + "avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Me [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSStatsInterval=" + VSSStatsInterval + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + ", apiKey=" + apiKey  + "]";
     }
 }

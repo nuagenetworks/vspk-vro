@@ -82,6 +82,12 @@ public class LDAPConfiguration extends BaseObject {
     @JsonProperty(value = "groupDN")
     protected String groupDN;
     
+    @JsonProperty(value = "groupNamePrefix")
+    protected String groupNamePrefix;
+    
+    @JsonProperty(value = "groupNameSuffix")
+    protected String groupNameSuffix;
+    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
@@ -250,6 +256,28 @@ public class LDAPConfiguration extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "GroupNamePrefix", readOnly = false)   
+    public String getGroupNamePrefix() {
+       return groupNamePrefix;
+    }
+
+    @JsonIgnore
+    public void setGroupNamePrefix(String value) { 
+        this.groupNamePrefix = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GroupNameSuffix", readOnly = false)   
+    public String getGroupNameSuffix() {
+       return groupNameSuffix;
+    }
+
+    @JsonIgnore
+    public void setGroupNameSuffix(String value) { 
+        this.groupNameSuffix = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
     public String getLastUpdatedBy() {
        return lastUpdatedBy;
@@ -361,7 +389,7 @@ public class LDAPConfiguration extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "LDAPConfiguration [" + "SSLEnabled=" + SSLEnabled + ", acceptAllCertificates=" + acceptAllCertificates + ", authorizationEnabled=" + authorizationEnabled + ", authorizingUserDN=" + authorizingUserDN + ", certificate=" + certificate + ", enabled=" + enabled + ", entityScope=" + entityScope + ", externalID=" + externalID + ", groupDN=" + groupDN + ", lastUpdatedBy=" + lastUpdatedBy + ", password=" + password + ", port=" + port + ", server=" + server + ", userDNTemplate=" + userDNTemplate + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "LDAPConfiguration [" + "SSLEnabled=" + SSLEnabled + ", acceptAllCertificates=" + acceptAllCertificates + ", authorizationEnabled=" + authorizationEnabled + ", authorizingUserDN=" + authorizingUserDN + ", certificate=" + certificate + ", enabled=" + enabled + ", entityScope=" + entityScope + ", externalID=" + externalID + ", groupDN=" + groupDN + ", groupNamePrefix=" + groupNamePrefix + ", groupNameSuffix=" + groupNameSuffix + ", lastUpdatedBy=" + lastUpdatedBy + ", password=" + password + ", port=" + port + ", server=" + server + ", userDNTemplate=" + userDNTemplate + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Edit L4ServiceGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">758e5d4a-f9ee-5045-bc26-2b9a55fa50f1</entry>
+</properties>
