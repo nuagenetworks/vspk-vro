@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getWirelessPortCountryCode" result-type="VSPK:WirelessPortCountryCode" api-version="6.0.0"  id="42bcb3df-8496-5089-8ecb-4cd38ae301c9"  version="5.0.2.1"  allowed-operations="vef" ><param n="wirelessPortObj" t="VSPK:WirelessPort"></param><script encoded='false'><![CDATA[return wirelessPortObj.countryCode;]]></script>
+<dunes-script-module name="getWirelessPortCountryCode" result-type="VSPK:WirelessPortCountryCode" api-version="6.0.0"  id="42bcb3df-8496-5089-8ecb-4cd38ae301c9"  version="5.1.1"  allowed-operations="vef" ><param n="wirelessPortObj" t="VSPK:WirelessPort"></param><script encoded='false'><![CDATA[return wirelessPortObj.countryCode;]]></script>
 </dunes-script-module>
