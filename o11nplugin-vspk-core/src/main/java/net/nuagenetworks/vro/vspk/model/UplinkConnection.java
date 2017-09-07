@@ -84,9 +84,6 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "associatedUnderlayName")
     protected String associatedUnderlayName;
     
-    @JsonProperty(value = "associatedVSCProfileID")
-    protected String associatedVSCProfileID;
-    
     @JsonProperty(value = "auxiliaryLink")
     protected Boolean auxiliaryLink;
     
@@ -225,17 +222,6 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setAssociatedUnderlayName(String value) { 
         this.associatedUnderlayName = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedVSCProfileID", readOnly = false)   
-    public String getAssociatedVSCProfileID() {
-       return associatedVSCProfileID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedVSCProfileID(String value) { 
-        this.associatedVSCProfileID = value;
     }
     
     @JsonIgnore
@@ -399,7 +385,7 @@ public class UplinkConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UNDERLAYS_FETCHER, getId());
         }
     }public String toString() {
-        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedUnderlayName=" + associatedUnderlayName + ", associatedVSCProfileID=" + associatedVSCProfileID + ", auxiliaryLink=" + auxiliaryLink + ", gateway=" + gateway + ", interfaceConnectionType=" + interfaceConnectionType + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", role=" + role + ", uplinkID=" + uplinkID + ", username=" + username + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxiliaryLink=" + auxiliaryLink + ", gateway=" + gateway + ", interfaceConnectionType=" + interfaceConnectionType + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", role=" + role + ", uplinkID=" + uplinkID + ", username=" + username + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }
