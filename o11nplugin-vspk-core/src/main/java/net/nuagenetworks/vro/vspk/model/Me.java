@@ -94,6 +94,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.KeyServerMembersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.L2DomainsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.L4ServicesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.LicensesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.LicenseStatusFetcher;
@@ -226,6 +228,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSQOSPOLICIES_FETCHER, type = Constants.INGRESSQOSPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.KEYSERVERMEMBERS_FETCHER, type = Constants.KEYSERVERMEMBERS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.L4SERVICES_FETCHER, type = Constants.L4SERVICES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.LICENSES_FETCHER, type = Constants.LICENSES_FETCHER), 
 
@@ -441,6 +445,9 @@ public class Me extends BaseRootObject {
     private L2DomainsFetcher l2Domains;
     
     @JsonIgnore
+    private L4ServicesFetcher l4Services;
+    
+    @JsonIgnore
     private LicensesFetcher licenses;
     
     @JsonIgnore
@@ -629,6 +636,8 @@ public class Me extends BaseRootObject {
         keyServerMembers = new KeyServerMembersFetcher(this);
         
         l2Domains = new L2DomainsFetcher(this);
+        
+        l4Services = new L4ServicesFetcher(this);
         
         licenses = new LicensesFetcher(this);
         
@@ -1192,6 +1201,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "L4Services", readOnly = true)   
+    public L4ServicesFetcher getL4Services() {
+        return l4Services;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Licenses", readOnly = true)   
     public LicensesFetcher getLicenses() {
         return licenses;
@@ -1618,6 +1633,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.KEYSERVERMEMBERS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createL4Service(Session session, L4Service childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.L4SERVICES_FETCHER, getId());
         }
     }
     @VsoMethod

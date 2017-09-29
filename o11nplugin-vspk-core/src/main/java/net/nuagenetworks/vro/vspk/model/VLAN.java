@@ -50,6 +50,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkConnectionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.VLANAssociatedConnectionType;
+
 import net.nuagenetworks.vro.vspk.model.enums.VLANEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.VLANPermittedAction;
@@ -98,6 +100,9 @@ public class VLAN extends BaseObject {
     @JsonProperty(value = "associatedBGPProfileID")
     protected String associatedBGPProfileID;
     
+    @JsonProperty(value = "associatedConnectionType")
+    protected VLANAssociatedConnectionType associatedConnectionType;
+    
     @JsonProperty(value = "associatedEgressQOSPolicyID")
     protected String associatedEgressQOSPolicyID;
     
@@ -124,6 +129,9 @@ public class VLAN extends BaseObject {
     
     @JsonProperty(value = "gatewayID")
     protected String gatewayID;
+    
+    @JsonProperty(value = "isUplink")
+    protected Boolean isUplink;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -273,6 +281,17 @@ public class VLAN extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedConnectionType", readOnly = false)   
+    public VLANAssociatedConnectionType getAssociatedConnectionType() {
+       return associatedConnectionType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedConnectionType(VLANAssociatedConnectionType value) { 
+        this.associatedConnectionType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedEgressQOSPolicyID", readOnly = false)   
     public String getAssociatedEgressQOSPolicyID() {
        return associatedEgressQOSPolicyID;
@@ -369,6 +388,17 @@ public class VLAN extends BaseObject {
     @JsonIgnore
     public void setGatewayID(String value) { 
         this.gatewayID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IsUplink", readOnly = false)   
+    public Boolean getIsUplink() {
+       return isUplink;
+    }
+
+    @JsonIgnore
+    public void setIsUplink(Boolean value) { 
+        this.isUplink = value;
     }
     
     @JsonIgnore
@@ -674,7 +704,7 @@ public class VLAN extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UPLINKCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VLAN [" + "associatedBGPProfileID=" + associatedBGPProfileID + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", lastUpdatedBy=" + lastUpdatedBy + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", restricted=" + restricted + ", status=" + status + ", templateID=" + templateID + ", type=" + type + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", value=" + value + ", vportID=" + vportID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VLAN [" + "associatedBGPProfileID=" + associatedBGPProfileID + ", associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", restricted=" + restricted + ", status=" + status + ", templateID=" + templateID + ", type=" + type + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", value=" + value + ", vportID=" + vportID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

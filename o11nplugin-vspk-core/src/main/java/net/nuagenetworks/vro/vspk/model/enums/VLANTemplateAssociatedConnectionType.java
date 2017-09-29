@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE_WIFIFREQUENCYBAND_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.VLANTEMPLATE_ASSOCIATEDCONNECTIONTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum WirelessPortTemplateWifiFrequencyBand {
+public enum VLANTemplateAssociatedConnectionType {
 
-    FREQ_2_4_GHZ("FREQ_2_4_GHZ", "FREQ_2_4_GHZ"), FREQ_5_0_GHZ("FREQ_5_0_GHZ", "FREQ_5_0_GHZ");
+    BR_CONNECTION("BR_CONNECTION", "BR_CONNECTION"), UPLINK_CONNECTION("UPLINK_CONNECTION", "UPLINK_CONNECTION");
 
     private final String id;
     private final String name;
    
-    WirelessPortTemplateWifiFrequencyBand(String id, String name) {
+    VLANTemplateAssociatedConnectionType(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,19 @@ public enum WirelessPortTemplateWifiFrequencyBand {
     }
 
     
-    @VsoProperty(displayName = "FREQ_2_4_GHZ", readOnly = true)
-    public WirelessPortTemplateWifiFrequencyBand getFREQ_2_4_GHZ() {
-        return FREQ_2_4_GHZ;
+    @VsoProperty(displayName = "BR_CONNECTION", readOnly = true)
+    public VLANTemplateAssociatedConnectionType getBR_CONNECTION() {
+        return BR_CONNECTION;
     }
     
-    @VsoProperty(displayName = "FREQ_5_0_GHZ", readOnly = true)
-    public WirelessPortTemplateWifiFrequencyBand getFREQ_5_0_GHZ() {
-        return FREQ_5_0_GHZ;
+    @VsoProperty(displayName = "UPLINK_CONNECTION", readOnly = true)
+    public VLANTemplateAssociatedConnectionType getUPLINK_CONNECTION() {
+        return UPLINK_CONNECTION;
     }
     
 
-    public static WirelessPortTemplateWifiFrequencyBand getEnumById(String id) {
-        for (WirelessPortTemplateWifiFrequencyBand item : values()) {
+    public static VLANTemplateAssociatedConnectionType getEnumById(String id) {
+        for (VLANTemplateAssociatedConnectionType item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

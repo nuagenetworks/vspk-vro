@@ -3152,6 +3152,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VLANS_FETCHER)) {
             return ModelHelper.getVLANsFetcherById(id);
         }
+        if (type.equals(Constants.VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
+            return VLANAssociatedConnectionType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VLAN_ENTITYSCOPE_ENUM)) {
             return VLANEntityScope.getEnumById(id);
         }
@@ -3174,6 +3178,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VLANTEMPLATES_FETCHER)) {
             return ModelHelper.getVLANTemplatesFetcherById(id);
         }
+        if (type.equals(Constants.VLANTEMPLATE_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
+            return VLANTemplateAssociatedConnectionType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VLANTEMPLATE_ENTITYSCOPE_ENUM)) {
             return VLANTemplateEntityScope.getEnumById(id);
         }
@@ -3528,32 +3536,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.WIRELESSPORT_WIFIMODE_ENUM)) {
             return WirelessPortWifiMode.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE)) {
-            return ModelHelper.getWirelessPortTemplateById(id);
-        }
-        if (type.equals(Constants.WIRELESSPORTTEMPLATES_FETCHER)) {
-            return ModelHelper.getWirelessPortTemplatesFetcherById(id);
-        }
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_COUNTRYCODE_ENUM)) {
-            return WirelessPortTemplateCountryCode.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_FREQUENCYCHANNEL_ENUM)) {
-            return WirelessPortTemplateFrequencyChannel.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_PORTTYPE_ENUM)) {
-            return WirelessPortTemplatePortType.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_WIFIFREQUENCYBAND_ENUM)) {
-            return WirelessPortTemplateWifiFrequencyBand.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_WIFIMODE_ENUM)) {
-            return WirelessPortTemplateWifiMode.getEnumById(id);
         }
         
         if (type.equals(Constants.ZFBAUTOASSIGNMENT)) {
@@ -7162,6 +7144,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.L2DOMAINS_FETCHER) && relationName.equals(Constants.L2DOMAINS)) {
             return ModelHelper.getL2DomainsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.L4SERVICES_FETCHER)) {
+            return toList(ModelHelper.getL4ServicesFetcherForMeId(id));
+        }
+        if (type.equals(Constants.L4SERVICES_FETCHER) && relationName.equals(Constants.L4SERVICES)) {
+            return ModelHelper.getL4ServicesForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.LICENSES_FETCHER)) {
@@ -13826,6 +13815,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VLANsFetcher> allObjs = ModelHelper.getAllVLANsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VLANAssociatedConnectionType.values()));
+        }
+        
         if (type.equals(Constants.VLAN_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(VLANEntityScope.values()));
         }
@@ -13850,6 +13843,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VLANTemplatesFetcher> allObjs = ModelHelper.getAllVLANTemplatesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VLANTEMPLATE_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VLANTemplateAssociatedConnectionType.values()));
+        }
+        
         if (type.equals(Constants.VLANTEMPLATE_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(VLANTemplateEntityScope.values()));
         }
@@ -14248,34 +14245,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.WIRELESSPORT_WIFIMODE_ENUM)) {
             return new QueryResult(Arrays.asList(WirelessPortWifiMode.values()));
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE)) {
-            java.util.List<WirelessPortTemplate> allObjs = ModelHelper.getAllWirelessPortTemplates();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.WIRELESSPORTTEMPLATES_FETCHER)) {
-            java.util.List<WirelessPortTemplatesFetcher> allObjs = ModelHelper.getAllWirelessPortTemplatesFetchers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_COUNTRYCODE_ENUM)) {
-            return new QueryResult(Arrays.asList(WirelessPortTemplateCountryCode.values()));
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_FREQUENCYCHANNEL_ENUM)) {
-            return new QueryResult(Arrays.asList(WirelessPortTemplateFrequencyChannel.values()));
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_PORTTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(WirelessPortTemplatePortType.values()));
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_WIFIFREQUENCYBAND_ENUM)) {
-            return new QueryResult(Arrays.asList(WirelessPortTemplateWifiFrequencyBand.values()));
-        }
-        
-        if (type.equals(Constants.WIRELESSPORTTEMPLATE_WIFIMODE_ENUM)) {
-            return new QueryResult(Arrays.asList(WirelessPortTemplateWifiMode.values()));
         }
         
         if (type.equals(Constants.ZFBAUTOASSIGNMENT)) {

@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE_PORTTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum WirelessPortTemplatePortType {
+public enum VLANAssociatedConnectionType {
 
-    ACCESS("ACCESS", "ACCESS");
+    BR_CONNECTION("BR_CONNECTION", "BR_CONNECTION"), UPLINK_CONNECTION("UPLINK_CONNECTION", "UPLINK_CONNECTION");
 
     private final String id;
     private final String name;
    
-    WirelessPortTemplatePortType(String id, String name) {
+    VLANAssociatedConnectionType(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,14 +58,19 @@ public enum WirelessPortTemplatePortType {
     }
 
     
-    @VsoProperty(displayName = "ACCESS", readOnly = true)
-    public WirelessPortTemplatePortType getACCESS() {
-        return ACCESS;
+    @VsoProperty(displayName = "BR_CONNECTION", readOnly = true)
+    public VLANAssociatedConnectionType getBR_CONNECTION() {
+        return BR_CONNECTION;
+    }
+    
+    @VsoProperty(displayName = "UPLINK_CONNECTION", readOnly = true)
+    public VLANAssociatedConnectionType getUPLINK_CONNECTION() {
+        return UPLINK_CONNECTION;
     }
     
 
-    public static WirelessPortTemplatePortType getEnumById(String id) {
-        for (WirelessPortTemplatePortType item : values()) {
+    public static VLANAssociatedConnectionType getEnumById(String id) {
+        for (VLANAssociatedConnectionType item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

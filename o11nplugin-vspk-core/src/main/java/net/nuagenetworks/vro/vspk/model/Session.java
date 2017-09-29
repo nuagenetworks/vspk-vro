@@ -1278,11 +1278,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.WIRELESSPORTTEMPLATE_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.WIRELESSPORTTEMPLATES_FETCHER, entityParentId);
-            return;
-        }
-        
         if (entityType.equals(Constants.ZFBAUTOASSIGNMENT_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.ZFBAUTOASSIGNMENTS_FETCHER, entityParentId);
             return;
@@ -2417,11 +2412,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.WIRELESSPORTTEMPLATE_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.WIRELESSPORTTEMPLATE, entityId);
-            return;
-        }
-        
         if (entityType.equals(Constants.ZFBAUTOASSIGNMENT_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.ZFBAUTOASSIGNMENT, entityId);
             return;
@@ -3553,11 +3543,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.WIRELESSPORT_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.WIRELESSPORT, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.WIRELESSPORTTEMPLATE_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.WIRELESSPORTTEMPLATE, entityId);
             return;
         }
         

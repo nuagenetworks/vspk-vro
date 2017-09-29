@@ -480,8 +480,6 @@ public interface Constants extends BaseConstants {
     String VSPS = "VSPs";
     String WIRELESSPORT = "WirelessPort";
     String WIRELESSPORTS = "WirelessPorts";
-    String WIRELESSPORTTEMPLATE = "WirelessPortTemplate";
-    String WIRELESSPORTTEMPLATES = "WirelessPortTemplates";
     String ZFBAUTOASSIGNMENT = "ZFBAutoAssignment";
     String ZFBAUTOASSIGNMENTS = "ZFBAutoAssignments";
     String ZFBREQUEST = "ZFBRequest";
@@ -714,7 +712,6 @@ public interface Constants extends BaseConstants {
     String VSGREDUNDANTPORTS_FETCHER = "VsgRedundantPortsFetcher";
     String VSPS_FETCHER = "VSPsFetcher";
     String WIRELESSPORTS_FETCHER = "WirelessPortsFetcher";
-    String WIRELESSPORTTEMPLATES_FETCHER = "WirelessPortTemplatesFetcher";
     String ZFBAUTOASSIGNMENTS_FETCHER = "ZFBAutoAssignmentsFetcher";
     String ZFBREQUESTS_FETCHER = "ZFBRequestsFetcher";
     String ZONES_FETCHER = "ZonesFetcher";
@@ -1398,11 +1395,13 @@ public interface Constants extends BaseConstants {
     
     String VIRTUALIP_ENTITYSCOPE_ENUM = "VirtualIPEntityScope";
     
+    String VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM = "VLANAssociatedConnectionType";
     String VLAN_ENTITYSCOPE_ENUM = "VLANEntityScope";
     String VLAN_PERMITTEDACTION_ENUM = "VLANPermittedAction";
     String VLAN_STATUS_ENUM = "VLANStatus";
     String VLAN_TYPE_ENUM = "VLANType";
     
+    String VLANTEMPLATE_ASSOCIATEDCONNECTIONTYPE_ENUM = "VLANTemplateAssociatedConnectionType";
     String VLANTEMPLATE_ENTITYSCOPE_ENUM = "VLANTemplateEntityScope";
     String VLANTEMPLATE_TYPE_ENUM = "VLANTemplateType";
     
@@ -1481,12 +1480,6 @@ public interface Constants extends BaseConstants {
     String WIRELESSPORT_PORTTYPE_ENUM = "WirelessPortPortType";
     String WIRELESSPORT_WIFIFREQUENCYBAND_ENUM = "WirelessPortWifiFrequencyBand";
     String WIRELESSPORT_WIFIMODE_ENUM = "WirelessPortWifiMode";
-    
-    String WIRELESSPORTTEMPLATE_COUNTRYCODE_ENUM = "WirelessPortTemplateCountryCode";
-    String WIRELESSPORTTEMPLATE_FREQUENCYCHANNEL_ENUM = "WirelessPortTemplateFrequencyChannel";
-    String WIRELESSPORTTEMPLATE_PORTTYPE_ENUM = "WirelessPortTemplatePortType";
-    String WIRELESSPORTTEMPLATE_WIFIFREQUENCYBAND_ENUM = "WirelessPortTemplateWifiFrequencyBand";
-    String WIRELESSPORTTEMPLATE_WIFIMODE_ENUM = "WirelessPortTemplateWifiMode";
     
     String ZFBAUTOASSIGNMENT_ZFBMATCHATTRIBUTE_ENUM = "ZFBAutoAssignmentZFBMatchAttribute";
     String ZFBAUTOASSIGNMENT_ENTITYSCOPE_ENUM = "ZFBAutoAssignmentEntityScope";
@@ -1730,7 +1723,6 @@ public interface Constants extends BaseConstants {
     String VSGREDUNDANTPORT_IMAGE_FILENAME = "images/icon-vsgredundantport.png";
     String VSP_IMAGE_FILENAME = "images/icon-vsp.png";
     String WIRELESSPORT_IMAGE_FILENAME = "images/icon-wirelessport.png";
-    String WIRELESSPORTTEMPLATE_IMAGE_FILENAME = "images/icon-wirelessporttemplate.png";
     String ZFBAUTOASSIGNMENT_IMAGE_FILENAME = "images/icon-zfbautoassignment.png";
     String ZFBREQUEST_IMAGE_FILENAME = "images/icon-zfbrequest.png";
     String ZONE_IMAGE_FILENAME = "images/icon-zone.png";
@@ -1960,7 +1952,6 @@ public interface Constants extends BaseConstants {
     String VSGREDUNDANTPORT_ENTITY_TYPE = "vsgredundantport";
     String VSP_ENTITY_TYPE = "vsp";
     String WIRELESSPORT_ENTITY_TYPE = "wirelessport";
-    String WIRELESSPORTTEMPLATE_ENTITY_TYPE = "wirelessporttemplate";
     String ZFBAUTOASSIGNMENT_ENTITY_TYPE = "zfbautoassignment";
     String ZFBREQUEST_ENTITY_TYPE = "zfbrequest";
     String ZONE_ENTITY_TYPE = "zone";

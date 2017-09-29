@@ -13727,11 +13727,21 @@ public class ModelHelper extends BaseModelHelper {
         if ((fetcher = getL4ServicesFetcherForL4ServiceGroupId(id)) != null) {
             return (L4ServicesFetcher) addFetcher(Constants.L4SERVICES_FETCHER, fetcher);
         }
+        
+        if ((fetcher = getL4ServicesFetcherForMeId(id)) != null) {
+            return (L4ServicesFetcher) addFetcher(Constants.L4SERVICES_FETCHER, fetcher);
+        }
         return null;
     }
 
     public static java.util.List<L4Service> getAllL4Services() throws RestException {
         java.util.List<L4Service> allObjs = new ArrayList<L4Service>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            L4ServicesFetcher fetcher = getL4ServicesFetcherForMeId(session.getId());
+            java.util.List<L4Service> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
 
         return allObjs;
     }
@@ -14978,6 +14988,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             L2DomainsFetcher fetcher = obj.getL2Domains();
             return addFetcher(Constants.L2DOMAINS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static L4ServicesFetcher getL4ServicesFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            L4ServicesFetcher fetcher = obj.getL4Services();
+            return addFetcher(Constants.L4SERVICES_FETCHER, fetcher);
         }
 
         return null;
@@ -28119,55 +28143,6 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<WirelessPortsFetcher> getAllWirelessPortsFetchers() throws RestException {
         java.util.List<WirelessPortsFetcher> allObjs = new ArrayList<WirelessPortsFetcher>();
-        return allObjs;
-    }
-    public static WirelessPortTemplate getWirelessPortTemplateById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            WirelessPortTemplate obj = null;
-            obj = new WirelessPortTemplate();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.WIRELESSPORTTEMPLATE, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }public static java.util.List<WirelessPortTemplate> getWirelessPortTemplatesForFetcherId(String id) throws RestException {
-        WirelessPortTemplatesFetcher fetcher = getWirelessPortTemplatesFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.WIRELESSPORTTEMPLATE);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<WirelessPortTemplate>();
-    }
-
-    public static WirelessPortTemplatesFetcher getWirelessPortTemplatesFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.WIRELESSPORTTEMPLATES_FETCHER, id);
-        if (fetcher != null) {
-            return (WirelessPortTemplatesFetcher) fetcher;
-        }return null;
-    }
-
-    public static java.util.List<WirelessPortTemplate> getAllWirelessPortTemplates() throws RestException {
-        java.util.List<WirelessPortTemplate> allObjs = new ArrayList<WirelessPortTemplate>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<WirelessPortTemplatesFetcher> getAllWirelessPortTemplatesFetchers() throws RestException {
-        java.util.List<WirelessPortTemplatesFetcher> allObjs = new ArrayList<WirelessPortTemplatesFetcher>();
         return allObjs;
     }
     public static ZFBAutoAssignment getZFBAutoAssignmentById(String id) {

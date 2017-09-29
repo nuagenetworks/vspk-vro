@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkConnectionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.VLANTemplateAssociatedConnectionType;
+
 import net.nuagenetworks.vro.vspk.model.enums.VLANTemplateEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.VLANTemplateType;
@@ -65,8 +67,17 @@ public class VLANTemplate extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "associatedConnectionType")
+    protected VLANTemplateAssociatedConnectionType associatedConnectionType;
+    
     @JsonProperty(value = "associatedEgressQOSPolicyID")
     protected String associatedEgressQOSPolicyID;
+    
+    @JsonProperty(value = "associatedIngressQOSPolicyID")
+    protected String associatedIngressQOSPolicyID;
+    
+    @JsonProperty(value = "associatedUplinkConnectionID")
+    protected String associatedUplinkConnectionID;
     
     @JsonProperty(value = "associatedVSCProfileID")
     protected String associatedVSCProfileID;
@@ -82,6 +93,9 @@ public class VLANTemplate extends BaseObject {
     
     @JsonProperty(value = "externalID")
     protected String externalID;
+    
+    @JsonProperty(value = "isUplink")
+    protected Boolean isUplink;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -156,6 +170,17 @@ public class VLANTemplate extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedConnectionType", readOnly = false)   
+    public VLANTemplateAssociatedConnectionType getAssociatedConnectionType() {
+       return associatedConnectionType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedConnectionType(VLANTemplateAssociatedConnectionType value) { 
+        this.associatedConnectionType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedEgressQOSPolicyID", readOnly = false)   
     public String getAssociatedEgressQOSPolicyID() {
        return associatedEgressQOSPolicyID;
@@ -164,6 +189,28 @@ public class VLANTemplate extends BaseObject {
     @JsonIgnore
     public void setAssociatedEgressQOSPolicyID(String value) { 
         this.associatedEgressQOSPolicyID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedIngressQOSPolicyID", readOnly = false)   
+    public String getAssociatedIngressQOSPolicyID() {
+       return associatedIngressQOSPolicyID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedIngressQOSPolicyID(String value) { 
+        this.associatedIngressQOSPolicyID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedUplinkConnectionID", readOnly = false)   
+    public String getAssociatedUplinkConnectionID() {
+       return associatedUplinkConnectionID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedUplinkConnectionID(String value) { 
+        this.associatedUplinkConnectionID = value;
     }
     
     @JsonIgnore
@@ -219,6 +266,17 @@ public class VLANTemplate extends BaseObject {
     @JsonIgnore
     public void setExternalID(String value) { 
         this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IsUplink", readOnly = false)   
+    public Boolean getIsUplink() {
+       return isUplink;
+    }
+
+    @JsonIgnore
+    public void setIsUplink(Boolean value) { 
+        this.isUplink = value;
     }
     
     @JsonIgnore
@@ -339,7 +397,7 @@ public class VLANTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UPLINKCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VLANTemplate [" + "associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", type=" + type + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VLANTemplate [" + "associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", type=" + type + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }
