@@ -628,6 +628,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.INGRESSQOSPOLICY_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.INGRESSQOSPOLICIES_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.IPRESERVATION_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.IPRESERVATIONS_FETCHER, entityParentId);
             return;
@@ -1622,6 +1627,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.INGRESSQOSPOLICY_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.INGRESSQOSPOLICY, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.IPRESERVATION_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.IPRESERVATION, entityId);
             return;
@@ -2613,6 +2623,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.INGRESSEXTERNALSERVICETEMPLATE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.INGRESSQOSPOLICY_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.INGRESSQOSPOLICY, entityId);
             return;
         }
         

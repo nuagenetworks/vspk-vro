@@ -88,6 +88,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdEntryTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressQOSPoliciesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.KeyServerMembersFetcher;
@@ -220,6 +222,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREGATEWAYPROFILES_FETCHER, type = Constants.INFRASTRUCTUREGATEWAYPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER, type = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSQOSPOLICIES_FETCHER, type = Constants.INGRESSQOSPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.KEYSERVERMEMBERS_FETCHER, type = Constants.KEYSERVERMEMBERS_FETCHER), 
 
@@ -417,6 +421,9 @@ public class Me extends BaseRootObject {
     private IngressAdvFwdEntryTemplatesFetcher ingressAdvFwdEntryTemplates;
     
     @JsonIgnore
+    private IngressQOSPoliciesFetcher ingressQOSPolicies;
+    
+    @JsonIgnore
     private JobsFetcher jobs;
     
     @JsonIgnore
@@ -602,6 +609,8 @@ public class Me extends BaseRootObject {
         ingressACLTemplates = new IngressACLTemplatesFetcher(this);
         
         ingressAdvFwdEntryTemplates = new IngressAdvFwdEntryTemplatesFetcher(this);
+        
+        ingressQOSPolicies = new IngressQOSPoliciesFetcher(this);
         
         jobs = new JobsFetcher(this);
         
@@ -1116,6 +1125,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IngressQOSPolicies", readOnly = true)   
+    public IngressQOSPoliciesFetcher getIngressQOSPolicies() {
+        return ingressQOSPolicies;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Jobs", readOnly = true)   
     public JobsFetcher getJobs() {
         return jobs;
@@ -1532,6 +1547,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.INFRASTRUCTUREVSCPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIngressQOSPolicy(Session session, IngressQOSPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSQOSPOLICIES_FETCHER, getId());
         }
     }
     @VsoMethod

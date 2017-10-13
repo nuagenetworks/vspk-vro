@@ -7,6 +7,8 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='interval' type='number' >
 </param>
 <param name='name' type='string' >
@@ -28,6 +30,9 @@ performanceMonitorObj = new VSPKPerformanceMonitor();
 if (description) {
    performanceMonitorObj.description = description;
 }
+if (externalID) {
+   performanceMonitorObj.externalID = externalID;
+}
 performanceMonitorObj.interval = interval;
 if (name) {
    performanceMonitorObj.name = name;
@@ -39,6 +44,7 @@ enterpriseObj.createPerformanceMonitor(session, performanceMonitorObj);
 ]]></script>
 <in-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='interval' type='number' export-name="interval" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 <bind name='numberOfPackets' type='number' export-name="numberOfPackets" ></bind>
@@ -50,6 +56,8 @@ enterpriseObj.createPerformanceMonitor(session, performanceMonitorObj);
 <p-param name="enterpriseObj"><desc><![CDATA[enterpriseObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="interval"><desc><![CDATA[interval]]></desc>
 </p-param>

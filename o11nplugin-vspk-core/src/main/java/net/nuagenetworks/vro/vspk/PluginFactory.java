@@ -1538,6 +1538,32 @@ public final class PluginFactory extends BasePluginFactory {
             return IngressExternalServiceTemplatePriorityType.getEnumById(id);
         }
         
+        if (type.equals(Constants.INGRESSQOSPOLICY)) {
+            return ModelHelper.getIngressQOSPolicyById(id);
+        }
+        if (type.equals(Constants.INGRESSQOSPOLICIES_FETCHER)) {
+            return ModelHelper.getIngressQOSPoliciesFetcherById(id);
+        }
+        if (type.equals(Constants.INGRESSQOSPOLICY_ENTITYSCOPE_ENUM)) {
+            return IngressQOSPolicyEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.INGRESSQOSPOLICY_QUEUE1FORWARDINGCLASSES_ENUM)) {
+            return IngressQOSPolicyQueue1ForwardingClasses.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.INGRESSQOSPOLICY_QUEUE2FORWARDINGCLASSES_ENUM)) {
+            return IngressQOSPolicyQueue2ForwardingClasses.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.INGRESSQOSPOLICY_QUEUE3FORWARDINGCLASSES_ENUM)) {
+            return IngressQOSPolicyQueue3ForwardingClasses.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.INGRESSQOSPOLICY_QUEUE4FORWARDINGCLASSES_ENUM)) {
+            return IngressQOSPolicyQueue4ForwardingClasses.getEnumById(id);
+        }
+        
         if (type.equals(Constants.IPRESERVATION)) {
             return ModelHelper.getIPReservationById(id);
         }
@@ -2230,6 +2256,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.PERFORMANCEMONITORS_FETCHER)) {
             return ModelHelper.getPerformanceMonitorsFetcherById(id);
         }
+        if (type.equals(Constants.PERFORMANCEMONITOR_ENTITYSCOPE_ENUM)) {
+            return PerformanceMonitorEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.PERFORMANCEMONITOR_SERVICECLASS_ENUM)) {
             return PerformanceMonitorServiceClass.getEnumById(id);
         }
@@ -4667,6 +4697,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getIKEPSKsForFetcherId(id);
         }
         
+        if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.INGRESSQOSPOLICIES_FETCHER)) {
+            return toList(ModelHelper.getIngressQOSPoliciesFetcherForEnterpriseId(id));
+        }
+        if (type.equals(Constants.INGRESSQOSPOLICIES_FETCHER) && relationName.equals(Constants.INGRESSQOSPOLICIES)) {
+            return ModelHelper.getIngressQOSPoliciesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.JOBS_FETCHER)) {
             return toList(ModelHelper.getJobsFetcherForEnterpriseId(id));
         }
@@ -5850,6 +5887,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.INGRESSQOSPOLICY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForIngressQOSPolicyId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.INGRESSQOSPOLICY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForIngressQOSPolicyId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.IPRESERVATION) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
             return toList(ModelHelper.getEventLogsFetcherForIPReservationId(id));
         }
@@ -6642,6 +6693,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.INGRESSADVFWDENTRYTEMPLATES_FETCHER) && relationName.equals(Constants.INGRESSADVFWDENTRYTEMPLATES)) {
             return ModelHelper.getIngressAdvFwdEntryTemplatesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.INGRESSQOSPOLICIES_FETCHER)) {
+            return toList(ModelHelper.getIngressQOSPoliciesFetcherForMeId(id));
+        }
+        if (type.equals(Constants.INGRESSQOSPOLICIES_FETCHER) && relationName.equals(Constants.INGRESSQOSPOLICIES)) {
+            return ModelHelper.getIngressQOSPoliciesForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.JOBS_FETCHER)) {
@@ -11345,6 +11403,34 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(IngressExternalServiceTemplatePriorityType.values()));
         }
         
+        if (type.equals(Constants.INGRESSQOSPOLICY)) {
+            java.util.List<IngressQOSPolicy> allObjs = ModelHelper.getAllIngressQOSPolicies();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.INGRESSQOSPOLICIES_FETCHER)) {
+            java.util.List<IngressQOSPoliciesFetcher> allObjs = ModelHelper.getAllIngressQOSPoliciesFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.INGRESSQOSPOLICY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(IngressQOSPolicyEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.INGRESSQOSPOLICY_QUEUE1FORWARDINGCLASSES_ENUM)) {
+            return new QueryResult(Arrays.asList(IngressQOSPolicyQueue1ForwardingClasses.values()));
+        }
+        
+        if (type.equals(Constants.INGRESSQOSPOLICY_QUEUE2FORWARDINGCLASSES_ENUM)) {
+            return new QueryResult(Arrays.asList(IngressQOSPolicyQueue2ForwardingClasses.values()));
+        }
+        
+        if (type.equals(Constants.INGRESSQOSPOLICY_QUEUE3FORWARDINGCLASSES_ENUM)) {
+            return new QueryResult(Arrays.asList(IngressQOSPolicyQueue3ForwardingClasses.values()));
+        }
+        
+        if (type.equals(Constants.INGRESSQOSPOLICY_QUEUE4FORWARDINGCLASSES_ENUM)) {
+            return new QueryResult(Arrays.asList(IngressQOSPolicyQueue4ForwardingClasses.values()));
+        }
+        
         if (type.equals(Constants.IPRESERVATION)) {
             java.util.List<IPReservation> allObjs = ModelHelper.getAllIPReservations();
             return new QueryResult(allObjs);
@@ -12133,6 +12219,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<PerformanceMonitorsFetcher> allObjs = ModelHelper.getAllPerformanceMonitorsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.PERFORMANCEMONITOR_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PerformanceMonitorEntityScope.values()));
+        }
+        
         if (type.equals(Constants.PERFORMANCEMONITOR_SERVICECLASS_ENUM)) {
             return new QueryResult(Arrays.asList(PerformanceMonitorServiceClass.values()));
         }

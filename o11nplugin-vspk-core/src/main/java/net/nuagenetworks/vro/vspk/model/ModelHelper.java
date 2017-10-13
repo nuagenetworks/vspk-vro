@@ -5967,6 +5967,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static IngressQOSPoliciesFetcher getIngressQOSPoliciesFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            IngressQOSPoliciesFetcher fetcher = obj.getIngressQOSPolicies();
+            return addFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static JobsFetcher getJobsFetcherForEnterpriseId(String id) throws RestException {
         Enterprise obj = getObject(Constants.ENTERPRISE, id);
         if (obj == null) {
@@ -8905,6 +8919,10 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForIngressQOSPolicyId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForIPReservationId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -11695,6 +11713,97 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<IngressExternalServiceTemplatesFetcher> allObjs = new ArrayList<IngressExternalServiceTemplatesFetcher>();
         return allObjs;
     }
+    public static IngressQOSPolicy getIngressQOSPolicyById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            IngressQOSPolicy obj = null;
+            obj = new IngressQOSPolicy();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.INGRESSQOSPOLICY, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForIngressQOSPolicyId(String id) throws RestException {
+        IngressQOSPolicy obj = getObject(Constants.INGRESSQOSPOLICY, id);
+        if (obj == null) {
+            obj = getIngressQOSPolicyById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForIngressQOSPolicyId(String id) throws RestException {
+        IngressQOSPolicy obj = getObject(Constants.INGRESSQOSPOLICY, id);
+        if (obj == null) {
+            obj = getIngressQOSPolicyById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<IngressQOSPolicy> getIngressQOSPoliciesForFetcherId(String id) throws RestException {
+        IngressQOSPoliciesFetcher fetcher = getIngressQOSPoliciesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.INGRESSQOSPOLICY);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<IngressQOSPolicy>();
+    }
+
+    public static IngressQOSPoliciesFetcher getIngressQOSPoliciesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, id);
+        if (fetcher != null) {
+            return (IngressQOSPoliciesFetcher) fetcher;
+        }
+        if ((fetcher = getIngressQOSPoliciesFetcherForEnterpriseId(id)) != null) {
+            return (IngressQOSPoliciesFetcher) addFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getIngressQOSPoliciesFetcherForMeId(id)) != null) {
+            return (IngressQOSPoliciesFetcher) addFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<IngressQOSPolicy> getAllIngressQOSPolicies() throws RestException {
+        java.util.List<IngressQOSPolicy> allObjs = new ArrayList<IngressQOSPolicy>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            IngressQOSPoliciesFetcher fetcher = getIngressQOSPoliciesFetcherForMeId(session.getId());
+            java.util.List<IngressQOSPolicy> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<IngressQOSPoliciesFetcher> getAllIngressQOSPoliciesFetchers() throws RestException {
+        java.util.List<IngressQOSPoliciesFetcher> allObjs = new ArrayList<IngressQOSPoliciesFetcher>();
+        return allObjs;
+    }
     public static IPReservation getIPReservationById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             IPReservation obj = null;
@@ -14336,6 +14445,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static IngressQOSPoliciesFetcher getIngressQOSPoliciesFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            IngressQOSPoliciesFetcher fetcher = obj.getIngressQOSPolicies();
+            return addFetcher(Constants.INGRESSQOSPOLICIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static JobsFetcher getJobsFetcherForMeId(String id) throws RestException {
         Me obj = getObject(Constants.ME, id);
         if (obj == null) {
@@ -15303,6 +15426,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForIngressExternalServiceTemplateId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForIngressQOSPolicyId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         

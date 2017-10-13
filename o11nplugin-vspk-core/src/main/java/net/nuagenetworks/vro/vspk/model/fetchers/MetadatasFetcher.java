@@ -180,6 +180,8 @@ import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
 
 import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplate;
 
+import net.nuagenetworks.vro.vspk.model.IngressQOSPolicy;
+
 import net.nuagenetworks.vro.vspk.model.IPReservation;
 
 import net.nuagenetworks.vro.vspk.model.Job;
@@ -1125,6 +1127,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IngressExternalServiceTemplate) {
             return (IngressExternalServiceTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressQOSPolicy", readOnly = true)
+    public IngressQOSPolicy getIngressQOSPolicy() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressQOSPolicy) {
+            return (IngressQOSPolicy) obj;
         }
         
         return null;

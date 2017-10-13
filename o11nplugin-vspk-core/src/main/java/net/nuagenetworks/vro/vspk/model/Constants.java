@@ -220,6 +220,8 @@ public interface Constants extends BaseConstants {
     String INGRESSEXTERNALSERVICETEMPLATEENTRIES = "IngressExternalServiceTemplateEntries";
     String INGRESSEXTERNALSERVICETEMPLATE = "IngressExternalServiceTemplate";
     String INGRESSEXTERNALSERVICETEMPLATES = "IngressExternalServiceTemplates";
+    String INGRESSQOSPOLICY = "IngressQOSPolicy";
+    String INGRESSQOSPOLICIES = "IngressQOSPolicies";
     String IPRESERVATION = "IPReservation";
     String IPRESERVATIONS = "IPReservations";
     String JOB = "Job";
@@ -526,6 +528,7 @@ public interface Constants extends BaseConstants {
     String INGRESSADVFWDTEMPLATES_FETCHER = "IngressAdvFwdTemplatesFetcher";
     String INGRESSEXTERNALSERVICETEMPLATEENTRIES_FETCHER = "IngressExternalServiceTemplateEntriesFetcher";
     String INGRESSEXTERNALSERVICETEMPLATES_FETCHER = "IngressExternalServiceTemplatesFetcher";
+    String INGRESSQOSPOLICIES_FETCHER = "IngressQOSPoliciesFetcher";
     String IPRESERVATIONS_FETCHER = "IPReservationsFetcher";
     String JOBS_FETCHER = "JobsFetcher";
     String KEYSERVERMEMBERS_FETCHER = "KeyServerMembersFetcher";
@@ -962,6 +965,12 @@ public interface Constants extends BaseConstants {
     String INGRESSEXTERNALSERVICETEMPLATE_POLICYSTATE_ENUM = "IngressExternalServiceTemplatePolicyState";
     String INGRESSEXTERNALSERVICETEMPLATE_PRIORITYTYPE_ENUM = "IngressExternalServiceTemplatePriorityType";
     
+    String INGRESSQOSPOLICY_ENTITYSCOPE_ENUM = "IngressQOSPolicyEntityScope";
+    String INGRESSQOSPOLICY_QUEUE1FORWARDINGCLASSES_ENUM = "IngressQOSPolicyQueue1ForwardingClasses";
+    String INGRESSQOSPOLICY_QUEUE2FORWARDINGCLASSES_ENUM = "IngressQOSPolicyQueue2ForwardingClasses";
+    String INGRESSQOSPOLICY_QUEUE3FORWARDINGCLASSES_ENUM = "IngressQOSPolicyQueue3ForwardingClasses";
+    String INGRESSQOSPOLICY_QUEUE4FORWARDINGCLASSES_ENUM = "IngressQOSPolicyQueue4ForwardingClasses";
+    
     String IPRESERVATION_ENTITYSCOPE_ENUM = "IPReservationEntityScope";
     
     String JOB_ASSOCENTITYTYPE_ENUM = "JobAssocEntityType";
@@ -1110,6 +1119,7 @@ public interface Constants extends BaseConstants {
     String PATNATPOOL_ENTITYSCOPE_ENUM = "PATNATPoolEntityScope";
     String PATNATPOOL_PERMITTEDACTION_ENUM = "PATNATPoolPermittedAction";
     
+    String PERFORMANCEMONITOR_ENTITYSCOPE_ENUM = "PerformanceMonitorEntityScope";
     String PERFORMANCEMONITOR_SERVICECLASS_ENUM = "PerformanceMonitorServiceClass";
     
     String PERMISSION_ENTITYSCOPE_ENUM = "PermissionEntityScope";
@@ -1429,6 +1439,7 @@ public interface Constants extends BaseConstants {
     String INGRESSADVFWDTEMPLATE_IMAGE_FILENAME = "images/icon-ingressadvfwdtemplate.png";
     String INGRESSEXTERNALSERVICETEMPLATEENTRY_IMAGE_FILENAME = "images/icon-ingressexternalservicetemplateentry.png";
     String INGRESSEXTERNALSERVICETEMPLATE_IMAGE_FILENAME = "images/icon-ingressexternalservicetemplate.png";
+    String INGRESSQOSPOLICY_IMAGE_FILENAME = "images/icon-ingressqospolicy.png";
     String IPRESERVATION_IMAGE_FILENAME = "images/icon-ipreservation.png";
     String JOB_IMAGE_FILENAME = "images/icon-job.png";
     String KEYSERVERMEMBER_IMAGE_FILENAME = "images/icon-keyservermember.png";
@@ -1630,6 +1641,7 @@ public interface Constants extends BaseConstants {
     String INGRESSADVFWDTEMPLATE_ENTITY_TYPE = "ingressadvfwdtemplate";
     String INGRESSEXTERNALSERVICETEMPLATEENTRY_ENTITY_TYPE = "ingressexternalserviceentrytemplate";
     String INGRESSEXTERNALSERVICETEMPLATE_ENTITY_TYPE = "ingressexternalservicetemplate";
+    String INGRESSQOSPOLICY_ENTITY_TYPE = "ingressqospolicy";
     String IPRESERVATION_ENTITY_TYPE = "ipreservation";
     String JOB_ENTITY_TYPE = "job";
     String KEYSERVERMEMBER_ENTITY_TYPE = "keyservermember";

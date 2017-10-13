@@ -84,6 +84,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IKEGatewayProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IKEPSKsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressQOSPoliciesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.KeyServerMonitorsFetcher;
@@ -196,6 +198,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.IKEGATEWAYPROFILES_FETCHER, type = Constants.IKEGATEWAYPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.IKEPSKS_FETCHER, type = Constants.IKEPSKS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSQOSPOLICIES_FETCHER, type = Constants.INGRESSQOSPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.L2DOMAINS_FETCHER, type = Constants.L2DOMAINS_FETCHER), 
 
@@ -409,6 +413,9 @@ public class Enterprise extends BaseObject {
     private IKEPSKsFetcher iKEPSKs;
     
     @JsonIgnore
+    private IngressQOSPoliciesFetcher ingressQOSPolicies;
+    
+    @JsonIgnore
     private JobsFetcher jobs;
     
     @JsonIgnore
@@ -542,6 +549,8 @@ public class Enterprise extends BaseObject {
         iKEGatewayProfiles = new IKEGatewayProfilesFetcher(this);
         
         iKEPSKs = new IKEPSKsFetcher(this);
+        
+        ingressQOSPolicies = new IngressQOSPoliciesFetcher(this);
         
         jobs = new JobsFetcher(this);
         
@@ -1112,6 +1121,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IngressQOSPolicies", readOnly = true)   
+    public IngressQOSPoliciesFetcher getIngressQOSPolicies() {
+        return ingressQOSPolicies;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Jobs", readOnly = true)   
     public JobsFetcher getJobs() {
         return jobs;
@@ -1473,6 +1488,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.IKEPSKS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIngressQOSPolicy(Session session, IngressQOSPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSQOSPOLICIES_FETCHER, getId());
         }
     }
     @VsoMethod
