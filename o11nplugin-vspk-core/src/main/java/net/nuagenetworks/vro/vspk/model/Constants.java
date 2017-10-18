@@ -368,6 +368,8 @@ public interface Constants extends BaseConstants {
     String PUBLICNETWORKMACROS = "PublicNetworkMacros";
     String QOS = "QOS";
     String QOSS = "QOSs";
+    String QOSPOLICER = "QosPolicer";
+    String QOSPOLICERS = "QosPolicers";
     String RATELIMITER = "RateLimiter";
     String RATELIMITERS = "RateLimiters";
     String REDIRECTIONTARGET = "RedirectionTarget";
@@ -454,6 +456,8 @@ public interface Constants extends BaseConstants {
     String VNFINTERFACEDESCRIPTORS = "VNFInterfaceDescriptors";
     String VNFMETADATA = "VNFMetadata";
     String VNFMETADATAS = "VNFMetadatas";
+    String VNFTHRESHOLDPOLICY = "VNFThresholdPolicy";
+    String VNFTHRESHOLDPOLICIES = "VNFThresholdPolicies";
     String VPNCONNECTION = "VPNConnection";
     String VPNCONNECTIONS = "VPNConnections";
     String VPORT = "VPort";
@@ -656,6 +660,7 @@ public interface Constants extends BaseConstants {
     String PTRANSLATIONMAPS_FETCHER = "PTranslationMapsFetcher";
     String PUBLICNETWORKMACROS_FETCHER = "PublicNetworkMacrosFetcher";
     String QOSS_FETCHER = "QOSsFetcher";
+    String QOSPOLICERS_FETCHER = "QosPolicersFetcher";
     String RATELIMITERS_FETCHER = "RateLimitersFetcher";
     String REDIRECTIONTARGETS_FETCHER = "RedirectionTargetsFetcher";
     String REDIRECTIONTARGETTEMPLATES_FETCHER = "RedirectionTargetTemplatesFetcher";
@@ -699,6 +704,7 @@ public interface Constants extends BaseConstants {
     String VNFINTERFACES_FETCHER = "VNFInterfacesFetcher";
     String VNFINTERFACEDESCRIPTORS_FETCHER = "VNFInterfaceDescriptorsFetcher";
     String VNFMETADATAS_FETCHER = "VNFMetadatasFetcher";
+    String VNFTHRESHOLDPOLICIES_FETCHER = "VNFThresholdPoliciesFetcher";
     String VPNCONNECTIONS_FETCHER = "VPNConnectionsFetcher";
     String VPORTS_FETCHER = "VPortsFetcher";
     String VPORTMIRRORS_FETCHER = "VPortMirrorsFetcher";
@@ -1270,6 +1276,8 @@ public interface Constants extends BaseConstants {
     String QOS_ENTITYSCOPE_ENUM = "QOSEntityScope";
     String QOS_SERVICECLASS_ENUM = "QOSServiceClass";
     
+    String QOSPOLICER_ENTITYSCOPE_ENUM = "QosPolicerEntityScope";
+    
     String RATELIMITER_ENTITYSCOPE_ENUM = "RateLimiterEntityScope";
     
     String REDIRECTIONTARGET_ENDPOINTTYPE_ENUM = "RedirectionTargetEndPointType";
@@ -1361,7 +1369,6 @@ public interface Constants extends BaseConstants {
     
     
     
-    String UPLINKCONNECTION_ADDRESS_ENUM = "UplinkConnectionAddress";
     String UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM = "UplinkConnectionAdvertisementCriteria";
     String UPLINKCONNECTION_INTERFACECONNECTIONTYPE_ENUM = "UplinkConnectionInterfaceConnectionType";
     String UPLINKCONNECTION_MODE_ENUM = "UplinkConnectionMode";
@@ -1424,6 +1431,8 @@ public interface Constants extends BaseConstants {
     String VNFINTERFACE_ATTACHEDNETWORKTYPE_ENUM = "VNFInterfaceAttachedNetworkType";
     
     
+    
+    String VNFTHRESHOLDPOLICY_ACTION_ENUM = "VNFThresholdPolicyAction";
     
     String VPNCONNECTION_ENTITYSCOPE_ENUM = "VPNConnectionEntityScope";
     
@@ -1667,6 +1676,7 @@ public interface Constants extends BaseConstants {
     String PTRANSLATIONMAP_IMAGE_FILENAME = "images/icon-ptranslationmap.png";
     String PUBLICNETWORKMACRO_IMAGE_FILENAME = "images/icon-publicnetworkmacro.png";
     String QOS_IMAGE_FILENAME = "images/icon-qos.png";
+    String QOSPOLICER_IMAGE_FILENAME = "images/icon-qospolicer.png";
     String RATELIMITER_IMAGE_FILENAME = "images/icon-ratelimiter.png";
     String REDIRECTIONTARGET_IMAGE_FILENAME = "images/icon-redirectiontarget.png";
     String REDIRECTIONTARGETTEMPLATE_IMAGE_FILENAME = "images/icon-redirectiontargettemplate.png";
@@ -1710,6 +1720,7 @@ public interface Constants extends BaseConstants {
     String VNFINTERFACE_IMAGE_FILENAME = "images/icon-vnfinterface.png";
     String VNFINTERFACEDESCRIPTOR_IMAGE_FILENAME = "images/icon-vnfinterfacedescriptor.png";
     String VNFMETADATA_IMAGE_FILENAME = "images/icon-vnfmetadata.png";
+    String VNFTHRESHOLDPOLICY_IMAGE_FILENAME = "images/icon-vnfthresholdpolicy.png";
     String VPNCONNECTION_IMAGE_FILENAME = "images/icon-vpnconnection.png";
     String VPORT_IMAGE_FILENAME = "images/icon-vport.png";
     String VPORTMIRROR_IMAGE_FILENAME = "images/icon-vportmirror.png";
@@ -1750,7 +1761,7 @@ public interface Constants extends BaseConstants {
     String BGPPROFILE_ENTITY_TYPE = "bgpprofile";
     String BOOTSTRAP_ENTITY_TYPE = "bootstrap";
     String BOOTSTRAPACTIVATION_ENTITY_TYPE = "bootstrapactivation";
-    String BRCONNECTION_ENTITY_TYPE = "brconnections";
+    String BRCONNECTION_ENTITY_TYPE = "brconnection";
     String BRIDGEINTERFACE_ENTITY_TYPE = "bridgeinterface";
     String BULKSTATISTICS_ENTITY_TYPE = "bulkstatistics";
     String CAPTIVEPORTALPROFILE_ENTITY_TYPE = "captiveportalprofile";
@@ -1896,6 +1907,7 @@ public interface Constants extends BaseConstants {
     String PTRANSLATIONMAP_ENTITY_TYPE = "ptranslationmap";
     String PUBLICNETWORKMACRO_ENTITY_TYPE = "publicnetwork";
     String QOS_ENTITY_TYPE = "qos";
+    String QOSPOLICER_ENTITY_TYPE = "qospolicer";
     String RATELIMITER_ENTITY_TYPE = "ratelimiter";
     String REDIRECTIONTARGET_ENTITY_TYPE = "redirectiontarget";
     String REDIRECTIONTARGETTEMPLATE_ENTITY_TYPE = "redirectiontargettemplate";
@@ -1939,6 +1951,7 @@ public interface Constants extends BaseConstants {
     String VNFINTERFACE_ENTITY_TYPE = "vnfinterface";
     String VNFINTERFACEDESCRIPTOR_ENTITY_TYPE = "vnfinterfacedescriptor";
     String VNFMETADATA_ENTITY_TYPE = "vnfmetadata";
+    String VNFTHRESHOLDPOLICY_ENTITY_TYPE = "vnfthresholdpolicy";
     String VPNCONNECTION_ENTITY_TYPE = "vpnconnection";
     String VPORT_ENTITY_TYPE = "vport";
     String VPORTMIRROR_ENTITY_TYPE = "vportmirror";

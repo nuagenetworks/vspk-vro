@@ -2582,6 +2582,16 @@ public final class PluginFactory extends BasePluginFactory {
             return QOSServiceClass.getEnumById(id);
         }
         
+        if (type.equals(Constants.QOSPOLICER)) {
+            return ModelHelper.getQosPolicerById(id);
+        }
+        if (type.equals(Constants.QOSPOLICERS_FETCHER)) {
+            return ModelHelper.getQosPolicersFetcherById(id);
+        }
+        if (type.equals(Constants.QOSPOLICER_ENTITYSCOPE_ENUM)) {
+            return QosPolicerEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.RATELIMITER)) {
             return ModelHelper.getRateLimiterById(id);
         }
@@ -2996,10 +3006,6 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.UPLINKCONNECTIONS_FETCHER)) {
             return ModelHelper.getUplinkConnectionsFetcherById(id);
         }
-        if (type.equals(Constants.UPLINKCONNECTION_ADDRESS_ENUM)) {
-            return UplinkConnectionAddress.getEnumById(id);
-        }
-        
         if (type.equals(Constants.UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM)) {
             return UplinkConnectionAdvertisementCriteria.getEnumById(id);
         }
@@ -3288,6 +3294,16 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VNFMETADATAS_FETCHER)) {
             return ModelHelper.getVNFMetadatasFetcherById(id);
         }
+        if (type.equals(Constants.VNFTHRESHOLDPOLICY)) {
+            return ModelHelper.getVNFThresholdPolicyById(id);
+        }
+        if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER)) {
+            return ModelHelper.getVNFThresholdPoliciesFetcherById(id);
+        }
+        if (type.equals(Constants.VNFTHRESHOLDPOLICY_ACTION_ENUM)) {
+            return VNFThresholdPolicyAction.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VPNCONNECTION)) {
             return ModelHelper.getVPNConnectionById(id);
         }
@@ -5379,6 +5395,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVNFMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER)) {
+            return toList(ModelHelper.getVNFThresholdPoliciesFetcherForEnterpriseId(id));
+        }
+        if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES)) {
+            return ModelHelper.getVNFThresholdPoliciesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.ZFBREQUESTS_FETCHER)) {
             return toList(ModelHelper.getZFBRequestsFetcherForEnterpriseId(id));
         }
@@ -7258,6 +7281,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getPolicyGroupsForFetcherId(id);
         }
         
+        if (type.equals(Constants.ME) && relationName.equals(Constants.QOSPOLICERS_FETCHER)) {
+            return toList(ModelHelper.getQosPolicersFetcherForMeId(id));
+        }
+        if (type.equals(Constants.QOSPOLICERS_FETCHER) && relationName.equals(Constants.QOSPOLICERS)) {
+            return ModelHelper.getQosPolicersForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ME) && relationName.equals(Constants.RATELIMITERS_FETCHER)) {
             return toList(ModelHelper.getRateLimitersFetcherForMeId(id));
         }
@@ -7396,6 +7426,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VNFMETADATAS_FETCHER) && relationName.equals(Constants.VNFMETADATAS)) {
             return ModelHelper.getVNFMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER)) {
+            return toList(ModelHelper.getVNFThresholdPoliciesFetcherForMeId(id));
+        }
+        if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES)) {
+            return ModelHelper.getVNFThresholdPoliciesForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.VCENTERVRSCONFIGS_FETCHER)) {
@@ -8355,6 +8392,20 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VMS_FETCHER) && relationName.equals(Constants.VMS)) {
             return ModelHelper.getVMsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.QOSPOLICER) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForQosPolicerId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.QOSPOLICER) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForQosPolicerId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.RATELIMITER) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -9363,6 +9414,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.PERMISSIONS_FETCHER) && relationName.equals(Constants.PERMISSIONS)) {
             return ModelHelper.getPermissionsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VLAN) && relationName.equals(Constants.STATISTICS_FETCHER)) {
+            return toList(ModelHelper.getStatisticsFetcherForVLANId(id));
+        }
+        if (type.equals(Constants.STATISTICS_FETCHER) && relationName.equals(Constants.STATISTICS)) {
+            return ModelHelper.getStatisticsForFetcherId(id);
         }
         
         if (type.equals(Constants.VLAN) && relationName.equals(Constants.UPLINKCONNECTIONS_FETCHER)) {
@@ -13179,6 +13237,18 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(QOSServiceClass.values()));
         }
         
+        if (type.equals(Constants.QOSPOLICER)) {
+            java.util.List<QosPolicer> allObjs = ModelHelper.getAllQosPolicers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.QOSPOLICERS_FETCHER)) {
+            java.util.List<QosPolicersFetcher> allObjs = ModelHelper.getAllQosPolicersFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.QOSPOLICER_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(QosPolicerEntityScope.values()));
+        }
+        
         if (type.equals(Constants.RATELIMITER)) {
             java.util.List<RateLimiter> allObjs = ModelHelper.getAllRateLimiters();
             return new QueryResult(allObjs);
@@ -13639,10 +13709,6 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<UplinkConnectionsFetcher> allObjs = ModelHelper.getAllUplinkConnectionsFetchers();
             return new QueryResult(allObjs);
         }
-        if (type.equals(Constants.UPLINKCONNECTION_ADDRESS_ENUM)) {
-            return new QueryResult(Arrays.asList(UplinkConnectionAddress.values()));
-        }
-        
         if (type.equals(Constants.UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM)) {
             return new QueryResult(Arrays.asList(UplinkConnectionAdvertisementCriteria.values()));
         }
@@ -13971,6 +14037,18 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VNFMetadatasFetcher> allObjs = ModelHelper.getAllVNFMetadatasFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VNFTHRESHOLDPOLICY)) {
+            java.util.List<VNFThresholdPolicy> allObjs = ModelHelper.getAllVNFThresholdPolicies();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER)) {
+            java.util.List<VNFThresholdPoliciesFetcher> allObjs = ModelHelper.getAllVNFThresholdPoliciesFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.VNFTHRESHOLDPOLICY_ACTION_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFThresholdPolicyAction.values()));
+        }
+        
         if (type.equals(Constants.VPNCONNECTION)) {
             java.util.List<VPNConnection> allObjs = ModelHelper.getAllVPNConnections();
             return new QueryResult(allObjs);

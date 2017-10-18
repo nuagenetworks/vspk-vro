@@ -58,6 +58,8 @@ import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
+import net.nuagenetworks.vro.vspk.model.VLAN;
+
 import net.nuagenetworks.vro.vspk.model.VMInterface;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
@@ -233,6 +235,16 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Subnet) {
             return (Subnet) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VLAN", readOnly = true)
+    public VLAN getVLAN() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VLAN) {
+            return (VLAN) obj;
         }
         
         return null;

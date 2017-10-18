@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.NSPORT_SPEED_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.QOSPOLICER_ENTITYSCOPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum NSPortSpeed {
+public enum QosPolicerEntityScope {
 
-    AUTONEGOTIATE("AUTONEGOTIATE", "AUTONEGOTIATE"), BASET10("BASET10", "BASET10"), BASET1000("BASET1000", "BASET1000"), BASETX100("BASETX100", "BASETX100"), BASEX10G("BASEX10G", "BASEX10G");
+    ENTERPRISE("ENTERPRISE", "ENTERPRISE"), GLOBAL("GLOBAL", "GLOBAL");
 
     private final String id;
     private final String name;
    
-    NSPortSpeed(String id, String name) {
+    QosPolicerEntityScope(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,34 +58,19 @@ public enum NSPortSpeed {
     }
 
     
-    @VsoProperty(displayName = "AUTONEGOTIATE", readOnly = true)
-    public NSPortSpeed getAUTONEGOTIATE() {
-        return AUTONEGOTIATE;
+    @VsoProperty(displayName = "ENTERPRISE", readOnly = true)
+    public QosPolicerEntityScope getENTERPRISE() {
+        return ENTERPRISE;
     }
     
-    @VsoProperty(displayName = "BASET10", readOnly = true)
-    public NSPortSpeed getBASET10() {
-        return BASET10;
-    }
-    
-    @VsoProperty(displayName = "BASET1000", readOnly = true)
-    public NSPortSpeed getBASET1000() {
-        return BASET1000;
-    }
-    
-    @VsoProperty(displayName = "BASETX100", readOnly = true)
-    public NSPortSpeed getBASETX100() {
-        return BASETX100;
-    }
-    
-    @VsoProperty(displayName = "BASEX10G", readOnly = true)
-    public NSPortSpeed getBASEX10G() {
-        return BASEX10G;
+    @VsoProperty(displayName = "GLOBAL", readOnly = true)
+    public QosPolicerEntityScope getGLOBAL() {
+        return GLOBAL;
     }
     
 
-    public static NSPortSpeed getEnumById(String id) {
-        for (NSPortSpeed item : values()) {
+    public static QosPolicerEntityScope getEnumById(String id) {
+        for (QosPolicerEntityScope item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

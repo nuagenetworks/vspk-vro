@@ -26,11 +26,11 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
-import net.nuagenetworks.vro.vspk.model.fetchers.BFDSessionsFetcher;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.enums.BRConnectionAdvertisementCriteria;
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.enums.BRConnectionMode;
+import net.nuagenetworks.vro.vspk.model.enums.QosPolicerEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -44,55 +44,55 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.BRCONNECTION, datasource = Constants.DATASOURCE, image = Constants.BRCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.BFDSESSIONS_FETCHER, type = Constants.BFDSESSIONS_FETCHER)
+@VsoFinder(name = Constants.QOSPOLICER, datasource = Constants.DATASOURCE, image = Constants.QOSPOLICER_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@RestEntity(restName = "brconnection", resourceName = "brconnections")
-public class BRConnection extends BaseObject {
+@RestEntity(restName = "qospolicer", resourceName = "qospolicers")
+public class QosPolicer extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "DNSAddress")
-    protected String DNSAddress;
+    @JsonProperty(value = "burst")
+    protected Long burst;
     
-    @JsonProperty(value = "address")
-    protected String address;
+    @JsonProperty(value = "description")
+    protected String description;
     
-    @JsonProperty(value = "advertisementCriteria")
-    protected BRConnectionAdvertisementCriteria advertisementCriteria;
+    @JsonProperty(value = "entityScope")
+    protected QosPolicerEntityScope entityScope;
     
-    @JsonProperty(value = "gateway")
-    protected String gateway;
+    @JsonProperty(value = "externalID")
+    protected String externalID;
     
-    @JsonProperty(value = "mode")
-    protected BRConnectionMode mode;
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
     
-    @JsonProperty(value = "netmask")
-    protected String netmask;
+    @JsonProperty(value = "name")
+    protected String name;
     
-    @JsonProperty(value = "uplinkID")
-    protected Long uplinkID;
+    @JsonProperty(value = "rate")
+    protected Long rate;
     
     @JsonIgnore
-    private BFDSessionsFetcher bFDSessions;
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
     
     @VsoConstructor
-    public BRConnection() {
-        bFDSessions = new BFDSessionsFetcher(this);
+    public QosPolicer() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
         return (Session) super.getSession();
-    }
-    @VsoProperty(displayName = "Name", readOnly = false)
-    public String getName() {
-        return getId();
-    }
-    @VsoProperty(displayName = "RestName", readOnly = true)
+    }@VsoProperty(displayName = "RestName", readOnly = true)
     public String getRestName() {
         return super.getRestName();
     }
@@ -125,86 +125,92 @@ public class BRConnection extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "DNSAddress", readOnly = false)   
-    public String getDNSAddress() {
-       return DNSAddress;
+    @VsoProperty(displayName = "Burst", readOnly = false)   
+    public Long getBurst() {
+       return burst;
     }
 
     @JsonIgnore
-    public void setDNSAddress(String value) { 
-        this.DNSAddress = value;
+    public void setBurst(Long value) { 
+        this.burst = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Address", readOnly = false)   
-    public String getAddress() {
-       return address;
+    @VsoProperty(displayName = "Description", readOnly = false)   
+    public String getDescription() {
+       return description;
     }
 
     @JsonIgnore
-    public void setAddress(String value) { 
-        this.address = value;
+    public void setDescription(String value) { 
+        this.description = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "AdvertisementCriteria", readOnly = false)   
-    public BRConnectionAdvertisementCriteria getAdvertisementCriteria() {
-       return advertisementCriteria;
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public QosPolicerEntityScope getEntityScope() {
+       return entityScope;
     }
 
     @JsonIgnore
-    public void setAdvertisementCriteria(BRConnectionAdvertisementCriteria value) { 
-        this.advertisementCriteria = value;
+    public void setEntityScope(QosPolicerEntityScope value) { 
+        this.entityScope = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Gateway", readOnly = false)   
-    public String getGateway() {
-       return gateway;
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
     }
 
     @JsonIgnore
-    public void setGateway(String value) { 
-        this.gateway = value;
+    public void setExternalID(String value) { 
+        this.externalID = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Mode", readOnly = false)   
-    public BRConnectionMode getMode() {
-       return mode;
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
     }
 
     @JsonIgnore
-    public void setMode(BRConnectionMode value) { 
-        this.mode = value;
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Netmask", readOnly = false)   
-    public String getNetmask() {
-       return netmask;
+    @VsoProperty(displayName = "Name", readOnly = false)   
+    public String getName() {
+       return name;
     }
 
     @JsonIgnore
-    public void setNetmask(String value) { 
-        this.netmask = value;
+    public void setName(String value) { 
+        this.name = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "UplinkID", readOnly = false)   
-    public Long getUplinkID() {
-       return uplinkID;
+    @VsoProperty(displayName = "Rate", readOnly = false)   
+    public Long getRate() {
+       return rate;
     }
 
     @JsonIgnore
-    public void setUplinkID(Long value) { 
-        this.uplinkID = value;
+    public void setRate(Long value) { 
+        this.rate = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "BFDSessions", readOnly = true)   
-    public BFDSessionsFetcher getBFDSessions() {
-        return bFDSessions;
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -215,7 +221,7 @@ public class BRConnection extends BaseObject {
     public void save(Session session, Integer responseChoice) throws RestException {
         super.save(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementUpdated(Constants.BRCONNECTION, getId());
+           SessionManager.getInstance().notifyElementUpdated(Constants.QOSPOLICER, getId());
         }
     }
 
@@ -224,18 +230,35 @@ public class BRConnection extends BaseObject {
         int responseChoice = (responseChoiceObj != null) ? responseChoiceObj.intValue() : 1;
         super.delete(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementDeleted(Constants.BRCONNECTION, getId());
+           SessionManager.getInstance().notifyElementDeleted(Constants.QOSPOLICER, getId());
         }
     }
     @VsoMethod
-    public void createBFDSession(Session session, BFDSession childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.QOSPOLICER, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.BFDSESSIONS_FETCHER, getId());
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", gateway=" + gateway + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "QosPolicer [" + "burst=" + burst + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", rate=" + rate + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -48,6 +48,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkConnectionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.VLANAssociatedConnectionType;
@@ -106,8 +108,14 @@ public class VLAN extends BaseObject {
     @JsonProperty(value = "associatedEgressQOSPolicyID")
     protected String associatedEgressQOSPolicyID;
     
+    @JsonProperty(value = "associatedIngressOverlayQoSPolicerID")
+    protected String associatedIngressOverlayQoSPolicerID;
+    
     @JsonProperty(value = "associatedIngressQOSPolicyID")
     protected String associatedIngressQOSPolicyID;
+    
+    @JsonProperty(value = "associatedIngressUnderlayQoSPolicerID")
+    protected String associatedIngressUnderlayQoSPolicerID;
     
     @JsonProperty(value = "associatedUplinkConnectionID")
     protected String associatedUplinkConnectionID;
@@ -200,6 +208,9 @@ public class VLAN extends BaseObject {
     private PermissionsFetcher permissions;
     
     @JsonIgnore
+    private StatisticsFetcher statistics;
+    
+    @JsonIgnore
     private UplinkConnectionsFetcher uplinkConnections;
     
     @VsoConstructor
@@ -225,6 +236,8 @@ public class VLAN extends BaseObject {
         pATNATPools = new PATNATPoolsFetcher(this);
         
         permissions = new PermissionsFetcher(this);
+        
+        statistics = new StatisticsFetcher(this);
         
         uplinkConnections = new UplinkConnectionsFetcher(this);
         }
@@ -303,6 +316,17 @@ public class VLAN extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedIngressOverlayQoSPolicerID", readOnly = false)   
+    public String getAssociatedIngressOverlayQoSPolicerID() {
+       return associatedIngressOverlayQoSPolicerID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedIngressOverlayQoSPolicerID(String value) { 
+        this.associatedIngressOverlayQoSPolicerID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedIngressQOSPolicyID", readOnly = false)   
     public String getAssociatedIngressQOSPolicyID() {
        return associatedIngressQOSPolicyID;
@@ -311,6 +335,17 @@ public class VLAN extends BaseObject {
     @JsonIgnore
     public void setAssociatedIngressQOSPolicyID(String value) { 
         this.associatedIngressQOSPolicyID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedIngressUnderlayQoSPolicerID", readOnly = false)   
+    public String getAssociatedIngressUnderlayQoSPolicerID() {
+       return associatedIngressUnderlayQoSPolicerID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedIngressUnderlayQoSPolicerID(String value) { 
+        this.associatedIngressUnderlayQoSPolicerID = value;
     }
     
     @JsonIgnore
@@ -589,6 +624,12 @@ public class VLAN extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Statistics", readOnly = true)   
+    public StatisticsFetcher getStatistics() {
+        return statistics;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "UplinkConnections", readOnly = true)   
     public UplinkConnectionsFetcher getUplinkConnections() {
         return uplinkConnections;
@@ -704,7 +745,7 @@ public class VLAN extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UPLINKCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VLAN [" + "associatedBGPProfileID=" + associatedBGPProfileID + ", associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", restricted=" + restricted + ", status=" + status + ", templateID=" + templateID + ", type=" + type + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", value=" + value + ", vportID=" + vportID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VLAN [" + "associatedBGPProfileID=" + associatedBGPProfileID + ", associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", restricted=" + restricted + ", status=" + status + ", templateID=" + templateID + ", type=" + type + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", value=" + value + ", vportID=" + vportID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

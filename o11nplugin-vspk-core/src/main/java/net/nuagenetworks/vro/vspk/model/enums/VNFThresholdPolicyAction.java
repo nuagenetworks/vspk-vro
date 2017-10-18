@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.UPLINKCONNECTION_ADDRESS_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.VNFTHRESHOLDPOLICY_ACTION_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum UplinkConnectionAddress {
+public enum VNFThresholdPolicyAction {
 
-    IPv4("IPv4", "IPv4"), IPv6("IPv6", "IPv6");
+    NONE("NONE", "NONE"), SHUTOFF("SHUTOFF", "SHUTOFF");
 
     private final String id;
     private final String name;
    
-    UplinkConnectionAddress(String id, String name) {
+    VNFThresholdPolicyAction(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,19 @@ public enum UplinkConnectionAddress {
     }
 
     
-    @VsoProperty(displayName = "IPv4", readOnly = true)
-    public UplinkConnectionAddress getIPv4() {
-        return IPv4;
+    @VsoProperty(displayName = "NONE", readOnly = true)
+    public VNFThresholdPolicyAction getNONE() {
+        return NONE;
     }
     
-    @VsoProperty(displayName = "IPv6", readOnly = true)
-    public UplinkConnectionAddress getIPv6() {
-        return IPv6;
+    @VsoProperty(displayName = "SHUTOFF", readOnly = true)
+    public VNFThresholdPolicyAction getSHUTOFF() {
+        return SHUTOFF;
     }
     
 
-    public static UplinkConnectionAddress getEnumById(String id) {
-        for (UplinkConnectionAddress item : values()) {
+    public static VNFThresholdPolicyAction getEnumById(String id) {
+        for (VNFThresholdPolicyAction item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

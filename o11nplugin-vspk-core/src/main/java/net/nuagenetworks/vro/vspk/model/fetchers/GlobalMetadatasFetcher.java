@@ -262,6 +262,8 @@ import net.nuagenetworks.vro.vspk.model.PublicNetworkMacro;
 
 import net.nuagenetworks.vro.vspk.model.QOS;
 
+import net.nuagenetworks.vro.vspk.model.QosPolicer;
+
 import net.nuagenetworks.vro.vspk.model.RateLimiter;
 
 import net.nuagenetworks.vro.vspk.model.RedirectionTarget;
@@ -1531,6 +1533,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof QOS) {
             return (QOS) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "QosPolicer", readOnly = true)
+    public QosPolicer getQosPolicer() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof QosPolicer) {
+            return (QosPolicer) obj;
         }
         
         return null;

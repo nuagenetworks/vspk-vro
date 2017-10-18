@@ -998,6 +998,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.QOSPOLICER_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.QOSPOLICERS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.RATELIMITER_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.RATELIMITERS_FETCHER, entityParentId);
             return;
@@ -1210,6 +1215,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.VNFMETADATA_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.VNFMETADATAS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFTHRESHOLDPOLICY_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.VNFTHRESHOLDPOLICIES_FETCHER, entityParentId);
             return;
         }
         
@@ -2132,6 +2142,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.QOSPOLICER_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.QOSPOLICER, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.RATELIMITER_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.RATELIMITER, entityId);
             return;
@@ -2344,6 +2359,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.VNFMETADATA_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.VNFMETADATA, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFTHRESHOLDPOLICY_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.VNFTHRESHOLDPOLICY, entityId);
             return;
         }
         
@@ -3266,6 +3286,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.QOSPOLICER_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.QOSPOLICER, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.RATELIMITER_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.RATELIMITER, entityId);
             return;
@@ -3478,6 +3503,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.VNFMETADATA_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.VNFMETADATA, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.VNFTHRESHOLDPOLICY_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.VNFTHRESHOLDPOLICY, entityId);
             return;
         }
         

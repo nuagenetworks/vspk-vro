@@ -144,6 +144,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VNFsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFMetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VNFThresholdPoliciesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ZFBRequestsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.EnterpriseAllowedForwardingClasses;
@@ -252,6 +254,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.VNFS_FETCHER, type = Constants.VNFS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VNFMETADATAS_FETCHER, type = Constants.VNFMETADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VNFTHRESHOLDPOLICIES_FETCHER, type = Constants.VNFTHRESHOLDPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ZFBREQUESTS_FETCHER, type = Constants.ZFBREQUESTS_FETCHER)
 })
@@ -531,6 +535,9 @@ public class Enterprise extends BaseObject {
     private VNFMetadatasFetcher vNFMetadatas;
     
     @JsonIgnore
+    private VNFThresholdPoliciesFetcher vNFThresholdPolicies;
+    
+    @JsonIgnore
     private ZFBRequestsFetcher zFBRequests;
     
     @VsoConstructor
@@ -652,6 +659,8 @@ public class Enterprise extends BaseObject {
         vNFs = new VNFsFetcher(this);
         
         vNFMetadatas = new VNFMetadatasFetcher(this);
+        
+        vNFThresholdPolicies = new VNFThresholdPoliciesFetcher(this);
         
         zFBRequests = new ZFBRequestsFetcher(this);
         }
@@ -1376,6 +1385,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VNFThresholdPolicies", readOnly = true)   
+    public VNFThresholdPoliciesFetcher getVNFThresholdPolicies() {
+        return vNFThresholdPolicies;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ZFBRequests", readOnly = true)   
     public ZFBRequestsFetcher getZFBRequests() {
         return zFBRequests;
@@ -1795,6 +1810,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VNFMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createVNFThresholdPolicy(Session session, VNFThresholdPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VNFTHRESHOLDPOLICIES_FETCHER, getId());
         }
     }
     @VsoMethod
