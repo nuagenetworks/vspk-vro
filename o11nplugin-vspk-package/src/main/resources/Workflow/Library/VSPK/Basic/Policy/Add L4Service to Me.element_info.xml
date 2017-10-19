@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
-<entry key="name">Add L4Service to Me</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">5d39b355-8d47-5d7a-bbb7-e3f90a1043e7</entry>
-</properties>

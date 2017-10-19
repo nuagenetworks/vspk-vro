@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum WirelessPortFrequencyChannel {
 
-    CH_0("CH_0", "CH_0"), CH_1("CH_1", "CH_1"), CH_10("CH_10", "CH_10"), CH_100("CH_100", "CH_100"), CH_104("CH_104", "CH_104"), CH_108("CH_108", "CH_108"), CH_11("CH_11", "CH_11"), CH_112("CH_112", "CH_112"), CH_116("CH_116", "CH_116"), CH_12("CH_12", "CH_12"), CH_120("CH_120", "CH_120"), CH_124("CH_124", "CH_124"), CH_128("CH_128", "CH_128"), CH_13("CH_13", "CH_13"), CH_132("CH_132", "CH_132"), CH_136("CH_136", "CH_136"), CH_14("CH_14", "CH_14"), CH_140("CH_140", "CH_140"), CH_144("CH_144", "CH_144"), CH_149("CH_149", "CH_149"), CH_153("CH_153", "CH_153"), CH_157("CH_157", "CH_157"), CH_161("CH_161", "CH_161"), CH_165("CH_165", "CH_165"), CH_2("CH_2", "CH_2"), CH_3("CH_3", "CH_3"), CH_36("CH_36", "CH_36"), CH_4("CH_4", "CH_4"), CH_40("CH_40", "CH_40"), CH_44("CH_44", "CH_44"), CH_48("CH_48", "CH_48"), CH_5("CH_5", "CH_5"), CH_52("CH_52", "CH_52"), CH_56("CH_56", "CH_56"), CH_6("CH_6", "CH_6"), CH_60("CH_60", "CH_60"), CH_64("CH_64", "CH_64"), CH_7("CH_7", "CH_7"), CH_8("CH_8", "CH_8"), CH_9("CH_9", "CH_9");
+    CH_0("CH_0", "CH_0"), CH_1("CH_1", "CH_1"), CH_2("CH_2", "CH_2"), CH_3("CH_3", "CH_3"), CH_4("CH_4", "CH_4"), CH_5("CH_5", "CH_5"), CH_6("CH_6", "CH_6"), CH_7("CH_7", "CH_7"), CH_8("CH_8", "CH_8"), CH_9("CH_9", "CH_9"), CH_10("CH_10", "CH_10"), CH_11("CH_11", "CH_11"), CH_12("CH_12", "CH_12"), CH_13("CH_13", "CH_13"), CH_14("CH_14", "CH_14"), CH_36("CH_36", "CH_36"), CH_40("CH_40", "CH_40"), CH_44("CH_44", "CH_44"), CH_48("CH_48", "CH_48"), CH_52("CH_52", "CH_52"), CH_56("CH_56", "CH_56"), CH_60("CH_60", "CH_60"), CH_64("CH_64", "CH_64"), CH_100("CH_100", "CH_100"), CH_104("CH_104", "CH_104"), CH_108("CH_108", "CH_108"), CH_112("CH_112", "CH_112"), CH_116("CH_116", "CH_116"), CH_120("CH_120", "CH_120"), CH_124("CH_124", "CH_124"), CH_128("CH_128", "CH_128"), CH_132("CH_132", "CH_132"), CH_136("CH_136", "CH_136"), CH_140("CH_140", "CH_140"), CH_144("CH_144", "CH_144"), CH_149("CH_149", "CH_149"), CH_153("CH_153", "CH_153"), CH_157("CH_157", "CH_157"), CH_161("CH_161", "CH_161"), CH_165("CH_165", "CH_165");
 
     private final String id;
     private final String name;
@@ -68,9 +68,109 @@ public enum WirelessPortFrequencyChannel {
         return CH_1;
     }
     
+    @VsoProperty(displayName = "CH_2", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_2() {
+        return CH_2;
+    }
+    
+    @VsoProperty(displayName = "CH_3", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_3() {
+        return CH_3;
+    }
+    
+    @VsoProperty(displayName = "CH_4", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_4() {
+        return CH_4;
+    }
+    
+    @VsoProperty(displayName = "CH_5", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_5() {
+        return CH_5;
+    }
+    
+    @VsoProperty(displayName = "CH_6", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_6() {
+        return CH_6;
+    }
+    
+    @VsoProperty(displayName = "CH_7", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_7() {
+        return CH_7;
+    }
+    
+    @VsoProperty(displayName = "CH_8", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_8() {
+        return CH_8;
+    }
+    
+    @VsoProperty(displayName = "CH_9", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_9() {
+        return CH_9;
+    }
+    
     @VsoProperty(displayName = "CH_10", readOnly = true)
     public WirelessPortFrequencyChannel getCH_10() {
         return CH_10;
+    }
+    
+    @VsoProperty(displayName = "CH_11", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_11() {
+        return CH_11;
+    }
+    
+    @VsoProperty(displayName = "CH_12", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_12() {
+        return CH_12;
+    }
+    
+    @VsoProperty(displayName = "CH_13", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_13() {
+        return CH_13;
+    }
+    
+    @VsoProperty(displayName = "CH_14", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_14() {
+        return CH_14;
+    }
+    
+    @VsoProperty(displayName = "CH_36", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_36() {
+        return CH_36;
+    }
+    
+    @VsoProperty(displayName = "CH_40", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_40() {
+        return CH_40;
+    }
+    
+    @VsoProperty(displayName = "CH_44", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_44() {
+        return CH_44;
+    }
+    
+    @VsoProperty(displayName = "CH_48", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_48() {
+        return CH_48;
+    }
+    
+    @VsoProperty(displayName = "CH_52", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_52() {
+        return CH_52;
+    }
+    
+    @VsoProperty(displayName = "CH_56", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_56() {
+        return CH_56;
+    }
+    
+    @VsoProperty(displayName = "CH_60", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_60() {
+        return CH_60;
+    }
+    
+    @VsoProperty(displayName = "CH_64", readOnly = true)
+    public WirelessPortFrequencyChannel getCH_64() {
+        return CH_64;
     }
     
     @VsoProperty(displayName = "CH_100", readOnly = true)
@@ -88,11 +188,6 @@ public enum WirelessPortFrequencyChannel {
         return CH_108;
     }
     
-    @VsoProperty(displayName = "CH_11", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_11() {
-        return CH_11;
-    }
-    
     @VsoProperty(displayName = "CH_112", readOnly = true)
     public WirelessPortFrequencyChannel getCH_112() {
         return CH_112;
@@ -101,11 +196,6 @@ public enum WirelessPortFrequencyChannel {
     @VsoProperty(displayName = "CH_116", readOnly = true)
     public WirelessPortFrequencyChannel getCH_116() {
         return CH_116;
-    }
-    
-    @VsoProperty(displayName = "CH_12", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_12() {
-        return CH_12;
     }
     
     @VsoProperty(displayName = "CH_120", readOnly = true)
@@ -123,11 +213,6 @@ public enum WirelessPortFrequencyChannel {
         return CH_128;
     }
     
-    @VsoProperty(displayName = "CH_13", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_13() {
-        return CH_13;
-    }
-    
     @VsoProperty(displayName = "CH_132", readOnly = true)
     public WirelessPortFrequencyChannel getCH_132() {
         return CH_132;
@@ -136,11 +221,6 @@ public enum WirelessPortFrequencyChannel {
     @VsoProperty(displayName = "CH_136", readOnly = true)
     public WirelessPortFrequencyChannel getCH_136() {
         return CH_136;
-    }
-    
-    @VsoProperty(displayName = "CH_14", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_14() {
-        return CH_14;
     }
     
     @VsoProperty(displayName = "CH_140", readOnly = true)
@@ -176,86 +256,6 @@ public enum WirelessPortFrequencyChannel {
     @VsoProperty(displayName = "CH_165", readOnly = true)
     public WirelessPortFrequencyChannel getCH_165() {
         return CH_165;
-    }
-    
-    @VsoProperty(displayName = "CH_2", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_2() {
-        return CH_2;
-    }
-    
-    @VsoProperty(displayName = "CH_3", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_3() {
-        return CH_3;
-    }
-    
-    @VsoProperty(displayName = "CH_36", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_36() {
-        return CH_36;
-    }
-    
-    @VsoProperty(displayName = "CH_4", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_4() {
-        return CH_4;
-    }
-    
-    @VsoProperty(displayName = "CH_40", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_40() {
-        return CH_40;
-    }
-    
-    @VsoProperty(displayName = "CH_44", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_44() {
-        return CH_44;
-    }
-    
-    @VsoProperty(displayName = "CH_48", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_48() {
-        return CH_48;
-    }
-    
-    @VsoProperty(displayName = "CH_5", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_5() {
-        return CH_5;
-    }
-    
-    @VsoProperty(displayName = "CH_52", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_52() {
-        return CH_52;
-    }
-    
-    @VsoProperty(displayName = "CH_56", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_56() {
-        return CH_56;
-    }
-    
-    @VsoProperty(displayName = "CH_6", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_6() {
-        return CH_6;
-    }
-    
-    @VsoProperty(displayName = "CH_60", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_60() {
-        return CH_60;
-    }
-    
-    @VsoProperty(displayName = "CH_64", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_64() {
-        return CH_64;
-    }
-    
-    @VsoProperty(displayName = "CH_7", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_7() {
-        return CH_7;
-    }
-    
-    @VsoProperty(displayName = "CH_8", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_8() {
-        return CH_8;
-    }
-    
-    @VsoProperty(displayName = "CH_9", readOnly = true)
-    public WirelessPortFrequencyChannel getCH_9() {
-        return CH_9;
     }
     
 

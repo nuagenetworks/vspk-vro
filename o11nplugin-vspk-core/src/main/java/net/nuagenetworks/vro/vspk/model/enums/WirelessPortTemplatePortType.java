@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.QOSPOLICER_ENTITYSCOPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE_PORTTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum QosPolicerEntityScope {
+public enum WirelessPortTemplatePortType {
 
-    ENTERPRISE("ENTERPRISE", "ENTERPRISE"), GLOBAL("GLOBAL", "GLOBAL");
+    ACCESS("ACCESS", "ACCESS");
 
     private final String id;
     private final String name;
    
-    QosPolicerEntityScope(String id, String name) {
+    WirelessPortTemplatePortType(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,14 @@ public enum QosPolicerEntityScope {
     }
 
     
-    @VsoProperty(displayName = "ENTERPRISE", readOnly = true)
-    public QosPolicerEntityScope getENTERPRISE() {
-        return ENTERPRISE;
-    }
-    
-    @VsoProperty(displayName = "GLOBAL", readOnly = true)
-    public QosPolicerEntityScope getGLOBAL() {
-        return GLOBAL;
+    @VsoProperty(displayName = "ACCESS", readOnly = true)
+    public WirelessPortTemplatePortType getACCESS() {
+        return ACCESS;
     }
     
 
-    public static QosPolicerEntityScope getEnumById(String id) {
-        for (QosPolicerEntityScope item : values()) {
+    public static WirelessPortTemplatePortType getEnumById(String id) {
+        for (WirelessPortTemplatePortType item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

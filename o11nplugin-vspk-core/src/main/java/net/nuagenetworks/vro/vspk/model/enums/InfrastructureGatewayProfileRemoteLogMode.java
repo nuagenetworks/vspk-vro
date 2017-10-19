@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum InfrastructureGatewayProfileRemoteLogMode {
 
-    DISABLED("DISABLED", "DISABLED"), RSYSLOG("RSYSLOG", "RSYSLOG");
+    DISABLED("DISABLED", "DISABLED"), RSYSLOG("RSYSLOG", "RSYSLOG"), SCP("SCP", "SCP"), SFTP("SFTP", "SFTP");
 
     private final String id;
     private final String name;
@@ -66,6 +66,16 @@ public enum InfrastructureGatewayProfileRemoteLogMode {
     @VsoProperty(displayName = "RSYSLOG", readOnly = true)
     public InfrastructureGatewayProfileRemoteLogMode getRSYSLOG() {
         return RSYSLOG;
+    }
+    
+    @VsoProperty(displayName = "SCP", readOnly = true)
+    public InfrastructureGatewayProfileRemoteLogMode getSCP() {
+        return SCP;
+    }
+    
+    @VsoProperty(displayName = "SFTP", readOnly = true)
+    public InfrastructureGatewayProfileRemoteLogMode getSFTP() {
+        return SFTP;
     }
     
 

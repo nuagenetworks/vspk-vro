@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VPortSegmentationType {
 
-    NONE("NONE", "NONE"), VLAN("VLAN", "VLAN");
+    VLAN("VLAN", "VLAN");
 
     private final String id;
     private final String name;
@@ -57,11 +57,6 @@ public enum VPortSegmentationType {
         return name;
     }
 
-    
-    @VsoProperty(displayName = "NONE", readOnly = true)
-    public VPortSegmentationType getNONE() {
-        return NONE;
-    }
     
     @VsoProperty(displayName = "VLAN", readOnly = true)
     public VPortSegmentationType getVLAN() {

@@ -33,8 +33,6 @@ import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.L4ServiceGroup;
-
-import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -83,16 +81,6 @@ public class L4ServicesFetcher extends BaseFetcher<L4Service> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L4ServiceGroup) {
             return (L4ServiceGroup) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "Me", readOnly = true)
-    public Me getMe() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Me) {
-            return (Me) obj;
         }
         
         return null;

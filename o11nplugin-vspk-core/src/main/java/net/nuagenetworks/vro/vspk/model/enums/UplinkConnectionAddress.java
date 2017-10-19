@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.VLANTEMPLATE_ASSOCIATEDCONNECTIONTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.UPLINKCONNECTION_ADDRESS_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum VLANTemplateAssociatedConnectionType {
+public enum UplinkConnectionAddress {
 
-    BR_CONNECTION("BR_CONNECTION", "BR_CONNECTION"), UPLINK_CONNECTION("UPLINK_CONNECTION", "UPLINK_CONNECTION");
+    IPv4("IPv4", "IPv4"), IPv6("IPv6", "IPv6");
 
     private final String id;
     private final String name;
    
-    VLANTemplateAssociatedConnectionType(String id, String name) {
+    UplinkConnectionAddress(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,19 @@ public enum VLANTemplateAssociatedConnectionType {
     }
 
     
-    @VsoProperty(displayName = "BR_CONNECTION", readOnly = true)
-    public VLANTemplateAssociatedConnectionType getBR_CONNECTION() {
-        return BR_CONNECTION;
+    @VsoProperty(displayName = "IPv4", readOnly = true)
+    public UplinkConnectionAddress getIPv4() {
+        return IPv4;
     }
     
-    @VsoProperty(displayName = "UPLINK_CONNECTION", readOnly = true)
-    public VLANTemplateAssociatedConnectionType getUPLINK_CONNECTION() {
-        return UPLINK_CONNECTION;
+    @VsoProperty(displayName = "IPv6", readOnly = true)
+    public UplinkConnectionAddress getIPv6() {
+        return IPv6;
     }
     
 
-    public static VLANTemplateAssociatedConnectionType getEnumById(String id) {
-        for (VLANTemplateAssociatedConnectionType item : values()) {
+    public static UplinkConnectionAddress getEnumById(String id) {
+        for (UplinkConnectionAddress item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

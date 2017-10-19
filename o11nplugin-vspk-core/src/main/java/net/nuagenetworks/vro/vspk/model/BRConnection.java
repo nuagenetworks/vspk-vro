@@ -49,7 +49,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@RestEntity(restName = "brconnection", resourceName = "brconnections")
+@RestEntity(restName = "brconnections", resourceName = "brconnections")
 public class BRConnection extends BaseObject {
 
     private static final long serialVersionUID = 1L;

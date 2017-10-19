@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE_WIFIMODE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum VLANAssociatedConnectionType {
+public enum WirelessPortTemplateWifiMode {
 
-    BR_CONNECTION("BR_CONNECTION", "BR_CONNECTION"), UPLINK_CONNECTION("UPLINK_CONNECTION", "UPLINK_CONNECTION");
+    WIFI_A("WIFI_A", "WIFI_A"), WIFI_A_AC("WIFI_A_AC", "WIFI_A_AC"), WIFI_A_N("WIFI_A_N", "WIFI_A_N"), WIFI_A_N_AC("WIFI_A_N_AC", "WIFI_A_N_AC"), WIFI_B_G("WIFI_B_G", "WIFI_B_G"), WIFI_B_G_N("WIFI_B_G_N", "WIFI_B_G_N");
 
     private final String id;
     private final String name;
    
-    VLANAssociatedConnectionType(String id, String name) {
+    WirelessPortTemplateWifiMode(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,39 @@ public enum VLANAssociatedConnectionType {
     }
 
     
-    @VsoProperty(displayName = "BR_CONNECTION", readOnly = true)
-    public VLANAssociatedConnectionType getBR_CONNECTION() {
-        return BR_CONNECTION;
+    @VsoProperty(displayName = "WIFI_A", readOnly = true)
+    public WirelessPortTemplateWifiMode getWIFI_A() {
+        return WIFI_A;
     }
     
-    @VsoProperty(displayName = "UPLINK_CONNECTION", readOnly = true)
-    public VLANAssociatedConnectionType getUPLINK_CONNECTION() {
-        return UPLINK_CONNECTION;
+    @VsoProperty(displayName = "WIFI_A_AC", readOnly = true)
+    public WirelessPortTemplateWifiMode getWIFI_A_AC() {
+        return WIFI_A_AC;
+    }
+    
+    @VsoProperty(displayName = "WIFI_A_N", readOnly = true)
+    public WirelessPortTemplateWifiMode getWIFI_A_N() {
+        return WIFI_A_N;
+    }
+    
+    @VsoProperty(displayName = "WIFI_A_N_AC", readOnly = true)
+    public WirelessPortTemplateWifiMode getWIFI_A_N_AC() {
+        return WIFI_A_N_AC;
+    }
+    
+    @VsoProperty(displayName = "WIFI_B_G", readOnly = true)
+    public WirelessPortTemplateWifiMode getWIFI_B_G() {
+        return WIFI_B_G;
+    }
+    
+    @VsoProperty(displayName = "WIFI_B_G_N", readOnly = true)
+    public WirelessPortTemplateWifiMode getWIFI_B_G_N() {
+        return WIFI_B_G_N;
     }
     
 
-    public static VLANAssociatedConnectionType getEnumById(String id) {
-        for (VLANAssociatedConnectionType item : values()) {
+    public static WirelessPortTemplateWifiMode getEnumById(String id) {
+        for (WirelessPortTemplateWifiMode item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

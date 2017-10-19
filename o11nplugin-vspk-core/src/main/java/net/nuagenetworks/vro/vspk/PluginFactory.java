@@ -2582,16 +2582,6 @@ public final class PluginFactory extends BasePluginFactory {
             return QOSServiceClass.getEnumById(id);
         }
         
-        if (type.equals(Constants.QOSPOLICER)) {
-            return ModelHelper.getQosPolicerById(id);
-        }
-        if (type.equals(Constants.QOSPOLICERS_FETCHER)) {
-            return ModelHelper.getQosPolicersFetcherById(id);
-        }
-        if (type.equals(Constants.QOSPOLICER_ENTITYSCOPE_ENUM)) {
-            return QosPolicerEntityScope.getEnumById(id);
-        }
-        
         if (type.equals(Constants.RATELIMITER)) {
             return ModelHelper.getRateLimiterById(id);
         }
@@ -3006,6 +2996,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.UPLINKCONNECTIONS_FETCHER)) {
             return ModelHelper.getUplinkConnectionsFetcherById(id);
         }
+        if (type.equals(Constants.UPLINKCONNECTION_ADDRESS_ENUM)) {
+            return UplinkConnectionAddress.getEnumById(id);
+        }
+        
         if (type.equals(Constants.UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM)) {
             return UplinkConnectionAdvertisementCriteria.getEnumById(id);
         }
@@ -3158,10 +3152,6 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VLANS_FETCHER)) {
             return ModelHelper.getVLANsFetcherById(id);
         }
-        if (type.equals(Constants.VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
-            return VLANAssociatedConnectionType.getEnumById(id);
-        }
-        
         if (type.equals(Constants.VLAN_ENTITYSCOPE_ENUM)) {
             return VLANEntityScope.getEnumById(id);
         }
@@ -3184,10 +3174,6 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VLANTEMPLATES_FETCHER)) {
             return ModelHelper.getVLANTemplatesFetcherById(id);
         }
-        if (type.equals(Constants.VLANTEMPLATE_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
-            return VLANTemplateAssociatedConnectionType.getEnumById(id);
-        }
-        
         if (type.equals(Constants.VLANTEMPLATE_ENTITYSCOPE_ENUM)) {
             return VLANTemplateEntityScope.getEnumById(id);
         }
@@ -3294,16 +3280,6 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VNFMETADATAS_FETCHER)) {
             return ModelHelper.getVNFMetadatasFetcherById(id);
         }
-        if (type.equals(Constants.VNFTHRESHOLDPOLICY)) {
-            return ModelHelper.getVNFThresholdPolicyById(id);
-        }
-        if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER)) {
-            return ModelHelper.getVNFThresholdPoliciesFetcherById(id);
-        }
-        if (type.equals(Constants.VNFTHRESHOLDPOLICY_ACTION_ENUM)) {
-            return VNFThresholdPolicyAction.getEnumById(id);
-        }
-        
         if (type.equals(Constants.VPNCONNECTION)) {
             return ModelHelper.getVPNConnectionById(id);
         }
@@ -3552,6 +3528,32 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.WIRELESSPORT_WIFIMODE_ENUM)) {
             return WirelessPortWifiMode.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE)) {
+            return ModelHelper.getWirelessPortTemplateById(id);
+        }
+        if (type.equals(Constants.WIRELESSPORTTEMPLATES_FETCHER)) {
+            return ModelHelper.getWirelessPortTemplatesFetcherById(id);
+        }
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_COUNTRYCODE_ENUM)) {
+            return WirelessPortTemplateCountryCode.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_FREQUENCYCHANNEL_ENUM)) {
+            return WirelessPortTemplateFrequencyChannel.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_PORTTYPE_ENUM)) {
+            return WirelessPortTemplatePortType.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_WIFIFREQUENCYBAND_ENUM)) {
+            return WirelessPortTemplateWifiFrequencyBand.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_WIFIMODE_ENUM)) {
+            return WirelessPortTemplateWifiMode.getEnumById(id);
         }
         
         if (type.equals(Constants.ZFBAUTOASSIGNMENT)) {
@@ -5395,13 +5397,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVNFMetadatasForFetcherId(id);
         }
         
-        if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER)) {
-            return toList(ModelHelper.getVNFThresholdPoliciesFetcherForEnterpriseId(id));
-        }
-        if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES)) {
-            return ModelHelper.getVNFThresholdPoliciesForFetcherId(id);
-        }
-        
         if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.ZFBREQUESTS_FETCHER)) {
             return toList(ModelHelper.getZFBRequestsFetcherForEnterpriseId(id));
         }
@@ -7169,13 +7164,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getL2DomainsForFetcherId(id);
         }
         
-        if (type.equals(Constants.ME) && relationName.equals(Constants.L4SERVICES_FETCHER)) {
-            return toList(ModelHelper.getL4ServicesFetcherForMeId(id));
-        }
-        if (type.equals(Constants.L4SERVICES_FETCHER) && relationName.equals(Constants.L4SERVICES)) {
-            return ModelHelper.getL4ServicesForFetcherId(id);
-        }
-        
         if (type.equals(Constants.ME) && relationName.equals(Constants.LICENSES_FETCHER)) {
             return toList(ModelHelper.getLicensesFetcherForMeId(id));
         }
@@ -7279,13 +7267,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.POLICYGROUPS_FETCHER) && relationName.equals(Constants.POLICYGROUPS)) {
             return ModelHelper.getPolicyGroupsForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.ME) && relationName.equals(Constants.QOSPOLICERS_FETCHER)) {
-            return toList(ModelHelper.getQosPolicersFetcherForMeId(id));
-        }
-        if (type.equals(Constants.QOSPOLICERS_FETCHER) && relationName.equals(Constants.QOSPOLICERS)) {
-            return ModelHelper.getQosPolicersForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.RATELIMITERS_FETCHER)) {
@@ -7426,13 +7407,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VNFMETADATAS_FETCHER) && relationName.equals(Constants.VNFMETADATAS)) {
             return ModelHelper.getVNFMetadatasForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.ME) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER)) {
-            return toList(ModelHelper.getVNFThresholdPoliciesFetcherForMeId(id));
-        }
-        if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES)) {
-            return ModelHelper.getVNFThresholdPoliciesForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.VCENTERVRSCONFIGS_FETCHER)) {
@@ -8392,20 +8366,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VMS_FETCHER) && relationName.equals(Constants.VMS)) {
             return ModelHelper.getVMsForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.QOSPOLICER) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
-            return toList(ModelHelper.getGlobalMetadatasFetcherForQosPolicerId(id));
-        }
-        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
-            return ModelHelper.getGlobalMetadatasForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.QOSPOLICER) && relationName.equals(Constants.METADATAS_FETCHER)) {
-            return toList(ModelHelper.getMetadatasFetcherForQosPolicerId(id));
-        }
-        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
-            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.RATELIMITER) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -9414,13 +9374,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.PERMISSIONS_FETCHER) && relationName.equals(Constants.PERMISSIONS)) {
             return ModelHelper.getPermissionsForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.VLAN) && relationName.equals(Constants.STATISTICS_FETCHER)) {
-            return toList(ModelHelper.getStatisticsFetcherForVLANId(id));
-        }
-        if (type.equals(Constants.STATISTICS_FETCHER) && relationName.equals(Constants.STATISTICS)) {
-            return ModelHelper.getStatisticsForFetcherId(id);
         }
         
         if (type.equals(Constants.VLAN) && relationName.equals(Constants.UPLINKCONNECTIONS_FETCHER)) {
@@ -13237,18 +13190,6 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(QOSServiceClass.values()));
         }
         
-        if (type.equals(Constants.QOSPOLICER)) {
-            java.util.List<QosPolicer> allObjs = ModelHelper.getAllQosPolicers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.QOSPOLICERS_FETCHER)) {
-            java.util.List<QosPolicersFetcher> allObjs = ModelHelper.getAllQosPolicersFetchers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.QOSPOLICER_ENTITYSCOPE_ENUM)) {
-            return new QueryResult(Arrays.asList(QosPolicerEntityScope.values()));
-        }
-        
         if (type.equals(Constants.RATELIMITER)) {
             java.util.List<RateLimiter> allObjs = ModelHelper.getAllRateLimiters();
             return new QueryResult(allObjs);
@@ -13709,6 +13650,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<UplinkConnectionsFetcher> allObjs = ModelHelper.getAllUplinkConnectionsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.UPLINKCONNECTION_ADDRESS_ENUM)) {
+            return new QueryResult(Arrays.asList(UplinkConnectionAddress.values()));
+        }
+        
         if (type.equals(Constants.UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM)) {
             return new QueryResult(Arrays.asList(UplinkConnectionAdvertisementCriteria.values()));
         }
@@ -13881,10 +13826,6 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VLANsFetcher> allObjs = ModelHelper.getAllVLANsFetchers();
             return new QueryResult(allObjs);
         }
-        if (type.equals(Constants.VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(VLANAssociatedConnectionType.values()));
-        }
-        
         if (type.equals(Constants.VLAN_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(VLANEntityScope.values()));
         }
@@ -13909,10 +13850,6 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VLANTemplatesFetcher> allObjs = ModelHelper.getAllVLANTemplatesFetchers();
             return new QueryResult(allObjs);
         }
-        if (type.equals(Constants.VLANTEMPLATE_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(VLANTemplateAssociatedConnectionType.values()));
-        }
-        
         if (type.equals(Constants.VLANTEMPLATE_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(VLANTemplateEntityScope.values()));
         }
@@ -14037,18 +13974,6 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VNFMetadatasFetcher> allObjs = ModelHelper.getAllVNFMetadatasFetchers();
             return new QueryResult(allObjs);
         }
-        if (type.equals(Constants.VNFTHRESHOLDPOLICY)) {
-            java.util.List<VNFThresholdPolicy> allObjs = ModelHelper.getAllVNFThresholdPolicies();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER)) {
-            java.util.List<VNFThresholdPoliciesFetcher> allObjs = ModelHelper.getAllVNFThresholdPoliciesFetchers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.VNFTHRESHOLDPOLICY_ACTION_ENUM)) {
-            return new QueryResult(Arrays.asList(VNFThresholdPolicyAction.values()));
-        }
-        
         if (type.equals(Constants.VPNCONNECTION)) {
             java.util.List<VPNConnection> allObjs = ModelHelper.getAllVPNConnections();
             return new QueryResult(allObjs);
@@ -14323,6 +14248,34 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.WIRELESSPORT_WIFIMODE_ENUM)) {
             return new QueryResult(Arrays.asList(WirelessPortWifiMode.values()));
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE)) {
+            java.util.List<WirelessPortTemplate> allObjs = ModelHelper.getAllWirelessPortTemplates();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.WIRELESSPORTTEMPLATES_FETCHER)) {
+            java.util.List<WirelessPortTemplatesFetcher> allObjs = ModelHelper.getAllWirelessPortTemplatesFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_COUNTRYCODE_ENUM)) {
+            return new QueryResult(Arrays.asList(WirelessPortTemplateCountryCode.values()));
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_FREQUENCYCHANNEL_ENUM)) {
+            return new QueryResult(Arrays.asList(WirelessPortTemplateFrequencyChannel.values()));
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_PORTTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(WirelessPortTemplatePortType.values()));
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_WIFIFREQUENCYBAND_ENUM)) {
+            return new QueryResult(Arrays.asList(WirelessPortTemplateWifiFrequencyBand.values()));
+        }
+        
+        if (type.equals(Constants.WIRELESSPORTTEMPLATE_WIFIMODE_ENUM)) {
+            return new QueryResult(Arrays.asList(WirelessPortTemplateWifiMode.values()));
         }
         
         if (type.equals(Constants.ZFBAUTOASSIGNMENT)) {

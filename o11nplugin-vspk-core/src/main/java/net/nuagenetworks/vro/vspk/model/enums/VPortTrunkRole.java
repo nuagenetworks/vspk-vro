@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VPortTrunkRole {
 
-    NONE("NONE", "NONE"), PARENT_PORT("PARENT_PORT", "PARENT_PORT"), SUB_PORT("SUB_PORT", "SUB_PORT");
+    PARENT_PORT("PARENT_PORT", "PARENT_PORT"), SUB_PORT("SUB_PORT", "SUB_PORT");
 
     private final String id;
     private final String name;
@@ -57,11 +57,6 @@ public enum VPortTrunkRole {
         return name;
     }
 
-    
-    @VsoProperty(displayName = "NONE", readOnly = true)
-    public VPortTrunkRole getNONE() {
-        return NONE;
-    }
     
     @VsoProperty(displayName = "PARENT_PORT", readOnly = true)
     public VPortTrunkRole getPARENT_PORT() {

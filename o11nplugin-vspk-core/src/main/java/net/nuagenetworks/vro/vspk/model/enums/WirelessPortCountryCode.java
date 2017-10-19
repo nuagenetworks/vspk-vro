@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum WirelessPortCountryCode {
 
-    AT("AT", "AT"), AU("AU", "AU"), BE("BE", "BE"), BR("BR", "BR"), CA("CA", "CA"), CH("CH", "CH"), CN("CN", "CN"), CY("CY", "CY"), CZ("CZ", "CZ"), DE("DE", "DE"), DK("DK", "DK"), EE("EE", "EE"), ES("ES", "ES"), FI("FI", "FI"), FR("FR", "FR"), GB("GB", "GB"), GR("GR", "GR"), HK("HK", "HK"), HU("HU", "HU"), ID("ID", "ID"), IE("IE", "IE"), IL("IL", "IL"), IN("IN", "IN"), IT("IT", "IT"), JP("JP", "JP"), KR("KR", "KR"), LT("LT", "LT"), LU("LU", "LU"), LV("LV", "LV"), MY("MY", "MY"), NL("NL", "NL"), NO("NO", "NO"), NZ("NZ", "NZ"), PH("PH", "PH"), PL("PL", "PL"), PT("PT", "PT"), SE("SE", "SE"), SG("SG", "SG"), SI("SI", "SI"), SK("SK", "SK"), TH("TH", "TH"), TW("TW", "TW"), US("US", "US"), ZA("ZA", "ZA");
+    AU("AU", "AU"), AT("AT", "AT"), BE("BE", "BE"), BR("BR", "BR"), CA("CA", "CA"), CN("CN", "CN"), CY("CY", "CY"), CZ("CZ", "CZ"), DK("DK", "DK"), EE("EE", "EE"), FI("FI", "FI"), FR("FR", "FR"), DE("DE", "DE"), GR("GR", "GR"), HK("HK", "HK"), HU("HU", "HU"), IN("IN", "IN"), ID("ID", "ID"), IE("IE", "IE"), IL("IL", "IL"), IT("IT", "IT"), JP("JP", "JP"), KR("KR", "KR"), LV("LV", "LV"), LT("LT", "LT"), LU("LU", "LU"), MY("MY", "MY"), NL("NL", "NL"), NZ("NZ", "NZ"), NO("NO", "NO"), PH("PH", "PH"), PL("PL", "PL"), PT("PT", "PT"), SG("SG", "SG"), SK("SK", "SK"), SI("SI", "SI"), ZA("ZA", "ZA"), ES("ES", "ES"), SE("SE", "SE"), CH("CH", "CH"), TW("TW", "TW"), TH("TH", "TH"), GB("GB", "GB"), US("US", "US");
 
     private final String id;
     private final String name;
@@ -58,14 +58,14 @@ public enum WirelessPortCountryCode {
     }
 
     
-    @VsoProperty(displayName = "AT", readOnly = true)
-    public WirelessPortCountryCode getAT() {
-        return AT;
-    }
-    
     @VsoProperty(displayName = "AU", readOnly = true)
     public WirelessPortCountryCode getAU() {
         return AU;
+    }
+    
+    @VsoProperty(displayName = "AT", readOnly = true)
+    public WirelessPortCountryCode getAT() {
+        return AT;
     }
     
     @VsoProperty(displayName = "BE", readOnly = true)
@@ -83,11 +83,6 @@ public enum WirelessPortCountryCode {
         return CA;
     }
     
-    @VsoProperty(displayName = "CH", readOnly = true)
-    public WirelessPortCountryCode getCH() {
-        return CH;
-    }
-    
     @VsoProperty(displayName = "CN", readOnly = true)
     public WirelessPortCountryCode getCN() {
         return CN;
@@ -103,11 +98,6 @@ public enum WirelessPortCountryCode {
         return CZ;
     }
     
-    @VsoProperty(displayName = "DE", readOnly = true)
-    public WirelessPortCountryCode getDE() {
-        return DE;
-    }
-    
     @VsoProperty(displayName = "DK", readOnly = true)
     public WirelessPortCountryCode getDK() {
         return DK;
@@ -116,11 +106,6 @@ public enum WirelessPortCountryCode {
     @VsoProperty(displayName = "EE", readOnly = true)
     public WirelessPortCountryCode getEE() {
         return EE;
-    }
-    
-    @VsoProperty(displayName = "ES", readOnly = true)
-    public WirelessPortCountryCode getES() {
-        return ES;
     }
     
     @VsoProperty(displayName = "FI", readOnly = true)
@@ -133,9 +118,9 @@ public enum WirelessPortCountryCode {
         return FR;
     }
     
-    @VsoProperty(displayName = "GB", readOnly = true)
-    public WirelessPortCountryCode getGB() {
-        return GB;
+    @VsoProperty(displayName = "DE", readOnly = true)
+    public WirelessPortCountryCode getDE() {
+        return DE;
     }
     
     @VsoProperty(displayName = "GR", readOnly = true)
@@ -153,6 +138,11 @@ public enum WirelessPortCountryCode {
         return HU;
     }
     
+    @VsoProperty(displayName = "IN", readOnly = true)
+    public WirelessPortCountryCode getIN() {
+        return IN;
+    }
+    
     @VsoProperty(displayName = "ID", readOnly = true)
     public WirelessPortCountryCode getID() {
         return ID;
@@ -166,11 +156,6 @@ public enum WirelessPortCountryCode {
     @VsoProperty(displayName = "IL", readOnly = true)
     public WirelessPortCountryCode getIL() {
         return IL;
-    }
-    
-    @VsoProperty(displayName = "IN", readOnly = true)
-    public WirelessPortCountryCode getIN() {
-        return IN;
     }
     
     @VsoProperty(displayName = "IT", readOnly = true)
@@ -188,6 +173,11 @@ public enum WirelessPortCountryCode {
         return KR;
     }
     
+    @VsoProperty(displayName = "LV", readOnly = true)
+    public WirelessPortCountryCode getLV() {
+        return LV;
+    }
+    
     @VsoProperty(displayName = "LT", readOnly = true)
     public WirelessPortCountryCode getLT() {
         return LT;
@@ -196,11 +186,6 @@ public enum WirelessPortCountryCode {
     @VsoProperty(displayName = "LU", readOnly = true)
     public WirelessPortCountryCode getLU() {
         return LU;
-    }
-    
-    @VsoProperty(displayName = "LV", readOnly = true)
-    public WirelessPortCountryCode getLV() {
-        return LV;
     }
     
     @VsoProperty(displayName = "MY", readOnly = true)
@@ -213,14 +198,14 @@ public enum WirelessPortCountryCode {
         return NL;
     }
     
-    @VsoProperty(displayName = "NO", readOnly = true)
-    public WirelessPortCountryCode getNO() {
-        return NO;
-    }
-    
     @VsoProperty(displayName = "NZ", readOnly = true)
     public WirelessPortCountryCode getNZ() {
         return NZ;
+    }
+    
+    @VsoProperty(displayName = "NO", readOnly = true)
+    public WirelessPortCountryCode getNO() {
+        return NO;
     }
     
     @VsoProperty(displayName = "PH", readOnly = true)
@@ -238,19 +223,9 @@ public enum WirelessPortCountryCode {
         return PT;
     }
     
-    @VsoProperty(displayName = "SE", readOnly = true)
-    public WirelessPortCountryCode getSE() {
-        return SE;
-    }
-    
     @VsoProperty(displayName = "SG", readOnly = true)
     public WirelessPortCountryCode getSG() {
         return SG;
-    }
-    
-    @VsoProperty(displayName = "SI", readOnly = true)
-    public WirelessPortCountryCode getSI() {
-        return SI;
     }
     
     @VsoProperty(displayName = "SK", readOnly = true)
@@ -258,9 +233,29 @@ public enum WirelessPortCountryCode {
         return SK;
     }
     
-    @VsoProperty(displayName = "TH", readOnly = true)
-    public WirelessPortCountryCode getTH() {
-        return TH;
+    @VsoProperty(displayName = "SI", readOnly = true)
+    public WirelessPortCountryCode getSI() {
+        return SI;
+    }
+    
+    @VsoProperty(displayName = "ZA", readOnly = true)
+    public WirelessPortCountryCode getZA() {
+        return ZA;
+    }
+    
+    @VsoProperty(displayName = "ES", readOnly = true)
+    public WirelessPortCountryCode getES() {
+        return ES;
+    }
+    
+    @VsoProperty(displayName = "SE", readOnly = true)
+    public WirelessPortCountryCode getSE() {
+        return SE;
+    }
+    
+    @VsoProperty(displayName = "CH", readOnly = true)
+    public WirelessPortCountryCode getCH() {
+        return CH;
     }
     
     @VsoProperty(displayName = "TW", readOnly = true)
@@ -268,14 +263,19 @@ public enum WirelessPortCountryCode {
         return TW;
     }
     
+    @VsoProperty(displayName = "TH", readOnly = true)
+    public WirelessPortCountryCode getTH() {
+        return TH;
+    }
+    
+    @VsoProperty(displayName = "GB", readOnly = true)
+    public WirelessPortCountryCode getGB() {
+        return GB;
+    }
+    
     @VsoProperty(displayName = "US", readOnly = true)
     public WirelessPortCountryCode getUS() {
         return US;
-    }
-    
-    @VsoProperty(displayName = "ZA", readOnly = true)
-    public WirelessPortCountryCode getZA() {
-        return ZA;
     }
     
 

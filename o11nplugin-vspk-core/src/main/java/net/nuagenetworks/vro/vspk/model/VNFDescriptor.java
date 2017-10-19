@@ -54,9 +54,6 @@ public class VNFDescriptor extends BaseObject {
     @JsonProperty(value = "CPUCount")
     protected Long CPUCount;
     
-    @JsonProperty(value = "associatedVNFThresholdPolicyID")
-    protected String associatedVNFThresholdPolicyID;
-    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -130,17 +127,6 @@ public class VNFDescriptor extends BaseObject {
     @JsonIgnore
     public void setCPUCount(Long value) { 
         this.CPUCount = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "AssociatedVNFThresholdPolicyID", readOnly = false)   
-    public String getAssociatedVNFThresholdPolicyID() {
-       return associatedVNFThresholdPolicyID;
-    }
-
-    @JsonIgnore
-    public void setAssociatedVNFThresholdPolicyID(String value) { 
-        this.associatedVNFThresholdPolicyID = value;
     }
     
     @JsonIgnore
@@ -254,7 +240,7 @@ public class VNFDescriptor extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VNFINTERFACEDESCRIPTORS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNFDescriptor [" + "CPUCount=" + CPUCount + ", associatedVNFThresholdPolicyID=" + associatedVNFThresholdPolicyID + ", description=" + description + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", storageGB=" + storageGB + ", vendor=" + vendor + ", visible=" + visible + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNFDescriptor [" + "CPUCount=" + CPUCount + ", description=" + description + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", storageGB=" + storageGB + ", vendor=" + vendor + ", visible=" + visible + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

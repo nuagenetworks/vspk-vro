@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Policy/qos</entry>
-<entry key="name">Edit QosPolicer</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">a91f31ec-24b6-5806-8298-49d70f00c6e8</entry>
-</properties>

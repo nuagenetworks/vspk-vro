@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSPortSpeed {
 
-    AUTONEGOTIATE("AUTONEGOTIATE", "AUTONEGOTIATE"), BASET10("BASET10", "BASET10"), BASET1000("BASET1000", "BASET1000"), BASETX100("BASETX100", "BASETX100"), BASEX10G("BASEX10G", "BASEX10G");
+    AUTONEGOTIATE("AUTONEGOTIATE", "AUTONEGOTIATE"), BASE10("BASE10", "BASE10"), BASET1000("BASET1000", "BASET1000"), BASETX100("BASETX100", "BASETX100"), BASEX10G("BASEX10G", "BASEX10G");
 
     private final String id;
     private final String name;
@@ -63,9 +63,9 @@ public enum NSPortSpeed {
         return AUTONEGOTIATE;
     }
     
-    @VsoProperty(displayName = "BASET10", readOnly = true)
-    public NSPortSpeed getBASET10() {
-        return BASET10;
+    @VsoProperty(displayName = "BASE10", readOnly = true)
+    public NSPortSpeed getBASE10() {
+        return BASE10;
     }
     
     @VsoProperty(displayName = "BASET1000", readOnly = true)

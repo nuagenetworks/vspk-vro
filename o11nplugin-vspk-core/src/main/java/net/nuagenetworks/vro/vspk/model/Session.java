@@ -998,11 +998,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.QOSPOLICER_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.QOSPOLICERS_FETCHER, entityParentId);
-            return;
-        }
-        
         if (entityType.equals(Constants.RATELIMITER_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.RATELIMITERS_FETCHER, entityParentId);
             return;
@@ -1218,11 +1213,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.VNFTHRESHOLDPOLICY_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.VNFTHRESHOLDPOLICIES_FETCHER, entityParentId);
-            return;
-        }
-        
         if (entityType.equals(Constants.VPNCONNECTION_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.VPNCONNECTIONS_FETCHER, entityParentId);
             return;
@@ -1285,6 +1275,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.WIRELESSPORT_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.WIRELESSPORTS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WIRELESSPORTTEMPLATE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.WIRELESSPORTTEMPLATES_FETCHER, entityParentId);
             return;
         }
         
@@ -2142,11 +2137,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.QOSPOLICER_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.QOSPOLICER, entityId);
-            return;
-        }
-        
         if (entityType.equals(Constants.RATELIMITER_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.RATELIMITER, entityId);
             return;
@@ -2362,11 +2352,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.VNFTHRESHOLDPOLICY_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.VNFTHRESHOLDPOLICY, entityId);
-            return;
-        }
-        
         if (entityType.equals(Constants.VPNCONNECTION_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.VPNCONNECTION, entityId);
             return;
@@ -2429,6 +2414,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.WIRELESSPORT_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.WIRELESSPORT, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WIRELESSPORTTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.WIRELESSPORTTEMPLATE, entityId);
             return;
         }
         
@@ -3286,11 +3276,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.QOSPOLICER_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.QOSPOLICER, entityId);
-            return;
-        }
-        
         if (entityType.equals(Constants.RATELIMITER_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.RATELIMITER, entityId);
             return;
@@ -3506,11 +3491,6 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.VNFTHRESHOLDPOLICY_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.VNFTHRESHOLDPOLICY, entityId);
-            return;
-        }
-        
         if (entityType.equals(Constants.VPNCONNECTION_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.VPNCONNECTION, entityId);
             return;
@@ -3573,6 +3553,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.WIRELESSPORT_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.WIRELESSPORT, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WIRELESSPORTTEMPLATE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.WIRELESSPORTTEMPLATE, entityId);
             return;
         }
         

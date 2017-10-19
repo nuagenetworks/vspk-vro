@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.VRS_PERSONALITY_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE_FREQUENCYCHANNEL_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum VRSPersonality {
+public enum WirelessPortTemplateFrequencyChannel {
 
-    HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NONE("NONE", "NONE"), NSG("NSG", "NSG"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), VRS("VRS", "VRS"), VRSG("VRSG", "VRSG");
+    CH_0("CH_0", "CH_0"), CH_1("CH_1", "CH_1"), CH_2("CH_2", "CH_2");
 
     private final String id;
     private final String name;
    
-    VRSPersonality(String id, String name) {
+    WirelessPortTemplateFrequencyChannel(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,44 +58,24 @@ public enum VRSPersonality {
     }
 
     
-    @VsoProperty(displayName = "HARDWARE_VTEP", readOnly = true)
-    public VRSPersonality getHARDWARE_VTEP() {
-        return HARDWARE_VTEP;
+    @VsoProperty(displayName = "CH_0", readOnly = true)
+    public WirelessPortTemplateFrequencyChannel getCH_0() {
+        return CH_0;
     }
     
-    @VsoProperty(displayName = "NONE", readOnly = true)
-    public VRSPersonality getNONE() {
-        return NONE;
+    @VsoProperty(displayName = "CH_1", readOnly = true)
+    public WirelessPortTemplateFrequencyChannel getCH_1() {
+        return CH_1;
     }
     
-    @VsoProperty(displayName = "NSG", readOnly = true)
-    public VRSPersonality getNSG() {
-        return NSG;
-    }
-    
-    @VsoProperty(displayName = "NUAGE_210_WBX_32_Q", readOnly = true)
-    public VRSPersonality getNUAGE_210_WBX_32_Q() {
-        return NUAGE_210_WBX_32_Q;
-    }
-    
-    @VsoProperty(displayName = "NUAGE_210_WBX_48_S", readOnly = true)
-    public VRSPersonality getNUAGE_210_WBX_48_S() {
-        return NUAGE_210_WBX_48_S;
-    }
-    
-    @VsoProperty(displayName = "VRS", readOnly = true)
-    public VRSPersonality getVRS() {
-        return VRS;
-    }
-    
-    @VsoProperty(displayName = "VRSG", readOnly = true)
-    public VRSPersonality getVRSG() {
-        return VRSG;
+    @VsoProperty(displayName = "CH_2", readOnly = true)
+    public WirelessPortTemplateFrequencyChannel getCH_2() {
+        return CH_2;
     }
     
 
-    public static VRSPersonality getEnumById(String id) {
-        for (VRSPersonality item : values()) {
+    public static WirelessPortTemplateFrequencyChannel getEnumById(String id) {
+        for (WirelessPortTemplateFrequencyChannel item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

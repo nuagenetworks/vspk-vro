@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.VRS_PERSONALITY_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE_COUNTRYCODE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum VRSPersonality {
+public enum WirelessPortTemplateCountryCode {
 
-    HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NONE("NONE", "NONE"), NSG("NSG", "NSG"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), VRS("VRS", "VRS"), VRSG("VRSG", "VRSG");
+    CA("CA", "CA"), FR("FR", "FR"), UK("UK", "UK"), US("US", "US");
 
     private final String id;
     private final String name;
    
-    VRSPersonality(String id, String name) {
+    WirelessPortTemplateCountryCode(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,44 +58,29 @@ public enum VRSPersonality {
     }
 
     
-    @VsoProperty(displayName = "HARDWARE_VTEP", readOnly = true)
-    public VRSPersonality getHARDWARE_VTEP() {
-        return HARDWARE_VTEP;
+    @VsoProperty(displayName = "CA", readOnly = true)
+    public WirelessPortTemplateCountryCode getCA() {
+        return CA;
     }
     
-    @VsoProperty(displayName = "NONE", readOnly = true)
-    public VRSPersonality getNONE() {
-        return NONE;
+    @VsoProperty(displayName = "FR", readOnly = true)
+    public WirelessPortTemplateCountryCode getFR() {
+        return FR;
     }
     
-    @VsoProperty(displayName = "NSG", readOnly = true)
-    public VRSPersonality getNSG() {
-        return NSG;
+    @VsoProperty(displayName = "UK", readOnly = true)
+    public WirelessPortTemplateCountryCode getUK() {
+        return UK;
     }
     
-    @VsoProperty(displayName = "NUAGE_210_WBX_32_Q", readOnly = true)
-    public VRSPersonality getNUAGE_210_WBX_32_Q() {
-        return NUAGE_210_WBX_32_Q;
-    }
-    
-    @VsoProperty(displayName = "NUAGE_210_WBX_48_S", readOnly = true)
-    public VRSPersonality getNUAGE_210_WBX_48_S() {
-        return NUAGE_210_WBX_48_S;
-    }
-    
-    @VsoProperty(displayName = "VRS", readOnly = true)
-    public VRSPersonality getVRS() {
-        return VRS;
-    }
-    
-    @VsoProperty(displayName = "VRSG", readOnly = true)
-    public VRSPersonality getVRSG() {
-        return VRSG;
+    @VsoProperty(displayName = "US", readOnly = true)
+    public WirelessPortTemplateCountryCode getUS() {
+        return US;
     }
     
 
-    public static VRSPersonality getEnumById(String id) {
-        for (VRSPersonality item : values()) {
+    public static WirelessPortTemplateCountryCode getEnumById(String id) {
+        for (WirelessPortTemplateCountryCode item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

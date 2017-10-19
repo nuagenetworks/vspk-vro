@@ -27,11 +27,9 @@
 
 package net.nuagenetworks.vro.vspk.model.fetchers;
 
-import net.nuagenetworks.vro.vspk.model.QosPolicer;
+import net.nuagenetworks.vro.vspk.model.WirelessPortTemplate;
 import net.nuagenetworks.vro.vspk.model.Session;
-import net.nuagenetworks.vro.vspk.model.Constants;
-import net.nuagenetworks.vro.vspk.model.Me;
-import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
+import net.nuagenetworks.vro.vspk.model.Constants;import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
@@ -40,14 +38,14 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.QOSPOLICERS_FETCHER, datasource = Constants.DATASOURCE, image = Constants.FOLDER_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.QOSPOLICERS, type = Constants.QOSPOLICER) })
+@VsoFinder(name = Constants.WIRELESSPORTTEMPLATES_FETCHER, datasource = Constants.DATASOURCE, image = Constants.FOLDER_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.WIRELESSPORTTEMPLATES, type = Constants.WIRELESSPORTTEMPLATE) })
 @VsoObject(create = false, strict = true)
-public class QosPolicersFetcher extends BaseFetcher<QosPolicer> {
+public class WirelessPortTemplatesFetcher extends BaseFetcher<WirelessPortTemplate> {
     private static final long serialVersionUID = 1L;
 
-    public QosPolicersFetcher(RestObject parentRestObj) {
-        super(parentRestObj, QosPolicer.class);
+    public WirelessPortTemplatesFetcher(RestObject parentRestObj) {
+        super(parentRestObj, WirelessPortTemplate.class);
     }
 
     @VsoProperty(displayName = "Id", readOnly = true)
@@ -57,36 +55,26 @@ public class QosPolicersFetcher extends BaseFetcher<QosPolicer> {
 
     @VsoProperty(displayName = "Name", readOnly = true)
     public String getName() {
-        return "QosPolicers";
+        return "WirelessPortTemplates";
     }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
         return (Session) super.getSession();
-    }
-    @VsoProperty(displayName = "Me", readOnly = true)
-    public Me getMe() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof Me) {
-            return (Me) obj;
-        }
-        
-        return null;
-    }
-    @VsoMethod
-    public java.util.List<QosPolicer> fetch(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
+    }@VsoMethod
+    public java.util.List<WirelessPortTemplate> fetch(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         return super.fetch(session, filter, orderBy, groupBy, page, pageSize, queryParameters, commit);
     }
 
     @VsoMethod
-    public java.util.List<QosPolicer> get(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
+    public java.util.List<WirelessPortTemplate> get(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         return super.get(session, filter, orderBy, groupBy, page, pageSize, queryParameters, commit);
     }
 
     @VsoMethod
-    public QosPolicer getFirst(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
+    public WirelessPortTemplate getFirst(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         return super.getFirst(session, filter, orderBy, groupBy, page, pageSize, queryParameters, commit);
     }
