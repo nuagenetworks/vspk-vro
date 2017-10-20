@@ -32,8 +32,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.CustomPropertiesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UnderlaysFetcher;
 
-import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAddress;
-
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAdvertisementCriteria;
 
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionInterfaceConnectionType;
@@ -73,7 +71,7 @@ public class UplinkConnection extends BaseObject {
     protected String DNSAddress;
     
     @JsonProperty(value = "address")
-    protected UplinkConnectionAddress address;
+    protected String address;
     
     @JsonProperty(value = "advertisementCriteria")
     protected UplinkConnectionAdvertisementCriteria advertisementCriteria;
@@ -106,7 +104,7 @@ public class UplinkConnection extends BaseObject {
     protected UplinkConnectionRole role;
     
     @JsonProperty(value = "uplinkID")
-    protected String uplinkID;
+    protected Long uplinkID;
     
     @JsonProperty(value = "username")
     protected String username;
@@ -182,12 +180,12 @@ public class UplinkConnection extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
-    public UplinkConnectionAddress getAddress() {
+    public String getAddress() {
        return address;
     }
 
     @JsonIgnore
-    public void setAddress(UplinkConnectionAddress value) { 
+    public void setAddress(String value) { 
         this.address = value;
     }
     
@@ -303,12 +301,12 @@ public class UplinkConnection extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "UplinkID", readOnly = false)   
-    public String getUplinkID() {
+    public Long getUplinkID() {
        return uplinkID;
     }
 
     @JsonIgnore
-    public void setUplinkID(String value) { 
+    public void setUplinkID(Long value) { 
         this.uplinkID = value;
     }
     

@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.UPLINKCONNECTION_ADDRESS_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum UplinkConnectionAddress {
+public enum VLANAssociatedConnectionType {
 
-    IPv4("IPv4", "IPv4"), IPv6("IPv6", "IPv6");
+    BR_CONNECTION("BR_CONNECTION", "BR_CONNECTION"), UPLINK_CONNECTION("UPLINK_CONNECTION", "UPLINK_CONNECTION");
 
     private final String id;
     private final String name;
    
-    UplinkConnectionAddress(String id, String name) {
+    VLANAssociatedConnectionType(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,19 @@ public enum UplinkConnectionAddress {
     }
 
     
-    @VsoProperty(displayName = "IPv4", readOnly = true)
-    public UplinkConnectionAddress getIPv4() {
-        return IPv4;
+    @VsoProperty(displayName = "BR_CONNECTION", readOnly = true)
+    public VLANAssociatedConnectionType getBR_CONNECTION() {
+        return BR_CONNECTION;
     }
     
-    @VsoProperty(displayName = "IPv6", readOnly = true)
-    public UplinkConnectionAddress getIPv6() {
-        return IPv6;
+    @VsoProperty(displayName = "UPLINK_CONNECTION", readOnly = true)
+    public VLANAssociatedConnectionType getUPLINK_CONNECTION() {
+        return UPLINK_CONNECTION;
     }
     
 
-    public static UplinkConnectionAddress getEnumById(String id) {
-        for (UplinkConnectionAddress item : values()) {
+    public static VLANAssociatedConnectionType getEnumById(String id) {
+        for (VLANAssociatedConnectionType item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

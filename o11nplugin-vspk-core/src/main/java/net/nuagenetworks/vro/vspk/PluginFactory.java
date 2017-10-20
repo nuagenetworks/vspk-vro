@@ -2788,10 +2788,6 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.UPLINKCONNECTIONS_FETCHER)) {
             return ModelHelper.getUplinkConnectionsFetcherById(id);
         }
-        if (type.equals(Constants.UPLINKCONNECTION_ADDRESS_ENUM)) {
-            return UplinkConnectionAddress.getEnumById(id);
-        }
-        
         if (type.equals(Constants.UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM)) {
             return UplinkConnectionAdvertisementCriteria.getEnumById(id);
         }
@@ -2922,6 +2918,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VLANS_FETCHER)) {
             return ModelHelper.getVLANsFetcherById(id);
         }
+        if (type.equals(Constants.VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
+            return VLANAssociatedConnectionType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VLAN_ENTITYSCOPE_ENUM)) {
             return VLANEntityScope.getEnumById(id);
         }
@@ -8886,6 +8886,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getPermissionsForFetcherId(id);
         }
         
+        if (type.equals(Constants.VLAN) && relationName.equals(Constants.STATISTICS_FETCHER)) {
+            return toList(ModelHelper.getStatisticsFetcherForVLANId(id));
+        }
+        if (type.equals(Constants.STATISTICS_FETCHER) && relationName.equals(Constants.STATISTICS)) {
+            return ModelHelper.getStatisticsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.VLAN) && relationName.equals(Constants.UPLINKCONNECTIONS_FETCHER)) {
             return toList(ModelHelper.getUplinkConnectionsFetcherForVLANId(id));
         }
@@ -12811,10 +12818,6 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<UplinkConnectionsFetcher> allObjs = ModelHelper.getAllUplinkConnectionsFetchers();
             return new QueryResult(allObjs);
         }
-        if (type.equals(Constants.UPLINKCONNECTION_ADDRESS_ENUM)) {
-            return new QueryResult(Arrays.asList(UplinkConnectionAddress.values()));
-        }
-        
         if (type.equals(Constants.UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM)) {
             return new QueryResult(Arrays.asList(UplinkConnectionAdvertisementCriteria.values()));
         }
@@ -12963,6 +12966,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VLANsFetcher> allObjs = ModelHelper.getAllVLANsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VLANAssociatedConnectionType.values()));
+        }
+        
         if (type.equals(Constants.VLAN_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(VLANEntityScope.values()));
         }

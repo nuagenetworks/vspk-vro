@@ -21315,6 +21315,10 @@ public class ModelHelper extends BaseModelHelper {
             return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getStatisticsFetcherForVLANId(id)) != null) {
+            return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getStatisticsFetcherForVMInterfaceId(id)) != null) {
             return (StatisticsFetcher) addFetcher(Constants.STATISTICS_FETCHER, fetcher);
         }
@@ -23821,6 +23825,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             PermissionsFetcher fetcher = obj.getPermissions();
             return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static StatisticsFetcher getStatisticsFetcherForVLANId(String id) throws RestException {
+        VLAN obj = getObject(Constants.VLAN, id);
+        if (obj == null) {
+            obj = getVLANById(id);
+        }
+
+        if (obj != null) {
+            StatisticsFetcher fetcher = obj.getStatistics();
+            return addFetcher(Constants.STATISTICS_FETCHER, fetcher);
         }
 
         return null;

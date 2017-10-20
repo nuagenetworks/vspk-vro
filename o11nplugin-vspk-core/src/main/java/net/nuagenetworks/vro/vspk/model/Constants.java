@@ -1237,7 +1237,6 @@ public interface Constants extends BaseConstants {
     String TIER_TYPE_ENUM = "TierType";
     
     
-    String UPLINKCONNECTION_ADDRESS_ENUM = "UplinkConnectionAddress";
     String UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM = "UplinkConnectionAdvertisementCriteria";
     String UPLINKCONNECTION_INTERFACECONNECTIONTYPE_ENUM = "UplinkConnectionInterfaceConnectionType";
     String UPLINKCONNECTION_MODE_ENUM = "UplinkConnectionMode";
@@ -1266,6 +1265,7 @@ public interface Constants extends BaseConstants {
     
     String VIRTUALIP_ENTITYSCOPE_ENUM = "VirtualIPEntityScope";
     
+    String VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM = "VLANAssociatedConnectionType";
     String VLAN_ENTITYSCOPE_ENUM = "VLANEntityScope";
     String VLAN_PERMITTEDACTION_ENUM = "VLANPermittedAction";
     String VLAN_STATUS_ENUM = "VLANStatus";
