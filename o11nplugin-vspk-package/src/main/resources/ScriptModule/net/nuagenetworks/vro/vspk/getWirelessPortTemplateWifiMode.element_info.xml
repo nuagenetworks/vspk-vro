@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
-<entry key="name">getWirelessPortTemplateWifiMode</entry>
-<entry key="type">ScriptModule</entry>
-<entry key="id">e5c5f95f-af76-517a-ac38-bb9d491114dd</entry>
-</properties>

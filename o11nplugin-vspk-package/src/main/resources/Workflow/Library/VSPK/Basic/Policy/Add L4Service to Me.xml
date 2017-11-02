@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="5d39b355-8d47-5d7a-bbb7-e3f90a1043e7"  version="5.1.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add L4Service to Me]]></display-name>
+<ref-types><![CDATA[(VSPK:Me)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='meObj' type='VSPK:Me' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+<param name='ports' type='string' >
+</param>
+<param name='protocol' type='string' >
+</param>
+</input><output><param name='l4ServiceObj' type='VSPK:L4Service' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = meObj.session;
+
+l4ServiceObj = new VSPKL4Service();
+if (description) {
+   l4ServiceObj.description = description;
+}
+if (externalID) {
+   l4ServiceObj.externalID = externalID;
+}
+if (name) {
+   l4ServiceObj.name = name;
+}
+if (ports) {
+   l4ServiceObj.ports = ports;
+}
+if (protocol) {
+   l4ServiceObj.protocol = protocol;
+}
+
+meObj.createL4Service(session, l4ServiceObj);
+]]></script>
+<in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+<bind name='ports' type='string' export-name="ports" ></bind>
+<bind name='protocol' type='string' export-name="protocol" ></bind>
+</in-binding><out-binding><bind name='l4ServiceObj' type='VSPK:L4Service' export-name="l4ServiceObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="meObj"><desc><![CDATA[meObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="ports"><desc><![CDATA[ports]]></desc>
+</p-param>
+<p-param name="protocol"><desc><![CDATA[protocol]]></desc>
+</p-param>
+</presentation></workflow>

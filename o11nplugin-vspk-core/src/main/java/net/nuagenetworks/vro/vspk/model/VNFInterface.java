@@ -80,7 +80,7 @@ public class VNFInterface extends BaseObject {
     protected String gateway;
     
     @JsonProperty(value = "isManagementInterface")
-    protected String isManagementInterface;
+    protected Boolean isManagementInterface;
     
     @JsonProperty(value = "name")
     protected String name;
@@ -250,12 +250,12 @@ public class VNFInterface extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "IsManagementInterface", readOnly = false)   
-    public String getIsManagementInterface() {
+    public Boolean getIsManagementInterface() {
        return isManagementInterface;
     }
 
     @JsonIgnore
-    public void setIsManagementInterface(String value) { 
+    public void setIsManagementInterface(Boolean value) { 
         this.isManagementInterface = value;
     }
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="cc830f92-6210-53be-a8dd-bb9fcfede466"  version="5.1.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="cc830f92-6210-53be-a8dd-bb9fcfede466"  version="5.1.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit OverlayMirrorDestinationTemplate]]></display-name>
 <ref-types><![CDATA[(VSPK:OverlayMirrorDestinationTemplate)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -10,6 +10,9 @@
 </param>
 
 <param name='endPointType' type='VSPK:OverlayMirrorDestinationTemplateEndPointType' >
+</param>
+
+<param name='externalID' type='string' >
 </param>
 
 <param name='name' type='string' >
@@ -28,6 +31,11 @@ if (description) {
    overlayMirrorDestinationTemplateObj.description = "";
 }
 overlayMirrorDestinationTemplateObj.endPointType = endPointType;
+if (externalID) {
+   overlayMirrorDestinationTemplateObj.externalID = externalID;
+} else if (overlayMirrorDestinationTemplateObj.externalID) {
+   overlayMirrorDestinationTemplateObj.externalID = "";
+}
 if (name) {
    overlayMirrorDestinationTemplateObj.name = name;
 } else if (overlayMirrorDestinationTemplateObj.name) {
@@ -39,6 +47,8 @@ overlayMirrorDestinationTemplateObj.save(session, 1);]]></script>
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='endPointType' type='VSPK:OverlayMirrorDestinationTemplateEndPointType' export-name="endPointType" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -53,6 +63,9 @@ overlayMirrorDestinationTemplateObj.save(session, 1);]]></script>
 
 <p-param name="endPointType"><desc><![CDATA[endPointType]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="VSPK:OverlayMirrorDestinationTemplateEndPointType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getOverlayMirrorDestinationTemplateEndPointType").call( #overlayMirrorDestinationTemplateObj )]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#overlayMirrorDestinationTemplateObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#overlayMirrorDestinationTemplateObj.name]]></p-qual></p-param>

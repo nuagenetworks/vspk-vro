@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.UPLINKCONNECTION_ADDRESS_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.QOSPOLICER_ENTITYSCOPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum UplinkConnectionAddress {
+public enum QosPolicerEntityScope {
 
-    IPv4("IPv4", "IPv4"), IPv6("IPv6", "IPv6");
+    ENTERPRISE("ENTERPRISE", "ENTERPRISE"), GLOBAL("GLOBAL", "GLOBAL");
 
     private final String id;
     private final String name;
    
-    UplinkConnectionAddress(String id, String name) {
+    QosPolicerEntityScope(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,19 @@ public enum UplinkConnectionAddress {
     }
 
     
-    @VsoProperty(displayName = "IPv4", readOnly = true)
-    public UplinkConnectionAddress getIPv4() {
-        return IPv4;
+    @VsoProperty(displayName = "ENTERPRISE", readOnly = true)
+    public QosPolicerEntityScope getENTERPRISE() {
+        return ENTERPRISE;
     }
     
-    @VsoProperty(displayName = "IPv6", readOnly = true)
-    public UplinkConnectionAddress getIPv6() {
-        return IPv6;
+    @VsoProperty(displayName = "GLOBAL", readOnly = true)
+    public QosPolicerEntityScope getGLOBAL() {
+        return GLOBAL;
     }
     
 
-    public static UplinkConnectionAddress getEnumById(String id) {
-        for (UplinkConnectionAddress item : values()) {
+    public static QosPolicerEntityScope getEnumById(String id) {
+        for (QosPolicerEntityScope item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

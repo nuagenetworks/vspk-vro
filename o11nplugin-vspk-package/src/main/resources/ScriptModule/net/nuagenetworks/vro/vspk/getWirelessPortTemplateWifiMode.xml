@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getWirelessPortTemplateWifiMode" result-type="VSPK:WirelessPortTemplateWifiMode" api-version="6.0.0"  id="e5c5f95f-af76-517a-ac38-bb9d491114dd"  version="5.1.1"  allowed-operations="vef" ><param n="wirelessPortTemplateObj" t="VSPK:WirelessPortTemplate"></param><script encoded='false'><![CDATA[return wirelessPortTemplateObj.wifiMode;]]></script>
-</dunes-script-module>

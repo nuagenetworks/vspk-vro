@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vnf</entry>
+<entry key="name">Find VNFThresholdPolicy in Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">6becff83-31ba-5e66-b361-93e1194fbaaa</entry>
+</properties>

@@ -26,15 +26,11 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
-import net.nuagenetworks.vro.vspk.model.enums.WirelessPortTemplateCountryCode;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.enums.WirelessPortTemplateFrequencyChannel;
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.enums.WirelessPortTemplatePortType;
-
-import net.nuagenetworks.vro.vspk.model.enums.WirelessPortTemplateWifiFrequencyBand;
-
-import net.nuagenetworks.vro.vspk.model.enums.WirelessPortTemplateWifiMode;
+import net.nuagenetworks.vro.vspk.model.enums.QosPolicerEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -48,44 +44,50 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE, datasource = Constants.DATASOURCE, image = Constants.WIRELESSPORTTEMPLATE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.QOSPOLICER, datasource = Constants.DATASOURCE, image = Constants.QOSPOLICER_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@RestEntity(restName = "wirelessporttemplate", resourceName = "wirelessporttemplates")
-public class WirelessPortTemplate extends BaseObject {
+@RestEntity(restName = "qospolicer", resourceName = "qospolicers")
+public class QosPolicer extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "countryCode")
-    protected WirelessPortTemplateCountryCode countryCode;
+    @JsonProperty(value = "burst")
+    protected Long burst;
     
     @JsonProperty(value = "description")
     protected String description;
     
-    @JsonProperty(value = "frequencyChannel")
-    protected WirelessPortTemplateFrequencyChannel frequencyChannel;
+    @JsonProperty(value = "entityScope")
+    protected QosPolicerEntityScope entityScope;
     
-    @JsonProperty(value = "genericConfig")
-    protected String genericConfig;
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
     
     @JsonProperty(value = "name")
     protected String name;
     
-    @JsonProperty(value = "physicalName")
-    protected String physicalName;
+    @JsonProperty(value = "rate")
+    protected Long rate;
     
-    @JsonProperty(value = "portType")
-    protected WirelessPortTemplatePortType portType;
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
     
-    @JsonProperty(value = "wifiFrequencyBand")
-    protected WirelessPortTemplateWifiFrequencyBand wifiFrequencyBand;
-    
-    @JsonProperty(value = "wifiMode")
-    protected WirelessPortTemplateWifiMode wifiMode;
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
     
     @VsoConstructor
-    public WirelessPortTemplate() {}
+    public QosPolicer() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -123,14 +125,14 @@ public class WirelessPortTemplate extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "CountryCode", readOnly = false)   
-    public WirelessPortTemplateCountryCode getCountryCode() {
-       return countryCode;
+    @VsoProperty(displayName = "Burst", readOnly = false)   
+    public Long getBurst() {
+       return burst;
     }
 
     @JsonIgnore
-    public void setCountryCode(WirelessPortTemplateCountryCode value) { 
-        this.countryCode = value;
+    public void setBurst(Long value) { 
+        this.burst = value;
     }
     
     @JsonIgnore
@@ -145,25 +147,36 @@ public class WirelessPortTemplate extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "FrequencyChannel", readOnly = false)   
-    public WirelessPortTemplateFrequencyChannel getFrequencyChannel() {
-       return frequencyChannel;
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public QosPolicerEntityScope getEntityScope() {
+       return entityScope;
     }
 
     @JsonIgnore
-    public void setFrequencyChannel(WirelessPortTemplateFrequencyChannel value) { 
-        this.frequencyChannel = value;
+    public void setEntityScope(QosPolicerEntityScope value) { 
+        this.entityScope = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "GenericConfig", readOnly = false)   
-    public String getGenericConfig() {
-       return genericConfig;
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
     }
 
     @JsonIgnore
-    public void setGenericConfig(String value) { 
-        this.genericConfig = value;
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
     }
     
     @JsonIgnore
@@ -178,47 +191,26 @@ public class WirelessPortTemplate extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "PhysicalName", readOnly = false)   
-    public String getPhysicalName() {
-       return physicalName;
+    @VsoProperty(displayName = "Rate", readOnly = false)   
+    public Long getRate() {
+       return rate;
     }
 
     @JsonIgnore
-    public void setPhysicalName(String value) { 
-        this.physicalName = value;
+    public void setRate(Long value) { 
+        this.rate = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "PortType", readOnly = false)   
-    public WirelessPortTemplatePortType getPortType() {
-       return portType;
-    }
-
-    @JsonIgnore
-    public void setPortType(WirelessPortTemplatePortType value) { 
-        this.portType = value;
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "WifiFrequencyBand", readOnly = false)   
-    public WirelessPortTemplateWifiFrequencyBand getWifiFrequencyBand() {
-       return wifiFrequencyBand;
-    }
-
-    @JsonIgnore
-    public void setWifiFrequencyBand(WirelessPortTemplateWifiFrequencyBand value) { 
-        this.wifiFrequencyBand = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "WifiMode", readOnly = false)   
-    public WirelessPortTemplateWifiMode getWifiMode() {
-       return wifiMode;
-    }
-
-    @JsonIgnore
-    public void setWifiMode(WirelessPortTemplateWifiMode value) { 
-        this.wifiMode = value;
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -229,7 +221,7 @@ public class WirelessPortTemplate extends BaseObject {
     public void save(Session session, Integer responseChoice) throws RestException {
         super.save(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementUpdated(Constants.WIRELESSPORTTEMPLATE, getId());
+           SessionManager.getInstance().notifyElementUpdated(Constants.QOSPOLICER, getId());
         }
     }
 
@@ -238,10 +230,35 @@ public class WirelessPortTemplate extends BaseObject {
         int responseChoice = (responseChoiceObj != null) ? responseChoiceObj.intValue() : 1;
         super.delete(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementDeleted(Constants.WIRELESSPORTTEMPLATE, getId());
+           SessionManager.getInstance().notifyElementDeleted(Constants.QOSPOLICER, getId());
+        }
+    }
+    @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.QOSPOLICER, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "WirelessPortTemplate [" + "countryCode=" + countryCode + ", description=" + description + ", frequencyChannel=" + frequencyChannel + ", genericConfig=" + genericConfig + ", name=" + name + ", physicalName=" + physicalName + ", portType=" + portType + ", wifiFrequencyBand=" + wifiFrequencyBand + ", wifiMode=" + wifiMode + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "QosPolicer [" + "burst=" + burst + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", rate=" + rate + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

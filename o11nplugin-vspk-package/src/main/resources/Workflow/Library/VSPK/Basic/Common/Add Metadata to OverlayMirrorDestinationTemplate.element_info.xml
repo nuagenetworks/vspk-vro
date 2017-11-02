@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to OverlayMirrorDestinationTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d265b11b-3460-5987-90a6-a74f673b1450</entry>
+</properties>

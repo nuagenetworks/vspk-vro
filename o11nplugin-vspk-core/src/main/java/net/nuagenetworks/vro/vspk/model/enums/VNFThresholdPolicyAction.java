@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE_WIFIFREQUENCYBAND_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.VNFTHRESHOLDPOLICY_ACTION_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum WirelessPortTemplateWifiFrequencyBand {
+public enum VNFThresholdPolicyAction {
 
-    FREQ_2_4_GHZ("FREQ_2_4_GHZ", "FREQ_2_4_GHZ"), FREQ_5_0_GHZ("FREQ_5_0_GHZ", "FREQ_5_0_GHZ");
+    NONE("NONE", "NONE"), SHUTOFF("SHUTOFF", "SHUTOFF");
 
     private final String id;
     private final String name;
    
-    WirelessPortTemplateWifiFrequencyBand(String id, String name) {
+    VNFThresholdPolicyAction(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,19 +58,19 @@ public enum WirelessPortTemplateWifiFrequencyBand {
     }
 
     
-    @VsoProperty(displayName = "FREQ_2_4_GHZ", readOnly = true)
-    public WirelessPortTemplateWifiFrequencyBand getFREQ_2_4_GHZ() {
-        return FREQ_2_4_GHZ;
+    @VsoProperty(displayName = "NONE", readOnly = true)
+    public VNFThresholdPolicyAction getNONE() {
+        return NONE;
     }
     
-    @VsoProperty(displayName = "FREQ_5_0_GHZ", readOnly = true)
-    public WirelessPortTemplateWifiFrequencyBand getFREQ_5_0_GHZ() {
-        return FREQ_5_0_GHZ;
+    @VsoProperty(displayName = "SHUTOFF", readOnly = true)
+    public VNFThresholdPolicyAction getSHUTOFF() {
+        return SHUTOFF;
     }
     
 
-    public static WirelessPortTemplateWifiFrequencyBand getEnumById(String id) {
-        for (WirelessPortTemplateWifiFrequencyBand item : values()) {
+    public static VNFThresholdPolicyAction getEnumById(String id) {
+        for (VNFThresholdPolicyAction item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

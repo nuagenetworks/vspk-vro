@@ -88,9 +88,6 @@ public class WirelessPort extends BaseObject {
     @JsonProperty(value = "portType")
     protected WirelessPortPortType portType;
     
-    @JsonProperty(value = "templateID")
-    protected String templateID;
-    
     @JsonProperty(value = "wifiFrequencyBand")
     protected WirelessPortWifiFrequencyBand wifiFrequencyBand;
     
@@ -233,17 +230,6 @@ public class WirelessPort extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "TemplateID", readOnly = false)   
-    public String getTemplateID() {
-       return templateID;
-    }
-
-    @JsonIgnore
-    public void setTemplateID(String value) { 
-        this.templateID = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "WifiFrequencyBand", readOnly = false)   
     public WirelessPortWifiFrequencyBand getWifiFrequencyBand() {
        return wifiFrequencyBand;
@@ -317,7 +303,7 @@ public class WirelessPort extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.SSIDCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "WirelessPort [" + "countryCode=" + countryCode + ", description=" + description + ", frequencyChannel=" + frequencyChannel + ", genericConfig=" + genericConfig + ", name=" + name + ", physicalName=" + physicalName + ", portType=" + portType + ", templateID=" + templateID + ", wifiFrequencyBand=" + wifiFrequencyBand + ", wifiMode=" + wifiMode + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "WirelessPort [" + "countryCode=" + countryCode + ", description=" + description + ", frequencyChannel=" + frequencyChannel + ", genericConfig=" + genericConfig + ", name=" + name + ", physicalName=" + physicalName + ", portType=" + portType + ", wifiFrequencyBand=" + wifiFrequencyBand + ", wifiMode=" + wifiMode + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

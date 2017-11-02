@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VRSPersonality {
 
-    HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NONE("NONE", "NONE"), NSG("NSG", "NSG"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), VRS("VRS", "VRS"), VRSG("VRSG", "VRSG");
+    HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NONE("NONE", "NONE"), NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), NSGDUC("NSGDUC", "NSGDUC"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), VRS("VRS", "VRS"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG");
 
     private final String id;
     private final String name;
@@ -73,6 +73,16 @@ public enum VRSPersonality {
         return NSG;
     }
     
+    @VsoProperty(displayName = "NSGBR", readOnly = true)
+    public VRSPersonality getNSGBR() {
+        return NSGBR;
+    }
+    
+    @VsoProperty(displayName = "NSGDUC", readOnly = true)
+    public VRSPersonality getNSGDUC() {
+        return NSGDUC;
+    }
+    
     @VsoProperty(displayName = "NUAGE_210_WBX_32_Q", readOnly = true)
     public VRSPersonality getNUAGE_210_WBX_32_Q() {
         return NUAGE_210_WBX_32_Q;
@@ -86,6 +96,11 @@ public enum VRSPersonality {
     @VsoProperty(displayName = "VRS", readOnly = true)
     public VRSPersonality getVRS() {
         return VRS;
+    }
+    
+    @VsoProperty(displayName = "VRSB", readOnly = true)
+    public VRSPersonality getVRSB() {
+        return VRSB;
     }
     
     @VsoProperty(displayName = "VRSG", readOnly = true)

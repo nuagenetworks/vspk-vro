@@ -244,6 +244,10 @@ import net.nuagenetworks.vro.vspk.model.NSPortTemplate;
 
 import net.nuagenetworks.vro.vspk.model.RedundantPort;
 
+import net.nuagenetworks.vro.vspk.model.OverlayMirrorDestination;
+
+import net.nuagenetworks.vro.vspk.model.OverlayMirrorDestinationTemplate;
+
 import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
 import net.nuagenetworks.vro.vspk.model.Permission;
@@ -261,6 +265,8 @@ import net.nuagenetworks.vro.vspk.model.PortTemplate;
 import net.nuagenetworks.vro.vspk.model.PublicNetworkMacro;
 
 import net.nuagenetworks.vro.vspk.model.QOS;
+
+import net.nuagenetworks.vro.vspk.model.QosPolicer;
 
 import net.nuagenetworks.vro.vspk.model.RateLimiter;
 
@@ -1446,6 +1452,26 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "OverlayMirrorDestination", readOnly = true)
+    public OverlayMirrorDestination getOverlayMirrorDestination() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof OverlayMirrorDestination) {
+            return (OverlayMirrorDestination) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "OverlayMirrorDestinationTemplate", readOnly = true)
+    public OverlayMirrorDestinationTemplate getOverlayMirrorDestinationTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof OverlayMirrorDestinationTemplate) {
+            return (OverlayMirrorDestinationTemplate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "PATNATPool", readOnly = true)
     public PATNATPool getPATNATPool() {
         RestObject obj = super.getParentRestObj();
@@ -1531,6 +1557,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof QOS) {
             return (QOS) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "QosPolicer", readOnly = true)
+    public QosPolicer getQosPolicer() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof QosPolicer) {
+            return (QosPolicer) obj;
         }
         
         return null;

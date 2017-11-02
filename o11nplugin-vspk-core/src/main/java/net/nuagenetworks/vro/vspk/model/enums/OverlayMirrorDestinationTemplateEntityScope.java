@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE_PORTTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.OVERLAYMIRRORDESTINATIONTEMPLATE_ENTITYSCOPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum WirelessPortTemplatePortType {
+public enum OverlayMirrorDestinationTemplateEntityScope {
 
-    ACCESS("ACCESS", "ACCESS");
+    ENTERPRISE("ENTERPRISE", "ENTERPRISE"), GLOBAL("GLOBAL", "GLOBAL");
 
     private final String id;
     private final String name;
    
-    WirelessPortTemplatePortType(String id, String name) {
+    OverlayMirrorDestinationTemplateEntityScope(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,14 +58,19 @@ public enum WirelessPortTemplatePortType {
     }
 
     
-    @VsoProperty(displayName = "ACCESS", readOnly = true)
-    public WirelessPortTemplatePortType getACCESS() {
-        return ACCESS;
+    @VsoProperty(displayName = "ENTERPRISE", readOnly = true)
+    public OverlayMirrorDestinationTemplateEntityScope getENTERPRISE() {
+        return ENTERPRISE;
+    }
+    
+    @VsoProperty(displayName = "GLOBAL", readOnly = true)
+    public OverlayMirrorDestinationTemplateEntityScope getGLOBAL() {
+        return GLOBAL;
     }
     
 
-    public static WirelessPortTemplatePortType getEnumById(String id) {
-        for (WirelessPortTemplatePortType item : values()) {
+    public static OverlayMirrorDestinationTemplateEntityScope getEnumById(String id) {
+        for (OverlayMirrorDestinationTemplateEntityScope item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

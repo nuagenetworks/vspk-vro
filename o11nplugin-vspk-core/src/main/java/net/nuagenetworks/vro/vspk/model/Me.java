@@ -94,6 +94,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.KeyServerMembersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.L2DomainsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.L4ServicesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.LicensesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.LicenseStatusFetcher;
@@ -123,6 +125,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.QosPolicersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RateLimitersFetcher;
 
@@ -163,6 +167,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VMInterfacesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFCatalogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VNFThresholdPoliciesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VCenterVRSConfigsFetcher;
 
@@ -227,6 +233,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.KEYSERVERMEMBERS_FETCHER, type = Constants.KEYSERVERMEMBERS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.L4SERVICES_FETCHER, type = Constants.L4SERVICES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.LICENSES_FETCHER, type = Constants.LICENSES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.MIRRORDESTINATIONS_FETCHER, type = Constants.MIRRORDESTINATIONS_FETCHER), 
@@ -245,6 +253,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERFORMANCEMONITORS_FETCHER, type = Constants.PERFORMANCEMONITORS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.QOSPOLICERS_FETCHER, type = Constants.QOSPOLICERS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.RATELIMITERS_FETCHER, type = Constants.RATELIMITERS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.REDUNDANCYGROUPS_FETCHER, type = Constants.REDUNDANCYGROUPS_FETCHER), 
@@ -262,6 +272,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.VMS_FETCHER, type = Constants.VMS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VNFMETADATAS_FETCHER, type = Constants.VNFMETADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VNFTHRESHOLDPOLICIES_FETCHER, type = Constants.VNFTHRESHOLDPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ZFBAUTOASSIGNMENTS_FETCHER, type = Constants.ZFBAUTOASSIGNMENTS_FETCHER), 
 
@@ -441,6 +453,9 @@ public class Me extends BaseRootObject {
     private L2DomainsFetcher l2Domains;
     
     @JsonIgnore
+    private L4ServicesFetcher l4Services;
+    
+    @JsonIgnore
     private LicensesFetcher licenses;
     
     @JsonIgnore
@@ -484,6 +499,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private PolicyGroupsFetcher policyGroups;
+    
+    @JsonIgnore
+    private QosPolicersFetcher qosPolicers;
     
     @JsonIgnore
     private RateLimitersFetcher rateLimiters;
@@ -544,6 +562,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private VNFMetadatasFetcher vNFMetadatas;
+    
+    @JsonIgnore
+    private VNFThresholdPoliciesFetcher vNFThresholdPolicies;
     
     @JsonIgnore
     private VCenterVRSConfigsFetcher vCenterVRSConfigs;
@@ -630,6 +651,8 @@ public class Me extends BaseRootObject {
         
         l2Domains = new L2DomainsFetcher(this);
         
+        l4Services = new L4ServicesFetcher(this);
+        
         licenses = new LicensesFetcher(this);
         
         licenseStatus = new LicenseStatusFetcher(this);
@@ -659,6 +682,8 @@ public class Me extends BaseRootObject {
         performanceMonitors = new PerformanceMonitorsFetcher(this);
         
         policyGroups = new PolicyGroupsFetcher(this);
+        
+        qosPolicers = new QosPolicersFetcher(this);
         
         rateLimiters = new RateLimitersFetcher(this);
         
@@ -699,6 +724,8 @@ public class Me extends BaseRootObject {
         vNFCatalogs = new VNFCatalogsFetcher(this);
         
         vNFMetadatas = new VNFMetadatasFetcher(this);
+        
+        vNFThresholdPolicies = new VNFThresholdPoliciesFetcher(this);
         
         vCenterVRSConfigs = new VCenterVRSConfigsFetcher(this);
         
@@ -1192,6 +1219,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "L4Services", readOnly = true)   
+    public L4ServicesFetcher getL4Services() {
+        return l4Services;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Licenses", readOnly = true)   
     public LicensesFetcher getLicenses() {
         return licenses;
@@ -1279,6 +1312,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "PolicyGroups", readOnly = true)   
     public PolicyGroupsFetcher getPolicyGroups() {
         return policyGroups;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "QosPolicers", readOnly = true)   
+    public QosPolicersFetcher getQosPolicers() {
+        return qosPolicers;
     }
     
     @JsonIgnore
@@ -1399,6 +1438,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "VNFMetadatas", readOnly = true)   
     public VNFMetadatasFetcher getVNFMetadatas() {
         return vNFMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VNFThresholdPolicies", readOnly = true)   
+    public VNFThresholdPoliciesFetcher getVNFThresholdPolicies() {
+        return vNFThresholdPolicies;
     }
     
     @JsonIgnore
@@ -1621,6 +1666,14 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createL4Service(Session session, L4Service childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.L4SERVICES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createLicense(Session session, License childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1701,6 +1754,14 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createQosPolicer(Session session, QosPolicer childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.QOSPOLICERS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createRateLimiter(Session session, RateLimiter childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1762,6 +1823,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VNFMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createVNFThresholdPolicy(Session session, VNFThresholdPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VNFTHRESHOLDPOLICIES_FETCHER, getId());
         }
     }
     @VsoMethod

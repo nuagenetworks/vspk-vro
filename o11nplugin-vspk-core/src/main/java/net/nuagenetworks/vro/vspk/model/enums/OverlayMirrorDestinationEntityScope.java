@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.WIRELESSPORTTEMPLATE_COUNTRYCODE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.OVERLAYMIRRORDESTINATION_ENTITYSCOPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum WirelessPortTemplateCountryCode {
+public enum OverlayMirrorDestinationEntityScope {
 
-    CA("CA", "CA"), FR("FR", "FR"), UK("UK", "UK"), US("US", "US");
+    ENTERPRISE("ENTERPRISE", "ENTERPRISE"), GLOBAL("GLOBAL", "GLOBAL");
 
     private final String id;
     private final String name;
    
-    WirelessPortTemplateCountryCode(String id, String name) {
+    OverlayMirrorDestinationEntityScope(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,29 +58,19 @@ public enum WirelessPortTemplateCountryCode {
     }
 
     
-    @VsoProperty(displayName = "CA", readOnly = true)
-    public WirelessPortTemplateCountryCode getCA() {
-        return CA;
+    @VsoProperty(displayName = "ENTERPRISE", readOnly = true)
+    public OverlayMirrorDestinationEntityScope getENTERPRISE() {
+        return ENTERPRISE;
     }
     
-    @VsoProperty(displayName = "FR", readOnly = true)
-    public WirelessPortTemplateCountryCode getFR() {
-        return FR;
-    }
-    
-    @VsoProperty(displayName = "UK", readOnly = true)
-    public WirelessPortTemplateCountryCode getUK() {
-        return UK;
-    }
-    
-    @VsoProperty(displayName = "US", readOnly = true)
-    public WirelessPortTemplateCountryCode getUS() {
-        return US;
+    @VsoProperty(displayName = "GLOBAL", readOnly = true)
+    public OverlayMirrorDestinationEntityScope getGLOBAL() {
+        return GLOBAL;
     }
     
 
-    public static WirelessPortTemplateCountryCode getEnumById(String id) {
-        for (WirelessPortTemplateCountryCode item : values()) {
+    public static OverlayMirrorDestinationEntityScope getEnumById(String id) {
+        for (OverlayMirrorDestinationEntityScope item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

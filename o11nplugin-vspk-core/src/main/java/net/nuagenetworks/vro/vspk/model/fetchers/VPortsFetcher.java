@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.MultiNICVPort;
 
+import net.nuagenetworks.vro.vspk.model.OverlayMirrorDestination;
+
 import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 
 import net.nuagenetworks.vro.vspk.model.RedirectionTarget;
@@ -117,6 +119,16 @@ public class VPortsFetcher extends BaseFetcher<VPort> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof MultiNICVPort) {
             return (MultiNICVPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "OverlayMirrorDestination", readOnly = true)
+    public OverlayMirrorDestination getOverlayMirrorDestination() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof OverlayMirrorDestination) {
+            return (OverlayMirrorDestination) obj;
         }
         
         return null;
