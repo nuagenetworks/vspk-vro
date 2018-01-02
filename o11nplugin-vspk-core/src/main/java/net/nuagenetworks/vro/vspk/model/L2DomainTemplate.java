@@ -62,6 +62,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RedirectionTargetTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallPoliciesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainTemplateDPI;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainTemplateIPType;
@@ -115,7 +117,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.QOSS_FETCHER, type = Constants.QOSS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.REDIRECTIONTARGETTEMPLATES_FETCHER, type = Constants.REDIRECTIONTARGETTEMPLATES_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.REDIRECTIONTARGETTEMPLATES_FETCHER, type = Constants.REDIRECTIONTARGETTEMPLATES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VIRTUALFIREWALLPOLICIES_FETCHER, type = Constants.VIRTUALFIREWALLPOLICIES_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -239,6 +243,9 @@ public class L2DomainTemplate extends BaseObject {
     @JsonIgnore
     private RedirectionTargetTemplatesFetcher redirectionTargetTemplates;
     
+    @JsonIgnore
+    private VirtualFirewallPoliciesFetcher virtualFirewallPolicies;
+    
     @VsoConstructor
     public L2DomainTemplate() {
         addressRanges = new AddressRangesFetcher(this);
@@ -276,6 +283,8 @@ public class L2DomainTemplate extends BaseObject {
         qOSs = new QOSsFetcher(this);
         
         redirectionTargetTemplates = new RedirectionTargetTemplatesFetcher(this);
+        
+        virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -640,6 +649,12 @@ public class L2DomainTemplate extends BaseObject {
     public RedirectionTargetTemplatesFetcher getRedirectionTargetTemplates() {
         return redirectionTargetTemplates;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VirtualFirewallPolicies", readOnly = true)   
+    public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
+        return virtualFirewallPolicies;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -797,6 +812,14 @@ public class L2DomainTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.REDIRECTIONTARGETTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createVirtualFirewallPolicy(Session session, VirtualFirewallPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VIRTUALFIREWALLPOLICIES_FETCHER, getId());
         }
     }public String toString() {
         return "L2DomainTemplate [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", useGlobalMAC=" + useGlobalMAC + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

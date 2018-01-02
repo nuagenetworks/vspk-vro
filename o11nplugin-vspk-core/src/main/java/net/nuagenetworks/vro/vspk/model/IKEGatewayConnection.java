@@ -26,9 +26,13 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SubnetsFetcher;
 
@@ -53,6 +57,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.IKEGATEWAYCONNECTION, datasource = Constants.DATASOURCE, image = Constants.IKEGATEWAYCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.ALARMS_FETCHER, type = Constants.ALARMS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 })
 @VsoObject(create = false, strict = true)
@@ -99,6 +105,9 @@ public class IKEGatewayConnection extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "mark")
+    protected Long mark;
+    
     @JsonProperty(value = "name")
     protected String name;
     
@@ -115,19 +124,29 @@ public class IKEGatewayConnection extends BaseObject {
     protected String unencryptedPSK;
     
     @JsonIgnore
+    private AlarmsFetcher alarms;
+    
+    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private PerformanceMonitorsFetcher performanceMonitors;
+    
+    @JsonIgnore
     private SubnetsFetcher subnets;
     
     @VsoConstructor
     public IKEGatewayConnection() {
+        alarms = new AlarmsFetcher(this);
+        
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        performanceMonitors = new PerformanceMonitorsFetcher(this);
         
         subnets = new SubnetsFetcher(this);
         }
@@ -300,6 +319,17 @@ public class IKEGatewayConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Mark", readOnly = false)   
+    public Long getMark() {
+       return mark;
+    }
+
+    @JsonIgnore
+    public void setMark(Long value) { 
+        this.mark = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -355,6 +385,12 @@ public class IKEGatewayConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Alarms", readOnly = true)   
+    public AlarmsFetcher getAlarms() {
+        return alarms;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -364,6 +400,12 @@ public class IKEGatewayConnection extends BaseObject {
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PerformanceMonitors", readOnly = true)   
+    public PerformanceMonitorsFetcher getPerformanceMonitors() {
+        return performanceMonitors;
     }
     
     @JsonIgnore
@@ -402,6 +444,15 @@ public class IKEGatewayConnection extends BaseObject {
     }
     
     @VsoMethod
+    public void assignPerformanceMonitors(Session session, PerformanceMonitor[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.IKEGATEWAYCONNECTION, getId());
+        }
+    }
+    
+    @VsoMethod
     public void assignSubnets(Session session, Subnet[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
@@ -410,6 +461,14 @@ public class IKEGatewayConnection extends BaseObject {
         }
     }
     
+    @VsoMethod
+    public void createAlarm(Session session, Alarm childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ALARMS_FETCHER, getId());
+        }
+    }
     @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
@@ -426,7 +485,7 @@ public class IKEGatewayConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IKEGatewayConnection [" + "NSGIdentifier=" + NSGIdentifier + ", NSGIdentifierType=" + NSGIdentifierType + ", NSGRole=" + NSGRole + ", allowAnySubnet=" + allowAnySubnet + ", associatedIKEAuthenticationID=" + associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + associatedIKEGatewayProfileID + ", associatedVLANID=" + associatedVLANID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", portVLANName=" + portVLANName + ", priority=" + priority + ", sequence=" + sequence + ", unencryptedPSK=" + unencryptedPSK + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IKEGatewayConnection [" + "NSGIdentifier=" + NSGIdentifier + ", NSGIdentifierType=" + NSGIdentifierType + ", NSGRole=" + NSGRole + ", allowAnySubnet=" + allowAnySubnet + ", associatedIKEAuthenticationID=" + associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + associatedIKEGatewayProfileID + ", associatedVLANID=" + associatedVLANID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mark=" + mark + ", name=" + name + ", portVLANName=" + portVLANName + ", priority=" + priority + ", sequence=" + sequence + ", unencryptedPSK=" + unencryptedPSK + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

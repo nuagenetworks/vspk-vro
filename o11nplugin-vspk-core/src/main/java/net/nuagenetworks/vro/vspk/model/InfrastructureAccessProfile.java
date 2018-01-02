@@ -26,9 +26,13 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.ConnectionendpointsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.SSHKeysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.InfrastructureAccessProfileSSHAuthMode;
 
@@ -49,7 +53,11 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.INFRASTRUCTUREACCESSPROFILE, datasource = Constants.DATASOURCE, image = Constants.INFRASTRUCTUREACCESSPROFILE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.CONNECTIONENDPOINTS_FETCHER, type = Constants.CONNECTIONENDPOINTS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.SSHKEYS_FETCHER, type = Constants.SSHKEYS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -90,16 +98,26 @@ public class InfrastructureAccessProfile extends BaseObject {
     protected String userName;
     
     @JsonIgnore
+    private ConnectionendpointsFetcher connectionendpoints;
+    
+    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
     
+    @JsonIgnore
+    private SSHKeysFetcher sSHKeys;
+    
     @VsoConstructor
     public InfrastructureAccessProfile() {
+        connectionendpoints = new ConnectionendpointsFetcher(this);
+        
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        sSHKeys = new SSHKeysFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -248,6 +266,12 @@ public class InfrastructureAccessProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Connectionendpoints", readOnly = true)   
+    public ConnectionendpointsFetcher getConnectionendpoints() {
+        return connectionendpoints;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -257,6 +281,12 @@ public class InfrastructureAccessProfile extends BaseObject {
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SSHKeys", readOnly = true)   
+    public SSHKeysFetcher getSSHKeys() {
+        return sSHKeys;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -289,6 +319,14 @@ public class InfrastructureAccessProfile extends BaseObject {
     }
     
     @VsoMethod
+    public void createConnectionendpoint(Session session, Connectionendpoint childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.CONNECTIONENDPOINTS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -302,6 +340,14 @@ public class InfrastructureAccessProfile extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createSSHKey(Session session, SSHKey childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.SSHKEYS_FETCHER, getId());
         }
     }public String toString() {
         return "InfrastructureAccessProfile [" + "SSHAuthMode=" + SSHAuthMode + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", password=" + password + ", sourceIPFilter=" + sourceIPFilter + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

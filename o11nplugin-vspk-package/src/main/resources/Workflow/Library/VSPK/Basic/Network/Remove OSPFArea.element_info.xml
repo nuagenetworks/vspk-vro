@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Remove OSPFArea</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d22aee3f-70f5-5f4a-8569-432083edd03a</entry>
+</properties>

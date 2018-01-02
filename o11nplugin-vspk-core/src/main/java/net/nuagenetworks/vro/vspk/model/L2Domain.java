@@ -28,8 +28,6 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.AddressRangesFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementbindingsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.BridgeInterfacesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainersFetcher;
@@ -64,6 +62,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceBindingsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.OverlayMirrorDestinationsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
@@ -83,6 +83,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsPoliciesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.TCAsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkRDsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallPoliciesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
@@ -125,13 +127,13 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.L2DOMAIN, datasource = Constants.DATASOURCE, image = Constants.L2DOMAIN_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER, type = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSACLTEMPLATES_FETCHER, type = Constants.EGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSADVFWDTEMPLATES_FETCHER, type = Constants.EGRESSADVFWDTEMPLATES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLENTRYTEMPLATES_FETCHER, type = Constants.INGRESSACLENTRYTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLTEMPLATES_FETCHER, type = Constants.INGRESSACLTEMPLATES_FETCHER), 
 
@@ -140,6 +142,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER, type = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, type = Constants.NETWORKPERFORMANCEBINDINGS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYMIRRORDESTINATIONS_FETCHER, type = Constants.OVERLAYMIRRORDESTINATIONS_FETCHER), 
 
@@ -156,6 +160,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.STATISTICSPOLICIES_FETCHER, type = Constants.STATISTICSPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.TCAS_FETCHER, type = Constants.TCAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VIRTUALFIREWALLPOLICIES_FETCHER, type = Constants.VIRTUALFIREWALLPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VPNCONNECTIONS_FETCHER, type = Constants.VPNCONNECTIONS_FETCHER), 
 
@@ -192,6 +198,9 @@ public class L2Domain extends BaseObject {
     
     @JsonProperty(value = "associatedSharedNetworkResourceID")
     protected String associatedSharedNetworkResourceID;
+    
+    @JsonProperty(value = "associatedUnderlayID")
+    protected String associatedUnderlayID;
     
     @JsonProperty(value = "description")
     protected String description;
@@ -263,9 +272,6 @@ public class L2Domain extends BaseObject {
     private AddressRangesFetcher addressRanges;
     
     @JsonIgnore
-    private ApplicationperformancemanagementbindingsFetcher applicationperformancemanagementbindings;
-    
-    @JsonIgnore
     private BridgeInterfacesFetcher bridgeInterfaces;
     
     @JsonIgnore
@@ -317,6 +323,9 @@ public class L2Domain extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private NetworkPerformanceBindingsFetcher networkPerformanceBindings;
+    
+    @JsonIgnore
     private OverlayMirrorDestinationsFetcher overlayMirrorDestinations;
     
     @JsonIgnore
@@ -347,6 +356,9 @@ public class L2Domain extends BaseObject {
     private UplinkRDsFetcher uplinkRDs;
     
     @JsonIgnore
+    private VirtualFirewallPoliciesFetcher virtualFirewallPolicies;
+    
+    @JsonIgnore
     private VMsFetcher vMs;
     
     @JsonIgnore
@@ -363,8 +375,6 @@ public class L2Domain extends BaseObject {
         maintenanceMode = L2DomainMaintenanceMode.DISABLED;
         
         addressRanges = new AddressRangesFetcher(this);
-        
-        applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
         
         bridgeInterfaces = new BridgeInterfacesFetcher(this);
         
@@ -400,6 +410,8 @@ public class L2Domain extends BaseObject {
         
         metadatas = new MetadatasFetcher(this);
         
+        networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
+        
         overlayMirrorDestinations = new OverlayMirrorDestinationsFetcher(this);
         
         permissions = new PermissionsFetcher(this);
@@ -419,6 +431,8 @@ public class L2Domain extends BaseObject {
         tCAs = new TCAsFetcher(this);
         
         uplinkRDs = new UplinkRDsFetcher(this);
+        
+        virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
         
         vMs = new VMsFetcher(this);
         
@@ -550,6 +564,17 @@ public class L2Domain extends BaseObject {
     @JsonIgnore
     public void setAssociatedSharedNetworkResourceID(String value) { 
         this.associatedSharedNetworkResourceID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedUnderlayID", readOnly = false)   
+    public String getAssociatedUnderlayID() {
+       return associatedUnderlayID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedUnderlayID(String value) { 
+        this.associatedUnderlayID = value;
     }
     
     @JsonIgnore
@@ -801,12 +826,6 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Applicationperformancemanagementbindings", readOnly = true)   
-    public ApplicationperformancemanagementbindingsFetcher getApplicationperformancemanagementbindings() {
-        return applicationperformancemanagementbindings;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "BridgeInterfaces", readOnly = true)   
     public BridgeInterfacesFetcher getBridgeInterfaces() {
         return bridgeInterfaces;
@@ -909,6 +928,12 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetworkPerformanceBindings", readOnly = true)   
+    public NetworkPerformanceBindingsFetcher getNetworkPerformanceBindings() {
+        return networkPerformanceBindings;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "OverlayMirrorDestinations", readOnly = true)   
     public OverlayMirrorDestinationsFetcher getOverlayMirrorDestinations() {
         return overlayMirrorDestinations;
@@ -966,6 +991,12 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "UplinkRDs", readOnly = true)   
     public UplinkRDsFetcher getUplinkRDs() {
         return uplinkRDs;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VirtualFirewallPolicies", readOnly = true)   
+    public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
+        return virtualFirewallPolicies;
     }
     
     @JsonIgnore
@@ -1031,14 +1062,6 @@ public class L2Domain extends BaseObject {
     }
     
     @VsoMethod
-    public void createApplicationperformancemanagementbinding(Session session, Applicationperformancemanagementbinding childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createDHCPOption(Session session, DHCPOption childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1068,6 +1091,14 @@ public class L2Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIngressACLEntryTemplate(Session session, IngressACLEntryTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSACLENTRYTEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1108,6 +1139,14 @@ public class L2Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createNetworkPerformanceBinding(Session session, NetworkPerformanceBinding childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1211,6 +1250,14 @@ public class L2Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createVirtualFirewallPolicy(Session session, VirtualFirewallPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VIRTUALFIREWALLPOLICIES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createVPNConnection(Session session, VPNConnection childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1226,7 +1273,7 @@ public class L2Domain extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", associatedUnderlayID=" + associatedUnderlayID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

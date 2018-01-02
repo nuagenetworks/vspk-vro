@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum EgressACLTemplatePriorityType {
 
-    BOTTOM("BOTTOM", "BOTTOM"), NONE("NONE", "NONE"), TOP("TOP", "TOP");
+    BOTTOM("BOTTOM", "BOTTOM"), BOTTOM_FIREWALL("BOTTOM_FIREWALL", "BOTTOM_FIREWALL"), MIDDLE_FIREWALL("MIDDLE_FIREWALL", "MIDDLE_FIREWALL"), NONE("NONE", "NONE"), TOP("TOP", "TOP"), TOP_FIREWALL("TOP_FIREWALL", "TOP_FIREWALL");
 
     private final String id;
     private final String name;
@@ -63,6 +63,16 @@ public enum EgressACLTemplatePriorityType {
         return BOTTOM;
     }
     
+    @VsoProperty(displayName = "BOTTOM_FIREWALL", readOnly = true)
+    public EgressACLTemplatePriorityType getBOTTOM_FIREWALL() {
+        return BOTTOM_FIREWALL;
+    }
+    
+    @VsoProperty(displayName = "MIDDLE_FIREWALL", readOnly = true)
+    public EgressACLTemplatePriorityType getMIDDLE_FIREWALL() {
+        return MIDDLE_FIREWALL;
+    }
+    
     @VsoProperty(displayName = "NONE", readOnly = true)
     public EgressACLTemplatePriorityType getNONE() {
         return NONE;
@@ -71,6 +81,11 @@ public enum EgressACLTemplatePriorityType {
     @VsoProperty(displayName = "TOP", readOnly = true)
     public EgressACLTemplatePriorityType getTOP() {
         return TOP;
+    }
+    
+    @VsoProperty(displayName = "TOP_FIREWALL", readOnly = true)
+    public EgressACLTemplatePriorityType getTOP_FIREWALL() {
+        return TOP_FIREWALL;
     }
     
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Edit OSPFInterface</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f4587e72-0b76-5ff9-a20c-954d11164d4f</entry>
+</properties>

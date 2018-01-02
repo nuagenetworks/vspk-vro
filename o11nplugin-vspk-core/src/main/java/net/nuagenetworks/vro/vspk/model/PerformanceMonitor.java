@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.Applicationperformancemanagemen
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.TiersFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.PerformanceMonitorEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.PerformanceMonitorProbeType;
@@ -63,14 +65,14 @@ public class PerformanceMonitor extends BaseObject {
     @JsonProperty(value = "destinationTargetList")
     protected java.util.List<String> destinationTargetList;
     
-    @JsonProperty(value = "downThresholdCount")
-    protected Long downThresholdCount;
-    
     @JsonProperty(value = "entityScope")
     protected PerformanceMonitorEntityScope entityScope;
     
     @JsonProperty(value = "externalID")
     protected String externalID;
+    
+    @JsonProperty(value = "holdDownTimer")
+    protected Long holdDownTimer;
     
     @JsonProperty(value = "interval")
     protected Long interval;
@@ -105,11 +107,16 @@ public class PerformanceMonitor extends BaseObject {
     @JsonIgnore
     private NSGatewaysFetcher nSGateways;
     
+    @JsonIgnore
+    private TiersFetcher tiers;
+    
     @VsoConstructor
     public PerformanceMonitor() {
         applicationperformancemanagements = new ApplicationperformancemanagementsFetcher(this);
         
         nSGateways = new NSGatewaysFetcher(this);
+        
+        tiers = new TiersFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -170,17 +177,6 @@ public class PerformanceMonitor extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "DownThresholdCount", readOnly = false)   
-    public Long getDownThresholdCount() {
-       return downThresholdCount;
-    }
-
-    @JsonIgnore
-    public void setDownThresholdCount(Long value) { 
-        this.downThresholdCount = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public PerformanceMonitorEntityScope getEntityScope() {
        return entityScope;
@@ -200,6 +196,17 @@ public class PerformanceMonitor extends BaseObject {
     @JsonIgnore
     public void setExternalID(String value) { 
         this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "HoldDownTimer", readOnly = false)   
+    public Long getHoldDownTimer() {
+       return holdDownTimer;
+    }
+
+    @JsonIgnore
+    public void setHoldDownTimer(Long value) { 
+        this.holdDownTimer = value;
     }
     
     @JsonIgnore
@@ -312,6 +319,12 @@ public class PerformanceMonitor extends BaseObject {
     public NSGatewaysFetcher getNSGateways() {
         return nSGateways;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Tiers", readOnly = true)   
+    public TiersFetcher getTiers() {
+        return tiers;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -342,7 +355,7 @@ public class PerformanceMonitor extends BaseObject {
         }
     }
     public String toString() {
-        return "PerformanceMonitor [" + "description=" + description + ", destinationTargetList=" + destinationTargetList + ", downThresholdCount=" + downThresholdCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", interval=" + interval + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", numberOfPackets=" + numberOfPackets + ", payloadSize=" + payloadSize + ", probeType=" + probeType + ", readOnly=" + readOnly + ", serviceClass=" + serviceClass + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PerformanceMonitor [" + "description=" + description + ", destinationTargetList=" + destinationTargetList + ", entityScope=" + entityScope + ", externalID=" + externalID + ", holdDownTimer=" + holdDownTimer + ", interval=" + interval + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", numberOfPackets=" + numberOfPackets + ", payloadSize=" + payloadSize + ", probeType=" + probeType + ", readOnly=" + readOnly + ", serviceClass=" + serviceClass + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -21,6 +21,12 @@
 </param>
 <param name='name' type='string' >
 </param>
+<param name='revertiveControllerEnabled' type='boolean' >
+</param>
+<param name='revertiveTimer' type='number' >
+</param>
+<param name='secondaryDataUplinkEnabled' type='boolean' >
+</param>
 <param name='vmNetworkPortgroup' type='string' >
 </param>
 </input><output><param name='vCenterHypervisorObj' type='VSPK:VCenterHypervisor' >
@@ -57,6 +63,9 @@ if (mgmtNetworkPortgroup) {
 if (name) {
    vCenterHypervisorObj.name = name;
 }
+vCenterHypervisorObj.revertiveControllerEnabled = revertiveControllerEnabled;
+vCenterHypervisorObj.revertiveTimer = revertiveTimer;
+vCenterHypervisorObj.secondaryDataUplinkEnabled = secondaryDataUplinkEnabled;
 if (vmNetworkPortgroup) {
    vCenterHypervisorObj.vmNetworkPortgroup = vmNetworkPortgroup;
 }
@@ -72,6 +81,9 @@ vCenterClusterObj.createVCenterHypervisor(session, vCenterHypervisorObj);
 <bind name='hypervisorUser' type='string' export-name="hypervisorUser" ></bind>
 <bind name='mgmtNetworkPortgroup' type='string' export-name="mgmtNetworkPortgroup" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
+<bind name='revertiveControllerEnabled' type='boolean' export-name="revertiveControllerEnabled" ></bind>
+<bind name='revertiveTimer' type='number' export-name="revertiveTimer" ></bind>
+<bind name='secondaryDataUplinkEnabled' type='boolean' export-name="secondaryDataUplinkEnabled" ></bind>
 <bind name='vmNetworkPortgroup' type='string' export-name="vmNetworkPortgroup" ></bind>
 </in-binding><out-binding><bind name='vCenterHypervisorObj' type='VSPK:VCenterHypervisor' export-name="vCenterHypervisorObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -94,6 +106,12 @@ vCenterClusterObj.createVCenterHypervisor(session, vCenterHypervisorObj);
 <p-param name="mgmtNetworkPortgroup"><desc><![CDATA[mgmtNetworkPortgroup]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="revertiveControllerEnabled"><desc><![CDATA[revertiveControllerEnabled]]></desc>
+</p-param>
+<p-param name="revertiveTimer"><desc><![CDATA[revertiveTimer]]></desc>
+</p-param>
+<p-param name="secondaryDataUplinkEnabled"><desc><![CDATA[secondaryDataUplinkEnabled]]></desc>
 </p-param>
 <p-param name="vmNetworkPortgroup"><desc><![CDATA[vmNetworkPortgroup]]></desc>
 </p-param>

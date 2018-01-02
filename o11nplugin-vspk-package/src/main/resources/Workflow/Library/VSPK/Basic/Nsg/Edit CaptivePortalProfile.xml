@@ -18,6 +18,9 @@
 <param name='name' type='string' >
 </param>
 
+<param name='portalType' type='VSPK:CaptivePortalProfilePortalType' >
+</param>
+
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -45,6 +48,7 @@ if (name) {
 } else if (captivePortalProfileObj.name) {
    captivePortalProfileObj.name = "";
 }
+captivePortalProfileObj.portalType = portalType;
 captivePortalProfileObj.save(session, 1);]]></script>
 <in-binding><bind name='captivePortalProfileObj' type='VSPK:CaptivePortalProfile' export-name="captivePortalProfileObj" ></bind>
 
@@ -55,6 +59,8 @@ captivePortalProfileObj.save(session, 1);]]></script>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='portalType' type='VSPK:CaptivePortalProfilePortalType' export-name="portalType" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -73,5 +79,8 @@ captivePortalProfileObj.save(session, 1);]]></script>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#captivePortalProfileObj.name]]></p-qual></p-param>
+
+<p-param name="portalType"><desc><![CDATA[portalType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:CaptivePortalProfilePortalType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getCaptivePortalProfilePortalType").call( #captivePortalProfileObj )]]></p-qual></p-param>
 
 </presentation></workflow>

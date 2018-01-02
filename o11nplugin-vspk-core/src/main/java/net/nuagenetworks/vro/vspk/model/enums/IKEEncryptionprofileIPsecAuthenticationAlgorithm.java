@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum IKEEncryptionprofileIPsecAuthenticationAlgorithm {
 
-    HMAC_SHA1("HMAC_SHA1", "HMAC_SHA1"), HMAC_SHA256("HMAC_SHA256", "HMAC_SHA256"), HMAC_SHA512("HMAC_SHA512", "HMAC_SHA512");
+    HMAC_SHA1("HMAC_SHA1", "HMAC_SHA1"), HMAC_SHA256("HMAC_SHA256", "HMAC_SHA256"), HMAC_SHA512("HMAC_SHA512", "HMAC_SHA512"), HMAC_MD5("HMAC_MD5", "HMAC_MD5");
 
     private final String id;
     private final String name;
@@ -71,6 +71,11 @@ public enum IKEEncryptionprofileIPsecAuthenticationAlgorithm {
     @VsoProperty(displayName = "HMAC_SHA512", readOnly = true)
     public IKEEncryptionprofileIPsecAuthenticationAlgorithm getHMAC_SHA512() {
         return HMAC_SHA512;
+    }
+    
+    @VsoProperty(displayName = "HMAC_MD5", readOnly = true)
+    public IKEEncryptionprofileIPsecAuthenticationAlgorithm getHMAC_MD5() {
+        return HMAC_MD5;
     }
     
 

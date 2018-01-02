@@ -11,6 +11,12 @@
 </param>
 <param name='name' type='string' >
 </param>
+<param name='revertiveControllerEnabled' type='boolean' >
+</param>
+<param name='revertiveTimer' type='number' >
+</param>
+<param name='secondaryDataUplinkEnabled' type='boolean' >
+</param>
 </input><output><param name='vCenterDataCenterObj' type='VSPK:VCenterDataCenter' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -30,6 +36,9 @@ if (externalID) {
 if (name) {
    vCenterDataCenterObj.name = name;
 }
+vCenterDataCenterObj.revertiveControllerEnabled = revertiveControllerEnabled;
+vCenterDataCenterObj.revertiveTimer = revertiveTimer;
+vCenterDataCenterObj.secondaryDataUplinkEnabled = secondaryDataUplinkEnabled;
 
 vCenterObj.createVCenterDataCenter(session, vCenterDataCenterObj);
 ]]></script>
@@ -37,6 +46,9 @@ vCenterObj.createVCenterDataCenter(session, vCenterDataCenterObj);
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
+<bind name='revertiveControllerEnabled' type='boolean' export-name="revertiveControllerEnabled" ></bind>
+<bind name='revertiveTimer' type='number' export-name="revertiveTimer" ></bind>
+<bind name='secondaryDataUplinkEnabled' type='boolean' export-name="secondaryDataUplinkEnabled" ></bind>
 </in-binding><out-binding><bind name='vCenterDataCenterObj' type='VSPK:VCenterDataCenter' export-name="vCenterDataCenterObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -48,5 +60,11 @@ vCenterObj.createVCenterDataCenter(session, vCenterDataCenterObj);
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="revertiveControllerEnabled"><desc><![CDATA[revertiveControllerEnabled]]></desc>
+</p-param>
+<p-param name="revertiveTimer"><desc><![CDATA[revertiveTimer]]></desc>
+</p-param>
+<p-param name="secondaryDataUplinkEnabled"><desc><![CDATA[secondaryDataUplinkEnabled]]></desc>
 </p-param>
 </presentation></workflow>

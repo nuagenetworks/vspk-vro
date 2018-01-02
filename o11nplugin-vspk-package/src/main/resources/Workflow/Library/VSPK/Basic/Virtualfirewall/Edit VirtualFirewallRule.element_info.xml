@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Virtualfirewall</entry>
+<entry key="name">Edit VirtualFirewallRule</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b494c168-d573-5e5b-82d5-c0609643cadd</entry>
+</properties>

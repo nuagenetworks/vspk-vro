@@ -74,6 +74,8 @@ import net.nuagenetworks.vro.vspk.model.COSRemarkingPolicy;
 
 import net.nuagenetworks.vro.vspk.model.COSRemarkingPolicyTable;
 
+import net.nuagenetworks.vro.vspk.model.Destinationurl;
+
 import net.nuagenetworks.vro.vspk.model.DHCPOption;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
@@ -194,8 +196,6 @@ import net.nuagenetworks.vro.vspk.model.KeyServerMonitorSeed;
 
 import net.nuagenetworks.vro.vspk.model.KeyServerMonitorSEK;
 
-import net.nuagenetworks.vro.vspk.model.KeyServerNotification;
-
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
@@ -238,11 +238,19 @@ import net.nuagenetworks.vro.vspk.model.NSGatewayTemplate;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
 
+import net.nuagenetworks.vro.vspk.model.NSGRoutingPolicyBinding;
+
 import net.nuagenetworks.vro.vspk.model.NSPort;
 
 import net.nuagenetworks.vro.vspk.model.NSPortTemplate;
 
 import net.nuagenetworks.vro.vspk.model.RedundantPort;
+
+import net.nuagenetworks.vro.vspk.model.OSPFArea;
+
+import net.nuagenetworks.vro.vspk.model.OSPFInstance;
+
+import net.nuagenetworks.vro.vspk.model.OSPFInterface;
 
 import net.nuagenetworks.vro.vspk.model.OverlayMirrorDestination;
 
@@ -302,6 +310,8 @@ import net.nuagenetworks.vro.vspk.model.SystemConfig;
 
 import net.nuagenetworks.vro.vspk.model.TCA;
 
+import net.nuagenetworks.vro.vspk.model.Tier;
+
 import net.nuagenetworks.vro.vspk.model.UplinkRD;
 
 import net.nuagenetworks.vro.vspk.model.User;
@@ -313,6 +323,10 @@ import net.nuagenetworks.vro.vspk.model.VCenterCluster;
 import net.nuagenetworks.vro.vspk.model.VCenterDataCenter;
 
 import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
+
+import net.nuagenetworks.vro.vspk.model.VirtualFirewallPolicy;
+
+import net.nuagenetworks.vro.vspk.model.VirtualFirewallRule;
 
 import net.nuagenetworks.vro.vspk.model.VirtualIP;
 
@@ -597,6 +611,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof COSRemarkingPolicyTable) {
             return (COSRemarkingPolicyTable) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Destinationurl", readOnly = true)
+    public Destinationurl getDestinationurl() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Destinationurl) {
+            return (Destinationurl) obj;
         }
         
         return null;
@@ -1202,16 +1226,6 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "KeyServerNotification", readOnly = true)
-    public KeyServerNotification getKeyServerNotification() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof KeyServerNotification) {
-            return (KeyServerNotification) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "L2Domain", readOnly = true)
     public L2Domain getL2Domain() {
         RestObject obj = super.getParentRestObj();
@@ -1422,6 +1436,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "NSGRoutingPolicyBinding", readOnly = true)
+    public NSGRoutingPolicyBinding getNSGRoutingPolicyBinding() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NSGRoutingPolicyBinding) {
+            return (NSGRoutingPolicyBinding) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "NSPort", readOnly = true)
     public NSPort getNSPort() {
         RestObject obj = super.getParentRestObj();
@@ -1447,6 +1471,36 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof RedundantPort) {
             return (RedundantPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "OSPFArea", readOnly = true)
+    public OSPFArea getOSPFArea() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof OSPFArea) {
+            return (OSPFArea) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "OSPFInstance", readOnly = true)
+    public OSPFInstance getOSPFInstance() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof OSPFInstance) {
+            return (OSPFInstance) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "OSPFInterface", readOnly = true)
+    public OSPFInterface getOSPFInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof OSPFInterface) {
+            return (OSPFInterface) obj;
         }
         
         return null;
@@ -1742,6 +1796,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "Tier", readOnly = true)
+    public Tier getTier() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Tier) {
+            return (Tier) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "UplinkRD", readOnly = true)
     public UplinkRD getUplinkRD() {
         RestObject obj = super.getParentRestObj();
@@ -1797,6 +1861,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenterHypervisor) {
             return (VCenterHypervisor) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VirtualFirewallPolicy", readOnly = true)
+    public VirtualFirewallPolicy getVirtualFirewallPolicy() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VirtualFirewallPolicy) {
+            return (VirtualFirewallPolicy) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VirtualFirewallRule", readOnly = true)
+    public VirtualFirewallRule getVirtualFirewallRule() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VirtualFirewallRule) {
+            return (VirtualFirewallRule) obj;
         }
         
         return null;

@@ -112,6 +112,8 @@ public interface Constants extends BaseConstants {
     String CUSTOMPROPERTIES = "CustomProperties";
     String DEMARCATIONSERVICE = "DemarcationService";
     String DEMARCATIONSERVICES = "DemarcationServices";
+    String DESTINATIONURL = "Destinationurl";
+    String DESTINATIONURLS = "Destinationurls";
     String DHCPOPTION = "DHCPOption";
     String DHCPOPTIONS = "DHCPOptions";
     String DISKSTAT = "DiskStat";
@@ -242,8 +244,6 @@ public interface Constants extends BaseConstants {
     String KEYSERVERMONITORSEEDS = "KeyServerMonitorSeeds";
     String KEYSERVERMONITORSEK = "KeyServerMonitorSEK";
     String KEYSERVERMONITORSEKS = "KeyServerMonitorSEKs";
-    String KEYSERVERNOTIFICATION = "KeyServerNotification";
-    String KEYSERVERNOTIFICATIONS = "KeyServerNotifications";
     String L2DOMAIN = "L2Domain";
     String L2DOMAINS = "L2Domains";
     String L2DOMAINTEMPLATE = "L2DomainTemplate";
@@ -308,6 +308,8 @@ public interface Constants extends BaseConstants {
     String NSGINFOS = "NSGInfos";
     String NSREDUNDANTGATEWAYGROUP = "NSRedundantGatewayGroup";
     String NSREDUNDANTGATEWAYGROUPS = "NSRedundantGatewayGroups";
+    String NSGROUTINGPOLICYBINDING = "NSGRoutingPolicyBinding";
+    String NSGROUTINGPOLICYBINDINGS = "NSGRoutingPolicyBindings";
     String NSGUPGRADEPROFILE = "NSGUpgradeProfile";
     String NSGUPGRADEPROFILES = "NSGUpgradeProfiles";
     String NSPORT = "NSPort";
@@ -316,6 +318,12 @@ public interface Constants extends BaseConstants {
     String NSPORTTEMPLATES = "NSPortTemplates";
     String REDUNDANTPORT = "RedundantPort";
     String REDUNDANTPORTS = "RedundantPorts";
+    String OSPFAREA = "OSPFArea";
+    String OSPFAREAS = "OSPFAreas";
+    String OSPFINSTANCE = "OSPFInstance";
+    String OSPFINSTANCES = "OSPFInstances";
+    String OSPFINTERFACE = "OSPFInterface";
+    String OSPFINTERFACES = "OSPFInterfaces";
     String OVERLAYADDRESSPOOL = "OverlayAddressPool";
     String OVERLAYADDRESSPOOLS = "OverlayAddressPools";
     String OVERLAYMIRRORDESTINATION = "OverlayMirrorDestination";
@@ -410,6 +418,8 @@ public interface Constants extends BaseConstants {
     String SYSTEMCONFIGS = "SystemConfigs";
     String TCA = "TCA";
     String TCAS = "TCAs";
+    String TIER = "Tier";
+    String TIERS = "Tiers";
     String TRUNK = "Trunk";
     String TRUNKS = "Trunks";
     String UNDERLAY = "Underlay";
@@ -430,8 +440,10 @@ public interface Constants extends BaseConstants {
     String VCENTERDATACENTERS = "VCenterDataCenters";
     String VCENTERHYPERVISOR = "VCenterHypervisor";
     String VCENTERHYPERVISORS = "VCenterHypervisors";
-    String VIA = "Via";
-    String VIAS = "Vias";
+    String VIRTUALFIREWALLPOLICY = "VirtualFirewallPolicy";
+    String VIRTUALFIREWALLPOLICIES = "VirtualFirewallPolicies";
+    String VIRTUALFIREWALLRULE = "VirtualFirewallRule";
+    String VIRTUALFIREWALLRULES = "VirtualFirewallRules";
     String VIRTUALIP = "VirtualIP";
     String VIRTUALIPS = "VirtualIPs";
     String VLAN = "VLAN";
@@ -532,6 +544,7 @@ public interface Constants extends BaseConstants {
     String CTRANSLATIONMAPS_FETCHER = "CTranslationMapsFetcher";
     String CUSTOMPROPERTIES_FETCHER = "CustomPropertiesFetcher";
     String DEMARCATIONSERVICES_FETCHER = "DemarcationServicesFetcher";
+    String DESTINATIONURLS_FETCHER = "DestinationurlsFetcher";
     String DHCPOPTIONS_FETCHER = "DHCPOptionsFetcher";
     String DISKSTATS_FETCHER = "DiskStatsFetcher";
     String DOMAINS_FETCHER = "DomainsFetcher";
@@ -597,7 +610,6 @@ public interface Constants extends BaseConstants {
     String KEYSERVERMONITORENCRYPTEDSEEDS_FETCHER = "KeyServerMonitorEncryptedSeedsFetcher";
     String KEYSERVERMONITORSEEDS_FETCHER = "KeyServerMonitorSeedsFetcher";
     String KEYSERVERMONITORSEKS_FETCHER = "KeyServerMonitorSEKsFetcher";
-    String KEYSERVERNOTIFICATIONS_FETCHER = "KeyServerNotificationsFetcher";
     String L2DOMAINS_FETCHER = "L2DomainsFetcher";
     String L2DOMAINTEMPLATES_FETCHER = "L2DomainTemplatesFetcher";
     String L4SERVICES_FETCHER = "L4ServicesFetcher";
@@ -630,10 +642,14 @@ public interface Constants extends BaseConstants {
     String NSGGROUPS_FETCHER = "NSGGroupsFetcher";
     String NSGINFOS_FETCHER = "NSGInfosFetcher";
     String NSREDUNDANTGATEWAYGROUPS_FETCHER = "NSRedundantGatewayGroupsFetcher";
+    String NSGROUTINGPOLICYBINDINGS_FETCHER = "NSGRoutingPolicyBindingsFetcher";
     String NSGUPGRADEPROFILES_FETCHER = "NSGUpgradeProfilesFetcher";
     String NSPORTS_FETCHER = "NSPortsFetcher";
     String NSPORTTEMPLATES_FETCHER = "NSPortTemplatesFetcher";
     String REDUNDANTPORTS_FETCHER = "RedundantPortsFetcher";
+    String OSPFAREAS_FETCHER = "OSPFAreasFetcher";
+    String OSPFINSTANCES_FETCHER = "OSPFInstancesFetcher";
+    String OSPFINTERFACES_FETCHER = "OSPFInterfacesFetcher";
     String OVERLAYADDRESSPOOLS_FETCHER = "OverlayAddressPoolsFetcher";
     String OVERLAYMIRRORDESTINATIONS_FETCHER = "OverlayMirrorDestinationsFetcher";
     String OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER = "OverlayMirrorDestinationTemplatesFetcher";
@@ -681,6 +697,7 @@ public interface Constants extends BaseConstants {
     String SUBNETTEMPLATES_FETCHER = "SubnetTemplatesFetcher";
     String SYSTEMCONFIGS_FETCHER = "SystemConfigsFetcher";
     String TCAS_FETCHER = "TCAsFetcher";
+    String TIERS_FETCHER = "TiersFetcher";
     String TRUNKS_FETCHER = "TrunksFetcher";
     String UNDERLAYS_FETCHER = "UnderlaysFetcher";
     String UPLINKCONNECTIONS_FETCHER = "UplinkConnectionsFetcher";
@@ -691,7 +708,8 @@ public interface Constants extends BaseConstants {
     String VCENTERCLUSTERS_FETCHER = "VCenterClustersFetcher";
     String VCENTERDATACENTERS_FETCHER = "VCenterDataCentersFetcher";
     String VCENTERHYPERVISORS_FETCHER = "VCenterHypervisorsFetcher";
-    String VIAS_FETCHER = "ViasFetcher";
+    String VIRTUALFIREWALLPOLICIES_FETCHER = "VirtualFirewallPoliciesFetcher";
+    String VIRTUALFIREWALLRULES_FETCHER = "VirtualFirewallRulesFetcher";
     String VIRTUALIPS_FETCHER = "VirtualIPsFetcher";
     String VLANS_FETCHER = "VLANsFetcher";
     String VLANTEMPLATES_FETCHER = "VLANTemplatesFetcher";
@@ -822,6 +840,9 @@ public interface Constants extends BaseConstants {
     
     
     String DEMARCATIONSERVICE_TYPE_ENUM = "DemarcationServiceType";
+    
+    String DESTINATIONURL_HTTPMETHOD_ENUM = "DestinationurlHTTPMethod";
+    String DESTINATIONURL_ENTITYSCOPE_ENUM = "DestinationurlEntityScope";
     
     String DHCPOPTION_ENTITYSCOPE_ENUM = "DHCPOptionEntityScope";
     
@@ -1045,6 +1066,7 @@ public interface Constants extends BaseConstants {
     String INGRESSADVFWDENTRYTEMPLATE_NETWORKTYPE_ENUM = "IngressAdvFwdEntryTemplateNetworkType";
     String INGRESSADVFWDENTRYTEMPLATE_POLICYSTATE_ENUM = "IngressAdvFwdEntryTemplatePolicyState";
     String INGRESSADVFWDENTRYTEMPLATE_REDIRECTREWRITETYPE_ENUM = "IngressAdvFwdEntryTemplateRedirectRewriteType";
+    String INGRESSADVFWDENTRYTEMPLATE_REMOTEUPLINKPREFERENCE_ENUM = "IngressAdvFwdEntryTemplateRemoteUplinkPreference";
     String INGRESSADVFWDENTRYTEMPLATE_UPLINKPREFERENCE_ENUM = "IngressAdvFwdEntryTemplateUplinkPreference";
     
     String INGRESSADVFWDTEMPLATE_ENTITYSCOPE_ENUM = "IngressAdvFwdTemplateEntityScope";
@@ -1087,9 +1109,6 @@ public interface Constants extends BaseConstants {
     String KEYSERVERMONITORSEK_ENTITYSCOPE_ENUM = "KeyServerMonitorSEKEntityScope";
     String KEYSERVERMONITORSEK_SEEDPAYLOADAUTHENTICATIONALGORITHM_ENUM = "KeyServerMonitorSEKSeedPayloadAuthenticationAlgorithm";
     String KEYSERVERMONITORSEK_SEEDPAYLOADENCRYPTIONALGORITHM_ENUM = "KeyServerMonitorSEKSeedPayloadEncryptionAlgorithm";
-    
-    String KEYSERVERNOTIFICATION_ENTITYSCOPE_ENUM = "KeyServerNotificationEntityScope";
-    String KEYSERVERNOTIFICATION_NOTIFICATIONTYPE_ENUM = "KeyServerNotificationNotificationType";
     
     String L2DOMAIN_DPI_ENUM = "L2DomainDPI";
     String L2DOMAIN_IPTYPE_ENUM = "L2DomainIPType";
@@ -1175,7 +1194,6 @@ public interface Constants extends BaseConstants {
     String NSGATEWAY_ENTITYSCOPE_ENUM = "NSGatewayEntityScope";
     String NSGATEWAY_FAMILY_ENUM = "NSGatewayFamily";
     String NSGATEWAY_INHERITEDSSHSERVICESTATE_ENUM = "NSGatewayInheritedSSHServiceState";
-    String NSGATEWAY_NETWORKACCELERATION_ENUM = "NSGatewayNetworkAcceleration";
     String NSGATEWAY_PERMITTEDACTION_ENUM = "NSGatewayPermittedAction";
     String NSGATEWAY_PERSONALITY_ENUM = "NSGatewayPersonality";
     
@@ -1193,6 +1211,9 @@ public interface Constants extends BaseConstants {
     String NSREDUNDANTGATEWAYGROUP_PERMITTEDACTION_ENUM = "NSRedundantGatewayGroupPermittedAction";
     String NSREDUNDANTGATEWAYGROUP_PERSONALITY_ENUM = "NSRedundantGatewayGroupPersonality";
     String NSREDUNDANTGATEWAYGROUP_REDUNDANTGATEWAYSTATUS_ENUM = "NSRedundantGatewayGroupRedundantGatewayStatus";
+    
+    String NSGROUTINGPOLICYBINDING_ENTITYSCOPE_ENUM = "NSGRoutingPolicyBindingEntityScope";
+    String NSGROUTINGPOLICYBINDING_EXPORTTOOVERLAY_ENUM = "NSGRoutingPolicyBindingExportToOverlay";
     
     String NSGUPGRADEPROFILE_ENTITYSCOPE_ENUM = "NSGUpgradeProfileEntityScope";
     
@@ -1212,6 +1233,17 @@ public interface Constants extends BaseConstants {
     String REDUNDANTPORT_PORTTYPE_ENUM = "RedundantPortPortType";
     String REDUNDANTPORT_SPEED_ENUM = "RedundantPortSpeed";
     String REDUNDANTPORT_STATUS_ENUM = "RedundantPortStatus";
+    
+    String OSPFAREA_AREATYPE_ENUM = "OSPFAreaAreaType";
+    String OSPFAREA_DEFAULTORIGINATEOPTION_ENUM = "OSPFAreaDefaultOriginateOption";
+    String OSPFAREA_ENTITYSCOPE_ENUM = "OSPFAreaEntityScope";
+    
+    String OSPFINSTANCE_ENTITYSCOPE_ENUM = "OSPFInstanceEntityScope";
+    
+    String OSPFINTERFACE_ADMINSTATE_ENUM = "OSPFInterfaceAdminState";
+    String OSPFINTERFACE_AUTHENTICATIONTYPE_ENUM = "OSPFInterfaceAuthenticationType";
+    String OSPFINTERFACE_ENTITYSCOPE_ENUM = "OSPFInterfaceEntityScope";
+    String OSPFINTERFACE_INTERFACETYPE_ENUM = "OSPFInterfaceInterfaceType";
     
     
     String OVERLAYMIRRORDESTINATION_ENDPOINTTYPE_ENUM = "OverlayMirrorDestinationEndPointType";
@@ -1369,6 +1401,9 @@ public interface Constants extends BaseConstants {
     String TCA_METRIC_ENUM = "TCAMetric";
     String TCA_TYPE_ENUM = "TCAType";
     
+    String TIER_ENTITYSCOPE_ENUM = "TierEntityScope";
+    String TIER_TIERTYPE_ENUM = "TierTierType";
+    
     
     
     String UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM = "UplinkConnectionAdvertisementCriteria";
@@ -1384,23 +1419,45 @@ public interface Constants extends BaseConstants {
     String USER_MANAGEMENTMODE_ENUM = "UserManagementMode";
     
     
+    String VCENTER_AVRSPROFILE_ENUM = "VCenterAvrsProfile";
+    String VCENTER_CPUCOUNT_ENUM = "VCenterCpuCount";
     String VCENTER_DESTINATIONMIRRORPORT_ENUM = "VCenterDestinationMirrorPort";
     String VCENTER_ENTITYSCOPE_ENUM = "VCenterEntityScope";
+    String VCENTER_MEMORYSIZEINGB_ENUM = "VCenterMemorySizeInGB";
     String VCENTER_REMOTESYSLOGSERVERTYPE_ENUM = "VCenterRemoteSyslogServerType";
     
+    String VCENTERCLUSTER_AVRSPROFILE_ENUM = "VCenterClusterAvrsProfile";
+    String VCENTERCLUSTER_CPUCOUNT_ENUM = "VCenterClusterCpuCount";
     String VCENTERCLUSTER_DESTINATIONMIRRORPORT_ENUM = "VCenterClusterDestinationMirrorPort";
     String VCENTERCLUSTER_ENTITYSCOPE_ENUM = "VCenterClusterEntityScope";
+    String VCENTERCLUSTER_MEMORYSIZEINGB_ENUM = "VCenterClusterMemorySizeInGB";
     String VCENTERCLUSTER_REMOTESYSLOGSERVERTYPE_ENUM = "VCenterClusterRemoteSyslogServerType";
     
+    String VCENTERDATACENTER_AVRSPROFILE_ENUM = "VCenterDataCenterAvrsProfile";
+    String VCENTERDATACENTER_CPUCOUNT_ENUM = "VCenterDataCenterCpuCount";
     String VCENTERDATACENTER_DESTINATIONMIRRORPORT_ENUM = "VCenterDataCenterDestinationMirrorPort";
     String VCENTERDATACENTER_ENTITYSCOPE_ENUM = "VCenterDataCenterEntityScope";
+    String VCENTERDATACENTER_MEMORYSIZEINGB_ENUM = "VCenterDataCenterMemorySizeInGB";
     String VCENTERDATACENTER_REMOTESYSLOGSERVERTYPE_ENUM = "VCenterDataCenterRemoteSyslogServerType";
     
     String VCENTERHYPERVISOR_VRSSTATE_ENUM = "VCenterHypervisorVRSState";
+    String VCENTERHYPERVISOR_AVRSPROFILE_ENUM = "VCenterHypervisorAvrsProfile";
+    String VCENTERHYPERVISOR_CPUCOUNT_ENUM = "VCenterHypervisorCpuCount";
     String VCENTERHYPERVISOR_DESTINATIONMIRRORPORT_ENUM = "VCenterHypervisorDestinationMirrorPort";
     String VCENTERHYPERVISOR_ENTITYSCOPE_ENUM = "VCenterHypervisorEntityScope";
+    String VCENTERHYPERVISOR_MEMORYSIZEINGB_ENUM = "VCenterHypervisorMemorySizeInGB";
     String VCENTERHYPERVISOR_REMOTESYSLOGSERVERTYPE_ENUM = "VCenterHypervisorRemoteSyslogServerType";
     
+    String VIRTUALFIREWALLPOLICY_ENTITYSCOPE_ENUM = "VirtualFirewallPolicyEntityScope";
+    String VIRTUALFIREWALLPOLICY_POLICYSTATE_ENUM = "VirtualFirewallPolicyPolicyState";
+    String VIRTUALFIREWALLPOLICY_PRIORITYTYPE_ENUM = "VirtualFirewallPolicyPriorityType";
+    
+    String VIRTUALFIREWALLRULE_ACTION_ENUM = "VirtualFirewallRuleAction";
+    String VIRTUALFIREWALLRULE_ASSOCIATEDTRAFFICTYPE_ENUM = "VirtualFirewallRuleAssociatedTrafficType";
+    String VIRTUALFIREWALLRULE_ENTITYSCOPE_ENUM = "VirtualFirewallRuleEntityScope";
+    String VIRTUALFIREWALLRULE_LOCATIONTYPE_ENUM = "VirtualFirewallRuleLocationType";
+    String VIRTUALFIREWALLRULE_NETWORKTYPE_ENUM = "VirtualFirewallRuleNetworkType";
+    String VIRTUALFIREWALLRULE_POLICYSTATE_ENUM = "VirtualFirewallRulePolicyState";
     
     String VIRTUALIP_ENTITYSCOPE_ENUM = "VirtualIPEntityScope";
     
@@ -1550,6 +1607,7 @@ public interface Constants extends BaseConstants {
     String CTRANSLATIONMAP_IMAGE_FILENAME = "images/icon-ctranslationmap.png";
     String CUSTOMPROPERTY_IMAGE_FILENAME = "images/icon-customproperty.png";
     String DEMARCATIONSERVICE_IMAGE_FILENAME = "images/icon-demarcationservice.png";
+    String DESTINATIONURL_IMAGE_FILENAME = "images/icon-destinationurl.png";
     String DHCPOPTION_IMAGE_FILENAME = "images/icon-dhcpoption.png";
     String DISKSTAT_IMAGE_FILENAME = "images/icon-diskstat.png";
     String DOMAIN_IMAGE_FILENAME = "images/icon-domain.png";
@@ -1615,7 +1673,6 @@ public interface Constants extends BaseConstants {
     String KEYSERVERMONITORENCRYPTEDSEED_IMAGE_FILENAME = "images/icon-keyservermonitorencryptedseed.png";
     String KEYSERVERMONITORSEED_IMAGE_FILENAME = "images/icon-keyservermonitorseed.png";
     String KEYSERVERMONITORSEK_IMAGE_FILENAME = "images/icon-keyservermonitorsek.png";
-    String KEYSERVERNOTIFICATION_IMAGE_FILENAME = "images/icon-keyservernotification.png";
     String L2DOMAIN_IMAGE_FILENAME = "images/icon-l2domain.png";
     String L2DOMAINTEMPLATE_IMAGE_FILENAME = "images/icon-l2domaintemplate.png";
     String L4SERVICE_IMAGE_FILENAME = "images/icon-l4service.png";
@@ -1648,10 +1705,14 @@ public interface Constants extends BaseConstants {
     String NSGGROUP_IMAGE_FILENAME = "images/icon-nsggroup.png";
     String NSGINFO_IMAGE_FILENAME = "images/icon-nsginfo.png";
     String NSREDUNDANTGATEWAYGROUP_IMAGE_FILENAME = "images/icon-nsredundantgatewaygroup.png";
+    String NSGROUTINGPOLICYBINDING_IMAGE_FILENAME = "images/icon-nsgroutingpolicybinding.png";
     String NSGUPGRADEPROFILE_IMAGE_FILENAME = "images/icon-nsgupgradeprofile.png";
     String NSPORT_IMAGE_FILENAME = "images/icon-nsport.png";
     String NSPORTTEMPLATE_IMAGE_FILENAME = "images/icon-nsporttemplate.png";
     String REDUNDANTPORT_IMAGE_FILENAME = "images/icon-redundantport.png";
+    String OSPFAREA_IMAGE_FILENAME = "images/icon-ospfarea.png";
+    String OSPFINSTANCE_IMAGE_FILENAME = "images/icon-ospfinstance.png";
+    String OSPFINTERFACE_IMAGE_FILENAME = "images/icon-ospfinterface.png";
     String OVERLAYADDRESSPOOL_IMAGE_FILENAME = "images/icon-overlayaddresspool.png";
     String OVERLAYMIRRORDESTINATION_IMAGE_FILENAME = "images/icon-overlaymirrordestination.png";
     String OVERLAYMIRRORDESTINATIONTEMPLATE_IMAGE_FILENAME = "images/icon-overlaymirrordestinationtemplate.png";
@@ -1699,6 +1760,7 @@ public interface Constants extends BaseConstants {
     String SUBNETTEMPLATE_IMAGE_FILENAME = "images/icon-subnettemplate.png";
     String SYSTEMCONFIG_IMAGE_FILENAME = "images/icon-systemconfig.png";
     String TCA_IMAGE_FILENAME = "images/icon-tca.png";
+    String TIER_IMAGE_FILENAME = "images/icon-tier.png";
     String TRUNK_IMAGE_FILENAME = "images/icon-trunk.png";
     String UNDERLAY_IMAGE_FILENAME = "images/icon-underlay.png";
     String UPLINKCONNECTION_IMAGE_FILENAME = "images/icon-uplinkconnection.png";
@@ -1709,7 +1771,8 @@ public interface Constants extends BaseConstants {
     String VCENTERCLUSTER_IMAGE_FILENAME = "images/icon-vcentercluster.png";
     String VCENTERDATACENTER_IMAGE_FILENAME = "images/icon-vcenterdatacenter.png";
     String VCENTERHYPERVISOR_IMAGE_FILENAME = "images/icon-vcenterhypervisor.png";
-    String VIA_IMAGE_FILENAME = "images/icon-via.png";
+    String VIRTUALFIREWALLPOLICY_IMAGE_FILENAME = "images/icon-virtualfirewallpolicy.png";
+    String VIRTUALFIREWALLRULE_IMAGE_FILENAME = "images/icon-virtualfirewallrule.png";
     String VIRTUALIP_IMAGE_FILENAME = "images/icon-virtualip.png";
     String VLAN_IMAGE_FILENAME = "images/icon-vlan.png";
     String VLANTEMPLATE_IMAGE_FILENAME = "images/icon-vlantemplate.png";
@@ -1781,6 +1844,7 @@ public interface Constants extends BaseConstants {
     String CTRANSLATIONMAP_ENTITY_TYPE = "ctranslationmap";
     String CUSTOMPROPERTY_ENTITY_TYPE = "customproperty";
     String DEMARCATIONSERVICE_ENTITY_TYPE = "demarcationservice";
+    String DESTINATIONURL_ENTITY_TYPE = "destinationurl";
     String DHCPOPTION_ENTITY_TYPE = "dhcpoption";
     String DISKSTAT_ENTITY_TYPE = "diskstat";
     String DOMAIN_ENTITY_TYPE = "domain";
@@ -1846,7 +1910,6 @@ public interface Constants extends BaseConstants {
     String KEYSERVERMONITORENCRYPTEDSEED_ENTITY_TYPE = "keyservermonitorencryptedseed";
     String KEYSERVERMONITORSEED_ENTITY_TYPE = "keyservermonitorseed";
     String KEYSERVERMONITORSEK_ENTITY_TYPE = "keyservermonitorsek";
-    String KEYSERVERNOTIFICATION_ENTITY_TYPE = "keyservernotification";
     String L2DOMAIN_ENTITY_TYPE = "l2domain";
     String L2DOMAINTEMPLATE_ENTITY_TYPE = "l2domaintemplate";
     String L4SERVICE_ENTITY_TYPE = "l4service";
@@ -1879,10 +1942,14 @@ public interface Constants extends BaseConstants {
     String NSGGROUP_ENTITY_TYPE = "nsggroup";
     String NSGINFO_ENTITY_TYPE = "nsginfo";
     String NSREDUNDANTGATEWAYGROUP_ENTITY_TYPE = "nsgredundancygroup";
+    String NSGROUTINGPOLICYBINDING_ENTITY_TYPE = "nsgroutingpolicybinding";
     String NSGUPGRADEPROFILE_ENTITY_TYPE = "nsgupgradeprofile";
     String NSPORT_ENTITY_TYPE = "nsport";
     String NSPORTTEMPLATE_ENTITY_TYPE = "nsporttemplate";
     String REDUNDANTPORT_ENTITY_TYPE = "nsredundantport";
+    String OSPFAREA_ENTITY_TYPE = "ospfarea";
+    String OSPFINSTANCE_ENTITY_TYPE = "ospfinstance";
+    String OSPFINTERFACE_ENTITY_TYPE = "ospfinterface";
     String OVERLAYADDRESSPOOL_ENTITY_TYPE = "overlayaddresspool";
     String OVERLAYMIRRORDESTINATION_ENTITY_TYPE = "overlaymirrordestination";
     String OVERLAYMIRRORDESTINATIONTEMPLATE_ENTITY_TYPE = "overlaymirrordestinationtemplate";
@@ -1930,6 +1997,7 @@ public interface Constants extends BaseConstants {
     String SUBNETTEMPLATE_ENTITY_TYPE = "subnettemplate";
     String SYSTEMCONFIG_ENTITY_TYPE = "systemconfig";
     String TCA_ENTITY_TYPE = "tca";
+    String TIER_ENTITY_TYPE = "tier";
     String TRUNK_ENTITY_TYPE = "trunk";
     String UNDERLAY_ENTITY_TYPE = "underlay";
     String UPLINKCONNECTION_ENTITY_TYPE = "uplinkconnection";
@@ -1940,7 +2008,8 @@ public interface Constants extends BaseConstants {
     String VCENTERCLUSTER_ENTITY_TYPE = "vcentercluster";
     String VCENTERDATACENTER_ENTITY_TYPE = "vcenterdatacenter";
     String VCENTERHYPERVISOR_ENTITY_TYPE = "vcenterhypervisor";
-    String VIA_ENTITY_TYPE = "via";
+    String VIRTUALFIREWALLPOLICY_ENTITY_TYPE = "virtualfirewallpolicy";
+    String VIRTUALFIREWALLRULE_ENTITY_TYPE = "virtualfirewallrule";
     String VIRTUALIP_ENTITY_TYPE = "virtualip";
     String VLAN_ENTITY_TYPE = "vlan";
     String VLANTEMPLATE_ENTITY_TYPE = "vlantemplate";

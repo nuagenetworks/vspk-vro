@@ -53,6 +53,9 @@ public class NSGInfo extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "BIOSReleaseDate")
+    protected String BIOSReleaseDate;
+    
     @JsonProperty(value = "BIOSVersion")
     protected String BIOSVersion;
     
@@ -138,6 +141,17 @@ public class NSGInfo extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "BIOSReleaseDate", readOnly = false)   
+    public String getBIOSReleaseDate() {
+       return BIOSReleaseDate;
+    }
+
+    @JsonIgnore
+    public void setBIOSReleaseDate(String value) { 
+        this.BIOSReleaseDate = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "BIOSVersion", readOnly = false)   
     public String getBIOSVersion() {
@@ -312,7 +326,7 @@ public class NSGInfo extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGINFO, getId());
         }
     }public String toString() {
-        return "NSGInfo [" + "BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", UUID=" + UUID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", libraries=" + libraries + ", productName=" + productName + ", serialNumber=" + serialNumber + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGInfo [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", UUID=" + UUID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", libraries=" + libraries + ", productName=" + productName + ", serialNumber=" + serialNumber + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

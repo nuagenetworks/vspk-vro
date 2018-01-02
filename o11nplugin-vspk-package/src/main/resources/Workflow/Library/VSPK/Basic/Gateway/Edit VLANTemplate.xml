@@ -12,6 +12,9 @@
 <param name='externalID' type='string' >
 </param>
 
+<param name='value' type='number' >
+</param>
+
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -29,12 +32,15 @@ if (externalID) {
 } else if (vLANTemplateObj.externalID) {
    vLANTemplateObj.externalID = "";
 }
+vLANTemplateObj.value = value;
 vLANTemplateObj.save(session, 1);]]></script>
 <in-binding><bind name='vLANTemplateObj' type='VSPK:VLANTemplate' export-name="vLANTemplateObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='value' type='number' export-name="value" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -47,5 +53,8 @@ vLANTemplateObj.save(session, 1);]]></script>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vLANTemplateObj.externalID]]></p-qual></p-param>
+
+<p-param name="value"><desc><![CDATA[value]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#vLANTemplateObj.value]]></p-qual></p-param>
 
 </presentation></workflow>

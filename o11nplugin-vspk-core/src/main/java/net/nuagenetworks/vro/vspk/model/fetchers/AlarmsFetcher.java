@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.HSC;
 
+import net.nuagenetworks.vro.vspk.model.IKEGatewayConnection;
+
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
@@ -137,6 +139,16 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof HSC) {
             return (HSC) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IKEGatewayConnection", readOnly = true)
+    public IKEGatewayConnection getIKEGatewayConnection() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IKEGatewayConnection) {
+            return (IKEGatewayConnection) obj;
         }
         
         return null;

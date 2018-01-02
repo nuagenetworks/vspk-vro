@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Find NSGRoutingPolicyBinding in Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7da30815-1e7c-5082-b354-0f72a4201538</entry>
+</properties>

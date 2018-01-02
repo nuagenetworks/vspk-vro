@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getVirtualFirewallRuleAction</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">164f3794-04dd-585c-a8e2-21adb60281e4</entry>
+</properties>

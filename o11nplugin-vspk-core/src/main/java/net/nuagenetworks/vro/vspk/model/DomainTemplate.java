@@ -64,6 +64,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.RedirectionTargetTemplatesFetch
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SubnetTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallPoliciesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ZoneTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainTemplateDPI;
@@ -114,6 +116,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.QOSS_FETCHER, type = Constants.QOSS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.REDIRECTIONTARGETTEMPLATES_FETCHER, type = Constants.REDIRECTIONTARGETTEMPLATES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VIRTUALFIREWALLPOLICIES_FETCHER, type = Constants.VIRTUALFIREWALLPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ZONETEMPLATES_FETCHER, type = Constants.ZONETEMPLATES_FETCHER)
 })
@@ -219,6 +223,9 @@ public class DomainTemplate extends BaseObject {
     private SubnetTemplatesFetcher subnetTemplates;
     
     @JsonIgnore
+    private VirtualFirewallPoliciesFetcher virtualFirewallPolicies;
+    
+    @JsonIgnore
     private ZoneTemplatesFetcher zoneTemplates;
     
     @VsoConstructor
@@ -260,6 +267,8 @@ public class DomainTemplate extends BaseObject {
         redirectionTargetTemplates = new RedirectionTargetTemplatesFetcher(this);
         
         subnetTemplates = new SubnetTemplatesFetcher(this);
+        
+        virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
         
         zoneTemplates = new ZoneTemplatesFetcher(this);
         }
@@ -546,6 +555,12 @@ public class DomainTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VirtualFirewallPolicies", readOnly = true)   
+    public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
+        return virtualFirewallPolicies;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ZoneTemplates", readOnly = true)   
     public ZoneTemplatesFetcher getZoneTemplates() {
         return zoneTemplates;
@@ -716,6 +731,14 @@ public class DomainTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.REDIRECTIONTARGETTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createVirtualFirewallPolicy(Session session, VirtualFirewallPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VIRTUALFIREWALLPOLICIES_FETCHER, getId());
         }
     }
     @VsoMethod

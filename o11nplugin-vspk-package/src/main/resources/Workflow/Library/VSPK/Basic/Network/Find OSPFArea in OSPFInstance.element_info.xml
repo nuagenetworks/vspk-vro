@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Find OSPFArea in OSPFInstance</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c8805e4e-e343-54f3-ad86-a3cff97d9ed2</entry>
+</properties>

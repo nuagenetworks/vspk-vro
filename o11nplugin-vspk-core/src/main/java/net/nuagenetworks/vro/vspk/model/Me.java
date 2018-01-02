@@ -156,9 +156,13 @@ import net.nuagenetworks.vro.vspk.model.fetchers.UplinkRDsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UsersFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.UserContextsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VCentersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VCenterHypervisorsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallPoliciesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
@@ -229,6 +233,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER, type = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLENTRYTEMPLATES_FETCHER, type = Constants.INGRESSACLENTRYTEMPLATES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSQOSPOLICIES_FETCHER, type = Constants.INGRESSQOSPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.KEYSERVERMEMBERS_FETCHER, type = Constants.KEYSERVERMEMBERS_FETCHER), 
@@ -268,6 +274,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.UNDERLAYS_FETCHER, type = Constants.UNDERLAYS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VCENTERS_FETCHER, type = Constants.VCENTERS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VIRTUALFIREWALLPOLICIES_FETCHER, type = Constants.VIRTUALFIREWALLPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VMS_FETCHER, type = Constants.VMS_FETCHER), 
 
@@ -546,10 +554,16 @@ public class Me extends BaseRootObject {
     private UsersFetcher users;
     
     @JsonIgnore
+    private UserContextsFetcher userContexts;
+    
+    @JsonIgnore
     private VCentersFetcher vCenters;
     
     @JsonIgnore
     private VCenterHypervisorsFetcher vCenterHypervisors;
+    
+    @JsonIgnore
+    private VirtualFirewallPoliciesFetcher virtualFirewallPolicies;
     
     @JsonIgnore
     private VMsFetcher vMs;
@@ -713,9 +727,13 @@ public class Me extends BaseRootObject {
         
         users = new UsersFetcher(this);
         
+        userContexts = new UserContextsFetcher(this);
+        
         vCenters = new VCentersFetcher(this);
         
         vCenterHypervisors = new VCenterHypervisorsFetcher(this);
+        
+        virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
         
         vMs = new VMsFetcher(this);
         
@@ -1405,6 +1423,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "UserContexts", readOnly = true)   
+    public UserContextsFetcher getUserContexts() {
+        return userContexts;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VCenters", readOnly = true)   
     public VCentersFetcher getVCenters() {
         return vCenters;
@@ -1414,6 +1438,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "VCenterHypervisors", readOnly = true)   
     public VCenterHypervisorsFetcher getVCenterHypervisors() {
         return vCenterHypervisors;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VirtualFirewallPolicies", readOnly = true)   
+    public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
+        return virtualFirewallPolicies;
     }
     
     @JsonIgnore
@@ -1642,6 +1672,14 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createIngressACLEntryTemplate(Session session, IngressACLEntryTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSACLENTRYTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createIngressQOSPolicy(Session session, IngressQOSPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1807,6 +1845,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VCENTERS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createVirtualFirewallPolicy(Session session, VirtualFirewallPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VIRTUALFIREWALLPOLICIES_FETCHER, getId());
         }
     }
     @VsoMethod

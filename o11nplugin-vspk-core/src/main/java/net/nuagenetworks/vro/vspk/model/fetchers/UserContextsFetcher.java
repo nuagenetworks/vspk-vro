@@ -29,7 +29,9 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 
 import net.nuagenetworks.vro.vspk.model.UserContext;
 import net.nuagenetworks.vro.vspk.model.Session;
-import net.nuagenetworks.vro.vspk.model.Constants;import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
+import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Me;
+import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
@@ -61,7 +63,17 @@ public class UserContextsFetcher extends BaseFetcher<UserContext> {
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
         return (Session) super.getSession();
-    }@VsoMethod
+    }
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Me) {
+            return (Me) obj;
+        }
+        
+        return null;
+    }
+    @VsoMethod
     public java.util.List<UserContext> fetch(Session session, String filter, String orderBy, String[] groupBy, Integer page, Integer pageSize, String queryParameters, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         return super.fetch(session, filter, orderBy, groupBy, page, pageSize, queryParameters, commit);

@@ -58,6 +58,8 @@ import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
+import net.nuagenetworks.vro.vspk.model.VirtualFirewallRule;
+
 import net.nuagenetworks.vro.vspk.model.VLAN;
 
 import net.nuagenetworks.vro.vspk.model.VMInterface;
@@ -235,6 +237,16 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Subnet) {
             return (Subnet) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VirtualFirewallRule", readOnly = true)
+    public VirtualFirewallRule getVirtualFirewallRule() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VirtualFirewallRule) {
+            return (VirtualFirewallRule) obj;
         }
         
         return null;

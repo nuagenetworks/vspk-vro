@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="f4587e72-0b76-5ff9-a20c-954d11164d4f"  version="5.1.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit OSPFInterface]]></display-name>
+<ref-types><![CDATA[(VSPK:OSPFInterface)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='oSPFInterfaceObj' type='VSPK:OSPFInterface' >
+</param>
+
+<param name='associatedSubnetID' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = oSPFInterfaceObj.session;
+
+if (associatedSubnetID) {
+   oSPFInterfaceObj.associatedSubnetID = associatedSubnetID;
+} else if (oSPFInterfaceObj.associatedSubnetID) {
+   oSPFInterfaceObj.associatedSubnetID = "";
+}
+if (description) {
+   oSPFInterfaceObj.description = description;
+} else if (oSPFInterfaceObj.description) {
+   oSPFInterfaceObj.description = "";
+}
+if (externalID) {
+   oSPFInterfaceObj.externalID = externalID;
+} else if (oSPFInterfaceObj.externalID) {
+   oSPFInterfaceObj.externalID = "";
+}
+if (name) {
+   oSPFInterfaceObj.name = name;
+} else if (oSPFInterfaceObj.name) {
+   oSPFInterfaceObj.name = "";
+}
+oSPFInterfaceObj.save(session, 1);]]></script>
+<in-binding><bind name='oSPFInterfaceObj' type='VSPK:OSPFInterface' export-name="oSPFInterfaceObj" ></bind>
+
+<bind name='associatedSubnetID' type='string' export-name="associatedSubnetID" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="oSPFInterfaceObj"><desc><![CDATA[oSPFInterfaceObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="associatedSubnetID"><desc><![CDATA[associatedSubnetID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#oSPFInterfaceObj.associatedSubnetID]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#oSPFInterfaceObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#oSPFInterfaceObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#oSPFInterfaceObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

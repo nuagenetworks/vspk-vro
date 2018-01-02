@@ -9,6 +9,8 @@
 </param>
 <param name='externalID' type='string' >
 </param>
+<param name='value' type='number' >
+</param>
 </input><output><param name='vLANTemplateObj' type='VSPK:VLANTemplate' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -25,12 +27,14 @@ if (description) {
 if (externalID) {
    vLANTemplateObj.externalID = externalID;
 }
+vLANTemplateObj.value = value;
 
 nSPortTemplateObj.createVLANTemplate(session, vLANTemplateObj);
 ]]></script>
 <in-binding><bind name='nSPortTemplateObj' type='VSPK:NSPortTemplate' export-name="nSPortTemplateObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='value' type='number' export-name="value" ></bind>
 </in-binding><out-binding><bind name='vLANTemplateObj' type='VSPK:VLANTemplate' export-name="vLANTemplateObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -40,5 +44,7 @@ nSPortTemplateObj.createVLANTemplate(session, vLANTemplateObj);
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="value"><desc><![CDATA[value]]></desc>
 </p-param>
 </presentation></workflow>

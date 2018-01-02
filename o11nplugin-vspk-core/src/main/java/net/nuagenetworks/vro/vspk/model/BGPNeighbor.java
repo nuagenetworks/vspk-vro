@@ -55,6 +55,9 @@ public class BGPNeighbor extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "BFDEnabled")
+    protected Boolean BFDEnabled;
+    
     @JsonProperty(value = "associatedExportRoutingPolicyID")
     protected String associatedExportRoutingPolicyID;
     
@@ -133,6 +136,17 @@ public class BGPNeighbor extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "BFDEnabled", readOnly = false)   
+    public Boolean getBFDEnabled() {
+       return BFDEnabled;
+    }
+
+    @JsonIgnore
+    public void setBFDEnabled(Boolean value) { 
+        this.BFDEnabled = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedExportRoutingPolicyID", readOnly = false)   
     public String getAssociatedExportRoutingPolicyID() {
@@ -300,7 +314,7 @@ public class BGPNeighbor extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BGPNeighbor [" + "associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BGPNeighbor [" + "BFDEnabled=" + BFDEnabled + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

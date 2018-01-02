@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="46521372-d7e5-5aae-b43d-fc7d97eb74ad"  version="5.1.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add VirtualFirewallRule to VirtualFirewallPolicy]]></display-name>
+<ref-types><![CDATA[(VSPK:VirtualFirewallPolicy)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='virtualFirewallPolicyObj' type='VSPK:VirtualFirewallPolicy' >
+</param>
+<param name='action' type='VSPK:VirtualFirewallRuleAction' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='locationType' type='VSPK:VirtualFirewallRuleLocationType' >
+</param>
+</input><output><param name='virtualFirewallRuleObj' type='VSPK:VirtualFirewallRule' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = virtualFirewallPolicyObj.session;
+
+virtualFirewallRuleObj = new VSPKVirtualFirewallRule();
+virtualFirewallRuleObj.action = action;
+if (description) {
+   virtualFirewallRuleObj.description = description;
+}
+if (externalID) {
+   virtualFirewallRuleObj.externalID = externalID;
+}
+virtualFirewallRuleObj.locationType = locationType;
+
+virtualFirewallPolicyObj.createVirtualFirewallRule(session, virtualFirewallRuleObj);
+]]></script>
+<in-binding><bind name='virtualFirewallPolicyObj' type='VSPK:VirtualFirewallPolicy' export-name="virtualFirewallPolicyObj" ></bind>
+<bind name='action' type='VSPK:VirtualFirewallRuleAction' export-name="action" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='locationType' type='VSPK:VirtualFirewallRuleLocationType' export-name="locationType" ></bind>
+</in-binding><out-binding><bind name='virtualFirewallRuleObj' type='VSPK:VirtualFirewallRule' export-name="virtualFirewallRuleObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="virtualFirewallPolicyObj"><desc><![CDATA[virtualFirewallPolicyObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="action"><desc><![CDATA[action]]></desc>
+</p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="locationType"><desc><![CDATA[locationType]]></desc>
+</p-param>
+</presentation></workflow>

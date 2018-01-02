@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/urlfiltering</entry>
+<entry key="name">Add Destinationurl to Tier</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">6e6ffef8-59cf-5d27-aebd-b7b318dbf038</entry>
+</properties>

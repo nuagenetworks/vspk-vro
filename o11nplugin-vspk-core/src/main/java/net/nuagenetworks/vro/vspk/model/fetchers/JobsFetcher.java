@@ -82,6 +82,8 @@ import net.nuagenetworks.vro.vspk.model.VCenterCluster;
 
 import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
 
+import net.nuagenetworks.vro.vspk.model.VirtualFirewallRule;
+
 import net.nuagenetworks.vro.vspk.model.VNF;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
@@ -381,6 +383,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenterHypervisor) {
             return (VCenterHypervisor) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VirtualFirewallRule", readOnly = true)
+    public VirtualFirewallRule getVirtualFirewallRule() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VirtualFirewallRule) {
+            return (VirtualFirewallRule) obj;
         }
         
         return null;

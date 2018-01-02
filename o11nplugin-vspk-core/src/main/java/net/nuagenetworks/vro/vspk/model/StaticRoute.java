@@ -61,6 +61,9 @@ public class StaticRoute extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "BFDEnabled")
+    protected Boolean BFDEnabled;
+    
     @JsonProperty(value = "IPType")
     protected StaticRouteIPType IPType;
     
@@ -152,6 +155,17 @@ public class StaticRoute extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "BFDEnabled", readOnly = false)   
+    public Boolean getBFDEnabled() {
+       return BFDEnabled;
+    }
+
+    @JsonIgnore
+    public void setBFDEnabled(Boolean value) { 
+        this.BFDEnabled = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "IPType", readOnly = false)   
     public StaticRouteIPType getIPType() {
@@ -336,7 +350,7 @@ public class StaticRoute extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "StaticRoute [" + "IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedSubnetID=" + associatedSubnetID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", netmask=" + netmask + ", nextHopIp=" + nextHopIp + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "StaticRoute [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedSubnetID=" + associatedSubnetID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", netmask=" + netmask + ", nextHopIp=" + nextHopIp + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

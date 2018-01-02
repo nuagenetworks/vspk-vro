@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Perfrouting</entry>
-<entry key="name">Find Applicationperformancemanagementbinding in L2Domain</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">0f7ae56c-ce2d-582e-bafb-63f0ef59cbc5</entry>
-</properties>

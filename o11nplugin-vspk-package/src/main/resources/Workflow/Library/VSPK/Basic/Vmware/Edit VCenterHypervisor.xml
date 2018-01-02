@@ -30,6 +30,15 @@
 <param name='name' type='string' >
 </param>
 
+<param name='revertiveControllerEnabled' type='boolean' >
+</param>
+
+<param name='revertiveTimer' type='number' >
+</param>
+
+<param name='secondaryDataUplinkEnabled' type='boolean' >
+</param>
+
 <param name='vmNetworkPortgroup' type='string' >
 </param>
 
@@ -80,6 +89,9 @@ if (name) {
 } else if (vCenterHypervisorObj.name) {
    vCenterHypervisorObj.name = "";
 }
+vCenterHypervisorObj.revertiveControllerEnabled = revertiveControllerEnabled;
+vCenterHypervisorObj.revertiveTimer = revertiveTimer;
+vCenterHypervisorObj.secondaryDataUplinkEnabled = secondaryDataUplinkEnabled;
 if (vmNetworkPortgroup) {
    vCenterHypervisorObj.vmNetworkPortgroup = vmNetworkPortgroup;
 } else if (vCenterHypervisorObj.vmNetworkPortgroup) {
@@ -103,6 +115,12 @@ vCenterHypervisorObj.save(session, 1);]]></script>
 <bind name='mgmtNetworkPortgroup' type='string' export-name="mgmtNetworkPortgroup" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='revertiveControllerEnabled' type='boolean' export-name="revertiveControllerEnabled" ></bind>
+
+<bind name='revertiveTimer' type='number' export-name="revertiveTimer" ></bind>
+
+<bind name='secondaryDataUplinkEnabled' type='boolean' export-name="secondaryDataUplinkEnabled" ></bind>
 
 <bind name='vmNetworkPortgroup' type='string' export-name="vmNetworkPortgroup" ></bind>
 
@@ -135,6 +153,15 @@ vCenterHypervisorObj.save(session, 1);]]></script>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.name]]></p-qual></p-param>
+
+<p-param name="revertiveControllerEnabled"><desc><![CDATA[revertiveControllerEnabled]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#vCenterHypervisorObj.revertiveControllerEnabled]]></p-qual></p-param>
+
+<p-param name="revertiveTimer"><desc><![CDATA[revertiveTimer]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#vCenterHypervisorObj.revertiveTimer]]></p-qual></p-param>
+
+<p-param name="secondaryDataUplinkEnabled"><desc><![CDATA[secondaryDataUplinkEnabled]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#vCenterHypervisorObj.secondaryDataUplinkEnabled]]></p-qual></p-param>
 
 <p-param name="vmNetworkPortgroup"><desc><![CDATA[vmNetworkPortgroup]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterHypervisorObj.vmNetworkPortgroup]]></p-qual></p-param>

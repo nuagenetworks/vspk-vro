@@ -13,6 +13,8 @@
 </param>
 <param name='name' type='string' >
 </param>
+<param name='portalType' type='VSPK:CaptivePortalProfilePortalType' >
+</param>
 </input><output><param name='captivePortalProfileObj' type='VSPK:CaptivePortalProfile' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -35,6 +37,7 @@ if (externalID) {
 if (name) {
    captivePortalProfileObj.name = name;
 }
+captivePortalProfileObj.portalType = portalType;
 
 enterpriseObj.createCaptivePortalProfile(session, captivePortalProfileObj);
 ]]></script>
@@ -43,6 +46,7 @@ enterpriseObj.createCaptivePortalProfile(session, captivePortalProfileObj);
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
+<bind name='portalType' type='VSPK:CaptivePortalProfilePortalType' export-name="portalType" ></bind>
 </in-binding><out-binding><bind name='captivePortalProfileObj' type='VSPK:CaptivePortalProfile' export-name="captivePortalProfileObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -56,5 +60,7 @@ enterpriseObj.createCaptivePortalProfile(session, captivePortalProfileObj);
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="portalType"><desc><![CDATA[portalType]]></desc>
 </p-param>
 </presentation></workflow>

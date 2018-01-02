@@ -15,6 +15,15 @@
 <param name='name' type='string' >
 </param>
 
+<param name='revertiveControllerEnabled' type='boolean' >
+</param>
+
+<param name='revertiveTimer' type='number' >
+</param>
+
+<param name='secondaryDataUplinkEnabled' type='boolean' >
+</param>
+
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -37,6 +46,9 @@ if (name) {
 } else if (vCenterClusterObj.name) {
    vCenterClusterObj.name = "";
 }
+vCenterClusterObj.revertiveControllerEnabled = revertiveControllerEnabled;
+vCenterClusterObj.revertiveTimer = revertiveTimer;
+vCenterClusterObj.secondaryDataUplinkEnabled = secondaryDataUplinkEnabled;
 vCenterClusterObj.save(session, 1);]]></script>
 <in-binding><bind name='vCenterClusterObj' type='VSPK:VCenterCluster' export-name="vCenterClusterObj" ></bind>
 
@@ -45,6 +57,12 @@ vCenterClusterObj.save(session, 1);]]></script>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='revertiveControllerEnabled' type='boolean' export-name="revertiveControllerEnabled" ></bind>
+
+<bind name='revertiveTimer' type='number' export-name="revertiveTimer" ></bind>
+
+<bind name='secondaryDataUplinkEnabled' type='boolean' export-name="secondaryDataUplinkEnabled" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -60,5 +78,14 @@ vCenterClusterObj.save(session, 1);]]></script>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vCenterClusterObj.name]]></p-qual></p-param>
+
+<p-param name="revertiveControllerEnabled"><desc><![CDATA[revertiveControllerEnabled]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#vCenterClusterObj.revertiveControllerEnabled]]></p-qual></p-param>
+
+<p-param name="revertiveTimer"><desc><![CDATA[revertiveTimer]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#vCenterClusterObj.revertiveTimer]]></p-qual></p-param>
+
+<p-param name="secondaryDataUplinkEnabled"><desc><![CDATA[secondaryDataUplinkEnabled]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="boolean" ><![CDATA[#vCenterClusterObj.secondaryDataUplinkEnabled]]></p-qual></p-param>
 
 </presentation></workflow>

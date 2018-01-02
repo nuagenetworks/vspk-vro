@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum IKEEncryptionprofileIPsecEncryptionAlgorithm {
 
-    AES128("AES128", "AES128"), AES192("AES192", "AES192"), AES256("AES256", "AES256"), TRIPLE_DES("TRIPLE_DES", "TRIPLE_DES");
+    AES128("AES128", "AES128"), AES192("AES192", "AES192"), AES256("AES256", "AES256"), TRIPLE_DES("TRIPLE_DES", "TRIPLE_DES"), NULL("NULL", "NULL");
 
     private final String id;
     private final String name;
@@ -76,6 +76,11 @@ public enum IKEEncryptionprofileIPsecEncryptionAlgorithm {
     @VsoProperty(displayName = "TRIPLE_DES", readOnly = true)
     public IKEEncryptionprofileIPsecEncryptionAlgorithm getTRIPLE_DES() {
         return TRIPLE_DES;
+    }
+    
+    @VsoProperty(displayName = "NULL", readOnly = true)
+    public IKEEncryptionprofileIPsecEncryptionAlgorithm getNULL() {
+        return NULL;
     }
     
 

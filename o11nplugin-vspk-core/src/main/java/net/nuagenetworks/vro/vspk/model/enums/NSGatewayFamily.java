@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGatewayFamily {
 
-    ANY("ANY", "ANY"), NSG_E("NSG_E", "NSG_E"), NSG_V("NSG_V", "NSG_V"), NSG_AMI("NSG_AMI", "NSG_AMI"), NSG_X("NSG_X", "NSG_X"), NSG_C("NSG_C", "NSG_C"), NSG_E200("NSG_E200", "NSG_E200"), NSG_E300("NSG_E300", "NSG_E300"), NSG_X200("NSG_X200", "NSG_X200");
+    ANY("ANY", "ANY"), NSG_AMI("NSG_AMI", "NSG_AMI"), NSG_C("NSG_C", "NSG_C"), NSG_E("NSG_E", "NSG_E"), NSG_E200("NSG_E200", "NSG_E200"), NSG_E300("NSG_E300", "NSG_E300"), NSG_V("NSG_V", "NSG_V"), NSG_X("NSG_X", "NSG_X"), NSG_X200("NSG_X200", "NSG_X200");
 
     private final String id;
     private final String name;
@@ -63,29 +63,19 @@ public enum NSGatewayFamily {
         return ANY;
     }
     
-    @VsoProperty(displayName = "NSG_E", readOnly = true)
-    public NSGatewayFamily getNSG_E() {
-        return NSG_E;
-    }
-    
-    @VsoProperty(displayName = "NSG_V", readOnly = true)
-    public NSGatewayFamily getNSG_V() {
-        return NSG_V;
-    }
-    
     @VsoProperty(displayName = "NSG_AMI", readOnly = true)
     public NSGatewayFamily getNSG_AMI() {
         return NSG_AMI;
     }
     
-    @VsoProperty(displayName = "NSG_X", readOnly = true)
-    public NSGatewayFamily getNSG_X() {
-        return NSG_X;
-    }
-    
     @VsoProperty(displayName = "NSG_C", readOnly = true)
     public NSGatewayFamily getNSG_C() {
         return NSG_C;
+    }
+    
+    @VsoProperty(displayName = "NSG_E", readOnly = true)
+    public NSGatewayFamily getNSG_E() {
+        return NSG_E;
     }
     
     @VsoProperty(displayName = "NSG_E200", readOnly = true)
@@ -96,6 +86,16 @@ public enum NSGatewayFamily {
     @VsoProperty(displayName = "NSG_E300", readOnly = true)
     public NSGatewayFamily getNSG_E300() {
         return NSG_E300;
+    }
+    
+    @VsoProperty(displayName = "NSG_V", readOnly = true)
+    public NSGatewayFamily getNSG_V() {
+        return NSG_V;
+    }
+    
+    @VsoProperty(displayName = "NSG_X", readOnly = true)
+    public NSGatewayFamily getNSG_X() {
+        return NSG_X;
     }
     
     @VsoProperty(displayName = "NSG_X200", readOnly = true)

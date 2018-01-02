@@ -68,6 +68,9 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "DNSAddress")
     protected String DNSAddress;
     
+    @JsonProperty(value = "PATEnabled")
+    protected Boolean PATEnabled;
+    
     @JsonProperty(value = "address")
     protected String address;
     
@@ -92,6 +95,9 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "gateway")
     protected String gateway;
     
+    @JsonProperty(value = "installerManaged")
+    protected Boolean installerManaged;
+    
     @JsonProperty(value = "interfaceConnectionType")
     protected UplinkConnectionInterfaceConnectionType interfaceConnectionType;
     
@@ -115,6 +121,9 @@ public class UplinkConnection extends BaseObject {
     
     @JsonProperty(value = "secondaryAddress")
     protected String secondaryAddress;
+    
+    @JsonProperty(value = "underlayEnabled")
+    protected Boolean underlayEnabled;
     
     @JsonProperty(value = "uplinkID")
     protected Long uplinkID;
@@ -192,6 +201,17 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setDNSAddress(String value) { 
         this.DNSAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PATEnabled", readOnly = false)   
+    public Boolean getPATEnabled() {
+       return PATEnabled;
+    }
+
+    @JsonIgnore
+    public void setPATEnabled(Boolean value) { 
+        this.PATEnabled = value;
     }
     
     @JsonIgnore
@@ -283,6 +303,17 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "InstallerManaged", readOnly = false)   
+    public Boolean getInstallerManaged() {
+       return installerManaged;
+    }
+
+    @JsonIgnore
+    public void setInstallerManaged(Boolean value) { 
+        this.installerManaged = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "InterfaceConnectionType", readOnly = false)   
     public UplinkConnectionInterfaceConnectionType getInterfaceConnectionType() {
        return interfaceConnectionType;
@@ -368,6 +399,17 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setSecondaryAddress(String value) { 
         this.secondaryAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UnderlayEnabled", readOnly = false)   
+    public Boolean getUnderlayEnabled() {
+       return underlayEnabled;
+    }
+
+    @JsonIgnore
+    public void setUnderlayEnabled(Boolean value) { 
+        this.underlayEnabled = value;
     }
     
     @JsonIgnore
@@ -457,7 +499,7 @@ public class UplinkConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.CUSTOMPROPERTIES_FETCHER, getId());
         }
     }public String toString() {
-        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxiliaryLink=" + auxiliaryLink + ", downloadRateLimit=" + downloadRateLimit + ", gateway=" + gateway + ", interfaceConnectionType=" + interfaceConnectionType + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", portName=" + portName + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", uplinkID=" + uplinkID + ", username=" + username + ", vlanId=" + vlanId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", PATEnabled=" + PATEnabled + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxiliaryLink=" + auxiliaryLink + ", downloadRateLimit=" + downloadRateLimit + ", gateway=" + gateway + ", installerManaged=" + installerManaged + ", interfaceConnectionType=" + interfaceConnectionType + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", portName=" + portName + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", underlayEnabled=" + underlayEnabled + ", uplinkID=" + uplinkID + ", username=" + username + ", vlanId=" + vlanId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }
