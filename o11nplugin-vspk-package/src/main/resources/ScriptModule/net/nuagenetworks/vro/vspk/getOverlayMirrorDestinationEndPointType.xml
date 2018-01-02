@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getOverlayMirrorDestinationEndPointType" result-type="VSPK:OverlayMirrorDestinationEndPointType" api-version="6.0.0"  id="3f58e791-64d5-53ff-a448-fd1d203f87ec"  version="5.1.2"  allowed-operations="vef" ><param n="overlayMirrorDestinationObj" t="VSPK:OverlayMirrorDestination"></param><script encoded='false'><![CDATA[return overlayMirrorDestinationObj.endPointType;]]></script>
+<dunes-script-module name="getOverlayMirrorDestinationEndPointType" result-type="VSPK:OverlayMirrorDestinationEndPointType" api-version="6.0.0"  id="3f58e791-64d5-53ff-a448-fd1d203f87ec"  version="5.2.1"  allowed-operations="vef" ><param n="overlayMirrorDestinationObj" t="VSPK:OverlayMirrorDestination"></param><script encoded='false'><![CDATA[return overlayMirrorDestinationObj.endPointType;]]></script>
 </dunes-script-module>
