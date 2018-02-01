@@ -312,6 +312,8 @@ import net.nuagenetworks.vro.vspk.model.TCA;
 
 import net.nuagenetworks.vro.vspk.model.Tier;
 
+import net.nuagenetworks.vro.vspk.model.Underlay;
+
 import net.nuagenetworks.vro.vspk.model.UplinkRD;
 
 import net.nuagenetworks.vro.vspk.model.User;
@@ -1801,6 +1803,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Tier) {
             return (Tier) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Underlay", readOnly = true)
+    public Underlay getUnderlay() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Underlay) {
+            return (Underlay) obj;
         }
         
         return null;

@@ -9533,6 +9533,10 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForUnderlayId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForUplinkRDId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -16472,6 +16476,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForTierId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForUnderlayId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -24653,7 +24661,35 @@ public class ModelHelper extends BaseModelHelper {
         }
 
         return null;
-    }public static java.util.List<Underlay> getUnderlaysForFetcherId(String id) throws RestException {
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForUnderlayId(String id) throws RestException {
+        Underlay obj = getObject(Constants.UNDERLAY, id);
+        if (obj == null) {
+            obj = getUnderlayById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForUnderlayId(String id) throws RestException {
+        Underlay obj = getObject(Constants.UNDERLAY, id);
+        if (obj == null) {
+            obj = getUnderlayById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<Underlay> getUnderlaysForFetcherId(String id) throws RestException {
         UnderlaysFetcher fetcher = getUnderlaysFetcherById(id);
         if (fetcher != null) {
             try {

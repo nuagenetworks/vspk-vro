@@ -1405,6 +1405,7 @@ public interface Constants extends BaseConstants {
     String TIER_TIERTYPE_ENUM = "TierTierType";
     
     
+    String UNDERLAY_ENTITYSCOPE_ENUM = "UnderlayEntityScope";
     
     String UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM = "UplinkConnectionAdvertisementCriteria";
     String UPLINKCONNECTION_INTERFACECONNECTIONTYPE_ENUM = "UplinkConnectionInterfaceConnectionType";

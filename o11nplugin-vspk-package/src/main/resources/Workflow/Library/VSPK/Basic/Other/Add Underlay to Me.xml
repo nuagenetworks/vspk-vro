@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="c3716456-8db3-5815-be7e-53da5fbf20d0"  version="5.2.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="c3716456-8db3-5815-be7e-53da5fbf20d0"  version="5.2.1.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add Underlay to Me]]></display-name>
 <ref-types><![CDATA[(VSPK:Me)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='meObj' type='VSPK:Me' >
 </param>
 <param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
 </param>
 <param name='name' type='string' >
 </param>
@@ -22,6 +24,9 @@ underlayObj = new VSPKUnderlay();
 if (description) {
    underlayObj.description = description;
 }
+if (externalID) {
+   underlayObj.externalID = externalID;
+}
 if (name) {
    underlayObj.name = name;
 }
@@ -30,6 +35,7 @@ meObj.createUnderlay(session, underlayObj);
 ]]></script>
 <in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='underlayObj' type='VSPK:Underlay' export-name="underlayObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -38,6 +44,8 @@ meObj.createUnderlay(session, underlayObj);
 <p-param name="meObj"><desc><![CDATA[meObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum GroupRole {
 
-    CMS("CMS", "CMS"), CSPOPERATOR("CSPOPERATOR", "CSPOPERATOR"), CSPROOT("CSPROOT", "CSPROOT"), JMS("JMS", "JMS"), ORGADMIN("ORGADMIN", "ORGADMIN"), ORGAPPDESIGNER("ORGAPPDESIGNER", "ORGAPPDESIGNER"), ORGNETWORKDESIGNER("ORGNETWORKDESIGNER", "ORGNETWORKDESIGNER"), ORGUSER("ORGUSER", "ORGUSER"), SYSTEM("SYSTEM", "SYSTEM"), UNKNOWN("UNKNOWN", "UNKNOWN"), USER("USER", "USER");
+    ADMINOPERATOR("ADMINOPERATOR", "ADMINOPERATOR"), CMS("CMS", "CMS"), CSPOPERATOR("CSPOPERATOR", "CSPOPERATOR"), CSPROOT("CSPROOT", "CSPROOT"), JMS("JMS", "JMS"), ORGADMIN("ORGADMIN", "ORGADMIN"), ORGAPPDESIGNER("ORGAPPDESIGNER", "ORGAPPDESIGNER"), ORGNETWORKDESIGNER("ORGNETWORKDESIGNER", "ORGNETWORKDESIGNER"), ORGUSER("ORGUSER", "ORGUSER"), SECURITYADMINISTRATOR("SECURITYADMINISTRATOR", "SECURITYADMINISTRATOR"), SYSTEM("SYSTEM", "SYSTEM"), UNKNOWN("UNKNOWN", "UNKNOWN"), USER("USER", "USER");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum GroupRole {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "ADMINOPERATOR", readOnly = true)
+    public GroupRole getADMINOPERATOR() {
+        return ADMINOPERATOR;
+    }
     
     @VsoProperty(displayName = "CMS", readOnly = true)
     public GroupRole getCMS() {
@@ -96,6 +101,11 @@ public enum GroupRole {
     @VsoProperty(displayName = "ORGUSER", readOnly = true)
     public GroupRole getORGUSER() {
         return ORGUSER;
+    }
+    
+    @VsoProperty(displayName = "SECURITYADMINISTRATOR", readOnly = true)
+    public GroupRole getSECURITYADMINISTRATOR() {
+        return SECURITYADMINISTRATOR;
     }
     
     @VsoProperty(displayName = "SYSTEM", readOnly = true)

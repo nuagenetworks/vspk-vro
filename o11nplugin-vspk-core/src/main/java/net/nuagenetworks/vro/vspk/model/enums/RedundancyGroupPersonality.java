@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum RedundancyGroupPersonality {
 
-    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NSG("NSG", "NSG"), OTHER("OTHER", "OTHER"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
+    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), NSGDUC("NSGDUC", "NSGDUC"), OTHER("OTHER", "OTHER"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q");
 
     private final String id;
     private final String name;
@@ -73,9 +73,24 @@ public enum RedundancyGroupPersonality {
         return NSG;
     }
     
+    @VsoProperty(displayName = "NSGBR", readOnly = true)
+    public RedundancyGroupPersonality getNSGBR() {
+        return NSGBR;
+    }
+    
+    @VsoProperty(displayName = "NSGDUC", readOnly = true)
+    public RedundancyGroupPersonality getNSGDUC() {
+        return NSGDUC;
+    }
+    
     @VsoProperty(displayName = "OTHER", readOnly = true)
     public RedundancyGroupPersonality getOTHER() {
         return OTHER;
+    }
+    
+    @VsoProperty(displayName = "VRSB", readOnly = true)
+    public RedundancyGroupPersonality getVRSB() {
+        return VRSB;
     }
     
     @VsoProperty(displayName = "VRSG", readOnly = true)
@@ -91,6 +106,16 @@ public enum RedundancyGroupPersonality {
     @VsoProperty(displayName = "VSG", readOnly = true)
     public RedundancyGroupPersonality getVSG() {
         return VSG;
+    }
+    
+    @VsoProperty(displayName = "NUAGE_210_WBX_48_S", readOnly = true)
+    public RedundancyGroupPersonality getNUAGE_210_WBX_48_S() {
+        return NUAGE_210_WBX_48_S;
+    }
+    
+    @VsoProperty(displayName = "NUAGE_210_WBX_32_Q", readOnly = true)
+    public RedundancyGroupPersonality getNUAGE_210_WBX_32_Q() {
+        return NUAGE_210_WBX_32_Q;
     }
     
 

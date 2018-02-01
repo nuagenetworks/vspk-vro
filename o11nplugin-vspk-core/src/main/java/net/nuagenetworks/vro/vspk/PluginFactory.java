@@ -3086,6 +3086,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.UNDERLAYS_FETCHER)) {
             return ModelHelper.getUnderlaysFetcherById(id);
         }
+        if (type.equals(Constants.UNDERLAY_ENTITYSCOPE_ENUM)) {
+            return UnderlayEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.UPLINKCONNECTION)) {
             return ModelHelper.getUplinkConnectionById(id);
         }
@@ -9431,6 +9435,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVPortsForFetcherId(id);
         }
         
+        if (type.equals(Constants.UNDERLAY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForUnderlayId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.UNDERLAY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForUnderlayId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.UPLINKCONNECTION) && relationName.equals(Constants.BFDSESSIONS_FETCHER)) {
             return toList(ModelHelper.getBFDSessionsFetcherForUplinkConnectionId(id));
         }
@@ -14239,6 +14257,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<UnderlaysFetcher> allObjs = ModelHelper.getAllUnderlaysFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.UNDERLAY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(UnderlayEntityScope.values()));
+        }
+        
         if (type.equals(Constants.UPLINKCONNECTION)) {
             java.util.List<UplinkConnection> allObjs = ModelHelper.getAllUplinkConnections();
             return new QueryResult(allObjs);
