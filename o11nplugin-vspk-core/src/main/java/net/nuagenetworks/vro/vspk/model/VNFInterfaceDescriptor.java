@@ -25,7 +25,9 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package net.nuagenetworks.vro.vspk.model;import net.nuagenetworks.bambou.RestException;
+package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.enums.VNFInterfaceDescriptorType;
+import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
@@ -47,11 +49,11 @@ public class VNFInterfaceDescriptor extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "isManagementInterface")
-    protected Boolean isManagementInterface;
-    
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "type")
+    protected VNFInterfaceDescriptorType type;
     
     @VsoConstructor
     public VNFInterfaceDescriptor() {}
@@ -92,17 +94,6 @@ public class VNFInterfaceDescriptor extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "IsManagementInterface", readOnly = false)   
-    public Boolean getIsManagementInterface() {
-       return isManagementInterface;
-    }
-
-    @JsonIgnore
-    public void setIsManagementInterface(Boolean value) { 
-        this.isManagementInterface = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -111,6 +102,17 @@ public class VNFInterfaceDescriptor extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Type", readOnly = false)   
+    public VNFInterfaceDescriptorType getType() {
+       return type;
+    }
+
+    @JsonIgnore
+    public void setType(VNFInterfaceDescriptorType value) { 
+        this.type = value;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -133,7 +135,7 @@ public class VNFInterfaceDescriptor extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.VNFINTERFACEDESCRIPTOR, getId());
         }
     }public String toString() {
-        return "VNFInterfaceDescriptor [" + "isManagementInterface=" + isManagementInterface + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNFInterfaceDescriptor [" + "name=" + name + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

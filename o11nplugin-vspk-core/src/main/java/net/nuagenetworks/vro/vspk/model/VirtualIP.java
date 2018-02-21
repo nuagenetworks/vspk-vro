@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.VirtualIPIPType;
+
 import net.nuagenetworks.vro.vspk.model.enums.VirtualIPEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -56,6 +58,9 @@ public class VirtualIP extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "IPType")
+    protected VirtualIPIPType IPType;
     
     @JsonProperty(value = "MAC")
     protected String MAC;
@@ -136,6 +141,17 @@ public class VirtualIP extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "IPType", readOnly = false)   
+    public VirtualIPIPType getIPType() {
+       return IPType;
+    }
+
+    @JsonIgnore
+    public void setIPType(VirtualIPIPType value) { 
+        this.IPType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "MAC", readOnly = false)   
     public String getMAC() {
@@ -276,7 +292,7 @@ public class VirtualIP extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VirtualIP [" + "MAC=" + MAC + ", associatedFloatingIPID=" + associatedFloatingIPID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", subnetID=" + subnetID + ", virtualIP=" + virtualIP + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VirtualIP [" + "IPType=" + IPType + ", MAC=" + MAC + ", associatedFloatingIPID=" + associatedFloatingIPID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", subnetID=" + subnetID + ", virtualIP=" + virtualIP + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

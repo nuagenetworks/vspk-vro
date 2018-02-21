@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Infrastructure</entry>
+<entry key="name">Find NSGPatchProfile in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9e18b133-6331-5a13-9f5b-8c7dbe9d31c0</entry>
+</properties>

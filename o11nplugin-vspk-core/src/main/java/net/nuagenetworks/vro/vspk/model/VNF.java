@@ -37,6 +37,8 @@ import net.nuagenetworks.vro.vspk.model.enums.VNFAllowedActions;
 import net.nuagenetworks.vro.vspk.model.enums.VNFStatus;
 
 import net.nuagenetworks.vro.vspk.model.enums.VNFTaskState;
+
+import net.nuagenetworks.vro.vspk.model.enums.VNFType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -115,6 +117,9 @@ public class VNF extends BaseObject {
     
     @JsonProperty(value = "taskState")
     protected VNFTaskState taskState;
+    
+    @JsonProperty(value = "type")
+    protected VNFType type;
     
     @JsonProperty(value = "vendor")
     protected String vendor;
@@ -382,6 +387,17 @@ public class VNF extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Type", readOnly = false)   
+    public VNFType getType() {
+       return type;
+    }
+
+    @JsonIgnore
+    public void setType(VNFType value) { 
+        this.type = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Vendor", readOnly = false)   
     public String getVendor() {
        return vendor;
@@ -438,7 +454,7 @@ public class VNF extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNF [" + "CPUCount=" + CPUCount + ", NSGName=" + NSGName + ", NSGSystemID=" + NSGSystemID + ", NSGatewayID=" + NSGatewayID + ", VNFDescriptorID=" + VNFDescriptorID + ", VNFDescriptorName=" + VNFDescriptorName + ", allowedActions=" + allowedActions + ", associatedVNFMetadataID=" + associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + associatedVNFThresholdPolicyID + ", description=" + description + ", enterpriseID=" + enterpriseID + ", isAttachedToDescriptor=" + isAttachedToDescriptor + ", lastKnownError=" + lastKnownError + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", status=" + status + ", storageGB=" + storageGB + ", taskState=" + taskState + ", vendor=" + vendor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNF [" + "CPUCount=" + CPUCount + ", NSGName=" + NSGName + ", NSGSystemID=" + NSGSystemID + ", NSGatewayID=" + NSGatewayID + ", VNFDescriptorID=" + VNFDescriptorID + ", VNFDescriptorName=" + VNFDescriptorName + ", allowedActions=" + allowedActions + ", associatedVNFMetadataID=" + associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + associatedVNFThresholdPolicyID + ", description=" + description + ", enterpriseID=" + enterpriseID + ", isAttachedToDescriptor=" + isAttachedToDescriptor + ", lastKnownError=" + lastKnownError + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", status=" + status + ", storageGB=" + storageGB + ", taskState=" + taskState + ", type=" + type + ", vendor=" + vendor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

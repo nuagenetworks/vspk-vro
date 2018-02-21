@@ -74,6 +74,9 @@ public class NSGInfo extends BaseObject {
     @JsonProperty(value = "TPMStatus")
     protected NSGInfoTPMStatus TPMStatus;
     
+    @JsonProperty(value = "TPMVersion")
+    protected String TPMVersion;
+    
     @JsonProperty(value = "UUID")
     protected String UUID;
     
@@ -91,6 +94,9 @@ public class NSGInfo extends BaseObject {
     
     @JsonProperty(value = "libraries")
     protected String libraries;
+    
+    @JsonProperty(value = "patches")
+    protected String patches;
     
     @JsonProperty(value = "productName")
     protected String productName;
@@ -219,6 +225,17 @@ public class NSGInfo extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "TPMVersion", readOnly = false)   
+    public String getTPMVersion() {
+       return TPMVersion;
+    }
+
+    @JsonIgnore
+    public void setTPMVersion(String value) { 
+        this.TPMVersion = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "UUID", readOnly = false)   
     public String getUUID() {
        return UUID;
@@ -285,6 +302,17 @@ public class NSGInfo extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Patches", readOnly = false)   
+    public String getPatches() {
+       return patches;
+    }
+
+    @JsonIgnore
+    public void setPatches(String value) { 
+        this.patches = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ProductName", readOnly = false)   
     public String getProductName() {
        return productName;
@@ -326,7 +354,7 @@ public class NSGInfo extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGINFO, getId());
         }
     }public String toString() {
-        return "NSGInfo [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", UUID=" + UUID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", libraries=" + libraries + ", productName=" + productName + ", serialNumber=" + serialNumber + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGInfo [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", libraries=" + libraries + ", patches=" + patches + ", productName=" + productName + ", serialNumber=" + serialNumber + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

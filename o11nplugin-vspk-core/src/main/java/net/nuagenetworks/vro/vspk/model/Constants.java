@@ -110,6 +110,8 @@ public interface Constants extends BaseConstants {
     String CTRANSLATIONMAPS = "CTranslationMaps";
     String CUSTOMPROPERTY = "CustomProperty";
     String CUSTOMPROPERTIES = "CustomProperties";
+    String DEFAULTGATEWAY = "DefaultGateway";
+    String DEFAULTGATEWAYS = "DefaultGateways";
     String DEMARCATIONSERVICE = "DemarcationService";
     String DEMARCATIONSERVICES = "DemarcationServices";
     String DESTINATIONURL = "Destinationurl";
@@ -306,6 +308,8 @@ public interface Constants extends BaseConstants {
     String NSGGROUPS = "NSGGroups";
     String NSGINFO = "NSGInfo";
     String NSGINFOS = "NSGInfos";
+    String NSGPATCHPROFILE = "NSGPatchProfile";
+    String NSGPATCHPROFILES = "NSGPatchProfiles";
     String NSREDUNDANTGATEWAYGROUP = "NSRedundantGatewayGroup";
     String NSREDUNDANTGATEWAYGROUPS = "NSRedundantGatewayGroups";
     String NSGROUTINGPOLICYBINDING = "NSGRoutingPolicyBinding";
@@ -543,6 +547,7 @@ public interface Constants extends BaseConstants {
     String CSNATPOOLS_FETCHER = "CSNATPoolsFetcher";
     String CTRANSLATIONMAPS_FETCHER = "CTranslationMapsFetcher";
     String CUSTOMPROPERTIES_FETCHER = "CustomPropertiesFetcher";
+    String DEFAULTGATEWAYS_FETCHER = "DefaultGatewaysFetcher";
     String DEMARCATIONSERVICES_FETCHER = "DemarcationServicesFetcher";
     String DESTINATIONURLS_FETCHER = "DestinationurlsFetcher";
     String DHCPOPTIONS_FETCHER = "DHCPOptionsFetcher";
@@ -641,6 +646,7 @@ public interface Constants extends BaseConstants {
     String NSGATEWAYTEMPLATES_FETCHER = "NSGatewayTemplatesFetcher";
     String NSGGROUPS_FETCHER = "NSGGroupsFetcher";
     String NSGINFOS_FETCHER = "NSGInfosFetcher";
+    String NSGPATCHPROFILES_FETCHER = "NSGPatchProfilesFetcher";
     String NSREDUNDANTGATEWAYGROUPS_FETCHER = "NSRedundantGatewayGroupsFetcher";
     String NSGROUTINGPOLICYBINDINGS_FETCHER = "NSGRoutingPolicyBindingsFetcher";
     String NSGUPGRADEPROFILES_FETCHER = "NSGUpgradeProfilesFetcher";
@@ -758,6 +764,7 @@ public interface Constants extends BaseConstants {
     String ALLALARM_ENTITYSCOPE_ENUM = "AllAlarmEntityScope";
     String ALLALARM_SEVERITY_ENUM = "AllAlarmSeverity";
     
+    String APPLICATION_ENTITYSCOPE_ENUM = "ApplicationEntityScope";
     String APPLICATION_OPTIMIZEPATHSELECTION_ENUM = "ApplicationOptimizePathSelection";
     String APPLICATION_PERFORMANCEMONITORTYPE_ENUM = "ApplicationPerformanceMonitorType";
     String APPLICATION_POSTCLASSIFICATIONPATH_ENUM = "ApplicationPostClassificationPath";
@@ -810,6 +817,7 @@ public interface Constants extends BaseConstants {
     
     String COMMAND_COMMAND_ENUM = "CommandCommand";
     String COMMAND_ENTITYSCOPE_ENUM = "CommandEntityScope";
+    String COMMAND_OVERRIDE_ENUM = "CommandOverride";
     String COMMAND_STATUS_ENUM = "CommandStatus";
     
     String VSDCOMPONENT_ENTITYSCOPE_ENUM = "VSDComponentEntityScope";
@@ -839,6 +847,7 @@ public interface Constants extends BaseConstants {
     String CTRANSLATIONMAP_MAPPINGTYPE_ENUM = "CTranslationMapMappingType";
     
     
+    
     String DEMARCATIONSERVICE_TYPE_ENUM = "DemarcationServiceType";
     
     String DESTINATIONURL_HTTPMETHOD_ENUM = "DestinationurlHTTPMethod";
@@ -855,6 +864,7 @@ public interface Constants extends BaseConstants {
     String DOMAIN_ADVERTISECRITERIA_ENUM = "DomainAdvertiseCriteria";
     String DOMAIN_ENCRYPTION_ENUM = "DomainEncryption";
     String DOMAIN_ENTITYSCOPE_ENUM = "DomainEntityScope";
+    String DOMAIN_FLOWCOLLECTIONENABLED_ENUM = "DomainFlowCollectionEnabled";
     String DOMAIN_MAINTENANCEMODE_ENUM = "DomainMaintenanceMode";
     String DOMAIN_MULTICAST_ENUM = "DomainMulticast";
     String DOMAIN_PERMITTEDACTION_ENUM = "DomainPermittedAction";
@@ -940,6 +950,7 @@ public interface Constants extends BaseConstants {
     String ENTERPRISE_AVATARTYPE_ENUM = "EnterpriseAvatarType";
     String ENTERPRISE_ENCRYPTIONMANAGEMENTMODE_ENUM = "EnterpriseEncryptionManagementMode";
     String ENTERPRISE_ENTITYSCOPE_ENUM = "EnterpriseEntityScope";
+    String ENTERPRISE_FLOWCOLLECTIONENABLED_ENUM = "EnterpriseFlowCollectionEnabled";
     
     String ENTERPRISENETWORK_IPTYPE_ENUM = "EnterpriseNetworkIPType";
     String ENTERPRISENETWORK_ENTITYSCOPE_ENUM = "EnterpriseNetworkEntityScope";
@@ -1115,6 +1126,7 @@ public interface Constants extends BaseConstants {
     String L2DOMAIN_ENCRYPTION_ENUM = "L2DomainEncryption";
     String L2DOMAIN_ENTITYSCOPE_ENUM = "L2DomainEntityScope";
     String L2DOMAIN_ENTITYSTATE_ENUM = "L2DomainEntityState";
+    String L2DOMAIN_FLOWCOLLECTIONENABLED_ENUM = "L2DomainFlowCollectionEnabled";
     String L2DOMAIN_MAINTENANCEMODE_ENUM = "L2DomainMaintenanceMode";
     String L2DOMAIN_MULTICAST_ENUM = "L2DomainMulticast";
     String L2DOMAIN_POLICYCHANGESTATUS_ENUM = "L2DomainPolicyChangeStatus";
@@ -1206,6 +1218,8 @@ public interface Constants extends BaseConstants {
     String NSGINFO_TPMSTATUS_ENUM = "NSGInfoTPMStatus";
     String NSGINFO_ENTITYSCOPE_ENUM = "NSGInfoEntityScope";
     String NSGINFO_FAMILY_ENUM = "NSGInfoFamily";
+    
+    String NSGPATCHPROFILE_ENTITYSCOPE_ENUM = "NSGPatchProfileEntityScope";
     
     String NSREDUNDANTGATEWAYGROUP_ENTITYSCOPE_ENUM = "NSRedundantGatewayGroupEntityScope";
     String NSREDUNDANTGATEWAYGROUP_PERMITTEDACTION_ENUM = "NSRedundantGatewayGroupPermittedAction";
@@ -1371,6 +1385,7 @@ public interface Constants extends BaseConstants {
     String SUBNET_ENCRYPTION_ENUM = "SubnetEncryption";
     String SUBNET_ENTITYSCOPE_ENUM = "SubnetEntityScope";
     String SUBNET_ENTITYSTATE_ENUM = "SubnetEntityState";
+    String SUBNET_FLOWCOLLECTIONENABLED_ENUM = "SubnetFlowCollectionEnabled";
     String SUBNET_MAINTENANCEMODE_ENUM = "SubnetMaintenanceMode";
     String SUBNET_MULTICAST_ENUM = "SubnetMulticast";
     String SUBNET_RESOURCETYPE_ENUM = "SubnetResourceType";
@@ -1460,6 +1475,7 @@ public interface Constants extends BaseConstants {
     String VIRTUALFIREWALLRULE_NETWORKTYPE_ENUM = "VirtualFirewallRuleNetworkType";
     String VIRTUALFIREWALLRULE_POLICYSTATE_ENUM = "VirtualFirewallRulePolicyState";
     
+    String VIRTUALIP_IPTYPE_ENUM = "VirtualIPIPType";
     String VIRTUALIP_ENTITYSCOPE_ENUM = "VirtualIPEntityScope";
     
     String VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM = "VLANAssociatedConnectionType";
@@ -1483,13 +1499,17 @@ public interface Constants extends BaseConstants {
     String VNF_ALLOWEDACTIONS_ENUM = "VNFAllowedActions";
     String VNF_STATUS_ENUM = "VNFStatus";
     String VNF_TASKSTATE_ENUM = "VNFTaskState";
+    String VNF_TYPE_ENUM = "VNFType";
     
     
+    String VNFDESCRIPTOR_TYPE_ENUM = "VNFDescriptorType";
     
     String VNFDOMAINMAPPING_SEGMENTATIONTYPE_ENUM = "VNFDomainMappingSegmentationType";
     
     String VNFINTERFACE_ATTACHEDNETWORKTYPE_ENUM = "VNFInterfaceAttachedNetworkType";
+    String VNFINTERFACE_TYPE_ENUM = "VNFInterfaceType";
     
+    String VNFINTERFACEDESCRIPTOR_TYPE_ENUM = "VNFInterfaceDescriptorType";
     
     
     String VNFTHRESHOLDPOLICY_ACTION_ENUM = "VNFThresholdPolicyAction";
@@ -1499,6 +1519,7 @@ public interface Constants extends BaseConstants {
     String VPORT_DPI_ENUM = "VPortDPI";
     String VPORT_ADDRESSSPOOFING_ENUM = "VPortAddressSpoofing";
     String VPORT_ENTITYSCOPE_ENUM = "VPortEntityScope";
+    String VPORT_FLOWCOLLECTIONENABLED_ENUM = "VPortFlowCollectionEnabled";
     String VPORT_GATEWAYMACMOVEROLE_ENUM = "VPortGatewayMACMoveRole";
     String VPORT_MULTICAST_ENUM = "VPortMulticast";
     String VPORT_OPERATIONALSTATE_ENUM = "VPortOperationalState";
@@ -1560,6 +1581,7 @@ public interface Constants extends BaseConstants {
     String ZONE_IPTYPE_ENUM = "ZoneIPType";
     String ZONE_ENCRYPTION_ENUM = "ZoneEncryption";
     String ZONE_ENTITYSCOPE_ENUM = "ZoneEntityScope";
+    String ZONE_FLOWCOLLECTIONENABLED_ENUM = "ZoneFlowCollectionEnabled";
     String ZONE_MAINTENANCEMODE_ENUM = "ZoneMaintenanceMode";
     String ZONE_MULTICAST_ENUM = "ZoneMulticast";
     
@@ -1607,6 +1629,7 @@ public interface Constants extends BaseConstants {
     String CSNATPOOL_IMAGE_FILENAME = "images/icon-csnatpool.png";
     String CTRANSLATIONMAP_IMAGE_FILENAME = "images/icon-ctranslationmap.png";
     String CUSTOMPROPERTY_IMAGE_FILENAME = "images/icon-customproperty.png";
+    String DEFAULTGATEWAY_IMAGE_FILENAME = "images/icon-defaultgateway.png";
     String DEMARCATIONSERVICE_IMAGE_FILENAME = "images/icon-demarcationservice.png";
     String DESTINATIONURL_IMAGE_FILENAME = "images/icon-destinationurl.png";
     String DHCPOPTION_IMAGE_FILENAME = "images/icon-dhcpoption.png";
@@ -1705,6 +1728,7 @@ public interface Constants extends BaseConstants {
     String NSGATEWAYTEMPLATE_IMAGE_FILENAME = "images/icon-nsgatewaytemplate.png";
     String NSGGROUP_IMAGE_FILENAME = "images/icon-nsggroup.png";
     String NSGINFO_IMAGE_FILENAME = "images/icon-nsginfo.png";
+    String NSGPATCHPROFILE_IMAGE_FILENAME = "images/icon-nsgpatchprofile.png";
     String NSREDUNDANTGATEWAYGROUP_IMAGE_FILENAME = "images/icon-nsredundantgatewaygroup.png";
     String NSGROUTINGPOLICYBINDING_IMAGE_FILENAME = "images/icon-nsgroutingpolicybinding.png";
     String NSGUPGRADEPROFILE_IMAGE_FILENAME = "images/icon-nsgupgradeprofile.png";
@@ -1844,6 +1868,7 @@ public interface Constants extends BaseConstants {
     String CSNATPOOL_ENTITY_TYPE = "csnatpool";
     String CTRANSLATIONMAP_ENTITY_TYPE = "ctranslationmap";
     String CUSTOMPROPERTY_ENTITY_TYPE = "customproperty";
+    String DEFAULTGATEWAY_ENTITY_TYPE = "defaultgateway";
     String DEMARCATIONSERVICE_ENTITY_TYPE = "demarcationservice";
     String DESTINATIONURL_ENTITY_TYPE = "destinationurl";
     String DHCPOPTION_ENTITY_TYPE = "dhcpoption";
@@ -1942,6 +1967,7 @@ public interface Constants extends BaseConstants {
     String NSGATEWAYTEMPLATE_ENTITY_TYPE = "nsgatewaytemplate";
     String NSGGROUP_ENTITY_TYPE = "nsggroup";
     String NSGINFO_ENTITY_TYPE = "nsginfo";
+    String NSGPATCHPROFILE_ENTITY_TYPE = "nsgpatchprofile";
     String NSREDUNDANTGATEWAYGROUP_ENTITY_TYPE = "nsgredundancygroup";
     String NSGROUTINGPOLICYBINDING_ENTITY_TYPE = "nsgroutingpolicybinding";
     String NSGUPGRADEPROFILE_ENTITY_TYPE = "nsgupgradeprofile";

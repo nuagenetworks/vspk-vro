@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.enums.CommandCommand;
 
 import net.nuagenetworks.vro.vspk.model.enums.CommandEntityScope;
 
+import net.nuagenetworks.vro.vspk.model.enums.CommandOverride;
+
 import net.nuagenetworks.vro.vspk.model.enums.CommandStatus;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -53,6 +55,12 @@ public class Command extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "associatedParam")
+    protected String associatedParam;
+    
+    @JsonProperty(value = "associatedParamType")
+    protected String associatedParamType;
+    
     @JsonProperty(value = "command")
     protected CommandCommand command;
     
@@ -71,8 +79,14 @@ public class Command extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
+    @JsonProperty(value = "fullCommand")
+    protected String fullCommand;
+    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "override")
+    protected CommandOverride override;
     
     @JsonProperty(value = "status")
     protected CommandStatus status;
@@ -123,6 +137,28 @@ public class Command extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedParam", readOnly = false)   
+    public String getAssociatedParam() {
+       return associatedParam;
+    }
+
+    @JsonIgnore
+    public void setAssociatedParam(String value) { 
+        this.associatedParam = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedParamType", readOnly = false)   
+    public String getAssociatedParamType() {
+       return associatedParamType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedParamType(String value) { 
+        this.associatedParamType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Command", readOnly = false)   
     public CommandCommand getCommand() {
@@ -190,6 +226,17 @@ public class Command extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FullCommand", readOnly = false)   
+    public String getFullCommand() {
+       return fullCommand;
+    }
+
+    @JsonIgnore
+    public void setFullCommand(String value) { 
+        this.fullCommand = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
     public String getLastUpdatedBy() {
        return lastUpdatedBy;
@@ -198,6 +245,17 @@ public class Command extends BaseObject {
     @JsonIgnore
     public void setLastUpdatedBy(String value) { 
         this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Override", readOnly = false)   
+    public CommandOverride getOverride() {
+       return override;
+    }
+
+    @JsonIgnore
+    public void setOverride(CommandOverride value) { 
+        this.override = value;
     }
     
     @JsonIgnore
@@ -242,7 +300,7 @@ public class Command extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.COMMAND, getId());
         }
     }public String toString() {
-        return "Command [" + "command=" + command + ", commandInformation=" + commandInformation + ", detailedStatus=" + detailedStatus + ", detailedStatusCode=" + detailedStatusCode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", status=" + status + ", summary=" + summary + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Command [" + "associatedParam=" + associatedParam + ", associatedParamType=" + associatedParamType + ", command=" + command + ", commandInformation=" + commandInformation + ", detailedStatus=" + detailedStatus + ", detailedStatusCode=" + detailedStatusCode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fullCommand=" + fullCommand + ", lastUpdatedBy=" + lastUpdatedBy + ", override=" + override + ", status=" + status + ", summary=" + summary + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

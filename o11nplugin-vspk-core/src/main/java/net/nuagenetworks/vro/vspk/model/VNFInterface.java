@@ -27,6 +27,8 @@
 
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.enums.VNFInterfaceAttachedNetworkType;
+
+import net.nuagenetworks.vro.vspk.model.enums.VNFInterfaceType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -79,9 +81,6 @@ public class VNFInterface extends BaseObject {
     @JsonProperty(value = "gateway")
     protected String gateway;
     
-    @JsonProperty(value = "isManagementInterface")
-    protected Boolean isManagementInterface;
-    
     @JsonProperty(value = "name")
     protected String name;
     
@@ -93,6 +92,9 @@ public class VNFInterface extends BaseObject {
     
     @JsonProperty(value = "policyDecisionID")
     protected String policyDecisionID;
+    
+    @JsonProperty(value = "type")
+    protected VNFInterfaceType type;
     
     @JsonProperty(value = "zoneID")
     protected String zoneID;
@@ -249,17 +251,6 @@ public class VNFInterface extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "IsManagementInterface", readOnly = false)   
-    public Boolean getIsManagementInterface() {
-       return isManagementInterface;
-    }
-
-    @JsonIgnore
-    public void setIsManagementInterface(Boolean value) { 
-        this.isManagementInterface = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -304,6 +295,17 @@ public class VNFInterface extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Type", readOnly = false)   
+    public VNFInterfaceType getType() {
+       return type;
+    }
+
+    @JsonIgnore
+    public void setType(VNFInterfaceType value) { 
+        this.type = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ZoneID", readOnly = false)   
     public String getZoneID() {
        return zoneID;
@@ -345,7 +347,7 @@ public class VNFInterface extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.VNFINTERFACE, getId());
         }
     }public String toString() {
-        return "VNFInterface [" + "IPAddress=" + IPAddress + ", MAC=" + MAC + ", VNFUUID=" + VNFUUID + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", gateway=" + gateway + ", isManagementInterface=" + isManagementInterface + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNFInterface [" + "IPAddress=" + IPAddress + ", MAC=" + MAC + ", VNFUUID=" + VNFUUID + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", gateway=" + gateway + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", type=" + type + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

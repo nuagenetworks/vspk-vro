@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum BootstrapZFBMatchAttribute {
 
-    NONE("NONE", "NONE"), MAC_ADDRESS("MAC_ADDRESS", "MAC_ADDRESS"), IP_ADDRESS("IP_ADDRESS", "IP_ADDRESS"), HOSTNAME("HOSTNAME", "HOSTNAME"), NSGATEWAY_ID("NSGATEWAY_ID", "NSGATEWAY_ID"), SERIAL_NUMBER("SERIAL_NUMBER", "SERIAL_NUMBER");
+    HOSTNAME("HOSTNAME", "HOSTNAME"), IP_ADDRESS("IP_ADDRESS", "IP_ADDRESS"), MAC_ADDRESS("MAC_ADDRESS", "MAC_ADDRESS"), NONE("NONE", "NONE"), NSGATEWAY_ID("NSGATEWAY_ID", "NSGATEWAY_ID"), SERIAL_NUMBER("SERIAL_NUMBER", "SERIAL_NUMBER");
 
     private final String id;
     private final String name;
@@ -58,14 +58,9 @@ public enum BootstrapZFBMatchAttribute {
     }
 
     
-    @VsoProperty(displayName = "NONE", readOnly = true)
-    public BootstrapZFBMatchAttribute getNONE() {
-        return NONE;
-    }
-    
-    @VsoProperty(displayName = "MAC_ADDRESS", readOnly = true)
-    public BootstrapZFBMatchAttribute getMAC_ADDRESS() {
-        return MAC_ADDRESS;
+    @VsoProperty(displayName = "HOSTNAME", readOnly = true)
+    public BootstrapZFBMatchAttribute getHOSTNAME() {
+        return HOSTNAME;
     }
     
     @VsoProperty(displayName = "IP_ADDRESS", readOnly = true)
@@ -73,9 +68,14 @@ public enum BootstrapZFBMatchAttribute {
         return IP_ADDRESS;
     }
     
-    @VsoProperty(displayName = "HOSTNAME", readOnly = true)
-    public BootstrapZFBMatchAttribute getHOSTNAME() {
-        return HOSTNAME;
+    @VsoProperty(displayName = "MAC_ADDRESS", readOnly = true)
+    public BootstrapZFBMatchAttribute getMAC_ADDRESS() {
+        return MAC_ADDRESS;
+    }
+    
+    @VsoProperty(displayName = "NONE", readOnly = true)
+    public BootstrapZFBMatchAttribute getNONE() {
+        return NONE;
     }
     
     @VsoProperty(displayName = "NSGATEWAY_ID", readOnly = true)

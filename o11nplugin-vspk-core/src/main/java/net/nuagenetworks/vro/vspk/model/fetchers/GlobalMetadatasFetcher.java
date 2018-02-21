@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.Alarm;
 
 import net.nuagenetworks.vro.vspk.model.AllAlarm;
 
+import net.nuagenetworks.vro.vspk.model.Application;
+
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.Avatar;
@@ -433,6 +435,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof AllAlarm) {
             return (AllAlarm) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Application", readOnly = true)
+    public Application getApplication() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Application) {
+            return (Application) obj;
         }
         
         return null;

@@ -75,8 +75,17 @@ public class Destinationurl extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "packetCount")
+    protected Long packetCount;
+    
     @JsonProperty(value = "percentageWeight")
     protected Long percentageWeight;
+    
+    @JsonProperty(value = "probeInterval")
+    protected Long probeInterval;
+    
+    @JsonProperty(value = "timeout")
+    protected Long timeout;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -198,6 +207,17 @@ public class Destinationurl extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PacketCount", readOnly = false)   
+    public Long getPacketCount() {
+       return packetCount;
+    }
+
+    @JsonIgnore
+    public void setPacketCount(Long value) { 
+        this.packetCount = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PercentageWeight", readOnly = false)   
     public Long getPercentageWeight() {
        return percentageWeight;
@@ -206,6 +226,28 @@ public class Destinationurl extends BaseObject {
     @JsonIgnore
     public void setPercentageWeight(Long value) { 
         this.percentageWeight = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ProbeInterval", readOnly = false)   
+    public Long getProbeInterval() {
+       return probeInterval;
+    }
+
+    @JsonIgnore
+    public void setProbeInterval(Long value) { 
+        this.probeInterval = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Timeout", readOnly = false)   
+    public Long getTimeout() {
+       return timeout;
+    }
+
+    @JsonIgnore
+    public void setTimeout(Long value) { 
+        this.timeout = value;
     }
     
     @JsonIgnore
@@ -265,7 +307,7 @@ public class Destinationurl extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Destinationurl [" + "HTTPMethod=" + HTTPMethod + ", URL=" + URL + ", downThresholdCount=" + downThresholdCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", percentageWeight=" + percentageWeight + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Destinationurl [" + "HTTPMethod=" + HTTPMethod + ", URL=" + URL + ", downThresholdCount=" + downThresholdCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", packetCount=" + packetCount + ", percentageWeight=" + percentageWeight + ", probeInterval=" + probeInterval + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

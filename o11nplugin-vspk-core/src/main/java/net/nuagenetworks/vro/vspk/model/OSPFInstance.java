@@ -92,6 +92,9 @@ public class OSPFInstance extends BaseObject {
     @JsonProperty(value = "preference")
     protected Long preference;
     
+    @JsonProperty(value = "superBackboneEnabled")
+    protected Boolean superBackboneEnabled;
+    
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
@@ -267,6 +270,17 @@ public class OSPFInstance extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SuperBackboneEnabled", readOnly = false)   
+    public Boolean getSuperBackboneEnabled() {
+       return superBackboneEnabled;
+    }
+
+    @JsonIgnore
+    public void setSuperBackboneEnabled(Boolean value) { 
+        this.superBackboneEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -337,7 +351,7 @@ public class OSPFInstance extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.OSPFAREAS_FETCHER, getId());
         }
     }public String toString() {
-        return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", exportLimit=" + exportLimit + ", exportToOverlay=" + exportToOverlay + ", externalID=" + externalID + ", externalPreference=" + externalPreference + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", preference=" + preference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", exportLimit=" + exportLimit + ", exportToOverlay=" + exportToOverlay + ", externalID=" + externalID + ", externalPreference=" + externalPreference + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", preference=" + preference + ", superBackboneEnabled=" + superBackboneEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

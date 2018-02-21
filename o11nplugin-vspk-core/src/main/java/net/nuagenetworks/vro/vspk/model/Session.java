@@ -353,6 +353,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.DEFAULTGATEWAY_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.DEFAULTGATEWAYS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.DEMARCATIONSERVICE_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.DEMARCATIONSERVICES_FETCHER, entityParentId);
             return;
@@ -840,6 +845,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.NSGINFO_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.NSGINFOS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.NSGPATCHPROFILE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.NSGPATCHPROFILES_FETCHER, entityParentId);
             return;
         }
         
@@ -1527,6 +1537,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.DEFAULTGATEWAY_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.DEFAULTGATEWAY, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.DEMARCATIONSERVICE_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.DEMARCATIONSERVICE, entityId);
             return;
@@ -2014,6 +2029,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.NSGINFO_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.NSGINFO, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.NSGPATCHPROFILE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.NSGPATCHPROFILE, entityId);
             return;
         }
         
@@ -2701,6 +2721,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.DEFAULTGATEWAY_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.DEFAULTGATEWAY, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.DEMARCATIONSERVICE_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.DEMARCATIONSERVICE, entityId);
             return;
@@ -3188,6 +3213,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.NSGINFO_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.NSGINFO, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.NSGPATCHPROFILE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.NSGPATCHPROFILE, entityId);
             return;
         }
         

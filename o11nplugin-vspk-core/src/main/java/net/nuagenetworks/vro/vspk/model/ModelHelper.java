@@ -594,6 +594,34 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForApplicationId(String id) throws RestException {
+        Application obj = getObject(Constants.APPLICATION, id);
+        if (obj == null) {
+            obj = getApplicationById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForApplicationId(String id) throws RestException {
+        Application obj = getObject(Constants.APPLICATION, id);
+        if (obj == null) {
+            obj = getApplicationById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static MonitorscopesFetcher getMonitorscopesFetcherForApplicationId(String id) throws RestException {
         Application obj = getObject(Constants.APPLICATION, id);
         if (obj == null) {
@@ -3396,6 +3424,59 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<CustomPropertiesFetcher> getAllCustomPropertiesFetchers() throws RestException {
         java.util.List<CustomPropertiesFetcher> allObjs = new ArrayList<CustomPropertiesFetcher>();
+        return allObjs;
+    }
+    public static DefaultGateway getDefaultGatewayById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            DefaultGateway obj = null;
+            obj = new DefaultGateway();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.DEFAULTGATEWAY, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<DefaultGateway> getDefaultGatewaysForFetcherId(String id) throws RestException {
+        DefaultGatewaysFetcher fetcher = getDefaultGatewaysFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.DEFAULTGATEWAY);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<DefaultGateway>();
+    }
+
+    public static DefaultGatewaysFetcher getDefaultGatewaysFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.DEFAULTGATEWAYS_FETCHER, id);
+        if (fetcher != null) {
+            return (DefaultGatewaysFetcher) fetcher;
+        }
+        if ((fetcher = getDefaultGatewaysFetcherForSubnetId(id)) != null) {
+            return (DefaultGatewaysFetcher) addFetcher(Constants.DEFAULTGATEWAYS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<DefaultGateway> getAllDefaultGateways() throws RestException {
+        java.util.List<DefaultGateway> allObjs = new ArrayList<DefaultGateway>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<DefaultGatewaysFetcher> getAllDefaultGatewaysFetchers() throws RestException {
+        java.util.List<DefaultGatewaysFetcher> allObjs = new ArrayList<DefaultGatewaysFetcher>();
         return allObjs;
     }
     public static DemarcationService getDemarcationServiceById(String id) {
@@ -8982,6 +9063,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getGlobalMetadatasFetcherForAllAlarmId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForApplicationId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
@@ -15343,6 +15428,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static NSGPatchProfilesFetcher getNSGPatchProfilesFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            NSGPatchProfilesFetcher fetcher = obj.getNSGPatchProfiles();
+            return addFetcher(Constants.NSGPATCHPROFILES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static NSRedundantGatewayGroupsFetcher getNSRedundantGatewayGroupsFetcherForMeId(String id) throws RestException {
         Me obj = getObject(Constants.ME, id);
         if (obj == null) {
@@ -15928,6 +16027,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForAllAlarmId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForApplicationId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -18418,6 +18521,65 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<NSGInfosFetcher> getAllNSGInfosFetchers() throws RestException {
         java.util.List<NSGInfosFetcher> allObjs = new ArrayList<NSGInfosFetcher>();
+        return allObjs;
+    }
+    public static NSGPatchProfile getNSGPatchProfileById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            NSGPatchProfile obj = null;
+            obj = new NSGPatchProfile();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.NSGPATCHPROFILE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<NSGPatchProfile> getNSGPatchProfilesForFetcherId(String id) throws RestException {
+        NSGPatchProfilesFetcher fetcher = getNSGPatchProfilesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.NSGPATCHPROFILE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<NSGPatchProfile>();
+    }
+
+    public static NSGPatchProfilesFetcher getNSGPatchProfilesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.NSGPATCHPROFILES_FETCHER, id);
+        if (fetcher != null) {
+            return (NSGPatchProfilesFetcher) fetcher;
+        }
+        if ((fetcher = getNSGPatchProfilesFetcherForMeId(id)) != null) {
+            return (NSGPatchProfilesFetcher) addFetcher(Constants.NSGPATCHPROFILES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<NSGPatchProfile> getAllNSGPatchProfiles() throws RestException {
+        java.util.List<NSGPatchProfile> allObjs = new ArrayList<NSGPatchProfile>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            NSGPatchProfilesFetcher fetcher = getNSGPatchProfilesFetcherForMeId(session.getId());
+            java.util.List<NSGPatchProfile> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<NSGPatchProfilesFetcher> getAllNSGPatchProfilesFetchers() throws RestException {
+        java.util.List<NSGPatchProfilesFetcher> allObjs = new ArrayList<NSGPatchProfilesFetcher>();
         return allObjs;
     }
     public static NSRedundantGatewayGroup getNSRedundantGatewayGroupById(String id) {
@@ -23777,6 +23939,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             ContainerResyncsFetcher fetcher = obj.getContainerResyncs();
             return addFetcher(Constants.CONTAINERRESYNCS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static DefaultGatewaysFetcher getDefaultGatewaysFetcherForSubnetId(String id) throws RestException {
+        Subnet obj = getObject(Constants.SUBNET, id);
+        if (obj == null) {
+            obj = getSubnetById(id);
+        }
+
+        if (obj != null) {
+            DefaultGatewaysFetcher fetcher = obj.getDefaultGateways();
+            return addFetcher(Constants.DEFAULTGATEWAYS_FETCHER, fetcher);
         }
 
         return null;

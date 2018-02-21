@@ -66,6 +66,8 @@ import net.nuagenetworks.vro.vspk.model.enums.ZoneEncryption;
 
 import net.nuagenetworks.vro.vspk.model.enums.ZoneEntityScope;
 
+import net.nuagenetworks.vro.vspk.model.enums.ZoneFlowCollectionEnabled;
+
 import net.nuagenetworks.vro.vspk.model.enums.ZoneMaintenanceMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.ZoneMulticast;
@@ -134,6 +136,9 @@ public class Zone extends BaseObject {
     
     @JsonProperty(value = "externalID")
     protected String externalID;
+    
+    @JsonProperty(value = "flowCollectionEnabled")
+    protected ZoneFlowCollectionEnabled flowCollectionEnabled;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -392,6 +397,17 @@ public class Zone extends BaseObject {
     @JsonIgnore
     public void setExternalID(String value) { 
         this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FlowCollectionEnabled", readOnly = false)   
+    public ZoneFlowCollectionEnabled getFlowCollectionEnabled() {
+       return flowCollectionEnabled;
+    }
+
+    @JsonIgnore
+    public void setFlowCollectionEnabled(ZoneFlowCollectionEnabled value) { 
+        this.flowCollectionEnabled = value;
     }
     
     @JsonIgnore
@@ -700,7 +716,7 @@ public class Zone extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.TCAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

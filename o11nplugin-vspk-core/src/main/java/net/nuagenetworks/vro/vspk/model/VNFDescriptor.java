@@ -27,6 +27,8 @@
 
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFInterfaceDescriptorsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.enums.VNFDescriptorType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -71,6 +73,9 @@ public class VNFDescriptor extends BaseObject {
     
     @JsonProperty(value = "storageGB")
     protected Long storageGB;
+    
+    @JsonProperty(value = "type")
+    protected VNFDescriptorType type;
     
     @JsonProperty(value = "vendor")
     protected String vendor;
@@ -199,6 +204,17 @@ public class VNFDescriptor extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Type", readOnly = false)   
+    public VNFDescriptorType getType() {
+       return type;
+    }
+
+    @JsonIgnore
+    public void setType(VNFDescriptorType value) { 
+        this.type = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Vendor", readOnly = false)   
     public String getVendor() {
        return vendor;
@@ -254,7 +270,7 @@ public class VNFDescriptor extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VNFINTERFACEDESCRIPTORS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNFDescriptor [" + "CPUCount=" + CPUCount + ", associatedVNFThresholdPolicyID=" + associatedVNFThresholdPolicyID + ", description=" + description + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", storageGB=" + storageGB + ", vendor=" + vendor + ", visible=" + visible + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNFDescriptor [" + "CPUCount=" + CPUCount + ", associatedVNFThresholdPolicyID=" + associatedVNFThresholdPolicyID + ", description=" + description + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", storageGB=" + storageGB + ", type=" + type + ", vendor=" + vendor + ", visible=" + visible + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

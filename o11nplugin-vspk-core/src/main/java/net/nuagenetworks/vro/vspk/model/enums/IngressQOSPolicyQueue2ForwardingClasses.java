@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum IngressQOSPolicyQueue2ForwardingClasses {
 
-    NONE("NONE", "NONE"), A("A", "A"), B("B", "B"), C("C", "C"), D("D", "D"), E("E", "E"), F("F", "F"), G("G", "G"), H("H", "H");
+    A("A", "A"), B("B", "B"), C("C", "C"), D("D", "D"), E("E", "E"), F("F", "F"), G("G", "G"), H("H", "H"), NONE("NONE", "NONE");
 
     private final String id;
     private final String name;
@@ -57,11 +57,6 @@ public enum IngressQOSPolicyQueue2ForwardingClasses {
         return name;
     }
 
-    
-    @VsoProperty(displayName = "NONE", readOnly = true)
-    public IngressQOSPolicyQueue2ForwardingClasses getNONE() {
-        return NONE;
-    }
     
     @VsoProperty(displayName = "A", readOnly = true)
     public IngressQOSPolicyQueue2ForwardingClasses getA() {
@@ -101,6 +96,11 @@ public enum IngressQOSPolicyQueue2ForwardingClasses {
     @VsoProperty(displayName = "H", readOnly = true)
     public IngressQOSPolicyQueue2ForwardingClasses getH() {
         return H;
+    }
+    
+    @VsoProperty(displayName = "NONE", readOnly = true)
+    public IngressQOSPolicyQueue2ForwardingClasses getNONE() {
+        return NONE;
     }
     
 

@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (description) {
 } else if (applicationObj.description) {
    applicationObj.description = "";
 }
+if (externalID) {
+   applicationObj.externalID = externalID;
+} else if (applicationObj.externalID) {
+   applicationObj.externalID = "";
+}
 if (name) {
    applicationObj.name = name;
 } else if (applicationObj.name) {
@@ -33,6 +41,8 @@ applicationObj.save(session, 1);]]></script>
 <in-binding><bind name='applicationObj' type='VSPK:Application' export-name="applicationObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ applicationObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#applicationObj.name]]></p-qual></p-param>
