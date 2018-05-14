@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a5f1a76d-da01-585b-b758-7975f8d0b953"  version="5.2.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a5f1a76d-da01-585b-b758-7975f8d0b953"  version="5.3.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Find DomainTemplate in Enterprise]]></display-name>
 <ref-types><![CDATA[(VSPK:Enterprise)]]></ref-types>
 <position x='100.0' y='50.0'/>
