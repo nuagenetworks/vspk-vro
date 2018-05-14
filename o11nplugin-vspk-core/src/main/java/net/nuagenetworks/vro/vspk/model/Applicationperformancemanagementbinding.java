@@ -25,7 +25,13 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package net.nuagenetworks.vro.vspk.model;import net.nuagenetworks.bambou.RestException;
+package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.enums.ApplicationperformancemanagementbindingEntityScope;
+import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
@@ -38,7 +44,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING, datasource = Constants.DATASOURCE, image = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING, datasource = Constants.DATASOURCE, image = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "applicationperformancemanagementbinding", resourceName = "applicationperformancemanagementbindings")
@@ -50,14 +58,33 @@ public class Applicationperformancemanagementbinding extends BaseObject {
     @JsonProperty(value = "associatedApplicationPerformanceManagementID")
     protected String associatedApplicationPerformanceManagementID;
     
+    @JsonProperty(value = "entityScope")
+    protected ApplicationperformancemanagementbindingEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
+    
     @JsonProperty(value = "priority")
     protected Long priority;
     
     @JsonProperty(value = "readOnly")
     protected Boolean readOnly;
     
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
+    
     @VsoConstructor
-    public Applicationperformancemanagementbinding() {}
+    public Applicationperformancemanagementbinding() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -111,6 +138,39 @@ public class Applicationperformancemanagementbinding extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public ApplicationperformancemanagementbindingEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(ApplicationperformancemanagementbindingEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Priority", readOnly = false)   
     public Long getPriority() {
        return priority;
@@ -130,6 +190,18 @@ public class Applicationperformancemanagementbinding extends BaseObject {
     @JsonIgnore
     public void setReadOnly(Boolean value) { 
         this.readOnly = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -151,8 +223,33 @@ public class Applicationperformancemanagementbinding extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING, getId());
         }
+    }
+    @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
     }public String toString() {
-        return "Applicationperformancemanagementbinding [" + "associatedApplicationPerformanceManagementID=" + associatedApplicationPerformanceManagementID + ", priority=" + priority + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Applicationperformancemanagementbinding [" + "associatedApplicationPerformanceManagementID=" + associatedApplicationPerformanceManagementID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

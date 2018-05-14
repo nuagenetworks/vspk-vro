@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7e0bfa24-91e8-5d90-ab7f-3cf17482659b"  version="5.2.2.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7e0bfa24-91e8-5d90-ab7f-3cf17482659b"  version="5.2.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit IngressAdvFwdEntryTemplate]]></display-name>
 <ref-types><![CDATA[(VSPK:IngressAdvFwdEntryTemplate)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -34,6 +34,9 @@
 </param>
 
 <param name='protocol' type='string' >
+</param>
+
+<param name='redirectVPortTagID' type='string' >
 </param>
 
 <param name='sourcePort' type='string' >
@@ -84,6 +87,11 @@ if (protocol) {
 } else if (ingressAdvFwdEntryTemplateObj.protocol) {
    ingressAdvFwdEntryTemplateObj.protocol = "";
 }
+if (redirectVPortTagID) {
+   ingressAdvFwdEntryTemplateObj.redirectVPortTagID = redirectVPortTagID;
+} else if (ingressAdvFwdEntryTemplateObj.redirectVPortTagID) {
+   ingressAdvFwdEntryTemplateObj.redirectVPortTagID = "";
+}
 if (sourcePort) {
    ingressAdvFwdEntryTemplateObj.sourcePort = sourcePort;
 } else if (ingressAdvFwdEntryTemplateObj.sourcePort) {
@@ -111,6 +119,8 @@ ingressAdvFwdEntryTemplateObj.save(session, 1);]]></script>
 <bind name='networkType' type='VSPK:IngressAdvFwdEntryTemplateNetworkType' export-name="networkType" ></bind>
 
 <bind name='protocol' type='string' export-name="protocol" ></bind>
+
+<bind name='redirectVPortTagID' type='string' export-name="redirectVPortTagID" ></bind>
 
 <bind name='sourcePort' type='string' export-name="sourcePort" ></bind>
 
@@ -149,6 +159,9 @@ ingressAdvFwdEntryTemplateObj.save(session, 1);]]></script>
 
 <p-param name="protocol"><desc><![CDATA[protocol]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.protocol]]></p-qual></p-param>
+
+<p-param name="redirectVPortTagID"><desc><![CDATA[redirectVPortTagID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.redirectVPortTagID]]></p-qual></p-param>
 
 <p-param name="sourcePort"><desc><![CDATA[sourcePort]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.sourcePort]]></p-qual></p-param>

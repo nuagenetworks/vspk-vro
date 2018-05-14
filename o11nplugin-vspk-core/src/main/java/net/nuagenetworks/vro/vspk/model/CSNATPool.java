@@ -54,6 +54,9 @@ public class CSNATPool extends BaseObject {
     @JsonProperty(value = "endAddress")
     protected String endAddress;
     
+    @JsonProperty(value = "name")
+    protected String name;
+    
     @JsonProperty(value = "startAddress")
     protected String startAddress;
     
@@ -68,12 +71,7 @@ public class CSNATPool extends BaseObject {
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
         return (Session) super.getSession();
-    }
-    @VsoProperty(displayName = "Name", readOnly = false)
-    public String getName() {
-        return getId();
-    }
-    @VsoProperty(displayName = "RestName", readOnly = true)
+    }@VsoProperty(displayName = "RestName", readOnly = true)
     public String getRestName() {
         return super.getRestName();
     }
@@ -114,6 +112,17 @@ public class CSNATPool extends BaseObject {
     @JsonIgnore
     public void setEndAddress(String value) { 
         this.endAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Name", readOnly = false)   
+    public String getName() {
+       return name;
+    }
+
+    @JsonIgnore
+    public void setName(String value) { 
+        this.name = value;
     }
     
     @JsonIgnore
@@ -161,7 +170,7 @@ public class CSNATPool extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.CTRANSLATIONMAPS_FETCHER, getId());
         }
     }public String toString() {
-        return "CSNATPool [" + "endAddress=" + endAddress + ", startAddress=" + startAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "CSNATPool [" + "endAddress=" + endAddress + ", name=" + name + ", startAddress=" + startAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

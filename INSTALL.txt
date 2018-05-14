@@ -17,7 +17,7 @@ the previous version of the plug-in. Here are the steps to achieve this:
 Installation steps:
 ===================
 
-1. Install VSPK plug-in for vRO 7.0.x:
+1. Install VSPK plug-in for vRO 7.x:
 
    a. In a web browser, go to the IP address of your Orchestrator Appliance virtual machine: http://orchestrator_appliance_ip
    b. Click the "Orchestrator Control Center" link
@@ -25,8 +25,8 @@ Installation steps:
    d. Click the "Manage Plug-Ins" icon
    e. Click the "Browse..." button
    f. Select the plug-in installer file to install:
-       i) For a VSD 3.2.x compatible plug-in, use o11nplugin-3.2.x.vmoapp
-      ii) For a VSD 4.0.x compatible plug-in, use o11nplugin-4.0.x.vmoapp
+       i) For a VSD 4.0.x compatible plug-in, use o11nplugin-4.0.x.vmoapp
+      ii) For a VSD 5.x.y compatible plug-in, use o11nplugin-5.x.y.vmoapp
    g. Click "Open"
    h. Put a check mark beside "Accept EULA"
    i. Click the "Install" button. The plug-in version information should be displayed
@@ -45,9 +45,21 @@ Installation steps:
 3. Verify that VSPK plug-in is properly installed in vRO:
 
    a. In the Orchestrator Client main window, select Help->Installed plug-ins...
-   b. Check that VSPK (version 3.2.x, 4.0.x or 5.0.x) shows up in the list of installed plug-ins
+   b. Check that VSPK (version 3.2.x, 4.0.x or 5.x.y) shows up in the list of installed plug-ins
 
-4. Create a session to a VSD:
+4. Install the package:
+
+   a. In the Orchestrator Client main window, click the "Packages" icon
+   b. Click the "Import Package..." icon
+   c. Select the package file (o11nplugin-vspk-package-x.y.z.package)
+   d. Click "Open"
+
+5. Verify package installation:
+
+   a. In the Orchestrator Client main window, click the "Workflows" icon
+   b. Verify that the /Library/VSPK/Basic folder exists and contains sub-folders and workflows
+
+6. Create a session to a VSD:
 
    a. In the Orchestrator Client main window, click the "Workflows" icon
    b. Expand the following folders: Library->VSPK->Basic->Session
@@ -61,7 +73,7 @@ Installation steps:
    f. Click the "Submit" button
    e. Ensure that the workflow executed successfully, otherwise correct errors and click "Submit" again
 
-5. Verify that the newly created session is available in the VSPK plug-in's Inventory:
+7. Verify that the newly created session is available in the VSPK plug-in's Inventory:
 
    a. In the Orchestrator Client main window, click the "Inventory" icon
    b. Expand the VSPK plug-in folder
@@ -69,7 +81,7 @@ Installation steps:
    d. Expand the VSD URL
    e. Expand the "Enterprises" folder. Make sure the enterprises listed below are the same as in the VSD GUI.
 
-6. Create a new Enterprise:
+8. Create a new Enterprise:
 
    a. In the VSPK plug-in Inventory, right click on the "Me" folder
    b. Select "Run Workflow..." from the context menu 
@@ -79,7 +91,7 @@ Installation steps:
    e. Click the "Submit" button
    f. Verify that the newly created enterprise shows up in both VSPK plug-in's Inventory, under the "Enterprises" folder, as well as in the VSD GUI
 
-7. Delete the newly created Enterprise:
+9. Delete the newly created Enterprise:
 
    a. In the VSPK plug-in Inventory, right click on the newly created enterprise node
    b. Select "Run Workflow..." from the context menu 
@@ -109,4 +121,4 @@ Support information:
 ====================
 
 For support and feature requests, please contact:
-nuage-vro-plugin-support@alcatel-lucent.com
+nuage-vro-plugin-support@list.nokia.com

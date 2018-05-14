@@ -518,6 +518,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.FORWARDINGPATHLIST_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.FORWARDINGPATHLISTS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.FORWARDINGPATHLISTENTRY_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.FORWARDINGPATHLISTENTRIES_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.GATEWAY_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.GATEWAYS_FETCHER, entityParentId);
             return;
@@ -1702,6 +1712,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.FORWARDINGPATHLIST_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.FORWARDINGPATHLIST, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.FORWARDINGPATHLISTENTRY_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.FORWARDINGPATHLISTENTRY, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.GATEWAY_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.GATEWAY, entityId);
             return;
@@ -2883,6 +2903,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.FLOATINGIP_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.FLOATINGIP, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.FORWARDINGPATHLIST_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.FORWARDINGPATHLIST, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.FORWARDINGPATHLISTENTRY_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.FORWARDINGPATHLISTENTRY, entityId);
             return;
         }
         

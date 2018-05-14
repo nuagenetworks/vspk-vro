@@ -30,8 +30,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.PolicyGroupTemplateEntityScope;
@@ -92,9 +90,6 @@ public class PolicyGroupTemplate extends BaseObject {
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
-    private JobsFetcher jobs;
-    
-    @JsonIgnore
     private MetadatasFetcher metadatas;
     
     @VsoConstructor
@@ -104,8 +99,6 @@ public class PolicyGroupTemplate extends BaseObject {
         eventLogs = new EventLogsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
-        
-        jobs = new JobsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         }
@@ -246,12 +239,6 @@ public class PolicyGroupTemplate extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Jobs", readOnly = true)   
-    public JobsFetcher getJobs() {
-        return jobs;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
@@ -292,14 +279,6 @@ public class PolicyGroupTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
         }
     }
     @VsoMethod

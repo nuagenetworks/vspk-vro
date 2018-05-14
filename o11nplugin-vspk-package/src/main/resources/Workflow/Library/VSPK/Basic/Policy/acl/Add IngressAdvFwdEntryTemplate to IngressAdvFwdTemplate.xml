@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d72cdac9-6e76-5ecf-a5c3-6801dad971fe"  version="5.2.2.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d72cdac9-6e76-5ecf-a5c3-6801dad971fe"  version="5.2.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add IngressAdvFwdEntryTemplate to IngressAdvFwdTemplate]]></display-name>
 <ref-types><![CDATA[(VSPK:IngressAdvFwdTemplate)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -24,6 +24,8 @@
 <param name='networkType' type='VSPK:IngressAdvFwdEntryTemplateNetworkType' >
 </param>
 <param name='protocol' type='string' >
+</param>
+<param name='redirectVPortTagID' type='string' >
 </param>
 <param name='sourcePort' type='string' >
 </param>
@@ -61,6 +63,9 @@ ingressAdvFwdEntryTemplateObj.networkType = networkType;
 if (protocol) {
    ingressAdvFwdEntryTemplateObj.protocol = protocol;
 }
+if (redirectVPortTagID) {
+   ingressAdvFwdEntryTemplateObj.redirectVPortTagID = redirectVPortTagID;
+}
 if (sourcePort) {
    ingressAdvFwdEntryTemplateObj.sourcePort = sourcePort;
 }
@@ -78,6 +83,7 @@ ingressAdvFwdTemplateObj.createIngressAdvFwdEntryTemplate(session, ingressAdvFwd
 <bind name='name' type='string' export-name="name" ></bind>
 <bind name='networkType' type='VSPK:IngressAdvFwdEntryTemplateNetworkType' export-name="networkType" ></bind>
 <bind name='protocol' type='string' export-name="protocol" ></bind>
+<bind name='redirectVPortTagID' type='string' export-name="redirectVPortTagID" ></bind>
 <bind name='sourcePort' type='string' export-name="sourcePort" ></bind>
 </in-binding><out-binding><bind name='ingressAdvFwdEntryTemplateObj' type='VSPK:IngressAdvFwdEntryTemplate' export-name="ingressAdvFwdEntryTemplateObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -104,6 +110,8 @@ ingressAdvFwdTemplateObj.createIngressAdvFwdEntryTemplate(session, ingressAdvFwd
 <p-param name="networkType"><desc><![CDATA[networkType]]></desc>
 </p-param>
 <p-param name="protocol"><desc><![CDATA[protocol]]></desc>
+</p-param>
+<p-param name="redirectVPortTagID"><desc><![CDATA[redirectVPortTagID]]></desc>
 </p-param>
 <p-param name="sourcePort"><desc><![CDATA[sourcePort]]></desc>
 </p-param>

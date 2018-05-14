@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d3f6ac69-a164-55f5-8e73-94d980ac97b3"  version="5.2.2.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d3f6ac69-a164-55f5-8e73-94d980ac97b3"  version="5.2.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add PSNATPool to Link]]></display-name>
 <ref-types><![CDATA[(VSPK:Link)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='linkObj' type='VSPK:Link' >
 </param>
 <param name='endAddress' type='string' >
+</param>
+<param name='name' type='string' >
 </param>
 <param name='startAddress' type='string' >
 </param>
@@ -22,6 +24,9 @@ pSNATPoolObj = new VSPKPSNATPool();
 if (endAddress) {
    pSNATPoolObj.endAddress = endAddress;
 }
+if (name) {
+   pSNATPoolObj.name = name;
+}
 if (startAddress) {
    pSNATPoolObj.startAddress = startAddress;
 }
@@ -30,6 +35,7 @@ linkObj.createPSNATPool(session, pSNATPoolObj);
 ]]></script>
 <in-binding><bind name='linkObj' type='VSPK:Link' export-name="linkObj" ></bind>
 <bind name='endAddress' type='string' export-name="endAddress" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
 <bind name='startAddress' type='string' export-name="startAddress" ></bind>
 </in-binding><out-binding><bind name='pSNATPoolObj' type='VSPK:PSNATPool' export-name="pSNATPoolObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -38,6 +44,8 @@ linkObj.createPSNATPool(session, pSNATPoolObj);
 <p-param name="linkObj"><desc><![CDATA[linkObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="endAddress"><desc><![CDATA[endAddress]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>
 <p-param name="startAddress"><desc><![CDATA[startAddress]]></desc>
 </p-param>

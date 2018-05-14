@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ef0e2bb9-a31a-59b1-b1fe-0b71d4b6063a"  version="5.2.2.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ef0e2bb9-a31a-59b1-b1fe-0b71d4b6063a"  version="5.2.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit VNF]]></display-name>
 <ref-types><![CDATA[(VSPK:VNF)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -7,9 +7,6 @@
 </param>
 
 <param name='NSGatewayID' type='string' >
-</param>
-
-<param name='VNFDescriptorID' type='string' >
 </param>
 
 <param name='description' type='string' >
@@ -30,11 +27,6 @@ if (NSGatewayID) {
 } else if (vNFObj.NSGatewayID) {
    vNFObj.NSGatewayID = "";
 }
-if (VNFDescriptorID) {
-   vNFObj.VNFDescriptorID = VNFDescriptorID;
-} else if (vNFObj.VNFDescriptorID) {
-   vNFObj.VNFDescriptorID = "";
-}
 if (description) {
    vNFObj.description = description;
 } else if (vNFObj.description) {
@@ -50,8 +42,6 @@ vNFObj.save(session, 1);]]></script>
 
 <bind name='NSGatewayID' type='string' export-name="NSGatewayID" ></bind>
 
-<bind name='VNFDescriptorID' type='string' export-name="VNFDescriptorID" ></bind>
-
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
@@ -64,9 +54,6 @@ vNFObj.save(session, 1);]]></script>
 
 <p-param name="NSGatewayID"><desc><![CDATA[NSGatewayID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFObj.NSGatewayID]]></p-qual></p-param>
-
-<p-param name="VNFDescriptorID"><desc><![CDATA[VNFDescriptorID]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFObj.VNFDescriptorID]]></p-qual></p-param>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFObj.description]]></p-qual></p-param>

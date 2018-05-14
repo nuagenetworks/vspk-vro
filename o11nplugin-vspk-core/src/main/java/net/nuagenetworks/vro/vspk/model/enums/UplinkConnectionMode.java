@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum UplinkConnectionMode {
 
-    Dynamic("Dynamic", "Dynamic"), LTE("LTE", "LTE"), PPPoE("PPPoE", "PPPoE"), Static("Static", "Static");
+    Any("Any", "Any"), Dynamic("Dynamic", "Dynamic"), LTE("LTE", "LTE"), PPPoE("PPPoE", "PPPoE"), Static("Static", "Static");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum UplinkConnectionMode {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "Any", readOnly = true)
+    public UplinkConnectionMode getAny() {
+        return Any;
+    }
     
     @VsoProperty(displayName = "Dynamic", readOnly = true)
     public UplinkConnectionMode getDynamic() {

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VirtualFirewallRuleAction {
 
-    DROP("DROP", "DROP"), FORWARD("FORWARD", "FORWARD"), REDIRECT("REDIRECT", "REDIRECT");
+    DROP("DROP", "DROP"), FORWARD("FORWARD", "FORWARD");
 
     private final String id;
     private final String name;
@@ -66,11 +66,6 @@ public enum VirtualFirewallRuleAction {
     @VsoProperty(displayName = "FORWARD", readOnly = true)
     public VirtualFirewallRuleAction getFORWARD() {
         return FORWARD;
-    }
-    
-    @VsoProperty(displayName = "REDIRECT", readOnly = true)
-    public VirtualFirewallRuleAction getREDIRECT() {
-        return REDIRECT;
     }
     
 

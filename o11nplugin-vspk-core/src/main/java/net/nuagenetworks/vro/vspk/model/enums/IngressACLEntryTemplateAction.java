@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum IngressACLEntryTemplateAction {
 
-    DROP("DROP", "DROP"), FORWARD("FORWARD", "FORWARD"), REDIRECT("REDIRECT", "REDIRECT");
+    DROP("DROP", "DROP"), FORWARD("FORWARD", "FORWARD");
 
     private final String id;
     private final String name;
@@ -66,11 +66,6 @@ public enum IngressACLEntryTemplateAction {
     @VsoProperty(displayName = "FORWARD", readOnly = true)
     public IngressACLEntryTemplateAction getFORWARD() {
         return FORWARD;
-    }
-    
-    @VsoProperty(displayName = "REDIRECT", readOnly = true)
-    public IngressACLEntryTemplateAction getREDIRECT() {
-        return REDIRECT;
     }
     
 

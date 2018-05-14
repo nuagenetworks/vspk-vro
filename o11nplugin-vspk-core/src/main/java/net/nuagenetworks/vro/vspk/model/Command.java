@@ -67,6 +67,9 @@ public class Command extends BaseObject {
     @JsonProperty(value = "commandInformation")
     protected String commandInformation;
     
+    @JsonProperty(value = "detail")
+    protected String detail;
+    
     @JsonProperty(value = "detailedStatus")
     protected String detailedStatus;
     
@@ -179,6 +182,17 @@ public class Command extends BaseObject {
     @JsonIgnore
     public void setCommandInformation(String value) { 
         this.commandInformation = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Detail", readOnly = false)   
+    public String getDetail() {
+       return detail;
+    }
+
+    @JsonIgnore
+    public void setDetail(String value) { 
+        this.detail = value;
     }
     
     @JsonIgnore
@@ -300,7 +314,7 @@ public class Command extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.COMMAND, getId());
         }
     }public String toString() {
-        return "Command [" + "associatedParam=" + associatedParam + ", associatedParamType=" + associatedParamType + ", command=" + command + ", commandInformation=" + commandInformation + ", detailedStatus=" + detailedStatus + ", detailedStatusCode=" + detailedStatusCode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fullCommand=" + fullCommand + ", lastUpdatedBy=" + lastUpdatedBy + ", override=" + override + ", status=" + status + ", summary=" + summary + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Command [" + "associatedParam=" + associatedParam + ", associatedParamType=" + associatedParamType + ", command=" + command + ", commandInformation=" + commandInformation + ", detail=" + detail + ", detailedStatus=" + detailedStatus + ", detailedStatusCode=" + detailedStatusCode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fullCommand=" + fullCommand + ", lastUpdatedBy=" + lastUpdatedBy + ", override=" + override + ", status=" + status + ", summary=" + summary + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

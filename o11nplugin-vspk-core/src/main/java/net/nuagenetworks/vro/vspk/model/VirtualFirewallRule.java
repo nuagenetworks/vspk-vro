@@ -28,8 +28,6 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
@@ -150,6 +148,9 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonProperty(value = "sourcePort")
     protected String sourcePort;
     
+    @JsonProperty(value = "stateful")
+    protected Boolean stateful;
+    
     @JsonProperty(value = "statsID")
     protected String statsID;
     
@@ -160,9 +161,6 @@ public class VirtualFirewallRule extends BaseObject {
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
-    private JobsFetcher jobs;
-    
-    @JsonIgnore
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
@@ -171,8 +169,6 @@ public class VirtualFirewallRule extends BaseObject {
     @VsoConstructor
     public VirtualFirewallRule() {
         globalMetadatas = new GlobalMetadatasFetcher(this);
-        
-        jobs = new JobsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         
@@ -517,6 +513,17 @@ public class VirtualFirewallRule extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Stateful", readOnly = false)   
+    public Boolean getStateful() {
+       return stateful;
+    }
+
+    @JsonIgnore
+    public void setStateful(Boolean value) { 
+        this.stateful = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "StatsID", readOnly = false)   
     public String getStatsID() {
        return statsID;
@@ -542,12 +549,6 @@ public class VirtualFirewallRule extends BaseObject {
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Jobs", readOnly = true)   
-    public JobsFetcher getJobs() {
-        return jobs;
     }
     
     @JsonIgnore
@@ -600,14 +601,6 @@ public class VirtualFirewallRule extends BaseObject {
         }
     }
     @VsoMethod
-    public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -615,7 +608,7 @@ public class VirtualFirewallRule extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VirtualFirewallRule [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", action=" + action + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", overlayMirrorDestinationID=" + overlayMirrorDestinationID + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VirtualFirewallRule [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", action=" + action + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", overlayMirrorDestinationID=" + overlayMirrorDestinationID + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum GroupManagementMode {
 
-    RESERVED("RESERVED", "RESERVED"), CMS("CMS", "CMS"), DEFAULT("DEFAULT", "DEFAULT");
+    CMS("CMS", "CMS"), DEFAULT("DEFAULT", "DEFAULT"), RESERVED("RESERVED", "RESERVED");
 
     private final String id;
     private final String name;
@@ -57,11 +57,6 @@ public enum GroupManagementMode {
         return name;
     }
 
-    @VsoProperty(displayName = "RESERVED", readOnly = true)
-    public GroupManagementMode getRESERVED() {
-        return RESERVED;
-    }
-    
     
     @VsoProperty(displayName = "CMS", readOnly = true)
     public GroupManagementMode getCMS() {
@@ -71,6 +66,11 @@ public enum GroupManagementMode {
     @VsoProperty(displayName = "DEFAULT", readOnly = true)
     public GroupManagementMode getDEFAULT() {
         return DEFAULT;
+    }
+    
+    @VsoProperty(displayName = "RESERVED", readOnly = true)
+    public GroupManagementMode getRESERVED() {
+        return RESERVED;
     }
     
 

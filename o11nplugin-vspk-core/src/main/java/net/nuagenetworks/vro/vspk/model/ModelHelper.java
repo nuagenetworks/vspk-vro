@@ -692,7 +692,35 @@ public class ModelHelper extends BaseModelHelper {
         }
 
         return null;
-    }public static java.util.List<ApplicationBinding> getApplicationBindingsForFetcherId(String id) throws RestException {
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForApplicationBindingId(String id) throws RestException {
+        ApplicationBinding obj = getObject(Constants.APPLICATIONBINDING, id);
+        if (obj == null) {
+            obj = getApplicationBindingById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForApplicationBindingId(String id) throws RestException {
+        ApplicationBinding obj = getObject(Constants.APPLICATIONBINDING, id);
+        if (obj == null) {
+            obj = getApplicationBindingById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<ApplicationBinding> getApplicationBindingsForFetcherId(String id) throws RestException {
         ApplicationBindingsFetcher fetcher = getApplicationBindingsFetcherById(id);
         if (fetcher != null) {
             try {
@@ -763,6 +791,34 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForApplicationperformancemanagementId(String id) throws RestException {
+        Applicationperformancemanagement obj = getObject(Constants.APPLICATIONPERFORMANCEMANAGEMENT, id);
+        if (obj == null) {
+            obj = getApplicationperformancemanagementById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForApplicationperformancemanagementId(String id) throws RestException {
+        Applicationperformancemanagement obj = getObject(Constants.APPLICATIONPERFORMANCEMANAGEMENT, id);
+        if (obj == null) {
+            obj = getApplicationperformancemanagementById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Applicationperformancemanagement> getApplicationperformancemanagementsForFetcherId(String id) throws RestException {
         ApplicationperformancemanagementsFetcher fetcher = getApplicationperformancemanagementsFetcherById(id);
         if (fetcher != null) {
@@ -824,7 +880,35 @@ public class ModelHelper extends BaseModelHelper {
         }
 
         return null;
-    }public static java.util.List<Applicationperformancemanagementbinding> getApplicationperformancemanagementbindingsForFetcherId(String id) throws RestException {
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForApplicationperformancemanagementbindingId(String id) throws RestException {
+        Applicationperformancemanagementbinding obj = getObject(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING, id);
+        if (obj == null) {
+            obj = getApplicationperformancemanagementbindingById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForApplicationperformancemanagementbindingId(String id) throws RestException {
+        Applicationperformancemanagementbinding obj = getObject(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING, id);
+        if (obj == null) {
+            obj = getApplicationperformancemanagementbindingById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<Applicationperformancemanagementbinding> getApplicationperformancemanagementbindingsForFetcherId(String id) throws RestException {
         ApplicationperformancemanagementbindingsFetcher fetcher = getApplicationperformancemanagementbindingsFetcherById(id);
         if (fetcher != null) {
             try {
@@ -4021,6 +4105,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static ForwardingPathListsFetcher getForwardingPathListsFetcherForDomainId(String id) throws RestException {
+        Domain obj = getObject(Constants.DOMAIN, id);
+        if (obj == null) {
+            obj = getDomainById(id);
+        }
+
+        if (obj != null) {
+            ForwardingPathListsFetcher fetcher = obj.getForwardingPathLists();
+            return addFetcher(Constants.FORWARDINGPATHLISTS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForDomainId(String id) throws RestException {
         Domain obj = getObject(Constants.DOMAIN, id);
         if (obj == null) {
@@ -5498,20 +5596,6 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static JobsFetcher getJobsFetcherForEgressACLEntryTemplateId(String id) throws RestException {
-        EgressACLEntryTemplate obj = getObject(Constants.EGRESSACLENTRYTEMPLATE, id);
-        if (obj == null) {
-            obj = getEgressACLEntryTemplateById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
     public static MetadatasFetcher getMetadatasFetcherForEgressACLEntryTemplateId(String id) throws RestException {
         EgressACLEntryTemplate obj = getObject(Constants.EGRESSACLENTRYTEMPLATE, id);
         if (obj == null) {
@@ -5806,20 +5890,6 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static JobsFetcher getJobsFetcherForEgressAdvFwdEntryTemplateId(String id) throws RestException {
-        EgressAdvFwdEntryTemplate obj = getObject(Constants.EGRESSADVFWDENTRYTEMPLATE, id);
-        if (obj == null) {
-            obj = getEgressAdvFwdEntryTemplateById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
     public static MetadatasFetcher getMetadatasFetcherForEgressAdvFwdEntryTemplateId(String id) throws RestException {
         EgressAdvFwdEntryTemplate obj = getObject(Constants.EGRESSADVFWDENTRYTEMPLATE, id);
         if (obj == null) {
@@ -5924,20 +5994,6 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
             return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static JobsFetcher getJobsFetcherForEgressAdvFwdTemplateId(String id) throws RestException {
-        EgressAdvFwdTemplate obj = getObject(Constants.EGRESSADVFWDTEMPLATE, id);
-        if (obj == null) {
-            obj = getEgressAdvFwdTemplateById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
 
         return null;
@@ -8497,6 +8553,182 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<FloatingIpsFetcher> allObjs = new ArrayList<FloatingIpsFetcher>();
         return allObjs;
     }
+    public static ForwardingPathList getForwardingPathListById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            ForwardingPathList obj = null;
+            obj = new ForwardingPathList();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.FORWARDINGPATHLIST, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static ForwardingPathListEntriesFetcher getForwardingPathListEntriesFetcherForForwardingPathListId(String id) throws RestException {
+        ForwardingPathList obj = getObject(Constants.FORWARDINGPATHLIST, id);
+        if (obj == null) {
+            obj = getForwardingPathListById(id);
+        }
+
+        if (obj != null) {
+            ForwardingPathListEntriesFetcher fetcher = obj.getForwardingPathListEntries();
+            return addFetcher(Constants.FORWARDINGPATHLISTENTRIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForForwardingPathListId(String id) throws RestException {
+        ForwardingPathList obj = getObject(Constants.FORWARDINGPATHLIST, id);
+        if (obj == null) {
+            obj = getForwardingPathListById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForForwardingPathListId(String id) throws RestException {
+        ForwardingPathList obj = getObject(Constants.FORWARDINGPATHLIST, id);
+        if (obj == null) {
+            obj = getForwardingPathListById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<ForwardingPathList> getForwardingPathListsForFetcherId(String id) throws RestException {
+        ForwardingPathListsFetcher fetcher = getForwardingPathListsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.FORWARDINGPATHLIST);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<ForwardingPathList>();
+    }
+
+    public static ForwardingPathListsFetcher getForwardingPathListsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.FORWARDINGPATHLISTS_FETCHER, id);
+        if (fetcher != null) {
+            return (ForwardingPathListsFetcher) fetcher;
+        }
+        if ((fetcher = getForwardingPathListsFetcherForDomainId(id)) != null) {
+            return (ForwardingPathListsFetcher) addFetcher(Constants.FORWARDINGPATHLISTS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<ForwardingPathList> getAllForwardingPathLists() throws RestException {
+        java.util.List<ForwardingPathList> allObjs = new ArrayList<ForwardingPathList>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<ForwardingPathListsFetcher> getAllForwardingPathListsFetchers() throws RestException {
+        java.util.List<ForwardingPathListsFetcher> allObjs = new ArrayList<ForwardingPathListsFetcher>();
+        return allObjs;
+    }
+    public static ForwardingPathListEntry getForwardingPathListEntryById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            ForwardingPathListEntry obj = null;
+            obj = new ForwardingPathListEntry();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.FORWARDINGPATHLISTENTRY, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForForwardingPathListEntryId(String id) throws RestException {
+        ForwardingPathListEntry obj = getObject(Constants.FORWARDINGPATHLISTENTRY, id);
+        if (obj == null) {
+            obj = getForwardingPathListEntryById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForForwardingPathListEntryId(String id) throws RestException {
+        ForwardingPathListEntry obj = getObject(Constants.FORWARDINGPATHLISTENTRY, id);
+        if (obj == null) {
+            obj = getForwardingPathListEntryById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<ForwardingPathListEntry> getForwardingPathListEntriesForFetcherId(String id) throws RestException {
+        ForwardingPathListEntriesFetcher fetcher = getForwardingPathListEntriesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.FORWARDINGPATHLISTENTRY);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<ForwardingPathListEntry>();
+    }
+
+    public static ForwardingPathListEntriesFetcher getForwardingPathListEntriesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.FORWARDINGPATHLISTENTRIES_FETCHER, id);
+        if (fetcher != null) {
+            return (ForwardingPathListEntriesFetcher) fetcher;
+        }
+        if ((fetcher = getForwardingPathListEntriesFetcherForForwardingPathListId(id)) != null) {
+            return (ForwardingPathListEntriesFetcher) addFetcher(Constants.FORWARDINGPATHLISTENTRIES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<ForwardingPathListEntry> getAllForwardingPathListEntries() throws RestException {
+        java.util.List<ForwardingPathListEntry> allObjs = new ArrayList<ForwardingPathListEntry>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<ForwardingPathListEntriesFetcher> getAllForwardingPathListEntriesFetchers() throws RestException {
+        java.util.List<ForwardingPathListEntriesFetcher> allObjs = new ArrayList<ForwardingPathListEntriesFetcher>();
+        return allObjs;
+    }
     public static Gateway getGatewayById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             Gateway obj = null;
@@ -9070,6 +9302,18 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForApplicationBindingId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForApplicationperformancemanagementId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForApplicationperformancemanagementbindingId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForAutoDiscoveredGatewayId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -9243,6 +9487,14 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getGlobalMetadatasFetcherForFloatingIpId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForForwardingPathListId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForForwardingPathListEntryId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
@@ -11490,20 +11742,6 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static JobsFetcher getJobsFetcherForIngressACLEntryTemplateId(String id) throws RestException {
-        IngressACLEntryTemplate obj = getObject(Constants.INGRESSACLENTRYTEMPLATE, id);
-        if (obj == null) {
-            obj = getIngressACLEntryTemplateById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
     public static MetadatasFetcher getMetadatasFetcherForIngressACLEntryTemplateId(String id) throws RestException {
         IngressACLEntryTemplate obj = getObject(Constants.INGRESSACLENTRYTEMPLATE, id);
         if (obj == null) {
@@ -11798,20 +12036,6 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static JobsFetcher getJobsFetcherForIngressAdvFwdEntryTemplateId(String id) throws RestException {
-        IngressAdvFwdEntryTemplate obj = getObject(Constants.INGRESSADVFWDENTRYTEMPLATE, id);
-        if (obj == null) {
-            obj = getIngressAdvFwdEntryTemplateById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
     public static MetadatasFetcher getMetadatasFetcherForIngressAdvFwdEntryTemplateId(String id) throws RestException {
         IngressAdvFwdEntryTemplate obj = getObject(Constants.INGRESSADVFWDENTRYTEMPLATE, id);
         if (obj == null) {
@@ -12046,20 +12270,6 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static JobsFetcher getJobsFetcherForIngressExternalServiceTemplateEntryId(String id) throws RestException {
-        IngressExternalServiceTemplateEntry obj = getObject(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY, id);
-        if (obj == null) {
-            obj = getIngressExternalServiceTemplateEntryById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
     public static MetadatasFetcher getMetadatasFetcherForIngressExternalServiceTemplateEntryId(String id) throws RestException {
         IngressExternalServiceTemplateEntry obj = getObject(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY, id);
         if (obj == null) {
@@ -12164,20 +12374,6 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             IngressExternalServiceTemplateEntriesFetcher fetcher = obj.getIngressExternalServiceTemplateEntries();
             return addFetcher(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRIES_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static JobsFetcher getJobsFetcherForIngressExternalServiceTemplateId(String id) throws RestException {
-        IngressExternalServiceTemplate obj = getObject(Constants.INGRESSEXTERNALSERVICETEMPLATE, id);
-        if (obj == null) {
-            obj = getIngressExternalServiceTemplateById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
 
         return null;
@@ -12503,19 +12699,7 @@ public class ModelHelper extends BaseModelHelper {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getJobsFetcherForEgressACLEntryTemplateId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getJobsFetcherForEgressACLTemplateId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getJobsFetcherForEgressAdvFwdEntryTemplateId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getJobsFetcherForEgressAdvFwdTemplateId(id)) != null) {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
@@ -12531,27 +12715,11 @@ public class ModelHelper extends BaseModelHelper {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getJobsFetcherForIngressACLEntryTemplateId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getJobsFetcherForIngressACLTemplateId(id)) != null) {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getJobsFetcherForIngressAdvFwdEntryTemplateId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getJobsFetcherForIngressAdvFwdTemplateId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getJobsFetcherForIngressExternalServiceTemplateEntryId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getJobsFetcherForIngressExternalServiceTemplateId(id)) != null) {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
@@ -12571,22 +12739,6 @@ public class ModelHelper extends BaseModelHelper {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
-        if ((fetcher = getJobsFetcherForPolicyGroupId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getJobsFetcherForPolicyGroupTemplateId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getJobsFetcherForRedirectionTargetId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getJobsFetcherForRedirectionTargetTemplateId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
         if ((fetcher = getJobsFetcherForVCenterId(id)) != null) {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
@@ -12596,10 +12748,6 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getJobsFetcherForVCenterHypervisorId(id)) != null) {
-            return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-        
-        if ((fetcher = getJobsFetcherForVirtualFirewallRuleId(id)) != null) {
             return (JobsFetcher) addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
         
@@ -16034,6 +16182,18 @@ public class ModelHelper extends BaseModelHelper {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getMetadatasFetcherForApplicationBindingId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForApplicationperformancemanagementId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForApplicationperformancemanagementbindingId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getMetadatasFetcherForAutoDiscoveredGatewayId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
@@ -16207,6 +16367,14 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForFloatingIpId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForForwardingPathListId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForForwardingPathListEntryId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -20744,20 +20912,6 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static JobsFetcher getJobsFetcherForPolicyGroupId(String id) throws RestException {
-        PolicyGroup obj = getObject(Constants.POLICYGROUP, id);
-        if (obj == null) {
-            obj = getPolicyGroupById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
     public static MetadatasFetcher getMetadatasFetcherForPolicyGroupId(String id) throws RestException {
         PolicyGroup obj = getObject(Constants.POLICYGROUP, id);
         if (obj == null) {
@@ -20896,20 +21050,6 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
             return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static JobsFetcher getJobsFetcherForPolicyGroupTemplateId(String id) throws RestException {
-        PolicyGroupTemplate obj = getObject(Constants.POLICYGROUPTEMPLATE, id);
-        if (obj == null) {
-            obj = getPolicyGroupTemplateById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
 
         return null;
@@ -22149,20 +22289,6 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
-    public static JobsFetcher getJobsFetcherForRedirectionTargetId(String id) throws RestException {
-        RedirectionTarget obj = getObject(Constants.REDIRECTIONTARGET, id);
-        if (obj == null) {
-            obj = getRedirectionTargetById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
     public static MetadatasFetcher getMetadatasFetcherForRedirectionTargetId(String id) throws RestException {
         RedirectionTarget obj = getObject(Constants.REDIRECTIONTARGET, id);
         if (obj == null) {
@@ -22315,20 +22441,6 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
             return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static JobsFetcher getJobsFetcherForRedirectionTargetTemplateId(String id) throws RestException {
-        RedirectionTargetTemplate obj = getObject(Constants.REDIRECTIONTARGETTEMPLATE, id);
-        if (obj == null) {
-            obj = getRedirectionTargetTemplateById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
 
         return null;
@@ -26101,20 +26213,6 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
             return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
-        }
-
-        return null;
-    }
-    
-    public static JobsFetcher getJobsFetcherForVirtualFirewallRuleId(String id) throws RestException {
-        VirtualFirewallRule obj = getObject(Constants.VIRTUALFIREWALLRULE, id);
-        if (obj == null) {
-            obj = getVirtualFirewallRuleById(id);
-        }
-
-        if (obj != null) {
-            JobsFetcher fetcher = obj.getJobs();
-            return addFetcher(Constants.JOBS_FETCHER, fetcher);
         }
 
         return null;

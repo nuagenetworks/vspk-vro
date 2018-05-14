@@ -40,6 +40,12 @@ import net.nuagenetworks.vro.vspk.model.AllAlarm;
 
 import net.nuagenetworks.vro.vspk.model.Application;
 
+import net.nuagenetworks.vro.vspk.model.ApplicationBinding;
+
+import net.nuagenetworks.vro.vspk.model.Applicationperformancemanagement;
+
+import net.nuagenetworks.vro.vspk.model.Applicationperformancemanagementbinding;
+
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.Avatar;
@@ -127,6 +133,10 @@ import net.nuagenetworks.vro.vspk.model.EnterpriseSecurity;
 import net.nuagenetworks.vro.vspk.model.EventLog;
 
 import net.nuagenetworks.vro.vspk.model.FloatingIp;
+
+import net.nuagenetworks.vro.vspk.model.ForwardingPathList;
+
+import net.nuagenetworks.vro.vspk.model.ForwardingPathListEntry;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
@@ -445,6 +455,36 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Application) {
             return (Application) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "ApplicationBinding", readOnly = true)
+    public ApplicationBinding getApplicationBinding() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ApplicationBinding) {
+            return (ApplicationBinding) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Applicationperformancemanagement", readOnly = true)
+    public Applicationperformancemanagement getApplicationperformancemanagement() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Applicationperformancemanagement) {
+            return (Applicationperformancemanagement) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Applicationperformancemanagementbinding", readOnly = true)
+    public Applicationperformancemanagementbinding getApplicationperformancemanagementbinding() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Applicationperformancemanagementbinding) {
+            return (Applicationperformancemanagementbinding) obj;
         }
         
         return null;
@@ -885,6 +925,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof FloatingIp) {
             return (FloatingIp) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "ForwardingPathList", readOnly = true)
+    public ForwardingPathList getForwardingPathList() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ForwardingPathList) {
+            return (ForwardingPathList) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "ForwardingPathListEntry", readOnly = true)
+    public ForwardingPathListEntry getForwardingPathListEntry() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ForwardingPathListEntry) {
+            return (ForwardingPathListEntry) obj;
         }
         
         return null;

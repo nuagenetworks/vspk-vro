@@ -56,6 +56,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.FirewallAclsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIpsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.ForwardingPathListsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GroupsFetcher;
@@ -176,6 +178,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPACLTEMPLATES_FETCHER, type = Constants.FLOATINGIPACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPS_FETCHER, type = Constants.FLOATINGIPS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.FORWARDINGPATHLISTS_FETCHER, type = Constants.FORWARDINGPATHLISTS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLENTRYTEMPLATES_FETCHER, type = Constants.INGRESSACLENTRYTEMPLATES_FETCHER), 
 
@@ -424,6 +428,9 @@ public class Domain extends BaseObject {
     private FloatingIpsFetcher floatingIps;
     
     @JsonIgnore
+    private ForwardingPathListsFetcher forwardingPathLists;
+    
+    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
@@ -561,6 +568,8 @@ public class Domain extends BaseObject {
         firewallAcls = new FirewallAclsFetcher(this);
         
         floatingIps = new FloatingIpsFetcher(this);
+        
+        forwardingPathLists = new ForwardingPathListsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
@@ -1294,6 +1303,12 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ForwardingPathLists", readOnly = true)   
+    public ForwardingPathListsFetcher getForwardingPathLists() {
+        return forwardingPathLists;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -1610,6 +1625,14 @@ public class Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.FLOATINGIPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createForwardingPathList(Session session, ForwardingPathList childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.FORWARDINGPATHLISTS_FETCHER, getId());
         }
     }
     @VsoMethod

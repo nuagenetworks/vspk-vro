@@ -67,6 +67,9 @@ public class BRConnection extends BaseObject {
     @JsonProperty(value = "gateway")
     protected String gateway;
     
+    @JsonProperty(value = "inherited")
+    protected Boolean inherited;
+    
     @JsonProperty(value = "mode")
     protected BRConnectionMode mode;
     
@@ -169,6 +172,17 @@ public class BRConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Inherited", readOnly = false)   
+    public Boolean getInherited() {
+       return inherited;
+    }
+
+    @JsonIgnore
+    public void setInherited(Boolean value) { 
+        this.inherited = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Mode", readOnly = false)   
     public BRConnectionMode getMode() {
        return mode;
@@ -235,7 +249,7 @@ public class BRConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.BFDSESSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", gateway=" + gateway + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", gateway=" + gateway + ", inherited=" + inherited + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

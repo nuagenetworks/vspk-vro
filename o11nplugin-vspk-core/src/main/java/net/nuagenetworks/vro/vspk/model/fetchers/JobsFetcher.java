@@ -34,13 +34,7 @@ import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
-import net.nuagenetworks.vro.vspk.model.EgressACLEntryTemplate;
-
 import net.nuagenetworks.vro.vspk.model.EgressACLTemplate;
-
-import net.nuagenetworks.vro.vspk.model.EgressAdvFwdEntryTemplate;
-
-import net.nuagenetworks.vro.vspk.model.EgressAdvFwdTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
@@ -48,17 +42,9 @@ import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.HSC;
 
-import net.nuagenetworks.vro.vspk.model.IngressACLEntryTemplate;
-
 import net.nuagenetworks.vro.vspk.model.IngressACLTemplate;
 
-import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
-
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
-
-import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
-
-import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplate;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
@@ -68,21 +54,11 @@ import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
-import net.nuagenetworks.vro.vspk.model.PolicyGroup;
-
-import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
-
-import net.nuagenetworks.vro.vspk.model.RedirectionTarget;
-
-import net.nuagenetworks.vro.vspk.model.RedirectionTargetTemplate;
-
 import net.nuagenetworks.vro.vspk.model.VCenter;
 
 import net.nuagenetworks.vro.vspk.model.VCenterCluster;
 
 import net.nuagenetworks.vro.vspk.model.VCenterHypervisor;
-
-import net.nuagenetworks.vro.vspk.model.VirtualFirewallRule;
 
 import net.nuagenetworks.vro.vspk.model.VNF;
 
@@ -148,41 +124,11 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
-    @VsoProperty(displayName = "EgressACLEntryTemplate", readOnly = true)
-    public EgressACLEntryTemplate getEgressACLEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof EgressACLEntryTemplate) {
-            return (EgressACLEntryTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "EgressACLTemplate", readOnly = true)
     public EgressACLTemplate getEgressACLTemplate() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof EgressACLTemplate) {
             return (EgressACLTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "EgressAdvFwdEntryTemplate", readOnly = true)
-    public EgressAdvFwdEntryTemplate getEgressAdvFwdEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof EgressAdvFwdEntryTemplate) {
-            return (EgressAdvFwdEntryTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "EgressAdvFwdTemplate", readOnly = true)
-    public EgressAdvFwdTemplate getEgressAdvFwdTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof EgressAdvFwdTemplate) {
-            return (EgressAdvFwdTemplate) obj;
         }
         
         return null;
@@ -218,16 +164,6 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
-    @VsoProperty(displayName = "IngressACLEntryTemplate", readOnly = true)
-    public IngressACLEntryTemplate getIngressACLEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressACLEntryTemplate) {
-            return (IngressACLEntryTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "IngressACLTemplate", readOnly = true)
     public IngressACLTemplate getIngressACLTemplate() {
         RestObject obj = super.getParentRestObj();
@@ -238,41 +174,11 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
-    @VsoProperty(displayName = "IngressAdvFwdEntryTemplate", readOnly = true)
-    public IngressAdvFwdEntryTemplate getIngressAdvFwdEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressAdvFwdEntryTemplate) {
-            return (IngressAdvFwdEntryTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "IngressAdvFwdTemplate", readOnly = true)
     public IngressAdvFwdTemplate getIngressAdvFwdTemplate() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IngressAdvFwdTemplate) {
             return (IngressAdvFwdTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "IngressExternalServiceTemplateEntry", readOnly = true)
-    public IngressExternalServiceTemplateEntry getIngressExternalServiceTemplateEntry() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressExternalServiceTemplateEntry) {
-            return (IngressExternalServiceTemplateEntry) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "IngressExternalServiceTemplate", readOnly = true)
-    public IngressExternalServiceTemplate getIngressExternalServiceTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressExternalServiceTemplate) {
-            return (IngressExternalServiceTemplate) obj;
         }
         
         return null;
@@ -318,46 +224,6 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
-    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
-    public PolicyGroup getPolicyGroup() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroup) {
-            return (PolicyGroup) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "PolicyGroupTemplate", readOnly = true)
-    public PolicyGroupTemplate getPolicyGroupTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof PolicyGroupTemplate) {
-            return (PolicyGroupTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "RedirectionTarget", readOnly = true)
-    public RedirectionTarget getRedirectionTarget() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof RedirectionTarget) {
-            return (RedirectionTarget) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "RedirectionTargetTemplate", readOnly = true)
-    public RedirectionTargetTemplate getRedirectionTargetTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof RedirectionTargetTemplate) {
-            return (RedirectionTargetTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "VCenter", readOnly = true)
     public VCenter getVCenter() {
         RestObject obj = super.getParentRestObj();
@@ -383,16 +249,6 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenterHypervisor) {
             return (VCenterHypervisor) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VirtualFirewallRule", readOnly = true)
-    public VirtualFirewallRule getVirtualFirewallRule() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VirtualFirewallRule) {
-            return (VirtualFirewallRule) obj;
         }
         
         return null;

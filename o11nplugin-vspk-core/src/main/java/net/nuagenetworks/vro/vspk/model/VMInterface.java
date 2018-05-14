@@ -78,6 +78,12 @@ public class VMInterface extends BaseObject {
     @JsonProperty(value = "IPAddress")
     protected String IPAddress;
     
+    @JsonProperty(value = "IPv6Address")
+    protected String IPv6Address;
+    
+    @JsonProperty(value = "IPv6Gateway")
+    protected String IPv6Gateway;
+    
     @JsonProperty(value = "MAC")
     protected String MAC;
     
@@ -243,6 +249,28 @@ public class VMInterface extends BaseObject {
     @JsonIgnore
     public void setIPAddress(String value) { 
         this.IPAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
+    public String getIPv6Address() {
+       return IPv6Address;
+    }
+
+    @JsonIgnore
+    public void setIPv6Address(String value) { 
+        this.IPv6Address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6Gateway", readOnly = false)   
+    public String getIPv6Gateway() {
+       return IPv6Gateway;
+    }
+
+    @JsonIgnore
+    public void setIPv6Gateway(String value) { 
+        this.IPv6Gateway = value;
     }
     
     @JsonIgnore
@@ -587,7 +615,7 @@ public class VMInterface extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VMInterface [" + "IPAddress=" + IPAddress + ", MAC=" + MAC + ", VMUUID=" + VMUUID + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", associatedFloatingIPAddress=" + associatedFloatingIPAddress + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", multiNICVPortName=" + multiNICVPortName + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VMInterface [" + "IPAddress=" + IPAddress + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", MAC=" + MAC + ", VMUUID=" + VMUUID + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", associatedFloatingIPAddress=" + associatedFloatingIPAddress + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", multiNICVPortName=" + multiNICVPortName + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

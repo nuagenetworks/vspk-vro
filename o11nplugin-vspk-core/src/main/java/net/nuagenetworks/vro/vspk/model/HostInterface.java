@@ -82,6 +82,12 @@ public class HostInterface extends BaseObject {
     @JsonProperty(value = "IPAddress")
     protected String IPAddress;
     
+    @JsonProperty(value = "IPv6Address")
+    protected String IPv6Address;
+    
+    @JsonProperty(value = "IPv6Gateway")
+    protected String IPv6Gateway;
+    
     @JsonProperty(value = "MAC")
     protected String MAC;
     
@@ -246,6 +252,28 @@ public class HostInterface extends BaseObject {
     @JsonIgnore
     public void setIPAddress(String value) { 
         this.IPAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
+    public String getIPv6Address() {
+       return IPv6Address;
+    }
+
+    @JsonIgnore
+    public void setIPv6Address(String value) { 
+        this.IPv6Address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6Gateway", readOnly = false)   
+    public String getIPv6Gateway() {
+       return IPv6Gateway;
+    }
+
+    @JsonIgnore
+    public void setIPv6Gateway(String value) { 
+        this.IPv6Gateway = value;
     }
     
     @JsonIgnore
@@ -582,7 +610,7 @@ public class HostInterface extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.QOSS_FETCHER, getId());
         }
     }public String toString() {
-        return "HostInterface [" + "IPAddress=" + IPAddress + ", MAC=" + MAC + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", associatedFloatingIPAddress=" + associatedFloatingIPAddress + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "HostInterface [" + "IPAddress=" + IPAddress + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", MAC=" + MAC + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", associatedFloatingIPAddress=" + associatedFloatingIPAddress + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

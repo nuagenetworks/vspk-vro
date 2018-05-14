@@ -58,6 +58,15 @@ public class Location extends BaseObject {
     @JsonProperty(value = "address")
     protected String address;
     
+    @JsonProperty(value = "associatedEntityID")
+    protected String associatedEntityID;
+    
+    @JsonProperty(value = "associatedEntityName")
+    protected String associatedEntityName;
+    
+    @JsonProperty(value = "associatedEntityType")
+    protected String associatedEntityType;
+    
     @JsonProperty(value = "country")
     protected String country;
     
@@ -152,6 +161,39 @@ public class Location extends BaseObject {
     @JsonIgnore
     public void setAddress(String value) { 
         this.address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEntityID", readOnly = false)   
+    public String getAssociatedEntityID() {
+       return associatedEntityID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEntityID(String value) { 
+        this.associatedEntityID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEntityName", readOnly = false)   
+    public String getAssociatedEntityName() {
+       return associatedEntityName;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEntityName(String value) { 
+        this.associatedEntityName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEntityType", readOnly = false)   
+    public String getAssociatedEntityType() {
+       return associatedEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEntityType(String value) { 
+        this.associatedEntityType = value;
     }
     
     @JsonIgnore
@@ -321,7 +363,7 @@ public class Location extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Location [" + "address=" + address + ", country=" + country + ", entityScope=" + entityScope + ", externalID=" + externalID + ", ignoreGeocode=" + ignoreGeocode + ", lastUpdatedBy=" + lastUpdatedBy + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", state=" + state + ", timeZoneID=" + timeZoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Location [" + "address=" + address + ", associatedEntityID=" + associatedEntityID + ", associatedEntityName=" + associatedEntityName + ", associatedEntityType=" + associatedEntityType + ", country=" + country + ", entityScope=" + entityScope + ", externalID=" + externalID + ", ignoreGeocode=" + ignoreGeocode + ", lastUpdatedBy=" + lastUpdatedBy + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", state=" + state + ", timeZoneID=" + timeZoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -84,6 +84,8 @@ import net.nuagenetworks.vro.vspk.model.enums.NSGatewayFamily;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayInheritedSSHServiceState;
 
+import net.nuagenetworks.vro.vspk.model.enums.NSGatewayNetworkAcceleration;
+
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayPermittedAction;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayPersonality;
@@ -229,6 +231,9 @@ public class NSGateway extends BaseObject {
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "networkAcceleration")
+    protected NSGatewayNetworkAcceleration networkAcceleration;
     
     @JsonProperty(value = "operationMode")
     protected String operationMode;
@@ -809,6 +814,17 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetworkAcceleration", readOnly = false)   
+    public NSGatewayNetworkAcceleration getNetworkAcceleration() {
+       return networkAcceleration;
+    }
+
+    @JsonIgnore
+    public void setNetworkAcceleration(NSGatewayNetworkAcceleration value) { 
+        this.networkAcceleration = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "OperationMode", readOnly = false)   
     public String getOperationMode() {
        return operationMode;
@@ -1178,7 +1194,7 @@ public class NSGateway extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.WIRELESSPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGateway [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + associatedNSGUpgradeProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", controlTrafficCOSValue=" + controlTrafficCOSValue + ", controlTrafficDSCPValue=" + controlTrafficDSCPValue + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", patches=" + patches + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGateway [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + associatedNSGUpgradeProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", controlTrafficCOSValue=" + controlTrafficCOSValue + ", controlTrafficDSCPValue=" + controlTrafficDSCPValue + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", networkAcceleration=" + networkAcceleration + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", patches=" + patches + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

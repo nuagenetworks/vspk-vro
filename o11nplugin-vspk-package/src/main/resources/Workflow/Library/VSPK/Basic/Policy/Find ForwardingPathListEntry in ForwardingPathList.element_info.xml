@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
+<entry key="name">Find ForwardingPathListEntry in ForwardingPathList</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e481c39e-e171-5ce4-a356-c8cd8823e141</entry>
+</properties>

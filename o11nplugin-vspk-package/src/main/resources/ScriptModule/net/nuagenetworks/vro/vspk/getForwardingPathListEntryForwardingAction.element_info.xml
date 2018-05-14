@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getForwardingPathListEntryForwardingAction</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">44cd873a-1440-5027-a4ed-4e1db563f481</entry>
+</properties>

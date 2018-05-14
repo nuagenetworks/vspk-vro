@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to Applicationperformancemanagementbinding</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">82660d3d-c05d-5ac7-944f-1a29aa25568d</entry>
+</properties>

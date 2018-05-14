@@ -75,6 +75,12 @@ public class BridgeInterface extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "IPv6Address")
+    protected String IPv6Address;
+    
+    @JsonProperty(value = "IPv6Gateway")
+    protected String IPv6Gateway;
+    
     @JsonProperty(value = "VPortID")
     protected String VPortID;
     
@@ -217,6 +223,28 @@ public class BridgeInterface extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
+    public String getIPv6Address() {
+       return IPv6Address;
+    }
+
+    @JsonIgnore
+    public void setIPv6Address(String value) { 
+        this.IPv6Address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6Gateway", readOnly = false)   
+    public String getIPv6Gateway() {
+       return IPv6Gateway;
+    }
+
+    @JsonIgnore
+    public void setIPv6Gateway(String value) { 
+        this.IPv6Gateway = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "VPortID", readOnly = false)   
     public String getVPortID() {
@@ -528,7 +556,7 @@ public class BridgeInterface extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.QOSS_FETCHER, getId());
         }
     }public String toString() {
-        return "BridgeInterface [" + "VPortID=" + VPortID + ", VPortName=" + VPortName + ", associatedFloatingIPAddress=" + associatedFloatingIPAddress + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BridgeInterface [" + "IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", associatedFloatingIPAddress=" + associatedFloatingIPAddress + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

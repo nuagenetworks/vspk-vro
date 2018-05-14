@@ -176,6 +176,10 @@ public interface Constants extends BaseConstants {
     String FIREWALLRULES = "FirewallRules";
     String FLOATINGIP = "FloatingIp";
     String FLOATINGIPS = "FloatingIps";
+    String FORWARDINGPATHLIST = "ForwardingPathList";
+    String FORWARDINGPATHLISTS = "ForwardingPathLists";
+    String FORWARDINGPATHLISTENTRY = "ForwardingPathListEntry";
+    String FORWARDINGPATHLISTENTRIES = "ForwardingPathListEntries";
     String GATEWAY = "Gateway";
     String GATEWAYS = "Gateways";
     String GATEWAYSECUREDDATA = "GatewaySecuredData";
@@ -580,6 +584,8 @@ public interface Constants extends BaseConstants {
     String FIREWALLACLS_FETCHER = "FirewallAclsFetcher";
     String FIREWALLRULES_FETCHER = "FirewallRulesFetcher";
     String FLOATINGIPS_FETCHER = "FloatingIpsFetcher";
+    String FORWARDINGPATHLISTS_FETCHER = "ForwardingPathListsFetcher";
+    String FORWARDINGPATHLISTENTRIES_FETCHER = "ForwardingPathListEntriesFetcher";
     String GATEWAYS_FETCHER = "GatewaysFetcher";
     String GATEWAYSECUREDDATAS_FETCHER = "GatewaySecuredDatasFetcher";
     String GATEWAYSECURITIES_FETCHER = "GatewaySecuritiesFetcher";
@@ -771,8 +777,11 @@ public interface Constants extends BaseConstants {
     String APPLICATION_PRECLASSIFICATIONPATH_ENUM = "ApplicationPreClassificationPath";
     String APPLICATION_PROTOCOL_ENUM = "ApplicationProtocol";
     
+    String APPLICATIONBINDING_ENTITYSCOPE_ENUM = "ApplicationBindingEntityScope";
     
+    String APPLICATIONPERFORMANCEMANAGEMENT_ENTITYSCOPE_ENUM = "ApplicationperformancemanagementEntityScope";
     
+    String APPLICATIONPERFORMANCEMANAGEMENTBINDING_ENTITYSCOPE_ENUM = "ApplicationperformancemanagementbindingEntityScope";
     
     String AUTODISCOVERCLUSTER_ENTITYSCOPE_ENUM = "AutoDiscoverClusterEntityScope";
     
@@ -976,6 +985,13 @@ public interface Constants extends BaseConstants {
     String FIREWALLRULE_SOURCETYPE_ENUM = "FirewallRuleSourceType";
     
     String FLOATINGIP_ENTITYSCOPE_ENUM = "FloatingIpEntityScope";
+    
+    String FORWARDINGPATHLIST_ENTITYSCOPE_ENUM = "ForwardingPathListEntityScope";
+    
+    String FORWARDINGPATHLISTENTRY_FCOVERRIDE_ENUM = "ForwardingPathListEntryFCOverride";
+    String FORWARDINGPATHLISTENTRY_ENTITYSCOPE_ENUM = "ForwardingPathListEntryEntityScope";
+    String FORWARDINGPATHLISTENTRY_FORWARDINGACTION_ENUM = "ForwardingPathListEntryForwardingAction";
+    String FORWARDINGPATHLISTENTRY_UPLINKPREFERENCE_ENUM = "ForwardingPathListEntryUplinkPreference";
     
     String GATEWAY_ENTITYSCOPE_ENUM = "GatewayEntityScope";
     String GATEWAY_PERMITTEDACTION_ENUM = "GatewayPermittedAction";
@@ -1206,6 +1222,7 @@ public interface Constants extends BaseConstants {
     String NSGATEWAY_ENTITYSCOPE_ENUM = "NSGatewayEntityScope";
     String NSGATEWAY_FAMILY_ENUM = "NSGatewayFamily";
     String NSGATEWAY_INHERITEDSSHSERVICESTATE_ENUM = "NSGatewayInheritedSSHServiceState";
+    String NSGATEWAY_NETWORKACCELERATION_ENUM = "NSGatewayNetworkAcceleration";
     String NSGATEWAY_PERMITTEDACTION_ENUM = "NSGatewayPermittedAction";
     String NSGATEWAY_PERSONALITY_ENUM = "NSGatewayPersonality";
     
@@ -1662,6 +1679,8 @@ public interface Constants extends BaseConstants {
     String FIREWALLACL_IMAGE_FILENAME = "images/icon-firewallacl.png";
     String FIREWALLRULE_IMAGE_FILENAME = "images/icon-firewallrule.png";
     String FLOATINGIP_IMAGE_FILENAME = "images/icon-floatingip.png";
+    String FORWARDINGPATHLIST_IMAGE_FILENAME = "images/icon-forwardingpathlist.png";
+    String FORWARDINGPATHLISTENTRY_IMAGE_FILENAME = "images/icon-forwardingpathlistentry.png";
     String GATEWAY_IMAGE_FILENAME = "images/icon-gateway.png";
     String GATEWAYSECUREDDATA_IMAGE_FILENAME = "images/icon-gatewaysecureddata.png";
     String GATEWAYSECURITY_IMAGE_FILENAME = "images/icon-gatewaysecurity.png";
@@ -1901,6 +1920,8 @@ public interface Constants extends BaseConstants {
     String FIREWALLACL_ENTITY_TYPE = "firewallacl";
     String FIREWALLRULE_ENTITY_TYPE = "firewallrule";
     String FLOATINGIP_ENTITY_TYPE = "floatingip";
+    String FORWARDINGPATHLIST_ENTITY_TYPE = "forwardingpathlist";
+    String FORWARDINGPATHLISTENTRY_ENTITY_TYPE = "forwardingpathlistentry";
     String GATEWAY_ENTITY_TYPE = "gateway";
     String GATEWAYSECUREDDATA_ENTITY_TYPE = "gatewaysecureddata";
     String GATEWAYSECURITY_ENTITY_TYPE = "gatewaysecurity";

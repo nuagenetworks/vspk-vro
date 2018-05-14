@@ -30,8 +30,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressExternalServiceTemplateEntriesFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.IngressExternalServiceTemplateEntityScope;
@@ -99,9 +97,6 @@ public class IngressExternalServiceTemplate extends BaseObject {
     private IngressExternalServiceTemplateEntriesFetcher ingressExternalServiceTemplateEntries;
     
     @JsonIgnore
-    private JobsFetcher jobs;
-    
-    @JsonIgnore
     private MetadatasFetcher metadatas;
     
     @VsoConstructor
@@ -109,8 +104,6 @@ public class IngressExternalServiceTemplate extends BaseObject {
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         ingressExternalServiceTemplateEntries = new IngressExternalServiceTemplateEntriesFetcher(this);
-        
-        jobs = new JobsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         }
@@ -262,12 +255,6 @@ public class IngressExternalServiceTemplate extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Jobs", readOnly = true)   
-    public JobsFetcher getJobs() {
-        return jobs;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
@@ -316,14 +303,6 @@ public class IngressExternalServiceTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRIES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
         }
     }
     @VsoMethod

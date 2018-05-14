@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum EgressAdvFwdEntryTemplateLocationType {
 
-    ANY("ANY", "ANY"), PGEXPRESSION("PGEXPRESSION", "PGEXPRESSION"), POLICYGROUP("POLICYGROUP", "POLICYGROUP"), REDIRECTIONTARGET("REDIRECTIONTARGET", "REDIRECTIONTARGET"), SUBNET("SUBNET", "SUBNET"), VPORTTAG("VPORTTAG", "VPORTTAG"), ZONE("ZONE", "ZONE");
+    ANY("ANY", "ANY"), PGEXPRESSION("PGEXPRESSION", "PGEXPRESSION"), POLICYGROUP("POLICYGROUP", "POLICYGROUP"), SUBNET("SUBNET", "SUBNET"), ZONE("ZONE", "ZONE");
 
     private final String id;
     private final String name;
@@ -73,19 +73,9 @@ public enum EgressAdvFwdEntryTemplateLocationType {
         return POLICYGROUP;
     }
     
-    @VsoProperty(displayName = "REDIRECTIONTARGET", readOnly = true)
-    public EgressAdvFwdEntryTemplateLocationType getREDIRECTIONTARGET() {
-        return REDIRECTIONTARGET;
-    }
-    
     @VsoProperty(displayName = "SUBNET", readOnly = true)
     public EgressAdvFwdEntryTemplateLocationType getSUBNET() {
         return SUBNET;
-    }
-    
-    @VsoProperty(displayName = "VPORTTAG", readOnly = true)
-    public EgressAdvFwdEntryTemplateLocationType getVPORTTAG() {
-        return VPORTTAG;
     }
     
     @VsoProperty(displayName = "ZONE", readOnly = true)
