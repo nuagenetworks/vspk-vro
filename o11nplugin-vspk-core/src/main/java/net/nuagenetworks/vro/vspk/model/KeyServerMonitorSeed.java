@@ -37,6 +37,8 @@ import net.nuagenetworks.vro.vspk.model.enums.KeyServerMonitorSeedEntityScope;
 import net.nuagenetworks.vro.vspk.model.enums.KeyServerMonitorSeedSeedTrafficAuthenticationAlgorithm;
 
 import net.nuagenetworks.vro.vspk.model.enums.KeyServerMonitorSeedSeedTrafficEncryptionAlgorithm;
+
+import net.nuagenetworks.vro.vspk.model.enums.KeyServerMonitorSeedSeedType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -84,6 +86,9 @@ public class KeyServerMonitorSeed extends BaseObject {
     
     @JsonProperty(value = "seedTrafficEncryptionKeyLifetime")
     protected Long seedTrafficEncryptionKeyLifetime;
+    
+    @JsonProperty(value = "seedType")
+    protected KeyServerMonitorSeedSeedType seedType;
     
     @JsonProperty(value = "startTime")
     protected Long startTime;
@@ -235,6 +240,17 @@ public class KeyServerMonitorSeed extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SeedType", readOnly = false)   
+    public KeyServerMonitorSeedSeedType getSeedType() {
+       return seedType;
+    }
+
+    @JsonIgnore
+    public void setSeedType(KeyServerMonitorSeedSeedType value) { 
+        this.seedType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "StartTime", readOnly = false)   
     public Long getStartTime() {
        return startTime;
@@ -308,7 +324,7 @@ public class KeyServerMonitorSeed extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "KeyServerMonitorSeed [" + "creationTime=" + creationTime + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lifetime=" + lifetime + ", seedTrafficAuthenticationAlgorithm=" + seedTrafficAuthenticationAlgorithm + ", seedTrafficEncryptionAlgorithm=" + seedTrafficEncryptionAlgorithm + ", seedTrafficEncryptionKeyLifetime=" + seedTrafficEncryptionKeyLifetime + ", startTime=" + startTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "KeyServerMonitorSeed [" + "creationTime=" + creationTime + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lifetime=" + lifetime + ", seedTrafficAuthenticationAlgorithm=" + seedTrafficAuthenticationAlgorithm + ", seedTrafficEncryptionAlgorithm=" + seedTrafficEncryptionAlgorithm + ", seedTrafficEncryptionKeyLifetime=" + seedTrafficEncryptionKeyLifetime + ", seedType=" + seedType + ", startTime=" + startTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

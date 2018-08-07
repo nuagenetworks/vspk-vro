@@ -52,6 +52,8 @@ import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 
 import net.nuagenetworks.vro.vspk.model.WANService;
 
+import net.nuagenetworks.vro.vspk.model.ShuntLink;
+
 import net.nuagenetworks.vro.vspk.model.SSIDConnection;
 
 import net.nuagenetworks.vro.vspk.model.TCA;
@@ -209,6 +211,16 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof WANService) {
             return (WANService) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "ShuntLink", readOnly = true)
+    public ShuntLink getShuntLink() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ShuntLink) {
+            return (ShuntLink) obj;
         }
         
         return null;

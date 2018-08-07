@@ -64,6 +64,12 @@ public class PolicyGroup extends BaseObject {
     @JsonProperty(value = "EVPNCommunityTag")
     protected String EVPNCommunityTag;
     
+    @JsonProperty(value = "assocPolicyGroupCategoryID")
+    protected String assocPolicyGroupCategoryID;
+    
+    @JsonProperty(value = "assocPolicyGroupCategoryName")
+    protected String assocPolicyGroupCategoryName;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -160,6 +166,28 @@ public class PolicyGroup extends BaseObject {
     @JsonIgnore
     public void setEVPNCommunityTag(String value) { 
         this.EVPNCommunityTag = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssocPolicyGroupCategoryID", readOnly = false)   
+    public String getAssocPolicyGroupCategoryID() {
+       return assocPolicyGroupCategoryID;
+    }
+
+    @JsonIgnore
+    public void setAssocPolicyGroupCategoryID(String value) { 
+        this.assocPolicyGroupCategoryID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssocPolicyGroupCategoryName", readOnly = false)   
+    public String getAssocPolicyGroupCategoryName() {
+       return assocPolicyGroupCategoryName;
+    }
+
+    @JsonIgnore
+    public void setAssocPolicyGroupCategoryName(String value) { 
+        this.assocPolicyGroupCategoryName = value;
     }
     
     @JsonIgnore
@@ -339,7 +367,7 @@ public class PolicyGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "PolicyGroup [" + "EVPNCommunityTag=" + EVPNCommunityTag + ", description=" + description + ", entityScope=" + entityScope + ", external=" + external + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyGroupID=" + policyGroupID + ", templateID=" + templateID + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PolicyGroup [" + "EVPNCommunityTag=" + EVPNCommunityTag + ", assocPolicyGroupCategoryID=" + assocPolicyGroupCategoryID + ", assocPolicyGroupCategoryName=" + assocPolicyGroupCategoryName + ", description=" + description + ", entityScope=" + entityScope + ", external=" + external + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyGroupID=" + policyGroupID + ", templateID=" + templateID + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

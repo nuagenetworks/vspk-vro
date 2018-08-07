@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Find EnterpriseNetwork in SaaSApplicationType</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7f9cb4e2-ed28-5931-8380-e1dc9b02a673</entry>
+</properties>

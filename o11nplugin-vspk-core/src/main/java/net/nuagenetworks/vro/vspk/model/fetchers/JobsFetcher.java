@@ -54,6 +54,8 @@ import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
+import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
+
 import net.nuagenetworks.vro.vspk.model.VCenter;
 
 import net.nuagenetworks.vro.vspk.model.VCenterCluster;
@@ -219,6 +221,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSGateway) {
             return (NSGateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
+    public RedundancyGroup getRedundancyGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RedundancyGroup) {
+            return (RedundancyGroup) obj;
         }
         
         return null;

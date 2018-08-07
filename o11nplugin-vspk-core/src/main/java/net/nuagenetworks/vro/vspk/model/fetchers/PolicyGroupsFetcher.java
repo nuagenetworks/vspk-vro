@@ -42,6 +42,8 @@ import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.Me;
 
+import net.nuagenetworks.vro.vspk.model.PolicyGroupCategory;
+
 import net.nuagenetworks.vro.vspk.model.VMInterface;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
@@ -133,6 +135,16 @@ public class PolicyGroupsFetcher extends BaseFetcher<PolicyGroup> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PolicyGroupCategory", readOnly = true)
+    public PolicyGroupCategory getPolicyGroupCategory() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyGroupCategory) {
+            return (PolicyGroupCategory) obj;
         }
         
         return null;

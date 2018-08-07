@@ -33,6 +33,8 @@ import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.NetworkMacroGroup;
+
+import net.nuagenetworks.vro.vspk.model.SaaSApplicationType;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -81,6 +83,16 @@ public class EnterpriseNetworksFetcher extends BaseFetcher<EnterpriseNetwork> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NetworkMacroGroup) {
             return (NetworkMacroGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SaaSApplicationType", readOnly = true)
+    public SaaSApplicationType getSaaSApplicationType() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SaaSApplicationType) {
+            return (SaaSApplicationType) obj;
         }
         
         return null;

@@ -28,6 +28,8 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.AddressRangesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementbindingsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.BridgeInterfacesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainersFetcher;
@@ -63,6 +65,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceBindingsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaySummariesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.OverlayMirrorDestinationsFetcher;
 
@@ -129,6 +133,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.L2DOMAIN, datasource = Constants.DATASOURCE, image = Constants.L2DOMAIN_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER, type = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSACLTEMPLATES_FETCHER, type = Constants.EGRESSACLTEMPLATES_FETCHER), 
@@ -255,6 +261,9 @@ public class L2Domain extends BaseObject {
     @JsonProperty(value = "routeTarget")
     protected String routeTarget;
     
+    @JsonProperty(value = "routedVPLSEnabled")
+    protected Boolean routedVPLSEnabled;
+    
     @JsonProperty(value = "serviceID")
     protected Long serviceID;
     
@@ -275,6 +284,9 @@ public class L2Domain extends BaseObject {
     
     @JsonIgnore
     private AddressRangesFetcher addressRanges;
+    
+    @JsonIgnore
+    private ApplicationperformancemanagementbindingsFetcher applicationperformancemanagementbindings;
     
     @JsonIgnore
     private BridgeInterfacesFetcher bridgeInterfaces;
@@ -331,6 +343,9 @@ public class L2Domain extends BaseObject {
     private NetworkPerformanceBindingsFetcher networkPerformanceBindings;
     
     @JsonIgnore
+    private NSGatewaySummariesFetcher nSGatewaySummaries;
+    
+    @JsonIgnore
     private OverlayMirrorDestinationsFetcher overlayMirrorDestinations;
     
     @JsonIgnore
@@ -381,6 +396,8 @@ public class L2Domain extends BaseObject {
         
         addressRanges = new AddressRangesFetcher(this);
         
+        applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
+        
         bridgeInterfaces = new BridgeInterfacesFetcher(this);
         
         containers = new ContainersFetcher(this);
@@ -416,6 +433,8 @@ public class L2Domain extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
+        
+        nSGatewaySummaries = new NSGatewaySummariesFetcher(this);
         
         overlayMirrorDestinations = new OverlayMirrorDestinationsFetcher(this);
         
@@ -770,6 +789,17 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "RoutedVPLSEnabled", readOnly = false)   
+    public Boolean getRoutedVPLSEnabled() {
+       return routedVPLSEnabled;
+    }
+
+    @JsonIgnore
+    public void setRoutedVPLSEnabled(Boolean value) { 
+        this.routedVPLSEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ServiceID", readOnly = false)   
     public Long getServiceID() {
        return serviceID;
@@ -839,6 +869,12 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "AddressRanges", readOnly = true)   
     public AddressRangesFetcher getAddressRanges() {
         return addressRanges;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Applicationperformancemanagementbindings", readOnly = true)   
+    public ApplicationperformancemanagementbindingsFetcher getApplicationperformancemanagementbindings() {
+        return applicationperformancemanagementbindings;
     }
     
     @JsonIgnore
@@ -947,6 +983,12 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "NetworkPerformanceBindings", readOnly = true)   
     public NetworkPerformanceBindingsFetcher getNetworkPerformanceBindings() {
         return networkPerformanceBindings;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NSGatewaySummaries", readOnly = true)   
+    public NSGatewaySummariesFetcher getNSGatewaySummaries() {
+        return nSGatewaySummaries;
     }
     
     @JsonIgnore
@@ -1077,6 +1119,14 @@ public class L2Domain extends BaseObject {
         }
     }
     
+    @VsoMethod
+    public void createApplicationperformancemanagementbinding(Session session, Applicationperformancemanagementbinding childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER, getId());
+        }
+    }
     @VsoMethod
     public void createDHCPOption(Session session, DHCPOption childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
@@ -1289,7 +1339,7 @@ public class L2Domain extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", associatedUnderlayID=" + associatedUnderlayID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", associatedUnderlayID=" + associatedUnderlayID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", routedVPLSEnabled=" + routedVPLSEnabled + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

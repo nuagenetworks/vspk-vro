@@ -134,6 +134,9 @@ public class NSPort extends BaseObject {
     @JsonProperty(value = "portType")
     protected NSPortPortType portType;
     
+    @JsonProperty(value = "shuntPort")
+    protected Boolean shuntPort;
+    
     @JsonProperty(value = "speed")
     protected NSPortSpeed speed;
     
@@ -403,6 +406,17 @@ public class NSPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ShuntPort", readOnly = false)   
+    public Boolean getShuntPort() {
+       return shuntPort;
+    }
+
+    @JsonIgnore
+    public void setShuntPort(Boolean value) { 
+        this.shuntPort = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Speed", readOnly = false)   
     public NSPortSpeed getSpeed() {
        return speed;
@@ -603,7 +617,7 @@ public class NSPort extends BaseObject {
         }
     }
     public String toString() {
-        return "NSPort [" + "NATTraversal=" + NATTraversal + ", TrafficThroughUBROnly=" + TrafficThroughUBROnly + ", VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", enableNATProbes=" + enableNATProbes + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", speed=" + speed + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSPort [" + "NATTraversal=" + NATTraversal + ", TrafficThroughUBROnly=" + TrafficThroughUBROnly + ", VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", enableNATProbes=" + enableNATProbes + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", shuntPort=" + shuntPort + ", speed=" + speed + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Remove ShuntLink</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">82f7f47a-bf69-5a4a-b57d-3889cef12681</entry>
+</properties>

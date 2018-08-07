@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
+<entry key="name">Find MACFilterProfile in RedundancyGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5526cb3c-7572-59e7-932c-631c9d089a8b</entry>
+</properties>

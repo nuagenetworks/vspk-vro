@@ -49,6 +49,12 @@ public class L4Service extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "ICMPCode")
+    protected String ICMPCode;
+    
+    @JsonProperty(value = "ICMPType")
+    protected String ICMPType;
+    
     @JsonProperty(value = "defaultService")
     protected Boolean defaultService;
     
@@ -111,6 +117,28 @@ public class L4Service extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "ICMPCode", readOnly = false)   
+    public String getICMPCode() {
+       return ICMPCode;
+    }
+
+    @JsonIgnore
+    public void setICMPCode(String value) { 
+        this.ICMPCode = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ICMPType", readOnly = false)   
+    public String getICMPType() {
+       return ICMPType;
+    }
+
+    @JsonIgnore
+    public void setICMPType(String value) { 
+        this.ICMPType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "DefaultService", readOnly = false)   
     public Boolean getDefaultService() {
@@ -219,7 +247,7 @@ public class L4Service extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.L4SERVICE, getId());
         }
     }public String toString() {
-        return "L4Service [" + "defaultService=" + defaultService + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", ports=" + ports + ", protocol=" + protocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L4Service [" + "ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", defaultService=" + defaultService + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", ports=" + ports + ", protocol=" + protocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

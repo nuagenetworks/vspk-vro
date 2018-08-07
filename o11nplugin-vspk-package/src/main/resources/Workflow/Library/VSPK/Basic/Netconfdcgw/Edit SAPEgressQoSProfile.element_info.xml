@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
+<entry key="name">Edit SAPEgressQoSProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ce718223-7088-53eb-985a-72edefee061c</entry>
+</properties>

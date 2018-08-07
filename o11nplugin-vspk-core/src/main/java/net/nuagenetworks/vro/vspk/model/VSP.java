@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.HSCsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NetconfManagersFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VSCsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VSDsFetcher;
@@ -54,6 +56,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.VSP, datasource = Constants.DATASOURCE, image = Constants.VSP_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.NETCONFMANAGERS_FETCHER, type = Constants.NETCONFMANAGERS_FETCHER), 
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -97,6 +101,9 @@ public class VSP extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private NetconfManagersFetcher netconfManagers;
+    
+    @JsonIgnore
     private VSCsFetcher vSCs;
     
     @JsonIgnore
@@ -111,6 +118,8 @@ public class VSP extends BaseObject {
         hSCs = new HSCsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        netconfManagers = new NetconfManagersFetcher(this);
         
         vSCs = new VSCsFetcher(this);
         
@@ -254,6 +263,12 @@ public class VSP extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetconfManagers", readOnly = true)   
+    public NetconfManagersFetcher getNetconfManagers() {
+        return netconfManagers;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VSCs", readOnly = true)   
     public VSCsFetcher getVSCs() {
         return vSCs;
@@ -308,6 +323,14 @@ public class VSP extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createNetconfManager(Session session, NetconfManager childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NETCONFMANAGERS_FETCHER, getId());
         }
     }public String toString() {
         return "VSP [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", location=" + location + ", name=" + name + ", productVersion=" + productVersion + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
+<entry key="name">Remove MACFilterProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9381e237-0176-59e2-8b05-5022a67bcd10</entry>
+</properties>

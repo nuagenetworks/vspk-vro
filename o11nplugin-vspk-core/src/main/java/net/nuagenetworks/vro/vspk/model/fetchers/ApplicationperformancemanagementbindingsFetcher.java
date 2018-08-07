@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.Applicationperformancemanagementbinding;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Domain;
+
+import net.nuagenetworks.vro.vspk.model.L2Domain;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -69,6 +71,16 @@ public class ApplicationperformancemanagementbindingsFetcher extends BaseFetcher
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Domain) {
             return (Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
         }
         
         return null;

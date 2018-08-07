@@ -32,7 +32,11 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Domain;
 
+import net.nuagenetworks.vro.vspk.model.EgressProfile;
+
 import net.nuagenetworks.vro.vspk.model.FloatingIp;
+
+import net.nuagenetworks.vro.vspk.model.IngressProfile;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
@@ -94,11 +98,31 @@ public class VPortsFetcher extends BaseFetcher<VPort> {
         return null;
     }
     
+    @VsoProperty(displayName = "EgressProfile", readOnly = true)
+    public EgressProfile getEgressProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EgressProfile) {
+            return (EgressProfile) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "FloatingIp", readOnly = true)
     public FloatingIp getFloatingIp() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof FloatingIp) {
             return (FloatingIp) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressProfile", readOnly = true)
+    public IngressProfile getIngressProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressProfile) {
+            return (IngressProfile) obj;
         }
         
         return null;

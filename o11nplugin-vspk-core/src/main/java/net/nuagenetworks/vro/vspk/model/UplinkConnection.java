@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.CustomPropertiesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UnderlaysFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAddressFamily;
+
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAdvertisementCriteria;
 
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionInterfaceConnectionType;
@@ -68,11 +70,20 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "DNSAddress")
     protected String DNSAddress;
     
+    @JsonProperty(value = "DNSAddressV6")
+    protected String DNSAddressV6;
+    
     @JsonProperty(value = "PATEnabled")
     protected Boolean PATEnabled;
     
     @JsonProperty(value = "address")
     protected String address;
+    
+    @JsonProperty(value = "addressFamily")
+    protected UplinkConnectionAddressFamily addressFamily;
+    
+    @JsonProperty(value = "addressV6")
+    protected String addressV6;
     
     @JsonProperty(value = "advertisementCriteria")
     protected UplinkConnectionAdvertisementCriteria advertisementCriteria;
@@ -94,6 +105,9 @@ public class UplinkConnection extends BaseObject {
     
     @JsonProperty(value = "gateway")
     protected String gateway;
+    
+    @JsonProperty(value = "gatewayV6")
+    protected String gatewayV6;
     
     @JsonProperty(value = "inherited")
     protected Boolean inherited;
@@ -207,6 +221,17 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DNSAddressV6", readOnly = false)   
+    public String getDNSAddressV6() {
+       return DNSAddressV6;
+    }
+
+    @JsonIgnore
+    public void setDNSAddressV6(String value) { 
+        this.DNSAddressV6 = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PATEnabled", readOnly = false)   
     public Boolean getPATEnabled() {
        return PATEnabled;
@@ -226,6 +251,28 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setAddress(String value) { 
         this.address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AddressFamily", readOnly = false)   
+    public UplinkConnectionAddressFamily getAddressFamily() {
+       return addressFamily;
+    }
+
+    @JsonIgnore
+    public void setAddressFamily(UplinkConnectionAddressFamily value) { 
+        this.addressFamily = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AddressV6", readOnly = false)   
+    public String getAddressV6() {
+       return addressV6;
+    }
+
+    @JsonIgnore
+    public void setAddressV6(String value) { 
+        this.addressV6 = value;
     }
     
     @JsonIgnore
@@ -303,6 +350,17 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setGateway(String value) { 
         this.gateway = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayV6", readOnly = false)   
+    public String getGatewayV6() {
+       return gatewayV6;
+    }
+
+    @JsonIgnore
+    public void setGatewayV6(String value) { 
+        this.gatewayV6 = value;
     }
     
     @JsonIgnore
@@ -513,7 +571,7 @@ public class UplinkConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.CUSTOMPROPERTIES_FETCHER, getId());
         }
     }public String toString() {
-        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", PATEnabled=" + PATEnabled + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxiliaryLink=" + auxiliaryLink + ", downloadRateLimit=" + downloadRateLimit + ", gateway=" + gateway + ", inherited=" + inherited + ", installerManaged=" + installerManaged + ", interfaceConnectionType=" + interfaceConnectionType + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", portName=" + portName + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", underlayEnabled=" + underlayEnabled + ", uplinkID=" + uplinkID + ", username=" + username + ", vlanId=" + vlanId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", PATEnabled=" + PATEnabled + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxiliaryLink=" + auxiliaryLink + ", downloadRateLimit=" + downloadRateLimit + ", gateway=" + gateway + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", installerManaged=" + installerManaged + ", interfaceConnectionType=" + interfaceConnectionType + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", portName=" + portName + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", underlayEnabled=" + underlayEnabled + ", uplinkID=" + uplinkID + ", username=" + username + ", vlanId=" + vlanId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

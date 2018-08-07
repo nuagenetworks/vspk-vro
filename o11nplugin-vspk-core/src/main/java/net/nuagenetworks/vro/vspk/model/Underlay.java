@@ -71,7 +71,7 @@ public class Underlay extends BaseObject {
     protected String name;
     
     @JsonProperty(value = "underlayId")
-    protected String underlayId;
+    protected Long underlayId;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -178,12 +178,12 @@ public class Underlay extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "UnderlayId", readOnly = false)   
-    public String getUnderlayId() {
+    public Long getUnderlayId() {
        return underlayId;
     }
 
     @JsonIgnore
-    public void setUnderlayId(String value) { 
+    public void setUnderlayId(Long value) { 
         this.underlayId = value;
     }
     

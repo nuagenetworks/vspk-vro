@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum GatewayPersonality {
 
-    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NSG("NSG", "NSG"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), OTHER("OTHER", "OTHER"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
+    DC7X50("DC7X50", "DC7X50"), EVDF("EVDF", "EVDF"), EVDFB("EVDFB", "EVDFB"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NETCONF_7X50("NETCONF_7X50", "NETCONF_7X50"), NSG("NSG", "NSG"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), OTHER("OTHER", "OTHER"), VDFG("VDFG", "VDFG"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
 
     private final String id;
     private final String name;
@@ -63,9 +63,24 @@ public enum GatewayPersonality {
         return DC7X50;
     }
     
+    @VsoProperty(displayName = "EVDF", readOnly = true)
+    public GatewayPersonality getEVDF() {
+        return EVDF;
+    }
+    
+    @VsoProperty(displayName = "EVDFB", readOnly = true)
+    public GatewayPersonality getEVDFB() {
+        return EVDFB;
+    }
+    
     @VsoProperty(displayName = "HARDWARE_VTEP", readOnly = true)
     public GatewayPersonality getHARDWARE_VTEP() {
         return HARDWARE_VTEP;
+    }
+    
+    @VsoProperty(displayName = "NETCONF_7X50", readOnly = true)
+    public GatewayPersonality getNETCONF_7X50() {
+        return NETCONF_7X50;
     }
     
     @VsoProperty(displayName = "NSG", readOnly = true)
@@ -86,6 +101,11 @@ public enum GatewayPersonality {
     @VsoProperty(displayName = "OTHER", readOnly = true)
     public GatewayPersonality getOTHER() {
         return OTHER;
+    }
+    
+    @VsoProperty(displayName = "VDFG", readOnly = true)
+    public GatewayPersonality getVDFG() {
+        return VDFG;
     }
     
     @VsoProperty(displayName = "VRSB", readOnly = true)

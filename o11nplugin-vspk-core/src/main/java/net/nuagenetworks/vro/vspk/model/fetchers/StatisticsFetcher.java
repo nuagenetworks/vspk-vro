@@ -66,6 +66,10 @@ import net.nuagenetworks.vro.vspk.model.VMInterface;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
 
+import net.nuagenetworks.vro.vspk.model.VRS;
+
+import net.nuagenetworks.vro.vspk.model.VSC;
+
 import net.nuagenetworks.vro.vspk.model.WirelessPort;
 
 import net.nuagenetworks.vro.vspk.model.Zone;
@@ -277,6 +281,26 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VPort) {
             return (VPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VRS", readOnly = true)
+    public VRS getVRS() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VRS) {
+            return (VRS) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VSC", readOnly = true)
+    public VSC getVSC() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VSC) {
+            return (VSC) obj;
         }
         
         return null;

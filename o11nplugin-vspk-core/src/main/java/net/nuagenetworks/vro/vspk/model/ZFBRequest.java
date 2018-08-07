@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.ZFBRequestZFBApprovalStatus;
 
+import net.nuagenetworks.vro.vspk.model.enums.ZFBRequestAssociatedEntityType;
+
 import net.nuagenetworks.vro.vspk.model.enums.ZFBRequestEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -94,6 +96,15 @@ public class ZFBRequest extends BaseObject {
     
     @JsonProperty(value = "associatedEnterpriseName")
     protected String associatedEnterpriseName;
+    
+    @JsonProperty(value = "associatedEntityType")
+    protected ZFBRequestAssociatedEntityType associatedEntityType;
+    
+    @JsonProperty(value = "associatedGatewayID")
+    protected String associatedGatewayID;
+    
+    @JsonProperty(value = "associatedGatewayName")
+    protected String associatedGatewayName;
     
     @JsonProperty(value = "associatedNSGatewayID")
     protected String associatedNSGatewayID;
@@ -316,6 +327,39 @@ public class ZFBRequest extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEntityType", readOnly = false)   
+    public ZFBRequestAssociatedEntityType getAssociatedEntityType() {
+       return associatedEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEntityType(ZFBRequestAssociatedEntityType value) { 
+        this.associatedEntityType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedGatewayID", readOnly = false)   
+    public String getAssociatedGatewayID() {
+       return associatedGatewayID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedGatewayID(String value) { 
+        this.associatedGatewayID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedGatewayName", readOnly = false)   
+    public String getAssociatedGatewayName() {
+       return associatedGatewayName;
+    }
+
+    @JsonIgnore
+    public void setAssociatedGatewayName(String value) { 
+        this.associatedGatewayName = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedNSGatewayID", readOnly = false)   
     public String getAssociatedNSGatewayID() {
        return associatedNSGatewayID;
@@ -496,7 +540,7 @@ public class ZFBRequest extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ZFBRequest [" + "CPUType=" + CPUType + ", IPAddress=" + IPAddress + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", UUID=" + UUID + ", ZFBApprovalStatus=" + ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + ZFBBootstrapEnabled + ", ZFBInfo=" + ZFBInfo + ", ZFBRequestRetryTimer=" + ZFBRequestRetryTimer + ", associatedEnterpriseID=" + associatedEnterpriseID + ", associatedEnterpriseName=" + associatedEnterpriseName + ", associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", hostname=" + hostname + ", lastConnectedTime=" + lastConnectedTime + ", lastUpdatedBy=" + lastUpdatedBy + ", serialNumber=" + serialNumber + ", statusString=" + statusString + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ZFBRequest [" + "CPUType=" + CPUType + ", IPAddress=" + IPAddress + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", UUID=" + UUID + ", ZFBApprovalStatus=" + ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + ZFBBootstrapEnabled + ", ZFBInfo=" + ZFBInfo + ", ZFBRequestRetryTimer=" + ZFBRequestRetryTimer + ", associatedEnterpriseID=" + associatedEnterpriseID + ", associatedEnterpriseName=" + associatedEnterpriseName + ", associatedEntityType=" + associatedEntityType + ", associatedGatewayID=" + associatedGatewayID + ", associatedGatewayName=" + associatedGatewayName + ", associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", hostname=" + hostname + ", lastConnectedTime=" + lastConnectedTime + ", lastUpdatedBy=" + lastUpdatedBy + ", serialNumber=" + serialNumber + ", statusString=" + statusString + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

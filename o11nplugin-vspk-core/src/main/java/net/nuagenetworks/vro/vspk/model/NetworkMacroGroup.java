@@ -66,6 +66,9 @@ public class NetworkMacroGroup extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
+    @JsonProperty(value = "isSaaSType")
+    protected Boolean isSaaSType;
+    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
@@ -159,6 +162,17 @@ public class NetworkMacroGroup extends BaseObject {
     @JsonIgnore
     public void setExternalID(String value) { 
         this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IsSaaSType", readOnly = false)   
+    public Boolean getIsSaaSType() {
+       return isSaaSType;
+    }
+
+    @JsonIgnore
+    public void setIsSaaSType(Boolean value) { 
+        this.isSaaSType = value;
     }
     
     @JsonIgnore
@@ -266,7 +280,7 @@ public class NetworkMacroGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NetworkMacroGroup [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", networkMacros=" + networkMacros + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NetworkMacroGroup [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isSaaSType=" + isSaaSType + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", networkMacros=" + networkMacros + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

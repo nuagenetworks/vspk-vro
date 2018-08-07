@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
+<entry key="name">Edit SAPIngressQoSProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">cdd9e9d6-c4d6-5344-94b6-0bf1e5adfd7c</entry>
+</properties>

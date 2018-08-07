@@ -28,19 +28,41 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.DeploymentFailuresFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressProfilesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisePermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GatewaysFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.GatewayRedundantPortsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressProfilesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.IPFilterProfilesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.IPv6FilterProfilesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.L2DomainsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MACFilterProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PortsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.SAPEgressQoSProfilesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.SAPIngressQoSProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.WANServicesFetcher;
 
@@ -67,13 +89,29 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.REDUNDANCYGROUP, datasource = Constants.DATASOURCE, image = Constants.REDUNDANCYGROUP_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.EGRESSPROFILES_FETCHER, type = Constants.EGRESSPROFILES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPERMISSIONS_FETCHER, type = Constants.ENTERPRISEPERMISSIONS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.GATEWAYREDUNDANTPORTS_FETCHER, type = Constants.GATEWAYREDUNDANTPORTS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSPROFILES_FETCHER, type = Constants.INGRESSPROFILES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.IPFILTERPROFILES_FETCHER, type = Constants.IPFILTERPROFILES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.IPV6FILTERPROFILES_FETCHER, type = Constants.IPV6FILTERPROFILES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.MACFILTERPROFILES_FETCHER, type = Constants.MACFILTERPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PORTS_FETCHER, type = Constants.PORTS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.SAPEGRESSQOSPROFILES_FETCHER, type = Constants.SAPEGRESSQOSPROFILES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.SAPINGRESSQOSPROFILES_FETCHER, type = Constants.SAPINGRESSQOSPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.WANSERVICES_FETCHER, type = Constants.WANSERVICES_FETCHER), 
 
@@ -102,6 +140,9 @@ public class RedundancyGroup extends BaseObject {
     @JsonProperty(value = "gatewayPeer1AutodiscoveredGatewayID")
     protected String gatewayPeer1AutodiscoveredGatewayID;
     
+    @JsonProperty(value = "gatewayPeer1Connected")
+    protected Boolean gatewayPeer1Connected;
+    
     @JsonProperty(value = "gatewayPeer1ID")
     protected String gatewayPeer1ID;
     
@@ -110,6 +151,9 @@ public class RedundancyGroup extends BaseObject {
     
     @JsonProperty(value = "gatewayPeer2AutodiscoveredGatewayID")
     protected String gatewayPeer2AutodiscoveredGatewayID;
+    
+    @JsonProperty(value = "gatewayPeer2Connected")
+    protected Boolean gatewayPeer2Connected;
     
     @JsonProperty(value = "gatewayPeer2ID")
     protected String gatewayPeer2ID;
@@ -139,6 +183,12 @@ public class RedundancyGroup extends BaseObject {
     private AlarmsFetcher alarms;
     
     @JsonIgnore
+    private DeploymentFailuresFetcher deploymentFailures;
+    
+    @JsonIgnore
+    private EgressProfilesFetcher egressProfiles;
+    
+    @JsonIgnore
     private EnterprisePermissionsFetcher enterprisePermissions;
     
     @JsonIgnore
@@ -148,7 +198,28 @@ public class RedundancyGroup extends BaseObject {
     private GatewaysFetcher gateways;
     
     @JsonIgnore
+    private GatewayRedundantPortsFetcher gatewayRedundantPorts;
+    
+    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private IngressProfilesFetcher ingressProfiles;
+    
+    @JsonIgnore
+    private IPFilterProfilesFetcher iPFilterProfiles;
+    
+    @JsonIgnore
+    private IPv6FilterProfilesFetcher iPv6FilterProfiles;
+    
+    @JsonIgnore
+    private JobsFetcher jobs;
+    
+    @JsonIgnore
+    private L2DomainsFetcher l2Domains;
+    
+    @JsonIgnore
+    private MACFilterProfilesFetcher mACFilterProfiles;
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
@@ -160,6 +231,12 @@ public class RedundancyGroup extends BaseObject {
     private PortsFetcher ports;
     
     @JsonIgnore
+    private SAPEgressQoSProfilesFetcher sAPEgressQoSProfiles;
+    
+    @JsonIgnore
+    private SAPIngressQoSProfilesFetcher sAPIngressQoSProfiles;
+    
+    @JsonIgnore
     private WANServicesFetcher wANServices;
     
     @JsonIgnore
@@ -169,19 +246,41 @@ public class RedundancyGroup extends BaseObject {
     public RedundancyGroup() {
         alarms = new AlarmsFetcher(this);
         
+        deploymentFailures = new DeploymentFailuresFetcher(this);
+        
+        egressProfiles = new EgressProfilesFetcher(this);
+        
         enterprisePermissions = new EnterprisePermissionsFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
         
         gateways = new GatewaysFetcher(this);
         
+        gatewayRedundantPorts = new GatewayRedundantPortsFetcher(this);
+        
         globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        ingressProfiles = new IngressProfilesFetcher(this);
+        
+        iPFilterProfiles = new IPFilterProfilesFetcher(this);
+        
+        iPv6FilterProfiles = new IPv6FilterProfilesFetcher(this);
+        
+        jobs = new JobsFetcher(this);
+        
+        l2Domains = new L2DomainsFetcher(this);
+        
+        mACFilterProfiles = new MACFilterProfilesFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         
         permissions = new PermissionsFetcher(this);
         
         ports = new PortsFetcher(this);
+        
+        sAPEgressQoSProfiles = new SAPEgressQoSProfilesFetcher(this);
+        
+        sAPIngressQoSProfiles = new SAPIngressQoSProfilesFetcher(this);
         
         wANServices = new WANServicesFetcher(this);
         
@@ -279,6 +378,17 @@ public class RedundancyGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "GatewayPeer1Connected", readOnly = false)   
+    public Boolean getGatewayPeer1Connected() {
+       return gatewayPeer1Connected;
+    }
+
+    @JsonIgnore
+    public void setGatewayPeer1Connected(Boolean value) { 
+        this.gatewayPeer1Connected = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GatewayPeer1ID", readOnly = false)   
     public String getGatewayPeer1ID() {
        return gatewayPeer1ID;
@@ -309,6 +419,17 @@ public class RedundancyGroup extends BaseObject {
     @JsonIgnore
     public void setGatewayPeer2AutodiscoveredGatewayID(String value) { 
         this.gatewayPeer2AutodiscoveredGatewayID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayPeer2Connected", readOnly = false)   
+    public Boolean getGatewayPeer2Connected() {
+       return gatewayPeer2Connected;
+    }
+
+    @JsonIgnore
+    public void setGatewayPeer2Connected(Boolean value) { 
+        this.gatewayPeer2Connected = value;
     }
     
     @JsonIgnore
@@ -406,6 +527,18 @@ public class RedundancyGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DeploymentFailures", readOnly = true)   
+    public DeploymentFailuresFetcher getDeploymentFailures() {
+        return deploymentFailures;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EgressProfiles", readOnly = true)   
+    public EgressProfilesFetcher getEgressProfiles() {
+        return egressProfiles;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EnterprisePermissions", readOnly = true)   
     public EnterprisePermissionsFetcher getEnterprisePermissions() {
         return enterprisePermissions;
@@ -424,9 +557,51 @@ public class RedundancyGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "GatewayRedundantPorts", readOnly = true)   
+    public GatewayRedundantPortsFetcher getGatewayRedundantPorts() {
+        return gatewayRedundantPorts;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IngressProfiles", readOnly = true)   
+    public IngressProfilesFetcher getIngressProfiles() {
+        return ingressProfiles;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPFilterProfiles", readOnly = true)   
+    public IPFilterProfilesFetcher getIPFilterProfiles() {
+        return iPFilterProfiles;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6FilterProfiles", readOnly = true)   
+    public IPv6FilterProfilesFetcher getIPv6FilterProfiles() {
+        return iPv6FilterProfiles;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Jobs", readOnly = true)   
+    public JobsFetcher getJobs() {
+        return jobs;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "L2Domains", readOnly = true)   
+    public L2DomainsFetcher getL2Domains() {
+        return l2Domains;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "MACFilterProfiles", readOnly = true)   
+    public MACFilterProfilesFetcher getMACFilterProfiles() {
+        return mACFilterProfiles;
     }
     
     @JsonIgnore
@@ -445,6 +620,18 @@ public class RedundancyGroup extends BaseObject {
     @VsoProperty(displayName = "Ports", readOnly = true)   
     public PortsFetcher getPorts() {
         return ports;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SAPEgressQoSProfiles", readOnly = true)   
+    public SAPEgressQoSProfilesFetcher getSAPEgressQoSProfiles() {
+        return sAPEgressQoSProfiles;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SAPIngressQoSProfiles", readOnly = true)   
+    public SAPIngressQoSProfilesFetcher getSAPIngressQoSProfiles() {
+        return sAPIngressQoSProfiles;
     }
     
     @JsonIgnore
@@ -507,6 +694,14 @@ public class RedundancyGroup extends BaseObject {
     }
     
     @VsoMethod
+    public void createEgressProfile(Session session, EgressProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.EGRESSPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createEnterprisePermission(Session session, EnterprisePermission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -515,11 +710,59 @@ public class RedundancyGroup extends BaseObject {
         }
     }
     @VsoMethod
+    public void createGatewayRedundantPort(Session session, GatewayRedundantPort childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GATEWAYREDUNDANTPORTS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIngressProfile(Session session, IngressProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIPFilterProfile(Session session, IPFilterProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.IPFILTERPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIPv6FilterProfile(Session session, IPv6FilterProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.IPV6FILTERPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMACFilterProfile(Session session, MACFilterProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.MACFILTERPROFILES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -556,6 +799,22 @@ public class RedundancyGroup extends BaseObject {
     }
     
     @VsoMethod
+    public void createSAPEgressQoSProfile(Session session, SAPEgressQoSProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.SAPEGRESSQOSPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createSAPIngressQoSProfile(Session session, SAPIngressQoSProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.SAPINGRESSQOSPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createWANService(Session session, WANService childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -571,7 +830,7 @@ public class RedundancyGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VSGREDUNDANTPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "RedundancyGroup [" + "description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer1Name=" + gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2ID=" + gatewayPeer2ID + ", gatewayPeer2Name=" + gatewayPeer2Name + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", personality=" + personality + ", redundantGatewayStatus=" + redundantGatewayStatus + ", vtep=" + vtep + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "RedundancyGroup [" + "description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1Connected=" + gatewayPeer1Connected + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer1Name=" + gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2Connected=" + gatewayPeer2Connected + ", gatewayPeer2ID=" + gatewayPeer2ID + ", gatewayPeer2Name=" + gatewayPeer2Name + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", personality=" + personality + ", redundantGatewayStatus=" + redundantGatewayStatus + ", vtep=" + vtep + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

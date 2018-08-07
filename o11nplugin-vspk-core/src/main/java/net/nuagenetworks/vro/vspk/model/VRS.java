@@ -44,6 +44,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MonitoringPortsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MultiNICVPortsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VPortsFetcher;
@@ -271,6 +273,9 @@ public class VRS extends BaseObject {
     private MultiNICVPortsFetcher multiNICVPorts;
     
     @JsonIgnore
+    private StatisticsFetcher statistics;
+    
+    @JsonIgnore
     private VMsFetcher vMs;
     
     @JsonIgnore
@@ -298,6 +303,8 @@ public class VRS extends BaseObject {
         monitoringPorts = new MonitoringPortsFetcher(this);
         
         multiNICVPorts = new MultiNICVPortsFetcher(this);
+        
+        statistics = new StatisticsFetcher(this);
         
         vMs = new VMsFetcher(this);
         
@@ -943,6 +950,12 @@ public class VRS extends BaseObject {
     @VsoProperty(displayName = "MultiNICVPorts", readOnly = true)   
     public MultiNICVPortsFetcher getMultiNICVPorts() {
         return multiNICVPorts;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Statistics", readOnly = true)   
+    public StatisticsFetcher getStatistics() {
+        return statistics;
     }
     
     @JsonIgnore

@@ -76,6 +76,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.HostInterfacesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.InfrastructureAccessProfilesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.InfrastructureEVDFProfilesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.InfrastructureGatewayProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.InfrastructureVscProfilesFetcher;
@@ -105,6 +107,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.MirrorDestinationsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MultiCastChannelMapsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.NetconfProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetworkLayoutsFetcher;
 
@@ -231,6 +235,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREACCESSPROFILES_FETCHER, type = Constants.INFRASTRUCTUREACCESSPROFILES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREEVDFPROFILES_FETCHER, type = Constants.INFRASTRUCTUREEVDFPROFILES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREGATEWAYPROFILES_FETCHER, type = Constants.INFRASTRUCTUREGATEWAYPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER, type = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER), 
@@ -248,6 +254,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.MIRRORDESTINATIONS_FETCHER, type = Constants.MIRRORDESTINATIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.MULTICASTCHANNELMAPS_FETCHER, type = Constants.MULTICASTCHANNELMAPS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.NETCONFPROFILES_FETCHER, type = Constants.NETCONFPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSGATEWAYTEMPLATES_FETCHER, type = Constants.NSGATEWAYTEMPLATES_FETCHER), 
 
@@ -438,6 +446,9 @@ public class Me extends BaseRootObject {
     private InfrastructureAccessProfilesFetcher infrastructureAccessProfiles;
     
     @JsonIgnore
+    private InfrastructureEVDFProfilesFetcher infrastructureEVDFProfiles;
+    
+    @JsonIgnore
     private InfrastructureGatewayProfilesFetcher infrastructureGatewayProfiles;
     
     @JsonIgnore
@@ -481,6 +492,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private MultiCastChannelMapsFetcher multiCastChannelMaps;
+    
+    @JsonIgnore
+    private NetconfProfilesFetcher netconfProfiles;
     
     @JsonIgnore
     private NetworkLayoutsFetcher networkLayouts;
@@ -654,6 +668,8 @@ public class Me extends BaseRootObject {
         
         infrastructureAccessProfiles = new InfrastructureAccessProfilesFetcher(this);
         
+        infrastructureEVDFProfiles = new InfrastructureEVDFProfilesFetcher(this);
+        
         infrastructureGatewayProfiles = new InfrastructureGatewayProfilesFetcher(this);
         
         infrastructureVscProfiles = new InfrastructureVscProfilesFetcher(this);
@@ -683,6 +699,8 @@ public class Me extends BaseRootObject {
         mirrorDestinations = new MirrorDestinationsFetcher(this);
         
         multiCastChannelMaps = new MultiCastChannelMapsFetcher(this);
+        
+        netconfProfiles = new NetconfProfilesFetcher(this);
         
         networkLayouts = new NetworkLayoutsFetcher(this);
         
@@ -1192,6 +1210,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "InfrastructureEVDFProfiles", readOnly = true)   
+    public InfrastructureEVDFProfilesFetcher getInfrastructureEVDFProfiles() {
+        return infrastructureEVDFProfiles;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "InfrastructureGatewayProfiles", readOnly = true)   
     public InfrastructureGatewayProfilesFetcher getInfrastructureGatewayProfiles() {
         return infrastructureGatewayProfiles;
@@ -1279,6 +1303,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "MultiCastChannelMaps", readOnly = true)   
     public MultiCastChannelMapsFetcher getMultiCastChannelMaps() {
         return multiCastChannelMaps;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NetconfProfiles", readOnly = true)   
+    public NetconfProfilesFetcher getNetconfProfiles() {
+        return netconfProfiles;
     }
     
     @JsonIgnore
@@ -1671,6 +1701,14 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createInfrastructureEVDFProfile(Session session, InfrastructureEVDFProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INFRASTRUCTUREEVDFPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createInfrastructureGatewayProfile(Session session, InfrastructureGatewayProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1756,6 +1794,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.MULTICASTCHANNELMAPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createNetconfProfile(Session session, NetconfProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NETCONFPROFILES_FETCHER, getId());
         }
     }
     @VsoMethod

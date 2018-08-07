@@ -28,6 +28,8 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.BFDSessionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.BRConnectionAddressFamily;
+
 import net.nuagenetworks.vro.vspk.model.enums.BRConnectionAdvertisementCriteria;
 
 import net.nuagenetworks.vro.vspk.model.enums.BRConnectionMode;
@@ -58,14 +60,26 @@ public class BRConnection extends BaseObject {
     @JsonProperty(value = "DNSAddress")
     protected String DNSAddress;
     
+    @JsonProperty(value = "DNSAddressV6")
+    protected String DNSAddressV6;
+    
     @JsonProperty(value = "address")
     protected String address;
+    
+    @JsonProperty(value = "addressFamily")
+    protected BRConnectionAddressFamily addressFamily;
+    
+    @JsonProperty(value = "addressV6")
+    protected String addressV6;
     
     @JsonProperty(value = "advertisementCriteria")
     protected BRConnectionAdvertisementCriteria advertisementCriteria;
     
     @JsonProperty(value = "gateway")
     protected String gateway;
+    
+    @JsonProperty(value = "gatewayV6")
+    protected String gatewayV6;
     
     @JsonProperty(value = "inherited")
     protected Boolean inherited;
@@ -139,6 +153,17 @@ public class BRConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DNSAddressV6", readOnly = false)   
+    public String getDNSAddressV6() {
+       return DNSAddressV6;
+    }
+
+    @JsonIgnore
+    public void setDNSAddressV6(String value) { 
+        this.DNSAddressV6 = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
     public String getAddress() {
        return address;
@@ -147,6 +172,28 @@ public class BRConnection extends BaseObject {
     @JsonIgnore
     public void setAddress(String value) { 
         this.address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AddressFamily", readOnly = false)   
+    public BRConnectionAddressFamily getAddressFamily() {
+       return addressFamily;
+    }
+
+    @JsonIgnore
+    public void setAddressFamily(BRConnectionAddressFamily value) { 
+        this.addressFamily = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AddressV6", readOnly = false)   
+    public String getAddressV6() {
+       return addressV6;
+    }
+
+    @JsonIgnore
+    public void setAddressV6(String value) { 
+        this.addressV6 = value;
     }
     
     @JsonIgnore
@@ -169,6 +216,17 @@ public class BRConnection extends BaseObject {
     @JsonIgnore
     public void setGateway(String value) { 
         this.gateway = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayV6", readOnly = false)   
+    public String getGatewayV6() {
+       return gatewayV6;
+    }
+
+    @JsonIgnore
+    public void setGatewayV6(String value) { 
+        this.gatewayV6 = value;
     }
     
     @JsonIgnore
@@ -249,7 +307,7 @@ public class BRConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.BFDSESSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", address=" + address + ", advertisementCriteria=" + advertisementCriteria + ", gateway=" + gateway + ", inherited=" + inherited + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", gateway=" + gateway + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

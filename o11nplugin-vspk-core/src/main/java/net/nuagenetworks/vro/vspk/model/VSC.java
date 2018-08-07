@@ -40,6 +40,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MonitoringPortsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VRSsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.VSCEntityScope;
@@ -157,6 +159,9 @@ public class VSC extends BaseObject {
     private MonitoringPortsFetcher monitoringPorts;
     
     @JsonIgnore
+    private StatisticsFetcher statistics;
+    
+    @JsonIgnore
     private VRSsFetcher vRSs;
     
     @VsoConstructor
@@ -174,6 +179,8 @@ public class VSC extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         monitoringPorts = new MonitoringPortsFetcher(this);
+        
+        statistics = new StatisticsFetcher(this);
         
         vRSs = new VRSsFetcher(this);
         }
@@ -495,6 +502,12 @@ public class VSC extends BaseObject {
     @VsoProperty(displayName = "MonitoringPorts", readOnly = true)   
     public MonitoringPortsFetcher getMonitoringPorts() {
         return monitoringPorts;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Statistics", readOnly = true)   
+    public StatisticsFetcher getStatistics() {
+        return statistics;
     }
     
     @JsonIgnore

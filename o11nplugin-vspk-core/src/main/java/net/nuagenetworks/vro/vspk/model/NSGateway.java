@@ -52,6 +52,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MonitorscopesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaySummariesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGInfosFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSPortsFetcher;
@@ -69,6 +71,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.WirelessPortsFetcher;
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewaySSHService;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayTPMStatus;
+
+import net.nuagenetworks.vro.vspk.model.enums.NSGatewayZFBMatchAttribute;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayBootstrapStatus;
 
@@ -160,6 +164,12 @@ public class NSGateway extends BaseObject {
     @JsonProperty(value = "UUID")
     protected String UUID;
     
+    @JsonProperty(value = "ZFBMatchAttribute")
+    protected NSGatewayZFBMatchAttribute ZFBMatchAttribute;
+    
+    @JsonProperty(value = "ZFBMatchValue")
+    protected String ZFBMatchValue;
+    
     @JsonProperty(value = "associatedGatewaySecurityID")
     protected String associatedGatewaySecurityID;
     
@@ -213,6 +223,9 @@ public class NSGateway extends BaseObject {
     
     @JsonProperty(value = "family")
     protected NSGatewayFamily family;
+    
+    @JsonProperty(value = "gatewayConnected")
+    protected Boolean gatewayConnected;
     
     @JsonProperty(value = "inheritedSSHServiceState")
     protected NSGatewayInheritedSSHServiceState inheritedSSHServiceState;
@@ -308,6 +321,9 @@ public class NSGateway extends BaseObject {
     private MonitorscopesFetcher monitorscopes;
     
     @JsonIgnore
+    private NSGatewaySummariesFetcher nSGatewaySummaries;
+    
+    @JsonIgnore
     private NSGInfosFetcher nSGInfos;
     
     @JsonIgnore
@@ -355,6 +371,8 @@ public class NSGateway extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         monitorscopes = new MonitorscopesFetcher(this);
+        
+        nSGatewaySummaries = new NSGatewaySummariesFetcher(this);
         
         nSGInfos = new NSGInfosFetcher(this);
         
@@ -547,6 +565,28 @@ public class NSGateway extends BaseObject {
     @JsonIgnore
     public void setUUID(String value) { 
         this.UUID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ZFBMatchAttribute", readOnly = false)   
+    public NSGatewayZFBMatchAttribute getZFBMatchAttribute() {
+       return ZFBMatchAttribute;
+    }
+
+    @JsonIgnore
+    public void setZFBMatchAttribute(NSGatewayZFBMatchAttribute value) { 
+        this.ZFBMatchAttribute = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ZFBMatchValue", readOnly = false)   
+    public String getZFBMatchValue() {
+       return ZFBMatchValue;
+    }
+
+    @JsonIgnore
+    public void setZFBMatchValue(String value) { 
+        this.ZFBMatchValue = value;
     }
     
     @JsonIgnore
@@ -745,6 +785,17 @@ public class NSGateway extends BaseObject {
     @JsonIgnore
     public void setFamily(NSGatewayFamily value) { 
         this.family = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayConnected", readOnly = false)   
+    public Boolean getGatewayConnected() {
+       return gatewayConnected;
+    }
+
+    @JsonIgnore
+    public void setGatewayConnected(Boolean value) { 
+        this.gatewayConnected = value;
     }
     
     @JsonIgnore
@@ -1024,6 +1075,12 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NSGatewaySummaries", readOnly = true)   
+    public NSGatewaySummariesFetcher getNSGatewaySummaries() {
+        return nSGatewaySummaries;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NSGInfos", readOnly = true)   
     public NSGInfosFetcher getNSGInfos() {
         return nSGInfos;
@@ -1194,7 +1251,7 @@ public class NSGateway extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.WIRELESSPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGateway [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + associatedNSGUpgradeProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", controlTrafficCOSValue=" + controlTrafficCOSValue + ", controlTrafficDSCPValue=" + controlTrafficDSCPValue + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", networkAcceleration=" + networkAcceleration + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", patches=" + patches + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGateway [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + associatedNSGUpgradeProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", controlTrafficCOSValue=" + controlTrafficCOSValue + ", controlTrafficDSCPValue=" + controlTrafficDSCPValue + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", gatewayConnected=" + gatewayConnected + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", networkAcceleration=" + networkAcceleration + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", patches=" + patches + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

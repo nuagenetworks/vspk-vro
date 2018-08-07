@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.VPORT_FLOWCOLLECTIONENABLED_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.VCENTERCLUSTER_PERSONALITY_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum VPortFlowCollectionEnabled {
+public enum VCenterClusterPersonality {
 
-    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED"), INHERITED("INHERITED", "INHERITED");
+    VDF("VDF", "VDF"), VRS("VRS", "VRS");
 
     private final String id;
     private final String name;
    
-    VPortFlowCollectionEnabled(String id, String name) {
+    VCenterClusterPersonality(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,24 +58,19 @@ public enum VPortFlowCollectionEnabled {
     }
 
     
-    @VsoProperty(displayName = "DISABLED", readOnly = true)
-    public VPortFlowCollectionEnabled getDISABLED() {
-        return DISABLED;
+    @VsoProperty(displayName = "VDF", readOnly = true)
+    public VCenterClusterPersonality getVDF() {
+        return VDF;
     }
     
-    @VsoProperty(displayName = "ENABLED", readOnly = true)
-    public VPortFlowCollectionEnabled getENABLED() {
-        return ENABLED;
-    }
-    
-    @VsoProperty(displayName = "INHERITED", readOnly = true)
-    public VPortFlowCollectionEnabled getINHERITED() {
-        return INHERITED;
+    @VsoProperty(displayName = "VRS", readOnly = true)
+    public VCenterClusterPersonality getVRS() {
+        return VRS;
     }
     
 
-    public static VPortFlowCollectionEnabled getEnumById(String id) {
-        for (VPortFlowCollectionEnabled item : values()) {
+    public static VCenterClusterPersonality getEnumById(String id) {
+        for (VCenterClusterPersonality item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

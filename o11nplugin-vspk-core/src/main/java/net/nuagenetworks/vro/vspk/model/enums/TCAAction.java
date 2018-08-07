@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum TCAAction {
 
-    ALERT("ALERT", "ALERT"), ALERT_POLICYGROUPCHANGE("ALERT_POLICYGROUPCHANGE", "ALERT_POLICYGROUPCHANGE");
+    Alert("Alert", "Alert"), Alert_PolicyGroupChange("Alert_PolicyGroupChange", "Alert_PolicyGroupChange");
 
     private final String id;
     private final String name;
@@ -58,14 +58,14 @@ public enum TCAAction {
     }
 
     
-    @VsoProperty(displayName = "ALERT", readOnly = true)
-    public TCAAction getALERT() {
-        return ALERT;
+    @VsoProperty(displayName = "Alert", readOnly = true)
+    public TCAAction getAlert() {
+        return Alert;
     }
     
-    @VsoProperty(displayName = "ALERT_POLICYGROUPCHANGE", readOnly = true)
-    public TCAAction getALERT_POLICYGROUPCHANGE() {
-        return ALERT_POLICYGROUPCHANGE;
+    @VsoProperty(displayName = "Alert_PolicyGroupChange", readOnly = true)
+    public TCAAction getAlert_PolicyGroupChange() {
+        return Alert_PolicyGroupChange;
     }
     
 

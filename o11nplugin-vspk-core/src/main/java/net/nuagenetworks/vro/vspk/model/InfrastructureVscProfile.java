@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.InfrastructureVscProfileAddressFamily;
+
 import net.nuagenetworks.vro.vspk.model.enums.InfrastructureVscProfileEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -55,6 +57,9 @@ public class InfrastructureVscProfile extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "addressFamily")
+    protected InfrastructureVscProfileAddressFamily addressFamily;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -70,6 +75,9 @@ public class InfrastructureVscProfile extends BaseObject {
     @JsonProperty(value = "firstController")
     protected String firstController;
     
+    @JsonProperty(value = "firstControllerV6")
+    protected String firstControllerV6;
+    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
@@ -81,6 +89,9 @@ public class InfrastructureVscProfile extends BaseObject {
     
     @JsonProperty(value = "secondController")
     protected String secondController;
+    
+    @JsonProperty(value = "secondControllerV6")
+    protected String secondControllerV6;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -130,6 +141,17 @@ public class InfrastructureVscProfile extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AddressFamily", readOnly = false)   
+    public InfrastructureVscProfileAddressFamily getAddressFamily() {
+       return addressFamily;
+    }
+
+    @JsonIgnore
+    public void setAddressFamily(InfrastructureVscProfileAddressFamily value) { 
+        this.addressFamily = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
@@ -186,6 +208,17 @@ public class InfrastructureVscProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FirstControllerV6", readOnly = false)   
+    public String getFirstControllerV6() {
+       return firstControllerV6;
+    }
+
+    @JsonIgnore
+    public void setFirstControllerV6(String value) { 
+        this.firstControllerV6 = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
     public String getLastUpdatedBy() {
        return lastUpdatedBy;
@@ -227,6 +260,17 @@ public class InfrastructureVscProfile extends BaseObject {
     @JsonIgnore
     public void setSecondController(String value) { 
         this.secondController = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SecondControllerV6", readOnly = false)   
+    public String getSecondControllerV6() {
+       return secondControllerV6;
+    }
+
+    @JsonIgnore
+    public void setSecondControllerV6(String value) { 
+        this.secondControllerV6 = value;
     }
     
     @JsonIgnore
@@ -286,7 +330,7 @@ public class InfrastructureVscProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "InfrastructureVscProfile [" + "description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstController=" + firstController + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", probeInterval=" + probeInterval + ", secondController=" + secondController + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "InfrastructureVscProfile [" + "addressFamily=" + addressFamily + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstController=" + firstController + ", firstControllerV6=" + firstControllerV6 + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", probeInterval=" + probeInterval + ", secondController=" + secondController + ", secondControllerV6=" + secondControllerV6 + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

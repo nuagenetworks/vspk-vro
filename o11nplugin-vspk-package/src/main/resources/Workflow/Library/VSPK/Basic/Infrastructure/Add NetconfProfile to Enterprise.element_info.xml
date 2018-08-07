@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Infrastructure</entry>
+<entry key="name">Add NetconfProfile to Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f0fd8026-e3b4-58d4-83a7-65f7dd6f5641</entry>
+</properties>

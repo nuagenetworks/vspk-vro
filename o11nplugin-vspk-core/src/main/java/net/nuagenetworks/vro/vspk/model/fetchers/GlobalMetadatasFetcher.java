@@ -176,6 +176,8 @@ import net.nuagenetworks.vro.vspk.model.InfrastructureConfig;
 
 import net.nuagenetworks.vro.vspk.model.InfrastructureAccessProfile;
 
+import net.nuagenetworks.vro.vspk.model.InfrastructureEVDFProfile;
+
 import net.nuagenetworks.vro.vspk.model.InfrastructureGatewayProfile;
 
 import net.nuagenetworks.vro.vspk.model.InfrastructureVscProfile;
@@ -276,6 +278,8 @@ import net.nuagenetworks.vro.vspk.model.PolicyDecision;
 
 import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 
+import net.nuagenetworks.vro.vspk.model.PolicyGroupCategory;
+
 import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Port;
@@ -300,9 +304,15 @@ import net.nuagenetworks.vro.vspk.model.VMResync;
 
 import net.nuagenetworks.vro.vspk.model.RoutingPolicy;
 
+import net.nuagenetworks.vro.vspk.model.SaaSApplicationGroup;
+
+import net.nuagenetworks.vro.vspk.model.SaaSApplicationType;
+
 import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
+
+import net.nuagenetworks.vro.vspk.model.ShuntLink;
 
 import net.nuagenetworks.vro.vspk.model.SiteInfo;
 
@@ -1140,6 +1150,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "InfrastructureEVDFProfile", readOnly = true)
+    public InfrastructureEVDFProfile getInfrastructureEVDFProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof InfrastructureEVDFProfile) {
+            return (InfrastructureEVDFProfile) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "InfrastructureGatewayProfile", readOnly = true)
     public InfrastructureGatewayProfile getInfrastructureGatewayProfile() {
         RestObject obj = super.getParentRestObj();
@@ -1640,6 +1660,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "PolicyGroupCategory", readOnly = true)
+    public PolicyGroupCategory getPolicyGroupCategory() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyGroupCategory) {
+            return (PolicyGroupCategory) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "PolicyGroupTemplate", readOnly = true)
     public PolicyGroupTemplate getPolicyGroupTemplate() {
         RestObject obj = super.getParentRestObj();
@@ -1760,6 +1790,26 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "SaaSApplicationGroup", readOnly = true)
+    public SaaSApplicationGroup getSaaSApplicationGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SaaSApplicationGroup) {
+            return (SaaSApplicationGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SaaSApplicationType", readOnly = true)
+    public SaaSApplicationType getSaaSApplicationType() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SaaSApplicationType) {
+            return (SaaSApplicationType) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "WANService", readOnly = true)
     public WANService getWANService() {
         RestObject obj = super.getParentRestObj();
@@ -1775,6 +1825,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof SharedNetworkResource) {
             return (SharedNetworkResource) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "ShuntLink", readOnly = true)
+    public ShuntLink getShuntLink() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ShuntLink) {
+            return (ShuntLink) obj;
         }
         
         return null;

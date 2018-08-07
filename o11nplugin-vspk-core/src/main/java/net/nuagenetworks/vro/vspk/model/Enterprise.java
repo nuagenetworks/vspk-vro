@@ -106,11 +106,15 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MultiCastListsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NetconfProfilesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.NetworkMacroGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceMeasurementsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaySummariesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewayTemplatesFetcher;
 
@@ -122,6 +126,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupCategoriesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyObjectGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PublicNetworkMacrosFetcher;
@@ -131,6 +137,10 @@ import net.nuagenetworks.vro.vspk.model.fetchers.RateLimitersFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.RedundancyGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPoliciesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.SaaSApplicationGroupsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.SaaSApplicationTypesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SharedNetworkResourcesFetcher;
 
@@ -227,6 +237,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.NETCONFPROFILES_FETCHER, type = Constants.NETCONFPROFILES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.NETWORKMACROGROUPS_FETCHER, type = Constants.NETWORKMACROGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NETWORKPERFORMANCEMEASUREMENTS_FETCHER, type = Constants.NETWORKPERFORMANCEMEASUREMENTS_FETCHER), 
@@ -239,6 +251,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERFORMANCEMONITORS_FETCHER, type = Constants.PERFORMANCEMONITORS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.POLICYGROUPCATEGORIES_FETCHER, type = Constants.POLICYGROUPCATEGORIES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.POLICYOBJECTGROUPS_FETCHER, type = Constants.POLICYOBJECTGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PUBLICNETWORKMACROS_FETCHER, type = Constants.PUBLICNETWORKMACROS_FETCHER), 
@@ -248,6 +262,10 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.REDUNDANCYGROUPS_FETCHER, type = Constants.REDUNDANCYGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ROUTINGPOLICIES_FETCHER, type = Constants.ROUTINGPOLICIES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.SAASAPPLICATIONGROUPS_FETCHER, type = Constants.SAASAPPLICATIONGROUPS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.SAASAPPLICATIONTYPES_FETCHER, type = Constants.SAASAPPLICATIONTYPES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.TRUNKS_FETCHER, type = Constants.TRUNKS_FETCHER), 
 
@@ -486,6 +504,9 @@ public class Enterprise extends BaseObject {
     private MultiCastListsFetcher multiCastLists;
     
     @JsonIgnore
+    private NetconfProfilesFetcher netconfProfiles;
+    
+    @JsonIgnore
     private NetworkMacroGroupsFetcher networkMacroGroups;
     
     @JsonIgnore
@@ -493,6 +514,9 @@ public class Enterprise extends BaseObject {
     
     @JsonIgnore
     private NSGatewaysFetcher nSGateways;
+    
+    @JsonIgnore
+    private NSGatewaySummariesFetcher nSGatewaySummaries;
     
     @JsonIgnore
     private NSGatewayTemplatesFetcher nSGatewayTemplates;
@@ -510,6 +534,9 @@ public class Enterprise extends BaseObject {
     private PerformanceMonitorsFetcher performanceMonitors;
     
     @JsonIgnore
+    private PolicyGroupCategoriesFetcher policyGroupCategories;
+    
+    @JsonIgnore
     private PolicyObjectGroupsFetcher policyObjectGroups;
     
     @JsonIgnore
@@ -523,6 +550,12 @@ public class Enterprise extends BaseObject {
     
     @JsonIgnore
     private RoutingPoliciesFetcher routingPolicies;
+    
+    @JsonIgnore
+    private SaaSApplicationGroupsFetcher saaSApplicationGroups;
+    
+    @JsonIgnore
+    private SaaSApplicationTypesFetcher saaSApplicationTypes;
     
     @JsonIgnore
     private SharedNetworkResourcesFetcher sharedNetworkResources;
@@ -630,11 +663,15 @@ public class Enterprise extends BaseObject {
         
         multiCastLists = new MultiCastListsFetcher(this);
         
+        netconfProfiles = new NetconfProfilesFetcher(this);
+        
         networkMacroGroups = new NetworkMacroGroupsFetcher(this);
         
         networkPerformanceMeasurements = new NetworkPerformanceMeasurementsFetcher(this);
         
         nSGateways = new NSGatewaysFetcher(this);
+        
+        nSGatewaySummaries = new NSGatewaySummariesFetcher(this);
         
         nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
         
@@ -646,6 +683,8 @@ public class Enterprise extends BaseObject {
         
         performanceMonitors = new PerformanceMonitorsFetcher(this);
         
+        policyGroupCategories = new PolicyGroupCategoriesFetcher(this);
+        
         policyObjectGroups = new PolicyObjectGroupsFetcher(this);
         
         publicNetworkMacros = new PublicNetworkMacrosFetcher(this);
@@ -655,6 +694,10 @@ public class Enterprise extends BaseObject {
         redundancyGroups = new RedundancyGroupsFetcher(this);
         
         routingPolicies = new RoutingPoliciesFetcher(this);
+        
+        saaSApplicationGroups = new SaaSApplicationGroupsFetcher(this);
+        
+        saaSApplicationTypes = new SaaSApplicationTypesFetcher(this);
         
         sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
         
@@ -1301,6 +1344,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetconfProfiles", readOnly = true)   
+    public NetconfProfilesFetcher getNetconfProfiles() {
+        return netconfProfiles;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NetworkMacroGroups", readOnly = true)   
     public NetworkMacroGroupsFetcher getNetworkMacroGroups() {
         return networkMacroGroups;
@@ -1316,6 +1365,12 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "NSGateways", readOnly = true)   
     public NSGatewaysFetcher getNSGateways() {
         return nSGateways;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NSGatewaySummaries", readOnly = true)   
+    public NSGatewaySummariesFetcher getNSGatewaySummaries() {
+        return nSGatewaySummaries;
     }
     
     @JsonIgnore
@@ -1349,6 +1404,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PolicyGroupCategories", readOnly = true)   
+    public PolicyGroupCategoriesFetcher getPolicyGroupCategories() {
+        return policyGroupCategories;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PolicyObjectGroups", readOnly = true)   
     public PolicyObjectGroupsFetcher getPolicyObjectGroups() {
         return policyObjectGroups;
@@ -1376,6 +1437,18 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "RoutingPolicies", readOnly = true)   
     public RoutingPoliciesFetcher getRoutingPolicies() {
         return routingPolicies;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SaaSApplicationGroups", readOnly = true)   
+    public SaaSApplicationGroupsFetcher getSaaSApplicationGroups() {
+        return saaSApplicationGroups;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SaaSApplicationTypes", readOnly = true)   
+    public SaaSApplicationTypesFetcher getSaaSApplicationTypes() {
+        return saaSApplicationTypes;
     }
     
     @JsonIgnore
@@ -1714,6 +1787,14 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createNetconfProfile(Session session, NetconfProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NETCONFPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createNetworkMacroGroup(Session session, NetworkMacroGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1771,6 +1852,14 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createPolicyGroupCategory(Session session, PolicyGroupCategory childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.POLICYGROUPCATEGORIES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createPolicyObjectGroup(Session session, PolicyObjectGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1808,6 +1897,22 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ROUTINGPOLICIES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createSaaSApplicationGroup(Session session, SaaSApplicationGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.SAASAPPLICATIONGROUPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createSaaSApplicationType(Session session, SaaSApplicationType childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.SAASAPPLICATIONTYPES_FETCHER, getId());
         }
     }
     @VsoMethod

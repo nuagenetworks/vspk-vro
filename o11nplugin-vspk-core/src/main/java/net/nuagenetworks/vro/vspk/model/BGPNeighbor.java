@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.BGPNeighborIPType;
+
 import net.nuagenetworks.vro.vspk.model.enums.BGPNeighborEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -57,6 +59,12 @@ public class BGPNeighbor extends BaseObject {
     
     @JsonProperty(value = "BFDEnabled")
     protected Boolean BFDEnabled;
+    
+    @JsonProperty(value = "IPType")
+    protected BGPNeighborIPType IPType;
+    
+    @JsonProperty(value = "IPv6Address")
+    protected String IPv6Address;
     
     @JsonProperty(value = "associatedExportRoutingPolicyID")
     protected String associatedExportRoutingPolicyID;
@@ -145,6 +153,28 @@ public class BGPNeighbor extends BaseObject {
     @JsonIgnore
     public void setBFDEnabled(Boolean value) { 
         this.BFDEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPType", readOnly = false)   
+    public BGPNeighborIPType getIPType() {
+       return IPType;
+    }
+
+    @JsonIgnore
+    public void setIPType(BGPNeighborIPType value) { 
+        this.IPType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
+    public String getIPv6Address() {
+       return IPv6Address;
+    }
+
+    @JsonIgnore
+    public void setIPv6Address(String value) { 
+        this.IPv6Address = value;
     }
     
     @JsonIgnore
@@ -314,7 +344,7 @@ public class BGPNeighbor extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BGPNeighbor [" + "BFDEnabled=" + BFDEnabled + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BGPNeighbor [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

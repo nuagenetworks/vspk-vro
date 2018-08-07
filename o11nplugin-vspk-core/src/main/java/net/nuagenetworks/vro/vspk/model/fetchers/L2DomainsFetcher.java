@@ -35,6 +35,8 @@ import net.nuagenetworks.vro.vspk.model.Enterprise;
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -93,6 +95,16 @@ public class L2DomainsFetcher extends BaseFetcher<L2Domain> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
+    public RedundancyGroup getRedundancyGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RedundancyGroup) {
+            return (RedundancyGroup) obj;
         }
         
         return null;

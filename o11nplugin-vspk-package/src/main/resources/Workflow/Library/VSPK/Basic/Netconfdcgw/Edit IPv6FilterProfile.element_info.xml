@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
+<entry key="name">Edit IPv6FilterProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">113b4e4c-9579-5f9e-a559-77888501373b</entry>
+</properties>

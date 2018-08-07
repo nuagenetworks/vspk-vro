@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Netconf</entry>
+<entry key="name">Find NetconfManager in VSP</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7f7141fa-0ca2-5f0f-872f-6c1ea578cce6</entry>
+</properties>

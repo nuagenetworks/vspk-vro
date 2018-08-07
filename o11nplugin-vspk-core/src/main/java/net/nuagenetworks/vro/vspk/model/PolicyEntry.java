@@ -56,6 +56,12 @@ public class PolicyEntry extends BaseObject {
     @JsonProperty(value = "matchCriteria")
     protected Object matchCriteria;
     
+    @JsonProperty(value = "matchOverlayAddressPoolID")
+    protected String matchOverlayAddressPoolID;
+    
+    @JsonProperty(value = "matchPolicyObjectGroupID")
+    protected String matchPolicyObjectGroupID;
+    
     @JsonProperty(value = "name")
     protected String name;
     
@@ -131,6 +137,28 @@ public class PolicyEntry extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "MatchOverlayAddressPoolID", readOnly = false)   
+    public String getMatchOverlayAddressPoolID() {
+       return matchOverlayAddressPoolID;
+    }
+
+    @JsonIgnore
+    public void setMatchOverlayAddressPoolID(String value) { 
+        this.matchOverlayAddressPoolID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "MatchPolicyObjectGroupID", readOnly = false)   
+    public String getMatchPolicyObjectGroupID() {
+       return matchPolicyObjectGroupID;
+    }
+
+    @JsonIgnore
+    public void setMatchPolicyObjectGroupID(String value) { 
+        this.matchPolicyObjectGroupID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -161,7 +189,7 @@ public class PolicyEntry extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.POLICYENTRY, getId());
         }
     }public String toString() {
-        return "PolicyEntry [" + "actions=" + actions + ", description=" + description + ", matchCriteria=" + matchCriteria + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PolicyEntry [" + "actions=" + actions + ", description=" + description + ", matchCriteria=" + matchCriteria + ", matchOverlayAddressPoolID=" + matchOverlayAddressPoolID + ", matchPolicyObjectGroupID=" + matchPolicyObjectGroupID + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

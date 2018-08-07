@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
+<entry key="name">Remove SAPEgressQoSProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">4bdbe1f7-7f8e-5810-87a9-656099fbd138</entry>
+</properties>

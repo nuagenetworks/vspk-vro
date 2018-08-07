@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Find ShuntLink in NSRedundantGatewayGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">70451391-1be6-5d1b-9eb2-660da5f7f9d9</entry>
+</properties>

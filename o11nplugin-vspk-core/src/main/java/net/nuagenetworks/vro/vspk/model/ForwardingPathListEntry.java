@@ -76,6 +76,9 @@ public class ForwardingPathListEntry extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "priority")
+    protected Long priority;
+    
     @JsonProperty(value = "uplinkPreference")
     protected ForwardingPathListEntryUplinkPreference uplinkPreference;
     
@@ -188,6 +191,17 @@ public class ForwardingPathListEntry extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Priority", readOnly = false)   
+    public Long getPriority() {
+       return priority;
+    }
+
+    @JsonIgnore
+    public void setPriority(Long value) { 
+        this.priority = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "UplinkPreference", readOnly = false)   
     public ForwardingPathListEntryUplinkPreference getUplinkPreference() {
        return uplinkPreference;
@@ -255,7 +269,7 @@ public class ForwardingPathListEntry extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ForwardingPathListEntry [" + "FCOverride=" + FCOverride + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forwardingAction=" + forwardingAction + ", lastUpdatedBy=" + lastUpdatedBy + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ForwardingPathListEntry [" + "FCOverride=" + FCOverride + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forwardingAction=" + forwardingAction + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

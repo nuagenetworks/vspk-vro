@@ -73,6 +73,9 @@ public class GatewayTemplate extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
+    @JsonProperty(value = "infrastructureProfileID")
+    protected String infrastructureProfileID;
+    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
@@ -182,6 +185,17 @@ public class GatewayTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "InfrastructureProfileID", readOnly = false)   
+    public String getInfrastructureProfileID() {
+       return infrastructureProfileID;
+    }
+
+    @JsonIgnore
+    public void setInfrastructureProfileID(String value) { 
+        this.infrastructureProfileID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
     public String getLastUpdatedBy() {
        return lastUpdatedBy;
@@ -285,7 +299,7 @@ public class GatewayTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PORTTEMPLATES_FETCHER, getId());
         }
     }public String toString() {
-        return "GatewayTemplate [" + "description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", personality=" + personality + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "GatewayTemplate [" + "description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureProfileID=" + infrastructureProfileID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", personality=" + personality + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

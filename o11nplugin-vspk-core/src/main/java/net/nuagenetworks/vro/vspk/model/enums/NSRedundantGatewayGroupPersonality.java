@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSRedundantGatewayGroupPersonality {
 
-    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), NSGDUC("NSGDUC", "NSGDUC"), OTHER("OTHER", "OTHER"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q");
+    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), NSGDUC("NSGDUC", "NSGDUC"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), OTHER("OTHER", "OTHER"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
 
     private final String id;
     private final String name;
@@ -83,6 +83,16 @@ public enum NSRedundantGatewayGroupPersonality {
         return NSGDUC;
     }
     
+    @VsoProperty(displayName = "NUAGE_210_WBX_32_Q", readOnly = true)
+    public NSRedundantGatewayGroupPersonality getNUAGE_210_WBX_32_Q() {
+        return NUAGE_210_WBX_32_Q;
+    }
+    
+    @VsoProperty(displayName = "NUAGE_210_WBX_48_S", readOnly = true)
+    public NSRedundantGatewayGroupPersonality getNUAGE_210_WBX_48_S() {
+        return NUAGE_210_WBX_48_S;
+    }
+    
     @VsoProperty(displayName = "OTHER", readOnly = true)
     public NSRedundantGatewayGroupPersonality getOTHER() {
         return OTHER;
@@ -106,16 +116,6 @@ public enum NSRedundantGatewayGroupPersonality {
     @VsoProperty(displayName = "VSG", readOnly = true)
     public NSRedundantGatewayGroupPersonality getVSG() {
         return VSG;
-    }
-    
-    @VsoProperty(displayName = "NUAGE_210_WBX_48_S", readOnly = true)
-    public NSRedundantGatewayGroupPersonality getNUAGE_210_WBX_48_S() {
-        return NUAGE_210_WBX_48_S;
-    }
-    
-    @VsoProperty(displayName = "NUAGE_210_WBX_32_Q", readOnly = true)
-    public NSRedundantGatewayGroupPersonality getNUAGE_210_WBX_32_Q() {
-        return NUAGE_210_WBX_32_Q;
     }
     
 
