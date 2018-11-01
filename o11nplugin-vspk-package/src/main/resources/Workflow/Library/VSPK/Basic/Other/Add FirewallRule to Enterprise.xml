@@ -7,6 +7,8 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 </input><output><param name='firewallRuleObj' type='VSPK:FirewallRule' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -20,11 +22,15 @@ firewallRuleObj = new VSPKFirewallRule();
 if (description) {
    firewallRuleObj.description = description;
 }
+if (externalID) {
+   firewallRuleObj.externalID = externalID;
+}
 
 enterpriseObj.createFirewallRule(session, firewallRuleObj);
 ]]></script>
 <in-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 </in-binding><out-binding><bind name='firewallRuleObj' type='VSPK:FirewallRule' export-name="firewallRuleObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -32,5 +38,7 @@ enterpriseObj.createFirewallRule(session, firewallRuleObj);
 <p-param name="enterpriseObj"><desc><![CDATA[enterpriseObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 </presentation></workflow>

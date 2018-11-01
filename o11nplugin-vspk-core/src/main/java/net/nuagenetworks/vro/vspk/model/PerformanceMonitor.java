@@ -28,8 +28,6 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.TiersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.PerformanceMonitorEntityScope;
@@ -61,9 +59,6 @@ public class PerformanceMonitor extends BaseObject {
     
     @JsonProperty(value = "description")
     protected String description;
-    
-    @JsonProperty(value = "destinationTargetList")
-    protected java.util.List<String> destinationTargetList;
     
     @JsonProperty(value = "entityScope")
     protected PerformanceMonitorEntityScope entityScope;
@@ -98,14 +93,8 @@ public class PerformanceMonitor extends BaseObject {
     @JsonProperty(value = "serviceClass")
     protected PerformanceMonitorServiceClass serviceClass;
     
-    @JsonProperty(value = "timeout")
-    protected Long timeout;
-    
     @JsonIgnore
     private ApplicationperformancemanagementsFetcher applicationperformancemanagements;
-    
-    @JsonIgnore
-    private NSGatewaysFetcher nSGateways;
     
     @JsonIgnore
     private TiersFetcher tiers;
@@ -113,8 +102,6 @@ public class PerformanceMonitor extends BaseObject {
     @VsoConstructor
     public PerformanceMonitor() {
         applicationperformancemanagements = new ApplicationperformancemanagementsFetcher(this);
-        
-        nSGateways = new NSGatewaysFetcher(this);
         
         tiers = new TiersFetcher(this);
         }
@@ -163,17 +150,6 @@ public class PerformanceMonitor extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "DestinationTargetList", readOnly = false)   
-    public java.util.List<String> getDestinationTargetList() {
-       return destinationTargetList;
-    }
-
-    @JsonIgnore
-    public void setDestinationTargetList(java.util.List<String> value) { 
-        this.destinationTargetList = value;
     }
     
     @JsonIgnore
@@ -298,26 +274,9 @@ public class PerformanceMonitor extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Timeout", readOnly = false)   
-    public Long getTimeout() {
-       return timeout;
-    }
-
-    @JsonIgnore
-    public void setTimeout(Long value) { 
-        this.timeout = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Applicationperformancemanagements", readOnly = true)   
     public ApplicationperformancemanagementsFetcher getApplicationperformancemanagements() {
         return applicationperformancemanagements;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "NSGateways", readOnly = true)   
-    public NSGatewaysFetcher getNSGateways() {
-        return nSGateways;
     }
     
     @JsonIgnore
@@ -347,7 +306,7 @@ public class PerformanceMonitor extends BaseObject {
         }
     }
     @VsoMethod
-    public void assignNSGateways(Session session, NSGateway[] childRestObjs, Boolean commitObj) throws RestException {
+    public void assignTiers(Session session, Tier[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 
@@ -355,7 +314,7 @@ public class PerformanceMonitor extends BaseObject {
         }
     }
     public String toString() {
-        return "PerformanceMonitor [" + "description=" + description + ", destinationTargetList=" + destinationTargetList + ", entityScope=" + entityScope + ", externalID=" + externalID + ", holdDownTimer=" + holdDownTimer + ", interval=" + interval + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", numberOfPackets=" + numberOfPackets + ", payloadSize=" + payloadSize + ", probeType=" + probeType + ", readOnly=" + readOnly + ", serviceClass=" + serviceClass + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PerformanceMonitor [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", holdDownTimer=" + holdDownTimer + ", interval=" + interval + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", numberOfPackets=" + numberOfPackets + ", payloadSize=" + payloadSize + ", probeType=" + probeType + ", readOnly=" + readOnly + ", serviceClass=" + serviceClass + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -26,6 +26,10 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.DiskStatEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.DiskStatUnit;
@@ -42,7 +46,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.DISKSTAT, datasource = Constants.DATASOURCE, image = Constants.DISKSTAT_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.DISKSTAT, datasource = Constants.DATASOURCE, image = Constants.DISKSTAT_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "diskstat", resourceName = "diskstats")
@@ -72,8 +78,18 @@ public class DiskStat extends BaseObject {
     @JsonProperty(value = "used")
     protected Float used;
     
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
+    
     @VsoConstructor
-    public DiskStat() {}
+    public DiskStat() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -186,6 +202,18 @@ public class DiskStat extends BaseObject {
     public void setUsed(Float value) { 
         this.used = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -205,6 +233,31 @@ public class DiskStat extends BaseObject {
         super.delete(session, responseChoice);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.DISKSTAT, getId());
+        }
+    }
+    @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.DISKSTAT, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
         return "DiskStat [" + "available=" + available + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", size=" + size + ", unit=" + unit + ", used=" + used + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

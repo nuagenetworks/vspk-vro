@@ -28,6 +28,8 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationBindingsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementbindingsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
@@ -59,6 +61,9 @@ public class Applicationperformancemanagement extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "appGroupUniqueId")
+    protected Long appGroupUniqueId;
+    
     @JsonProperty(value = "associatedPerformanceMonitorID")
     protected String associatedPerformanceMonitorID;
     
@@ -84,6 +89,9 @@ public class Applicationperformancemanagement extends BaseObject {
     private ApplicationBindingsFetcher applicationBindings;
     
     @JsonIgnore
+    private ApplicationperformancemanagementbindingsFetcher applicationperformancemanagementbindings;
+    
+    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
@@ -92,6 +100,8 @@ public class Applicationperformancemanagement extends BaseObject {
     @VsoConstructor
     public Applicationperformancemanagement() {
         applicationBindings = new ApplicationBindingsFetcher(this);
+        
+        applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
@@ -133,6 +143,17 @@ public class Applicationperformancemanagement extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AppGroupUniqueId", readOnly = false)   
+    public Long getAppGroupUniqueId() {
+       return appGroupUniqueId;
+    }
+
+    @JsonIgnore
+    public void setAppGroupUniqueId(Long value) { 
+        this.appGroupUniqueId = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedPerformanceMonitorID", readOnly = false)   
     public String getAssociatedPerformanceMonitorID() {
@@ -217,6 +238,12 @@ public class Applicationperformancemanagement extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Applicationperformancemanagementbindings", readOnly = true)   
+    public ApplicationperformancemanagementbindingsFetcher getApplicationperformancemanagementbindings() {
+        return applicationperformancemanagementbindings;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -281,7 +308,7 @@ public class Applicationperformancemanagement extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Applicationperformancemanagement [" + "associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Applicationperformancemanagement [" + "appGroupUniqueId=" + appGroupUniqueId + ", associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

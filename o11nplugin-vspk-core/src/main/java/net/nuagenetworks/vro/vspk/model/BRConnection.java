@@ -28,9 +28,15 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.BFDSessionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.BRConnectionAddressFamily;
 
 import net.nuagenetworks.vro.vspk.model.enums.BRConnectionAdvertisementCriteria;
+
+import net.nuagenetworks.vro.vspk.model.enums.BRConnectionEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.BRConnectionMode;
 import net.nuagenetworks.bambou.RestException;
@@ -47,7 +53,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.BRCONNECTION, datasource = Constants.DATASOURCE, image = Constants.BRCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.BFDSESSIONS_FETCHER, type = Constants.BFDSESSIONS_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.BFDSESSIONS_FETCHER, type = Constants.BFDSESSIONS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -75,6 +83,12 @@ public class BRConnection extends BaseObject {
     @JsonProperty(value = "advertisementCriteria")
     protected BRConnectionAdvertisementCriteria advertisementCriteria;
     
+    @JsonProperty(value = "entityScope")
+    protected BRConnectionEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
     @JsonProperty(value = "gateway")
     protected String gateway;
     
@@ -83,6 +97,9 @@ public class BRConnection extends BaseObject {
     
     @JsonProperty(value = "inherited")
     protected Boolean inherited;
+    
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
     
     @JsonProperty(value = "mode")
     protected BRConnectionMode mode;
@@ -96,9 +113,19 @@ public class BRConnection extends BaseObject {
     @JsonIgnore
     private BFDSessionsFetcher bFDSessions;
     
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
+    
     @VsoConstructor
     public BRConnection() {
         bFDSessions = new BFDSessionsFetcher(this);
+        
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -208,6 +235,28 @@ public class BRConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public BRConnectionEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(BRConnectionEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Gateway", readOnly = false)   
     public String getGateway() {
        return gateway;
@@ -238,6 +287,17 @@ public class BRConnection extends BaseObject {
     @JsonIgnore
     public void setInherited(Boolean value) { 
         this.inherited = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
     }
     
     @JsonIgnore
@@ -278,6 +338,18 @@ public class BRConnection extends BaseObject {
     public BFDSessionsFetcher getBFDSessions() {
         return bFDSessions;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -300,14 +372,48 @@ public class BRConnection extends BaseObject {
         }
     }
     @VsoMethod
+    public void assignBFDSessions(Session session, BFDSession[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.BRCONNECTION, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.BRCONNECTION, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createBFDSession(Session session, BFDSession childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.BFDSESSIONS_FETCHER, getId());
         }
+    }
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
     }public String toString() {
-        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", gateway=" + gateway + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", lastUpdatedBy=" + lastUpdatedBy + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -34,8 +34,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DomainFIPAclTemplatesFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIPACLTemplatesFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -45,8 +43,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GroupsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdTemplatesFetcher;
-
-import net.nuagenetworks.vro.vspk.model.fetchers.IngressExternalServiceTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
@@ -97,13 +93,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINFIPACLTEMPLATES_FETCHER, type = Constants.DOMAINFIPACLTEMPLATES_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPACLTEMPLATES_FETCHER, type = Constants.FLOATINGIPACLTEMPLATES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLTEMPLATES_FETCHER, type = Constants.INGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSADVFWDTEMPLATES_FETCHER, type = Constants.INGRESSADVFWDTEMPLATES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER, type = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
@@ -178,9 +170,6 @@ public class DomainTemplate extends BaseObject {
     private DomainFIPAclTemplatesFetcher domainFIPAclTemplates;
     
     @JsonIgnore
-    private FloatingIPACLTemplatesFetcher floatingIPACLTemplates;
-    
-    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -194,9 +183,6 @@ public class DomainTemplate extends BaseObject {
     
     @JsonIgnore
     private IngressAdvFwdTemplatesFetcher ingressAdvFwdTemplates;
-    
-    @JsonIgnore
-    private IngressExternalServiceTemplatesFetcher ingressExternalServiceTemplates;
     
     @JsonIgnore
     private JobsFetcher jobs;
@@ -238,8 +224,6 @@ public class DomainTemplate extends BaseObject {
         
         domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
         
-        floatingIPACLTemplates = new FloatingIPACLTemplatesFetcher(this);
-        
         eventLogs = new EventLogsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -249,8 +233,6 @@ public class DomainTemplate extends BaseObject {
         ingressACLTemplates = new IngressACLTemplatesFetcher(this);
         
         ingressAdvFwdTemplates = new IngressAdvFwdTemplatesFetcher(this);
-        
-        ingressExternalServiceTemplates = new IngressExternalServiceTemplatesFetcher(this);
         
         jobs = new JobsFetcher(this);
         
@@ -465,12 +447,6 @@ public class DomainTemplate extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "FloatingIPACLTemplates", readOnly = true)   
-    public FloatingIPACLTemplatesFetcher getFloatingIPACLTemplates() {
-        return floatingIPACLTemplates;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -498,12 +474,6 @@ public class DomainTemplate extends BaseObject {
     @VsoProperty(displayName = "IngressAdvFwdTemplates", readOnly = true)   
     public IngressAdvFwdTemplatesFetcher getIngressAdvFwdTemplates() {
         return ingressAdvFwdTemplates;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "IngressExternalServiceTemplates", readOnly = true)   
-    public IngressExternalServiceTemplatesFetcher getIngressExternalServiceTemplates() {
-        return ingressExternalServiceTemplates;
     }
     
     @JsonIgnore
@@ -638,14 +608,6 @@ public class DomainTemplate extends BaseObject {
         }
     }
     @VsoMethod
-    public void createFloatingIPACLTemplate(Session session, FloatingIPACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.FLOATINGIPACLTEMPLATES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -667,14 +629,6 @@ public class DomainTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSADVFWDTEMPLATES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createIngressExternalServiceTemplate(Session session, IngressExternalServiceTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod

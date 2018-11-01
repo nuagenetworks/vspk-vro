@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.MultiCastRangeIPType;
+
 import net.nuagenetworks.vro.vspk.model.enums.MultiCastRangeEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -56,6 +58,9 @@ public class MultiCastRange extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "IPType")
+    protected MultiCastRangeIPType IPType;
     
     @JsonProperty(value = "entityScope")
     protected MultiCastRangeEntityScope entityScope;
@@ -130,6 +135,17 @@ public class MultiCastRange extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "IPType", readOnly = false)   
+    public MultiCastRangeIPType getIPType() {
+       return IPType;
+    }
+
+    @JsonIgnore
+    public void setIPType(MultiCastRangeIPType value) { 
+        this.IPType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public MultiCastRangeEntityScope getEntityScope() {
@@ -248,7 +264,7 @@ public class MultiCastRange extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "MultiCastRange [" + "entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "MultiCastRange [" + "IPType=" + IPType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

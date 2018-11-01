@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Remove AllGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2173714b-e13d-5061-a4cf-e5695ff3a87c</entry>
+</properties>

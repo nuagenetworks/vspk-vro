@@ -49,6 +49,9 @@ public class AggregateMetadata extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "assocEntityType")
+    protected String assocEntityType;
+    
     @JsonProperty(value = "blob")
     protected String blob;
     
@@ -111,6 +114,17 @@ public class AggregateMetadata extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AssocEntityType", readOnly = false)   
+    public String getAssocEntityType() {
+       return assocEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssocEntityType(String value) { 
+        this.assocEntityType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Blob", readOnly = false)   
     public String getBlob() {
@@ -219,7 +233,7 @@ public class AggregateMetadata extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.AGGREGATEMETADATA, getId());
         }
     }public String toString() {
-        return "AggregateMetadata [" + "blob=" + blob + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", globalMetadata=" + globalMetadata + ", metadataTagIDs=" + metadataTagIDs + ", name=" + name + ", networkNotificationDisabled=" + networkNotificationDisabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "AggregateMetadata [" + "assocEntityType=" + assocEntityType + ", blob=" + blob + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", globalMetadata=" + globalMetadata + ", metadataTagIDs=" + metadataTagIDs + ", name=" + name + ", networkNotificationDisabled=" + networkNotificationDisabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

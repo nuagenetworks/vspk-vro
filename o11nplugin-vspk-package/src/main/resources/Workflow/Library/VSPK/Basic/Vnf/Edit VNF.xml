@@ -12,6 +12,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -32,6 +35,11 @@ if (description) {
 } else if (vNFObj.description) {
    vNFObj.description = "";
 }
+if (externalID) {
+   vNFObj.externalID = externalID;
+} else if (vNFObj.externalID) {
+   vNFObj.externalID = "";
+}
 if (name) {
    vNFObj.name = name;
 } else if (vNFObj.name) {
@@ -43,6 +51,8 @@ vNFObj.save(session, 1);]]></script>
 <bind name='NSGatewayID' type='string' export-name="NSGatewayID" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -57,6 +67,9 @@ vNFObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFObj.name]]></p-qual></p-param>

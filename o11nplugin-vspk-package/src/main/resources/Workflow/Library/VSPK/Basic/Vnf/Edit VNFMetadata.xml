@@ -12,6 +12,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -32,6 +35,11 @@ if (description) {
 } else if (vNFMetadataObj.description) {
    vNFMetadataObj.description = "";
 }
+if (externalID) {
+   vNFMetadataObj.externalID = externalID;
+} else if (vNFMetadataObj.externalID) {
+   vNFMetadataObj.externalID = "";
+}
 if (name) {
    vNFMetadataObj.name = name;
 } else if (vNFMetadataObj.name) {
@@ -43,6 +51,8 @@ vNFMetadataObj.save(session, 1);]]></script>
 <bind name='blob' type='string' export-name="blob" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -57,6 +67,9 @@ vNFMetadataObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFMetadataObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFMetadataObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFMetadataObj.name]]></p-qual></p-param>

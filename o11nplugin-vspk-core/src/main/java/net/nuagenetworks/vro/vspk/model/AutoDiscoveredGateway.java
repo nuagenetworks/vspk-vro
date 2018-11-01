@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PortsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.WANServicesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.WirelessPortsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.AutoDiscoveredGatewayEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.AutoDiscoveredGatewayPersonality;
@@ -95,9 +97,6 @@ public class AutoDiscoveredGateway extends BaseObject {
     @JsonProperty(value = "systemID")
     protected String systemID;
     
-    @JsonProperty(value = "useGatewayVLANVNID")
-    protected Boolean useGatewayVLANVNID;
-    
     @JsonProperty(value = "vtep")
     protected String vtep;
     
@@ -119,6 +118,9 @@ public class AutoDiscoveredGateway extends BaseObject {
     @JsonIgnore
     private WANServicesFetcher wANServices;
     
+    @JsonIgnore
+    private WirelessPortsFetcher wirelessPorts;
+    
     @VsoConstructor
     public AutoDiscoveredGateway() {
         eventLogs = new EventLogsFetcher(this);
@@ -132,6 +134,8 @@ public class AutoDiscoveredGateway extends BaseObject {
         ports = new PortsFetcher(this);
         
         wANServices = new WANServicesFetcher(this);
+        
+        wirelessPorts = new WirelessPortsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -280,17 +284,6 @@ public class AutoDiscoveredGateway extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "UseGatewayVLANVNID", readOnly = false)   
-    public Boolean getUseGatewayVLANVNID() {
-       return useGatewayVLANVNID;
-    }
-
-    @JsonIgnore
-    public void setUseGatewayVLANVNID(Boolean value) { 
-        this.useGatewayVLANVNID = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Vtep", readOnly = false)   
     public String getVtep() {
        return vtep;
@@ -335,6 +328,12 @@ public class AutoDiscoveredGateway extends BaseObject {
     @VsoProperty(displayName = "WANServices", readOnly = true)   
     public WANServicesFetcher getWANServices() {
         return wANServices;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "WirelessPorts", readOnly = true)   
+    public WirelessPortsFetcher getWirelessPorts() {
+        return wirelessPorts;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -382,7 +381,7 @@ public class AutoDiscoveredGateway extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "AutoDiscoveredGateway [" + "controllers=" + controllers + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", peer=" + peer + ", personality=" + personality + ", systemID=" + systemID + ", useGatewayVLANVNID=" + useGatewayVLANVNID + ", vtep=" + vtep + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "AutoDiscoveredGateway [" + "controllers=" + controllers + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", peer=" + peer + ", personality=" + personality + ", systemID=" + systemID + ", vtep=" + vtep + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

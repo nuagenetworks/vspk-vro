@@ -83,8 +83,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.IKEGATEWAYCONNECTIONS_FETCHER, type = Constants.IKEGATEWAYCONNECTIONS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.LTESTATISTICS_FETCHER, type = Constants.LTESTATISTICS_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
@@ -688,6 +686,15 @@ public class VLAN extends BaseObject {
     }
     
     @VsoMethod
+    public void assignUplinkConnections(Session session, UplinkConnection[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.VLAN, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createBGPNeighbor(Session session, BGPNeighbor childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -725,14 +732,6 @@ public class VLAN extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.IKEGATEWAYCONNECTIONS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createLtestatistics(Session session, Ltestatistics childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.LTESTATISTICS_FETCHER, getId());
         }
     }
     @VsoMethod

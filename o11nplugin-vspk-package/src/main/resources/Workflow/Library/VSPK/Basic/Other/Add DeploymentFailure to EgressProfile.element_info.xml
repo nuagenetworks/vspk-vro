@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Add DeploymentFailure to EgressProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2dd77899-f3f6-5bec-bd5f-8aeb46dfc7d8</entry>
+</properties>

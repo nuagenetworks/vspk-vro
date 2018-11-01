@@ -9,6 +9,8 @@
 </param>
 <param name='customerIP' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='mappingType' type='VSPK:CTranslationMapMappingType' >
 </param>
 </input><output><param name='cTranslationMapObj' type='VSPK:CTranslationMap' >
@@ -27,6 +29,9 @@ if (customerAliasIP) {
 if (customerIP) {
    cTranslationMapObj.customerIP = customerIP;
 }
+if (externalID) {
+   cTranslationMapObj.externalID = externalID;
+}
 cTranslationMapObj.mappingType = mappingType;
 
 cSNATPoolObj.createCTranslationMap(session, cTranslationMapObj);
@@ -34,6 +39,7 @@ cSNATPoolObj.createCTranslationMap(session, cTranslationMapObj);
 <in-binding><bind name='cSNATPoolObj' type='VSPK:CSNATPool' export-name="cSNATPoolObj" ></bind>
 <bind name='customerAliasIP' type='string' export-name="customerAliasIP" ></bind>
 <bind name='customerIP' type='string' export-name="customerIP" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='mappingType' type='VSPK:CTranslationMapMappingType' export-name="mappingType" ></bind>
 </in-binding><out-binding><bind name='cTranslationMapObj' type='VSPK:CTranslationMap' export-name="cTranslationMapObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -44,6 +50,8 @@ cSNATPoolObj.createCTranslationMap(session, cTranslationMapObj);
 <p-param name="customerAliasIP"><desc><![CDATA[customerAliasIP]]></desc>
 </p-param>
 <p-param name="customerIP"><desc><![CDATA[customerIP]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="mappingType"><desc><![CDATA[mappingType]]></desc>
 </p-param>

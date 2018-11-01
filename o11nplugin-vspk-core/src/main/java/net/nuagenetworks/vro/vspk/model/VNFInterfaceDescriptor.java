@@ -26,6 +26,12 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.enums.VNFInterfaceDescriptorEntityScope;
+
 import net.nuagenetworks.vro.vspk.model.enums.VNFInterfaceDescriptorType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -40,7 +46,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.VNFINTERFACEDESCRIPTOR, datasource = Constants.DATASOURCE, image = Constants.VNFINTERFACEDESCRIPTOR_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.VNFINTERFACEDESCRIPTOR, datasource = Constants.DATASOURCE, image = Constants.VNFINTERFACEDESCRIPTOR_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "vnfinterfacedescriptor", resourceName = "vnfinterfacedescriptors")
@@ -49,14 +57,30 @@ public class VNFInterfaceDescriptor extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "entityScope")
+    protected VNFInterfaceDescriptorEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
     @JsonProperty(value = "name")
     protected String name;
     
     @JsonProperty(value = "type")
     protected VNFInterfaceDescriptorType type;
     
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
+    
     @VsoConstructor
-    public VNFInterfaceDescriptor() {}
+    public VNFInterfaceDescriptor() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -94,6 +118,28 @@ public class VNFInterfaceDescriptor extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public VNFInterfaceDescriptorEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(VNFInterfaceDescriptorEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -113,6 +159,18 @@ public class VNFInterfaceDescriptor extends BaseObject {
     @JsonIgnore
     public void setType(VNFInterfaceDescriptorType value) { 
         this.type = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -134,8 +192,33 @@ public class VNFInterfaceDescriptor extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.VNFINTERFACEDESCRIPTOR, getId());
         }
+    }
+    @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.VNFINTERFACEDESCRIPTOR, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
     }public String toString() {
-        return "VNFInterfaceDescriptor [" + "name=" + name + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNFInterfaceDescriptor [" + "entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
-<entry key="name">Find SAPEgressQoSProfile in RedundancyGroup</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">c5fbd795-71bc-5a4d-b468-749c08d5ff8e</entry>
-</properties>

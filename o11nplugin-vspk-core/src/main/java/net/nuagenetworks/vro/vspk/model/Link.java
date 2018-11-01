@@ -405,7 +405,52 @@ public class Link extends BaseObject {
         }
     }
     @VsoMethod
+    public void assignCSNATPools(Session session, CSNATPool[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.LINK, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignDemarcationServices(Session session, DemarcationService[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.LINK, getId());
+        }
+    }
+    
+    @VsoMethod
     public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.LINK, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignNextHops(Session session, NextHop[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.LINK, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignPolicyStatements(Session session, PolicyStatement[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.LINK, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignPSNATPools(Session session, PSNATPool[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 

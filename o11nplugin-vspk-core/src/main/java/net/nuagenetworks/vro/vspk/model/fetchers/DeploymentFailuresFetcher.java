@@ -30,9 +30,19 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.DeploymentFailure;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.BridgeInterface;
+
+import net.nuagenetworks.vro.vspk.model.EgressProfile;
+
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
+import net.nuagenetworks.vro.vspk.model.IngressProfile;
+
+import net.nuagenetworks.vro.vspk.model.L2Domain;
+
 import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
+
+import net.nuagenetworks.vro.vspk.model.VPort;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,6 +76,26 @@ public class DeploymentFailuresFetcher extends BaseFetcher<DeploymentFailure> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "BridgeInterface", readOnly = true)
+    public BridgeInterface getBridgeInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof BridgeInterface) {
+            return (BridgeInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EgressProfile", readOnly = true)
+    public EgressProfile getEgressProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EgressProfile) {
+            return (EgressProfile) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Gateway", readOnly = true)
     public Gateway getGateway() {
         RestObject obj = super.getParentRestObj();
@@ -76,11 +106,41 @@ public class DeploymentFailuresFetcher extends BaseFetcher<DeploymentFailure> {
         return null;
     }
     
+    @VsoProperty(displayName = "IngressProfile", readOnly = true)
+    public IngressProfile getIngressProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressProfile) {
+            return (IngressProfile) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "RedundancyGroup", readOnly = true)
     public RedundancyGroup getRedundancyGroup() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof RedundancyGroup) {
             return (RedundancyGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VPort", readOnly = true)
+    public VPort getVPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VPort) {
+            return (VPort) obj;
         }
         
         return null;

@@ -26,7 +26,13 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewaySummaryBootstrapStatus;
+
+import net.nuagenetworks.vro.vspk.model.enums.NSGatewaySummaryEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -40,7 +46,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.NSGATEWAYSUMMARY, datasource = Constants.DATASOURCE, image = Constants.NSGATEWAYSUMMARY_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.NSGATEWAYSUMMARY, datasource = Constants.DATASOURCE, image = Constants.NSGATEWAYSUMMARY_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "nsgatewayssummary", resourceName = "nsgatewayssummaries")
@@ -48,6 +56,9 @@ public class NSGatewaySummary extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "NSGVersion")
+    protected String NSGVersion;
     
     @JsonProperty(value = "address")
     protected String address;
@@ -64,14 +75,26 @@ public class NSGatewaySummary extends BaseObject {
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
+    @JsonProperty(value = "entityScope")
+    protected NSGatewaySummaryEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
     @JsonProperty(value = "gatewayID")
     protected String gatewayID;
     
     @JsonProperty(value = "gatewayName")
     protected String gatewayName;
     
+    @JsonProperty(value = "gatewayType")
+    protected String gatewayType;
+    
     @JsonProperty(value = "infoAlarmsCount")
-    protected String infoAlarmsCount;
+    protected Long infoAlarmsCount;
+    
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
     
     @JsonProperty(value = "latitude")
     protected Float latitude;
@@ -88,20 +111,27 @@ public class NSGatewaySummary extends BaseObject {
     @JsonProperty(value = "minorAlarmsCount")
     protected Long minorAlarmsCount;
     
-    @JsonProperty(value = "nsgVersion")
-    protected String nsgVersion;
-    
     @JsonProperty(value = "state")
     protected String state;
     
     @JsonProperty(value = "systemID")
     protected String systemID;
     
-    @JsonProperty(value = "timeZoneID")
-    protected String timeZoneID;
+    @JsonProperty(value = "timezoneID")
+    protected String timezoneID;
+    
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
     
     @VsoConstructor
-    public NSGatewaySummary() {}
+    public NSGatewaySummary() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -143,6 +173,17 @@ public class NSGatewaySummary extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "NSGVersion", readOnly = false)   
+    public String getNSGVersion() {
+       return NSGVersion;
+    }
+
+    @JsonIgnore
+    public void setNSGVersion(String value) { 
+        this.NSGVersion = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
     public String getAddress() {
@@ -199,6 +240,28 @@ public class NSGatewaySummary extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public NSGatewaySummaryEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(NSGatewaySummaryEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GatewayID", readOnly = false)   
     public String getGatewayID() {
        return gatewayID;
@@ -221,14 +284,36 @@ public class NSGatewaySummary extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "GatewayType", readOnly = false)   
+    public String getGatewayType() {
+       return gatewayType;
+    }
+
+    @JsonIgnore
+    public void setGatewayType(String value) { 
+        this.gatewayType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "InfoAlarmsCount", readOnly = false)   
-    public String getInfoAlarmsCount() {
+    public Long getInfoAlarmsCount() {
        return infoAlarmsCount;
     }
 
     @JsonIgnore
-    public void setInfoAlarmsCount(String value) { 
+    public void setInfoAlarmsCount(Long value) { 
         this.infoAlarmsCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
     }
     
     @JsonIgnore
@@ -287,17 +372,6 @@ public class NSGatewaySummary extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "NsgVersion", readOnly = false)   
-    public String getNsgVersion() {
-       return nsgVersion;
-    }
-
-    @JsonIgnore
-    public void setNsgVersion(String value) { 
-        this.nsgVersion = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "State", readOnly = false)   
     public String getState() {
        return state;
@@ -320,14 +394,26 @@ public class NSGatewaySummary extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "TimeZoneID", readOnly = false)   
-    public String getTimeZoneID() {
-       return timeZoneID;
+    @VsoProperty(displayName = "TimezoneID", readOnly = false)   
+    public String getTimezoneID() {
+       return timezoneID;
     }
 
     @JsonIgnore
-    public void setTimeZoneID(String value) { 
-        this.timeZoneID = value;
+    public void setTimezoneID(String value) { 
+        this.timezoneID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -349,8 +435,33 @@ public class NSGatewaySummary extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGATEWAYSUMMARY, getId());
         }
+    }
+    @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.NSGATEWAYSUMMARY, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
     }public String toString() {
-        return "NSGatewaySummary [" + "address=" + address + ", bootstrapStatus=" + bootstrapStatus + ", country=" + country + ", criticalAlarmsCount=" + criticalAlarmsCount + ", enterpriseID=" + enterpriseID + ", gatewayID=" + gatewayID + ", gatewayName=" + gatewayName + ", infoAlarmsCount=" + infoAlarmsCount + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", majorAlarmsCount=" + majorAlarmsCount + ", minorAlarmsCount=" + minorAlarmsCount + ", nsgVersion=" + nsgVersion + ", state=" + state + ", systemID=" + systemID + ", timeZoneID=" + timeZoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGatewaySummary [" + "NSGVersion=" + NSGVersion + ", address=" + address + ", bootstrapStatus=" + bootstrapStatus + ", country=" + country + ", criticalAlarmsCount=" + criticalAlarmsCount + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", gatewayName=" + gatewayName + ", gatewayType=" + gatewayType + ", infoAlarmsCount=" + infoAlarmsCount + ", lastUpdatedBy=" + lastUpdatedBy + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", majorAlarmsCount=" + majorAlarmsCount + ", minorAlarmsCount=" + minorAlarmsCount + ", state=" + state + ", systemID=" + systemID + ", timezoneID=" + timezoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

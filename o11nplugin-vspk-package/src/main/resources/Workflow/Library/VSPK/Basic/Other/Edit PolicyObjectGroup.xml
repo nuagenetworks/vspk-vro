@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (description) {
 } else if (policyObjectGroupObj.description) {
    policyObjectGroupObj.description = "";
 }
+if (externalID) {
+   policyObjectGroupObj.externalID = externalID;
+} else if (policyObjectGroupObj.externalID) {
+   policyObjectGroupObj.externalID = "";
+}
 if (name) {
    policyObjectGroupObj.name = name;
 } else if (policyObjectGroupObj.name) {
@@ -33,6 +41,8 @@ policyObjectGroupObj.save(session, 1);]]></script>
 <in-binding><bind name='policyObjectGroupObj' type='VSPK:PolicyObjectGroup' export-name="policyObjectGroupObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ policyObjectGroupObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#policyObjectGroupObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#policyObjectGroupObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#policyObjectGroupObj.name]]></p-qual></p-param>

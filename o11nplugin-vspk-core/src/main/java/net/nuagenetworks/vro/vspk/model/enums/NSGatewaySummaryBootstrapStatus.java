@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGatewaySummaryBootstrapStatus {
 
-    ACTIVE("ACTIVE", "ACTIVE"), CERTIFICATE_REQUIRED("CERTIFICATE_REQUIRED", "CERTIFICATE_REQUIRED"), INACTIVE("INACTIVE", "INACTIVE"), NOTIFICATION_APP_REQ_ACK("NOTIFICATION_APP_REQ_ACK", "NOTIFICATION_APP_REQ_ACK"), NOTIFICATION_APP_REQ_SENT("NOTIFICATION_APP_REQ_SENT", "NOTIFICATION_APP_REQ_SENT");
+    ACTIVE("ACTIVE", "ACTIVE"), CERTIFICATE_SIGNED("CERTIFICATE_SIGNED", "CERTIFICATE_SIGNED"), INACTIVE("INACTIVE", "INACTIVE"), NOTIFICATION_APP_REQ_ACK("NOTIFICATION_APP_REQ_ACK", "NOTIFICATION_APP_REQ_ACK"), NOTIFICATION_APP_REQ_SENT("NOTIFICATION_APP_REQ_SENT", "NOTIFICATION_APP_REQ_SENT");
 
     private final String id;
     private final String name;
@@ -63,9 +63,9 @@ public enum NSGatewaySummaryBootstrapStatus {
         return ACTIVE;
     }
     
-    @VsoProperty(displayName = "CERTIFICATE_REQUIRED", readOnly = true)
-    public NSGatewaySummaryBootstrapStatus getCERTIFICATE_REQUIRED() {
-        return CERTIFICATE_REQUIRED;
+    @VsoProperty(displayName = "CERTIFICATE_SIGNED", readOnly = true)
+    public NSGatewaySummaryBootstrapStatus getCERTIFICATE_SIGNED() {
+        return CERTIFICATE_SIGNED;
     }
     
     @VsoProperty(displayName = "INACTIVE", readOnly = true)

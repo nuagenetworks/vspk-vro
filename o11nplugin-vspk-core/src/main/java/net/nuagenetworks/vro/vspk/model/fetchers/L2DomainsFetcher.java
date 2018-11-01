@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
+import net.nuagenetworks.vro.vspk.model.Gateway;
+
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Me;
@@ -75,6 +77,16 @@ public class L2DomainsFetcher extends BaseFetcher<L2Domain> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Gateway", readOnly = true)
+    public Gateway getGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Gateway) {
+            return (Gateway) obj;
         }
         
         return null;

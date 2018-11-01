@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='pSNATPoolObj' type='VSPK:PSNATPool' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='mappingType' type='VSPK:PTranslationMapMappingType' >
 </param>
 <param name='providerAliasIP' type='string' >
@@ -21,6 +23,9 @@
 <script encoded='false'><![CDATA[var session = pSNATPoolObj.session;
 
 pTranslationMapObj = new VSPKPTranslationMap();
+if (externalID) {
+   pTranslationMapObj.externalID = externalID;
+}
 pTranslationMapObj.mappingType = mappingType;
 if (providerAliasIP) {
    pTranslationMapObj.providerAliasIP = providerAliasIP;
@@ -32,6 +37,7 @@ if (providerIP) {
 pSNATPoolObj.createPTranslationMap(session, pTranslationMapObj);
 ]]></script>
 <in-binding><bind name='pSNATPoolObj' type='VSPK:PSNATPool' export-name="pSNATPoolObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='mappingType' type='VSPK:PTranslationMapMappingType' export-name="mappingType" ></bind>
 <bind name='providerAliasIP' type='string' export-name="providerAliasIP" ></bind>
 <bind name='providerIP' type='string' export-name="providerIP" ></bind>
@@ -41,6 +47,8 @@ pSNATPoolObj.createPTranslationMap(session, pTranslationMapObj);
 <presentation>
 <p-param name="pSNATPoolObj"><desc><![CDATA[pSNATPoolObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 <p-param name="mappingType"><desc><![CDATA[mappingType]]></desc>
 </p-param>
 <p-param name="providerAliasIP"><desc><![CDATA[providerAliasIP]]></desc>

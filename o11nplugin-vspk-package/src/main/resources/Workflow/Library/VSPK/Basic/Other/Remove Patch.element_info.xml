@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Remove Patch</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">886e2da2-a1b1-508b-912e-7b56477888c3</entry>
+</properties>

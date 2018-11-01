@@ -26,13 +26,23 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFInterfacesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFMetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VNFThresholdPoliciesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.VNFAllowedActions;
+
+import net.nuagenetworks.vro.vspk.model.enums.VNFEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.VNFLastUserAction;
 
 import net.nuagenetworks.vro.vspk.model.enums.VNFStatus;
 
@@ -52,7 +62,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.VNF, datasource = Constants.DATASOURCE, image = Constants.VNF_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.VNF, datasource = Constants.DATASOURCE, image = Constants.VNF_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "vnf", resourceName = "vnfs")
@@ -94,17 +106,26 @@ public class VNF extends BaseObject {
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
+    @JsonProperty(value = "entityScope")
+    protected VNFEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
     @JsonProperty(value = "isAttachedToDescriptor")
     protected Boolean isAttachedToDescriptor;
     
     @JsonProperty(value = "lastKnownError")
     protected String lastKnownError;
     
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "lastUserAction")
+    protected VNFLastUserAction lastUserAction;
+    
     @JsonProperty(value = "memoryMB")
     protected Long memoryMB;
-    
-    @JsonProperty(value = "metadataID")
-    protected String metadataID;
     
     @JsonProperty(value = "name")
     protected String name;
@@ -125,7 +146,13 @@ public class VNF extends BaseObject {
     protected String vendor;
     
     @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
     private JobsFetcher jobs;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
     
     @JsonIgnore
     private VNFInterfacesFetcher vNFInterfaces;
@@ -133,13 +160,22 @@ public class VNF extends BaseObject {
     @JsonIgnore
     private VNFMetadatasFetcher vNFMetadatas;
     
+    @JsonIgnore
+    private VNFThresholdPoliciesFetcher vNFThresholdPolicies;
+    
     @VsoConstructor
     public VNF() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
         jobs = new JobsFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
         
         vNFInterfaces = new VNFInterfacesFetcher(this);
         
         vNFMetadatas = new VNFMetadatasFetcher(this);
+        
+        vNFThresholdPolicies = new VNFThresholdPoliciesFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -299,6 +335,28 @@ public class VNF extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public VNFEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(VNFEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "IsAttachedToDescriptor", readOnly = false)   
     public Boolean getIsAttachedToDescriptor() {
        return isAttachedToDescriptor;
@@ -321,6 +379,28 @@ public class VNF extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUserAction", readOnly = false)   
+    public VNFLastUserAction getLastUserAction() {
+       return lastUserAction;
+    }
+
+    @JsonIgnore
+    public void setLastUserAction(VNFLastUserAction value) { 
+        this.lastUserAction = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MemoryMB", readOnly = false)   
     public Long getMemoryMB() {
        return memoryMB;
@@ -329,17 +409,6 @@ public class VNF extends BaseObject {
     @JsonIgnore
     public void setMemoryMB(Long value) { 
         this.memoryMB = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "MetadataID", readOnly = false)   
-    public String getMetadataID() {
-       return metadataID;
-    }
-
-    @JsonIgnore
-    public void setMetadataID(String value) { 
-        this.metadataID = value;
     }
     
     @JsonIgnore
@@ -409,9 +478,21 @@ public class VNF extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Jobs", readOnly = true)   
     public JobsFetcher getJobs() {
         return jobs;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
     }
     
     @JsonIgnore
@@ -424,6 +505,12 @@ public class VNF extends BaseObject {
     @VsoProperty(displayName = "VNFMetadatas", readOnly = true)   
     public VNFMetadatasFetcher getVNFMetadatas() {
         return vNFMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VNFThresholdPolicies", readOnly = true)   
+    public VNFThresholdPoliciesFetcher getVNFThresholdPolicies() {
+        return vNFThresholdPolicies;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -447,14 +534,39 @@ public class VNF extends BaseObject {
         }
     }
     @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.VNF, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
         }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
     }public String toString() {
-        return "VNF [" + "CPUCount=" + CPUCount + ", NSGName=" + NSGName + ", NSGSystemID=" + NSGSystemID + ", NSGatewayID=" + NSGatewayID + ", VNFDescriptorID=" + VNFDescriptorID + ", VNFDescriptorName=" + VNFDescriptorName + ", allowedActions=" + allowedActions + ", associatedVNFMetadataID=" + associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + associatedVNFThresholdPolicyID + ", description=" + description + ", enterpriseID=" + enterpriseID + ", isAttachedToDescriptor=" + isAttachedToDescriptor + ", lastKnownError=" + lastKnownError + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", status=" + status + ", storageGB=" + storageGB + ", taskState=" + taskState + ", type=" + type + ", vendor=" + vendor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNF [" + "CPUCount=" + CPUCount + ", NSGName=" + NSGName + ", NSGSystemID=" + NSGSystemID + ", NSGatewayID=" + NSGatewayID + ", VNFDescriptorID=" + VNFDescriptorID + ", VNFDescriptorName=" + VNFDescriptorName + ", allowedActions=" + allowedActions + ", associatedVNFMetadataID=" + associatedVNFMetadataID + ", associatedVNFThresholdPolicyID=" + associatedVNFThresholdPolicyID + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isAttachedToDescriptor=" + isAttachedToDescriptor + ", lastKnownError=" + lastKnownError + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUserAction=" + lastUserAction + ", memoryMB=" + memoryMB + ", name=" + name + ", status=" + status + ", storageGB=" + storageGB + ", taskState=" + taskState + ", type=" + type + ", vendor=" + vendor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

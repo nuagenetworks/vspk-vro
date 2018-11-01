@@ -57,6 +57,9 @@ public class InfrastructureConfig extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "associatedEntityType")
+    protected String associatedEntityType;
+    
     @JsonProperty(value = "config")
     protected Object config;
     
@@ -125,6 +128,17 @@ public class InfrastructureConfig extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEntityType", readOnly = false)   
+    public String getAssociatedEntityType() {
+       return associatedEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEntityType(String value) { 
+        this.associatedEntityType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Config", readOnly = false)   
     public Object getConfig() {
@@ -237,7 +251,7 @@ public class InfrastructureConfig extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "InfrastructureConfig [" + "config=" + config + ", configStatus=" + configStatus + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "InfrastructureConfig [" + "associatedEntityType=" + associatedEntityType + ", config=" + config + ", configStatus=" + configStatus + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

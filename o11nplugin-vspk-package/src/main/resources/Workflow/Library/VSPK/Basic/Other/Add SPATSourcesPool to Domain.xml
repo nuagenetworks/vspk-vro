@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='domainObj' type='VSPK:Domain' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='sPATSourcesPoolObj' type='VSPK:SPATSourcesPool' >
@@ -17,6 +19,9 @@
 <script encoded='false'><![CDATA[var session = domainObj.session;
 
 sPATSourcesPoolObj = new VSPKSPATSourcesPool();
+if (externalID) {
+   sPATSourcesPoolObj.externalID = externalID;
+}
 if (name) {
    sPATSourcesPoolObj.name = name;
 }
@@ -24,6 +29,7 @@ if (name) {
 domainObj.createSPATSourcesPool(session, sPATSourcesPoolObj);
 ]]></script>
 <in-binding><bind name='domainObj' type='VSPK:Domain' export-name="domainObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='sPATSourcesPoolObj' type='VSPK:SPATSourcesPool' export-name="sPATSourcesPoolObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +37,8 @@ domainObj.createSPATSourcesPool(session, sPATSourcesPoolObj);
 <presentation>
 <p-param name="domainObj"><desc><![CDATA[domainObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>
 </presentation></workflow>

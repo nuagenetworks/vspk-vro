@@ -83,6 +83,9 @@ public class Application extends BaseObject {
     @JsonProperty(value = "bandwidth")
     protected Long bandwidth;
     
+    @JsonProperty(value = "certificateCommonName")
+    protected String certificateCommonName;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -109,6 +112,9 @@ public class Application extends BaseObject {
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "networkSymmetry")
+    protected Boolean networkSymmetry;
     
     @JsonProperty(value = "oneWayDelay")
     protected Long oneWayDelay;
@@ -249,6 +255,17 @@ public class Application extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CertificateCommonName", readOnly = false)   
+    public String getCertificateCommonName() {
+       return certificateCommonName;
+    }
+
+    @JsonIgnore
+    public void setCertificateCommonName(String value) { 
+        this.certificateCommonName = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -345,6 +362,17 @@ public class Application extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NetworkSymmetry", readOnly = false)   
+    public Boolean getNetworkSymmetry() {
+       return networkSymmetry;
+    }
+
+    @JsonIgnore
+    public void setNetworkSymmetry(Boolean value) { 
+        this.networkSymmetry = value;
     }
     
     @JsonIgnore
@@ -556,7 +584,7 @@ public class Application extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.MONITORSCOPES_FETCHER, getId());
         }
     }public String toString() {
-        return "Application [" + "DSCP=" + DSCP + ", appId=" + appId + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", bandwidth=" + bandwidth + ", description=" + description + ", destinationIP=" + destinationIP + ", destinationPort=" + destinationPort + ", enablePPS=" + enablePPS + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", oneWayDelay=" + oneWayDelay + ", oneWayJitter=" + oneWayJitter + ", oneWayLoss=" + oneWayLoss + ", optimizePathSelection=" + optimizePathSelection + ", performanceMonitorType=" + performanceMonitorType + ", postClassificationPath=" + postClassificationPath + ", preClassificationPath=" + preClassificationPath + ", protocol=" + protocol + ", readOnly=" + readOnly + ", sourceIP=" + sourceIP + ", sourcePort=" + sourcePort + ", symmetry=" + symmetry + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Application [" + "DSCP=" + DSCP + ", appId=" + appId + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", bandwidth=" + bandwidth + ", certificateCommonName=" + certificateCommonName + ", description=" + description + ", destinationIP=" + destinationIP + ", destinationPort=" + destinationPort + ", enablePPS=" + enablePPS + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", networkSymmetry=" + networkSymmetry + ", oneWayDelay=" + oneWayDelay + ", oneWayJitter=" + oneWayJitter + ", oneWayLoss=" + oneWayLoss + ", optimizePathSelection=" + optimizePathSelection + ", performanceMonitorType=" + performanceMonitorType + ", postClassificationPath=" + postClassificationPath + ", preClassificationPath=" + preClassificationPath + ", protocol=" + protocol + ", readOnly=" + readOnly + ", sourceIP=" + sourceIP + ", sourcePort=" + sourcePort + ", symmetry=" + symmetry + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

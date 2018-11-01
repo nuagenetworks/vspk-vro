@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='vNFDescriptorObj' type='VSPK:VNFDescriptor' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='vNFInterfaceDescriptorObj' type='VSPK:VNFInterfaceDescriptor' >
@@ -17,6 +19,9 @@
 <script encoded='false'><![CDATA[var session = vNFDescriptorObj.session;
 
 vNFInterfaceDescriptorObj = new VSPKVNFInterfaceDescriptor();
+if (externalID) {
+   vNFInterfaceDescriptorObj.externalID = externalID;
+}
 if (name) {
    vNFInterfaceDescriptorObj.name = name;
 }
@@ -24,6 +29,7 @@ if (name) {
 vNFDescriptorObj.createVNFInterfaceDescriptor(session, vNFInterfaceDescriptorObj);
 ]]></script>
 <in-binding><bind name='vNFDescriptorObj' type='VSPK:VNFDescriptor' export-name="vNFDescriptorObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='vNFInterfaceDescriptorObj' type='VSPK:VNFInterfaceDescriptor' export-name="vNFInterfaceDescriptorObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +37,8 @@ vNFDescriptorObj.createVNFInterfaceDescriptor(session, vNFInterfaceDescriptorObj
 <presentation>
 <p-param name="vNFDescriptorObj"><desc><![CDATA[vNFDescriptorObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>
 </presentation></workflow>

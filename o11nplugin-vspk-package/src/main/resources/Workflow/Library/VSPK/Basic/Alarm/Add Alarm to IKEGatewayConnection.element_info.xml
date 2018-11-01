@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Alarm</entry>
-<entry key="name">Add Alarm to IKEGatewayConnection</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">19f3ea2e-cf7c-5abf-9d71-023094b7247a</entry>
-</properties>

@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (description) {
 } else if (vNFCatalogObj.description) {
    vNFCatalogObj.description = "";
 }
+if (externalID) {
+   vNFCatalogObj.externalID = externalID;
+} else if (vNFCatalogObj.externalID) {
+   vNFCatalogObj.externalID = "";
+}
 if (name) {
    vNFCatalogObj.name = name;
 } else if (vNFCatalogObj.name) {
@@ -33,6 +41,8 @@ vNFCatalogObj.save(session, 1);]]></script>
 <in-binding><bind name='vNFCatalogObj' type='VSPK:VNFCatalog' export-name="vNFCatalogObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ vNFCatalogObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFCatalogObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFCatalogObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFCatalogObj.name]]></p-qual></p-param>

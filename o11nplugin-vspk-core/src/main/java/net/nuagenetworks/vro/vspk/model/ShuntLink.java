@@ -33,6 +33,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.ShuntLinkEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.ShuntLinkPermittedAction;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -47,8 +49,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.SHUNTLINK, datasource = Constants.DATASOURCE, image = Constants.SHUNTLINK_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.ALARMS_FETCHER, type = Constants.ALARMS_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
@@ -86,17 +86,8 @@ public class ShuntLink extends BaseObject {
     @JsonProperty(value = "name")
     protected String name;
     
-    @JsonProperty(value = "peer1IPAddress")
-    protected String peer1IPAddress;
-    
-    @JsonProperty(value = "peer1Subnet")
-    protected String peer1Subnet;
-    
-    @JsonProperty(value = "peer2IPAddress")
-    protected String peer2IPAddress;
-    
-    @JsonProperty(value = "peer2Subnet")
-    protected String peer2Subnet;
+    @JsonProperty(value = "permittedAction")
+    protected ShuntLinkPermittedAction permittedAction;
     
     @JsonIgnore
     private AlarmsFetcher alarms;
@@ -251,47 +242,14 @@ public class ShuntLink extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Peer1IPAddress", readOnly = false)   
-    public String getPeer1IPAddress() {
-       return peer1IPAddress;
+    @VsoProperty(displayName = "PermittedAction", readOnly = false)   
+    public ShuntLinkPermittedAction getPermittedAction() {
+       return permittedAction;
     }
 
     @JsonIgnore
-    public void setPeer1IPAddress(String value) { 
-        this.peer1IPAddress = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Peer1Subnet", readOnly = false)   
-    public String getPeer1Subnet() {
-       return peer1Subnet;
-    }
-
-    @JsonIgnore
-    public void setPeer1Subnet(String value) { 
-        this.peer1Subnet = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Peer2IPAddress", readOnly = false)   
-    public String getPeer2IPAddress() {
-       return peer2IPAddress;
-    }
-
-    @JsonIgnore
-    public void setPeer2IPAddress(String value) { 
-        this.peer2IPAddress = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Peer2Subnet", readOnly = false)   
-    public String getPeer2Subnet() {
-       return peer2Subnet;
-    }
-
-    @JsonIgnore
-    public void setPeer2Subnet(String value) { 
-        this.peer2Subnet = value;
+    public void setPermittedAction(ShuntLinkPermittedAction value) { 
+        this.permittedAction = value;
     }
     
     @JsonIgnore
@@ -342,14 +300,6 @@ public class ShuntLink extends BaseObject {
     }
     
     @VsoMethod
-    public void createAlarm(Session session, Alarm childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.ALARMS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -365,7 +315,7 @@ public class ShuntLink extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ShuntLink [" + "VLANPeer1ID=" + VLANPeer1ID + ", VLANPeer2ID=" + VLANPeer2ID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer2ID=" + gatewayPeer2ID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", peer1IPAddress=" + peer1IPAddress + ", peer1Subnet=" + peer1Subnet + ", peer2IPAddress=" + peer2IPAddress + ", peer2Subnet=" + peer2Subnet + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ShuntLink [" + "VLANPeer1ID=" + VLANPeer1ID + ", VLANPeer2ID=" + VLANPeer2ID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer2ID=" + gatewayPeer2ID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

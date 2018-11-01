@@ -27,6 +27,14 @@
 
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.CTranslationMapsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.enums.CSNATPoolIPType;
+
+import net.nuagenetworks.vro.vspk.model.enums.CSNATPoolEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -41,7 +49,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.CSNATPOOL, datasource = Constants.DATASOURCE, image = Constants.CSNATPOOL_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.CTRANSLATIONMAPS_FETCHER, type = Constants.CTRANSLATIONMAPS_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.CTRANSLATIONMAPS_FETCHER, type = Constants.CTRANSLATIONMAPS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -51,8 +61,23 @@ public class CSNATPool extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "IPType")
+    protected CSNATPoolIPType IPType;
+    
+    @JsonProperty(value = "description")
+    protected String description;
+    
     @JsonProperty(value = "endAddress")
     protected String endAddress;
+    
+    @JsonProperty(value = "entityScope")
+    protected CSNATPoolEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
     
     @JsonProperty(value = "name")
     protected String name;
@@ -63,9 +88,19 @@ public class CSNATPool extends BaseObject {
     @JsonIgnore
     private CTranslationMapsFetcher cTranslationMaps;
     
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
+    
     @VsoConstructor
     public CSNATPool() {
         cTranslationMaps = new CTranslationMapsFetcher(this);
+        
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -104,6 +139,28 @@ public class CSNATPool extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "IPType", readOnly = false)   
+    public CSNATPoolIPType getIPType() {
+       return IPType;
+    }
+
+    @JsonIgnore
+    public void setIPType(CSNATPoolIPType value) { 
+        this.IPType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Description", readOnly = false)   
+    public String getDescription() {
+       return description;
+    }
+
+    @JsonIgnore
+    public void setDescription(String value) { 
+        this.description = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EndAddress", readOnly = false)   
     public String getEndAddress() {
        return endAddress;
@@ -112,6 +169,39 @@ public class CSNATPool extends BaseObject {
     @JsonIgnore
     public void setEndAddress(String value) { 
         this.endAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public CSNATPoolEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(CSNATPoolEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
     }
     
     @JsonIgnore
@@ -141,6 +231,18 @@ public class CSNATPool extends BaseObject {
     public CTranslationMapsFetcher getCTranslationMaps() {
         return cTranslationMaps;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -163,14 +265,48 @@ public class CSNATPool extends BaseObject {
         }
     }
     @VsoMethod
+    public void assignCTranslationMaps(Session session, CTranslationMap[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.CSNATPOOL, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.CSNATPOOL, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createCTranslationMap(Session session, CTranslationMap childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.CTRANSLATIONMAPS_FETCHER, getId());
         }
+    }
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
     }public String toString() {
-        return "CSNATPool [" + "endAddress=" + endAddress + ", name=" + name + ", startAddress=" + startAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "CSNATPool [" + "IPType=" + IPType + ", description=" + description + ", endAddress=" + endAddress + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", startAddress=" + startAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

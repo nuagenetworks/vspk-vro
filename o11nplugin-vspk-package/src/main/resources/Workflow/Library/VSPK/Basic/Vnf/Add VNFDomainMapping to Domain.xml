@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='domainObj' type='VSPK:Domain' >
 </param>
+<param name='externalID' type='string' >
+</param>
 </input><output><param name='vNFDomainMappingObj' type='VSPK:VNFDomainMapping' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -15,14 +17,20 @@
 <script encoded='false'><![CDATA[var session = domainObj.session;
 
 vNFDomainMappingObj = new VSPKVNFDomainMapping();
+if (externalID) {
+   vNFDomainMappingObj.externalID = externalID;
+}
 
 domainObj.createVNFDomainMapping(session, vNFDomainMappingObj);
 ]]></script>
 <in-binding><bind name='domainObj' type='VSPK:Domain' export-name="domainObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 </in-binding><out-binding><bind name='vNFDomainMappingObj' type='VSPK:VNFDomainMapping' export-name="vNFDomainMappingObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="domainObj"><desc><![CDATA[domainObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 </presentation></workflow>

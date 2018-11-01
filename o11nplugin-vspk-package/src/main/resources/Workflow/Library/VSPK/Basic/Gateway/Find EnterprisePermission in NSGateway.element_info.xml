@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Find EnterprisePermission in NSGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">08987647-8f9e-52ef-8b9f-0b5e190f53cf</entry>
+</properties>

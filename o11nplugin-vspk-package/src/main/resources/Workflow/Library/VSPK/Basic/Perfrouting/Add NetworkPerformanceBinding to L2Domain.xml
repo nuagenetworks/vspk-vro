@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='l2DomainObj' type='VSPK:L2Domain' >
 </param>
+<param name='externalID' type='string' >
+</param>
 </input><output><param name='networkPerformanceBindingObj' type='VSPK:NetworkPerformanceBinding' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -15,14 +17,20 @@
 <script encoded='false'><![CDATA[var session = l2DomainObj.session;
 
 networkPerformanceBindingObj = new VSPKNetworkPerformanceBinding();
+if (externalID) {
+   networkPerformanceBindingObj.externalID = externalID;
+}
 
 l2DomainObj.createNetworkPerformanceBinding(session, networkPerformanceBindingObj);
 ]]></script>
 <in-binding><bind name='l2DomainObj' type='VSPK:L2Domain' export-name="l2DomainObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 </in-binding><out-binding><bind name='networkPerformanceBindingObj' type='VSPK:NetworkPerformanceBinding' export-name="networkPerformanceBindingObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="l2DomainObj"><desc><![CDATA[l2DomainObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 </presentation></workflow>

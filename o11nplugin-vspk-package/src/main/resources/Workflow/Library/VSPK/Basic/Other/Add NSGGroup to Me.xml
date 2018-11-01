@@ -7,6 +7,8 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='nSGGroupObj' type='VSPK:NSGGroup' >
@@ -22,6 +24,9 @@ nSGGroupObj = new VSPKNSGGroup();
 if (description) {
    nSGGroupObj.description = description;
 }
+if (externalID) {
+   nSGGroupObj.externalID = externalID;
+}
 if (name) {
    nSGGroupObj.name = name;
 }
@@ -30,6 +35,7 @@ meObj.createNSGGroup(session, nSGGroupObj);
 ]]></script>
 <in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='nSGGroupObj' type='VSPK:NSGGroup' export-name="nSGGroupObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -38,6 +44,8 @@ meObj.createNSGGroup(session, nSGGroupObj);
 <p-param name="meObj"><desc><![CDATA[meObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

@@ -7,6 +7,8 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='egressProfileObj' type='VSPK:EgressProfile' >
@@ -22,6 +24,9 @@ egressProfileObj = new VSPKEgressProfile();
 if (description) {
    egressProfileObj.description = description;
 }
+if (externalID) {
+   egressProfileObj.externalID = externalID;
+}
 if (name) {
    egressProfileObj.name = name;
 }
@@ -30,6 +35,7 @@ gatewayObj.createEgressProfile(session, egressProfileObj);
 ]]></script>
 <in-binding><bind name='gatewayObj' type='VSPK:Gateway' export-name="gatewayObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='egressProfileObj' type='VSPK:EgressProfile' export-name="egressProfileObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -38,6 +44,8 @@ gatewayObj.createEgressProfile(session, egressProfileObj);
 <p-param name="gatewayObj"><desc><![CDATA[gatewayObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

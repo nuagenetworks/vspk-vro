@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (description) {
 } else if (policyEntryObj.description) {
    policyEntryObj.description = "";
 }
+if (externalID) {
+   policyEntryObj.externalID = externalID;
+} else if (policyEntryObj.externalID) {
+   policyEntryObj.externalID = "";
+}
 if (name) {
    policyEntryObj.name = name;
 } else if (policyEntryObj.name) {
@@ -33,6 +41,8 @@ policyEntryObj.save(session, 1);]]></script>
 <in-binding><bind name='policyEntryObj' type='VSPK:PolicyEntry' export-name="policyEntryObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ policyEntryObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#policyEntryObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#policyEntryObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#policyEntryObj.name]]></p-qual></p-param>

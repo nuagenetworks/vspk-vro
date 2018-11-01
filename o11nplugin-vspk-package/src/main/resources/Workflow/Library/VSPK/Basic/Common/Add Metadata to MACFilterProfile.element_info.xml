@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to MACFilterProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e292c2e3-0365-5152-ba7f-34f98229573d</entry>
+</properties>

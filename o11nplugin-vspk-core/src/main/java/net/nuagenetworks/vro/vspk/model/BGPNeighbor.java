@@ -90,6 +90,9 @@ public class BGPNeighbor extends BaseObject {
     @JsonProperty(value = "peerAS")
     protected Long peerAS;
     
+    @JsonProperty(value = "peerConfiguration")
+    protected String peerConfiguration;
+    
     @JsonProperty(value = "peerIP")
     protected String peerIP;
     
@@ -266,6 +269,17 @@ public class BGPNeighbor extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PeerConfiguration", readOnly = false)   
+    public String getPeerConfiguration() {
+       return peerConfiguration;
+    }
+
+    @JsonIgnore
+    public void setPeerConfiguration(String value) { 
+        this.peerConfiguration = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PeerIP", readOnly = false)   
     public String getPeerIP() {
        return peerIP;
@@ -344,7 +358,7 @@ public class BGPNeighbor extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BGPNeighbor [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BGPNeighbor [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerConfiguration=" + peerConfiguration + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
-<entry key="name">Add FloatingIPACLTemplate to DomainTemplate</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">127a20c3-03a2-5445-bbd4-27288820a312</entry>
-</properties>

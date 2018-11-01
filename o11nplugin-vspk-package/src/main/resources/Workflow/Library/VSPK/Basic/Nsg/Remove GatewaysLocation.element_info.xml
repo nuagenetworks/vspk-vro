@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Remove GatewaysLocation</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9823d1eb-9151-534a-81f1-9af8180bde07</entry>
+</properties>

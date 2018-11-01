@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum FirewallRuleAction {
 
-    DROP ("DROP ", "DROP "), FORWARD ("FORWARD ", "FORWARD "), REDIRECT("REDIRECT", "REDIRECT");
+    DROP("DROP", "DROP"), FORWARD("FORWARD", "FORWARD"), FORWARDING_PATH_LIST("FORWARDING_PATH_LIST", "FORWARDING_PATH_LIST"), REDIRECT("REDIRECT", "REDIRECT");
 
     private final String id;
     private final String name;
@@ -58,14 +58,19 @@ public enum FirewallRuleAction {
     }
 
     
-    @VsoProperty(displayName = "DROP ", readOnly = true)
-    public FirewallRuleAction getDROP () {
-        return DROP ;
+    @VsoProperty(displayName = "DROP", readOnly = true)
+    public FirewallRuleAction getDROP() {
+        return DROP;
     }
     
-    @VsoProperty(displayName = "FORWARD ", readOnly = true)
-    public FirewallRuleAction getFORWARD () {
-        return FORWARD ;
+    @VsoProperty(displayName = "FORWARD", readOnly = true)
+    public FirewallRuleAction getFORWARD() {
+        return FORWARD;
+    }
+    
+    @VsoProperty(displayName = "FORWARDING_PATH_LIST", readOnly = true)
+    public FirewallRuleAction getFORWARDING_PATH_LIST() {
+        return FORWARDING_PATH_LIST;
     }
     
     @VsoProperty(displayName = "REDIRECT", readOnly = true)

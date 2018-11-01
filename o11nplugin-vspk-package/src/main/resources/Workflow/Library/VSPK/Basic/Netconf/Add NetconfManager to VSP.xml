@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='vSPObj' type='VSPK:VSP' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='netconfManagerObj' type='VSPK:NetconfManager' >
@@ -17,6 +19,9 @@
 <script encoded='false'><![CDATA[var session = vSPObj.session;
 
 netconfManagerObj = new VSPKNetconfManager();
+if (externalID) {
+   netconfManagerObj.externalID = externalID;
+}
 if (name) {
    netconfManagerObj.name = name;
 }
@@ -24,6 +29,7 @@ if (name) {
 vSPObj.createNetconfManager(session, netconfManagerObj);
 ]]></script>
 <in-binding><bind name='vSPObj' type='VSPK:VSP' export-name="vSPObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='netconfManagerObj' type='VSPK:NetconfManager' export-name="netconfManagerObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +37,8 @@ vSPObj.createNetconfManager(session, netconfManagerObj);
 <presentation>
 <p-param name="vSPObj"><desc><![CDATA[vSPObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>
 </presentation></workflow>

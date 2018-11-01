@@ -55,6 +55,9 @@ public class Command extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "assocEntityType")
+    protected String assocEntityType;
+    
     @JsonProperty(value = "associatedParam")
     protected String associatedParam;
     
@@ -140,6 +143,17 @@ public class Command extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AssocEntityType", readOnly = false)   
+    public String getAssocEntityType() {
+       return assocEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssocEntityType(String value) { 
+        this.assocEntityType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedParam", readOnly = false)   
     public String getAssociatedParam() {
@@ -314,7 +328,7 @@ public class Command extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.COMMAND, getId());
         }
     }public String toString() {
-        return "Command [" + "associatedParam=" + associatedParam + ", associatedParamType=" + associatedParamType + ", command=" + command + ", commandInformation=" + commandInformation + ", detail=" + detail + ", detailedStatus=" + detailedStatus + ", detailedStatusCode=" + detailedStatusCode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fullCommand=" + fullCommand + ", lastUpdatedBy=" + lastUpdatedBy + ", override=" + override + ", status=" + status + ", summary=" + summary + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Command [" + "assocEntityType=" + assocEntityType + ", associatedParam=" + associatedParam + ", associatedParamType=" + associatedParamType + ", command=" + command + ", commandInformation=" + commandInformation + ", detail=" + detail + ", detailedStatus=" + detailedStatus + ", detailedStatusCode=" + detailedStatusCode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fullCommand=" + fullCommand + ", lastUpdatedBy=" + lastUpdatedBy + ", override=" + override + ", status=" + status + ", summary=" + summary + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

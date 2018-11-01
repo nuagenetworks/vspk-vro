@@ -66,6 +66,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.FirewallRulesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GatewaysFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.GatewaysLocationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GatewayTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -114,6 +116,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceMeasurementsF
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysCountsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaySummariesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewayTemplatesFetcher;
@@ -159,6 +163,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VNFThresholdPoliciesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.ZFBRequestsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.EnterpriseAllowedForwardingClasses;
+
+import net.nuagenetworks.vro.vspk.model.enums.EnterpriseAllowedForwardingMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.EnterpriseAvatarType;
 
@@ -314,6 +320,9 @@ public class Enterprise extends BaseObject {
     @JsonProperty(value = "allowedForwardingClasses")
     protected java.util.List<EnterpriseAllowedForwardingClasses> allowedForwardingClasses;
     
+    @JsonProperty(value = "allowedForwardingMode")
+    protected EnterpriseAllowedForwardingMode allowedForwardingMode;
+    
     @JsonProperty(value = "associatedEnterpriseSecurityID")
     protected String associatedEnterpriseSecurityID;
     
@@ -444,6 +453,9 @@ public class Enterprise extends BaseObject {
     private GatewaysFetcher gateways;
     
     @JsonIgnore
+    private GatewaysLocationsFetcher gatewaysLocations;
+    
+    @JsonIgnore
     private GatewayTemplatesFetcher gatewayTemplates;
     
     @JsonIgnore
@@ -514,6 +526,9 @@ public class Enterprise extends BaseObject {
     
     @JsonIgnore
     private NSGatewaysFetcher nSGateways;
+    
+    @JsonIgnore
+    private NSGatewaysCountsFetcher nSGatewaysCounts;
     
     @JsonIgnore
     private NSGatewaySummariesFetcher nSGatewaySummaries;
@@ -623,6 +638,8 @@ public class Enterprise extends BaseObject {
         
         gateways = new GatewaysFetcher(this);
         
+        gatewaysLocations = new GatewaysLocationsFetcher(this);
+        
         gatewayTemplates = new GatewayTemplatesFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -670,6 +687,8 @@ public class Enterprise extends BaseObject {
         networkPerformanceMeasurements = new NetworkPerformanceMeasurementsFetcher(this);
         
         nSGateways = new NSGatewaysFetcher(this);
+        
+        nSGatewaysCounts = new NSGatewaysCountsFetcher(this);
         
         nSGatewaySummaries = new NSGatewaySummariesFetcher(this);
         
@@ -848,6 +867,17 @@ public class Enterprise extends BaseObject {
     @JsonIgnore
     public void setAllowedForwardingClasses(java.util.List<EnterpriseAllowedForwardingClasses> value) { 
         this.allowedForwardingClasses = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AllowedForwardingMode", readOnly = false)   
+    public EnterpriseAllowedForwardingMode getAllowedForwardingMode() {
+       return allowedForwardingMode;
+    }
+
+    @JsonIgnore
+    public void setAllowedForwardingMode(EnterpriseAllowedForwardingMode value) { 
+        this.allowedForwardingMode = value;
     }
     
     @JsonIgnore
@@ -1224,6 +1254,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "GatewaysLocations", readOnly = true)   
+    public GatewaysLocationsFetcher getGatewaysLocations() {
+        return gatewaysLocations;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GatewayTemplates", readOnly = true)   
     public GatewayTemplatesFetcher getGatewayTemplates() {
         return gatewayTemplates;
@@ -1365,6 +1401,12 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "NSGateways", readOnly = true)   
     public NSGatewaysFetcher getNSGateways() {
         return nSGateways;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NSGatewaysCounts", readOnly = true)   
+    public NSGatewaysCountsFetcher getNSGatewaysCounts() {
+        return nSGatewaysCounts;
     }
     
     @JsonIgnore
@@ -1963,7 +2005,7 @@ public class Enterprise extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", localAS=" + localAS + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", sharedEnterprise=" + sharedEnterprise + ", virtualFirewallRulesEnabled=" + virtualFirewallRulesEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", allowedForwardingMode=" + allowedForwardingMode + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", localAS=" + localAS + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", sharedEnterprise=" + sharedEnterprise + ", virtualFirewallRulesEnabled=" + virtualFirewallRulesEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

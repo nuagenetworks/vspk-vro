@@ -7,6 +7,8 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 <param name='physicalName' type='string' >
@@ -26,6 +28,9 @@ gatewayRedundantPortObj = new VSPKGatewayRedundantPort();
 if (description) {
    gatewayRedundantPortObj.description = description;
 }
+if (externalID) {
+   gatewayRedundantPortObj.externalID = externalID;
+}
 if (name) {
    gatewayRedundantPortObj.name = name;
 }
@@ -38,6 +43,7 @@ redundancyGroupObj.createGatewayRedundantPort(session, gatewayRedundantPortObj);
 ]]></script>
 <in-binding><bind name='redundancyGroupObj' type='VSPK:RedundancyGroup' export-name="redundancyGroupObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 <bind name='physicalName' type='string' export-name="physicalName" ></bind>
 <bind name='portType' type='VSPK:GatewayRedundantPortPortType' export-name="portType" ></bind>
@@ -48,6 +54,8 @@ redundancyGroupObj.createGatewayRedundantPort(session, gatewayRedundantPortObj);
 <p-param name="redundancyGroupObj"><desc><![CDATA[redundancyGroupObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

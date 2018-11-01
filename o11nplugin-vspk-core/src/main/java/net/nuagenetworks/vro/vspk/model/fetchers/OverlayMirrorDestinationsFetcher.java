@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.OverlayMirrorDestination;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.L2Domain;
+
+import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -69,6 +71,16 @@ public class OverlayMirrorDestinationsFetcher extends BaseFetcher<OverlayMirrorD
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2Domain) {
             return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Me) {
+            return (Me) obj;
         }
         
         return null;

@@ -5,9 +5,9 @@
 <position x='100.0' y='50.0'/>
 <input><param name='infrastructureAccessProfileObj' type='VSPK:InfrastructureAccessProfile' >
 </param>
-<param name='IPAddress' type='string' >
-</param>
 <param name='description' type='string' >
+</param>
+<param name='externalID' type='string' >
 </param>
 <param name='name' type='string' >
 </param>
@@ -21,11 +21,11 @@
 <script encoded='false'><![CDATA[var session = infrastructureAccessProfileObj.session;
 
 connectionendpointObj = new VSPKConnectionendpoint();
-if (IPAddress) {
-   connectionendpointObj.IPAddress = IPAddress;
-}
 if (description) {
    connectionendpointObj.description = description;
+}
+if (externalID) {
+   connectionendpointObj.externalID = externalID;
 }
 if (name) {
    connectionendpointObj.name = name;
@@ -34,8 +34,8 @@ if (name) {
 infrastructureAccessProfileObj.createConnectionendpoint(session, connectionendpointObj);
 ]]></script>
 <in-binding><bind name='infrastructureAccessProfileObj' type='VSPK:InfrastructureAccessProfile' export-name="infrastructureAccessProfileObj" ></bind>
-<bind name='IPAddress' type='string' export-name="IPAddress" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='connectionendpointObj' type='VSPK:Connectionendpoint' export-name="connectionendpointObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -43,9 +43,9 @@ infrastructureAccessProfileObj.createConnectionendpoint(session, connectionendpo
 <presentation>
 <p-param name="infrastructureAccessProfileObj"><desc><![CDATA[infrastructureAccessProfileObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
-<p-param name="IPAddress"><desc><![CDATA[IPAddress]]></desc>
-</p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='linkObj' type='VSPK:Link' >
 </param>
+<param name='externalID' type='string' >
+</param>
 </input><output><param name='demarcationServiceObj' type='VSPK:DemarcationService' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -15,14 +17,20 @@
 <script encoded='false'><![CDATA[var session = linkObj.session;
 
 demarcationServiceObj = new VSPKDemarcationService();
+if (externalID) {
+   demarcationServiceObj.externalID = externalID;
+}
 
 linkObj.createDemarcationService(session, demarcationServiceObj);
 ]]></script>
 <in-binding><bind name='linkObj' type='VSPK:Link' export-name="linkObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 </in-binding><out-binding><bind name='demarcationServiceObj' type='VSPK:DemarcationService' export-name="demarcationServiceObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="linkObj"><desc><![CDATA[linkObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 </presentation></workflow>

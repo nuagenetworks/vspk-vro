@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in DiskStat</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">eccebcd8-54cd-56d8-839f-723c3d6ba00a</entry>
+</properties>

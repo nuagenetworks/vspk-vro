@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VirtualFirewallRuleLocationType {
 
-    ANY("ANY", "ANY"), ENTERPRISE_NETWORK("ENTERPRISE_NETWORK", "ENTERPRISE_NETWORK"), INTERNET_POLICYGROUP("INTERNET_POLICYGROUP", "INTERNET_POLICYGROUP"), NETWORK_MACRO_GROUP("NETWORK_MACRO_GROUP", "NETWORK_MACRO_GROUP"), PGEXPRESSION("PGEXPRESSION", "PGEXPRESSION"), POLICYGROUP("POLICYGROUP", "POLICYGROUP"), SUBNET("SUBNET", "SUBNET"), ZONE("ZONE", "ZONE");
+    ANY("ANY", "ANY"), ENTERPRISE_NETWORK("ENTERPRISE_NETWORK", "ENTERPRISE_NETWORK"), NETWORK_MACRO_GROUP("NETWORK_MACRO_GROUP", "NETWORK_MACRO_GROUP"), PGEXPRESSION("PGEXPRESSION", "PGEXPRESSION"), POLICYGROUP("POLICYGROUP", "POLICYGROUP"), SUBNET("SUBNET", "SUBNET"), UNDERLAY_INTERNET_POLICYGROUP("UNDERLAY_INTERNET_POLICYGROUP", "UNDERLAY_INTERNET_POLICYGROUP"), ZONE("ZONE", "ZONE");
 
     private final String id;
     private final String name;
@@ -68,11 +68,6 @@ public enum VirtualFirewallRuleLocationType {
         return ENTERPRISE_NETWORK;
     }
     
-    @VsoProperty(displayName = "INTERNET_POLICYGROUP", readOnly = true)
-    public VirtualFirewallRuleLocationType getINTERNET_POLICYGROUP() {
-        return INTERNET_POLICYGROUP;
-    }
-    
     @VsoProperty(displayName = "NETWORK_MACRO_GROUP", readOnly = true)
     public VirtualFirewallRuleLocationType getNETWORK_MACRO_GROUP() {
         return NETWORK_MACRO_GROUP;
@@ -91,6 +86,11 @@ public enum VirtualFirewallRuleLocationType {
     @VsoProperty(displayName = "SUBNET", readOnly = true)
     public VirtualFirewallRuleLocationType getSUBNET() {
         return SUBNET;
+    }
+    
+    @VsoProperty(displayName = "UNDERLAY_INTERNET_POLICYGROUP", readOnly = true)
+    public VirtualFirewallRuleLocationType getUNDERLAY_INTERNET_POLICYGROUP() {
+        return UNDERLAY_INTERNET_POLICYGROUP;
     }
     
     @VsoProperty(displayName = "ZONE", readOnly = true)

@@ -82,15 +82,11 @@ import net.nuagenetworks.vro.vspk.model.enums.SubnetIPType;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetPATEnabled;
 
-import net.nuagenetworks.vro.vspk.model.enums.SubnetDefaultAction;
-
 import net.nuagenetworks.vro.vspk.model.enums.SubnetEncryption;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetEntityState;
-
-import net.nuagenetworks.vro.vspk.model.enums.SubnetFlowCollectionEnabled;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetMaintenanceMode;
 
@@ -182,9 +178,6 @@ public class Subnet extends BaseObject {
     @JsonProperty(value = "associatedSharedNetworkResourceID")
     protected String associatedSharedNetworkResourceID;
     
-    @JsonProperty(value = "defaultAction")
-    protected SubnetDefaultAction defaultAction;
-    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -202,9 +195,6 @@ public class Subnet extends BaseObject {
     
     @JsonProperty(value = "externalID")
     protected String externalID;
-    
-    @JsonProperty(value = "flowCollectionEnabled")
-    protected SubnetFlowCollectionEnabled flowCollectionEnabled;
     
     @JsonProperty(value = "gateway")
     protected String gateway;
@@ -560,17 +550,6 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "DefaultAction", readOnly = false)   
-    public SubnetDefaultAction getDefaultAction() {
-       return defaultAction;
-    }
-
-    @JsonIgnore
-    public void setDefaultAction(SubnetDefaultAction value) { 
-        this.defaultAction = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -634,17 +613,6 @@ public class Subnet extends BaseObject {
     @JsonIgnore
     public void setExternalID(String value) { 
         this.externalID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "FlowCollectionEnabled", readOnly = false)   
-    public SubnetFlowCollectionEnabled getFlowCollectionEnabled() {
-       return flowCollectionEnabled;
-    }
-
-    @JsonIgnore
-    public void setFlowCollectionEnabled(SubnetFlowCollectionEnabled value) { 
-        this.flowCollectionEnabled = value;
     }
     
     @JsonIgnore
@@ -1183,7 +1151,7 @@ public class Subnet extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", advertise=" + advertise + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", defaultAction=" + defaultAction + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multiHomeEnabled=" + multiHomeEnabled + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", resourceType=" + resourceType + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", subnetVLANID=" + subnetVLANID + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", advertise=" + advertise + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multiHomeEnabled=" + multiHomeEnabled + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", resourceType=" + resourceType + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", subnetVLANID=" + subnetVLANID + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to SAPIngressQoSProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0e06ec5a-c9e0-5f14-aa79-1ff0e5c811b9</entry>
+</properties>

@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.VNF;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
+
+import net.nuagenetworks.vro.vspk.model.NSGateway;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -69,6 +71,16 @@ public class VNFsFetcher extends BaseFetcher<VNF> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NSGateway", readOnly = true)
+    public NSGateway getNSGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NSGateway) {
+            return (NSGateway) obj;
         }
         
         return null;

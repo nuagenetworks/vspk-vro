@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (description) {
 } else if (sSIDConnectionObj.description) {
    sSIDConnectionObj.description = "";
 }
+if (externalID) {
+   sSIDConnectionObj.externalID = externalID;
+} else if (sSIDConnectionObj.externalID) {
+   sSIDConnectionObj.externalID = "";
+}
 if (name) {
    sSIDConnectionObj.name = name;
 } else if (sSIDConnectionObj.name) {
@@ -33,6 +41,8 @@ sSIDConnectionObj.save(session, 1);]]></script>
 <in-binding><bind name='sSIDConnectionObj' type='VSPK:SSIDConnection' export-name="sSIDConnectionObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ sSIDConnectionObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#sSIDConnectionObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#sSIDConnectionObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#sSIDConnectionObj.name]]></p-qual></p-param>

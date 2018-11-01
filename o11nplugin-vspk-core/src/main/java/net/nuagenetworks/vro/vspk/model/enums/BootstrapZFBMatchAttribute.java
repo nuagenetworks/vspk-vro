@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum BootstrapZFBMatchAttribute {
 
-    HOSTNAME("HOSTNAME", "HOSTNAME"), IP_ADDRESS("IP_ADDRESS", "IP_ADDRESS"), MAC_ADDRESS("MAC_ADDRESS", "MAC_ADDRESS"), NONE("NONE", "NONE"), NSGATEWAY_ID("NSGATEWAY_ID", "NSGATEWAY_ID"), SERIAL_NUMBER("SERIAL_NUMBER", "SERIAL_NUMBER");
+    HOSTNAME("HOSTNAME", "HOSTNAME"), IP_ADDRESS("IP_ADDRESS", "IP_ADDRESS"), MAC_ADDRESS("MAC_ADDRESS", "MAC_ADDRESS"), NONE("NONE", "NONE"), NSGATEWAY_ID("NSGATEWAY_ID", "NSGATEWAY_ID"), SERIAL_NUMBER("SERIAL_NUMBER", "SERIAL_NUMBER"), UUID("UUID", "UUID");
 
     private final String id;
     private final String name;
@@ -86,6 +86,11 @@ public enum BootstrapZFBMatchAttribute {
     @VsoProperty(displayName = "SERIAL_NUMBER", readOnly = true)
     public BootstrapZFBMatchAttribute getSERIAL_NUMBER() {
         return SERIAL_NUMBER;
+    }
+    
+    @VsoProperty(displayName = "UUID", readOnly = true)
+    public BootstrapZFBMatchAttribute getUUID() {
+        return UUID;
     }
     
 

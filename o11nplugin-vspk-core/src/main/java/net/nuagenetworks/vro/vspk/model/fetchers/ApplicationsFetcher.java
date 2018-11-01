@@ -30,9 +30,15 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Application;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Domain;
+
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
+import net.nuagenetworks.vro.vspk.model.L2Domain;
+
 import net.nuagenetworks.vro.vspk.model.L7applicationsignature;
+
+import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -66,6 +72,16 @@ public class ApplicationsFetcher extends BaseFetcher<Application> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Domain", readOnly = true)
+    public Domain getDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Domain) {
+            return (Domain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Enterprise", readOnly = true)
     public Enterprise getEnterprise() {
         RestObject obj = super.getParentRestObj();
@@ -76,11 +92,31 @@ public class ApplicationsFetcher extends BaseFetcher<Application> {
         return null;
     }
     
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "L7applicationsignature", readOnly = true)
     public L7applicationsignature getL7applicationsignature() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L7applicationsignature) {
             return (L7applicationsignature) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Me) {
+            return (Me) obj;
         }
         
         return null;

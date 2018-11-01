@@ -30,8 +30,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleAction;
 
 import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleAssociatedTrafficType;
@@ -57,7 +55,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.VIRTUALFIREWALLRULE, datasource = Constants.DATASOURCE, image = Constants.VIRTUALFIREWALLRULE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -79,14 +77,29 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonProperty(value = "ICMPType")
     protected String ICMPType;
     
+    @JsonProperty(value = "IPv6AddressOverride")
+    protected String IPv6AddressOverride;
+    
     @JsonProperty(value = "action")
     protected VirtualFirewallRuleAction action;
+    
+    @JsonProperty(value = "addressOverride")
+    protected String addressOverride;
+    
+    @JsonProperty(value = "associatedEgressEntryID")
+    protected String associatedEgressEntryID;
+    
+    @JsonProperty(value = "associatedIngressEntryID")
+    protected String associatedIngressEntryID;
     
     @JsonProperty(value = "associatedL7ApplicationSignatureID")
     protected String associatedL7ApplicationSignatureID;
     
     @JsonProperty(value = "associatedLiveEntityID")
     protected String associatedLiveEntityID;
+    
+    @JsonProperty(value = "associatedLiveTemplateID")
+    protected String associatedLiveTemplateID;
     
     @JsonProperty(value = "associatedTrafficType")
     protected VirtualFirewallRuleAssociatedTrafficType associatedTrafficType;
@@ -108,6 +121,9 @@ public class VirtualFirewallRule extends BaseObject {
     
     @JsonProperty(value = "entityScope")
     protected VirtualFirewallRuleEntityScope entityScope;
+    
+    @JsonProperty(value = "etherType")
+    protected String etherType;
     
     @JsonProperty(value = "externalID")
     protected String externalID;
@@ -163,16 +179,11 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonIgnore
     private MetadatasFetcher metadatas;
     
-    @JsonIgnore
-    private StatisticsFetcher statistics;
-    
     @VsoConstructor
     public VirtualFirewallRule() {
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
-        
-        statistics = new StatisticsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -260,6 +271,17 @@ public class VirtualFirewallRule extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IPv6AddressOverride", readOnly = false)   
+    public String getIPv6AddressOverride() {
+       return IPv6AddressOverride;
+    }
+
+    @JsonIgnore
+    public void setIPv6AddressOverride(String value) { 
+        this.IPv6AddressOverride = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Action", readOnly = false)   
     public VirtualFirewallRuleAction getAction() {
        return action;
@@ -268,6 +290,39 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonIgnore
     public void setAction(VirtualFirewallRuleAction value) { 
         this.action = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AddressOverride", readOnly = false)   
+    public String getAddressOverride() {
+       return addressOverride;
+    }
+
+    @JsonIgnore
+    public void setAddressOverride(String value) { 
+        this.addressOverride = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEgressEntryID", readOnly = false)   
+    public String getAssociatedEgressEntryID() {
+       return associatedEgressEntryID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEgressEntryID(String value) { 
+        this.associatedEgressEntryID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedIngressEntryID", readOnly = false)   
+    public String getAssociatedIngressEntryID() {
+       return associatedIngressEntryID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedIngressEntryID(String value) { 
+        this.associatedIngressEntryID = value;
     }
     
     @JsonIgnore
@@ -290,6 +345,17 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonIgnore
     public void setAssociatedLiveEntityID(String value) { 
         this.associatedLiveEntityID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedLiveTemplateID", readOnly = false)   
+    public String getAssociatedLiveTemplateID() {
+       return associatedLiveTemplateID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedLiveTemplateID(String value) { 
+        this.associatedLiveTemplateID = value;
     }
     
     @JsonIgnore
@@ -367,6 +433,17 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonIgnore
     public void setEntityScope(VirtualFirewallRuleEntityScope value) { 
         this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EtherType", readOnly = false)   
+    public String getEtherType() {
+       return etherType;
+    }
+
+    @JsonIgnore
+    public void setEtherType(String value) { 
+        this.etherType = value;
     }
     
     @JsonIgnore
@@ -556,12 +633,6 @@ public class VirtualFirewallRule extends BaseObject {
     public MetadatasFetcher getMetadatas() {
         return metadatas;
     }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "Statistics", readOnly = true)   
-    public StatisticsFetcher getStatistics() {
-        return statistics;
-    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -608,7 +679,7 @@ public class VirtualFirewallRule extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VirtualFirewallRule [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", action=" + action + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", overlayMirrorDestinationID=" + overlayMirrorDestinationID + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VirtualFirewallRule [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedEgressEntryID=" + associatedEgressEntryID + ", associatedIngressEntryID=" + associatedIngressEntryID + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", overlayMirrorDestinationID=" + overlayMirrorDestinationID + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

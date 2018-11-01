@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum CommandCommand {
 
-    NSG_APPLY_PATCH("NSG_APPLY_PATCH", "NSG_APPLY_PATCH"), NSG_DOWNLOAD_OS_IMAGE("NSG_DOWNLOAD_OS_IMAGE", "NSG_DOWNLOAD_OS_IMAGE"), NSG_UPGRADE_TO_IMAGE("NSG_UPGRADE_TO_IMAGE", "NSG_UPGRADE_TO_IMAGE"), UNKNOWN("UNKNOWN", "UNKNOWN");
+    NSG_APPLY_PATCH("NSG_APPLY_PATCH", "NSG_APPLY_PATCH"), NSG_DELETE_PATCH("NSG_DELETE_PATCH", "NSG_DELETE_PATCH"), NSG_DOWNLOAD_OS_IMAGE("NSG_DOWNLOAD_OS_IMAGE", "NSG_DOWNLOAD_OS_IMAGE"), NSG_UPGRADE_TO_IMAGE("NSG_UPGRADE_TO_IMAGE", "NSG_UPGRADE_TO_IMAGE"), UNKNOWN("UNKNOWN", "UNKNOWN");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum CommandCommand {
     @VsoProperty(displayName = "NSG_APPLY_PATCH", readOnly = true)
     public CommandCommand getNSG_APPLY_PATCH() {
         return NSG_APPLY_PATCH;
+    }
+    
+    @VsoProperty(displayName = "NSG_DELETE_PATCH", readOnly = true)
+    public CommandCommand getNSG_DELETE_PATCH() {
+        return NSG_DELETE_PATCH;
     }
     
     @VsoProperty(displayName = "NSG_DOWNLOAD_OS_IMAGE", readOnly = true)

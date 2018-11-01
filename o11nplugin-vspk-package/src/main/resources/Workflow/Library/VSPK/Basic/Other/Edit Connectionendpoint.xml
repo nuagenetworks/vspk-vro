@@ -6,10 +6,10 @@
 <input><param name='connectionendpointObj' type='VSPK:Connectionendpoint' >
 </param>
 
-<param name='IPAddress' type='string' >
+<param name='description' type='string' >
 </param>
 
-<param name='description' type='string' >
+<param name='externalID' type='string' >
 </param>
 
 <param name='name' type='string' >
@@ -22,15 +22,15 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = connectionendpointObj.session;
 
-if (IPAddress) {
-   connectionendpointObj.IPAddress = IPAddress;
-} else if (connectionendpointObj.IPAddress) {
-   connectionendpointObj.IPAddress = "";
-}
 if (description) {
    connectionendpointObj.description = description;
 } else if (connectionendpointObj.description) {
    connectionendpointObj.description = "";
+}
+if (externalID) {
+   connectionendpointObj.externalID = externalID;
+} else if (connectionendpointObj.externalID) {
+   connectionendpointObj.externalID = "";
 }
 if (name) {
    connectionendpointObj.name = name;
@@ -40,9 +40,9 @@ if (name) {
 connectionendpointObj.save(session, 1);]]></script>
 <in-binding><bind name='connectionendpointObj' type='VSPK:Connectionendpoint' export-name="connectionendpointObj" ></bind>
 
-<bind name='IPAddress' type='string' export-name="IPAddress" ></bind>
-
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -52,11 +52,11 @@ connectionendpointObj.save(session, 1);]]></script>
 <p-param name="connectionendpointObj"><desc><![CDATA[connectionendpointObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 
-<p-param name="IPAddress"><desc><![CDATA[IPAddress]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#connectionendpointObj.IPAddress]]></p-qual></p-param>
-
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#connectionendpointObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#connectionendpointObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#connectionendpointObj.name]]></p-qual></p-param>

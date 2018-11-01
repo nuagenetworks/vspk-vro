@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (description) {
 } else if (nSGGroupObj.description) {
    nSGGroupObj.description = "";
 }
+if (externalID) {
+   nSGGroupObj.externalID = externalID;
+} else if (nSGGroupObj.externalID) {
+   nSGGroupObj.externalID = "";
+}
 if (name) {
    nSGGroupObj.name = name;
 } else if (nSGGroupObj.name) {
@@ -33,6 +41,8 @@ nSGGroupObj.save(session, 1);]]></script>
 <in-binding><bind name='nSGGroupObj' type='VSPK:NSGGroup' export-name="nSGGroupObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ nSGGroupObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSGGroupObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSGGroupObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSGGroupObj.name]]></p-qual></p-param>

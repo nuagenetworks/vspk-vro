@@ -68,6 +68,9 @@ public class Bootstrap extends BaseObject {
     @JsonProperty(value = "ZFBMatchValue")
     protected String ZFBMatchValue;
     
+    @JsonProperty(value = "associatedEntityType")
+    protected String associatedEntityType;
+    
     @JsonProperty(value = "entityScope")
     protected BootstrapEntityScope entityScope;
     
@@ -169,6 +172,17 @@ public class Bootstrap extends BaseObject {
     @JsonIgnore
     public void setZFBMatchValue(String value) { 
         this.ZFBMatchValue = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEntityType", readOnly = false)   
+    public String getAssociatedEntityType() {
+       return associatedEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEntityType(String value) { 
+        this.associatedEntityType = value;
     }
     
     @JsonIgnore
@@ -283,7 +297,7 @@ public class Bootstrap extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Bootstrap [" + "ZFBInfo=" + ZFBInfo + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", entityScope=" + entityScope + ", externalID=" + externalID + ", installerID=" + installerID + ", lastUpdatedBy=" + lastUpdatedBy + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Bootstrap [" + "ZFBInfo=" + ZFBInfo + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedEntityType=" + associatedEntityType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", installerID=" + installerID + ", lastUpdatedBy=" + lastUpdatedBy + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

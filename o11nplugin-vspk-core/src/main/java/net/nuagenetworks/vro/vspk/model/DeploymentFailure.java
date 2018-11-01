@@ -26,6 +26,12 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.enums.DeploymentFailureEntityScope;
+
 import net.nuagenetworks.vro.vspk.model.enums.DeploymentFailureEventType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -40,7 +46,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.DEPLOYMENTFAILURE, datasource = Constants.DATASOURCE, image = Constants.DEPLOYMENTFAILURE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.DEPLOYMENTFAILURE, datasource = Constants.DATASOURCE, image = Constants.DEPLOYMENTFAILURE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "deploymentfailure", resourceName = "deploymentfailures")
@@ -55,11 +63,23 @@ public class DeploymentFailure extends BaseObject {
     @JsonProperty(value = "affectedEntityType")
     protected String affectedEntityType;
     
+    @JsonProperty(value = "assocEntityId")
+    protected String assocEntityId;
+    
+    @JsonProperty(value = "assocEntityType")
+    protected String assocEntityType;
+    
+    @JsonProperty(value = "entityScope")
+    protected DeploymentFailureEntityScope entityScope;
+    
     @JsonProperty(value = "errorCondition")
     protected Long errorCondition;
     
     @JsonProperty(value = "eventType")
     protected DeploymentFailureEventType eventType;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
     
     @JsonProperty(value = "lastFailureReason")
     protected String lastFailureReason;
@@ -67,11 +87,24 @@ public class DeploymentFailure extends BaseObject {
     @JsonProperty(value = "lastKnownError")
     protected String lastKnownError;
     
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
+    
     @JsonProperty(value = "numberOfOccurences")
     protected Long numberOfOccurences;
     
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
+    
     @VsoConstructor
-    public DeploymentFailure() {}
+    public DeploymentFailure() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -136,6 +169,39 @@ public class DeploymentFailure extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssocEntityId", readOnly = false)   
+    public String getAssocEntityId() {
+       return assocEntityId;
+    }
+
+    @JsonIgnore
+    public void setAssocEntityId(String value) { 
+        this.assocEntityId = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssocEntityType", readOnly = false)   
+    public String getAssocEntityType() {
+       return assocEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssocEntityType(String value) { 
+        this.assocEntityType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public DeploymentFailureEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(DeploymentFailureEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ErrorCondition", readOnly = false)   
     public Long getErrorCondition() {
        return errorCondition;
@@ -155,6 +221,17 @@ public class DeploymentFailure extends BaseObject {
     @JsonIgnore
     public void setEventType(DeploymentFailureEventType value) { 
         this.eventType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
     }
     
     @JsonIgnore
@@ -180,6 +257,17 @@ public class DeploymentFailure extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NumberOfOccurences", readOnly = false)   
     public Long getNumberOfOccurences() {
        return numberOfOccurences;
@@ -188,6 +276,18 @@ public class DeploymentFailure extends BaseObject {
     @JsonIgnore
     public void setNumberOfOccurences(Long value) { 
         this.numberOfOccurences = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -209,8 +309,33 @@ public class DeploymentFailure extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.DEPLOYMENTFAILURE, getId());
         }
+    }
+    @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.DEPLOYMENTFAILURE, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
     }public String toString() {
-        return "DeploymentFailure [" + "affectedEntityID=" + affectedEntityID + ", affectedEntityType=" + affectedEntityType + ", errorCondition=" + errorCondition + ", eventType=" + eventType + ", lastFailureReason=" + lastFailureReason + ", lastKnownError=" + lastKnownError + ", numberOfOccurences=" + numberOfOccurences + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DeploymentFailure [" + "affectedEntityID=" + affectedEntityID + ", affectedEntityType=" + affectedEntityType + ", assocEntityId=" + assocEntityId + ", assocEntityType=" + assocEntityType + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", eventType=" + eventType + ", externalID=" + externalID + ", lastFailureReason=" + lastFailureReason + ", lastKnownError=" + lastKnownError + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurences=" + numberOfOccurences + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

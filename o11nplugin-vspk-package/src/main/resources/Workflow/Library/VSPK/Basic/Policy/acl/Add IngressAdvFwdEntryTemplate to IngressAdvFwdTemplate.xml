@@ -19,13 +19,9 @@
 </param>
 <param name='locationType' type='VSPK:IngressAdvFwdEntryTemplateLocationType' >
 </param>
-<param name='name' type='string' >
-</param>
 <param name='networkType' type='VSPK:IngressAdvFwdEntryTemplateNetworkType' >
 </param>
 <param name='protocol' type='string' >
-</param>
-<param name='redirectVPortTagID' type='string' >
 </param>
 <param name='sourcePort' type='string' >
 </param>
@@ -56,15 +52,9 @@ if (externalID) {
    ingressAdvFwdEntryTemplateObj.externalID = externalID;
 }
 ingressAdvFwdEntryTemplateObj.locationType = locationType;
-if (name) {
-   ingressAdvFwdEntryTemplateObj.name = name;
-}
 ingressAdvFwdEntryTemplateObj.networkType = networkType;
 if (protocol) {
    ingressAdvFwdEntryTemplateObj.protocol = protocol;
-}
-if (redirectVPortTagID) {
-   ingressAdvFwdEntryTemplateObj.redirectVPortTagID = redirectVPortTagID;
 }
 if (sourcePort) {
    ingressAdvFwdEntryTemplateObj.sourcePort = sourcePort;
@@ -80,10 +70,8 @@ ingressAdvFwdTemplateObj.createIngressAdvFwdEntryTemplate(session, ingressAdvFwd
 <bind name='etherType' type='string' export-name="etherType" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='locationType' type='VSPK:IngressAdvFwdEntryTemplateLocationType' export-name="locationType" ></bind>
-<bind name='name' type='string' export-name="name" ></bind>
 <bind name='networkType' type='VSPK:IngressAdvFwdEntryTemplateNetworkType' export-name="networkType" ></bind>
 <bind name='protocol' type='string' export-name="protocol" ></bind>
-<bind name='redirectVPortTagID' type='string' export-name="redirectVPortTagID" ></bind>
 <bind name='sourcePort' type='string' export-name="sourcePort" ></bind>
 </in-binding><out-binding><bind name='ingressAdvFwdEntryTemplateObj' type='VSPK:IngressAdvFwdEntryTemplate' export-name="ingressAdvFwdEntryTemplateObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -105,13 +93,9 @@ ingressAdvFwdTemplateObj.createIngressAdvFwdEntryTemplate(session, ingressAdvFwd
 </p-param>
 <p-param name="locationType"><desc><![CDATA[locationType]]></desc>
 </p-param>
-<p-param name="name"><desc><![CDATA[name]]></desc>
-</p-param>
 <p-param name="networkType"><desc><![CDATA[networkType]]></desc>
 </p-param>
 <p-param name="protocol"><desc><![CDATA[protocol]]></desc>
-</p-param>
-<p-param name="redirectVPortTagID"><desc><![CDATA[redirectVPortTagID]]></desc>
 </p-param>
 <p-param name="sourcePort"><desc><![CDATA[sourcePort]]></desc>
 </p-param>

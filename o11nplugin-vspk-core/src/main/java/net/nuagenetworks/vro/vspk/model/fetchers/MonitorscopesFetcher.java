@@ -33,8 +33,6 @@ import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Application;
 
 import net.nuagenetworks.vro.vspk.model.NetworkPerformanceMeasurement;
-
-import net.nuagenetworks.vro.vspk.model.NSGateway;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -83,16 +81,6 @@ public class MonitorscopesFetcher extends BaseFetcher<Monitorscope> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NetworkPerformanceMeasurement) {
             return (NetworkPerformanceMeasurement) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "NSGateway", readOnly = true)
-    public NSGateway getNSGateway() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof NSGateway) {
-            return (NSGateway) obj;
         }
         
         return null;

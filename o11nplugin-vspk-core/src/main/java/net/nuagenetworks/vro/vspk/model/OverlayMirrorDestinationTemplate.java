@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.OverlayMirrorDestinationTemplateDestinationType;
+
 import net.nuagenetworks.vro.vspk.model.enums.OverlayMirrorDestinationTemplateEndPointType;
 
 import net.nuagenetworks.vro.vspk.model.enums.OverlayMirrorDestinationTemplateEntityScope;
@@ -61,6 +63,9 @@ public class OverlayMirrorDestinationTemplate extends BaseObject {
     
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "destinationType")
+    protected OverlayMirrorDestinationTemplateDestinationType destinationType;
     
     @JsonProperty(value = "endPointType")
     protected OverlayMirrorDestinationTemplateEndPointType endPointType;
@@ -140,6 +145,17 @@ public class OverlayMirrorDestinationTemplate extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DestinationType", readOnly = false)   
+    public OverlayMirrorDestinationTemplateDestinationType getDestinationType() {
+       return destinationType;
+    }
+
+    @JsonIgnore
+    public void setDestinationType(OverlayMirrorDestinationTemplateDestinationType value) { 
+        this.destinationType = value;
     }
     
     @JsonIgnore
@@ -276,7 +292,7 @@ public class OverlayMirrorDestinationTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "OverlayMirrorDestinationTemplate [" + "description=" + description + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", triggerType=" + triggerType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "OverlayMirrorDestinationTemplate [" + "description=" + description + ", destinationType=" + destinationType + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", triggerType=" + triggerType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -6,6 +6,9 @@
 <input><param name='monitorscopeObj' type='VSPK:Monitorscope' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -16,6 +19,11 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = monitorscopeObj.session;
 
+if (externalID) {
+   monitorscopeObj.externalID = externalID;
+} else if (monitorscopeObj.externalID) {
+   monitorscopeObj.externalID = "";
+}
 if (name) {
    monitorscopeObj.name = name;
 } else if (monitorscopeObj.name) {
@@ -24,6 +32,8 @@ if (name) {
 monitorscopeObj.save(session, 1);]]></script>
 <in-binding><bind name='monitorscopeObj' type='VSPK:Monitorscope' export-name="monitorscopeObj" ></bind>
 
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
 <bind name='name' type='string' export-name="name" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +41,9 @@ monitorscopeObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="monitorscopeObj"><desc><![CDATA[monitorscopeObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#monitorscopeObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#monitorscopeObj.name]]></p-qual></p-param>

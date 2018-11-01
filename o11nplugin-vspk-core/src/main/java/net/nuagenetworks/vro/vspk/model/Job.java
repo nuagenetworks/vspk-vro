@@ -30,8 +30,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.enums.JobAssocEntityType;
-
 import net.nuagenetworks.vro.vspk.model.enums.JobCommand;
 
 import net.nuagenetworks.vro.vspk.model.enums.JobEntityScope;
@@ -62,7 +60,7 @@ public class Job extends BaseObject {
 
     
     @JsonProperty(value = "assocEntityType")
-    protected JobAssocEntityType assocEntityType;
+    protected String assocEntityType;
     
     @JsonProperty(value = "command")
     protected JobCommand command;
@@ -143,12 +141,12 @@ public class Job extends BaseObject {
     }
     @JsonIgnore
     @VsoProperty(displayName = "AssocEntityType", readOnly = false)   
-    public JobAssocEntityType getAssocEntityType() {
+    public String getAssocEntityType() {
        return assocEntityType;
     }
 
     @JsonIgnore
-    public void setAssocEntityType(JobAssocEntityType value) { 
+    public void setAssocEntityType(String value) { 
         this.assocEntityType = value;
     }
     

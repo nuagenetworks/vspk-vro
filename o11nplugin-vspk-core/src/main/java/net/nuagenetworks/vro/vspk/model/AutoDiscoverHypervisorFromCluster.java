@@ -64,6 +64,9 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "managedObjectID")
+    protected String managedObjectID;
+    
     @JsonProperty(value = "networkList")
     protected java.util.List<String> networkList;
     
@@ -166,6 +169,17 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ManagedObjectID", readOnly = false)   
+    public String getManagedObjectID() {
+       return managedObjectID;
+    }
+
+    @JsonIgnore
+    public void setManagedObjectID(String value) { 
+        this.managedObjectID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NetworkList", readOnly = false)   
     public java.util.List<String> getNetworkList() {
        return networkList;
@@ -196,7 +210,7 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.AUTODISCOVERHYPERVISORFROMCLUSTER, getId());
         }
     }public String toString() {
-        return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + assocEntityID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorIP=" + hypervisorIP + ", lastUpdatedBy=" + lastUpdatedBy + ", networkList=" + networkList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + assocEntityID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorIP=" + hypervisorIP + ", lastUpdatedBy=" + lastUpdatedBy + ", managedObjectID=" + managedObjectID + ", networkList=" + networkList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

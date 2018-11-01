@@ -9,6 +9,9 @@
 <param name='associatedVPortID' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (associatedVPortID) {
 } else if (trunkObj.associatedVPortID) {
    trunkObj.associatedVPortID = "";
 }
+if (externalID) {
+   trunkObj.externalID = externalID;
+} else if (trunkObj.externalID) {
+   trunkObj.externalID = "";
+}
 if (name) {
    trunkObj.name = name;
 } else if (trunkObj.name) {
@@ -33,6 +41,8 @@ trunkObj.save(session, 1);]]></script>
 <in-binding><bind name='trunkObj' type='VSPK:Trunk' export-name="trunkObj" ></bind>
 
 <bind name='associatedVPortID' type='string' export-name="associatedVPortID" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ trunkObj.save(session, 1);]]></script>
 
 <p-param name="associatedVPortID"><desc><![CDATA[associatedVPortID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#trunkObj.associatedVPortID]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#trunkObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#trunkObj.name]]></p-qual></p-param>

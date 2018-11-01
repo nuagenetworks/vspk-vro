@@ -32,9 +32,13 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupCategoriesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VPortsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.PolicyGroupEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.PolicyGroupEntityState;
 
 import net.nuagenetworks.vro.vspk.model.enums.PolicyGroupType;
 import net.nuagenetworks.bambou.RestException;
@@ -76,6 +80,9 @@ public class PolicyGroup extends BaseObject {
     @JsonProperty(value = "entityScope")
     protected PolicyGroupEntityScope entityScope;
     
+    @JsonProperty(value = "entityState")
+    protected PolicyGroupEntityState entityState;
+    
     @JsonProperty(value = "external")
     protected Boolean external;
     
@@ -107,6 +114,9 @@ public class PolicyGroup extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private PolicyGroupCategoriesFetcher policyGroupCategories;
+    
+    @JsonIgnore
     private VPortsFetcher vPorts;
     
     @VsoConstructor
@@ -118,6 +128,8 @@ public class PolicyGroup extends BaseObject {
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        policyGroupCategories = new PolicyGroupCategoriesFetcher(this);
         
         vPorts = new VPortsFetcher(this);
         }
@@ -210,6 +222,17 @@ public class PolicyGroup extends BaseObject {
     @JsonIgnore
     public void setEntityScope(PolicyGroupEntityScope value) { 
         this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EntityState", readOnly = false)   
+    public PolicyGroupEntityState getEntityState() {
+       return entityState;
+    }
+
+    @JsonIgnore
+    public void setEntityState(PolicyGroupEntityState value) { 
+        this.entityState = value;
     }
     
     @JsonIgnore
@@ -308,6 +331,12 @@ public class PolicyGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PolicyGroupCategories", readOnly = true)   
+    public PolicyGroupCategoriesFetcher getPolicyGroupCategories() {
+        return policyGroupCategories;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VPorts", readOnly = true)   
     public VPortsFetcher getVPorts() {
         return vPorts;
@@ -367,7 +396,7 @@ public class PolicyGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "PolicyGroup [" + "EVPNCommunityTag=" + EVPNCommunityTag + ", assocPolicyGroupCategoryID=" + assocPolicyGroupCategoryID + ", assocPolicyGroupCategoryName=" + assocPolicyGroupCategoryName + ", description=" + description + ", entityScope=" + entityScope + ", external=" + external + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyGroupID=" + policyGroupID + ", templateID=" + templateID + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PolicyGroup [" + "EVPNCommunityTag=" + EVPNCommunityTag + ", assocPolicyGroupCategoryID=" + assocPolicyGroupCategoryID + ", assocPolicyGroupCategoryName=" + assocPolicyGroupCategoryName + ", description=" + description + ", entityScope=" + entityScope + ", entityState=" + entityState + ", external=" + external + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyGroupID=" + policyGroupID + ", templateID=" + templateID + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

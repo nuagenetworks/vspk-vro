@@ -33,6 +33,8 @@ import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.VNF;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -81,6 +83,16 @@ public class VNFThresholdPoliciesFetcher extends BaseFetcher<VNFThresholdPolicy>
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VNF", readOnly = true)
+    public VNF getVNF() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNF) {
+            return (VNF) obj;
         }
         
         return null;

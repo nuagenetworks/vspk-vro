@@ -6,6 +6,9 @@
 <input><param name='pTranslationMapObj' type='VSPK:PTranslationMap' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='mappingType' type='VSPK:PTranslationMapMappingType' >
 </param>
 
@@ -22,6 +25,11 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = pTranslationMapObj.session;
 
+if (externalID) {
+   pTranslationMapObj.externalID = externalID;
+} else if (pTranslationMapObj.externalID) {
+   pTranslationMapObj.externalID = "";
+}
 pTranslationMapObj.mappingType = mappingType;
 if (providerAliasIP) {
    pTranslationMapObj.providerAliasIP = providerAliasIP;
@@ -36,6 +44,8 @@ if (providerIP) {
 pTranslationMapObj.save(session, 1);]]></script>
 <in-binding><bind name='pTranslationMapObj' type='VSPK:PTranslationMap' export-name="pTranslationMapObj" ></bind>
 
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
 <bind name='mappingType' type='VSPK:PTranslationMapMappingType' export-name="mappingType" ></bind>
 
 <bind name='providerAliasIP' type='string' export-name="providerAliasIP" ></bind>
@@ -47,6 +57,9 @@ pTranslationMapObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="pTranslationMapObj"><desc><![CDATA[pTranslationMapObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pTranslationMapObj.externalID]]></p-qual></p-param>
 
 <p-param name="mappingType"><desc><![CDATA[mappingType]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="VSPK:PTranslationMapMappingType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getPTranslationMapMappingType").call( #pTranslationMapObj )]]></p-qual></p-param>

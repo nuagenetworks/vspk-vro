@@ -28,13 +28,21 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.CaptivePortalProfilesFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.SSIDConnectionAuthenticationMode;
 
+import net.nuagenetworks.vro.vspk.model.enums.SSIDConnectionEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.SSIDConnectionPermittedAction;
+
 import net.nuagenetworks.vro.vspk.model.enums.SSIDConnectionRedirectOption;
+
+import net.nuagenetworks.vro.vspk.model.enums.SSIDConnectionStatus;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -48,7 +56,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.SSIDCONNECTION, datasource = Constants.DATASOURCE, image = Constants.SSIDCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.SSIDCONNECTION, datasource = Constants.DATASOURCE, image = Constants.SSIDCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "ssidconnection", resourceName = "ssidconnections")
@@ -75,11 +85,23 @@ public class SSIDConnection extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "entityScope")
+    protected SSIDConnectionEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
+    @JsonProperty(value = "gatewayID")
+    protected String gatewayID;
+    
     @JsonProperty(value = "genericConfig")
     protected String genericConfig;
     
     @JsonProperty(value = "interfaceName")
     protected String interfaceName;
+    
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
     
     @JsonProperty(value = "name")
     protected String name;
@@ -87,11 +109,26 @@ public class SSIDConnection extends BaseObject {
     @JsonProperty(value = "passphrase")
     protected String passphrase;
     
+    @JsonProperty(value = "permittedAction")
+    protected SSIDConnectionPermittedAction permittedAction;
+    
+    @JsonProperty(value = "readonly")
+    protected Boolean readonly;
+    
     @JsonProperty(value = "redirectOption")
     protected SSIDConnectionRedirectOption redirectOption;
     
     @JsonProperty(value = "redirectURL")
     protected String redirectURL;
+    
+    @JsonProperty(value = "restricted")
+    protected Boolean restricted;
+    
+    @JsonProperty(value = "status")
+    protected SSIDConnectionStatus status;
+    
+    @JsonProperty(value = "vlanID")
+    protected Long vlanID;
     
     @JsonProperty(value = "vportID")
     protected String vportID;
@@ -103,18 +140,23 @@ public class SSIDConnection extends BaseObject {
     private AlarmsFetcher alarms;
     
     @JsonIgnore
-    private CaptivePortalProfilesFetcher captivePortalProfiles;
+    private EventLogsFetcher eventLogs;
     
     @JsonIgnore
-    private EventLogsFetcher eventLogs;
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
     
     @VsoConstructor
     public SSIDConnection() {
         alarms = new AlarmsFetcher(this);
         
-        captivePortalProfiles = new CaptivePortalProfilesFetcher(this);
-        
         eventLogs = new EventLogsFetcher(this);
+        
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -219,6 +261,39 @@ public class SSIDConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public SSIDConnectionEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(SSIDConnectionEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayID", readOnly = false)   
+    public String getGatewayID() {
+       return gatewayID;
+    }
+
+    @JsonIgnore
+    public void setGatewayID(String value) { 
+        this.gatewayID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GenericConfig", readOnly = false)   
     public String getGenericConfig() {
        return genericConfig;
@@ -238,6 +313,17 @@ public class SSIDConnection extends BaseObject {
     @JsonIgnore
     public void setInterfaceName(String value) { 
         this.interfaceName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
     }
     
     @JsonIgnore
@@ -263,6 +349,28 @@ public class SSIDConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PermittedAction", readOnly = false)   
+    public SSIDConnectionPermittedAction getPermittedAction() {
+       return permittedAction;
+    }
+
+    @JsonIgnore
+    public void setPermittedAction(SSIDConnectionPermittedAction value) { 
+        this.permittedAction = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Readonly", readOnly = false)   
+    public Boolean getReadonly() {
+       return readonly;
+    }
+
+    @JsonIgnore
+    public void setReadonly(Boolean value) { 
+        this.readonly = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "RedirectOption", readOnly = false)   
     public SSIDConnectionRedirectOption getRedirectOption() {
        return redirectOption;
@@ -282,6 +390,39 @@ public class SSIDConnection extends BaseObject {
     @JsonIgnore
     public void setRedirectURL(String value) { 
         this.redirectURL = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Restricted", readOnly = false)   
+    public Boolean getRestricted() {
+       return restricted;
+    }
+
+    @JsonIgnore
+    public void setRestricted(Boolean value) { 
+        this.restricted = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Status", readOnly = false)   
+    public SSIDConnectionStatus getStatus() {
+       return status;
+    }
+
+    @JsonIgnore
+    public void setStatus(SSIDConnectionStatus value) { 
+        this.status = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VlanID", readOnly = false)   
+    public Long getVlanID() {
+       return vlanID;
+    }
+
+    @JsonIgnore
+    public void setVlanID(Long value) { 
+        this.vlanID = value;
     }
     
     @JsonIgnore
@@ -313,15 +454,21 @@ public class SSIDConnection extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "CaptivePortalProfiles", readOnly = true)   
-    public CaptivePortalProfilesFetcher getCaptivePortalProfiles() {
-        return captivePortalProfiles;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -345,15 +492,31 @@ public class SSIDConnection extends BaseObject {
         }
     }
     @VsoMethod
-    public void assignCaptivePortalProfiles(Session session, CaptivePortalProfile[] childRestObjs, Boolean commitObj) throws RestException {
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 
            SessionManager.getInstance().notifyElementUpdated(Constants.SSIDCONNECTION, getId());
         }
     }
-    public String toString() {
-        return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", authenticationMode=" + authenticationMode + ", blackList=" + blackList + ", broadcastSSID=" + broadcastSSID + ", description=" + description + ", genericConfig=" + genericConfig + ", interfaceName=" + interfaceName + ", name=" + name + ", passphrase=" + passphrase + ", redirectOption=" + redirectOption + ", redirectURL=" + redirectURL + ", vportID=" + vportID + ", whiteList=" + whiteList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }public String toString() {
+        return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", authenticationMode=" + authenticationMode + ", blackList=" + blackList + ", broadcastSSID=" + broadcastSSID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", genericConfig=" + genericConfig + ", interfaceName=" + interfaceName + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", passphrase=" + passphrase + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", redirectOption=" + redirectOption + ", redirectURL=" + redirectURL + ", restricted=" + restricted + ", status=" + status + ", vlanID=" + vlanID + ", vportID=" + vportID + ", whiteList=" + whiteList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

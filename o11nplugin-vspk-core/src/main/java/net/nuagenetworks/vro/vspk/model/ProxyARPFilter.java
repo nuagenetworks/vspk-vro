@@ -26,8 +26,6 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
-import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.enums.ProxyARPFilterIPType;
 
 import net.nuagenetworks.vro.vspk.model.enums.ProxyARPFilterEntityScope;
@@ -71,13 +69,8 @@ public class ProxyARPFilter extends BaseObject {
     @JsonProperty(value = "minAddress")
     protected String minAddress;
     
-    @JsonIgnore
-    private EventLogsFetcher eventLogs;
-    
     @VsoConstructor
-    public ProxyARPFilter() {
-        eventLogs = new EventLogsFetcher(this);
-        }
+    public ProxyARPFilter() {}
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -183,12 +176,6 @@ public class ProxyARPFilter extends BaseObject {
     @JsonIgnore
     public void setMinAddress(String value) { 
         this.minAddress = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "EventLogs", readOnly = true)   
-    public EventLogsFetcher getEventLogs() {
-        return eventLogs;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {

@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (description) {
 } else if (vNFThresholdPolicyObj.description) {
    vNFThresholdPolicyObj.description = "";
 }
+if (externalID) {
+   vNFThresholdPolicyObj.externalID = externalID;
+} else if (vNFThresholdPolicyObj.externalID) {
+   vNFThresholdPolicyObj.externalID = "";
+}
 if (name) {
    vNFThresholdPolicyObj.name = name;
 } else if (vNFThresholdPolicyObj.name) {
@@ -33,6 +41,8 @@ vNFThresholdPolicyObj.save(session, 1);]]></script>
 <in-binding><bind name='vNFThresholdPolicyObj' type='VSPK:VNFThresholdPolicy' export-name="vNFThresholdPolicyObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ vNFThresholdPolicyObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFThresholdPolicyObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFThresholdPolicyObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFThresholdPolicyObj.name]]></p-qual></p-param>

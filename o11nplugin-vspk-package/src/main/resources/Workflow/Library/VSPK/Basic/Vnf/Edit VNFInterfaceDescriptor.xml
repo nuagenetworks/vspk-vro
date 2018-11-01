@@ -6,6 +6,9 @@
 <input><param name='vNFInterfaceDescriptorObj' type='VSPK:VNFInterfaceDescriptor' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -16,6 +19,11 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = vNFInterfaceDescriptorObj.session;
 
+if (externalID) {
+   vNFInterfaceDescriptorObj.externalID = externalID;
+} else if (vNFInterfaceDescriptorObj.externalID) {
+   vNFInterfaceDescriptorObj.externalID = "";
+}
 if (name) {
    vNFInterfaceDescriptorObj.name = name;
 } else if (vNFInterfaceDescriptorObj.name) {
@@ -24,6 +32,8 @@ if (name) {
 vNFInterfaceDescriptorObj.save(session, 1);]]></script>
 <in-binding><bind name='vNFInterfaceDescriptorObj' type='VSPK:VNFInterfaceDescriptor' export-name="vNFInterfaceDescriptorObj" ></bind>
 
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
 <bind name='name' type='string' export-name="name" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +41,9 @@ vNFInterfaceDescriptorObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="vNFInterfaceDescriptorObj"><desc><![CDATA[vNFInterfaceDescriptorObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFInterfaceDescriptorObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFInterfaceDescriptorObj.name]]></p-qual></p-param>

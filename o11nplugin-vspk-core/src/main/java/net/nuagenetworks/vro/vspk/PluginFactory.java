@@ -116,6 +116,58 @@ public final class PluginFactory extends BasePluginFactory {
             return AllAlarmSeverity.getEnumById(id);
         }
         
+        if (type.equals(Constants.ALLGATEWAY)) {
+            return ModelHelper.getAllGatewayById(id);
+        }
+        if (type.equals(Constants.ALLGATEWAYS_FETCHER)) {
+            return ModelHelper.getAllGatewaysFetcherById(id);
+        }
+        if (type.equals(Constants.ALLGATEWAY_ZFBMATCHATTRIBUTE_ENUM)) {
+            return AllGatewayZFBMatchAttribute.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_BOOTSTRAPSTATUS_ENUM)) {
+            return AllGatewayBootstrapStatus.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_ENTITYSCOPE_ENUM)) {
+            return AllGatewayEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_FAMILY_ENUM)) {
+            return AllGatewayFamily.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_PERMITTEDACTION_ENUM)) {
+            return AllGatewayPermittedAction.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_PERSONALITY_ENUM)) {
+            return AllGatewayPersonality.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP)) {
+            return ModelHelper.getAllRedundancyGroupById(id);
+        }
+        if (type.equals(Constants.ALLREDUNDANCYGROUPS_FETCHER)) {
+            return ModelHelper.getAllRedundancyGroupsFetcherById(id);
+        }
+        if (type.equals(Constants.ALLREDUNDANCYGROUP_ENTITYSCOPE_ENUM)) {
+            return AllRedundancyGroupEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP_PERMITTEDACTION_ENUM)) {
+            return AllRedundancyGroupPermittedAction.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP_PERSONALITY_ENUM)) {
+            return AllRedundancyGroupPersonality.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP_REDUNDANTGATEWAYSTATUS_ENUM)) {
+            return AllRedundancyGroupRedundantGatewayStatus.getEnumById(id);
+        }
+        
         if (type.equals(Constants.APPLICATION)) {
             return ModelHelper.getApplicationById(id);
         }
@@ -324,6 +376,10 @@ public final class PluginFactory extends BasePluginFactory {
             return BRConnectionAdvertisementCriteria.getEnumById(id);
         }
         
+        if (type.equals(Constants.BRCONNECTION_ENTITYSCOPE_ENUM)) {
+            return BRConnectionEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.BRCONNECTION_MODE_ENUM)) {
             return BRConnectionMode.getEnumById(id);
         }
@@ -436,6 +492,10 @@ public final class PluginFactory extends BasePluginFactory {
             return ConnectionendpointEndPointType.getEnumById(id);
         }
         
+        if (type.equals(Constants.CONNECTIONENDPOINT_ENTITYSCOPE_ENUM)) {
+            return ConnectionendpointEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.CONTAINER)) {
             return ModelHelper.getContainerById(id);
         }
@@ -516,12 +576,24 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.CSNATPOOLS_FETCHER)) {
             return ModelHelper.getCSNATPoolsFetcherById(id);
         }
+        if (type.equals(Constants.CSNATPOOL_IPTYPE_ENUM)) {
+            return CSNATPoolIPType.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.CSNATPOOL_ENTITYSCOPE_ENUM)) {
+            return CSNATPoolEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.CTRANSLATIONMAP)) {
             return ModelHelper.getCTranslationMapById(id);
         }
         if (type.equals(Constants.CTRANSLATIONMAPS_FETCHER)) {
             return ModelHelper.getCTranslationMapsFetcherById(id);
         }
+        if (type.equals(Constants.CTRANSLATIONMAP_ENTITYSCOPE_ENUM)) {
+            return CTranslationMapEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.CTRANSLATIONMAP_MAPPINGTYPE_ENUM)) {
             return CTranslationMapMappingType.getEnumById(id);
         }
@@ -532,18 +604,30 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.CUSTOMPROPERTIES_FETCHER)) {
             return ModelHelper.getCustomPropertiesFetcherById(id);
         }
+        if (type.equals(Constants.CUSTOMPROPERTY_ENTITYSCOPE_ENUM)) {
+            return CustomPropertyEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.DEFAULTGATEWAY)) {
             return ModelHelper.getDefaultGatewayById(id);
         }
         if (type.equals(Constants.DEFAULTGATEWAYS_FETCHER)) {
             return ModelHelper.getDefaultGatewaysFetcherById(id);
         }
+        if (type.equals(Constants.DEFAULTGATEWAY_ENTITYSCOPE_ENUM)) {
+            return DefaultGatewayEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.DEMARCATIONSERVICE)) {
             return ModelHelper.getDemarcationServiceById(id);
         }
         if (type.equals(Constants.DEMARCATIONSERVICES_FETCHER)) {
             return ModelHelper.getDemarcationServicesFetcherById(id);
         }
+        if (type.equals(Constants.DEMARCATIONSERVICE_ENTITYSCOPE_ENUM)) {
+            return DemarcationServiceEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.DEMARCATIONSERVICE_TYPE_ENUM)) {
             return DemarcationServiceType.getEnumById(id);
         }
@@ -554,6 +638,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.DEPLOYMENTFAILURES_FETCHER)) {
             return ModelHelper.getDeploymentFailuresFetcherById(id);
         }
+        if (type.equals(Constants.DEPLOYMENTFAILURE_ENTITYSCOPE_ENUM)) {
+            return DeploymentFailureEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.DEPLOYMENTFAILURE_EVENTTYPE_ENUM)) {
             return DeploymentFailureEventType.getEnumById(id);
         }
@@ -742,12 +830,20 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.DUCGROUPS_FETCHER)) {
             return ModelHelper.getDUCGroupsFetcherById(id);
         }
+        if (type.equals(Constants.DUCGROUP_ENTITYSCOPE_ENUM)) {
+            return DUCGroupEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.DUCGROUPBINDING)) {
             return ModelHelper.getDUCGroupBindingById(id);
         }
         if (type.equals(Constants.DUCGROUPBINDINGS_FETCHER)) {
             return ModelHelper.getDUCGroupBindingsFetcherById(id);
         }
+        if (type.equals(Constants.DUCGROUPBINDING_ENTITYSCOPE_ENUM)) {
+            return DUCGroupBindingEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VCENTEREAMCONFIG)) {
             return ModelHelper.getVCenterEAMConfigById(id);
         }
@@ -820,6 +916,10 @@ public final class PluginFactory extends BasePluginFactory {
             return EgressAdvFwdEntryTemplateAction.getEnumById(id);
         }
         
+        if (type.equals(Constants.EGRESSADVFWDENTRYTEMPLATE_ASSOCIATEDTRAFFICTYPE_ENUM)) {
+            return EgressAdvFwdEntryTemplateAssociatedTrafficType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.EGRESSADVFWDENTRYTEMPLATE_ENTITYSCOPE_ENUM)) {
             return EgressAdvFwdEntryTemplateEntityScope.getEnumById(id);
         }
@@ -872,8 +972,8 @@ public final class PluginFactory extends BasePluginFactory {
             return DomainFIPAclTemplateEntryAction.getEnumById(id);
         }
         
-        if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_DESTINATIONTYPE_ENUM)) {
-            return DomainFIPAclTemplateEntryDestinationType.getEnumById(id);
+        if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_ASSOCIATEDTRAFFICTYPE_ENUM)) {
+            return DomainFIPAclTemplateEntryAssociatedTrafficType.getEnumById(id);
         }
         
         if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_ENTITYSCOPE_ENUM)) {
@@ -890,10 +990,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_POLICYSTATE_ENUM)) {
             return DomainFIPAclTemplateEntryPolicyState.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_SOURCETYPE_ENUM)) {
-            return DomainFIPAclTemplateEntrySourceType.getEnumById(id);
         }
         
         if (type.equals(Constants.DOMAINFIPACLTEMPLATE)) {
@@ -914,56 +1010,16 @@ public final class PluginFactory extends BasePluginFactory {
             return DomainFIPAclTemplatePriorityType.getEnumById(id);
         }
         
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY)) {
-            return ModelHelper.getFloatingIPACLTemplateEntryById(id);
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRIES_FETCHER)) {
-            return ModelHelper.getFloatingIPACLTemplateEntriesFetcherById(id);
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_ACTION_ENUM)) {
-            return FloatingIPACLTemplateEntryAction.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_ENTITYSCOPE_ENUM)) {
-            return FloatingIPACLTemplateEntryEntityScope.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_LOCATIONTYPE_ENUM)) {
-            return FloatingIPACLTemplateEntryLocationType.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_NETWORKTYPE_ENUM)) {
-            return FloatingIPACLTemplateEntryNetworkType.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_POLICYSTATE_ENUM)) {
-            return FloatingIPACLTemplateEntryPolicyState.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE)) {
-            return ModelHelper.getFloatingIPACLTemplateById(id);
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATES_FETCHER)) {
-            return ModelHelper.getFloatingIPACLTemplatesFetcherById(id);
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE_ENTITYSCOPE_ENUM)) {
-            return FloatingIPACLTemplateEntityScope.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE_POLICYSTATE_ENUM)) {
-            return FloatingIPACLTemplatePolicyState.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE_PRIORITYTYPE_ENUM)) {
-            return FloatingIPACLTemplatePriorityType.getEnumById(id);
-        }
-        
         if (type.equals(Constants.EGRESSPROFILE)) {
             return ModelHelper.getEgressProfileById(id);
         }
         if (type.equals(Constants.EGRESSPROFILES_FETCHER)) {
             return ModelHelper.getEgressProfilesFetcherById(id);
         }
+        if (type.equals(Constants.EGRESSPROFILE_ENTITYSCOPE_ENUM)) {
+            return EgressProfileEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.EGRESSQOSPOLICY)) {
             return ModelHelper.getEgressQOSPolicyById(id);
         }
@@ -1002,6 +1058,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.ENTERPRISE_ALLOWEDFORWARDINGCLASSES_ENUM)) {
             return EnterpriseAllowedForwardingClasses.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ENTERPRISE_ALLOWEDFORWARDINGMODE_ENUM)) {
+            return EnterpriseAllowedForwardingMode.getEnumById(id);
         }
         
         if (type.equals(Constants.ENTERPRISE_AVATARTYPE_ENUM)) {
@@ -1076,6 +1136,10 @@ public final class PluginFactory extends BasePluginFactory {
             return EnterpriseSecuredDataEntityScope.getEnumById(id);
         }
         
+        if (type.equals(Constants.ENTERPRISESECUREDDATA_SEEDTYPE_ENUM)) {
+            return EnterpriseSecuredDataSeedType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.ENTERPRISESECURITY)) {
             return ModelHelper.getEnterpriseSecurityById(id);
         }
@@ -1102,6 +1166,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.FIREWALLACLS_FETCHER)) {
             return ModelHelper.getFirewallAclsFetcherById(id);
         }
+        if (type.equals(Constants.FIREWALLACL_ENTITYSCOPE_ENUM)) {
+            return FirewallAclEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.FIREWALLRULE)) {
             return ModelHelper.getFirewallRuleById(id);
         }
@@ -1112,8 +1180,12 @@ public final class PluginFactory extends BasePluginFactory {
             return FirewallRuleAction.getEnumById(id);
         }
         
-        if (type.equals(Constants.FIREWALLRULE_DESTINATIONTYPE_ENUM)) {
-            return FirewallRuleDestinationType.getEnumById(id);
+        if (type.equals(Constants.FIREWALLRULE_ASSOCIATEDTRAFFICTYPE_ENUM)) {
+            return FirewallRuleAssociatedTrafficType.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.FIREWALLRULE_ENTITYSCOPE_ENUM)) {
+            return FirewallRuleEntityScope.getEnumById(id);
         }
         
         if (type.equals(Constants.FIREWALLRULE_LOCATIONTYPE_ENUM)) {
@@ -1122,10 +1194,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.FIREWALLRULE_NETWORKTYPE_ENUM)) {
             return FirewallRuleNetworkType.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.FIREWALLRULE_SOURCETYPE_ENUM)) {
-            return FirewallRuleSourceType.getEnumById(id);
         }
         
         if (type.equals(Constants.FLOATINGIP)) {
@@ -1206,6 +1274,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.GATEWAYREDUNDANTPORTS_FETCHER)) {
             return ModelHelper.getGatewayRedundantPortsFetcherById(id);
         }
+        if (type.equals(Constants.GATEWAYREDUNDANTPORT_ENTITYSCOPE_ENUM)) {
+            return GatewayRedundantPortEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.GATEWAYREDUNDANTPORT_PERMITTEDACTION_ENUM)) {
             return GatewayRedundantPortPermittedAction.getEnumById(id);
         }
@@ -1236,6 +1308,16 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.GATEWAYSECURITY_ENTITYSCOPE_ENUM)) {
             return GatewaySecurityEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.GATEWAYSLOCATION)) {
+            return ModelHelper.getGatewaysLocationById(id);
+        }
+        if (type.equals(Constants.GATEWAYSLOCATIONS_FETCHER)) {
+            return ModelHelper.getGatewaysLocationsFetcherById(id);
+        }
+        if (type.equals(Constants.GATEWAYSLOCATION_ENTITYSCOPE_ENUM)) {
+            return GatewaysLocationEntityScope.getEnumById(id);
         }
         
         if (type.equals(Constants.GATEWAYTEMPLATE)) {
@@ -1696,56 +1778,16 @@ public final class PluginFactory extends BasePluginFactory {
             return IngressAdvFwdTemplatePriorityType.getEnumById(id);
         }
         
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY)) {
-            return ModelHelper.getIngressExternalServiceTemplateEntryById(id);
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRIES_FETCHER)) {
-            return ModelHelper.getIngressExternalServiceTemplateEntriesFetcherById(id);
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_ACTION_ENUM)) {
-            return IngressExternalServiceTemplateEntryAction.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_ENTITYSCOPE_ENUM)) {
-            return IngressExternalServiceTemplateEntryEntityScope.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_LOCATIONTYPE_ENUM)) {
-            return IngressExternalServiceTemplateEntryLocationType.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_NETWORKTYPE_ENUM)) {
-            return IngressExternalServiceTemplateEntryNetworkType.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_POLICYSTATE_ENUM)) {
-            return IngressExternalServiceTemplateEntryPolicyState.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE)) {
-            return ModelHelper.getIngressExternalServiceTemplateById(id);
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER)) {
-            return ModelHelper.getIngressExternalServiceTemplatesFetcherById(id);
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE_ENTITYSCOPE_ENUM)) {
-            return IngressExternalServiceTemplateEntityScope.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE_POLICYSTATE_ENUM)) {
-            return IngressExternalServiceTemplatePolicyState.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE_PRIORITYTYPE_ENUM)) {
-            return IngressExternalServiceTemplatePriorityType.getEnumById(id);
-        }
-        
         if (type.equals(Constants.INGRESSPROFILE)) {
             return ModelHelper.getIngressProfileById(id);
         }
         if (type.equals(Constants.INGRESSPROFILES_FETCHER)) {
             return ModelHelper.getIngressProfilesFetcherById(id);
         }
+        if (type.equals(Constants.INGRESSPROFILE_ENTITYSCOPE_ENUM)) {
+            return IngressProfileEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.INGRESSQOSPOLICY)) {
             return ModelHelper.getIngressQOSPolicyById(id);
         }
@@ -1778,6 +1820,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.IPFILTERPROFILES_FETCHER)) {
             return ModelHelper.getIPFilterProfilesFetcherById(id);
         }
+        if (type.equals(Constants.IPFILTERPROFILE_ENTITYSCOPE_ENUM)) {
+            return IPFilterProfileEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.IPRESERVATION)) {
             return ModelHelper.getIPReservationById(id);
         }
@@ -1794,16 +1840,16 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.IPV6FILTERPROFILES_FETCHER)) {
             return ModelHelper.getIPv6FilterProfilesFetcherById(id);
         }
+        if (type.equals(Constants.IPV6FILTERPROFILE_ENTITYSCOPE_ENUM)) {
+            return IPv6FilterProfileEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.JOB)) {
             return ModelHelper.getJobById(id);
         }
         if (type.equals(Constants.JOBS_FETCHER)) {
             return ModelHelper.getJobsFetcherById(id);
         }
-        if (type.equals(Constants.JOB_ASSOCENTITYTYPE_ENUM)) {
-            return JobAssocEntityType.getEnumById(id);
-        }
-        
         if (type.equals(Constants.JOB_COMMAND_ENUM)) {
             return JobCommand.getEnumById(id);
         }
@@ -1844,6 +1890,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.KEYSERVERMONITORENCRYPTEDSEED_ENTITYSCOPE_ENUM)) {
             return KeyServerMonitorEncryptedSeedEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.KEYSERVERMONITORENCRYPTEDSEED_SEEDTYPE_ENUM)) {
+            return KeyServerMonitorEncryptedSeedSeedType.getEnumById(id);
         }
         
         if (type.equals(Constants.KEYSERVERMONITORSEED)) {
@@ -2000,6 +2050,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.L7APPLICATIONSIGNATURES_FETCHER)) {
             return ModelHelper.getL7applicationsignaturesFetcherById(id);
         }
+        if (type.equals(Constants.L7APPLICATIONSIGNATURE_ENTITYSCOPE_ENUM)) {
+            return L7applicationsignatureEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.LDAPCONFIGURATION)) {
             return ModelHelper.getLDAPConfigurationById(id);
         }
@@ -2034,6 +2088,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.LICENSESTATUS_FETCHER)) {
             return ModelHelper.getLicenseStatusFetcherById(id);
         }
+        if (type.equals(Constants.LICENSESTATUS_ENTITYSCOPE_ENUM)) {
+            return LicenseStatusEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.LINK)) {
             return ModelHelper.getLinkById(id);
         }
@@ -2072,6 +2130,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.LTEINFORMATIONS_FETCHER)) {
             return ModelHelper.getLTEInformationsFetcherById(id);
         }
+        if (type.equals(Constants.LTEINFORMATION_ENTITYSCOPE_ENUM)) {
+            return LTEInformationEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.LTESTATISTICS)) {
             return ModelHelper.getLtestatisticsById(id);
         }
@@ -2084,6 +2146,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.MACFILTERPROFILES_FETCHER)) {
             return ModelHelper.getMACFilterProfilesFetcherById(id);
         }
+        if (type.equals(Constants.MACFILTERPROFILE_ENTITYSCOPE_ENUM)) {
+            return MACFilterProfileEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.ME)) {
             return ModelHelper.getMeById(id);
         }
@@ -2142,6 +2208,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.MONITORSCOPES_FETCHER)) {
             return ModelHelper.getMonitorscopesFetcherById(id);
         }
+        if (type.equals(Constants.MONITORSCOPE_ENTITYSCOPE_ENUM)) {
+            return MonitorscopeEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.MULTICASTCHANNELMAP)) {
             return ModelHelper.getMultiCastChannelMapById(id);
         }
@@ -2172,6 +2242,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.MULTICASTRANGES_FETCHER)) {
             return ModelHelper.getMultiCastRangesFetcherById(id);
         }
+        if (type.equals(Constants.MULTICASTRANGE_IPTYPE_ENUM)) {
+            return MultiCastRangeIPType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.MULTICASTRANGE_ENTITYSCOPE_ENUM)) {
             return MultiCastRangeEntityScope.getEnumById(id);
         }
@@ -2206,6 +2280,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.NETCONFMANAGERS_FETCHER)) {
             return ModelHelper.getNetconfManagersFetcherById(id);
         }
+        if (type.equals(Constants.NETCONFMANAGER_ENTITYSCOPE_ENUM)) {
+            return NetconfManagerEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NETCONFMANAGER_STATUS_ENUM)) {
             return NetconfManagerStatus.getEnumById(id);
         }
@@ -2216,12 +2294,20 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.NETCONFPROFILES_FETCHER)) {
             return ModelHelper.getNetconfProfilesFetcherById(id);
         }
+        if (type.equals(Constants.NETCONFPROFILE_ENTITYSCOPE_ENUM)) {
+            return NetconfProfileEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NETCONFSESSION)) {
             return ModelHelper.getNetconfSessionById(id);
         }
         if (type.equals(Constants.NETCONFSESSIONS_FETCHER)) {
             return ModelHelper.getNetconfSessionsFetcherById(id);
         }
+        if (type.equals(Constants.NETCONFSESSION_ENTITYSCOPE_ENUM)) {
+            return NetconfSessionEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NETCONFSESSION_STATUS_ENUM)) {
             return NetconfSessionStatus.getEnumById(id);
         }
@@ -2256,6 +2342,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.NETWORKPERFORMANCEBINDINGS_FETCHER)) {
             return ModelHelper.getNetworkPerformanceBindingsFetcherById(id);
         }
+        if (type.equals(Constants.NETWORKPERFORMANCEBINDING_ENTITYSCOPE_ENUM)) {
+            return NetworkPerformanceBindingEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NETWORKPERFORMANCEMEASUREMENT)) {
             return ModelHelper.getNetworkPerformanceMeasurementById(id);
         }
@@ -2266,14 +2356,26 @@ public final class PluginFactory extends BasePluginFactory {
             return NetworkPerformanceMeasurementNPMType.getEnumById(id);
         }
         
+        if (type.equals(Constants.NETWORKPERFORMANCEMEASUREMENT_ENTITYSCOPE_ENUM)) {
+            return NetworkPerformanceMeasurementEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NEXTHOP)) {
             return ModelHelper.getNextHopById(id);
         }
         if (type.equals(Constants.NEXTHOPS_FETCHER)) {
             return ModelHelper.getNextHopsFetcherById(id);
         }
+        if (type.equals(Constants.NEXTHOP_IPTYPE_ENUM)) {
+            return NextHopIPType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NEXTHOP_ENTITYSCOPE_ENUM)) {
             return NextHopEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.NEXTHOP_TYPE_ENUM)) {
+            return NextHopType.getEnumById(id);
         }
         
         if (type.equals(Constants.NSGATEWAY)) {
@@ -2334,6 +2436,16 @@ public final class PluginFactory extends BasePluginFactory {
             return NSGatewayPersonality.getEnumById(id);
         }
         
+        if (type.equals(Constants.NSGATEWAYSCOUNT)) {
+            return ModelHelper.getNSGatewaysCountById(id);
+        }
+        if (type.equals(Constants.NSGATEWAYSCOUNTS_FETCHER)) {
+            return ModelHelper.getNSGatewaysCountsFetcherById(id);
+        }
+        if (type.equals(Constants.NSGATEWAYSCOUNT_ENTITYSCOPE_ENUM)) {
+            return NSGatewaysCountEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NSGATEWAYSUMMARY)) {
             return ModelHelper.getNSGatewaySummaryById(id);
         }
@@ -2342,6 +2454,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.NSGATEWAYSUMMARY_BOOTSTRAPSTATUS_ENUM)) {
             return NSGatewaySummaryBootstrapStatus.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.NSGATEWAYSUMMARY_ENTITYSCOPE_ENUM)) {
+            return NSGatewaySummaryEntityScope.getEnumById(id);
         }
         
         if (type.equals(Constants.NSGATEWAYTEMPLATE)) {
@@ -2372,16 +2488,16 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.NSGGROUPS_FETCHER)) {
             return ModelHelper.getNSGGroupsFetcherById(id);
         }
+        if (type.equals(Constants.NSGGROUP_ENTITYSCOPE_ENUM)) {
+            return NSGGroupEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NSGINFO)) {
             return ModelHelper.getNSGInfoById(id);
         }
         if (type.equals(Constants.NSGINFOS_FETCHER)) {
             return ModelHelper.getNSGInfosFetcherById(id);
         }
-        if (type.equals(Constants.NSGINFO_TPMSTATUS_ENUM)) {
-            return NSGInfoTPMStatus.getEnumById(id);
-        }
-        
         if (type.equals(Constants.NSGINFO_ENTITYSCOPE_ENUM)) {
             return NSGInfoEntityScope.getEnumById(id);
         }
@@ -2576,12 +2692,24 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.OVERLAYADDRESSPOOLS_FETCHER)) {
             return ModelHelper.getOverlayAddressPoolsFetcherById(id);
         }
+        if (type.equals(Constants.OVERLAYADDRESSPOOL_IPTYPE_ENUM)) {
+            return OverlayAddressPoolIPType.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.OVERLAYADDRESSPOOL_ENTITYSCOPE_ENUM)) {
+            return OverlayAddressPoolEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.OVERLAYMIRRORDESTINATION)) {
             return ModelHelper.getOverlayMirrorDestinationById(id);
         }
         if (type.equals(Constants.OVERLAYMIRRORDESTINATIONS_FETCHER)) {
             return ModelHelper.getOverlayMirrorDestinationsFetcherById(id);
         }
+        if (type.equals(Constants.OVERLAYMIRRORDESTINATION_DESTINATIONTYPE_ENUM)) {
+            return OverlayMirrorDestinationDestinationType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.OVERLAYMIRRORDESTINATION_ENDPOINTTYPE_ENUM)) {
             return OverlayMirrorDestinationEndPointType.getEnumById(id);
         }
@@ -2600,6 +2728,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.OVERLAYMIRRORDESTINATIONTEMPLATES_FETCHER)) {
             return ModelHelper.getOverlayMirrorDestinationTemplatesFetcherById(id);
         }
+        if (type.equals(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE_DESTINATIONTYPE_ENUM)) {
+            return OverlayMirrorDestinationTemplateDestinationType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE_ENDPOINTTYPE_ENUM)) {
             return OverlayMirrorDestinationTemplateEndPointType.getEnumById(id);
         }
@@ -2618,6 +2750,20 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.OVERLAYPATNATENTRIES_FETCHER)) {
             return ModelHelper.getOverlayPATNATEntriesFetcherById(id);
         }
+        if (type.equals(Constants.OVERLAYPATNATENTRY_ENTITYSCOPE_ENUM)) {
+            return OverlayPATNATEntryEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.PATCH)) {
+            return ModelHelper.getPatchById(id);
+        }
+        if (type.equals(Constants.PATCHS_FETCHER)) {
+            return ModelHelper.getPatchsFetcherById(id);
+        }
+        if (type.equals(Constants.PATCH_ENTITYSCOPE_ENUM)) {
+            return PatchEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.PATIPENTRY)) {
             return ModelHelper.getPATIPEntryById(id);
         }
@@ -2648,6 +2794,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.PATNATPOOLS_FETCHER)) {
             return ModelHelper.getPATNATPoolsFetcherById(id);
         }
+        if (type.equals(Constants.PATNATPOOL_IPTYPE_ENUM)) {
+            return PATNATPoolIPType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.PATNATPOOL_ASSOCIATEDGATEWAYTYPE_ENUM)) {
             return PATNATPoolAssociatedGatewayType.getEnumById(id);
         }
@@ -2728,6 +2878,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.POLICYENTRIES_FETCHER)) {
             return ModelHelper.getPolicyEntriesFetcherById(id);
         }
+        if (type.equals(Constants.POLICYENTRY_ENTITYSCOPE_ENUM)) {
+            return PolicyEntryEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.POLICYGROUP)) {
             return ModelHelper.getPolicyGroupById(id);
         }
@@ -2736,6 +2890,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.POLICYGROUP_ENTITYSCOPE_ENUM)) {
             return PolicyGroupEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.POLICYGROUP_ENTITYSTATE_ENUM)) {
+            return PolicyGroupEntityState.getEnumById(id);
         }
         
         if (type.equals(Constants.POLICYGROUP_TYPE_ENUM)) {
@@ -2772,6 +2930,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.POLICYOBJECTGROUPS_FETCHER)) {
             return ModelHelper.getPolicyObjectGroupsFetcherById(id);
         }
+        if (type.equals(Constants.POLICYOBJECTGROUP_ENTITYSCOPE_ENUM)) {
+            return PolicyObjectGroupEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.POLICYOBJECTGROUP_TYPE_ENUM)) {
             return PolicyObjectGroupType.getEnumById(id);
         }
@@ -2782,6 +2944,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.POLICYSTATEMENTS_FETCHER)) {
             return ModelHelper.getPolicyStatementsFetcherById(id);
         }
+        if (type.equals(Constants.POLICYSTATEMENT_ENTITYSCOPE_ENUM)) {
+            return PolicyStatementEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.PORT)) {
             return ModelHelper.getPortById(id);
         }
@@ -2848,18 +3014,38 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.PSNATPOOLS_FETCHER)) {
             return ModelHelper.getPSNATPoolsFetcherById(id);
         }
+        if (type.equals(Constants.PSNATPOOL_IPTYPE_ENUM)) {
+            return PSNATPoolIPType.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.PSNATPOOL_ENTITYSCOPE_ENUM)) {
+            return PSNATPoolEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.PSPATMAP)) {
             return ModelHelper.getPSPATMapById(id);
         }
         if (type.equals(Constants.PSPATMAPS_FETCHER)) {
             return ModelHelper.getPSPATMapsFetcherById(id);
         }
+        if (type.equals(Constants.PSPATMAP_ENTITYSCOPE_ENUM)) {
+            return PSPATMapEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.PSPATMAP_FAMILY_ENUM)) {
+            return PSPATMapFamily.getEnumById(id);
+        }
+        
         if (type.equals(Constants.PTRANSLATIONMAP)) {
             return ModelHelper.getPTranslationMapById(id);
         }
         if (type.equals(Constants.PTRANSLATIONMAPS_FETCHER)) {
             return ModelHelper.getPTranslationMapsFetcherById(id);
         }
+        if (type.equals(Constants.PTRANSLATIONMAP_ENTITYSCOPE_ENUM)) {
+            return PTranslationMapEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.PTRANSLATIONMAP_MAPPINGTYPE_ENUM)) {
             return PTranslationMapMappingType.getEnumById(id);
         }
@@ -2918,6 +3104,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.REDIRECTIONTARGETS_FETCHER)) {
             return ModelHelper.getRedirectionTargetsFetcherById(id);
         }
+        if (type.equals(Constants.REDIRECTIONTARGET_DESTINATIONTYPE_ENUM)) {
+            return RedirectionTargetDestinationType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.REDIRECTIONTARGET_ENDPOINTTYPE_ENUM)) {
             return RedirectionTargetEndPointType.getEnumById(id);
         }
@@ -2936,6 +3126,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.REDIRECTIONTARGETTEMPLATES_FETCHER)) {
             return ModelHelper.getRedirectionTargetTemplatesFetcherById(id);
         }
+        if (type.equals(Constants.REDIRECTIONTARGETTEMPLATE_DESTINATIONTYPE_ENUM)) {
+            return RedirectionTargetTemplateDestinationType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.REDIRECTIONTARGETTEMPLATE_ENDPOINTTYPE_ENUM)) {
             return RedirectionTargetTemplateEndPointType.getEnumById(id);
         }
@@ -2998,6 +3192,10 @@ public final class PluginFactory extends BasePluginFactory {
             return RoutingPolicyEntityScope.getEnumById(id);
         }
         
+        if (type.equals(Constants.ROUTINGPOLICY_ROUTINGPROTOCOL_ENUM)) {
+            return RoutingPolicyRoutingProtocol.getEnumById(id);
+        }
+        
         if (type.equals(Constants.SAASAPPLICATIONGROUP)) {
             return ModelHelper.getSaaSApplicationGroupById(id);
         }
@@ -3024,12 +3222,20 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.SAPEGRESSQOSPROFILES_FETCHER)) {
             return ModelHelper.getSAPEgressQoSProfilesFetcherById(id);
         }
+        if (type.equals(Constants.SAPEGRESSQOSPROFILE_ENTITYSCOPE_ENUM)) {
+            return SAPEgressQoSProfileEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.SAPINGRESSQOSPROFILE)) {
             return ModelHelper.getSAPIngressQoSProfileById(id);
         }
         if (type.equals(Constants.SAPINGRESSQOSPROFILES_FETCHER)) {
             return ModelHelper.getSAPIngressQoSProfilesFetcherById(id);
         }
+        if (type.equals(Constants.SAPINGRESSQOSPROFILE_ENTITYSCOPE_ENUM)) {
+            return SAPIngressQoSProfileEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.WANSERVICE)) {
             return ModelHelper.getWANServiceById(id);
         }
@@ -3088,6 +3294,10 @@ public final class PluginFactory extends BasePluginFactory {
             return ShuntLinkEntityScope.getEnumById(id);
         }
         
+        if (type.equals(Constants.SHUNTLINK_PERMITTEDACTION_ENUM)) {
+            return ShuntLinkPermittedAction.getEnumById(id);
+        }
+        
         if (type.equals(Constants.SITEINFO)) {
             return ModelHelper.getSiteInfoById(id);
         }
@@ -3104,6 +3314,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.SPATSOURCESPOOLS_FETCHER)) {
             return ModelHelper.getSPATSourcesPoolsFetcherById(id);
         }
+        if (type.equals(Constants.SPATSOURCESPOOL_ENTITYSCOPE_ENUM)) {
+            return SPATSourcesPoolEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.SPATSOURCESPOOL_FAMILY_ENUM)) {
             return SPATSourcesPoolFamily.getEnumById(id);
         }
@@ -3114,6 +3328,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.SSHKEYS_FETCHER)) {
             return ModelHelper.getSSHKeysFetcherById(id);
         }
+        if (type.equals(Constants.SSHKEY_ENTITYSCOPE_ENUM)) {
+            return SSHKeyEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.SSHKEY_KEYTYPE_ENUM)) {
             return SSHKeyKeyType.getEnumById(id);
         }
@@ -3128,8 +3346,20 @@ public final class PluginFactory extends BasePluginFactory {
             return SSIDConnectionAuthenticationMode.getEnumById(id);
         }
         
+        if (type.equals(Constants.SSIDCONNECTION_ENTITYSCOPE_ENUM)) {
+            return SSIDConnectionEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.SSIDCONNECTION_PERMITTEDACTION_ENUM)) {
+            return SSIDConnectionPermittedAction.getEnumById(id);
+        }
+        
         if (type.equals(Constants.SSIDCONNECTION_REDIRECTOPTION_ENUM)) {
             return SSIDConnectionRedirectOption.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.SSIDCONNECTION_STATUS_ENUM)) {
+            return SSIDConnectionStatus.getEnumById(id);
         }
         
         if (type.equals(Constants.STATICROUTE)) {
@@ -3202,10 +3432,6 @@ public final class PluginFactory extends BasePluginFactory {
             return SubnetPATEnabled.getEnumById(id);
         }
         
-        if (type.equals(Constants.SUBNET_DEFAULTACTION_ENUM)) {
-            return SubnetDefaultAction.getEnumById(id);
-        }
-        
         if (type.equals(Constants.SUBNET_ENCRYPTION_ENUM)) {
             return SubnetEncryption.getEnumById(id);
         }
@@ -3216,10 +3442,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.SUBNET_ENTITYSTATE_ENUM)) {
             return SubnetEntityState.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.SUBNET_FLOWCOLLECTIONENABLED_ENUM)) {
-            return SubnetFlowCollectionEnabled.getEnumById(id);
         }
         
         if (type.equals(Constants.SUBNET_MAINTENANCEMODE_ENUM)) {
@@ -3364,6 +3586,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.TRUNKS_FETCHER)) {
             return ModelHelper.getTrunksFetcherById(id);
         }
+        if (type.equals(Constants.TRUNK_ENTITYSCOPE_ENUM)) {
+            return TrunkEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.UNDERLAY)) {
             return ModelHelper.getUnderlayById(id);
         }
@@ -3386,6 +3612,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM)) {
             return UplinkConnectionAdvertisementCriteria.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.UPLINKCONNECTION_ENTITYSCOPE_ENUM)) {
+            return UplinkConnectionEntityScope.getEnumById(id);
         }
         
         if (type.equals(Constants.UPLINKCONNECTION_INTERFACECONNECTIONTYPE_ENUM)) {
@@ -3438,6 +3668,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.USERCONTEXTS_FETCHER)) {
             return ModelHelper.getUserContextsFetcherById(id);
         }
+        if (type.equals(Constants.USERCONTEXT_ENTITYSCOPE_ENUM)) {
+            return UserContextEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VCENTER)) {
             return ModelHelper.getVCenterById(id);
         }
@@ -3730,6 +3964,14 @@ public final class PluginFactory extends BasePluginFactory {
             return VNFAllowedActions.getEnumById(id);
         }
         
+        if (type.equals(Constants.VNF_ENTITYSCOPE_ENUM)) {
+            return VNFEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VNF_LASTUSERACTION_ENUM)) {
+            return VNFLastUserAction.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VNF_STATUS_ENUM)) {
             return VNFStatus.getEnumById(id);
         }
@@ -3748,12 +3990,20 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VNFCATALOGS_FETCHER)) {
             return ModelHelper.getVNFCatalogsFetcherById(id);
         }
+        if (type.equals(Constants.VNFCATALOG_ENTITYSCOPE_ENUM)) {
+            return VNFCatalogEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VNFDESCRIPTOR)) {
             return ModelHelper.getVNFDescriptorById(id);
         }
         if (type.equals(Constants.VNFDESCRIPTORS_FETCHER)) {
             return ModelHelper.getVNFDescriptorsFetcherById(id);
         }
+        if (type.equals(Constants.VNFDESCRIPTOR_ENTITYSCOPE_ENUM)) {
+            return VNFDescriptorEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VNFDESCRIPTOR_TYPE_ENUM)) {
             return VNFDescriptorType.getEnumById(id);
         }
@@ -3764,6 +4014,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VNFDOMAINMAPPINGS_FETCHER)) {
             return ModelHelper.getVNFDomainMappingsFetcherById(id);
         }
+        if (type.equals(Constants.VNFDOMAINMAPPING_ENTITYSCOPE_ENUM)) {
+            return VNFDomainMappingEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VNFDOMAINMAPPING_SEGMENTATIONTYPE_ENUM)) {
             return VNFDomainMappingSegmentationType.getEnumById(id);
         }
@@ -3778,6 +4032,10 @@ public final class PluginFactory extends BasePluginFactory {
             return VNFInterfaceAttachedNetworkType.getEnumById(id);
         }
         
+        if (type.equals(Constants.VNFINTERFACE_ENTITYSCOPE_ENUM)) {
+            return VNFInterfaceEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VNFINTERFACE_TYPE_ENUM)) {
             return VNFInterfaceType.getEnumById(id);
         }
@@ -3788,6 +4046,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VNFINTERFACEDESCRIPTORS_FETCHER)) {
             return ModelHelper.getVNFInterfaceDescriptorsFetcherById(id);
         }
+        if (type.equals(Constants.VNFINTERFACEDESCRIPTOR_ENTITYSCOPE_ENUM)) {
+            return VNFInterfaceDescriptorEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VNFINTERFACEDESCRIPTOR_TYPE_ENUM)) {
             return VNFInterfaceDescriptorType.getEnumById(id);
         }
@@ -3798,6 +4060,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VNFMETADATAS_FETCHER)) {
             return ModelHelper.getVNFMetadatasFetcherById(id);
         }
+        if (type.equals(Constants.VNFMETADATA_ENTITYSCOPE_ENUM)) {
+            return VNFMetadataEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VNFTHRESHOLDPOLICY)) {
             return ModelHelper.getVNFThresholdPolicyById(id);
         }
@@ -3806,6 +4072,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VNFTHRESHOLDPOLICY_ACTION_ENUM)) {
             return VNFThresholdPolicyAction.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VNFTHRESHOLDPOLICY_ENTITYSCOPE_ENUM)) {
+            return VNFThresholdPolicyEntityScope.getEnumById(id);
         }
         
         if (type.equals(Constants.VPNCONNECTION)) {
@@ -3946,6 +4216,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VRSADDRESSRANGES_FETCHER)) {
             return ModelHelper.getVRSAddressRangesFetcherById(id);
         }
+        if (type.equals(Constants.VRSADDRESSRANGE_IPTYPE_ENUM)) {
+            return VRSAddressRangeIPType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VRSADDRESSRANGE_ENTITYSCOPE_ENUM)) {
             return VRSAddressRangeEntityScope.getEnumById(id);
         }
@@ -3956,8 +4230,32 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.VCENTERVRSCONFIGS_FETCHER)) {
             return ModelHelper.getVCenterVRSConfigsFetcherById(id);
         }
+        if (type.equals(Constants.VCENTERVRSCONFIG_AVRSPROFILE_ENUM)) {
+            return VCenterVRSConfigAvrsProfile.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_CPUCOUNT_ENUM)) {
+            return VCenterVRSConfigCpuCount.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_DESTINATIONMIRRORPORT_ENUM)) {
+            return VCenterVRSConfigDestinationMirrorPort.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VCENTERVRSCONFIG_ENTITYSCOPE_ENUM)) {
             return VCenterVRSConfigEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_MEMORYSIZEINGB_ENUM)) {
+            return VCenterVRSConfigMemorySizeInGB.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_PERSONALITY_ENUM)) {
+            return VCenterVRSConfigPersonality.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_REMOTESYSLOGSERVERTYPE_ENUM)) {
+            return VCenterVRSConfigRemoteSyslogServerType.getEnumById(id);
         }
         
         if (type.equals(Constants.VRSMETRICS)) {
@@ -4054,12 +4352,24 @@ public final class PluginFactory extends BasePluginFactory {
             return WirelessPortCountryCode.getEnumById(id);
         }
         
+        if (type.equals(Constants.WIRELESSPORT_ENTITYSCOPE_ENUM)) {
+            return WirelessPortEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.WIRELESSPORT_FREQUENCYCHANNEL_ENUM)) {
             return WirelessPortFrequencyChannel.getEnumById(id);
         }
         
+        if (type.equals(Constants.WIRELESSPORT_PERMITTEDACTION_ENUM)) {
+            return WirelessPortPermittedAction.getEnumById(id);
+        }
+        
         if (type.equals(Constants.WIRELESSPORT_PORTTYPE_ENUM)) {
             return WirelessPortPortType.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.WIRELESSPORT_STATUS_ENUM)) {
+            return WirelessPortStatus.getEnumById(id);
         }
         
         if (type.equals(Constants.WIRELESSPORT_WIFIFREQUENCYBAND_ENUM)) {
@@ -4122,10 +4432,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.ZONE_ENTITYSCOPE_ENUM)) {
             return ZoneEntityScope.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.ZONE_FLOWCOLLECTIONENABLED_ENUM)) {
-            return ZoneFlowCollectionEnabled.getEnumById(id);
         }
         
         if (type.equals(Constants.ZONE_MAINTENANCEMODE_ENUM)) {
@@ -4246,6 +4552,34 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.ALLGATEWAY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForAllGatewayId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForAllGatewayId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForAllRedundancyGroupId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForAllRedundancyGroupId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.APPLICATION) && relationName.equals(Constants.APPLICATIONBINDINGS_FETCHER)) {
             return toList(ModelHelper.getApplicationBindingsFetcherForApplicationId(id));
         }
@@ -4293,6 +4627,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.APPLICATIONBINDINGS_FETCHER) && relationName.equals(Constants.APPLICATIONBINDINGS)) {
             return ModelHelper.getApplicationBindingsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENT) && relationName.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER)) {
+            return toList(ModelHelper.getApplicationperformancemanagementbindingsFetcherForApplicationperformancemanagementId(id));
+        }
+        if (type.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER) && relationName.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS)) {
+            return ModelHelper.getApplicationperformancemanagementbindingsForFetcherId(id);
         }
         
         if (type.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -4363,6 +4704,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.WANSERVICES_FETCHER) && relationName.equals(Constants.WANSERVICES)) {
             return ModelHelper.getWANServicesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.AUTODISCOVEREDGATEWAY) && relationName.equals(Constants.WIRELESSPORTS_FETCHER)) {
+            return toList(ModelHelper.getWirelessPortsFetcherForAutoDiscoveredGatewayId(id));
+        }
+        if (type.equals(Constants.WIRELESSPORTS_FETCHER) && relationName.equals(Constants.WIRELESSPORTS)) {
+            return ModelHelper.getWirelessPortsForFetcherId(id);
         }
         
         if (type.equals(Constants.AVATAR) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -4468,6 +4816,27 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.BFDSESSIONS_FETCHER) && relationName.equals(Constants.BFDSESSIONS)) {
             return ModelHelper.getBFDSessionsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.BRCONNECTION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForBRConnectionId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.BRCONNECTION) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForBRConnectionId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.BRIDGEINTERFACE) && relationName.equals(Constants.DEPLOYMENTFAILURES_FETCHER)) {
+            return toList(ModelHelper.getDeploymentFailuresFetcherForBridgeInterfaceId(id));
+        }
+        if (type.equals(Constants.DEPLOYMENTFAILURES_FETCHER) && relationName.equals(Constants.DEPLOYMENTFAILURES)) {
+            return ModelHelper.getDeploymentFailuresForFetcherId(id);
         }
         
         if (type.equals(Constants.BRIDGEINTERFACE) && relationName.equals(Constants.DHCPOPTIONS_FETCHER)) {
@@ -4591,6 +4960,20 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.VSDCOMPONENT) && relationName.equals(Constants.METADATAS_FETCHER)) {
             return toList(ModelHelper.getMetadatasFetcherForVSDComponentId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.CONNECTIONENDPOINT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForConnectionendpointId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.CONNECTIONENDPOINT) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForConnectionendpointId(id));
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
@@ -4778,6 +5161,90 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getCTranslationMapsForFetcherId(id);
         }
         
+        if (type.equals(Constants.CSNATPOOL) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForCSNATPoolId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.CSNATPOOL) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForCSNATPoolId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.CTRANSLATIONMAP) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForCTranslationMapId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.CTRANSLATIONMAP) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForCTranslationMapId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.CUSTOMPROPERTY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForCustomPropertyId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.CUSTOMPROPERTY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForCustomPropertyId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DEFAULTGATEWAY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForDefaultGatewayId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DEFAULTGATEWAY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForDefaultGatewayId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DEMARCATIONSERVICE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForDemarcationServiceId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DEMARCATIONSERVICE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForDemarcationServiceId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DEPLOYMENTFAILURE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForDeploymentFailureId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DEPLOYMENTFAILURE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForDeploymentFailureId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.DESTINATIONURL) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
             return toList(ModelHelper.getGlobalMetadatasFetcherForDestinationurlId(id));
         }
@@ -4811,6 +5278,34 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DISKSTAT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForDiskStatId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DISKSTAT) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForDiskStatId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.ALARMS_FETCHER)) {
+            return toList(ModelHelper.getAlarmsFetcherForDomainId(id));
+        }
+        if (type.equals(Constants.ALARMS_FETCHER) && relationName.equals(Constants.ALARMS)) {
+            return ModelHelper.getAlarmsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.APPLICATIONS_FETCHER)) {
+            return toList(ModelHelper.getApplicationsFetcherForDomainId(id));
+        }
+        if (type.equals(Constants.APPLICATIONS_FETCHER) && relationName.equals(Constants.APPLICATIONS)) {
+            return ModelHelper.getApplicationsForFetcherId(id);
         }
         
         if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER)) {
@@ -4890,13 +5385,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getDomainFIPAclTemplatesForFetcherId(id);
         }
         
-        if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.FLOATINGIPACLTEMPLATES_FETCHER)) {
-            return toList(ModelHelper.getFloatingIPACLTemplatesFetcherForDomainId(id));
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATES_FETCHER) && relationName.equals(Constants.FLOATINGIPACLTEMPLATES)) {
-            return ModelHelper.getFloatingIPACLTemplatesForFetcherId(id);
-        }
-        
         if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
             return toList(ModelHelper.getEventLogsFetcherForDomainId(id));
         }
@@ -4965,13 +5453,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.INGRESSADVFWDTEMPLATES_FETCHER) && relationName.equals(Constants.INGRESSADVFWDTEMPLATES)) {
             return ModelHelper.getIngressAdvFwdTemplatesForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER)) {
-            return toList(ModelHelper.getIngressExternalServiceTemplatesFetcherForDomainId(id));
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES)) {
-            return ModelHelper.getIngressExternalServiceTemplatesForFetcherId(id);
         }
         
         if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.JOBS_FETCHER)) {
@@ -5121,6 +5602,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVirtualFirewallPoliciesForFetcherId(id);
         }
         
+        if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.VIRTUALFIREWALLRULES_FETCHER)) {
+            return toList(ModelHelper.getVirtualFirewallRulesFetcherForDomainId(id));
+        }
+        if (type.equals(Constants.VIRTUALFIREWALLRULES_FETCHER) && relationName.equals(Constants.VIRTUALFIREWALLRULES)) {
+            return ModelHelper.getVirtualFirewallRulesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.VMS_FETCHER)) {
             return toList(ModelHelper.getVMsFetcherForDomainId(id));
         }
@@ -5191,13 +5679,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getDomainFIPAclTemplatesForFetcherId(id);
         }
         
-        if (type.equals(Constants.DOMAINTEMPLATE) && relationName.equals(Constants.FLOATINGIPACLTEMPLATES_FETCHER)) {
-            return toList(ModelHelper.getFloatingIPACLTemplatesFetcherForDomainTemplateId(id));
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATES_FETCHER) && relationName.equals(Constants.FLOATINGIPACLTEMPLATES)) {
-            return ModelHelper.getFloatingIPACLTemplatesForFetcherId(id);
-        }
-        
         if (type.equals(Constants.DOMAINTEMPLATE) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
             return toList(ModelHelper.getEventLogsFetcherForDomainTemplateId(id));
         }
@@ -5231,13 +5712,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.INGRESSADVFWDTEMPLATES_FETCHER) && relationName.equals(Constants.INGRESSADVFWDTEMPLATES)) {
             return ModelHelper.getIngressAdvFwdTemplatesForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.DOMAINTEMPLATE) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER)) {
-            return toList(ModelHelper.getIngressExternalServiceTemplatesFetcherForDomainTemplateId(id));
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES)) {
-            return ModelHelper.getIngressExternalServiceTemplatesForFetcherId(id);
         }
         
         if (type.equals(Constants.DOMAINTEMPLATE) && relationName.equals(Constants.JOBS_FETCHER)) {
@@ -5380,11 +5854,39 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.DUCGROUP) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForDUCGroupId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DUCGROUP) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForDUCGroupId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.DUCGROUP) && relationName.equals(Constants.NSGATEWAYS_FETCHER)) {
             return toList(ModelHelper.getNSGatewaysFetcherForDUCGroupId(id));
         }
         if (type.equals(Constants.NSGATEWAYS_FETCHER) && relationName.equals(Constants.NSGATEWAYS)) {
             return ModelHelper.getNSGatewaysForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DUCGROUPBINDING) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForDUCGroupBindingId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.DUCGROUPBINDING) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForDUCGroupBindingId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.VCENTEREAMCONFIG) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -5485,13 +5987,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
-        if (type.equals(Constants.EGRESSADVFWDENTRYTEMPLATE) && relationName.equals(Constants.STATISTICS_FETCHER)) {
-            return toList(ModelHelper.getStatisticsFetcherForEgressAdvFwdEntryTemplateId(id));
-        }
-        if (type.equals(Constants.STATISTICS_FETCHER) && relationName.equals(Constants.STATISTICS)) {
-            return ModelHelper.getStatisticsForFetcherId(id);
-        }
-        
         if (type.equals(Constants.EGRESSADVFWDTEMPLATE) && relationName.equals(Constants.EGRESSADVFWDENTRYTEMPLATES_FETCHER)) {
             return toList(ModelHelper.getEgressAdvFwdEntryTemplatesFetcherForEgressAdvFwdTemplateId(id));
         }
@@ -5548,36 +6043,22 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
-            return toList(ModelHelper.getGlobalMetadatasFetcherForFloatingIPACLTemplateEntryId(id));
+        if (type.equals(Constants.EGRESSPROFILE) && relationName.equals(Constants.DEPLOYMENTFAILURES_FETCHER)) {
+            return toList(ModelHelper.getDeploymentFailuresFetcherForEgressProfileId(id));
+        }
+        if (type.equals(Constants.DEPLOYMENTFAILURES_FETCHER) && relationName.equals(Constants.DEPLOYMENTFAILURES)) {
+            return ModelHelper.getDeploymentFailuresForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.EGRESSPROFILE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForEgressProfileId(id));
         }
         if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
             return ModelHelper.getGlobalMetadatasForFetcherId(id);
         }
         
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY) && relationName.equals(Constants.METADATAS_FETCHER)) {
-            return toList(ModelHelper.getMetadatasFetcherForFloatingIPACLTemplateEntryId(id));
-        }
-        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
-            return ModelHelper.getMetadatasForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE) && relationName.equals(Constants.FLOATINGIPACLTEMPLATEENTRIES_FETCHER)) {
-            return toList(ModelHelper.getFloatingIPACLTemplateEntriesFetcherForFloatingIPACLTemplateId(id));
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRIES_FETCHER) && relationName.equals(Constants.FLOATINGIPACLTEMPLATEENTRIES)) {
-            return ModelHelper.getFloatingIPACLTemplateEntriesForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
-            return toList(ModelHelper.getGlobalMetadatasFetcherForFloatingIPACLTemplateId(id));
-        }
-        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
-            return ModelHelper.getGlobalMetadatasForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE) && relationName.equals(Constants.METADATAS_FETCHER)) {
-            return toList(ModelHelper.getMetadatasFetcherForFloatingIPACLTemplateId(id));
+        if (type.equals(Constants.EGRESSPROFILE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForEgressProfileId(id));
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
@@ -5742,6 +6223,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.GATEWAYS_FETCHER) && relationName.equals(Constants.GATEWAYS)) {
             return ModelHelper.getGatewaysForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.GATEWAYSLOCATIONS_FETCHER)) {
+            return toList(ModelHelper.getGatewaysLocationsFetcherForEnterpriseId(id));
+        }
+        if (type.equals(Constants.GATEWAYSLOCATIONS_FETCHER) && relationName.equals(Constants.GATEWAYSLOCATIONS)) {
+            return ModelHelper.getGatewaysLocationsForFetcherId(id);
         }
         
         if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.GATEWAYTEMPLATES_FETCHER)) {
@@ -5910,6 +6398,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.NSGATEWAYS_FETCHER) && relationName.equals(Constants.NSGATEWAYS)) {
             return ModelHelper.getNSGatewaysForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.NSGATEWAYSCOUNTS_FETCHER)) {
+            return toList(ModelHelper.getNSGatewaysCountsFetcherForEnterpriseId(id));
+        }
+        if (type.equals(Constants.NSGATEWAYSCOUNTS_FETCHER) && relationName.equals(Constants.NSGATEWAYSCOUNTS)) {
+            return ModelHelper.getNSGatewaysCountsForFetcherId(id);
         }
         
         if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.NSGATEWAYSUMMARIES_FETCHER)) {
@@ -6206,6 +6701,34 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getFirewallRulesForFetcherId(id);
         }
         
+        if (type.equals(Constants.FIREWALLACL) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForFirewallAclId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.FIREWALLACL) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForFirewallAclId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.FIREWALLRULE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForFirewallRuleId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.FIREWALLRULE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForFirewallRuleId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.FLOATINGIP) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
             return toList(ModelHelper.getEventLogsFetcherForFloatingIpId(id));
         }
@@ -6283,6 +6806,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getBootstrapsForFetcherId(id);
         }
         
+        if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.BOOTSTRAPACTIVATIONS_FETCHER)) {
+            return toList(ModelHelper.getBootstrapActivationsFetcherForGatewayId(id));
+        }
+        if (type.equals(Constants.BOOTSTRAPACTIVATIONS_FETCHER) && relationName.equals(Constants.BOOTSTRAPACTIVATIONS)) {
+            return ModelHelper.getBootstrapActivationsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.DEPLOYMENTFAILURES_FETCHER)) {
             return toList(ModelHelper.getDeploymentFailuresFetcherForGatewayId(id));
         }
@@ -6311,11 +6841,25 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getEventLogsForFetcherId(id);
         }
         
+        if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.GATEWAYSECURITIES_FETCHER)) {
+            return toList(ModelHelper.getGatewaySecuritiesFetcherForGatewayId(id));
+        }
+        if (type.equals(Constants.GATEWAYSECURITIES_FETCHER) && relationName.equals(Constants.GATEWAYSECURITIES)) {
+            return ModelHelper.getGatewaySecuritiesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
             return toList(ModelHelper.getGlobalMetadatasFetcherForGatewayId(id));
         }
         if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
             return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.INFRASTRUCTURECONFIGS_FETCHER)) {
+            return toList(ModelHelper.getInfrastructureConfigsFetcherForGatewayId(id));
+        }
+        if (type.equals(Constants.INFRASTRUCTURECONFIGS_FETCHER) && relationName.equals(Constants.INFRASTRUCTURECONFIGS)) {
+            return ModelHelper.getInfrastructureConfigsForFetcherId(id);
         }
         
         if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.INGRESSPROFILES_FETCHER)) {
@@ -6346,6 +6890,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getJobsForFetcherId(id);
         }
         
+        if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.L2DOMAINS_FETCHER)) {
+            return toList(ModelHelper.getL2DomainsFetcherForGatewayId(id));
+        }
+        if (type.equals(Constants.L2DOMAINS_FETCHER) && relationName.equals(Constants.L2DOMAINS)) {
+            return ModelHelper.getL2DomainsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.LOCATIONS_FETCHER)) {
             return toList(ModelHelper.getLocationsFetcherForGatewayId(id));
         }
@@ -6365,13 +6916,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.NSGINFOS_FETCHER)) {
-            return toList(ModelHelper.getNSGInfosFetcherForGatewayId(id));
-        }
-        if (type.equals(Constants.NSGINFOS_FETCHER) && relationName.equals(Constants.NSGINFOS)) {
-            return ModelHelper.getNSGInfosForFetcherId(id);
         }
         
         if (type.equals(Constants.GATEWAY) && relationName.equals(Constants.PATNATPOOLS_FETCHER)) {
@@ -6416,6 +6960,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getWANServicesForFetcherId(id);
         }
         
+        if (type.equals(Constants.GATEWAYREDUNDANTPORT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForGatewayRedundantPortId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.GATEWAYREDUNDANTPORT) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForGatewayRedundantPortId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.GATEWAYREDUNDANTPORT) && relationName.equals(Constants.VLANS_FETCHER)) {
             return toList(ModelHelper.getVLANsFetcherForGatewayRedundantPortId(id));
         }
@@ -6453,6 +7011,20 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.GATEWAYSECURITY) && relationName.equals(Constants.METADATAS_FETCHER)) {
             return toList(ModelHelper.getMetadatasFetcherForGatewaySecurityId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.GATEWAYSLOCATION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForGatewaysLocationId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.GATEWAYSLOCATION) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForGatewaysLocationId(id));
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
@@ -6857,6 +7429,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.INFRASTRUCTUREACCESSPROFILE) && relationName.equals(Constants.NSGATEWAYTEMPLATES_FETCHER)) {
+            return toList(ModelHelper.getNSGatewayTemplatesFetcherForInfrastructureAccessProfileId(id));
+        }
+        if (type.equals(Constants.NSGATEWAYTEMPLATES_FETCHER) && relationName.equals(Constants.NSGATEWAYTEMPLATES)) {
+            return ModelHelper.getNSGatewayTemplatesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.INFRASTRUCTUREACCESSPROFILE) && relationName.equals(Constants.SSHKEYS_FETCHER)) {
             return toList(ModelHelper.getSSHKeysFetcherForInfrastructureAccessProfileId(id));
         }
@@ -7025,43 +7604,22 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
-            return toList(ModelHelper.getGlobalMetadatasFetcherForIngressExternalServiceTemplateEntryId(id));
+        if (type.equals(Constants.INGRESSPROFILE) && relationName.equals(Constants.DEPLOYMENTFAILURES_FETCHER)) {
+            return toList(ModelHelper.getDeploymentFailuresFetcherForIngressProfileId(id));
+        }
+        if (type.equals(Constants.DEPLOYMENTFAILURES_FETCHER) && relationName.equals(Constants.DEPLOYMENTFAILURES)) {
+            return ModelHelper.getDeploymentFailuresForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.INGRESSPROFILE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForIngressProfileId(id));
         }
         if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
             return ModelHelper.getGlobalMetadatasForFetcherId(id);
         }
         
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY) && relationName.equals(Constants.METADATAS_FETCHER)) {
-            return toList(ModelHelper.getMetadatasFetcherForIngressExternalServiceTemplateEntryId(id));
-        }
-        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
-            return ModelHelper.getMetadatasForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY) && relationName.equals(Constants.STATISTICS_FETCHER)) {
-            return toList(ModelHelper.getStatisticsFetcherForIngressExternalServiceTemplateEntryId(id));
-        }
-        if (type.equals(Constants.STATISTICS_FETCHER) && relationName.equals(Constants.STATISTICS)) {
-            return ModelHelper.getStatisticsForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
-            return toList(ModelHelper.getGlobalMetadatasFetcherForIngressExternalServiceTemplateId(id));
-        }
-        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
-            return ModelHelper.getGlobalMetadatasForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRIES_FETCHER)) {
-            return toList(ModelHelper.getIngressExternalServiceTemplateEntriesFetcherForIngressExternalServiceTemplateId(id));
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRIES_FETCHER) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRIES)) {
-            return ModelHelper.getIngressExternalServiceTemplateEntriesForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE) && relationName.equals(Constants.METADATAS_FETCHER)) {
-            return toList(ModelHelper.getMetadatasFetcherForIngressExternalServiceTemplateId(id));
+        if (type.equals(Constants.INGRESSPROFILE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForIngressProfileId(id));
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
@@ -7088,6 +7646,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.IPFILTERPROFILE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForIPFilterProfileId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.IPFILTERPROFILE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForIPFilterProfileId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.IPRESERVATION) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
             return toList(ModelHelper.getEventLogsFetcherForIPReservationId(id));
         }
@@ -7104,6 +7676,20 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.IPRESERVATION) && relationName.equals(Constants.METADATAS_FETCHER)) {
             return toList(ModelHelper.getMetadatasFetcherForIPReservationId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.IPV6FILTERPROFILE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForIPv6FilterProfileId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.IPV6FILTERPROFILE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForIPv6FilterProfileId(id));
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
@@ -7228,6 +7814,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getAddressRangesForFetcherId(id);
         }
         
+        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.ALARMS_FETCHER)) {
+            return toList(ModelHelper.getAlarmsFetcherForL2DomainId(id));
+        }
+        if (type.equals(Constants.ALARMS_FETCHER) && relationName.equals(Constants.ALARMS)) {
+            return ModelHelper.getAlarmsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.APPLICATIONS_FETCHER)) {
+            return toList(ModelHelper.getApplicationsFetcherForL2DomainId(id));
+        }
+        if (type.equals(Constants.APPLICATIONS_FETCHER) && relationName.equals(Constants.APPLICATIONS)) {
+            return ModelHelper.getApplicationsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER)) {
             return toList(ModelHelper.getApplicationperformancemanagementbindingsFetcherForL2DomainId(id));
         }
@@ -7254,6 +7854,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.CONTAINERINTERFACES_FETCHER) && relationName.equals(Constants.CONTAINERINTERFACES)) {
             return ModelHelper.getContainerInterfacesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.DEPLOYMENTFAILURES_FETCHER)) {
+            return toList(ModelHelper.getDeploymentFailuresFetcherForL2DomainId(id));
+        }
+        if (type.equals(Constants.DEPLOYMENTFAILURES_FETCHER) && relationName.equals(Constants.DEPLOYMENTFAILURES)) {
+            return ModelHelper.getDeploymentFailuresForFetcherId(id);
         }
         
         if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.DHCPOPTIONS_FETCHER)) {
@@ -7289,6 +7896,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.EVENTLOGS_FETCHER) && relationName.equals(Constants.EVENTLOGS)) {
             return ModelHelper.getEventLogsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.GATEWAYS_FETCHER)) {
+            return toList(ModelHelper.getGatewaysFetcherForL2DomainId(id));
+        }
+        if (type.equals(Constants.GATEWAYS_FETCHER) && relationName.equals(Constants.GATEWAYS)) {
+            return ModelHelper.getGatewaysForFetcherId(id);
         }
         
         if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -7331,13 +7945,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.INGRESSADVFWDTEMPLATES_FETCHER) && relationName.equals(Constants.INGRESSADVFWDTEMPLATES)) {
             return ModelHelper.getIngressAdvFwdTemplatesForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER)) {
-            return toList(ModelHelper.getIngressExternalServiceTemplatesFetcherForL2DomainId(id));
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES)) {
-            return ModelHelper.getIngressExternalServiceTemplatesForFetcherId(id);
         }
         
         if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.JOBS_FETCHER)) {
@@ -7396,6 +8003,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getPolicyGroupsForFetcherId(id);
         }
         
+        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.PROXYARPFILTERS_FETCHER)) {
+            return toList(ModelHelper.getProxyARPFiltersFetcherForL2DomainId(id));
+        }
+        if (type.equals(Constants.PROXYARPFILTERS_FETCHER) && relationName.equals(Constants.PROXYARPFILTERS)) {
+            return ModelHelper.getProxyARPFiltersForFetcherId(id);
+        }
+        
         if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.QOSS_FETCHER)) {
             return toList(ModelHelper.getQOSsFetcherForL2DomainId(id));
         }
@@ -7408,6 +8022,20 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.REDIRECTIONTARGETS_FETCHER) && relationName.equals(Constants.REDIRECTIONTARGETS)) {
             return ModelHelper.getRedirectionTargetsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.REDUNDANCYGROUPS_FETCHER)) {
+            return toList(ModelHelper.getRedundancyGroupsFetcherForL2DomainId(id));
+        }
+        if (type.equals(Constants.REDUNDANCYGROUPS_FETCHER) && relationName.equals(Constants.REDUNDANCYGROUPS)) {
+            return ModelHelper.getRedundancyGroupsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.STATICROUTES_FETCHER)) {
+            return toList(ModelHelper.getStaticRoutesFetcherForL2DomainId(id));
+        }
+        if (type.equals(Constants.STATICROUTES_FETCHER) && relationName.equals(Constants.STATICROUTES)) {
+            return ModelHelper.getStaticRoutesForFetcherId(id);
         }
         
         if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.STATISTICS_FETCHER)) {
@@ -7443,6 +8071,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VIRTUALFIREWALLPOLICIES_FETCHER) && relationName.equals(Constants.VIRTUALFIREWALLPOLICIES)) {
             return ModelHelper.getVirtualFirewallPoliciesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.VIRTUALFIREWALLRULES_FETCHER)) {
+            return toList(ModelHelper.getVirtualFirewallRulesFetcherForL2DomainId(id));
+        }
+        if (type.equals(Constants.VIRTUALFIREWALLRULES_FETCHER) && relationName.equals(Constants.VIRTUALFIREWALLRULES)) {
+            return ModelHelper.getVirtualFirewallRulesForFetcherId(id);
         }
         
         if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.VMS_FETCHER)) {
@@ -7529,13 +8164,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getIngressAdvFwdTemplatesForFetcherId(id);
         }
         
-        if (type.equals(Constants.L2DOMAINTEMPLATE) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER)) {
-            return toList(ModelHelper.getIngressExternalServiceTemplatesFetcherForL2DomainTemplateId(id));
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER) && relationName.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES)) {
-            return ModelHelper.getIngressExternalServiceTemplatesForFetcherId(id);
-        }
-        
         if (type.equals(Constants.L2DOMAINTEMPLATE) && relationName.equals(Constants.JOBS_FETCHER)) {
             return toList(ModelHelper.getJobsFetcherForL2DomainTemplateId(id));
         }
@@ -7606,6 +8234,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVirtualFirewallPoliciesForFetcherId(id);
         }
         
+        if (type.equals(Constants.L4SERVICE) && relationName.equals(Constants.L4SERVICEGROUPS_FETCHER)) {
+            return toList(ModelHelper.getL4ServiceGroupsFetcherForL4ServiceId(id));
+        }
+        if (type.equals(Constants.L4SERVICEGROUPS_FETCHER) && relationName.equals(Constants.L4SERVICEGROUPS)) {
+            return ModelHelper.getL4ServiceGroupsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.L4SERVICEGROUP) && relationName.equals(Constants.L4SERVICES_FETCHER)) {
             return toList(ModelHelper.getL4ServicesFetcherForL4ServiceGroupId(id));
         }
@@ -7618,6 +8253,20 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.APPLICATIONS_FETCHER) && relationName.equals(Constants.APPLICATIONS)) {
             return ModelHelper.getApplicationsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.L7APPLICATIONSIGNATURE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForL7applicationsignatureId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.L7APPLICATIONSIGNATURE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForL7applicationsignatureId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.LDAPCONFIGURATION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -7650,6 +8299,20 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.LICENSE) && relationName.equals(Constants.METADATAS_FETCHER)) {
             return toList(ModelHelper.getMetadatasFetcherForLicenseId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.LICENSESTATUS) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForLicenseStatusId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.LICENSESTATUS) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForLicenseStatusId(id));
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
@@ -7725,6 +8388,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.LTEINFORMATION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForLTEInformationId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.LTEINFORMATION) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForLTEInformationId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.LTESTATISTICS) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
             return toList(ModelHelper.getGlobalMetadatasFetcherForLtestatisticsId(id));
         }
@@ -7739,9 +8416,51 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.MACFILTERPROFILE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForMACFilterProfileId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.MACFILTERPROFILE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForMACFilterProfileId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.SESSION) && relationName.equals(Constants.MES)) {
             return toList(ModelHelper.getMeById(id));
         }
+        if (type.equals(Constants.ME) && relationName.equals(Constants.ALLGATEWAYS_FETCHER)) {
+            return toList(ModelHelper.getAllGatewaysFetcherForMeId(id));
+        }
+        if (type.equals(Constants.ALLGATEWAYS_FETCHER) && relationName.equals(Constants.ALLGATEWAYS)) {
+            return ModelHelper.getAllGatewaysForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.ALLREDUNDANCYGROUPS_FETCHER)) {
+            return toList(ModelHelper.getAllRedundancyGroupsFetcherForMeId(id));
+        }
+        if (type.equals(Constants.ALLREDUNDANCYGROUPS_FETCHER) && relationName.equals(Constants.ALLREDUNDANCYGROUPS)) {
+            return ModelHelper.getAllRedundancyGroupsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.APPLICATIONS_FETCHER)) {
+            return toList(ModelHelper.getApplicationsFetcherForMeId(id));
+        }
+        if (type.equals(Constants.APPLICATIONS_FETCHER) && relationName.equals(Constants.APPLICATIONS)) {
+            return ModelHelper.getApplicationsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTS_FETCHER)) {
+            return toList(ModelHelper.getApplicationperformancemanagementsFetcherForMeId(id));
+        }
+        if (type.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTS_FETCHER) && relationName.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTS)) {
+            return ModelHelper.getApplicationperformancemanagementsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ME) && relationName.equals(Constants.AUTODISCOVEREDGATEWAYS_FETCHER)) {
             return toList(ModelHelper.getAutoDiscoveredGatewaysFetcherForMeId(id));
         }
@@ -7775,6 +8494,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.CLOUDMGMTSYSTEMS_FETCHER) && relationName.equals(Constants.CLOUDMGMTSYSTEMS)) {
             return ModelHelper.getCloudMgmtSystemsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.COMMANDS_FETCHER)) {
+            return toList(ModelHelper.getCommandsFetcherForMeId(id));
+        }
+        if (type.equals(Constants.COMMANDS_FETCHER) && relationName.equals(Constants.COMMANDS)) {
+            return ModelHelper.getCommandsForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.CONTAINERS_FETCHER)) {
@@ -7840,18 +8566,18 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getEgressACLTemplatesForFetcherId(id);
         }
         
+        if (type.equals(Constants.ME) && relationName.equals(Constants.EGRESSADVFWDENTRYTEMPLATES_FETCHER)) {
+            return toList(ModelHelper.getEgressAdvFwdEntryTemplatesFetcherForMeId(id));
+        }
+        if (type.equals(Constants.EGRESSADVFWDENTRYTEMPLATES_FETCHER) && relationName.equals(Constants.EGRESSADVFWDENTRYTEMPLATES)) {
+            return ModelHelper.getEgressAdvFwdEntryTemplatesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ME) && relationName.equals(Constants.DOMAINFIPACLTEMPLATES_FETCHER)) {
             return toList(ModelHelper.getDomainFIPAclTemplatesFetcherForMeId(id));
         }
         if (type.equals(Constants.DOMAINFIPACLTEMPLATES_FETCHER) && relationName.equals(Constants.DOMAINFIPACLTEMPLATES)) {
             return ModelHelper.getDomainFIPAclTemplatesForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.ME) && relationName.equals(Constants.FLOATINGIPACLTEMPLATES_FETCHER)) {
-            return toList(ModelHelper.getFloatingIPACLTemplatesFetcherForMeId(id));
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATES_FETCHER) && relationName.equals(Constants.FLOATINGIPACLTEMPLATES)) {
-            return ModelHelper.getFloatingIPACLTemplatesForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.EGRESSQOSPOLICIES_FETCHER)) {
@@ -7994,6 +8720,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getL4ServicesForFetcherId(id);
         }
         
+        if (type.equals(Constants.ME) && relationName.equals(Constants.L7APPLICATIONSIGNATURES_FETCHER)) {
+            return toList(ModelHelper.getL7applicationsignaturesFetcherForMeId(id));
+        }
+        if (type.equals(Constants.L7APPLICATIONSIGNATURES_FETCHER) && relationName.equals(Constants.L7APPLICATIONSIGNATURES)) {
+            return ModelHelper.getL7applicationsignaturesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ME) && relationName.equals(Constants.LICENSES_FETCHER)) {
             return toList(ModelHelper.getLicensesFetcherForMeId(id));
         }
@@ -8043,6 +8776,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getNetworkLayoutsForFetcherId(id);
         }
         
+        if (type.equals(Constants.ME) && relationName.equals(Constants.NETWORKPERFORMANCEMEASUREMENTS_FETCHER)) {
+            return toList(ModelHelper.getNetworkPerformanceMeasurementsFetcherForMeId(id));
+        }
+        if (type.equals(Constants.NETWORKPERFORMANCEMEASUREMENTS_FETCHER) && relationName.equals(Constants.NETWORKPERFORMANCEMEASUREMENTS)) {
+            return ModelHelper.getNetworkPerformanceMeasurementsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ME) && relationName.equals(Constants.NSGATEWAYS_FETCHER)) {
             return toList(ModelHelper.getNSGatewaysFetcherForMeId(id));
         }
@@ -8085,6 +8825,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getNSGUpgradeProfilesForFetcherId(id);
         }
         
+        if (type.equals(Constants.ME) && relationName.equals(Constants.OVERLAYMIRRORDESTINATIONS_FETCHER)) {
+            return toList(ModelHelper.getOverlayMirrorDestinationsFetcherForMeId(id));
+        }
+        if (type.equals(Constants.OVERLAYMIRRORDESTINATIONS_FETCHER) && relationName.equals(Constants.OVERLAYMIRRORDESTINATIONS)) {
+            return ModelHelper.getOverlayMirrorDestinationsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ME) && relationName.equals(Constants.PATMAPPERS_FETCHER)) {
             return toList(ModelHelper.getPATMappersFetcherForMeId(id));
         }
@@ -8111,6 +8858,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.POLICYGROUPS_FETCHER) && relationName.equals(Constants.POLICYGROUPS)) {
             return ModelHelper.getPolicyGroupsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.POLICYOBJECTGROUPS_FETCHER)) {
+            return toList(ModelHelper.getPolicyObjectGroupsFetcherForMeId(id));
+        }
+        if (type.equals(Constants.POLICYOBJECTGROUPS_FETCHER) && relationName.equals(Constants.POLICYOBJECTGROUPS)) {
+            return ModelHelper.getPolicyObjectGroupsForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.QOSPOLICERS_FETCHER)) {
@@ -8146,6 +8900,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.ROUTINGPOLICIES_FETCHER) && relationName.equals(Constants.ROUTINGPOLICIES)) {
             return ModelHelper.getRoutingPoliciesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.SAASAPPLICATIONTYPES_FETCHER)) {
+            return toList(ModelHelper.getSaaSApplicationTypesFetcherForMeId(id));
+        }
+        if (type.equals(Constants.SAASAPPLICATIONTYPES_FETCHER) && relationName.equals(Constants.SAASAPPLICATIONTYPES)) {
+            return ModelHelper.getSaaSApplicationTypesForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.SHAREDNETWORKRESOURCES_FETCHER)) {
@@ -8246,6 +9007,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVirtualFirewallPoliciesForFetcherId(id);
         }
         
+        if (type.equals(Constants.ME) && relationName.equals(Constants.VIRTUALFIREWALLRULES_FETCHER)) {
+            return toList(ModelHelper.getVirtualFirewallRulesFetcherForMeId(id));
+        }
+        if (type.equals(Constants.VIRTUALFIREWALLRULES_FETCHER) && relationName.equals(Constants.VIRTUALFIREWALLRULES)) {
+            return ModelHelper.getVirtualFirewallRulesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ME) && relationName.equals(Constants.VMS_FETCHER)) {
             return toList(ModelHelper.getVMsFetcherForMeId(id));
         }
@@ -8279,6 +9047,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES)) {
             return ModelHelper.getVNFThresholdPoliciesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.VRSS_FETCHER)) {
+            return toList(ModelHelper.getVRSsFetcherForMeId(id));
+        }
+        if (type.equals(Constants.VRSS_FETCHER) && relationName.equals(Constants.VRSS)) {
+            return ModelHelper.getVRSsForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.VCENTERVRSCONFIGS_FETCHER)) {
@@ -8374,6 +9149,20 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.MONITORINGPORT) && relationName.equals(Constants.METADATAS_FETCHER)) {
             return toList(ModelHelper.getMetadatasFetcherForMonitoringPortId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.MONITORSCOPE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForMonitorscopeId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.MONITORSCOPE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForMonitorscopeId(id));
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
@@ -8484,11 +9273,53 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.NETCONFMANAGER) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForNetconfManagerId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NETCONFMANAGER) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForNetconfManagerId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.NETCONFMANAGER) && relationName.equals(Constants.NETCONFSESSIONS_FETCHER)) {
             return toList(ModelHelper.getNetconfSessionsFetcherForNetconfManagerId(id));
         }
         if (type.equals(Constants.NETCONFSESSIONS_FETCHER) && relationName.equals(Constants.NETCONFSESSIONS)) {
             return ModelHelper.getNetconfSessionsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NETCONFPROFILE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForNetconfProfileId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NETCONFPROFILE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForNetconfProfileId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NETCONFSESSION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForNetconfSessionId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NETCONFSESSION) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForNetconfSessionId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.NETWORKLAYOUT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -8521,6 +9352,34 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.NETWORKMACROGROUP) && relationName.equals(Constants.METADATAS_FETCHER)) {
             return toList(ModelHelper.getMetadatasFetcherForNetworkMacroGroupId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NETWORKPERFORMANCEBINDING) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForNetworkPerformanceBindingId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NETWORKPERFORMANCEBINDING) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForNetworkPerformanceBindingId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NETWORKPERFORMANCEMEASUREMENT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForNetworkPerformanceMeasurementId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NETWORKPERFORMANCEMEASUREMENT) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForNetworkPerformanceMeasurementId(id));
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
@@ -8638,13 +9497,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
-        if (type.equals(Constants.NSGATEWAY) && relationName.equals(Constants.MONITORSCOPES_FETCHER)) {
-            return toList(ModelHelper.getMonitorscopesFetcherForNSGatewayId(id));
-        }
-        if (type.equals(Constants.MONITORSCOPES_FETCHER) && relationName.equals(Constants.MONITORSCOPES)) {
-            return ModelHelper.getMonitorscopesForFetcherId(id);
-        }
-        
         if (type.equals(Constants.NSGATEWAY) && relationName.equals(Constants.NSGATEWAYSUMMARIES_FETCHER)) {
             return toList(ModelHelper.getNSGatewaySummariesFetcherForNSGatewayId(id));
         }
@@ -8664,6 +9516,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.NSPORTS_FETCHER) && relationName.equals(Constants.NSPORTS)) {
             return ModelHelper.getNSPortsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NSGATEWAY) && relationName.equals(Constants.PATCHS_FETCHER)) {
+            return toList(ModelHelper.getPatchsFetcherForNSGatewayId(id));
+        }
+        if (type.equals(Constants.PATCHS_FETCHER) && relationName.equals(Constants.PATCHS)) {
+            return ModelHelper.getPatchsForFetcherId(id);
         }
         
         if (type.equals(Constants.NSGATEWAY) && relationName.equals(Constants.PATNATPOOLS_FETCHER)) {
@@ -8694,11 +9553,46 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getUplinkConnectionsForFetcherId(id);
         }
         
+        if (type.equals(Constants.NSGATEWAY) && relationName.equals(Constants.VNFS_FETCHER)) {
+            return toList(ModelHelper.getVNFsFetcherForNSGatewayId(id));
+        }
+        if (type.equals(Constants.VNFS_FETCHER) && relationName.equals(Constants.VNFS)) {
+            return ModelHelper.getVNFsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.NSGATEWAY) && relationName.equals(Constants.WIRELESSPORTS_FETCHER)) {
             return toList(ModelHelper.getWirelessPortsFetcherForNSGatewayId(id));
         }
         if (type.equals(Constants.WIRELESSPORTS_FETCHER) && relationName.equals(Constants.WIRELESSPORTS)) {
             return ModelHelper.getWirelessPortsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NSGATEWAYSCOUNT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForNSGatewaysCountId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NSGATEWAYSCOUNT) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForNSGatewaysCountId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NSGATEWAYSUMMARY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForNSGatewaySummaryId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NSGATEWAYSUMMARY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForNSGatewaySummaryId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.NSGATEWAYTEMPLATE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -8729,6 +9623,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getDUCGroupBindingsForFetcherId(id);
         }
         
+        if (type.equals(Constants.NSGGROUP) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForNSGGroupId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NSGGROUP) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForNSGGroupId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.NSGGROUP) && relationName.equals(Constants.NSGATEWAYS_FETCHER)) {
             return toList(ModelHelper.getNSGatewaysFetcherForNSGGroupId(id));
         }
@@ -8741,6 +9649,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.ALARMS_FETCHER) && relationName.equals(Constants.ALARMS)) {
             return ModelHelper.getAlarmsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NSREDUNDANTGATEWAYGROUP) && relationName.equals(Constants.ENTERPRISEPERMISSIONS_FETCHER)) {
+            return toList(ModelHelper.getEnterprisePermissionsFetcherForNSRedundantGatewayGroupId(id));
+        }
+        if (type.equals(Constants.ENTERPRISEPERMISSIONS_FETCHER) && relationName.equals(Constants.ENTERPRISEPERMISSIONS)) {
+            return ModelHelper.getEnterprisePermissionsForFetcherId(id);
         }
         
         if (type.equals(Constants.NSREDUNDANTGATEWAYGROUP) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
@@ -8776,6 +9691,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.REDUNDANTPORTS_FETCHER) && relationName.equals(Constants.REDUNDANTPORTS)) {
             return ModelHelper.getRedundantPortsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.NSREDUNDANTGATEWAYGROUP) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
+            return toList(ModelHelper.getPermissionsFetcherForNSRedundantGatewayGroupId(id));
+        }
+        if (type.equals(Constants.PERMISSIONS_FETCHER) && relationName.equals(Constants.PERMISSIONS)) {
+            return ModelHelper.getPermissionsForFetcherId(id);
         }
         
         if (type.equals(Constants.NSREDUNDANTGATEWAYGROUP) && relationName.equals(Constants.SHUNTLINKS_FETCHER)) {
@@ -8890,6 +9812,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVLANTemplatesForFetcherId(id);
         }
         
+        if (type.equals(Constants.REDUNDANTPORT) && relationName.equals(Constants.ENTERPRISEPERMISSIONS_FETCHER)) {
+            return toList(ModelHelper.getEnterprisePermissionsFetcherForRedundantPortId(id));
+        }
+        if (type.equals(Constants.ENTERPRISEPERMISSIONS_FETCHER) && relationName.equals(Constants.ENTERPRISEPERMISSIONS)) {
+            return ModelHelper.getEnterprisePermissionsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.REDUNDANTPORT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
             return toList(ModelHelper.getGlobalMetadatasFetcherForRedundantPortId(id));
         }
@@ -8909,6 +9838,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.NSPORTS_FETCHER) && relationName.equals(Constants.NSPORTS)) {
             return ModelHelper.getNSPortsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.REDUNDANTPORT) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
+            return toList(ModelHelper.getPermissionsFetcherForRedundantPortId(id));
+        }
+        if (type.equals(Constants.PERMISSIONS_FETCHER) && relationName.equals(Constants.PERMISSIONS)) {
+            return ModelHelper.getPermissionsForFetcherId(id);
         }
         
         if (type.equals(Constants.REDUNDANTPORT) && relationName.equals(Constants.VLANS_FETCHER)) {
@@ -8974,6 +9910,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.OVERLAYADDRESSPOOL) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForOverlayAddressPoolId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.OVERLAYADDRESSPOOL) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForOverlayAddressPoolId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.OVERLAYADDRESSPOOL) && relationName.equals(Constants.OVERLAYPATNATENTRIES_FETCHER)) {
             return toList(ModelHelper.getOverlayPATNATEntriesFetcherForOverlayAddressPoolId(id));
         }
@@ -9011,6 +9961,34 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE) && relationName.equals(Constants.METADATAS_FETCHER)) {
             return toList(ModelHelper.getMetadatasFetcherForOverlayMirrorDestinationTemplateId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.OVERLAYPATNATENTRY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForOverlayPATNATEntryId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.OVERLAYPATNATENTRY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForOverlayPATNATEntryId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.PATCH) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForPatchId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.PATCH) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForPatchId(id));
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
@@ -9093,13 +10071,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getApplicationperformancemanagementsForFetcherId(id);
         }
         
-        if (type.equals(Constants.PERFORMANCEMONITOR) && relationName.equals(Constants.NSGATEWAYS_FETCHER)) {
-            return toList(ModelHelper.getNSGatewaysFetcherForPerformanceMonitorId(id));
-        }
-        if (type.equals(Constants.NSGATEWAYS_FETCHER) && relationName.equals(Constants.NSGATEWAYS)) {
-            return ModelHelper.getNSGatewaysForFetcherId(id);
-        }
-        
         if (type.equals(Constants.PERFORMANCEMONITOR) && relationName.equals(Constants.TIERS_FETCHER)) {
             return toList(ModelHelper.getTiersFetcherForPerformanceMonitorId(id));
         }
@@ -9149,6 +10120,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getQOSsForFetcherId(id);
         }
         
+        if (type.equals(Constants.POLICYENTRY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForPolicyEntryId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.POLICYENTRY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForPolicyEntryId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.POLICYGROUP) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
             return toList(ModelHelper.getEventLogsFetcherForPolicyGroupId(id));
         }
@@ -9168,6 +10153,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.POLICYGROUP) && relationName.equals(Constants.POLICYGROUPCATEGORIES_FETCHER)) {
+            return toList(ModelHelper.getPolicyGroupCategoriesFetcherForPolicyGroupId(id));
+        }
+        if (type.equals(Constants.POLICYGROUPCATEGORIES_FETCHER) && relationName.equals(Constants.POLICYGROUPCATEGORIES)) {
+            return ModelHelper.getPolicyGroupCategoriesForFetcherId(id);
         }
         
         if (type.equals(Constants.POLICYGROUP) && relationName.equals(Constants.VPORTS_FETCHER)) {
@@ -9219,11 +10211,39 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.POLICYOBJECTGROUP) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForPolicyObjectGroupId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.POLICYOBJECTGROUP) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForPolicyObjectGroupId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.POLICYOBJECTGROUP) && relationName.equals(Constants.NSGATEWAYS_FETCHER)) {
             return toList(ModelHelper.getNSGatewaysFetcherForPolicyObjectGroupId(id));
         }
         if (type.equals(Constants.NSGATEWAYS_FETCHER) && relationName.equals(Constants.NSGATEWAYS)) {
             return ModelHelper.getNSGatewaysForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.POLICYSTATEMENT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForPolicyStatementId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.POLICYSTATEMENT) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForPolicyStatementId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.POLICYSTATEMENT) && relationName.equals(Constants.POLICYENTRIES_FETCHER)) {
@@ -9303,11 +10323,18 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVLANTemplatesForFetcherId(id);
         }
         
-        if (type.equals(Constants.PROXYARPFILTER) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
-            return toList(ModelHelper.getEventLogsFetcherForProxyARPFilterId(id));
+        if (type.equals(Constants.PSNATPOOL) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForPSNATPoolId(id));
         }
-        if (type.equals(Constants.EVENTLOGS_FETCHER) && relationName.equals(Constants.EVENTLOGS)) {
-            return ModelHelper.getEventLogsForFetcherId(id);
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.PSNATPOOL) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForPSNATPoolId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.PSNATPOOL) && relationName.equals(Constants.PSPATMAPS_FETCHER)) {
@@ -9322,6 +10349,34 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.PTRANSLATIONMAPS_FETCHER) && relationName.equals(Constants.PTRANSLATIONMAPS)) {
             return ModelHelper.getPTranslationMapsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.PSPATMAP) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForPSPATMapId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.PSPATMAP) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForPSPATMapId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.PTRANSLATIONMAP) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForPTranslationMapId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.PTRANSLATIONMAP) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForPTranslationMapId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.PUBLICNETWORKMACRO) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
@@ -9681,6 +10736,34 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.SAPEGRESSQOSPROFILE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForSAPEgressQoSProfileId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SAPEGRESSQOSPROFILE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForSAPEgressQoSProfileId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SAPINGRESSQOSPROFILE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForSAPIngressQoSProfileId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SAPINGRESSQOSPROFILE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForSAPIngressQoSProfileId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.WANSERVICE) && relationName.equals(Constants.ALARMS_FETCHER)) {
             return toList(ModelHelper.getAlarmsFetcherForWANServiceId(id));
         }
@@ -9814,6 +10897,34 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.SPATSOURCESPOOL) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForSPATSourcesPoolId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SPATSOURCESPOOL) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForSPATSourcesPoolId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SSHKEY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForSSHKeyId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SSHKEY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForSSHKeyId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.SSIDCONNECTION) && relationName.equals(Constants.ALARMS_FETCHER)) {
             return toList(ModelHelper.getAlarmsFetcherForSSIDConnectionId(id));
         }
@@ -9821,18 +10932,25 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getAlarmsForFetcherId(id);
         }
         
-        if (type.equals(Constants.SSIDCONNECTION) && relationName.equals(Constants.CAPTIVEPORTALPROFILES_FETCHER)) {
-            return toList(ModelHelper.getCaptivePortalProfilesFetcherForSSIDConnectionId(id));
-        }
-        if (type.equals(Constants.CAPTIVEPORTALPROFILES_FETCHER) && relationName.equals(Constants.CAPTIVEPORTALPROFILES)) {
-            return ModelHelper.getCaptivePortalProfilesForFetcherId(id);
-        }
-        
         if (type.equals(Constants.SSIDCONNECTION) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
             return toList(ModelHelper.getEventLogsFetcherForSSIDConnectionId(id));
         }
         if (type.equals(Constants.EVENTLOGS_FETCHER) && relationName.equals(Constants.EVENTLOGS)) {
             return ModelHelper.getEventLogsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SSIDCONNECTION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForSSIDConnectionId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SSIDCONNECTION) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForSSIDConnectionId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.STATICROUTE) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
@@ -10171,6 +11289,20 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.TRUNK) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForTrunkId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.TRUNK) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForTrunkId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.TRUNK) && relationName.equals(Constants.VPORTS_FETCHER)) {
             return toList(ModelHelper.getVPortsFetcherForTrunkId(id));
         }
@@ -10206,11 +11338,18 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getCustomPropertiesForFetcherId(id);
         }
         
-        if (type.equals(Constants.UPLINKCONNECTION) && relationName.equals(Constants.UNDERLAYS_FETCHER)) {
-            return toList(ModelHelper.getUnderlaysFetcherForUplinkConnectionId(id));
+        if (type.equals(Constants.UPLINKCONNECTION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForUplinkConnectionId(id));
         }
-        if (type.equals(Constants.UNDERLAYS_FETCHER) && relationName.equals(Constants.UNDERLAYS)) {
-            return ModelHelper.getUnderlaysForFetcherId(id);
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.UPLINKCONNECTION) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForUplinkConnectionId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.UPLINKRD) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -10274,6 +11413,20 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VMS_FETCHER) && relationName.equals(Constants.VMS)) {
             return ModelHelper.getVMsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.USERCONTEXT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForUserContextId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.USERCONTEXT) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForUserContextId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.VCENTER) && relationName.equals(Constants.AUTODISCOVEREDDATACENTERS_FETCHER)) {
@@ -10505,13 +11658,6 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
             return ModelHelper.getMetadatasForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.VIRTUALFIREWALLRULE) && relationName.equals(Constants.STATISTICS_FETCHER)) {
-            return toList(ModelHelper.getStatisticsFetcherForVirtualFirewallRuleId(id));
-        }
-        if (type.equals(Constants.STATISTICS_FETCHER) && relationName.equals(Constants.STATISTICS)) {
-            return ModelHelper.getStatisticsForFetcherId(id);
         }
         
         if (type.equals(Constants.VIRTUALIP) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
@@ -10780,11 +11926,25 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getTCAsForFetcherId(id);
         }
         
+        if (type.equals(Constants.VNF) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForVNFId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.VNF) && relationName.equals(Constants.JOBS_FETCHER)) {
             return toList(ModelHelper.getJobsFetcherForVNFId(id));
         }
         if (type.equals(Constants.JOBS_FETCHER) && relationName.equals(Constants.JOBS)) {
             return ModelHelper.getJobsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNF) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForVNFId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.VNF) && relationName.equals(Constants.VNFINTERFACES_FETCHER)) {
@@ -10801,6 +11961,27 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVNFMetadatasForFetcherId(id);
         }
         
+        if (type.equals(Constants.VNF) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER)) {
+            return toList(ModelHelper.getVNFThresholdPoliciesFetcherForVNFId(id));
+        }
+        if (type.equals(Constants.VNFTHRESHOLDPOLICIES_FETCHER) && relationName.equals(Constants.VNFTHRESHOLDPOLICIES)) {
+            return ModelHelper.getVNFThresholdPoliciesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFCATALOG) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForVNFCatalogId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFCATALOG) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForVNFCatalogId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.VNFCATALOG) && relationName.equals(Constants.VNFDESCRIPTORS_FETCHER)) {
             return toList(ModelHelper.getVNFDescriptorsFetcherForVNFCatalogId(id));
         }
@@ -10808,11 +11989,95 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVNFDescriptorsForFetcherId(id);
         }
         
+        if (type.equals(Constants.VNFDESCRIPTOR) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForVNFDescriptorId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFDESCRIPTOR) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForVNFDescriptorId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.VNFDESCRIPTOR) && relationName.equals(Constants.VNFINTERFACEDESCRIPTORS_FETCHER)) {
             return toList(ModelHelper.getVNFInterfaceDescriptorsFetcherForVNFDescriptorId(id));
         }
         if (type.equals(Constants.VNFINTERFACEDESCRIPTORS_FETCHER) && relationName.equals(Constants.VNFINTERFACEDESCRIPTORS)) {
             return ModelHelper.getVNFInterfaceDescriptorsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFDOMAINMAPPING) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForVNFDomainMappingId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFDOMAINMAPPING) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForVNFDomainMappingId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFINTERFACE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForVNFInterfaceId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFINTERFACE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForVNFInterfaceId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFINTERFACEDESCRIPTOR) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForVNFInterfaceDescriptorId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFINTERFACEDESCRIPTOR) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForVNFInterfaceDescriptorId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFMETADATA) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForVNFMetadataId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFMETADATA) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForVNFMetadataId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFTHRESHOLDPOLICY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForVNFThresholdPolicyId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VNFTHRESHOLDPOLICY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForVNFThresholdPolicyId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
         }
         
         if (type.equals(Constants.VPNCONNECTION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -10843,13 +12108,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getAlarmsForFetcherId(id);
         }
         
-        if (type.equals(Constants.VPORT) && relationName.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTS_FETCHER)) {
-            return toList(ModelHelper.getApplicationperformancemanagementsFetcherForVPortId(id));
-        }
-        if (type.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTS_FETCHER) && relationName.equals(Constants.APPLICATIONPERFORMANCEMANAGEMENTS)) {
-            return ModelHelper.getApplicationperformancemanagementsForFetcherId(id);
-        }
-        
         if (type.equals(Constants.VPORT) && relationName.equals(Constants.BGPNEIGHBORS_FETCHER)) {
             return toList(ModelHelper.getBGPNeighborsFetcherForVPortId(id));
         }
@@ -10876,6 +12134,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.CONTAINERINTERFACES_FETCHER) && relationName.equals(Constants.CONTAINERINTERFACES)) {
             return ModelHelper.getContainerInterfacesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.VPORT) && relationName.equals(Constants.DEPLOYMENTFAILURES_FETCHER)) {
+            return toList(ModelHelper.getDeploymentFailuresFetcherForVPortId(id));
+        }
+        if (type.equals(Constants.DEPLOYMENTFAILURES_FETCHER) && relationName.equals(Constants.DEPLOYMENTFAILURES)) {
+            return ModelHelper.getDeploymentFailuresForFetcherId(id);
         }
         
         if (type.equals(Constants.VPORT) && relationName.equals(Constants.DHCPOPTIONS_FETCHER)) {
@@ -11375,13 +12640,6 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getVSCsForFetcherId(id);
         }
         
-        if (type.equals(Constants.VSP) && relationName.equals(Constants.VSDS_FETCHER)) {
-            return toList(ModelHelper.getVSDsFetcherForVSPId(id));
-        }
-        if (type.equals(Constants.VSDS_FETCHER) && relationName.equals(Constants.VSDS)) {
-            return ModelHelper.getVSDsForFetcherId(id);
-        }
-        
         if (type.equals(Constants.WIRELESSPORT) && relationName.equals(Constants.ALARMS_FETCHER)) {
             return toList(ModelHelper.getAlarmsFetcherForWirelessPortId(id));
         }
@@ -11396,18 +12654,25 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getEventLogsForFetcherId(id);
         }
         
+        if (type.equals(Constants.WIRELESSPORT) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForWirelessPortId(id));
+        }
+        if (type.equals(Constants.GLOBALMETADATAS_FETCHER) && relationName.equals(Constants.GLOBALMETADATAS)) {
+            return ModelHelper.getGlobalMetadatasForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.WIRELESSPORT) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForWirelessPortId(id));
+        }
+        if (type.equals(Constants.METADATAS_FETCHER) && relationName.equals(Constants.METADATAS)) {
+            return ModelHelper.getMetadatasForFetcherId(id);
+        }
+        
         if (type.equals(Constants.WIRELESSPORT) && relationName.equals(Constants.SSIDCONNECTIONS_FETCHER)) {
             return toList(ModelHelper.getSSIDConnectionsFetcherForWirelessPortId(id));
         }
         if (type.equals(Constants.SSIDCONNECTIONS_FETCHER) && relationName.equals(Constants.SSIDCONNECTIONS)) {
             return ModelHelper.getSSIDConnectionsForFetcherId(id);
-        }
-        
-        if (type.equals(Constants.WIRELESSPORT) && relationName.equals(Constants.STATISTICS_FETCHER)) {
-            return toList(ModelHelper.getStatisticsFetcherForWirelessPortId(id));
-        }
-        if (type.equals(Constants.STATISTICS_FETCHER) && relationName.equals(Constants.STATISTICS)) {
-            return ModelHelper.getStatisticsForFetcherId(id);
         }
         
         if (type.equals(Constants.ZFBREQUEST) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -11666,6 +12931,62 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(AllAlarmSeverity.values()));
         }
         
+        if (type.equals(Constants.ALLGATEWAY)) {
+            java.util.List<AllGateway> allObjs = ModelHelper.getAllAllGateways();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.ALLGATEWAYS_FETCHER)) {
+            java.util.List<AllGatewaysFetcher> allObjs = ModelHelper.getAllAllGatewaysFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.ALLGATEWAY_ZFBMATCHATTRIBUTE_ENUM)) {
+            return new QueryResult(Arrays.asList(AllGatewayZFBMatchAttribute.values()));
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_BOOTSTRAPSTATUS_ENUM)) {
+            return new QueryResult(Arrays.asList(AllGatewayBootstrapStatus.values()));
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(AllGatewayEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_FAMILY_ENUM)) {
+            return new QueryResult(Arrays.asList(AllGatewayFamily.values()));
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_PERMITTEDACTION_ENUM)) {
+            return new QueryResult(Arrays.asList(AllGatewayPermittedAction.values()));
+        }
+        
+        if (type.equals(Constants.ALLGATEWAY_PERSONALITY_ENUM)) {
+            return new QueryResult(Arrays.asList(AllGatewayPersonality.values()));
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP)) {
+            java.util.List<AllRedundancyGroup> allObjs = ModelHelper.getAllAllRedundancyGroups();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.ALLREDUNDANCYGROUPS_FETCHER)) {
+            java.util.List<AllRedundancyGroupsFetcher> allObjs = ModelHelper.getAllAllRedundancyGroupsFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.ALLREDUNDANCYGROUP_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(AllRedundancyGroupEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP_PERMITTEDACTION_ENUM)) {
+            return new QueryResult(Arrays.asList(AllRedundancyGroupPermittedAction.values()));
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP_PERSONALITY_ENUM)) {
+            return new QueryResult(Arrays.asList(AllRedundancyGroupPersonality.values()));
+        }
+        
+        if (type.equals(Constants.ALLREDUNDANCYGROUP_REDUNDANTGATEWAYSTATUS_ENUM)) {
+            return new QueryResult(Arrays.asList(AllRedundancyGroupRedundantGatewayStatus.values()));
+        }
+        
         if (type.equals(Constants.APPLICATION)) {
             java.util.List<Application> allObjs = ModelHelper.getAllApplications();
             return new QueryResult(allObjs);
@@ -11906,6 +13227,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(BRConnectionAdvertisementCriteria.values()));
         }
         
+        if (type.equals(Constants.BRCONNECTION_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(BRConnectionEntityScope.values()));
+        }
+        
         if (type.equals(Constants.BRCONNECTION_MODE_ENUM)) {
             return new QueryResult(Arrays.asList(BRConnectionMode.values()));
         }
@@ -12034,6 +13359,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(ConnectionendpointEndPointType.values()));
         }
         
+        if (type.equals(Constants.CONNECTIONENDPOINT_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(ConnectionendpointEntityScope.values()));
+        }
+        
         if (type.equals(Constants.CONTAINER)) {
             java.util.List<Container> allObjs = ModelHelper.getAllContainers();
             return new QueryResult(allObjs);
@@ -12126,6 +13455,14 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<CSNATPoolsFetcher> allObjs = ModelHelper.getAllCSNATPoolsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.CSNATPOOL_IPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(CSNATPoolIPType.values()));
+        }
+        
+        if (type.equals(Constants.CSNATPOOL_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(CSNATPoolEntityScope.values()));
+        }
+        
         if (type.equals(Constants.CTRANSLATIONMAP)) {
             java.util.List<CTranslationMap> allObjs = ModelHelper.getAllCTranslationMaps();
             return new QueryResult(allObjs);
@@ -12134,6 +13471,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<CTranslationMapsFetcher> allObjs = ModelHelper.getAllCTranslationMapsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.CTRANSLATIONMAP_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(CTranslationMapEntityScope.values()));
+        }
+        
         if (type.equals(Constants.CTRANSLATIONMAP_MAPPINGTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(CTranslationMapMappingType.values()));
         }
@@ -12146,6 +13487,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<CustomPropertiesFetcher> allObjs = ModelHelper.getAllCustomPropertiesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.CUSTOMPROPERTY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(CustomPropertyEntityScope.values()));
+        }
+        
         if (type.equals(Constants.DEFAULTGATEWAY)) {
             java.util.List<DefaultGateway> allObjs = ModelHelper.getAllDefaultGateways();
             return new QueryResult(allObjs);
@@ -12154,6 +13499,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<DefaultGatewaysFetcher> allObjs = ModelHelper.getAllDefaultGatewaysFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.DEFAULTGATEWAY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(DefaultGatewayEntityScope.values()));
+        }
+        
         if (type.equals(Constants.DEMARCATIONSERVICE)) {
             java.util.List<DemarcationService> allObjs = ModelHelper.getAllDemarcationServices();
             return new QueryResult(allObjs);
@@ -12162,6 +13511,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<DemarcationServicesFetcher> allObjs = ModelHelper.getAllDemarcationServicesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.DEMARCATIONSERVICE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(DemarcationServiceEntityScope.values()));
+        }
+        
         if (type.equals(Constants.DEMARCATIONSERVICE_TYPE_ENUM)) {
             return new QueryResult(Arrays.asList(DemarcationServiceType.values()));
         }
@@ -12174,6 +13527,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<DeploymentFailuresFetcher> allObjs = ModelHelper.getAllDeploymentFailuresFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.DEPLOYMENTFAILURE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(DeploymentFailureEntityScope.values()));
+        }
+        
         if (type.equals(Constants.DEPLOYMENTFAILURE_EVENTTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(DeploymentFailureEventType.values()));
         }
@@ -12382,6 +13739,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<DUCGroupsFetcher> allObjs = ModelHelper.getAllDUCGroupsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.DUCGROUP_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(DUCGroupEntityScope.values()));
+        }
+        
         if (type.equals(Constants.DUCGROUPBINDING)) {
             java.util.List<DUCGroupBinding> allObjs = ModelHelper.getAllDUCGroupBindings();
             return new QueryResult(allObjs);
@@ -12390,6 +13751,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<DUCGroupBindingsFetcher> allObjs = ModelHelper.getAllDUCGroupBindingsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.DUCGROUPBINDING_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(DUCGroupBindingEntityScope.values()));
+        }
+        
         if (type.equals(Constants.VCENTEREAMCONFIG)) {
             java.util.List<VCenterEAMConfig> allObjs = ModelHelper.getAllVCenterEAMConfigs();
             return new QueryResult(allObjs);
@@ -12470,6 +13835,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(EgressAdvFwdEntryTemplateAction.values()));
         }
         
+        if (type.equals(Constants.EGRESSADVFWDENTRYTEMPLATE_ASSOCIATEDTRAFFICTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(EgressAdvFwdEntryTemplateAssociatedTrafficType.values()));
+        }
+        
         if (type.equals(Constants.EGRESSADVFWDENTRYTEMPLATE_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(EgressAdvFwdEntryTemplateEntityScope.values()));
         }
@@ -12526,8 +13895,8 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(DomainFIPAclTemplateEntryAction.values()));
         }
         
-        if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_DESTINATIONTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(DomainFIPAclTemplateEntryDestinationType.values()));
+        if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_ASSOCIATEDTRAFFICTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(DomainFIPAclTemplateEntryAssociatedTrafficType.values()));
         }
         
         if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_ENTITYSCOPE_ENUM)) {
@@ -12544,10 +13913,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_POLICYSTATE_ENUM)) {
             return new QueryResult(Arrays.asList(DomainFIPAclTemplateEntryPolicyState.values()));
-        }
-        
-        if (type.equals(Constants.DOMAINFIPACLTEMPLATEENTRY_SOURCETYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(DomainFIPAclTemplateEntrySourceType.values()));
         }
         
         if (type.equals(Constants.DOMAINFIPACLTEMPLATE)) {
@@ -12570,54 +13935,6 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(DomainFIPAclTemplatePriorityType.values()));
         }
         
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY)) {
-            java.util.List<FloatingIPACLTemplateEntry> allObjs = ModelHelper.getAllFloatingIPACLTemplateEntries();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRIES_FETCHER)) {
-            java.util.List<FloatingIPACLTemplateEntriesFetcher> allObjs = ModelHelper.getAllFloatingIPACLTemplateEntriesFetchers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_ACTION_ENUM)) {
-            return new QueryResult(Arrays.asList(FloatingIPACLTemplateEntryAction.values()));
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_ENTITYSCOPE_ENUM)) {
-            return new QueryResult(Arrays.asList(FloatingIPACLTemplateEntryEntityScope.values()));
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_LOCATIONTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(FloatingIPACLTemplateEntryLocationType.values()));
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_NETWORKTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(FloatingIPACLTemplateEntryNetworkType.values()));
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATEENTRY_POLICYSTATE_ENUM)) {
-            return new QueryResult(Arrays.asList(FloatingIPACLTemplateEntryPolicyState.values()));
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE)) {
-            java.util.List<FloatingIPACLTemplate> allObjs = ModelHelper.getAllFloatingIPACLTemplates();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATES_FETCHER)) {
-            java.util.List<FloatingIPACLTemplatesFetcher> allObjs = ModelHelper.getAllFloatingIPACLTemplatesFetchers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE_ENTITYSCOPE_ENUM)) {
-            return new QueryResult(Arrays.asList(FloatingIPACLTemplateEntityScope.values()));
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE_POLICYSTATE_ENUM)) {
-            return new QueryResult(Arrays.asList(FloatingIPACLTemplatePolicyState.values()));
-        }
-        
-        if (type.equals(Constants.FLOATINGIPACLTEMPLATE_PRIORITYTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(FloatingIPACLTemplatePriorityType.values()));
-        }
-        
         if (type.equals(Constants.EGRESSPROFILE)) {
             java.util.List<EgressProfile> allObjs = ModelHelper.getAllEgressProfiles();
             return new QueryResult(allObjs);
@@ -12626,6 +13943,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<EgressProfilesFetcher> allObjs = ModelHelper.getAllEgressProfilesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.EGRESSPROFILE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(EgressProfileEntityScope.values()));
+        }
+        
         if (type.equals(Constants.EGRESSQOSPOLICY)) {
             java.util.List<EgressQOSPolicy> allObjs = ModelHelper.getAllEgressQOSPolicies();
             return new QueryResult(allObjs);
@@ -12668,6 +13989,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.ENTERPRISE_ALLOWEDFORWARDINGCLASSES_ENUM)) {
             return new QueryResult(Arrays.asList(EnterpriseAllowedForwardingClasses.values()));
+        }
+        
+        if (type.equals(Constants.ENTERPRISE_ALLOWEDFORWARDINGMODE_ENUM)) {
+            return new QueryResult(Arrays.asList(EnterpriseAllowedForwardingMode.values()));
         }
         
         if (type.equals(Constants.ENTERPRISE_AVATARTYPE_ENUM)) {
@@ -12750,6 +14075,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(EnterpriseSecuredDataEntityScope.values()));
         }
         
+        if (type.equals(Constants.ENTERPRISESECUREDDATA_SEEDTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(EnterpriseSecuredDataSeedType.values()));
+        }
+        
         if (type.equals(Constants.ENTERPRISESECURITY)) {
             java.util.List<EnterpriseSecurity> allObjs = ModelHelper.getAllEnterpriseSecurities();
             return new QueryResult(allObjs);
@@ -12782,6 +14111,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<FirewallAclsFetcher> allObjs = ModelHelper.getAllFirewallAclsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.FIREWALLACL_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(FirewallAclEntityScope.values()));
+        }
+        
         if (type.equals(Constants.FIREWALLRULE)) {
             java.util.List<FirewallRule> allObjs = ModelHelper.getAllFirewallRules();
             return new QueryResult(allObjs);
@@ -12794,8 +14127,12 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(FirewallRuleAction.values()));
         }
         
-        if (type.equals(Constants.FIREWALLRULE_DESTINATIONTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(FirewallRuleDestinationType.values()));
+        if (type.equals(Constants.FIREWALLRULE_ASSOCIATEDTRAFFICTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(FirewallRuleAssociatedTrafficType.values()));
+        }
+        
+        if (type.equals(Constants.FIREWALLRULE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(FirewallRuleEntityScope.values()));
         }
         
         if (type.equals(Constants.FIREWALLRULE_LOCATIONTYPE_ENUM)) {
@@ -12804,10 +14141,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.FIREWALLRULE_NETWORKTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(FirewallRuleNetworkType.values()));
-        }
-        
-        if (type.equals(Constants.FIREWALLRULE_SOURCETYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(FirewallRuleSourceType.values()));
         }
         
         if (type.equals(Constants.FLOATINGIP)) {
@@ -12898,6 +14231,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<GatewayRedundantPortsFetcher> allObjs = ModelHelper.getAllGatewayRedundantPortsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.GATEWAYREDUNDANTPORT_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(GatewayRedundantPortEntityScope.values()));
+        }
+        
         if (type.equals(Constants.GATEWAYREDUNDANTPORT_PERMITTEDACTION_ENUM)) {
             return new QueryResult(Arrays.asList(GatewayRedundantPortPermittedAction.values()));
         }
@@ -12932,6 +14269,18 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.GATEWAYSECURITY_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(GatewaySecurityEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.GATEWAYSLOCATION)) {
+            java.util.List<GatewaysLocation> allObjs = ModelHelper.getAllGatewaysLocations();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.GATEWAYSLOCATIONS_FETCHER)) {
+            java.util.List<GatewaysLocationsFetcher> allObjs = ModelHelper.getAllGatewaysLocationsFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.GATEWAYSLOCATION_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(GatewaysLocationEntityScope.values()));
         }
         
         if (type.equals(Constants.GATEWAYTEMPLATE)) {
@@ -13438,54 +14787,6 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(IngressAdvFwdTemplatePriorityType.values()));
         }
         
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY)) {
-            java.util.List<IngressExternalServiceTemplateEntry> allObjs = ModelHelper.getAllIngressExternalServiceTemplateEntries();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRIES_FETCHER)) {
-            java.util.List<IngressExternalServiceTemplateEntriesFetcher> allObjs = ModelHelper.getAllIngressExternalServiceTemplateEntriesFetchers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_ACTION_ENUM)) {
-            return new QueryResult(Arrays.asList(IngressExternalServiceTemplateEntryAction.values()));
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_ENTITYSCOPE_ENUM)) {
-            return new QueryResult(Arrays.asList(IngressExternalServiceTemplateEntryEntityScope.values()));
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_LOCATIONTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(IngressExternalServiceTemplateEntryLocationType.values()));
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_NETWORKTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(IngressExternalServiceTemplateEntryNetworkType.values()));
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATEENTRY_POLICYSTATE_ENUM)) {
-            return new QueryResult(Arrays.asList(IngressExternalServiceTemplateEntryPolicyState.values()));
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE)) {
-            java.util.List<IngressExternalServiceTemplate> allObjs = ModelHelper.getAllIngressExternalServiceTemplates();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER)) {
-            java.util.List<IngressExternalServiceTemplatesFetcher> allObjs = ModelHelper.getAllIngressExternalServiceTemplatesFetchers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE_ENTITYSCOPE_ENUM)) {
-            return new QueryResult(Arrays.asList(IngressExternalServiceTemplateEntityScope.values()));
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE_POLICYSTATE_ENUM)) {
-            return new QueryResult(Arrays.asList(IngressExternalServiceTemplatePolicyState.values()));
-        }
-        
-        if (type.equals(Constants.INGRESSEXTERNALSERVICETEMPLATE_PRIORITYTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(IngressExternalServiceTemplatePriorityType.values()));
-        }
-        
         if (type.equals(Constants.INGRESSPROFILE)) {
             java.util.List<IngressProfile> allObjs = ModelHelper.getAllIngressProfiles();
             return new QueryResult(allObjs);
@@ -13494,6 +14795,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<IngressProfilesFetcher> allObjs = ModelHelper.getAllIngressProfilesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.INGRESSPROFILE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(IngressProfileEntityScope.values()));
+        }
+        
         if (type.equals(Constants.INGRESSQOSPOLICY)) {
             java.util.List<IngressQOSPolicy> allObjs = ModelHelper.getAllIngressQOSPolicies();
             return new QueryResult(allObjs);
@@ -13530,6 +14835,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<IPFilterProfilesFetcher> allObjs = ModelHelper.getAllIPFilterProfilesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.IPFILTERPROFILE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(IPFilterProfileEntityScope.values()));
+        }
+        
         if (type.equals(Constants.IPRESERVATION)) {
             java.util.List<IPReservation> allObjs = ModelHelper.getAllIPReservations();
             return new QueryResult(allObjs);
@@ -13550,6 +14859,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<IPv6FilterProfilesFetcher> allObjs = ModelHelper.getAllIPv6FilterProfilesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.IPV6FILTERPROFILE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(IPv6FilterProfileEntityScope.values()));
+        }
+        
         if (type.equals(Constants.JOB)) {
             java.util.List<Job> allObjs = ModelHelper.getAllJobs();
             return new QueryResult(allObjs);
@@ -13558,10 +14871,6 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<JobsFetcher> allObjs = ModelHelper.getAllJobsFetchers();
             return new QueryResult(allObjs);
         }
-        if (type.equals(Constants.JOB_ASSOCENTITYTYPE_ENUM)) {
-            return new QueryResult(Arrays.asList(JobAssocEntityType.values()));
-        }
-        
         if (type.equals(Constants.JOB_COMMAND_ENUM)) {
             return new QueryResult(Arrays.asList(JobCommand.values()));
         }
@@ -13608,6 +14917,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.KEYSERVERMONITORENCRYPTEDSEED_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(KeyServerMonitorEncryptedSeedEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.KEYSERVERMONITORENCRYPTEDSEED_SEEDTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(KeyServerMonitorEncryptedSeedSeedType.values()));
         }
         
         if (type.equals(Constants.KEYSERVERMONITORSEED)) {
@@ -13778,6 +15091,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<L7applicationsignaturesFetcher> allObjs = ModelHelper.getAllL7applicationsignaturesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.L7APPLICATIONSIGNATURE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(L7applicationsignatureEntityScope.values()));
+        }
+        
         if (type.equals(Constants.LDAPCONFIGURATION)) {
             java.util.List<LDAPConfiguration> allObjs = ModelHelper.getAllLDAPConfigurations();
             return new QueryResult(allObjs);
@@ -13818,6 +15135,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<LicenseStatusFetcher> allObjs = ModelHelper.getAllLicenseStatusFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.LICENSESTATUS_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(LicenseStatusEntityScope.values()));
+        }
+        
         if (type.equals(Constants.LINK)) {
             java.util.List<Link> allObjs = ModelHelper.getAllLinks();
             return new QueryResult(allObjs);
@@ -13862,6 +15183,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<LTEInformationsFetcher> allObjs = ModelHelper.getAllLTEInformationsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.LTEINFORMATION_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(LTEInformationEntityScope.values()));
+        }
+        
         if (type.equals(Constants.LTESTATISTICS)) {
             java.util.List<Ltestatistics> allObjs = ModelHelper.getAllLtestatistics();
             return new QueryResult(allObjs);
@@ -13878,6 +15203,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<MACFilterProfilesFetcher> allObjs = ModelHelper.getAllMACFilterProfilesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.MACFILTERPROFILE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(MACFilterProfileEntityScope.values()));
+        }
+        
         if (type.equals(Constants.ME)) {
             java.util.List<Me> allObjs = ModelHelper.getAllMes();
             return new QueryResult(allObjs);
@@ -13946,6 +15275,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<MonitorscopesFetcher> allObjs = ModelHelper.getAllMonitorscopesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.MONITORSCOPE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(MonitorscopeEntityScope.values()));
+        }
+        
         if (type.equals(Constants.MULTICASTCHANNELMAP)) {
             java.util.List<MultiCastChannelMap> allObjs = ModelHelper.getAllMultiCastChannelMaps();
             return new QueryResult(allObjs);
@@ -13982,6 +15315,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<MultiCastRangesFetcher> allObjs = ModelHelper.getAllMultiCastRangesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.MULTICASTRANGE_IPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(MultiCastRangeIPType.values()));
+        }
+        
         if (type.equals(Constants.MULTICASTRANGE_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(MultiCastRangeEntityScope.values()));
         }
@@ -14022,6 +15359,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<NetconfManagersFetcher> allObjs = ModelHelper.getAllNetconfManagersFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.NETCONFMANAGER_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NetconfManagerEntityScope.values()));
+        }
+        
         if (type.equals(Constants.NETCONFMANAGER_STATUS_ENUM)) {
             return new QueryResult(Arrays.asList(NetconfManagerStatus.values()));
         }
@@ -14034,6 +15375,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<NetconfProfilesFetcher> allObjs = ModelHelper.getAllNetconfProfilesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.NETCONFPROFILE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NetconfProfileEntityScope.values()));
+        }
+        
         if (type.equals(Constants.NETCONFSESSION)) {
             java.util.List<NetconfSession> allObjs = ModelHelper.getAllNetconfSessions();
             return new QueryResult(allObjs);
@@ -14042,6 +15387,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<NetconfSessionsFetcher> allObjs = ModelHelper.getAllNetconfSessionsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.NETCONFSESSION_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NetconfSessionEntityScope.values()));
+        }
+        
         if (type.equals(Constants.NETCONFSESSION_STATUS_ENUM)) {
             return new QueryResult(Arrays.asList(NetconfSessionStatus.values()));
         }
@@ -14082,6 +15431,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<NetworkPerformanceBindingsFetcher> allObjs = ModelHelper.getAllNetworkPerformanceBindingsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.NETWORKPERFORMANCEBINDING_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NetworkPerformanceBindingEntityScope.values()));
+        }
+        
         if (type.equals(Constants.NETWORKPERFORMANCEMEASUREMENT)) {
             java.util.List<NetworkPerformanceMeasurement> allObjs = ModelHelper.getAllNetworkPerformanceMeasurements();
             return new QueryResult(allObjs);
@@ -14094,6 +15447,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(NetworkPerformanceMeasurementNPMType.values()));
         }
         
+        if (type.equals(Constants.NETWORKPERFORMANCEMEASUREMENT_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NetworkPerformanceMeasurementEntityScope.values()));
+        }
+        
         if (type.equals(Constants.NEXTHOP)) {
             java.util.List<NextHop> allObjs = ModelHelper.getAllNextHops();
             return new QueryResult(allObjs);
@@ -14102,8 +15459,16 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<NextHopsFetcher> allObjs = ModelHelper.getAllNextHopsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.NEXTHOP_IPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NextHopIPType.values()));
+        }
+        
         if (type.equals(Constants.NEXTHOP_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(NextHopEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.NEXTHOP_TYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NextHopType.values()));
         }
         
         if (type.equals(Constants.NSGATEWAY)) {
@@ -14166,6 +15531,18 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(NSGatewayPersonality.values()));
         }
         
+        if (type.equals(Constants.NSGATEWAYSCOUNT)) {
+            java.util.List<NSGatewaysCount> allObjs = ModelHelper.getAllNSGatewaysCounts();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.NSGATEWAYSCOUNTS_FETCHER)) {
+            java.util.List<NSGatewaysCountsFetcher> allObjs = ModelHelper.getAllNSGatewaysCountsFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.NSGATEWAYSCOUNT_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NSGatewaysCountEntityScope.values()));
+        }
+        
         if (type.equals(Constants.NSGATEWAYSUMMARY)) {
             java.util.List<NSGatewaySummary> allObjs = ModelHelper.getAllNSGatewaySummaries();
             return new QueryResult(allObjs);
@@ -14176,6 +15553,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.NSGATEWAYSUMMARY_BOOTSTRAPSTATUS_ENUM)) {
             return new QueryResult(Arrays.asList(NSGatewaySummaryBootstrapStatus.values()));
+        }
+        
+        if (type.equals(Constants.NSGATEWAYSUMMARY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NSGatewaySummaryEntityScope.values()));
         }
         
         if (type.equals(Constants.NSGATEWAYTEMPLATE)) {
@@ -14210,6 +15591,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<NSGGroupsFetcher> allObjs = ModelHelper.getAllNSGGroupsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.NSGGROUP_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NSGGroupEntityScope.values()));
+        }
+        
         if (type.equals(Constants.NSGINFO)) {
             java.util.List<NSGInfo> allObjs = ModelHelper.getAllNSGInfos();
             return new QueryResult(allObjs);
@@ -14218,10 +15603,6 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<NSGInfosFetcher> allObjs = ModelHelper.getAllNSGInfosFetchers();
             return new QueryResult(allObjs);
         }
-        if (type.equals(Constants.NSGINFO_TPMSTATUS_ENUM)) {
-            return new QueryResult(Arrays.asList(NSGInfoTPMStatus.values()));
-        }
-        
         if (type.equals(Constants.NSGINFO_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(NSGInfoEntityScope.values()));
         }
@@ -14438,6 +15819,14 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<OverlayAddressPoolsFetcher> allObjs = ModelHelper.getAllOverlayAddressPoolsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.OVERLAYADDRESSPOOL_IPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(OverlayAddressPoolIPType.values()));
+        }
+        
+        if (type.equals(Constants.OVERLAYADDRESSPOOL_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(OverlayAddressPoolEntityScope.values()));
+        }
+        
         if (type.equals(Constants.OVERLAYMIRRORDESTINATION)) {
             java.util.List<OverlayMirrorDestination> allObjs = ModelHelper.getAllOverlayMirrorDestinations();
             return new QueryResult(allObjs);
@@ -14446,6 +15835,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<OverlayMirrorDestinationsFetcher> allObjs = ModelHelper.getAllOverlayMirrorDestinationsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.OVERLAYMIRRORDESTINATION_DESTINATIONTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(OverlayMirrorDestinationDestinationType.values()));
+        }
+        
         if (type.equals(Constants.OVERLAYMIRRORDESTINATION_ENDPOINTTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(OverlayMirrorDestinationEndPointType.values()));
         }
@@ -14466,6 +15859,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<OverlayMirrorDestinationTemplatesFetcher> allObjs = ModelHelper.getAllOverlayMirrorDestinationTemplatesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE_DESTINATIONTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(OverlayMirrorDestinationTemplateDestinationType.values()));
+        }
+        
         if (type.equals(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE_ENDPOINTTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(OverlayMirrorDestinationTemplateEndPointType.values()));
         }
@@ -14486,6 +15883,22 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<OverlayPATNATEntriesFetcher> allObjs = ModelHelper.getAllOverlayPATNATEntriesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.OVERLAYPATNATENTRY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(OverlayPATNATEntryEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.PATCH)) {
+            java.util.List<Patch> allObjs = ModelHelper.getAllPatchs();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.PATCHS_FETCHER)) {
+            java.util.List<PatchsFetcher> allObjs = ModelHelper.getAllPatchsFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.PATCH_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PatchEntityScope.values()));
+        }
+        
         if (type.equals(Constants.PATIPENTRY)) {
             java.util.List<PATIPEntry> allObjs = ModelHelper.getAllPATIPEntries();
             return new QueryResult(allObjs);
@@ -14522,6 +15935,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<PATNATPoolsFetcher> allObjs = ModelHelper.getAllPATNATPoolsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.PATNATPOOL_IPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PATNATPoolIPType.values()));
+        }
+        
         if (type.equals(Constants.PATNATPOOL_ASSOCIATEDGATEWAYTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(PATNATPoolAssociatedGatewayType.values()));
         }
@@ -14614,6 +16031,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<PolicyEntriesFetcher> allObjs = ModelHelper.getAllPolicyEntriesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.POLICYENTRY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PolicyEntryEntityScope.values()));
+        }
+        
         if (type.equals(Constants.POLICYGROUP)) {
             java.util.List<PolicyGroup> allObjs = ModelHelper.getAllPolicyGroups();
             return new QueryResult(allObjs);
@@ -14624,6 +16045,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.POLICYGROUP_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(PolicyGroupEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.POLICYGROUP_ENTITYSTATE_ENUM)) {
+            return new QueryResult(Arrays.asList(PolicyGroupEntityState.values()));
         }
         
         if (type.equals(Constants.POLICYGROUP_TYPE_ENUM)) {
@@ -14666,6 +16091,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<PolicyObjectGroupsFetcher> allObjs = ModelHelper.getAllPolicyObjectGroupsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.POLICYOBJECTGROUP_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PolicyObjectGroupEntityScope.values()));
+        }
+        
         if (type.equals(Constants.POLICYOBJECTGROUP_TYPE_ENUM)) {
             return new QueryResult(Arrays.asList(PolicyObjectGroupType.values()));
         }
@@ -14678,6 +16107,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<PolicyStatementsFetcher> allObjs = ModelHelper.getAllPolicyStatementsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.POLICYSTATEMENT_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PolicyStatementEntityScope.values()));
+        }
+        
         if (type.equals(Constants.PORT)) {
             java.util.List<Port> allObjs = ModelHelper.getAllPorts();
             return new QueryResult(allObjs);
@@ -14754,6 +16187,14 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<PSNATPoolsFetcher> allObjs = ModelHelper.getAllPSNATPoolsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.PSNATPOOL_IPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PSNATPoolIPType.values()));
+        }
+        
+        if (type.equals(Constants.PSNATPOOL_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PSNATPoolEntityScope.values()));
+        }
+        
         if (type.equals(Constants.PSPATMAP)) {
             java.util.List<PSPATMap> allObjs = ModelHelper.getAllPSPATMaps();
             return new QueryResult(allObjs);
@@ -14762,6 +16203,14 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<PSPATMapsFetcher> allObjs = ModelHelper.getAllPSPATMapsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.PSPATMAP_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PSPATMapEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.PSPATMAP_FAMILY_ENUM)) {
+            return new QueryResult(Arrays.asList(PSPATMapFamily.values()));
+        }
+        
         if (type.equals(Constants.PTRANSLATIONMAP)) {
             java.util.List<PTranslationMap> allObjs = ModelHelper.getAllPTranslationMaps();
             return new QueryResult(allObjs);
@@ -14770,6 +16219,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<PTranslationMapsFetcher> allObjs = ModelHelper.getAllPTranslationMapsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.PTRANSLATIONMAP_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(PTranslationMapEntityScope.values()));
+        }
+        
         if (type.equals(Constants.PTRANSLATIONMAP_MAPPINGTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(PTranslationMapMappingType.values()));
         }
@@ -14838,6 +16291,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<RedirectionTargetsFetcher> allObjs = ModelHelper.getAllRedirectionTargetsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.REDIRECTIONTARGET_DESTINATIONTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(RedirectionTargetDestinationType.values()));
+        }
+        
         if (type.equals(Constants.REDIRECTIONTARGET_ENDPOINTTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(RedirectionTargetEndPointType.values()));
         }
@@ -14858,6 +16315,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<RedirectionTargetTemplatesFetcher> allObjs = ModelHelper.getAllRedirectionTargetTemplatesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.REDIRECTIONTARGETTEMPLATE_DESTINATIONTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(RedirectionTargetTemplateDestinationType.values()));
+        }
+        
         if (type.equals(Constants.REDIRECTIONTARGETTEMPLATE_ENDPOINTTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(RedirectionTargetTemplateEndPointType.values()));
         }
@@ -14926,6 +16387,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(RoutingPolicyEntityScope.values()));
         }
         
+        if (type.equals(Constants.ROUTINGPOLICY_ROUTINGPROTOCOL_ENUM)) {
+            return new QueryResult(Arrays.asList(RoutingPolicyRoutingProtocol.values()));
+        }
+        
         if (type.equals(Constants.SAASAPPLICATIONGROUP)) {
             java.util.List<SaaSApplicationGroup> allObjs = ModelHelper.getAllSaaSApplicationGroups();
             return new QueryResult(allObjs);
@@ -14958,6 +16423,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<SAPEgressQoSProfilesFetcher> allObjs = ModelHelper.getAllSAPEgressQoSProfilesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.SAPEGRESSQOSPROFILE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(SAPEgressQoSProfileEntityScope.values()));
+        }
+        
         if (type.equals(Constants.SAPINGRESSQOSPROFILE)) {
             java.util.List<SAPIngressQoSProfile> allObjs = ModelHelper.getAllSAPIngressQoSProfiles();
             return new QueryResult(allObjs);
@@ -14966,6 +16435,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<SAPIngressQoSProfilesFetcher> allObjs = ModelHelper.getAllSAPIngressQoSProfilesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.SAPINGRESSQOSPROFILE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(SAPIngressQoSProfileEntityScope.values()));
+        }
+        
         if (type.equals(Constants.WANSERVICE)) {
             java.util.List<WANService> allObjs = ModelHelper.getAllWANServices();
             return new QueryResult(allObjs);
@@ -15030,6 +16503,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(ShuntLinkEntityScope.values()));
         }
         
+        if (type.equals(Constants.SHUNTLINK_PERMITTEDACTION_ENUM)) {
+            return new QueryResult(Arrays.asList(ShuntLinkPermittedAction.values()));
+        }
+        
         if (type.equals(Constants.SITEINFO)) {
             java.util.List<SiteInfo> allObjs = ModelHelper.getAllSiteInfos();
             return new QueryResult(allObjs);
@@ -15050,6 +16527,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<SPATSourcesPoolsFetcher> allObjs = ModelHelper.getAllSPATSourcesPoolsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.SPATSOURCESPOOL_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(SPATSourcesPoolEntityScope.values()));
+        }
+        
         if (type.equals(Constants.SPATSOURCESPOOL_FAMILY_ENUM)) {
             return new QueryResult(Arrays.asList(SPATSourcesPoolFamily.values()));
         }
@@ -15062,6 +16543,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<SSHKeysFetcher> allObjs = ModelHelper.getAllSSHKeysFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.SSHKEY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(SSHKeyEntityScope.values()));
+        }
+        
         if (type.equals(Constants.SSHKEY_KEYTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(SSHKeyKeyType.values()));
         }
@@ -15078,8 +16563,20 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(SSIDConnectionAuthenticationMode.values()));
         }
         
+        if (type.equals(Constants.SSIDCONNECTION_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(SSIDConnectionEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.SSIDCONNECTION_PERMITTEDACTION_ENUM)) {
+            return new QueryResult(Arrays.asList(SSIDConnectionPermittedAction.values()));
+        }
+        
         if (type.equals(Constants.SSIDCONNECTION_REDIRECTOPTION_ENUM)) {
             return new QueryResult(Arrays.asList(SSIDConnectionRedirectOption.values()));
+        }
+        
+        if (type.equals(Constants.SSIDCONNECTION_STATUS_ENUM)) {
+            return new QueryResult(Arrays.asList(SSIDConnectionStatus.values()));
         }
         
         if (type.equals(Constants.STATICROUTE)) {
@@ -15162,10 +16659,6 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(SubnetPATEnabled.values()));
         }
         
-        if (type.equals(Constants.SUBNET_DEFAULTACTION_ENUM)) {
-            return new QueryResult(Arrays.asList(SubnetDefaultAction.values()));
-        }
-        
         if (type.equals(Constants.SUBNET_ENCRYPTION_ENUM)) {
             return new QueryResult(Arrays.asList(SubnetEncryption.values()));
         }
@@ -15176,10 +16669,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.SUBNET_ENTITYSTATE_ENUM)) {
             return new QueryResult(Arrays.asList(SubnetEntityState.values()));
-        }
-        
-        if (type.equals(Constants.SUBNET_FLOWCOLLECTIONENABLED_ENUM)) {
-            return new QueryResult(Arrays.asList(SubnetFlowCollectionEnabled.values()));
         }
         
         if (type.equals(Constants.SUBNET_MAINTENANCEMODE_ENUM)) {
@@ -15334,6 +16823,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<TrunksFetcher> allObjs = ModelHelper.getAllTrunksFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.TRUNK_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(TrunkEntityScope.values()));
+        }
+        
         if (type.equals(Constants.UNDERLAY)) {
             java.util.List<Underlay> allObjs = ModelHelper.getAllUnderlays();
             return new QueryResult(allObjs);
@@ -15360,6 +16853,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.UPLINKCONNECTION_ADVERTISEMENTCRITERIA_ENUM)) {
             return new QueryResult(Arrays.asList(UplinkConnectionAdvertisementCriteria.values()));
+        }
+        
+        if (type.equals(Constants.UPLINKCONNECTION_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(UplinkConnectionEntityScope.values()));
         }
         
         if (type.equals(Constants.UPLINKCONNECTION_INTERFACECONNECTIONTYPE_ENUM)) {
@@ -15418,6 +16915,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<UserContextsFetcher> allObjs = ModelHelper.getAllUserContextsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.USERCONTEXT_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(UserContextEntityScope.values()));
+        }
+        
         if (type.equals(Constants.VCENTER)) {
             java.util.List<VCenter> allObjs = ModelHelper.getAllVCenters();
             return new QueryResult(allObjs);
@@ -15734,6 +17235,14 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(VNFAllowedActions.values()));
         }
         
+        if (type.equals(Constants.VNF_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.VNF_LASTUSERACTION_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFLastUserAction.values()));
+        }
+        
         if (type.equals(Constants.VNF_STATUS_ENUM)) {
             return new QueryResult(Arrays.asList(VNFStatus.values()));
         }
@@ -15754,6 +17263,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VNFCatalogsFetcher> allObjs = ModelHelper.getAllVNFCatalogsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VNFCATALOG_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFCatalogEntityScope.values()));
+        }
+        
         if (type.equals(Constants.VNFDESCRIPTOR)) {
             java.util.List<VNFDescriptor> allObjs = ModelHelper.getAllVNFDescriptors();
             return new QueryResult(allObjs);
@@ -15762,6 +17275,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VNFDescriptorsFetcher> allObjs = ModelHelper.getAllVNFDescriptorsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VNFDESCRIPTOR_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFDescriptorEntityScope.values()));
+        }
+        
         if (type.equals(Constants.VNFDESCRIPTOR_TYPE_ENUM)) {
             return new QueryResult(Arrays.asList(VNFDescriptorType.values()));
         }
@@ -15774,6 +17291,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VNFDomainMappingsFetcher> allObjs = ModelHelper.getAllVNFDomainMappingsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VNFDOMAINMAPPING_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFDomainMappingEntityScope.values()));
+        }
+        
         if (type.equals(Constants.VNFDOMAINMAPPING_SEGMENTATIONTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(VNFDomainMappingSegmentationType.values()));
         }
@@ -15790,6 +17311,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(VNFInterfaceAttachedNetworkType.values()));
         }
         
+        if (type.equals(Constants.VNFINTERFACE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFInterfaceEntityScope.values()));
+        }
+        
         if (type.equals(Constants.VNFINTERFACE_TYPE_ENUM)) {
             return new QueryResult(Arrays.asList(VNFInterfaceType.values()));
         }
@@ -15802,6 +17327,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VNFInterfaceDescriptorsFetcher> allObjs = ModelHelper.getAllVNFInterfaceDescriptorsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VNFINTERFACEDESCRIPTOR_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFInterfaceDescriptorEntityScope.values()));
+        }
+        
         if (type.equals(Constants.VNFINTERFACEDESCRIPTOR_TYPE_ENUM)) {
             return new QueryResult(Arrays.asList(VNFInterfaceDescriptorType.values()));
         }
@@ -15814,6 +17343,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VNFMetadatasFetcher> allObjs = ModelHelper.getAllVNFMetadatasFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VNFMETADATA_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFMetadataEntityScope.values()));
+        }
+        
         if (type.equals(Constants.VNFTHRESHOLDPOLICY)) {
             java.util.List<VNFThresholdPolicy> allObjs = ModelHelper.getAllVNFThresholdPolicies();
             return new QueryResult(allObjs);
@@ -15824,6 +17357,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VNFTHRESHOLDPOLICY_ACTION_ENUM)) {
             return new QueryResult(Arrays.asList(VNFThresholdPolicyAction.values()));
+        }
+        
+        if (type.equals(Constants.VNFTHRESHOLDPOLICY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VNFThresholdPolicyEntityScope.values()));
         }
         
         if (type.equals(Constants.VPNCONNECTION)) {
@@ -15974,6 +17511,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VRSAddressRangesFetcher> allObjs = ModelHelper.getAllVRSAddressRangesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VRSADDRESSRANGE_IPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VRSAddressRangeIPType.values()));
+        }
+        
         if (type.equals(Constants.VRSADDRESSRANGE_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(VRSAddressRangeEntityScope.values()));
         }
@@ -15986,8 +17527,32 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<VCenterVRSConfigsFetcher> allObjs = ModelHelper.getAllVCenterVRSConfigsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.VCENTERVRSCONFIG_AVRSPROFILE_ENUM)) {
+            return new QueryResult(Arrays.asList(VCenterVRSConfigAvrsProfile.values()));
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_CPUCOUNT_ENUM)) {
+            return new QueryResult(Arrays.asList(VCenterVRSConfigCpuCount.values()));
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_DESTINATIONMIRRORPORT_ENUM)) {
+            return new QueryResult(Arrays.asList(VCenterVRSConfigDestinationMirrorPort.values()));
+        }
+        
         if (type.equals(Constants.VCENTERVRSCONFIG_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(VCenterVRSConfigEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_MEMORYSIZEINGB_ENUM)) {
+            return new QueryResult(Arrays.asList(VCenterVRSConfigMemorySizeInGB.values()));
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_PERSONALITY_ENUM)) {
+            return new QueryResult(Arrays.asList(VCenterVRSConfigPersonality.values()));
+        }
+        
+        if (type.equals(Constants.VCENTERVRSCONFIG_REMOTESYSLOGSERVERTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VCenterVRSConfigRemoteSyslogServerType.values()));
         }
         
         if (type.equals(Constants.VRSMETRICS)) {
@@ -16098,12 +17663,24 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(WirelessPortCountryCode.values()));
         }
         
+        if (type.equals(Constants.WIRELESSPORT_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(WirelessPortEntityScope.values()));
+        }
+        
         if (type.equals(Constants.WIRELESSPORT_FREQUENCYCHANNEL_ENUM)) {
             return new QueryResult(Arrays.asList(WirelessPortFrequencyChannel.values()));
         }
         
+        if (type.equals(Constants.WIRELESSPORT_PERMITTEDACTION_ENUM)) {
+            return new QueryResult(Arrays.asList(WirelessPortPermittedAction.values()));
+        }
+        
         if (type.equals(Constants.WIRELESSPORT_PORTTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(WirelessPortPortType.values()));
+        }
+        
+        if (type.equals(Constants.WIRELESSPORT_STATUS_ENUM)) {
+            return new QueryResult(Arrays.asList(WirelessPortStatus.values()));
         }
         
         if (type.equals(Constants.WIRELESSPORT_WIFIFREQUENCYBAND_ENUM)) {
@@ -16172,10 +17749,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.ZONE_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(ZoneEntityScope.values()));
-        }
-        
-        if (type.equals(Constants.ZONE_FLOWCOLLECTIONENABLED_ENUM)) {
-            return new QueryResult(Arrays.asList(ZoneFlowCollectionEnabled.values()));
         }
         
         if (type.equals(Constants.ZONE_MAINTENANCEMODE_ENUM)) {

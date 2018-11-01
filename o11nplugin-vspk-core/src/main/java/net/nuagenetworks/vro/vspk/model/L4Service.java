@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.L4ServiceGroupsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.L4ServiceEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -79,8 +81,13 @@ public class L4Service extends BaseObject {
     @JsonProperty(value = "protocol")
     protected String protocol;
     
+    @JsonIgnore
+    private L4ServiceGroupsFetcher l4ServiceGroups;
+    
     @VsoConstructor
-    public L4Service() {}
+    public L4Service() {
+        l4ServiceGroups = new L4ServiceGroupsFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -226,6 +233,12 @@ public class L4Service extends BaseObject {
     public void setProtocol(String value) { 
         this.protocol = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "L4ServiceGroups", readOnly = true)   
+    public L4ServiceGroupsFetcher getL4ServiceGroups() {
+        return l4ServiceGroups;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -246,7 +259,16 @@ public class L4Service extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.L4SERVICE, getId());
         }
-    }public String toString() {
+    }
+    @VsoMethod
+    public void assignL4ServiceGroups(Session session, L4ServiceGroup[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.L4SERVICE, getId());
+        }
+    }
+    public String toString() {
         return "L4Service [" + "ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", defaultService=" + defaultService + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", ports=" + ports + ", protocol=" + protocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }

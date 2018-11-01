@@ -6,6 +6,9 @@
 <input><param name='nSGatewaySummaryObj' type='VSPK:NSGatewaySummary' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -13,13 +16,23 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = nSGatewaySummaryObj.session;
 
+if (externalID) {
+   nSGatewaySummaryObj.externalID = externalID;
+} else if (nSGatewaySummaryObj.externalID) {
+   nSGatewaySummaryObj.externalID = "";
+}
 nSGatewaySummaryObj.save(session, 1);]]></script>
 <in-binding><bind name='nSGatewaySummaryObj' type='VSPK:NSGatewaySummary' export-name="nSGatewaySummaryObj" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="nSGatewaySummaryObj"><desc><![CDATA[nSGatewaySummaryObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSGatewaySummaryObj.externalID]]></p-qual></p-param>
 
 </presentation></workflow>

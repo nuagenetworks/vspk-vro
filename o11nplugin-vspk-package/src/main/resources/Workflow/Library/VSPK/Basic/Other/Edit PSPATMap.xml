@@ -9,6 +9,9 @@
 <param name='associatedSPATSourcesPoolID' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -27,6 +30,11 @@ if (associatedSPATSourcesPoolID) {
 } else if (pSPATMapObj.associatedSPATSourcesPoolID) {
    pSPATMapObj.associatedSPATSourcesPoolID = "";
 }
+if (externalID) {
+   pSPATMapObj.externalID = externalID;
+} else if (pSPATMapObj.externalID) {
+   pSPATMapObj.externalID = "";
+}
 if (name) {
    pSPATMapObj.name = name;
 } else if (pSPATMapObj.name) {
@@ -37,6 +45,8 @@ pSPATMapObj.save(session, 1);]]></script>
 <in-binding><bind name='pSPATMapObj' type='VSPK:PSPATMap' export-name="pSPATMapObj" ></bind>
 
 <bind name='associatedSPATSourcesPoolID' type='string' export-name="associatedSPATSourcesPoolID" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -50,6 +60,9 @@ pSPATMapObj.save(session, 1);]]></script>
 
 <p-param name="associatedSPATSourcesPoolID"><desc><![CDATA[associatedSPATSourcesPoolID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pSPATMapObj.associatedSPATSourcesPoolID]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pSPATMapObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pSPATMapObj.name]]></p-qual></p-param>

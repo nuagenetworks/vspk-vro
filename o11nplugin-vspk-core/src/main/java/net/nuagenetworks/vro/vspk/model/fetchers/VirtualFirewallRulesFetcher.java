@@ -30,6 +30,12 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.VirtualFirewallRule;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Domain;
+
+import net.nuagenetworks.vro.vspk.model.L2Domain;
+
+import net.nuagenetworks.vro.vspk.model.Me;
+
 import net.nuagenetworks.vro.vspk.model.VirtualFirewallPolicy;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -64,6 +70,36 @@ public class VirtualFirewallRulesFetcher extends BaseFetcher<VirtualFirewallRule
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Domain", readOnly = true)
+    public Domain getDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Domain) {
+            return (Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Me) {
+            return (Me) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "VirtualFirewallPolicy", readOnly = true)
     public VirtualFirewallPolicy getVirtualFirewallPolicy() {
         RestObject obj = super.getParentRestObj();

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum GroupRole {
 
-    ADMINOPERATOR("ADMINOPERATOR", "ADMINOPERATOR"), CMS("CMS", "CMS"), CSPOPERATOR("CSPOPERATOR", "CSPOPERATOR"), CSPROOT("CSPROOT", "CSPROOT"), JMS("JMS", "JMS"), ORGADMIN("ORGADMIN", "ORGADMIN"), ORGAPPDESIGNER("ORGAPPDESIGNER", "ORGAPPDESIGNER"), ORGNETWORKDESIGNER("ORGNETWORKDESIGNER", "ORGNETWORKDESIGNER"), ORGUSER("ORGUSER", "ORGUSER"), SECURITYADMINISTRATOR("SECURITYADMINISTRATOR", "SECURITYADMINISTRATOR"), SYSTEM("SYSTEM", "SYSTEM"), UNKNOWN("UNKNOWN", "UNKNOWN"), USER("USER", "USER");
+    ADMINOPERATOR("ADMINOPERATOR", "ADMINOPERATOR"), CMS("CMS", "CMS"), CSPOPERATOR("CSPOPERATOR", "CSPOPERATOR"), CSPROOT("CSPROOT", "CSPROOT"), JMS("JMS", "JMS"), ORGADMIN("ORGADMIN", "ORGADMIN"), PREACTIVATION("PREACTIVATION", "PREACTIVATION"), POSTACTIVATION("POSTACTIVATION", "POSTACTIVATION"), NETCONFMGR("NETCONFMGR", "NETCONFMGR"), STATS("STATS", "STATS"), ORGNETWORKDESIGNER("ORGNETWORKDESIGNER", "ORGNETWORKDESIGNER"), ORGUSER("ORGUSER", "ORGUSER"), SECURITYADMINISTRATOR("SECURITYADMINISTRATOR", "SECURITYADMINISTRATOR"), SYSTEM("SYSTEM", "SYSTEM"), UNKNOWN("UNKNOWN", "UNKNOWN"), USER("USER", "USER");
 
     private final String id;
     private final String name;
@@ -88,9 +88,24 @@ public enum GroupRole {
         return ORGADMIN;
     }
     
-    @VsoProperty(displayName = "ORGAPPDESIGNER", readOnly = true)
-    public GroupRole getORGAPPDESIGNER() {
-        return ORGAPPDESIGNER;
+    @VsoProperty(displayName = "PREACTIVATION", readOnly = true)
+    public GroupRole getPREACTIVATION() {
+        return PREACTIVATION;
+    }
+    
+    @VsoProperty(displayName = "POSTACTIVATION", readOnly = true)
+    public GroupRole getPOSTACTIVATION() {
+        return POSTACTIVATION;
+    }
+    
+    @VsoProperty(displayName = "NETCONFMGR", readOnly = true)
+    public GroupRole getNETCONFMGR() {
+        return NETCONFMGR;
+    }
+    
+    @VsoProperty(displayName = "STATS", readOnly = true)
+    public GroupRole getSTATS() {
+        return STATS;
     }
     
     @VsoProperty(displayName = "ORGNETWORKDESIGNER", readOnly = true)

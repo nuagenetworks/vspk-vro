@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewayTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.SSHKeysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.InfrastructureAccessProfileSSHAuthMode;
@@ -107,6 +109,9 @@ public class InfrastructureAccessProfile extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private NSGatewayTemplatesFetcher nSGatewayTemplates;
+    
+    @JsonIgnore
     private SSHKeysFetcher sSHKeys;
     
     @VsoConstructor
@@ -116,6 +121,8 @@ public class InfrastructureAccessProfile extends BaseObject {
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
         
         sSHKeys = new SSHKeysFetcher(this);
         }
@@ -281,6 +288,12 @@ public class InfrastructureAccessProfile extends BaseObject {
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NSGatewayTemplates", readOnly = true)   
+    public NSGatewayTemplatesFetcher getNSGatewayTemplates() {
+        return nSGatewayTemplates;
     }
     
     @JsonIgnore

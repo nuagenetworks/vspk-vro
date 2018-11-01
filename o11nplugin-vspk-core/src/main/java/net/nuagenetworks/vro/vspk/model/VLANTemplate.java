@@ -73,8 +73,14 @@ public class VLANTemplate extends BaseObject {
     @JsonProperty(value = "associatedEgressQOSPolicyID")
     protected String associatedEgressQOSPolicyID;
     
+    @JsonProperty(value = "associatedIngressOverlayQoSPolicerID")
+    protected String associatedIngressOverlayQoSPolicerID;
+    
     @JsonProperty(value = "associatedIngressQOSPolicyID")
     protected String associatedIngressQOSPolicyID;
+    
+    @JsonProperty(value = "associatedIngressUnderlayQoSPolicerID")
+    protected String associatedIngressUnderlayQoSPolicerID;
     
     @JsonProperty(value = "associatedUplinkConnectionID")
     protected String associatedUplinkConnectionID;
@@ -192,6 +198,17 @@ public class VLANTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedIngressOverlayQoSPolicerID", readOnly = false)   
+    public String getAssociatedIngressOverlayQoSPolicerID() {
+       return associatedIngressOverlayQoSPolicerID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedIngressOverlayQoSPolicerID(String value) { 
+        this.associatedIngressOverlayQoSPolicerID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedIngressQOSPolicyID", readOnly = false)   
     public String getAssociatedIngressQOSPolicyID() {
        return associatedIngressQOSPolicyID;
@@ -200,6 +217,17 @@ public class VLANTemplate extends BaseObject {
     @JsonIgnore
     public void setAssociatedIngressQOSPolicyID(String value) { 
         this.associatedIngressQOSPolicyID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedIngressUnderlayQoSPolicerID", readOnly = false)   
+    public String getAssociatedIngressUnderlayQoSPolicerID() {
+       return associatedIngressUnderlayQoSPolicerID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedIngressUnderlayQoSPolicerID(String value) { 
+        this.associatedIngressUnderlayQoSPolicerID = value;
     }
     
     @JsonIgnore
@@ -397,7 +425,7 @@ public class VLANTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UPLINKCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VLANTemplate [" + "associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", type=" + type + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VLANTemplate [" + "associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", type=" + type + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

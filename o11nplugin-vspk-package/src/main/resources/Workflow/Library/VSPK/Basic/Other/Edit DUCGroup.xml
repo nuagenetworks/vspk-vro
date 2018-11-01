@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (description) {
 } else if (dUCGroupObj.description) {
    dUCGroupObj.description = "";
 }
+if (externalID) {
+   dUCGroupObj.externalID = externalID;
+} else if (dUCGroupObj.externalID) {
+   dUCGroupObj.externalID = "";
+}
 if (name) {
    dUCGroupObj.name = name;
 } else if (dUCGroupObj.name) {
@@ -33,6 +41,8 @@ dUCGroupObj.save(session, 1);]]></script>
 <in-binding><bind name='dUCGroupObj' type='VSPK:DUCGroup' export-name="dUCGroupObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ dUCGroupObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dUCGroupObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dUCGroupObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dUCGroupObj.name]]></p-qual></p-param>

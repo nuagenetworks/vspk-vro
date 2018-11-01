@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.PolicyGroupCategory;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
+
+import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -69,6 +71,16 @@ public class PolicyGroupCategoriesFetcher extends BaseFetcher<PolicyGroupCategor
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PolicyGroup", readOnly = true)
+    public PolicyGroup getPolicyGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyGroup) {
+            return (PolicyGroup) obj;
         }
         
         return null;

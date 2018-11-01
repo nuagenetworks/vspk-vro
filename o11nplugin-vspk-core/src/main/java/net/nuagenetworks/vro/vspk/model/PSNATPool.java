@@ -26,9 +26,17 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PSPATMapsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PTranslationMapsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.enums.PSNATPoolIPType;
+
+import net.nuagenetworks.vro.vspk.model.enums.PSNATPoolEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -43,6 +51,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.PSNATPOOL, datasource = Constants.DATASOURCE, image = Constants.PSNATPOOL_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.PSPATMAPS_FETCHER, type = Constants.PSPATMAPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PTRANSLATIONMAPS_FETCHER, type = Constants.PTRANSLATIONMAPS_FETCHER)
@@ -55,14 +65,35 @@ public class PSNATPool extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "IPType")
+    protected PSNATPoolIPType IPType;
+    
+    @JsonProperty(value = "description")
+    protected String description;
+    
     @JsonProperty(value = "endAddress")
     protected String endAddress;
+    
+    @JsonProperty(value = "entityScope")
+    protected PSNATPoolEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
     
     @JsonProperty(value = "name")
     protected String name;
     
     @JsonProperty(value = "startAddress")
     protected String startAddress;
+    
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
     
     @JsonIgnore
     private PSPATMapsFetcher pSPATMaps;
@@ -72,6 +103,10 @@ public class PSNATPool extends BaseObject {
     
     @VsoConstructor
     public PSNATPool() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
+        
         pSPATMaps = new PSPATMapsFetcher(this);
         
         pTranslationMaps = new PTranslationMapsFetcher(this);
@@ -113,6 +148,28 @@ public class PSNATPool extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "IPType", readOnly = false)   
+    public PSNATPoolIPType getIPType() {
+       return IPType;
+    }
+
+    @JsonIgnore
+    public void setIPType(PSNATPoolIPType value) { 
+        this.IPType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Description", readOnly = false)   
+    public String getDescription() {
+       return description;
+    }
+
+    @JsonIgnore
+    public void setDescription(String value) { 
+        this.description = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EndAddress", readOnly = false)   
     public String getEndAddress() {
        return endAddress;
@@ -121,6 +178,39 @@ public class PSNATPool extends BaseObject {
     @JsonIgnore
     public void setEndAddress(String value) { 
         this.endAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public PSNATPoolEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(PSNATPoolEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
     }
     
     @JsonIgnore
@@ -143,6 +233,18 @@ public class PSNATPool extends BaseObject {
     @JsonIgnore
     public void setStartAddress(String value) { 
         this.startAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
     }
     
     @JsonIgnore
@@ -178,6 +280,49 @@ public class PSNATPool extends BaseObject {
         }
     }
     @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.PSNATPOOL, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignPSPATMaps(Session session, PSPATMap[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.PSNATPOOL, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignPTranslationMaps(Session session, PTranslationMap[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.PSNATPOOL, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createPSPATMap(Session session, PSPATMap childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -193,7 +338,7 @@ public class PSNATPool extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PTRANSLATIONMAPS_FETCHER, getId());
         }
     }public String toString() {
-        return "PSNATPool [" + "endAddress=" + endAddress + ", name=" + name + ", startAddress=" + startAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PSNATPool [" + "IPType=" + IPType + ", description=" + description + ", endAddress=" + endAddress + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", startAddress=" + startAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

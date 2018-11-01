@@ -19,8 +19,6 @@
 </param>
 <param name='locationType' type='VSPK:EgressAdvFwdEntryTemplateLocationType' >
 </param>
-<param name='name' type='string' >
-</param>
 </input><output><param name='egressAdvFwdEntryTemplateObj' type='VSPK:EgressAdvFwdEntryTemplate' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -48,9 +46,6 @@ if (externalID) {
    egressAdvFwdEntryTemplateObj.externalID = externalID;
 }
 egressAdvFwdEntryTemplateObj.locationType = locationType;
-if (name) {
-   egressAdvFwdEntryTemplateObj.name = name;
-}
 
 egressAdvFwdTemplateObj.createEgressAdvFwdEntryTemplate(session, egressAdvFwdEntryTemplateObj);
 ]]></script>
@@ -62,7 +57,6 @@ egressAdvFwdTemplateObj.createEgressAdvFwdEntryTemplate(session, egressAdvFwdEnt
 <bind name='etherType' type='string' export-name="etherType" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='locationType' type='VSPK:EgressAdvFwdEntryTemplateLocationType' export-name="locationType" ></bind>
-<bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='egressAdvFwdEntryTemplateObj' type='VSPK:EgressAdvFwdEntryTemplate' export-name="egressAdvFwdEntryTemplateObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -82,7 +76,5 @@ egressAdvFwdTemplateObj.createEgressAdvFwdEntryTemplate(session, egressAdvFwdEnt
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="locationType"><desc><![CDATA[locationType]]></desc>
-</p-param>
-<p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>
 </presentation></workflow>

@@ -60,6 +60,9 @@ public class Alarm extends BaseObject {
     @JsonProperty(value = "acknowledged")
     protected Boolean acknowledged;
     
+    @JsonProperty(value = "alarmedObjectID")
+    protected String alarmedObjectID;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -153,6 +156,17 @@ public class Alarm extends BaseObject {
     @JsonIgnore
     public void setAcknowledged(Boolean value) { 
         this.acknowledged = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AlarmedObjectID", readOnly = false)   
+    public String getAlarmedObjectID() {
+       return alarmedObjectID;
+    }
+
+    @JsonIgnore
+    public void setAlarmedObjectID(String value) { 
+        this.alarmedObjectID = value;
     }
     
     @JsonIgnore
@@ -344,7 +358,7 @@ public class Alarm extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Alarm [" + "acknowledged=" + acknowledged + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", numberOfOccurances=" + numberOfOccurances + ", reason=" + reason + ", severity=" + severity + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Alarm [" + "acknowledged=" + acknowledged + ", alarmedObjectID=" + alarmedObjectID + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", numberOfOccurances=" + numberOfOccurances + ", reason=" + reason + ", severity=" + severity + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

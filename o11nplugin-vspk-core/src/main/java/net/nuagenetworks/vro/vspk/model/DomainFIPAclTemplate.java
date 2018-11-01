@@ -69,6 +69,9 @@ public class DomainFIPAclTemplate extends BaseObject {
     @JsonProperty(value = "associatedLiveEntityID")
     protected String associatedLiveEntityID;
     
+    @JsonProperty(value = "autoGeneratePriority")
+    protected Boolean autoGeneratePriority;
+    
     @JsonProperty(value = "defaultAllowIP")
     protected Boolean defaultAllowIP;
     
@@ -175,6 +178,17 @@ public class DomainFIPAclTemplate extends BaseObject {
     @JsonIgnore
     public void setAssociatedLiveEntityID(String value) { 
         this.associatedLiveEntityID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AutoGeneratePriority", readOnly = false)   
+    public Boolean getAutoGeneratePriority() {
+       return autoGeneratePriority;
+    }
+
+    @JsonIgnore
+    public void setAutoGeneratePriority(Boolean value) { 
+        this.autoGeneratePriority = value;
     }
     
     @JsonIgnore
@@ -369,7 +383,7 @@ public class DomainFIPAclTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DomainFIPAclTemplate [" + "active=" + active + ", associatedLiveEntityID=" + associatedLiveEntityID + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", description=" + description + ", entityScope=" + entityScope + ", entries=" + entries + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DomainFIPAclTemplate [" + "active=" + active + ", associatedLiveEntityID=" + associatedLiveEntityID + ", autoGeneratePriority=" + autoGeneratePriority + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", description=" + description + ", entityScope=" + entityScope + ", entries=" + entries + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

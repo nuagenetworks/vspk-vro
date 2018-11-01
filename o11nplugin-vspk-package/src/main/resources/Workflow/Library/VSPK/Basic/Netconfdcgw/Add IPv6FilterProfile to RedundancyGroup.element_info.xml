@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
-<entry key="name">Add IPv6FilterProfile to RedundancyGroup</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">08ee0141-b461-53f6-b1c0-acd134059d56</entry>
-</properties>

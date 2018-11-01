@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGInfoFamily {
 
-    ANY("ANY", "ANY"), NSG_AMI("NSG_AMI", "NSG_AMI"), NSG_C("NSG_C", "NSG_C"), NSG_DOCKER("NSG_DOCKER", "NSG_DOCKER"), NSG_E("NSG_E", "NSG_E"), NSG_E200("NSG_E200", "NSG_E200"), NSG_E300("NSG_E300", "NSG_E300"), NSG_V("NSG_V", "NSG_V"), NSG_X("NSG_X", "NSG_X"), NSG_X200("NSG_X200", "NSG_X200");
+    ANY("ANY", "ANY"), NSG_AMI("NSG_AMI", "NSG_AMI"), NSG_AZ("NSG_AZ", "NSG_AZ"), NSG_C("NSG_C", "NSG_C"), NSG_DOCKER("NSG_DOCKER", "NSG_DOCKER"), NSG_E("NSG_E", "NSG_E"), NSG_E200("NSG_E200", "NSG_E200"), NSG_E300("NSG_E300", "NSG_E300"), NSG_V("NSG_V", "NSG_V"), NSG_X("NSG_X", "NSG_X"), NSG_X200("NSG_X200", "NSG_X200");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum NSGInfoFamily {
     @VsoProperty(displayName = "NSG_AMI", readOnly = true)
     public NSGInfoFamily getNSG_AMI() {
         return NSG_AMI;
+    }
+    
+    @VsoProperty(displayName = "NSG_AZ", readOnly = true)
+    public NSGInfoFamily getNSG_AZ() {
+        return NSG_AZ;
     }
     
     @VsoProperty(displayName = "NSG_C", readOnly = true)

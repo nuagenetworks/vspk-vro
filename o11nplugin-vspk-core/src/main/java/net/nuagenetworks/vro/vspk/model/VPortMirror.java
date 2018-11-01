@@ -57,9 +57,6 @@ public class VPortMirror extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "VPortName")
-    protected String VPortName;
-    
     @JsonProperty(value = "attachedNetworkType")
     protected String attachedNetworkType;
     
@@ -92,6 +89,9 @@ public class VPortMirror extends BaseObject {
     
     @JsonProperty(value = "vportId")
     protected String vportId;
+    
+    @JsonProperty(value = "vportName")
+    protected String vportName;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -148,17 +148,6 @@ public class VPortMirror extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
-    @JsonIgnore
-    @VsoProperty(displayName = "VPortName", readOnly = false)   
-    public String getVPortName() {
-       return VPortName;
-    }
-
-    @JsonIgnore
-    public void setVPortName(String value) { 
-        this.VPortName = value;
-    }
-    
     @JsonIgnore
     @VsoProperty(displayName = "AttachedNetworkType", readOnly = false)   
     public String getAttachedNetworkType() {
@@ -281,6 +270,17 @@ public class VPortMirror extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VportName", readOnly = false)   
+    public String getVportName() {
+       return vportName;
+    }
+
+    @JsonIgnore
+    public void setVportName(String value) { 
+        this.vportName = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -337,7 +337,7 @@ public class VPortMirror extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VPortMirror [" + "VPortName=" + VPortName + ", attachedNetworkType=" + attachedNetworkType + ", domainName=" + domainName + ", enterpiseName=" + enterpiseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mirrorDestinationID=" + mirrorDestinationID + ", mirrorDestinationName=" + mirrorDestinationName + ", mirrorDirection=" + mirrorDirection + ", networkName=" + networkName + ", vportId=" + vportId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VPortMirror [" + "attachedNetworkType=" + attachedNetworkType + ", domainName=" + domainName + ", enterpiseName=" + enterpiseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mirrorDestinationID=" + mirrorDestinationID + ", mirrorDestinationName=" + mirrorDestinationName + ", mirrorDirection=" + mirrorDirection + ", networkName=" + networkName + ", vportId=" + vportId + ", vportName=" + vportName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

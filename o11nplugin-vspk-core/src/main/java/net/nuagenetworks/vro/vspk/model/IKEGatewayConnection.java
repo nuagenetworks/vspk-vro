@@ -57,8 +57,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.IKEGATEWAYCONNECTION, datasource = Constants.DATASOURCE, image = Constants.IKEGATEWAYCONNECTION_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.ALARMS_FETCHER, type = Constants.ALARMS_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 })
 @VsoObject(create = false, strict = true)
@@ -461,14 +459,6 @@ public class IKEGatewayConnection extends BaseObject {
         }
     }
     
-    @VsoMethod
-    public void createAlarm(Session session, Alarm childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.ALARMS_FETCHER, getId());
-        }
-    }
     @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;

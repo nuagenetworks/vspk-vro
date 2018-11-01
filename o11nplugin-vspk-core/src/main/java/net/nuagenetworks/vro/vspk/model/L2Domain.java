@@ -28,6 +28,10 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.AddressRangesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementbindingsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.BridgeInterfacesFetcher;
@@ -35,6 +39,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.BridgeInterfacesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainerInterfacesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.DeploymentFailuresFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DHCPOptionsFetcher;
 
@@ -45,6 +51,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.GatewaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
@@ -57,8 +65,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLEntryTemplatesFetcher
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdTemplatesFetcher;
-
-import net.nuagenetworks.vro.vspk.model.fetchers.IngressExternalServiceTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
@@ -76,9 +82,15 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PGExpressionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.ProxyARPFiltersFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RedirectionTargetsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.RedundancyGroupsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.StaticRoutesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
 
@@ -89,6 +101,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.TCAsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkRDsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallPoliciesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallRulesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
@@ -135,19 +149,17 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 @VsoFinder(name = Constants.L2DOMAIN, datasource = Constants.DATASOURCE, image = Constants.L2DOMAIN_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER, type = Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.DEPLOYMENTFAILURES_FETCHER, type = Constants.DEPLOYMENTFAILURES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSACLTEMPLATES_FETCHER, type = Constants.EGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSADVFWDTEMPLATES_FETCHER, type = Constants.EGRESSADVFWDTEMPLATES_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLENTRYTEMPLATES_FETCHER, type = Constants.INGRESSACLENTRYTEMPLATES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLTEMPLATES_FETCHER, type = Constants.INGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSADVFWDTEMPLATES_FETCHER, type = Constants.INGRESSADVFWDTEMPLATES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER, type = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
@@ -164,6 +176,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.QOSS_FETCHER, type = Constants.QOSS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.REDIRECTIONTARGETS_FETCHER, type = Constants.REDIRECTIONTARGETS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.STATICROUTES_FETCHER, type = Constants.STATICROUTES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.STATISTICSPOLICIES_FETCHER, type = Constants.STATISTICSPOLICIES_FETCHER), 
 
@@ -286,6 +300,12 @@ public class L2Domain extends BaseObject {
     private AddressRangesFetcher addressRanges;
     
     @JsonIgnore
+    private AlarmsFetcher alarms;
+    
+    @JsonIgnore
+    private ApplicationsFetcher applications;
+    
+    @JsonIgnore
     private ApplicationperformancemanagementbindingsFetcher applicationperformancemanagementbindings;
     
     @JsonIgnore
@@ -296,6 +316,9 @@ public class L2Domain extends BaseObject {
     
     @JsonIgnore
     private ContainerInterfacesFetcher containerInterfaces;
+    
+    @JsonIgnore
+    private DeploymentFailuresFetcher deploymentFailures;
     
     @JsonIgnore
     private DHCPOptionsFetcher dHCPOptions;
@@ -311,6 +334,9 @@ public class L2Domain extends BaseObject {
     
     @JsonIgnore
     private EventLogsFetcher eventLogs;
+    
+    @JsonIgnore
+    private GatewaysFetcher gateways;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -329,9 +355,6 @@ public class L2Domain extends BaseObject {
     
     @JsonIgnore
     private IngressAdvFwdTemplatesFetcher ingressAdvFwdTemplates;
-    
-    @JsonIgnore
-    private IngressExternalServiceTemplatesFetcher ingressExternalServiceTemplates;
     
     @JsonIgnore
     private JobsFetcher jobs;
@@ -358,10 +381,19 @@ public class L2Domain extends BaseObject {
     private PolicyGroupsFetcher policyGroups;
     
     @JsonIgnore
+    private ProxyARPFiltersFetcher proxyARPFilters;
+    
+    @JsonIgnore
     private QOSsFetcher qOSs;
     
     @JsonIgnore
     private RedirectionTargetsFetcher redirectionTargets;
+    
+    @JsonIgnore
+    private RedundancyGroupsFetcher redundancyGroups;
+    
+    @JsonIgnore
+    private StaticRoutesFetcher staticRoutes;
     
     @JsonIgnore
     private StatisticsFetcher statistics;
@@ -377,6 +409,9 @@ public class L2Domain extends BaseObject {
     
     @JsonIgnore
     private VirtualFirewallPoliciesFetcher virtualFirewallPolicies;
+    
+    @JsonIgnore
+    private VirtualFirewallRulesFetcher virtualFirewallRules;
     
     @JsonIgnore
     private VMsFetcher vMs;
@@ -396,6 +431,10 @@ public class L2Domain extends BaseObject {
         
         addressRanges = new AddressRangesFetcher(this);
         
+        alarms = new AlarmsFetcher(this);
+        
+        applications = new ApplicationsFetcher(this);
+        
         applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
         
         bridgeInterfaces = new BridgeInterfacesFetcher(this);
@@ -403,6 +442,8 @@ public class L2Domain extends BaseObject {
         containers = new ContainersFetcher(this);
         
         containerInterfaces = new ContainerInterfacesFetcher(this);
+        
+        deploymentFailures = new DeploymentFailuresFetcher(this);
         
         dHCPOptions = new DHCPOptionsFetcher(this);
         
@@ -413,6 +454,8 @@ public class L2Domain extends BaseObject {
         egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
+        
+        gateways = new GatewaysFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
@@ -425,8 +468,6 @@ public class L2Domain extends BaseObject {
         ingressACLTemplates = new IngressACLTemplatesFetcher(this);
         
         ingressAdvFwdTemplates = new IngressAdvFwdTemplatesFetcher(this);
-        
-        ingressExternalServiceTemplates = new IngressExternalServiceTemplatesFetcher(this);
         
         jobs = new JobsFetcher(this);
         
@@ -444,9 +485,15 @@ public class L2Domain extends BaseObject {
         
         policyGroups = new PolicyGroupsFetcher(this);
         
+        proxyARPFilters = new ProxyARPFiltersFetcher(this);
+        
         qOSs = new QOSsFetcher(this);
         
         redirectionTargets = new RedirectionTargetsFetcher(this);
+        
+        redundancyGroups = new RedundancyGroupsFetcher(this);
+        
+        staticRoutes = new StaticRoutesFetcher(this);
         
         statistics = new StatisticsFetcher(this);
         
@@ -457,6 +504,8 @@ public class L2Domain extends BaseObject {
         uplinkRDs = new UplinkRDsFetcher(this);
         
         virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
+        
+        virtualFirewallRules = new VirtualFirewallRulesFetcher(this);
         
         vMs = new VMsFetcher(this);
         
@@ -872,6 +921,18 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Alarms", readOnly = true)   
+    public AlarmsFetcher getAlarms() {
+        return alarms;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Applications", readOnly = true)   
+    public ApplicationsFetcher getApplications() {
+        return applications;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Applicationperformancemanagementbindings", readOnly = true)   
     public ApplicationperformancemanagementbindingsFetcher getApplicationperformancemanagementbindings() {
         return applicationperformancemanagementbindings;
@@ -893,6 +954,12 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "ContainerInterfaces", readOnly = true)   
     public ContainerInterfacesFetcher getContainerInterfaces() {
         return containerInterfaces;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DeploymentFailures", readOnly = true)   
+    public DeploymentFailuresFetcher getDeploymentFailures() {
+        return deploymentFailures;
     }
     
     @JsonIgnore
@@ -923,6 +990,12 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Gateways", readOnly = true)   
+    public GatewaysFetcher getGateways() {
+        return gateways;
     }
     
     @JsonIgnore
@@ -959,12 +1032,6 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "IngressAdvFwdTemplates", readOnly = true)   
     public IngressAdvFwdTemplatesFetcher getIngressAdvFwdTemplates() {
         return ingressAdvFwdTemplates;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "IngressExternalServiceTemplates", readOnly = true)   
-    public IngressExternalServiceTemplatesFetcher getIngressExternalServiceTemplates() {
-        return ingressExternalServiceTemplates;
     }
     
     @JsonIgnore
@@ -1016,6 +1083,12 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ProxyARPFilters", readOnly = true)   
+    public ProxyARPFiltersFetcher getProxyARPFilters() {
+        return proxyARPFilters;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "QOSs", readOnly = true)   
     public QOSsFetcher getQOSs() {
         return qOSs;
@@ -1025,6 +1098,18 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "RedirectionTargets", readOnly = true)   
     public RedirectionTargetsFetcher getRedirectionTargets() {
         return redirectionTargets;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RedundancyGroups", readOnly = true)   
+    public RedundancyGroupsFetcher getRedundancyGroups() {
+        return redundancyGroups;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "StaticRoutes", readOnly = true)   
+    public StaticRoutesFetcher getStaticRoutes() {
+        return staticRoutes;
     }
     
     @JsonIgnore
@@ -1055,6 +1140,12 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "VirtualFirewallPolicies", readOnly = true)   
     public VirtualFirewallPoliciesFetcher getVirtualFirewallPolicies() {
         return virtualFirewallPolicies;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VirtualFirewallRules", readOnly = true)   
+    public VirtualFirewallRulesFetcher getVirtualFirewallRules() {
+        return virtualFirewallRules;
     }
     
     @JsonIgnore
@@ -1102,6 +1193,15 @@ public class L2Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void assignDeploymentFailures(Session session, DeploymentFailure[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.L2DOMAIN, getId());
+        }
+    }
+    
+    @VsoMethod
     public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
@@ -1125,6 +1225,14 @@ public class L2Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDINGS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createDeploymentFailure(Session session, DeploymentFailure childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DEPLOYMENTFAILURES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1160,14 +1268,6 @@ public class L2Domain extends BaseObject {
         }
     }
     @VsoMethod
-    public void createIngressACLEntryTemplate(Session session, IngressACLEntryTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSACLENTRYTEMPLATES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createIngressACLTemplate(Session session, IngressACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1181,14 +1281,6 @@ public class L2Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSADVFWDTEMPLATES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createIngressExternalServiceTemplate(Session session, IngressExternalServiceTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1299,6 +1391,14 @@ public class L2Domain extends BaseObject {
         }
     }
     
+    @VsoMethod
+    public void createStaticRoute(Session session, StaticRoute childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.STATICROUTES_FETCHER, getId());
+        }
+    }
     @VsoMethod
     public void createStatisticsPolicy(Session session, StatisticsPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;

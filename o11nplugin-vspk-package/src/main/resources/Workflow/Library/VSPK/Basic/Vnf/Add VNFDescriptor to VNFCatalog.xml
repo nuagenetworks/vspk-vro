@@ -7,6 +7,8 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='memoryMB' type='number' >
 </param>
 <param name='metadataID' type='string' >
@@ -28,6 +30,9 @@ vNFDescriptorObj = new VSPKVNFDescriptor();
 if (description) {
    vNFDescriptorObj.description = description;
 }
+if (externalID) {
+   vNFDescriptorObj.externalID = externalID;
+}
 vNFDescriptorObj.memoryMB = memoryMB;
 if (metadataID) {
    vNFDescriptorObj.metadataID = metadataID;
@@ -41,6 +46,7 @@ vNFCatalogObj.createVNFDescriptor(session, vNFDescriptorObj);
 ]]></script>
 <in-binding><bind name='vNFCatalogObj' type='VSPK:VNFCatalog' export-name="vNFCatalogObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='memoryMB' type='number' export-name="memoryMB" ></bind>
 <bind name='metadataID' type='string' export-name="metadataID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
@@ -52,6 +58,8 @@ vNFCatalogObj.createVNFDescriptor(session, vNFDescriptorObj);
 <p-param name="vNFCatalogObj"><desc><![CDATA[vNFCatalogObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="memoryMB"><desc><![CDATA[memoryMB]]></desc>
 </p-param>

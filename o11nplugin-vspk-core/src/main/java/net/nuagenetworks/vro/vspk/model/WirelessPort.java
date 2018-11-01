@@ -30,15 +30,23 @@ import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.SSIDConnectionsFetcher;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.SSIDConnectionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.WirelessPortCountryCode;
 
+import net.nuagenetworks.vro.vspk.model.enums.WirelessPortEntityScope;
+
 import net.nuagenetworks.vro.vspk.model.enums.WirelessPortFrequencyChannel;
 
+import net.nuagenetworks.vro.vspk.model.enums.WirelessPortPermittedAction;
+
 import net.nuagenetworks.vro.vspk.model.enums.WirelessPortPortType;
+
+import net.nuagenetworks.vro.vspk.model.enums.WirelessPortStatus;
 
 import net.nuagenetworks.vro.vspk.model.enums.WirelessPortWifiFrequencyBand;
 
@@ -57,7 +65,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.WIRELESSPORT, datasource = Constants.DATASOURCE, image = Constants.WIRELESSPORT_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
-        @VsoRelation(inventoryChildren = true, name = Constants.SSIDCONNECTIONS_FETCHER, type = Constants.SSIDCONNECTIONS_FETCHER), 
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.SSIDCONNECTIONS_FETCHER, type = Constants.SSIDCONNECTIONS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -67,11 +77,23 @@ public class WirelessPort extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "VLANRange")
+    protected String VLANRange;
+    
+    @JsonProperty(value = "associatedEgressQOSPolicyID")
+    protected String associatedEgressQOSPolicyID;
+    
     @JsonProperty(value = "countryCode")
     protected WirelessPortCountryCode countryCode;
     
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "entityScope")
+    protected WirelessPortEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
     
     @JsonProperty(value = "frequencyChannel")
     protected WirelessPortFrequencyChannel frequencyChannel;
@@ -79,14 +101,29 @@ public class WirelessPort extends BaseObject {
     @JsonProperty(value = "genericConfig")
     protected String genericConfig;
     
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
+    
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "permittedAction")
+    protected WirelessPortPermittedAction permittedAction;
     
     @JsonProperty(value = "physicalName")
     protected String physicalName;
     
     @JsonProperty(value = "portType")
     protected WirelessPortPortType portType;
+    
+    @JsonProperty(value = "status")
+    protected WirelessPortStatus status;
+    
+    @JsonProperty(value = "useUserMnemonic")
+    protected Boolean useUserMnemonic;
+    
+    @JsonProperty(value = "userMnemonic")
+    protected String userMnemonic;
     
     @JsonProperty(value = "wifiFrequencyBand")
     protected WirelessPortWifiFrequencyBand wifiFrequencyBand;
@@ -101,10 +138,13 @@ public class WirelessPort extends BaseObject {
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
-    private SSIDConnectionsFetcher sSIDConnections;
+    private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
-    private StatisticsFetcher statistics;
+    private MetadatasFetcher metadatas;
+    
+    @JsonIgnore
+    private SSIDConnectionsFetcher sSIDConnections;
     
     @VsoConstructor
     public WirelessPort() {
@@ -112,9 +152,11 @@ public class WirelessPort extends BaseObject {
         
         eventLogs = new EventLogsFetcher(this);
         
-        sSIDConnections = new SSIDConnectionsFetcher(this);
+        globalMetadatas = new GlobalMetadatasFetcher(this);
         
-        statistics = new StatisticsFetcher(this);
+        metadatas = new MetadatasFetcher(this);
+        
+        sSIDConnections = new SSIDConnectionsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -153,6 +195,28 @@ public class WirelessPort extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "VLANRange", readOnly = false)   
+    public String getVLANRange() {
+       return VLANRange;
+    }
+
+    @JsonIgnore
+    public void setVLANRange(String value) { 
+        this.VLANRange = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEgressQOSPolicyID", readOnly = false)   
+    public String getAssociatedEgressQOSPolicyID() {
+       return associatedEgressQOSPolicyID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEgressQOSPolicyID(String value) { 
+        this.associatedEgressQOSPolicyID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "CountryCode", readOnly = false)   
     public WirelessPortCountryCode getCountryCode() {
        return countryCode;
@@ -172,6 +236,28 @@ public class WirelessPort extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public WirelessPortEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(WirelessPortEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
     }
     
     @JsonIgnore
@@ -197,6 +283,17 @@ public class WirelessPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -205,6 +302,17 @@ public class WirelessPort extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PermittedAction", readOnly = false)   
+    public WirelessPortPermittedAction getPermittedAction() {
+       return permittedAction;
+    }
+
+    @JsonIgnore
+    public void setPermittedAction(WirelessPortPermittedAction value) { 
+        this.permittedAction = value;
     }
     
     @JsonIgnore
@@ -227,6 +335,39 @@ public class WirelessPort extends BaseObject {
     @JsonIgnore
     public void setPortType(WirelessPortPortType value) { 
         this.portType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Status", readOnly = false)   
+    public WirelessPortStatus getStatus() {
+       return status;
+    }
+
+    @JsonIgnore
+    public void setStatus(WirelessPortStatus value) { 
+        this.status = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UseUserMnemonic", readOnly = false)   
+    public Boolean getUseUserMnemonic() {
+       return useUserMnemonic;
+    }
+
+    @JsonIgnore
+    public void setUseUserMnemonic(Boolean value) { 
+        this.useUserMnemonic = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UserMnemonic", readOnly = false)   
+    public String getUserMnemonic() {
+       return userMnemonic;
+    }
+
+    @JsonIgnore
+    public void setUserMnemonic(String value) { 
+        this.userMnemonic = value;
     }
     
     @JsonIgnore
@@ -264,15 +405,21 @@ public class WirelessPort extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "SSIDConnections", readOnly = true)   
-    public SSIDConnectionsFetcher getSSIDConnections() {
-        return sSIDConnections;
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Statistics", readOnly = true)   
-    public StatisticsFetcher getStatistics() {
-        return statistics;
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SSIDConnections", readOnly = true)   
+    public SSIDConnectionsFetcher getSSIDConnections() {
+        return sSIDConnections;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -296,6 +443,31 @@ public class WirelessPort extends BaseObject {
         }
     }
     @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.WIRELESSPORT, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createSSIDConnection(Session session, SSIDConnection childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -303,7 +475,7 @@ public class WirelessPort extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.SSIDCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "WirelessPort [" + "countryCode=" + countryCode + ", description=" + description + ", frequencyChannel=" + frequencyChannel + ", genericConfig=" + genericConfig + ", name=" + name + ", physicalName=" + physicalName + ", portType=" + portType + ", wifiFrequencyBand=" + wifiFrequencyBand + ", wifiMode=" + wifiMode + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "WirelessPort [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", countryCode=" + countryCode + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", frequencyChannel=" + frequencyChannel + ", genericConfig=" + genericConfig + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", status=" + status + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", wifiFrequencyBand=" + wifiFrequencyBand + ", wifiMode=" + wifiMode + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

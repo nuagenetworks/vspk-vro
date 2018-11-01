@@ -94,8 +94,6 @@ import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Port;
 
-import net.nuagenetworks.vro.vspk.model.ProxyARPFilter;
-
 import net.nuagenetworks.vro.vspk.model.PublicNetworkMacro;
 
 import net.nuagenetworks.vro.vspk.model.QOS;
@@ -491,16 +489,6 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Port) {
             return (Port) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "ProxyARPFilter", readOnly = true)
-    public ProxyARPFilter getProxyARPFilter() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof ProxyARPFilter) {
-            return (ProxyARPFilter) obj;
         }
         
         return null;

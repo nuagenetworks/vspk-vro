@@ -55,6 +55,9 @@ public class GatewaySecuredData extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "associatedEnterpriseID")
+    protected String associatedEnterpriseID;
+    
     @JsonProperty(value = "data")
     protected String data;
     
@@ -129,6 +132,17 @@ public class GatewaySecuredData extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEnterpriseID", readOnly = false)   
+    public String getAssociatedEnterpriseID() {
+       return associatedEnterpriseID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEnterpriseID(String value) { 
+        this.associatedEnterpriseID = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Data", readOnly = false)   
     public String getData() {
@@ -263,7 +277,7 @@ public class GatewaySecuredData extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "GatewaySecuredData [" + "data=" + data + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayCertSerialNumber=" + gatewayCertSerialNumber + ", keyserverCertSerialNumber=" + keyserverCertSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", signedData=" + signedData + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "GatewaySecuredData [" + "associatedEnterpriseID=" + associatedEnterpriseID + ", data=" + data + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayCertSerialNumber=" + gatewayCertSerialNumber + ", keyserverCertSerialNumber=" + keyserverCertSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", signedData=" + signedData + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

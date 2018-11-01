@@ -42,6 +42,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsPoliciesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.PATNATPoolIPType;
+
 import net.nuagenetworks.vro.vspk.model.enums.PATNATPoolAssociatedGatewayType;
 
 import net.nuagenetworks.vro.vspk.model.enums.PATNATPoolEntityScope;
@@ -78,6 +80,9 @@ public class PATNATPool extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "IPType")
+    protected PATNATPoolIPType IPType;
     
     @JsonProperty(value = "addressRange")
     protected String addressRange;
@@ -208,6 +213,17 @@ public class PATNATPool extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "IPType", readOnly = false)   
+    public PATNATPoolIPType getIPType() {
+       return IPType;
+    }
+
+    @JsonIgnore
+    public void setIPType(PATNATPoolIPType value) { 
+        this.IPType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AddressRange", readOnly = false)   
     public String getAddressRange() {
@@ -520,7 +536,7 @@ public class PATNATPool extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.STATISTICSPOLICIES_FETCHER, getId());
         }
     }public String toString() {
-        return "PATNATPool [" + "addressRange=" + addressRange + ", associatedGatewayId=" + associatedGatewayId + ", associatedGatewayType=" + associatedGatewayType + ", associatedSubnetId=" + associatedSubnetId + ", associatedVlanId=" + associatedVlanId + ", defaultPATIP=" + defaultPATIP + ", description=" + description + ", dynamicSourceEnabled=" + dynamicSourceEnabled + ", endAddressRange=" + endAddressRange + ", endSourceAddress=" + endSourceAddress + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", startAddressRange=" + startAddressRange + ", startSourceAddress=" + startSourceAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PATNATPool [" + "IPType=" + IPType + ", addressRange=" + addressRange + ", associatedGatewayId=" + associatedGatewayId + ", associatedGatewayType=" + associatedGatewayType + ", associatedSubnetId=" + associatedSubnetId + ", associatedVlanId=" + associatedVlanId + ", defaultPATIP=" + defaultPATIP + ", description=" + description + ", dynamicSourceEnabled=" + dynamicSourceEnabled + ", endAddressRange=" + endAddressRange + ", endSourceAddress=" + endSourceAddress + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", startAddressRange=" + startAddressRange + ", startSourceAddress=" + startSourceAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VPortsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.OverlayMirrorDestinationDestinationType;
+
 import net.nuagenetworks.vro.vspk.model.enums.OverlayMirrorDestinationEndPointType;
 
 import net.nuagenetworks.vro.vspk.model.enums.OverlayMirrorDestinationEntityScope;
@@ -66,6 +68,9 @@ public class OverlayMirrorDestination extends BaseObject {
     
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "destinationType")
+    protected OverlayMirrorDestinationDestinationType destinationType;
     
     @JsonProperty(value = "endPointType")
     protected OverlayMirrorDestinationEndPointType endPointType;
@@ -167,6 +172,17 @@ public class OverlayMirrorDestination extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DestinationType", readOnly = false)   
+    public OverlayMirrorDestinationDestinationType getDestinationType() {
+       return destinationType;
+    }
+
+    @JsonIgnore
+    public void setDestinationType(OverlayMirrorDestinationDestinationType value) { 
+        this.destinationType = value;
     }
     
     @JsonIgnore
@@ -340,7 +356,7 @@ public class OverlayMirrorDestination extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "OverlayMirrorDestination [" + "ESI=" + ESI + ", description=" + description + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", templateID=" + templateID + ", triggerType=" + triggerType + ", virtualNetworkID=" + virtualNetworkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "OverlayMirrorDestination [" + "ESI=" + ESI + ", description=" + description + ", destinationType=" + destinationType + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", templateID=" + templateID + ", triggerType=" + triggerType + ", virtualNetworkID=" + virtualNetworkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

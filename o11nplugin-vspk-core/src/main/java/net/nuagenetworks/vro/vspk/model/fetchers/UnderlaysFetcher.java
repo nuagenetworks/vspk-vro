@@ -31,8 +31,6 @@ import net.nuagenetworks.vro.vspk.model.Underlay;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Me;
-
-import net.nuagenetworks.vro.vspk.model.UplinkConnection;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -71,16 +69,6 @@ public class UnderlaysFetcher extends BaseFetcher<Underlay> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "UplinkConnection", readOnly = true)
-    public UplinkConnection getUplinkConnection() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof UplinkConnection) {
-            return (UplinkConnection) obj;
         }
         
         return null;

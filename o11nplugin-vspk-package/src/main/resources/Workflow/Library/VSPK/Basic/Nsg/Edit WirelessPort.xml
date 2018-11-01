@@ -12,6 +12,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='frequencyChannel' type='VSPK:WirelessPortFrequencyChannel' >
 </param>
 
@@ -43,6 +46,11 @@ if (description) {
 } else if (wirelessPortObj.description) {
    wirelessPortObj.description = "";
 }
+if (externalID) {
+   wirelessPortObj.externalID = externalID;
+} else if (wirelessPortObj.externalID) {
+   wirelessPortObj.externalID = "";
+}
 wirelessPortObj.frequencyChannel = frequencyChannel;
 if (name) {
    wirelessPortObj.name = name;
@@ -63,6 +71,8 @@ wirelessPortObj.save(session, 1);]]></script>
 <bind name='countryCode' type='VSPK:WirelessPortCountryCode' export-name="countryCode" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='frequencyChannel' type='VSPK:WirelessPortFrequencyChannel' export-name="frequencyChannel" ></bind>
 
@@ -87,6 +97,9 @@ wirelessPortObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#wirelessPortObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#wirelessPortObj.externalID]]></p-qual></p-param>
 
 <p-param name="frequencyChannel"><desc><![CDATA[frequencyChannel]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="VSPK:WirelessPortFrequencyChannel" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getWirelessPortFrequencyChannel").call( #wirelessPortObj )]]></p-qual></p-param>

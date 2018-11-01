@@ -59,6 +59,9 @@ public class GatewaySecurity extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "associatedEntityType")
+    protected String associatedEntityType;
+    
     @JsonProperty(value = "entityScope")
     protected GatewaySecurityEntityScope entityScope;
     
@@ -132,6 +135,17 @@ public class GatewaySecurity extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEntityType", readOnly = false)   
+    public String getAssociatedEntityType() {
+       return associatedEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEntityType(String value) { 
+        this.associatedEntityType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public GatewaySecurityEntityScope getEntityScope() {
@@ -258,7 +272,7 @@ public class GatewaySecurity extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "GatewaySecurity [" + "entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", lastUpdatedBy=" + lastUpdatedBy + ", revision=" + revision + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "GatewaySecurity [" + "associatedEntityType=" + associatedEntityType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", lastUpdatedBy=" + lastUpdatedBy + ", revision=" + revision + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

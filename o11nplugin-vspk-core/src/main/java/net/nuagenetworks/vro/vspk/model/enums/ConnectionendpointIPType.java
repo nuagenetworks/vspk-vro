@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum ConnectionendpointIPType {
 
-    IPV4("IPV4", "IPV4");
+    IPV4("IPV4", "IPV4"), IPV6("IPV6", "IPV6");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum ConnectionendpointIPType {
     @VsoProperty(displayName = "IPV4", readOnly = true)
     public ConnectionendpointIPType getIPV4() {
         return IPV4;
+    }
+    
+    @VsoProperty(displayName = "IPV6", readOnly = true)
+    public ConnectionendpointIPType getIPV6() {
+        return IPV6;
     }
     
 

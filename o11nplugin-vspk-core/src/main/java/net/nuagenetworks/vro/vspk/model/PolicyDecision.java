@@ -78,9 +78,6 @@ public class PolicyDecision extends BaseObject {
     @JsonProperty(value = "ingressAdvFwd")
     protected java.util.List<com.fasterxml.jackson.databind.JsonNode> ingressAdvFwd;
     
-    @JsonProperty(value = "ingressExternalServiceACLs")
-    protected java.util.List<com.fasterxml.jackson.databind.JsonNode> ingressExternalServiceACLs;
-    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
@@ -226,17 +223,6 @@ public class PolicyDecision extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "IngressExternalServiceACLs", readOnly = false)   
-    public java.util.List<com.fasterxml.jackson.databind.JsonNode> getIngressExternalServiceACLs() {
-       return ingressExternalServiceACLs;
-    }
-
-    @JsonIgnore
-    public void setIngressExternalServiceACLs(java.util.List<com.fasterxml.jackson.databind.JsonNode> value) { 
-        this.ingressExternalServiceACLs = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
     public String getLastUpdatedBy() {
        return lastUpdatedBy;
@@ -332,7 +318,7 @@ public class PolicyDecision extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "PolicyDecision [" + "egressACLs=" + egressACLs + ", egressQos=" + egressQos + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fipACLs=" + fipACLs + ", ingressACLs=" + ingressACLs + ", ingressAdvFwd=" + ingressAdvFwd + ", ingressExternalServiceACLs=" + ingressExternalServiceACLs + ", lastUpdatedBy=" + lastUpdatedBy + ", qos=" + qos + ", stats=" + stats + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PolicyDecision [" + "egressACLs=" + egressACLs + ", egressQos=" + egressQos + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fipACLs=" + fipACLs + ", ingressACLs=" + ingressACLs + ", ingressAdvFwd=" + ingressAdvFwd + ", lastUpdatedBy=" + lastUpdatedBy + ", qos=" + qos + ", stats=" + stats + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

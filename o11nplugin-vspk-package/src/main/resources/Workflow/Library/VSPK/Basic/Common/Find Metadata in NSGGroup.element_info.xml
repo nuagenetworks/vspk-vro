@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in NSGGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7bb69849-604d-5a9e-9652-3b8435a9ba6d</entry>
+</properties>

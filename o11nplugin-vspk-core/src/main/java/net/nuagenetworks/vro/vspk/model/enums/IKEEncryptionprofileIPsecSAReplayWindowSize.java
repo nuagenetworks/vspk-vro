@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum IKEEncryptionprofileIPsecSAReplayWindowSize {
 
-    WINDOW_SIZE_0("WINDOW_SIZE_0", "WINDOW_SIZE_0"), WINDOW_SIZE_1024("WINDOW_SIZE_1024", "WINDOW_SIZE_1024"), WINDOW_SIZE_128("WINDOW_SIZE_128", "WINDOW_SIZE_128"), WINDOW_SIZE_256("WINDOW_SIZE_256", "WINDOW_SIZE_256"), WINDOW_SIZE_32("WINDOW_SIZE_32", "WINDOW_SIZE_32"), WINDOW_SIZE_512("WINDOW_SIZE_512", "WINDOW_SIZE_512"), WINDOW_SIZE_64("WINDOW_SIZE_64", "WINDOW_SIZE_64");
+    WINDOW_SIZE_1024("WINDOW_SIZE_1024", "WINDOW_SIZE_1024"), WINDOW_SIZE_128("WINDOW_SIZE_128", "WINDOW_SIZE_128"), WINDOW_SIZE_256("WINDOW_SIZE_256", "WINDOW_SIZE_256"), WINDOW_SIZE_32("WINDOW_SIZE_32", "WINDOW_SIZE_32"), WINDOW_SIZE_512("WINDOW_SIZE_512", "WINDOW_SIZE_512"), WINDOW_SIZE_64("WINDOW_SIZE_64", "WINDOW_SIZE_64");
 
     private final String id;
     private final String name;
@@ -57,11 +57,6 @@ public enum IKEEncryptionprofileIPsecSAReplayWindowSize {
         return name;
     }
 
-    
-    @VsoProperty(displayName = "WINDOW_SIZE_0", readOnly = true)
-    public IKEEncryptionprofileIPsecSAReplayWindowSize getWINDOW_SIZE_0() {
-        return WINDOW_SIZE_0;
-    }
     
     @VsoProperty(displayName = "WINDOW_SIZE_1024", readOnly = true)
     public IKEEncryptionprofileIPsecSAReplayWindowSize getWINDOW_SIZE_1024() {

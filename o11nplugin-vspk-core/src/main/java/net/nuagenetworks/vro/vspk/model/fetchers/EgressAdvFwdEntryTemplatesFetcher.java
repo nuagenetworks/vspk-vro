@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.EgressAdvFwdEntryTemplate;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.EgressAdvFwdTemplate;
+
+import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -69,6 +71,16 @@ public class EgressAdvFwdEntryTemplatesFetcher extends BaseFetcher<EgressAdvFwdE
         RestObject obj = super.getParentRestObj();
         if (obj instanceof EgressAdvFwdTemplate) {
             return (EgressAdvFwdTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Me) {
+            return (Me) obj;
         }
         
         return null;

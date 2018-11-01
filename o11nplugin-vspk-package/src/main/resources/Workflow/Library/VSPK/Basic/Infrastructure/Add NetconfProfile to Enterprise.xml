@@ -7,6 +7,8 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='netconfProfileObj' type='VSPK:NetconfProfile' >
@@ -22,6 +24,9 @@ netconfProfileObj = new VSPKNetconfProfile();
 if (description) {
    netconfProfileObj.description = description;
 }
+if (externalID) {
+   netconfProfileObj.externalID = externalID;
+}
 if (name) {
    netconfProfileObj.name = name;
 }
@@ -30,6 +35,7 @@ enterpriseObj.createNetconfProfile(session, netconfProfileObj);
 ]]></script>
 <in-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='netconfProfileObj' type='VSPK:NetconfProfile' export-name="netconfProfileObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -38,6 +44,8 @@ enterpriseObj.createNetconfProfile(session, netconfProfileObj);
 <p-param name="enterpriseObj"><desc><![CDATA[enterpriseObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

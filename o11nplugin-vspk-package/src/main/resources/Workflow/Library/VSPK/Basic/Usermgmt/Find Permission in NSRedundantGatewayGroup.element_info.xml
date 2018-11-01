@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in NSRedundantGatewayGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">08c50c7c-9c90-52e7-b276-375d7a8d152e</entry>
+</properties>

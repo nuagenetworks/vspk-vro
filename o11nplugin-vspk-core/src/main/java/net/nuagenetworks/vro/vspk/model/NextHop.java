@@ -30,7 +30,11 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.NextHopIPType;
+
 import net.nuagenetworks.vro.vspk.model.enums.NextHopEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.NextHopType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -55,6 +59,9 @@ public class NextHop extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "IPType")
+    protected NextHopIPType IPType;
+    
     @JsonProperty(value = "entityScope")
     protected NextHopEntityScope entityScope;
     
@@ -69,6 +76,9 @@ public class NextHop extends BaseObject {
     
     @JsonProperty(value = "routeDistinguisher")
     protected String routeDistinguisher;
+    
+    @JsonProperty(value = "type")
+    protected NextHopType type;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -124,6 +134,17 @@ public class NextHop extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "IPType", readOnly = false)   
+    public NextHopIPType getIPType() {
+       return IPType;
+    }
+
+    @JsonIgnore
+    public void setIPType(NextHopIPType value) { 
+        this.IPType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public NextHopEntityScope getEntityScope() {
        return entityScope;
@@ -176,6 +197,17 @@ public class NextHop extends BaseObject {
     @JsonIgnore
     public void setRouteDistinguisher(String value) { 
         this.routeDistinguisher = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Type", readOnly = false)   
+    public NextHopType getType() {
+       return type;
+    }
+
+    @JsonIgnore
+    public void setType(NextHopType value) { 
+        this.type = value;
     }
     
     @JsonIgnore
@@ -235,7 +267,7 @@ public class NextHop extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NextHop [" + "entityScope=" + entityScope + ", externalID=" + externalID + ", ip=" + ip + ", lastUpdatedBy=" + lastUpdatedBy + ", routeDistinguisher=" + routeDistinguisher + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NextHop [" + "IPType=" + IPType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", ip=" + ip + ", lastUpdatedBy=" + lastUpdatedBy + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -27,16 +27,10 @@
 <param name='locationType' type='VSPK:IngressAdvFwdEntryTemplateLocationType' >
 </param>
 
-<param name='name' type='string' >
-</param>
-
 <param name='networkType' type='VSPK:IngressAdvFwdEntryTemplateNetworkType' >
 </param>
 
 <param name='protocol' type='string' >
-</param>
-
-<param name='redirectVPortTagID' type='string' >
 </param>
 
 <param name='sourcePort' type='string' >
@@ -76,21 +70,11 @@ if (externalID) {
    ingressAdvFwdEntryTemplateObj.externalID = "";
 }
 ingressAdvFwdEntryTemplateObj.locationType = locationType;
-if (name) {
-   ingressAdvFwdEntryTemplateObj.name = name;
-} else if (ingressAdvFwdEntryTemplateObj.name) {
-   ingressAdvFwdEntryTemplateObj.name = "";
-}
 ingressAdvFwdEntryTemplateObj.networkType = networkType;
 if (protocol) {
    ingressAdvFwdEntryTemplateObj.protocol = protocol;
 } else if (ingressAdvFwdEntryTemplateObj.protocol) {
    ingressAdvFwdEntryTemplateObj.protocol = "";
-}
-if (redirectVPortTagID) {
-   ingressAdvFwdEntryTemplateObj.redirectVPortTagID = redirectVPortTagID;
-} else if (ingressAdvFwdEntryTemplateObj.redirectVPortTagID) {
-   ingressAdvFwdEntryTemplateObj.redirectVPortTagID = "";
 }
 if (sourcePort) {
    ingressAdvFwdEntryTemplateObj.sourcePort = sourcePort;
@@ -114,13 +98,9 @@ ingressAdvFwdEntryTemplateObj.save(session, 1);]]></script>
 
 <bind name='locationType' type='VSPK:IngressAdvFwdEntryTemplateLocationType' export-name="locationType" ></bind>
 
-<bind name='name' type='string' export-name="name" ></bind>
-
 <bind name='networkType' type='VSPK:IngressAdvFwdEntryTemplateNetworkType' export-name="networkType" ></bind>
 
 <bind name='protocol' type='string' export-name="protocol" ></bind>
-
-<bind name='redirectVPortTagID' type='string' export-name="redirectVPortTagID" ></bind>
 
 <bind name='sourcePort' type='string' export-name="sourcePort" ></bind>
 
@@ -151,17 +131,11 @@ ingressAdvFwdEntryTemplateObj.save(session, 1);]]></script>
 <p-param name="locationType"><desc><![CDATA[locationType]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="VSPK:IngressAdvFwdEntryTemplateLocationType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getIngressAdvFwdEntryTemplateLocationType").call( #ingressAdvFwdEntryTemplateObj )]]></p-qual></p-param>
 
-<p-param name="name"><desc><![CDATA[name]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.name]]></p-qual></p-param>
-
 <p-param name="networkType"><desc><![CDATA[networkType]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="VSPK:IngressAdvFwdEntryTemplateNetworkType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getIngressAdvFwdEntryTemplateNetworkType").call( #ingressAdvFwdEntryTemplateObj )]]></p-qual></p-param>
 
 <p-param name="protocol"><desc><![CDATA[protocol]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.protocol]]></p-qual></p-param>
-
-<p-param name="redirectVPortTagID"><desc><![CDATA[redirectVPortTagID]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.redirectVPortTagID]]></p-qual></p-param>
 
 <p-param name="sourcePort"><desc><![CDATA[sourcePort]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ingressAdvFwdEntryTemplateObj.sourcePort]]></p-qual></p-param>

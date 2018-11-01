@@ -28,6 +28,8 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisePermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -37,6 +39,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RedundantPortsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ShuntLinksFetcher;
 
@@ -61,9 +65,13 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.NSREDUNDANTGATEWAYGROUP, datasource = Constants.DATASOURCE, image = Constants.NSREDUNDANTGATEWAYGROUP_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPERMISSIONS_FETCHER, type = Constants.ENTERPRISEPERMISSIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.REDUNDANTPORTS_FETCHER, type = Constants.REDUNDANTPORTS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.SHUNTLINKS_FETCHER, type = Constants.SHUNTLINKS_FETCHER)
 })
@@ -142,6 +150,9 @@ public class NSRedundantGatewayGroup extends BaseObject {
     private AlarmsFetcher alarms;
     
     @JsonIgnore
+    private EnterprisePermissionsFetcher enterprisePermissions;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -157,11 +168,16 @@ public class NSRedundantGatewayGroup extends BaseObject {
     private RedundantPortsFetcher redundantPorts;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private ShuntLinksFetcher shuntLinks;
     
     @VsoConstructor
     public NSRedundantGatewayGroup() {
         alarms = new AlarmsFetcher(this);
+        
+        enterprisePermissions = new EnterprisePermissionsFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
         
@@ -172,6 +188,8 @@ public class NSRedundantGatewayGroup extends BaseObject {
         nSGateways = new NSGatewaysFetcher(this);
         
         redundantPorts = new RedundantPortsFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         shuntLinks = new ShuntLinksFetcher(this);
         }
@@ -449,6 +467,12 @@ public class NSRedundantGatewayGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EnterprisePermissions", readOnly = true)   
+    public EnterprisePermissionsFetcher getEnterprisePermissions() {
+        return enterprisePermissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -476,6 +500,12 @@ public class NSRedundantGatewayGroup extends BaseObject {
     @VsoProperty(displayName = "RedundantPorts", readOnly = true)   
     public RedundantPortsFetcher getRedundantPorts() {
         return redundantPorts;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
     }
     
     @JsonIgnore
@@ -532,6 +562,23 @@ public class NSRedundantGatewayGroup extends BaseObject {
     }
     
     @VsoMethod
+    public void assignShuntLinks(Session session, ShuntLink[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.NSREDUNDANTGATEWAYGROUP, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createEnterprisePermission(Session session, EnterprisePermission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ENTERPRISEPERMISSIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -553,6 +600,14 @@ public class NSRedundantGatewayGroup extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.REDUNDANTPORTS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }
     @VsoMethod

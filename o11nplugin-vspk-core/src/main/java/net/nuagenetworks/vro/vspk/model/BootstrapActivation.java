@@ -60,6 +60,9 @@ public class BootstrapActivation extends BaseObject {
     @JsonProperty(value = "action")
     protected BootstrapActivationAction action;
     
+    @JsonProperty(value = "associatedEntityType")
+    protected String associatedEntityType;
+    
     @JsonProperty(value = "autoBootstrap")
     protected Boolean autoBootstrap;
     
@@ -167,6 +170,17 @@ public class BootstrapActivation extends BaseObject {
     @JsonIgnore
     public void setAction(BootstrapActivationAction value) { 
         this.action = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEntityType", readOnly = false)   
+    public String getAssociatedEntityType() {
+       return associatedEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEntityType(String value) { 
+        this.associatedEntityType = value;
     }
     
     @JsonIgnore
@@ -391,7 +405,7 @@ public class BootstrapActivation extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BootstrapActivation [" + "action=" + action + ", autoBootstrap=" + autoBootstrap + ", cacert=" + cacert + ", cert=" + cert + ", configURL=" + configURL + ", csr=" + csr + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hash=" + hash + ", lastUpdatedBy=" + lastUpdatedBy + ", seed=" + seed + ", srkPassword=" + srkPassword + ", status=" + status + ", tpmOwnerPassword=" + tpmOwnerPassword + ", tpmState=" + tpmState + ", vsdTime=" + vsdTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BootstrapActivation [" + "action=" + action + ", associatedEntityType=" + associatedEntityType + ", autoBootstrap=" + autoBootstrap + ", cacert=" + cacert + ", cert=" + cert + ", configURL=" + configURL + ", csr=" + csr + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hash=" + hash + ", lastUpdatedBy=" + lastUpdatedBy + ", seed=" + seed + ", srkPassword=" + srkPassword + ", status=" + status + ", tpmOwnerPassword=" + tpmOwnerPassword + ", tpmState=" + tpmState + ", vsdTime=" + vsdTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

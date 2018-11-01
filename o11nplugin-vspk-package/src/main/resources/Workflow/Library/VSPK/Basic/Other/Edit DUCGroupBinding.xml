@@ -6,6 +6,9 @@
 <input><param name='dUCGroupBindingObj' type='VSPK:DUCGroupBinding' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -13,13 +16,23 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = dUCGroupBindingObj.session;
 
+if (externalID) {
+   dUCGroupBindingObj.externalID = externalID;
+} else if (dUCGroupBindingObj.externalID) {
+   dUCGroupBindingObj.externalID = "";
+}
 dUCGroupBindingObj.save(session, 1);]]></script>
 <in-binding><bind name='dUCGroupBindingObj' type='VSPK:DUCGroupBinding' export-name="dUCGroupBindingObj" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="dUCGroupBindingObj"><desc><![CDATA[dUCGroupBindingObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#dUCGroupBindingObj.externalID]]></p-qual></p-param>
 
 </presentation></workflow>

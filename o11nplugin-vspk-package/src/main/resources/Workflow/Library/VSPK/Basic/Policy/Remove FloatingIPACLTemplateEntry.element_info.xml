@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Policy</entry>
-<entry key="name">Remove FloatingIPACLTemplateEntry</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">77fc5d73-333f-5c98-a10d-157708b4e4b9</entry>
-</properties>

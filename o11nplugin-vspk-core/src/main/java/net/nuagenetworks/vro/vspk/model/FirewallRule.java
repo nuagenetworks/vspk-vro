@@ -26,15 +26,19 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.FirewallRuleAction;
 
-import net.nuagenetworks.vro.vspk.model.enums.FirewallRuleDestinationType;
+import net.nuagenetworks.vro.vspk.model.enums.FirewallRuleAssociatedTrafficType;
+
+import net.nuagenetworks.vro.vspk.model.enums.FirewallRuleEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.FirewallRuleLocationType;
 
 import net.nuagenetworks.vro.vspk.model.enums.FirewallRuleNetworkType;
-
-import net.nuagenetworks.vro.vspk.model.enums.FirewallRuleSourceType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -48,7 +52,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
-@VsoFinder(name = Constants.FIREWALLRULE, datasource = Constants.DATASOURCE, image = Constants.FIREWALLRULE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
+@VsoFinder(name = Constants.FIREWALLRULE, datasource = Constants.DATASOURCE, image = Constants.FIREWALLRULE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
+})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @RestEntity(restName = "firewallrule", resourceName = "firewallrules")
@@ -78,11 +84,14 @@ public class FirewallRule extends BaseObject {
     @JsonProperty(value = "addressOverride")
     protected String addressOverride;
     
-    @JsonProperty(value = "associatedApplicationID")
-    protected String associatedApplicationID;
+    @JsonProperty(value = "associatedLiveTemplateID")
+    protected String associatedLiveTemplateID;
     
-    @JsonProperty(value = "associatedApplicationObjectID")
-    protected String associatedApplicationObjectID;
+    @JsonProperty(value = "associatedTrafficType")
+    protected FirewallRuleAssociatedTrafficType associatedTrafficType;
+    
+    @JsonProperty(value = "associatedTrafficTypeID")
+    protected String associatedTrafficTypeID;
     
     @JsonProperty(value = "associatedfirewallACLID")
     protected String associatedfirewallACLID;
@@ -90,26 +99,8 @@ public class FirewallRule extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
-    @JsonProperty(value = "destNetwork")
-    protected String destNetwork;
-    
-    @JsonProperty(value = "destPgId")
-    protected String destPgId;
-    
-    @JsonProperty(value = "destPgType")
-    protected String destPgType;
-    
-    @JsonProperty(value = "destinationIpv6Value")
-    protected String destinationIpv6Value;
-    
     @JsonProperty(value = "destinationPort")
     protected String destinationPort;
-    
-    @JsonProperty(value = "destinationType")
-    protected FirewallRuleDestinationType destinationType;
-    
-    @JsonProperty(value = "destinationValue")
-    protected String destinationValue;
     
     @JsonProperty(value = "domainName")
     protected String domainName;
@@ -117,11 +108,20 @@ public class FirewallRule extends BaseObject {
     @JsonProperty(value = "enterpriseName")
     protected String enterpriseName;
     
+    @JsonProperty(value = "entityScope")
+    protected FirewallRuleEntityScope entityScope;
+    
     @JsonProperty(value = "etherType")
     protected String etherType;
     
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
     @JsonProperty(value = "flowLoggingEnabled")
     protected Boolean flowLoggingEnabled;
+    
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
     
     @JsonProperty(value = "locationID")
     protected String locationID;
@@ -139,28 +139,13 @@ public class FirewallRule extends BaseObject {
     protected FirewallRuleNetworkType networkType;
     
     @JsonProperty(value = "priority")
-    protected String priority;
+    protected Long priority;
     
-    @JsonProperty(value = "sourceIpv6Value")
-    protected String sourceIpv6Value;
-    
-    @JsonProperty(value = "sourceNetwork")
-    protected String sourceNetwork;
-    
-    @JsonProperty(value = "sourcePgId")
-    protected String sourcePgId;
-    
-    @JsonProperty(value = "sourcePgType")
-    protected String sourcePgType;
+    @JsonProperty(value = "protocol")
+    protected String protocol;
     
     @JsonProperty(value = "sourcePort")
     protected String sourcePort;
-    
-    @JsonProperty(value = "sourceType")
-    protected FirewallRuleSourceType sourceType;
-    
-    @JsonProperty(value = "sourceValue")
-    protected String sourceValue;
     
     @JsonProperty(value = "stateful")
     protected Boolean stateful;
@@ -171,8 +156,18 @@ public class FirewallRule extends BaseObject {
     @JsonProperty(value = "statsLoggingEnabled")
     protected Boolean statsLoggingEnabled;
     
+    @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
+    
     @VsoConstructor
-    public FirewallRule() {}
+    public FirewallRule() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
+        }
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
@@ -292,25 +287,36 @@ public class FirewallRule extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationID", readOnly = false)   
-    public String getAssociatedApplicationID() {
-       return associatedApplicationID;
+    @VsoProperty(displayName = "AssociatedLiveTemplateID", readOnly = false)   
+    public String getAssociatedLiveTemplateID() {
+       return associatedLiveTemplateID;
     }
 
     @JsonIgnore
-    public void setAssociatedApplicationID(String value) { 
-        this.associatedApplicationID = value;
+    public void setAssociatedLiveTemplateID(String value) { 
+        this.associatedLiveTemplateID = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "AssociatedApplicationObjectID", readOnly = false)   
-    public String getAssociatedApplicationObjectID() {
-       return associatedApplicationObjectID;
+    @VsoProperty(displayName = "AssociatedTrafficType", readOnly = false)   
+    public FirewallRuleAssociatedTrafficType getAssociatedTrafficType() {
+       return associatedTrafficType;
     }
 
     @JsonIgnore
-    public void setAssociatedApplicationObjectID(String value) { 
-        this.associatedApplicationObjectID = value;
+    public void setAssociatedTrafficType(FirewallRuleAssociatedTrafficType value) { 
+        this.associatedTrafficType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedTrafficTypeID", readOnly = false)   
+    public String getAssociatedTrafficTypeID() {
+       return associatedTrafficTypeID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedTrafficTypeID(String value) { 
+        this.associatedTrafficTypeID = value;
     }
     
     @JsonIgnore
@@ -336,50 +342,6 @@ public class FirewallRule extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "DestNetwork", readOnly = false)   
-    public String getDestNetwork() {
-       return destNetwork;
-    }
-
-    @JsonIgnore
-    public void setDestNetwork(String value) { 
-        this.destNetwork = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "DestPgId", readOnly = false)   
-    public String getDestPgId() {
-       return destPgId;
-    }
-
-    @JsonIgnore
-    public void setDestPgId(String value) { 
-        this.destPgId = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "DestPgType", readOnly = false)   
-    public String getDestPgType() {
-       return destPgType;
-    }
-
-    @JsonIgnore
-    public void setDestPgType(String value) { 
-        this.destPgType = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "DestinationIpv6Value", readOnly = false)   
-    public String getDestinationIpv6Value() {
-       return destinationIpv6Value;
-    }
-
-    @JsonIgnore
-    public void setDestinationIpv6Value(String value) { 
-        this.destinationIpv6Value = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "DestinationPort", readOnly = false)   
     public String getDestinationPort() {
        return destinationPort;
@@ -388,28 +350,6 @@ public class FirewallRule extends BaseObject {
     @JsonIgnore
     public void setDestinationPort(String value) { 
         this.destinationPort = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "DestinationType", readOnly = false)   
-    public FirewallRuleDestinationType getDestinationType() {
-       return destinationType;
-    }
-
-    @JsonIgnore
-    public void setDestinationType(FirewallRuleDestinationType value) { 
-        this.destinationType = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "DestinationValue", readOnly = false)   
-    public String getDestinationValue() {
-       return destinationValue;
-    }
-
-    @JsonIgnore
-    public void setDestinationValue(String value) { 
-        this.destinationValue = value;
     }
     
     @JsonIgnore
@@ -435,6 +375,17 @@ public class FirewallRule extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public FirewallRuleEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(FirewallRuleEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EtherType", readOnly = false)   
     public String getEtherType() {
        return etherType;
@@ -446,6 +397,17 @@ public class FirewallRule extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "FlowLoggingEnabled", readOnly = false)   
     public Boolean getFlowLoggingEnabled() {
        return flowLoggingEnabled;
@@ -454,6 +416,17 @@ public class FirewallRule extends BaseObject {
     @JsonIgnore
     public void setFlowLoggingEnabled(Boolean value) { 
         this.flowLoggingEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
     }
     
     @JsonIgnore
@@ -513,57 +486,24 @@ public class FirewallRule extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "Priority", readOnly = false)   
-    public String getPriority() {
+    public Long getPriority() {
        return priority;
     }
 
     @JsonIgnore
-    public void setPriority(String value) { 
+    public void setPriority(Long value) { 
         this.priority = value;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "SourceIpv6Value", readOnly = false)   
-    public String getSourceIpv6Value() {
-       return sourceIpv6Value;
+    @VsoProperty(displayName = "Protocol", readOnly = false)   
+    public String getProtocol() {
+       return protocol;
     }
 
     @JsonIgnore
-    public void setSourceIpv6Value(String value) { 
-        this.sourceIpv6Value = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "SourceNetwork", readOnly = false)   
-    public String getSourceNetwork() {
-       return sourceNetwork;
-    }
-
-    @JsonIgnore
-    public void setSourceNetwork(String value) { 
-        this.sourceNetwork = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "SourcePgId", readOnly = false)   
-    public String getSourcePgId() {
-       return sourcePgId;
-    }
-
-    @JsonIgnore
-    public void setSourcePgId(String value) { 
-        this.sourcePgId = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "SourcePgType", readOnly = false)   
-    public String getSourcePgType() {
-       return sourcePgType;
-    }
-
-    @JsonIgnore
-    public void setSourcePgType(String value) { 
-        this.sourcePgType = value;
+    public void setProtocol(String value) { 
+        this.protocol = value;
     }
     
     @JsonIgnore
@@ -575,28 +515,6 @@ public class FirewallRule extends BaseObject {
     @JsonIgnore
     public void setSourcePort(String value) { 
         this.sourcePort = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "SourceType", readOnly = false)   
-    public FirewallRuleSourceType getSourceType() {
-       return sourceType;
-    }
-
-    @JsonIgnore
-    public void setSourceType(FirewallRuleSourceType value) { 
-        this.sourceType = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "SourceValue", readOnly = false)   
-    public String getSourceValue() {
-       return sourceValue;
-    }
-
-    @JsonIgnore
-    public void setSourceValue(String value) { 
-        this.sourceValue = value;
     }
     
     @JsonIgnore
@@ -631,6 +549,18 @@ public class FirewallRule extends BaseObject {
     public void setStatsLoggingEnabled(Boolean value) { 
         this.statsLoggingEnabled = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -651,8 +581,33 @@ public class FirewallRule extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementDeleted(Constants.FIREWALLRULE, getId());
         }
+    }
+    @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.FIREWALLRULE, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
     }public String toString() {
-        return "FirewallRule [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedApplicationID=" + associatedApplicationID + ", associatedApplicationObjectID=" + associatedApplicationObjectID + ", associatedfirewallACLID=" + associatedfirewallACLID + ", description=" + description + ", destNetwork=" + destNetwork + ", destPgId=" + destPgId + ", destPgType=" + destPgType + ", destinationIpv6Value=" + destinationIpv6Value + ", destinationPort=" + destinationPort + ", destinationType=" + destinationType + ", destinationValue=" + destinationValue + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", etherType=" + etherType + ", flowLoggingEnabled=" + flowLoggingEnabled + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", priority=" + priority + ", sourceIpv6Value=" + sourceIpv6Value + ", sourceNetwork=" + sourceNetwork + ", sourcePgId=" + sourcePgId + ", sourcePgType=" + sourcePgType + ", sourcePort=" + sourcePort + ", sourceType=" + sourceType + ", sourceValue=" + sourceValue + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "FirewallRule [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", associatedfirewallACLID=" + associatedfirewallACLID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

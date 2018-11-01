@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Sysmon</entry>
-<entry key="name">Remove VSD</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">d5cdd0e5-d2c4-540c-a42f-8a6615fa6e47</entry>
-</properties>

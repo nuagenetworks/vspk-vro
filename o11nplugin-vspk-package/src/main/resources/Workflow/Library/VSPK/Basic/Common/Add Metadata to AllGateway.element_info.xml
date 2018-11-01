@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to AllGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">26124b55-b675-540d-b734-16da1b1e7ea1</entry>
+</properties>

@@ -9,6 +9,9 @@
 <param name='description' type='string' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -24,6 +27,11 @@ if (description) {
 } else if (iPv6FilterProfileObj.description) {
    iPv6FilterProfileObj.description = "";
 }
+if (externalID) {
+   iPv6FilterProfileObj.externalID = externalID;
+} else if (iPv6FilterProfileObj.externalID) {
+   iPv6FilterProfileObj.externalID = "";
+}
 if (name) {
    iPv6FilterProfileObj.name = name;
 } else if (iPv6FilterProfileObj.name) {
@@ -33,6 +41,8 @@ iPv6FilterProfileObj.save(session, 1);]]></script>
 <in-binding><bind name='iPv6FilterProfileObj' type='VSPK:IPv6FilterProfile' export-name="iPv6FilterProfileObj" ></bind>
 
 <bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -44,6 +54,9 @@ iPv6FilterProfileObj.save(session, 1);]]></script>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iPv6FilterProfileObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iPv6FilterProfileObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iPv6FilterProfileObj.name]]></p-qual></p-param>

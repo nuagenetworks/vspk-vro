@@ -34,7 +34,11 @@ import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
+import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
+
 import net.nuagenetworks.vro.vspk.model.NSPort;
+
+import net.nuagenetworks.vro.vspk.model.RedundantPort;
 
 import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
@@ -104,11 +108,31 @@ public class EnterprisePermissionsFetcher extends BaseFetcher<EnterprisePermissi
         return null;
     }
     
+    @VsoProperty(displayName = "NSRedundantGatewayGroup", readOnly = true)
+    public NSRedundantGatewayGroup getNSRedundantGatewayGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NSRedundantGatewayGroup) {
+            return (NSRedundantGatewayGroup) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "NSPort", readOnly = true)
     public NSPort getNSPort() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSPort) {
             return (NSPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "RedundantPort", readOnly = true)
+    public RedundantPort getRedundantPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RedundantPort) {
+            return (RedundantPort) obj;
         }
         
         return null;

@@ -69,6 +69,9 @@ public class InfrastructureEVDFProfile extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "enterpriseID")
+    protected String enterpriseID;
+    
     @JsonProperty(value = "entityScope")
     protected InfrastructureEVDFProfileEntityScope entityScope;
     
@@ -186,6 +189,17 @@ public class InfrastructureEVDFProfile extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnterpriseID", readOnly = false)   
+    public String getEnterpriseID() {
+       return enterpriseID;
+    }
+
+    @JsonIgnore
+    public void setEnterpriseID(String value) { 
+        this.enterpriseID = value;
     }
     
     @JsonIgnore
@@ -344,7 +358,7 @@ public class InfrastructureEVDFProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "InfrastructureEVDFProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", activeController=" + activeController + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", nuagePlatform=" + nuagePlatform + ", proxyDNSName=" + proxyDNSName + ", serviceIPv4Subnet=" + serviceIPv4Subnet + ", standbyController=" + standbyController + ", useTwoFactor=" + useTwoFactor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "InfrastructureEVDFProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", activeController=" + activeController + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", nuagePlatform=" + nuagePlatform + ", proxyDNSName=" + proxyDNSName + ", serviceIPv4Subnet=" + serviceIPv4Subnet + ", standbyController=" + standbyController + ", useTwoFactor=" + useTwoFactor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

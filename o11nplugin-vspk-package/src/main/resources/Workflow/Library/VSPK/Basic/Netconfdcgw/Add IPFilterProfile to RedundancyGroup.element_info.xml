@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
-<entry key="name">Add IPFilterProfile to RedundancyGroup</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">b5a55083-4f37-58f3-a459-8c15da4a82d7</entry>
-</properties>

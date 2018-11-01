@@ -78,9 +78,6 @@ public class NSPortTemplate extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
-    @JsonProperty(value = "infrastructureProfileID")
-    protected String infrastructureProfileID;
-    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
@@ -205,17 +202,6 @@ public class NSPortTemplate extends BaseObject {
     @JsonIgnore
     public void setExternalID(String value) { 
         this.externalID = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "InfrastructureProfileID", readOnly = false)   
-    public String getInfrastructureProfileID() {
-       return infrastructureProfileID;
-    }
-
-    @JsonIgnore
-    public void setInfrastructureProfileID(String value) { 
-        this.infrastructureProfileID = value;
     }
     
     @JsonIgnore
@@ -355,7 +341,7 @@ public class NSPortTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VLANTEMPLATES_FETCHER, getId());
         }
     }public String toString() {
-        return "NSPortTemplate [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureProfileID=" + infrastructureProfileID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", physicalName=" + physicalName + ", portType=" + portType + ", speed=" + speed + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSPortTemplate [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", physicalName=" + physicalName + ", portType=" + portType + ", speed=" + speed + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

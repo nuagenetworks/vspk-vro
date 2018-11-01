@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum DomainMaintenanceMode {
 
-    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED"), ENABLED_INHERITED("ENABLED_INHERITED", "ENABLED_INHERITED");
+    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
 
     private final String id;
     private final String name;
@@ -66,11 +66,6 @@ public enum DomainMaintenanceMode {
     @VsoProperty(displayName = "ENABLED", readOnly = true)
     public DomainMaintenanceMode getENABLED() {
         return ENABLED;
-    }
-    
-    @VsoProperty(displayName = "ENABLED_INHERITED", readOnly = true)
-    public DomainMaintenanceMode getENABLED_INHERITED() {
-        return ENABLED_INHERITED;
     }
     
 

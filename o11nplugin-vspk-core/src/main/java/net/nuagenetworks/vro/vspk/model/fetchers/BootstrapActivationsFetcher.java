@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.BootstrapActivation;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Gateway;
+
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -64,6 +66,16 @@ public class BootstrapActivationsFetcher extends BaseFetcher<BootstrapActivation
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Gateway", readOnly = true)
+    public Gateway getGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Gateway) {
+            return (Gateway) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "NSGateway", readOnly = true)
     public NSGateway getNSGateway() {
         RestObject obj = super.getParentRestObj();

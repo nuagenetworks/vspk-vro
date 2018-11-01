@@ -26,6 +26,14 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.AllGatewaysFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.AllRedundancyGroupsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.AutoDiscoveredGatewaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.BGPNeighborsFetcher;
@@ -35,6 +43,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.BGPProfilesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.CertificatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.CloudMgmtSystemsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.CommandsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainersFetcher;
 
@@ -54,9 +64,9 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLEntryTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.DomainFIPAclTemplatesFetcher;
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdEntryTemplatesFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIPACLTemplatesFetcher;
+import net.nuagenetworks.vro.vspk.model.fetchers.DomainFIPAclTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressQOSPoliciesFetcher;
 
@@ -98,6 +108,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.L2DomainsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.L4ServicesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.L7applicationsignaturesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.LicensesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.LicenseStatusFetcher;
@@ -112,6 +124,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NetconfProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetworkLayoutsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceMeasurementsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewayTemplatesFetcher;
@@ -124,6 +138,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NSRedundantGatewayGroupsFetcher
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGUpgradeProfilesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.OverlayMirrorDestinationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PATMappersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
@@ -131,6 +147,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.PolicyObjectGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.QosPolicersFetcher;
 
@@ -141,6 +159,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.RedirectionTargetsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.RedundancyGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPoliciesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.SaaSApplicationTypesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SharedNetworkResourcesFetcher;
 
@@ -170,6 +190,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VCenterHypervisorsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallPoliciesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallRulesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMInterfacesFetcher;
@@ -179,6 +201,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VNFCatalogsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFThresholdPoliciesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VRSsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VCenterVRSConfigsFetcher;
 
@@ -207,7 +231,11 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.ME, datasource = Constants.DATASOURCE, image = Constants.ME_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.ALLREDUNDANCYGROUPS_FETCHER, type = Constants.ALLREDUNDANCYGROUPS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.CLOUDMGMTSYSTEMS_FETCHER, type = Constants.CLOUDMGMTSYSTEMS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.COMMANDS_FETCHER, type = Constants.COMMANDS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.CONTAINERS_FETCHER, type = Constants.CONTAINERS_FETCHER), 
 
@@ -218,8 +246,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.DUCGROUPS_FETCHER, type = Constants.DUCGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINFIPACLTEMPLATES_FETCHER, type = Constants.DOMAINFIPACLTEMPLATES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPACLTEMPLATES_FETCHER, type = Constants.FLOATINGIPACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSQOSPOLICIES_FETCHER, type = Constants.EGRESSQOSPOLICIES_FETCHER), 
 
@@ -241,8 +267,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER, type = Constants.INFRASTRUCTUREVSCPROFILES_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLENTRYTEMPLATES_FETCHER, type = Constants.INGRESSACLENTRYTEMPLATES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSQOSPOLICIES_FETCHER, type = Constants.INGRESSQOSPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.KEYSERVERMEMBERS_FETCHER, type = Constants.KEYSERVERMEMBERS_FETCHER), 
@@ -257,11 +281,15 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.NETCONFPROFILES_FETCHER, type = Constants.NETCONFPROFILES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.NSGATEWAYS_FETCHER, type = Constants.NSGATEWAYS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.NSGATEWAYTEMPLATES_FETCHER, type = Constants.NSGATEWAYTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSGGROUPS_FETCHER, type = Constants.NSGGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSGPATCHPROFILES_FETCHER, type = Constants.NSGPATCHPROFILES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER, type = Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSGUPGRADEPROFILES_FETCHER, type = Constants.NSGUPGRADEPROFILES_FETCHER), 
 
@@ -286,8 +314,6 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.UNDERLAYS_FETCHER, type = Constants.UNDERLAYS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VCENTERS_FETCHER, type = Constants.VCENTERS_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.VIRTUALFIREWALLPOLICIES_FETCHER, type = Constants.VIRTUALFIREWALLPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VMS_FETCHER, type = Constants.VMS_FETCHER), 
 
@@ -371,6 +397,18 @@ public class Me extends BaseRootObject {
     protected String userName;
     
     @JsonIgnore
+    private AllGatewaysFetcher allGateways;
+    
+    @JsonIgnore
+    private AllRedundancyGroupsFetcher allRedundancyGroups;
+    
+    @JsonIgnore
+    private ApplicationsFetcher applications;
+    
+    @JsonIgnore
+    private ApplicationperformancemanagementsFetcher applicationperformancemanagements;
+    
+    @JsonIgnore
     private AutoDiscoveredGatewaysFetcher autoDiscoveredGateways;
     
     @JsonIgnore
@@ -384,6 +422,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private CloudMgmtSystemsFetcher cloudMgmtSystems;
+    
+    @JsonIgnore
+    private CommandsFetcher commands;
     
     @JsonIgnore
     private ContainersFetcher containers;
@@ -413,10 +454,10 @@ public class Me extends BaseRootObject {
     private EgressACLTemplatesFetcher egressACLTemplates;
     
     @JsonIgnore
-    private DomainFIPAclTemplatesFetcher domainFIPAclTemplates;
+    private EgressAdvFwdEntryTemplatesFetcher egressAdvFwdEntryTemplates;
     
     @JsonIgnore
-    private FloatingIPACLTemplatesFetcher floatingIPACLTemplates;
+    private DomainFIPAclTemplatesFetcher domainFIPAclTemplates;
     
     @JsonIgnore
     private EgressQOSPoliciesFetcher egressQOSPolicies;
@@ -479,6 +520,9 @@ public class Me extends BaseRootObject {
     private L4ServicesFetcher l4Services;
     
     @JsonIgnore
+    private L7applicationsignaturesFetcher l7applicationsignatures;
+    
+    @JsonIgnore
     private LicensesFetcher licenses;
     
     @JsonIgnore
@@ -500,6 +544,9 @@ public class Me extends BaseRootObject {
     private NetworkLayoutsFetcher networkLayouts;
     
     @JsonIgnore
+    private NetworkPerformanceMeasurementsFetcher networkPerformanceMeasurements;
+    
+    @JsonIgnore
     private NSGatewaysFetcher nSGateways;
     
     @JsonIgnore
@@ -518,6 +565,9 @@ public class Me extends BaseRootObject {
     private NSGUpgradeProfilesFetcher nSGUpgradeProfiles;
     
     @JsonIgnore
+    private OverlayMirrorDestinationsFetcher overlayMirrorDestinations;
+    
+    @JsonIgnore
     private PATMappersFetcher pATMappers;
     
     @JsonIgnore
@@ -528,6 +578,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private PolicyGroupsFetcher policyGroups;
+    
+    @JsonIgnore
+    private PolicyObjectGroupsFetcher policyObjectGroups;
     
     @JsonIgnore
     private QosPolicersFetcher qosPolicers;
@@ -543,6 +596,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private RoutingPoliciesFetcher routingPolicies;
+    
+    @JsonIgnore
+    private SaaSApplicationTypesFetcher saaSApplicationTypes;
     
     @JsonIgnore
     private SharedNetworkResourcesFetcher sharedNetworkResources;
@@ -587,6 +643,9 @@ public class Me extends BaseRootObject {
     private VirtualFirewallPoliciesFetcher virtualFirewallPolicies;
     
     @JsonIgnore
+    private VirtualFirewallRulesFetcher virtualFirewallRules;
+    
+    @JsonIgnore
     private VMsFetcher vMs;
     
     @JsonIgnore
@@ -600,6 +659,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private VNFThresholdPoliciesFetcher vNFThresholdPolicies;
+    
+    @JsonIgnore
+    private VRSsFetcher vRSs;
     
     @JsonIgnore
     private VCenterVRSConfigsFetcher vCenterVRSConfigs;
@@ -618,6 +680,14 @@ public class Me extends BaseRootObject {
     
     @VsoConstructor
     public Me() {
+        allGateways = new AllGatewaysFetcher(this);
+        
+        allRedundancyGroups = new AllRedundancyGroupsFetcher(this);
+        
+        applications = new ApplicationsFetcher(this);
+        
+        applicationperformancemanagements = new ApplicationperformancemanagementsFetcher(this);
+        
         autoDiscoveredGateways = new AutoDiscoveredGatewaysFetcher(this);
         
         bGPNeighbors = new BGPNeighborsFetcher(this);
@@ -627,6 +697,8 @@ public class Me extends BaseRootObject {
         certificates = new CertificatesFetcher(this);
         
         cloudMgmtSystems = new CloudMgmtSystemsFetcher(this);
+        
+        commands = new CommandsFetcher(this);
         
         containers = new ContainersFetcher(this);
         
@@ -646,9 +718,9 @@ public class Me extends BaseRootObject {
         
         egressACLTemplates = new EgressACLTemplatesFetcher(this);
         
-        domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
+        egressAdvFwdEntryTemplates = new EgressAdvFwdEntryTemplatesFetcher(this);
         
-        floatingIPACLTemplates = new FloatingIPACLTemplatesFetcher(this);
+        domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
         
         egressQOSPolicies = new EgressQOSPoliciesFetcher(this);
         
@@ -690,6 +762,8 @@ public class Me extends BaseRootObject {
         
         l4Services = new L4ServicesFetcher(this);
         
+        l7applicationsignatures = new L7applicationsignaturesFetcher(this);
+        
         licenses = new LicensesFetcher(this);
         
         licenseStatus = new LicenseStatusFetcher(this);
@@ -704,6 +778,8 @@ public class Me extends BaseRootObject {
         
         networkLayouts = new NetworkLayoutsFetcher(this);
         
+        networkPerformanceMeasurements = new NetworkPerformanceMeasurementsFetcher(this);
+        
         nSGateways = new NSGatewaysFetcher(this);
         
         nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
@@ -716,6 +792,8 @@ public class Me extends BaseRootObject {
         
         nSGUpgradeProfiles = new NSGUpgradeProfilesFetcher(this);
         
+        overlayMirrorDestinations = new OverlayMirrorDestinationsFetcher(this);
+        
         pATMappers = new PATMappersFetcher(this);
         
         pATNATPools = new PATNATPoolsFetcher(this);
@@ -723,6 +801,8 @@ public class Me extends BaseRootObject {
         performanceMonitors = new PerformanceMonitorsFetcher(this);
         
         policyGroups = new PolicyGroupsFetcher(this);
+        
+        policyObjectGroups = new PolicyObjectGroupsFetcher(this);
         
         qosPolicers = new QosPolicersFetcher(this);
         
@@ -733,6 +813,8 @@ public class Me extends BaseRootObject {
         redundancyGroups = new RedundancyGroupsFetcher(this);
         
         routingPolicies = new RoutingPoliciesFetcher(this);
+        
+        saaSApplicationTypes = new SaaSApplicationTypesFetcher(this);
         
         sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
         
@@ -762,6 +844,8 @@ public class Me extends BaseRootObject {
         
         virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
         
+        virtualFirewallRules = new VirtualFirewallRulesFetcher(this);
+        
         vMs = new VMsFetcher(this);
         
         vMInterfaces = new VMInterfacesFetcher(this);
@@ -771,6 +855,8 @@ public class Me extends BaseRootObject {
         vNFMetadatas = new VNFMetadatasFetcher(this);
         
         vNFThresholdPolicies = new VNFThresholdPoliciesFetcher(this);
+        
+        vRSs = new VRSsFetcher(this);
         
         vCenterVRSConfigs = new VCenterVRSConfigsFetcher(this);
         
@@ -1060,6 +1146,30 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AllGateways", readOnly = true)   
+    public AllGatewaysFetcher getAllGateways() {
+        return allGateways;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AllRedundancyGroups", readOnly = true)   
+    public AllRedundancyGroupsFetcher getAllRedundancyGroups() {
+        return allRedundancyGroups;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Applications", readOnly = true)   
+    public ApplicationsFetcher getApplications() {
+        return applications;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Applicationperformancemanagements", readOnly = true)   
+    public ApplicationperformancemanagementsFetcher getApplicationperformancemanagements() {
+        return applicationperformancemanagements;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AutoDiscoveredGateways", readOnly = true)   
     public AutoDiscoveredGatewaysFetcher getAutoDiscoveredGateways() {
         return autoDiscoveredGateways;
@@ -1087,6 +1197,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "CloudMgmtSystems", readOnly = true)   
     public CloudMgmtSystemsFetcher getCloudMgmtSystems() {
         return cloudMgmtSystems;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Commands", readOnly = true)   
+    public CommandsFetcher getCommands() {
+        return commands;
     }
     
     @JsonIgnore
@@ -1144,15 +1260,15 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "DomainFIPAclTemplates", readOnly = true)   
-    public DomainFIPAclTemplatesFetcher getDomainFIPAclTemplates() {
-        return domainFIPAclTemplates;
+    @VsoProperty(displayName = "EgressAdvFwdEntryTemplates", readOnly = true)   
+    public EgressAdvFwdEntryTemplatesFetcher getEgressAdvFwdEntryTemplates() {
+        return egressAdvFwdEntryTemplates;
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "FloatingIPACLTemplates", readOnly = true)   
-    public FloatingIPACLTemplatesFetcher getFloatingIPACLTemplates() {
-        return floatingIPACLTemplates;
+    @VsoProperty(displayName = "DomainFIPAclTemplates", readOnly = true)   
+    public DomainFIPAclTemplatesFetcher getDomainFIPAclTemplates() {
+        return domainFIPAclTemplates;
     }
     
     @JsonIgnore
@@ -1276,6 +1392,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "L7applicationsignatures", readOnly = true)   
+    public L7applicationsignaturesFetcher getL7applicationsignatures() {
+        return l7applicationsignatures;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Licenses", readOnly = true)   
     public LicensesFetcher getLicenses() {
         return licenses;
@@ -1318,6 +1440,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetworkPerformanceMeasurements", readOnly = true)   
+    public NetworkPerformanceMeasurementsFetcher getNetworkPerformanceMeasurements() {
+        return networkPerformanceMeasurements;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NSGateways", readOnly = true)   
     public NSGatewaysFetcher getNSGateways() {
         return nSGateways;
@@ -1354,6 +1482,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "OverlayMirrorDestinations", readOnly = true)   
+    public OverlayMirrorDestinationsFetcher getOverlayMirrorDestinations() {
+        return overlayMirrorDestinations;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PATMappers", readOnly = true)   
     public PATMappersFetcher getPATMappers() {
         return pATMappers;
@@ -1375,6 +1509,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "PolicyGroups", readOnly = true)   
     public PolicyGroupsFetcher getPolicyGroups() {
         return policyGroups;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PolicyObjectGroups", readOnly = true)   
+    public PolicyObjectGroupsFetcher getPolicyObjectGroups() {
+        return policyObjectGroups;
     }
     
     @JsonIgnore
@@ -1405,6 +1545,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "RoutingPolicies", readOnly = true)   
     public RoutingPoliciesFetcher getRoutingPolicies() {
         return routingPolicies;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SaaSApplicationTypes", readOnly = true)   
+    public SaaSApplicationTypesFetcher getSaaSApplicationTypes() {
+        return saaSApplicationTypes;
     }
     
     @JsonIgnore
@@ -1492,6 +1638,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VirtualFirewallRules", readOnly = true)   
+    public VirtualFirewallRulesFetcher getVirtualFirewallRules() {
+        return virtualFirewallRules;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VMs", readOnly = true)   
     public VMsFetcher getVMs() {
         return vMs;
@@ -1519,6 +1671,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "VNFThresholdPolicies", readOnly = true)   
     public VNFThresholdPoliciesFetcher getVNFThresholdPolicies() {
         return vNFThresholdPolicies;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VRSs", readOnly = true)   
+    public VRSsFetcher getVRSs() {
+        return vRSs;
     }
     
     @JsonIgnore
@@ -1572,6 +1730,14 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createAllRedundancyGroup(Session session, AllRedundancyGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ALLREDUNDANCYGROUPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createCertificate(Session session, Certificate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1585,6 +1751,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.CLOUDMGMTSYSTEMS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createCommand(Session session, Command childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.COMMANDS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1625,14 +1799,6 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.DOMAINFIPACLTEMPLATES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createFloatingIPACLTemplate(Session session, FloatingIPACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.FLOATINGIPACLTEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1725,14 +1891,6 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
-    public void createIngressACLEntryTemplate(Session session, IngressACLEntryTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSACLENTRYTEMPLATES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createIngressQOSPolicy(Session session, IngressQOSPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1773,14 +1931,6 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
-    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createMirrorDestination(Session session, MirrorDestination childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1805,6 +1955,23 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createNSGateway(Session session, NSGateway childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NSGATEWAYS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void instantiateNSGateway(Session session, NSGateway childRestObj, NSGatewayTemplate fromTemplate, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.instantiateChild(session, childRestObj, fromTemplate, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NSGATEWAYS_FETCHER, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createNSGatewayTemplate(Session session, NSGatewayTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1826,6 +1993,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.NSGPATCHPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createNSRedundantGatewayGroup(Session session, NSRedundantGatewayGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1909,19 +2084,19 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createUser(Session session, User childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.USERS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createVCenter(Session session, VCenter childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VCENTERS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createVirtualFirewallPolicy(Session session, VirtualFirewallPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.VIRTUALFIREWALLPOLICIES_FETCHER, getId());
         }
     }
     @VsoMethod

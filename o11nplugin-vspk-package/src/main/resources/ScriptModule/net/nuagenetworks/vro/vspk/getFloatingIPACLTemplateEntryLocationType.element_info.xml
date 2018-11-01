@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
-<entry key="name">getFloatingIPACLTemplateEntryLocationType</entry>
-<entry key="type">ScriptModule</entry>
-<entry key="id">3982da27-78c8-5520-85c6-4c299705c54d</entry>
-</properties>

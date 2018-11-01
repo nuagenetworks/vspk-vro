@@ -57,8 +57,8 @@ public class PolicyGroupCategory extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "defaultTag")
-    protected Boolean defaultTag;
+    @JsonProperty(value = "defaultCategory")
+    protected Boolean defaultCategory;
     
     @JsonProperty(value = "description")
     protected String description;
@@ -129,14 +129,14 @@ public class PolicyGroupCategory extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "DefaultTag", readOnly = false)   
-    public Boolean getDefaultTag() {
-       return defaultTag;
+    @VsoProperty(displayName = "DefaultCategory", readOnly = false)   
+    public Boolean getDefaultCategory() {
+       return defaultCategory;
     }
 
     @JsonIgnore
-    public void setDefaultTag(Boolean value) { 
-        this.defaultTag = value;
+    public void setDefaultCategory(Boolean value) { 
+        this.defaultCategory = value;
     }
     
     @JsonIgnore
@@ -257,7 +257,7 @@ public class PolicyGroupCategory extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "PolicyGroupCategory [" + "defaultTag=" + defaultTag + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PolicyGroupCategory [" + "defaultCategory=" + defaultCategory + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -72,8 +72,14 @@ public class NATMapEntry extends BaseObject {
     @JsonProperty(value = "privateIP")
     protected String privateIP;
     
+    @JsonProperty(value = "privatePort")
+    protected Long privatePort;
+    
     @JsonProperty(value = "publicIP")
     protected String publicIP;
+    
+    @JsonProperty(value = "publicPort")
+    protected Long publicPort;
     
     @JsonProperty(value = "type")
     protected NATMapEntryType type;
@@ -187,6 +193,17 @@ public class NATMapEntry extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PrivatePort", readOnly = false)   
+    public Long getPrivatePort() {
+       return privatePort;
+    }
+
+    @JsonIgnore
+    public void setPrivatePort(Long value) { 
+        this.privatePort = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PublicIP", readOnly = false)   
     public String getPublicIP() {
        return publicIP;
@@ -195,6 +212,17 @@ public class NATMapEntry extends BaseObject {
     @JsonIgnore
     public void setPublicIP(String value) { 
         this.publicIP = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PublicPort", readOnly = false)   
+    public Long getPublicPort() {
+       return publicPort;
+    }
+
+    @JsonIgnore
+    public void setPublicPort(Long value) { 
+        this.publicPort = value;
     }
     
     @JsonIgnore
@@ -265,7 +293,7 @@ public class NATMapEntry extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NATMapEntry [" + "associatedPATNATPoolID=" + associatedPATNATPoolID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", privateIP=" + privateIP + ", publicIP=" + publicIP + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NATMapEntry [" + "associatedPATNATPoolID=" + associatedPATNATPoolID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", privateIP=" + privateIP + ", privatePort=" + privatePort + ", publicIP=" + publicIP + ", publicPort=" + publicPort + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

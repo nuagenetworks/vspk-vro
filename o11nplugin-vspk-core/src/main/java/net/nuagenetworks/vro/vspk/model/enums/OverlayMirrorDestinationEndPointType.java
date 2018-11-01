@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum OverlayMirrorDestinationEndPointType {
 
-    VIRTUAL_WIRE("VIRTUAL_WIRE", "VIRTUAL_WIRE");
+    NONE("NONE", "NONE"), VIRTUAL_WIRE("VIRTUAL_WIRE", "VIRTUAL_WIRE");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum OverlayMirrorDestinationEndPointType {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "NONE", readOnly = true)
+    public OverlayMirrorDestinationEndPointType getNONE() {
+        return NONE;
+    }
     
     @VsoProperty(displayName = "VIRTUAL_WIRE", readOnly = true)
     public OverlayMirrorDestinationEndPointType getVIRTUAL_WIRE() {

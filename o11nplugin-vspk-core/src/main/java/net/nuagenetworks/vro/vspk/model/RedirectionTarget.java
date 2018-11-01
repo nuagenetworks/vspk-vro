@@ -36,6 +36,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VirtualIPsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VPortsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.RedirectionTargetDestinationType;
+
 import net.nuagenetworks.vro.vspk.model.enums.RedirectionTargetEndPointType;
 
 import net.nuagenetworks.vro.vspk.model.enums.RedirectionTargetEntityScope;
@@ -72,6 +74,9 @@ public class RedirectionTarget extends BaseObject {
     
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "destinationType")
+    protected RedirectionTargetDestinationType destinationType;
     
     @JsonProperty(value = "endPointType")
     protected RedirectionTargetEndPointType endPointType;
@@ -185,6 +190,17 @@ public class RedirectionTarget extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DestinationType", readOnly = false)   
+    public RedirectionTargetDestinationType getDestinationType() {
+       return destinationType;
+    }
+
+    @JsonIgnore
+    public void setDestinationType(RedirectionTargetDestinationType value) { 
+        this.destinationType = value;
     }
     
     @JsonIgnore
@@ -378,7 +394,7 @@ public class RedirectionTarget extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VIRTUALIPS_FETCHER, getId());
         }
     }public String toString() {
-        return "RedirectionTarget [" + "ESI=" + ESI + ", description=" + description + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", templateID=" + templateID + ", triggerType=" + triggerType + ", virtualNetworkID=" + virtualNetworkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "RedirectionTarget [" + "ESI=" + ESI + ", description=" + description + ", destinationType=" + destinationType + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", templateID=" + templateID + ", triggerType=" + triggerType + ", virtualNetworkID=" + virtualNetworkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

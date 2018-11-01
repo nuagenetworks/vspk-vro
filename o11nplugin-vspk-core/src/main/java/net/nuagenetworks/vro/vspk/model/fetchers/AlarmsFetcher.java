@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Container;
 
+import net.nuagenetworks.vro.vspk.model.Domain;
+
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
@@ -39,6 +41,8 @@ import net.nuagenetworks.vro.vspk.model.Gateway;
 import net.nuagenetworks.vro.vspk.model.HSC;
 
 import net.nuagenetworks.vro.vspk.model.IKEGatewayConnection;
+
+import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
@@ -116,6 +120,16 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         return null;
     }
     
+    @VsoProperty(displayName = "Domain", readOnly = true)
+    public Domain getDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Domain) {
+            return (Domain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Enterprise", readOnly = true)
     public Enterprise getEnterprise() {
         RestObject obj = super.getParentRestObj();
@@ -151,6 +165,16 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IKEGatewayConnection) {
             return (IKEGatewayConnection) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
         }
         
         return null;

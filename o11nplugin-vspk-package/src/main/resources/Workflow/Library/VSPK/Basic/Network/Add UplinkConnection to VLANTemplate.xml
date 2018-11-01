@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='vLANTemplateObj' type='VSPK:VLANTemplate' >
 </param>
+<param name='externalID' type='string' >
+</param>
 </input><output><param name='uplinkConnectionObj' type='VSPK:UplinkConnection' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -15,14 +17,20 @@
 <script encoded='false'><![CDATA[var session = vLANTemplateObj.session;
 
 uplinkConnectionObj = new VSPKUplinkConnection();
+if (externalID) {
+   uplinkConnectionObj.externalID = externalID;
+}
 
 vLANTemplateObj.createUplinkConnection(session, uplinkConnectionObj);
 ]]></script>
 <in-binding><bind name='vLANTemplateObj' type='VSPK:VLANTemplate' export-name="vLANTemplateObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 </in-binding><out-binding><bind name='uplinkConnectionObj' type='VSPK:UplinkConnection' export-name="uplinkConnectionObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="vLANTemplateObj"><desc><![CDATA[vLANTemplateObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 </presentation></workflow>

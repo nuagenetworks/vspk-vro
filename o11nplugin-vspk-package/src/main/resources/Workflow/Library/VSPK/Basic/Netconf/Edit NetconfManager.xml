@@ -6,6 +6,9 @@
 <input><param name='netconfManagerObj' type='VSPK:NetconfManager' >
 </param>
 
+<param name='externalID' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -16,6 +19,11 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = netconfManagerObj.session;
 
+if (externalID) {
+   netconfManagerObj.externalID = externalID;
+} else if (netconfManagerObj.externalID) {
+   netconfManagerObj.externalID = "";
+}
 if (name) {
    netconfManagerObj.name = name;
 } else if (netconfManagerObj.name) {
@@ -24,6 +32,8 @@ if (name) {
 netconfManagerObj.save(session, 1);]]></script>
 <in-binding><bind name='netconfManagerObj' type='VSPK:NetconfManager' export-name="netconfManagerObj" ></bind>
 
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
 <bind name='name' type='string' export-name="name" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +41,9 @@ netconfManagerObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="netconfManagerObj"><desc><![CDATA[netconfManagerObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#netconfManagerObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#netconfManagerObj.name]]></p-qual></p-param>

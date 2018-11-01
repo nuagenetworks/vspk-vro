@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to RedundantPort</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">909efa4d-794d-5638-b81e-0e100b5e0dd8</entry>
+</properties>

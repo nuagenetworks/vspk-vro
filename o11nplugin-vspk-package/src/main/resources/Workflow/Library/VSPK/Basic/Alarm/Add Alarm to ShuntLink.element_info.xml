@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Alarm</entry>
-<entry key="name">Add Alarm to ShuntLink</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">aba83c0b-0b8b-5e99-99b4-65b8fcfcd461</entry>
-</properties>

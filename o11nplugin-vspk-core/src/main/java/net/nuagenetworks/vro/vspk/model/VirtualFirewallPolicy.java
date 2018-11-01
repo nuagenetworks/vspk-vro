@@ -402,15 +402,6 @@ public class VirtualFirewallPolicy extends BaseObject {
     }
     
     @VsoMethod
-    public void assignVirtualFirewallRules(Session session, VirtualFirewallRule[] childRestObjs, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
-        if (!session.getNotificationsEnabled()) { 
-           SessionManager.getInstance().notifyElementUpdated(Constants.VIRTUALFIREWALLPOLICY, getId());
-        }
-    }
-    
-    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);

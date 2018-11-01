@@ -7,8 +7,6 @@
 </param>
 <param name='description' type='string' >
 </param>
-<param name='exportLimit' type='number' >
-</param>
 <param name='externalID' type='string' >
 </param>
 <param name='name' type='string' >
@@ -26,7 +24,6 @@ oSPFInstanceObj = new VSPKOSPFInstance();
 if (description) {
    oSPFInstanceObj.description = description;
 }
-oSPFInstanceObj.exportLimit = exportLimit;
 if (externalID) {
    oSPFInstanceObj.externalID = externalID;
 }
@@ -38,7 +35,6 @@ domainObj.createOSPFInstance(session, oSPFInstanceObj);
 ]]></script>
 <in-binding><bind name='domainObj' type='VSPK:Domain' export-name="domainObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
-<bind name='exportLimit' type='number' export-name="exportLimit" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='oSPFInstanceObj' type='VSPK:OSPFInstance' export-name="oSPFInstanceObj" ></bind>
@@ -48,8 +44,6 @@ domainObj.createOSPFInstance(session, oSPFInstanceObj);
 <p-param name="domainObj"><desc><![CDATA[domainObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
-</p-param>
-<p-param name="exportLimit"><desc><![CDATA[exportLimit]]></desc>
 </p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>

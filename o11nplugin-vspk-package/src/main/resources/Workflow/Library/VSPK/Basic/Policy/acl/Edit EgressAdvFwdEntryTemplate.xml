@@ -27,9 +27,6 @@
 <param name='locationType' type='VSPK:EgressAdvFwdEntryTemplateLocationType' >
 </param>
 
-<param name='name' type='string' >
-</param>
-
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -64,11 +61,6 @@ if (externalID) {
    egressAdvFwdEntryTemplateObj.externalID = "";
 }
 egressAdvFwdEntryTemplateObj.locationType = locationType;
-if (name) {
-   egressAdvFwdEntryTemplateObj.name = name;
-} else if (egressAdvFwdEntryTemplateObj.name) {
-   egressAdvFwdEntryTemplateObj.name = "";
-}
 egressAdvFwdEntryTemplateObj.save(session, 1);]]></script>
 <in-binding><bind name='egressAdvFwdEntryTemplateObj' type='VSPK:EgressAdvFwdEntryTemplate' export-name="egressAdvFwdEntryTemplateObj" ></bind>
 
@@ -85,8 +77,6 @@ egressAdvFwdEntryTemplateObj.save(session, 1);]]></script>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='locationType' type='VSPK:EgressAdvFwdEntryTemplateLocationType' export-name="locationType" ></bind>
-
-<bind name='name' type='string' export-name="name" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -114,8 +104,5 @@ egressAdvFwdEntryTemplateObj.save(session, 1);]]></script>
 
 <p-param name="locationType"><desc><![CDATA[locationType]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="VSPK:EgressAdvFwdEntryTemplateLocationType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEgressAdvFwdEntryTemplateLocationType").call( #egressAdvFwdEntryTemplateObj )]]></p-qual></p-param>
-
-<p-param name="name"><desc><![CDATA[name]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressAdvFwdEntryTemplateObj.name]]></p-qual></p-param>
 
 </presentation></workflow>

@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.VRSAddressRangeIPType;
+
 import net.nuagenetworks.vro.vspk.model.enums.VRSAddressRangeEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -54,6 +56,9 @@ public class VRSAddressRange extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "IPType")
+    protected VRSAddressRangeIPType IPType;
     
     @JsonProperty(value = "entityScope")
     protected VRSAddressRangeEntityScope entityScope;
@@ -123,6 +128,17 @@ public class VRSAddressRange extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "IPType", readOnly = false)   
+    public VRSAddressRangeIPType getIPType() {
+       return IPType;
+    }
+
+    @JsonIgnore
+    public void setIPType(VRSAddressRangeIPType value) { 
+        this.IPType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public VRSAddressRangeEntityScope getEntityScope() {
@@ -235,7 +251,7 @@ public class VRSAddressRange extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VRSAddressRange [" + "entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VRSAddressRange [" + "IPType=" + IPType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum L2DomainUseGlobalMAC {
 
-    DISABLED ("DISABLED ", "DISABLED "), ENABLED("ENABLED", "ENABLED");
+    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
 
     private final String id;
     private final String name;
@@ -58,9 +58,9 @@ public enum L2DomainUseGlobalMAC {
     }
 
     
-    @VsoProperty(displayName = "DISABLED ", readOnly = true)
-    public L2DomainUseGlobalMAC getDISABLED () {
-        return DISABLED ;
+    @VsoProperty(displayName = "DISABLED", readOnly = true)
+    public L2DomainUseGlobalMAC getDISABLED() {
+        return DISABLED;
     }
     
     @VsoProperty(displayName = "ENABLED", readOnly = true)

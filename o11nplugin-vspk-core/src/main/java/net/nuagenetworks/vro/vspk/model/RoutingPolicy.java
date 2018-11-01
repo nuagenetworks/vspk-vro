@@ -33,6 +33,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.enums.RoutingPolicyDefaultAction;
 
 import net.nuagenetworks.vro.vspk.model.enums.RoutingPolicyEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.RoutingPolicyRoutingProtocol;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -74,6 +76,9 @@ public class RoutingPolicy extends BaseObject {
     
     @JsonProperty(value = "policyDefinition")
     protected String policyDefinition;
+    
+    @JsonProperty(value = "routingProtocol")
+    protected RoutingPolicyRoutingProtocol routingProtocol;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -190,6 +195,17 @@ public class RoutingPolicy extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "RoutingProtocol", readOnly = false)   
+    public RoutingPolicyRoutingProtocol getRoutingProtocol() {
+       return routingProtocol;
+    }
+
+    @JsonIgnore
+    public void setRoutingProtocol(RoutingPolicyRoutingProtocol value) { 
+        this.routingProtocol = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -246,7 +262,7 @@ public class RoutingPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "RoutingPolicy [" + "defaultAction=" + defaultAction + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", policyDefinition=" + policyDefinition + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "RoutingPolicy [" + "defaultAction=" + defaultAction + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", policyDefinition=" + policyDefinition + ", routingProtocol=" + routingProtocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

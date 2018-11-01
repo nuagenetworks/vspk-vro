@@ -68,6 +68,9 @@ public class ForwardingPathList extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
+    @JsonProperty(value = "forwardingPathListID")
+    protected Long forwardingPathListID;
+    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
@@ -158,6 +161,17 @@ public class ForwardingPathList extends BaseObject {
     @JsonIgnore
     public void setExternalID(String value) { 
         this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ForwardingPathListID", readOnly = false)   
+    public Long getForwardingPathListID() {
+       return forwardingPathListID;
+    }
+
+    @JsonIgnore
+    public void setForwardingPathListID(Long value) { 
+        this.forwardingPathListID = value;
     }
     
     @JsonIgnore
@@ -253,7 +267,7 @@ public class ForwardingPathList extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ForwardingPathList [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ForwardingPathList [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forwardingPathListID=" + forwardingPathListID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

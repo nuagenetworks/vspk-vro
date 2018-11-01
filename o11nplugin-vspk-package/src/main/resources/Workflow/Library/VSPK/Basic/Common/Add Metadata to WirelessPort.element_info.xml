@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to WirelessPort</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a784063e-86d8-52dc-97c0-c7708d71cf25</entry>
+</properties>

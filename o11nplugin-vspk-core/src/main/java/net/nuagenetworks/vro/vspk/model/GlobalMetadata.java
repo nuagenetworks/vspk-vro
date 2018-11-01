@@ -55,6 +55,9 @@ public class GlobalMetadata extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "assocEntityType")
+    protected String assocEntityType;
+    
     @JsonProperty(value = "blob")
     protected String blob;
     
@@ -130,6 +133,17 @@ public class GlobalMetadata extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AssocEntityType", readOnly = false)   
+    public String getAssocEntityType() {
+       return assocEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssocEntityType(String value) { 
+        this.assocEntityType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Blob", readOnly = false)   
     public String getBlob() {
@@ -286,7 +300,7 @@ public class GlobalMetadata extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "GlobalMetadata [" + "blob=" + blob + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", globalMetadata=" + globalMetadata + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataTagIDs=" + metadataTagIDs + ", name=" + name + ", networkNotificationDisabled=" + networkNotificationDisabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "GlobalMetadata [" + "assocEntityType=" + assocEntityType + ", blob=" + blob + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", globalMetadata=" + globalMetadata + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataTagIDs=" + metadataTagIDs + ", name=" + name + ", networkNotificationDisabled=" + networkNotificationDisabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

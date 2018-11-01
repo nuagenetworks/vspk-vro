@@ -61,6 +61,9 @@ public class Tier extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "description")
+    protected String description;
+    
     @JsonProperty(value = "downThresholdCount")
     protected Long downThresholdCount;
     
@@ -143,6 +146,17 @@ public class Tier extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "Description", readOnly = false)   
+    public String getDescription() {
+       return description;
+    }
+
+    @JsonIgnore
+    public void setDescription(String value) { 
+        this.description = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "DownThresholdCount", readOnly = false)   
     public Long getDownThresholdCount() {
@@ -302,7 +316,7 @@ public class Tier extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Tier [" + "downThresholdCount=" + downThresholdCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", packetCount=" + packetCount + ", probeInterval=" + probeInterval + ", tierType=" + tierType + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Tier [" + "description=" + description + ", downThresholdCount=" + downThresholdCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", packetCount=" + packetCount + ", probeInterval=" + probeInterval + ", tierType=" + tierType + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

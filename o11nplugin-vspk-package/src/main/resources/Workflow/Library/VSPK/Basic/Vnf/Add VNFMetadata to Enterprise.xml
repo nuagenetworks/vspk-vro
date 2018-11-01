@@ -9,6 +9,8 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='vNFMetadataObj' type='VSPK:VNFMetadata' >
@@ -27,6 +29,9 @@ if (blob) {
 if (description) {
    vNFMetadataObj.description = description;
 }
+if (externalID) {
+   vNFMetadataObj.externalID = externalID;
+}
 if (name) {
    vNFMetadataObj.name = name;
 }
@@ -36,6 +41,7 @@ enterpriseObj.createVNFMetadata(session, vNFMetadataObj);
 <in-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
 <bind name='blob' type='string' export-name="blob" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='vNFMetadataObj' type='VSPK:VNFMetadata' export-name="vNFMetadataObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -46,6 +52,8 @@ enterpriseObj.createVNFMetadata(session, vNFMetadataObj);
 <p-param name="blob"><desc><![CDATA[blob]]></desc>
 </p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

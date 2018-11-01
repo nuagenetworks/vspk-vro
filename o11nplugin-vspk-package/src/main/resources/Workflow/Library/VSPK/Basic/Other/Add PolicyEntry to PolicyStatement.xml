@@ -7,6 +7,8 @@
 </param>
 <param name='description' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 </input><output><param name='policyEntryObj' type='VSPK:PolicyEntry' >
@@ -22,6 +24,9 @@ policyEntryObj = new VSPKPolicyEntry();
 if (description) {
    policyEntryObj.description = description;
 }
+if (externalID) {
+   policyEntryObj.externalID = externalID;
+}
 if (name) {
    policyEntryObj.name = name;
 }
@@ -30,6 +35,7 @@ policyStatementObj.createPolicyEntry(session, policyEntryObj);
 ]]></script>
 <in-binding><bind name='policyStatementObj' type='VSPK:PolicyStatement' export-name="policyStatementObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='policyEntryObj' type='VSPK:PolicyEntry' export-name="policyEntryObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -38,6 +44,8 @@ policyStatementObj.createPolicyEntry(session, policyEntryObj);
 <p-param name="policyStatementObj"><desc><![CDATA[policyStatementObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

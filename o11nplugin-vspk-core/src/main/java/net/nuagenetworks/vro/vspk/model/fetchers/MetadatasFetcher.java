@@ -38,6 +38,10 @@ import net.nuagenetworks.vro.vspk.model.Alarm;
 
 import net.nuagenetworks.vro.vspk.model.AllAlarm;
 
+import net.nuagenetworks.vro.vspk.model.AllGateway;
+
+import net.nuagenetworks.vro.vspk.model.AllRedundancyGroup;
+
 import net.nuagenetworks.vro.vspk.model.Application;
 
 import net.nuagenetworks.vro.vspk.model.ApplicationBinding;
@@ -62,6 +66,8 @@ import net.nuagenetworks.vro.vspk.model.Bootstrap;
 
 import net.nuagenetworks.vro.vspk.model.BootstrapActivation;
 
+import net.nuagenetworks.vro.vspk.model.BRConnection;
+
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
 
 import net.nuagenetworks.vro.vspk.model.BulkStatistics;
@@ -71,6 +77,8 @@ import net.nuagenetworks.vro.vspk.model.Certificate;
 import net.nuagenetworks.vro.vspk.model.CloudMgmtSystem;
 
 import net.nuagenetworks.vro.vspk.model.VSDComponent;
+
+import net.nuagenetworks.vro.vspk.model.Connectionendpoint;
 
 import net.nuagenetworks.vro.vspk.model.Container;
 
@@ -82,9 +90,23 @@ import net.nuagenetworks.vro.vspk.model.COSRemarkingPolicy;
 
 import net.nuagenetworks.vro.vspk.model.COSRemarkingPolicyTable;
 
+import net.nuagenetworks.vro.vspk.model.CSNATPool;
+
+import net.nuagenetworks.vro.vspk.model.CTranslationMap;
+
+import net.nuagenetworks.vro.vspk.model.CustomProperty;
+
+import net.nuagenetworks.vro.vspk.model.DefaultGateway;
+
+import net.nuagenetworks.vro.vspk.model.DemarcationService;
+
+import net.nuagenetworks.vro.vspk.model.DeploymentFailure;
+
 import net.nuagenetworks.vro.vspk.model.Destinationurl;
 
 import net.nuagenetworks.vro.vspk.model.DHCPOption;
+
+import net.nuagenetworks.vro.vspk.model.DiskStat;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
@@ -97,6 +119,10 @@ import net.nuagenetworks.vro.vspk.model.DSCPForwardingClassTable;
 import net.nuagenetworks.vro.vspk.model.DSCPRemarkingPolicy;
 
 import net.nuagenetworks.vro.vspk.model.DSCPRemarkingPolicyTable;
+
+import net.nuagenetworks.vro.vspk.model.DUCGroup;
+
+import net.nuagenetworks.vro.vspk.model.DUCGroupBinding;
 
 import net.nuagenetworks.vro.vspk.model.VCenterEAMConfig;
 
@@ -112,9 +138,7 @@ import net.nuagenetworks.vro.vspk.model.DomainFIPAclTemplateEntry;
 
 import net.nuagenetworks.vro.vspk.model.DomainFIPAclTemplate;
 
-import net.nuagenetworks.vro.vspk.model.FloatingIPACLTemplateEntry;
-
-import net.nuagenetworks.vro.vspk.model.FloatingIPACLTemplate;
+import net.nuagenetworks.vro.vspk.model.EgressProfile;
 
 import net.nuagenetworks.vro.vspk.model.EgressQOSPolicy;
 
@@ -132,6 +156,10 @@ import net.nuagenetworks.vro.vspk.model.EnterpriseSecurity;
 
 import net.nuagenetworks.vro.vspk.model.EventLog;
 
+import net.nuagenetworks.vro.vspk.model.FirewallAcl;
+
+import net.nuagenetworks.vro.vspk.model.FirewallRule;
+
 import net.nuagenetworks.vro.vspk.model.FloatingIp;
 
 import net.nuagenetworks.vro.vspk.model.ForwardingPathList;
@@ -140,9 +168,13 @@ import net.nuagenetworks.vro.vspk.model.ForwardingPathListEntry;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
+import net.nuagenetworks.vro.vspk.model.GatewayRedundantPort;
+
 import net.nuagenetworks.vro.vspk.model.GatewaySecuredData;
 
 import net.nuagenetworks.vro.vspk.model.GatewaySecurity;
+
+import net.nuagenetworks.vro.vspk.model.GatewaysLocation;
 
 import net.nuagenetworks.vro.vspk.model.GatewayTemplate;
 
@@ -190,13 +222,15 @@ import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
 
-import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
-
-import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplate;
+import net.nuagenetworks.vro.vspk.model.IngressProfile;
 
 import net.nuagenetworks.vro.vspk.model.IngressQOSPolicy;
 
+import net.nuagenetworks.vro.vspk.model.IPFilterProfile;
+
 import net.nuagenetworks.vro.vspk.model.IPReservation;
+
+import net.nuagenetworks.vro.vspk.model.IPv6FilterProfile;
 
 import net.nuagenetworks.vro.vspk.model.Job;
 
@@ -214,21 +248,31 @@ import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
+import net.nuagenetworks.vro.vspk.model.L7applicationsignature;
+
 import net.nuagenetworks.vro.vspk.model.LDAPConfiguration;
 
 import net.nuagenetworks.vro.vspk.model.License;
+
+import net.nuagenetworks.vro.vspk.model.LicenseStatus;
 
 import net.nuagenetworks.vro.vspk.model.Link;
 
 import net.nuagenetworks.vro.vspk.model.Location;
 
+import net.nuagenetworks.vro.vspk.model.LTEInformation;
+
 import net.nuagenetworks.vro.vspk.model.Ltestatistics;
+
+import net.nuagenetworks.vro.vspk.model.MACFilterProfile;
 
 import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.MirrorDestination;
 
 import net.nuagenetworks.vro.vspk.model.MonitoringPort;
+
+import net.nuagenetworks.vro.vspk.model.Monitorscope;
 
 import net.nuagenetworks.vro.vspk.model.MultiCastChannelMap;
 
@@ -240,15 +284,31 @@ import net.nuagenetworks.vro.vspk.model.MultiNICVPort;
 
 import net.nuagenetworks.vro.vspk.model.NATMapEntry;
 
+import net.nuagenetworks.vro.vspk.model.NetconfManager;
+
+import net.nuagenetworks.vro.vspk.model.NetconfProfile;
+
+import net.nuagenetworks.vro.vspk.model.NetconfSession;
+
 import net.nuagenetworks.vro.vspk.model.NetworkLayout;
 
 import net.nuagenetworks.vro.vspk.model.NetworkMacroGroup;
+
+import net.nuagenetworks.vro.vspk.model.NetworkPerformanceBinding;
+
+import net.nuagenetworks.vro.vspk.model.NetworkPerformanceMeasurement;
 
 import net.nuagenetworks.vro.vspk.model.NextHop;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
+import net.nuagenetworks.vro.vspk.model.NSGatewaysCount;
+
+import net.nuagenetworks.vro.vspk.model.NSGatewaySummary;
+
 import net.nuagenetworks.vro.vspk.model.NSGatewayTemplate;
+
+import net.nuagenetworks.vro.vspk.model.NSGGroup;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
 
@@ -266,9 +326,15 @@ import net.nuagenetworks.vro.vspk.model.OSPFInstance;
 
 import net.nuagenetworks.vro.vspk.model.OSPFInterface;
 
+import net.nuagenetworks.vro.vspk.model.OverlayAddressPool;
+
 import net.nuagenetworks.vro.vspk.model.OverlayMirrorDestination;
 
 import net.nuagenetworks.vro.vspk.model.OverlayMirrorDestinationTemplate;
+
+import net.nuagenetworks.vro.vspk.model.OverlayPATNATEntry;
+
+import net.nuagenetworks.vro.vspk.model.Patch;
 
 import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
@@ -276,15 +342,27 @@ import net.nuagenetworks.vro.vspk.model.Permission;
 
 import net.nuagenetworks.vro.vspk.model.PolicyDecision;
 
+import net.nuagenetworks.vro.vspk.model.PolicyEntry;
+
 import net.nuagenetworks.vro.vspk.model.PolicyGroup;
 
 import net.nuagenetworks.vro.vspk.model.PolicyGroupCategory;
 
 import net.nuagenetworks.vro.vspk.model.PolicyGroupTemplate;
 
+import net.nuagenetworks.vro.vspk.model.PolicyObjectGroup;
+
+import net.nuagenetworks.vro.vspk.model.PolicyStatement;
+
 import net.nuagenetworks.vro.vspk.model.Port;
 
 import net.nuagenetworks.vro.vspk.model.PortTemplate;
+
+import net.nuagenetworks.vro.vspk.model.PSNATPool;
+
+import net.nuagenetworks.vro.vspk.model.PSPATMap;
+
+import net.nuagenetworks.vro.vspk.model.PTranslationMap;
 
 import net.nuagenetworks.vro.vspk.model.PublicNetworkMacro;
 
@@ -308,6 +386,10 @@ import net.nuagenetworks.vro.vspk.model.SaaSApplicationGroup;
 
 import net.nuagenetworks.vro.vspk.model.SaaSApplicationType;
 
+import net.nuagenetworks.vro.vspk.model.SAPEgressQoSProfile;
+
+import net.nuagenetworks.vro.vspk.model.SAPIngressQoSProfile;
+
 import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
@@ -315,6 +397,12 @@ import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
 import net.nuagenetworks.vro.vspk.model.ShuntLink;
 
 import net.nuagenetworks.vro.vspk.model.SiteInfo;
+
+import net.nuagenetworks.vro.vspk.model.SPATSourcesPool;
+
+import net.nuagenetworks.vro.vspk.model.SSHKey;
+
+import net.nuagenetworks.vro.vspk.model.SSIDConnection;
 
 import net.nuagenetworks.vro.vspk.model.StaticRoute;
 
@@ -334,11 +422,17 @@ import net.nuagenetworks.vro.vspk.model.TCA;
 
 import net.nuagenetworks.vro.vspk.model.Tier;
 
+import net.nuagenetworks.vro.vspk.model.Trunk;
+
 import net.nuagenetworks.vro.vspk.model.Underlay;
+
+import net.nuagenetworks.vro.vspk.model.UplinkConnection;
 
 import net.nuagenetworks.vro.vspk.model.UplinkRD;
 
 import net.nuagenetworks.vro.vspk.model.User;
+
+import net.nuagenetworks.vro.vspk.model.UserContext;
 
 import net.nuagenetworks.vro.vspk.model.VCenter;
 
@@ -362,6 +456,22 @@ import net.nuagenetworks.vro.vspk.model.VM;
 
 import net.nuagenetworks.vro.vspk.model.VMInterface;
 
+import net.nuagenetworks.vro.vspk.model.VNF;
+
+import net.nuagenetworks.vro.vspk.model.VNFCatalog;
+
+import net.nuagenetworks.vro.vspk.model.VNFDescriptor;
+
+import net.nuagenetworks.vro.vspk.model.VNFDomainMapping;
+
+import net.nuagenetworks.vro.vspk.model.VNFInterface;
+
+import net.nuagenetworks.vro.vspk.model.VNFInterfaceDescriptor;
+
+import net.nuagenetworks.vro.vspk.model.VNFMetadata;
+
+import net.nuagenetworks.vro.vspk.model.VNFThresholdPolicy;
+
 import net.nuagenetworks.vro.vspk.model.VPNConnection;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
@@ -381,6 +491,8 @@ import net.nuagenetworks.vro.vspk.model.VSD;
 import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
 
 import net.nuagenetworks.vro.vspk.model.VSP;
+
+import net.nuagenetworks.vro.vspk.model.WirelessPort;
 
 import net.nuagenetworks.vro.vspk.model.ZFBRequest;
 
@@ -455,6 +567,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof AllAlarm) {
             return (AllAlarm) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "AllGateway", readOnly = true)
+    public AllGateway getAllGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AllGateway) {
+            return (AllGateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "AllRedundancyGroup", readOnly = true)
+    public AllRedundancyGroup getAllRedundancyGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AllRedundancyGroup) {
+            return (AllRedundancyGroup) obj;
         }
         
         return null;
@@ -580,6 +712,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "BRConnection", readOnly = true)
+    public BRConnection getBRConnection() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof BRConnection) {
+            return (BRConnection) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "BridgeInterface", readOnly = true)
     public BridgeInterface getBridgeInterface() {
         RestObject obj = super.getParentRestObj();
@@ -625,6 +767,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VSDComponent) {
             return (VSDComponent) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Connectionendpoint", readOnly = true)
+    public Connectionendpoint getConnectionendpoint() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Connectionendpoint) {
+            return (Connectionendpoint) obj;
         }
         
         return null;
@@ -680,6 +832,66 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "CSNATPool", readOnly = true)
+    public CSNATPool getCSNATPool() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof CSNATPool) {
+            return (CSNATPool) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "CTranslationMap", readOnly = true)
+    public CTranslationMap getCTranslationMap() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof CTranslationMap) {
+            return (CTranslationMap) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "CustomProperty", readOnly = true)
+    public CustomProperty getCustomProperty() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof CustomProperty) {
+            return (CustomProperty) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DefaultGateway", readOnly = true)
+    public DefaultGateway getDefaultGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DefaultGateway) {
+            return (DefaultGateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DemarcationService", readOnly = true)
+    public DemarcationService getDemarcationService() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DemarcationService) {
+            return (DemarcationService) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DeploymentFailure", readOnly = true)
+    public DeploymentFailure getDeploymentFailure() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DeploymentFailure) {
+            return (DeploymentFailure) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Destinationurl", readOnly = true)
     public Destinationurl getDestinationurl() {
         RestObject obj = super.getParentRestObj();
@@ -695,6 +907,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof DHCPOption) {
             return (DHCPOption) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DiskStat", readOnly = true)
+    public DiskStat getDiskStat() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DiskStat) {
+            return (DiskStat) obj;
         }
         
         return null;
@@ -755,6 +977,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof DSCPRemarkingPolicyTable) {
             return (DSCPRemarkingPolicyTable) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DUCGroup", readOnly = true)
+    public DUCGroup getDUCGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DUCGroup) {
+            return (DUCGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DUCGroupBinding", readOnly = true)
+    public DUCGroupBinding getDUCGroupBinding() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DUCGroupBinding) {
+            return (DUCGroupBinding) obj;
         }
         
         return null;
@@ -830,21 +1072,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "FloatingIPACLTemplateEntry", readOnly = true)
-    public FloatingIPACLTemplateEntry getFloatingIPACLTemplateEntry() {
+    @VsoProperty(displayName = "EgressProfile", readOnly = true)
+    public EgressProfile getEgressProfile() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof FloatingIPACLTemplateEntry) {
-            return (FloatingIPACLTemplateEntry) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "FloatingIPACLTemplate", readOnly = true)
-    public FloatingIPACLTemplate getFloatingIPACLTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof FloatingIPACLTemplate) {
-            return (FloatingIPACLTemplate) obj;
+        if (obj instanceof EgressProfile) {
+            return (EgressProfile) obj;
         }
         
         return null;
@@ -930,6 +1162,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "FirewallAcl", readOnly = true)
+    public FirewallAcl getFirewallAcl() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof FirewallAcl) {
+            return (FirewallAcl) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "FirewallRule", readOnly = true)
+    public FirewallRule getFirewallRule() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof FirewallRule) {
+            return (FirewallRule) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "FloatingIp", readOnly = true)
     public FloatingIp getFloatingIp() {
         RestObject obj = super.getParentRestObj();
@@ -970,6 +1222,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "GatewayRedundantPort", readOnly = true)
+    public GatewayRedundantPort getGatewayRedundantPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof GatewayRedundantPort) {
+            return (GatewayRedundantPort) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "GatewaySecuredData", readOnly = true)
     public GatewaySecuredData getGatewaySecuredData() {
         RestObject obj = super.getParentRestObj();
@@ -985,6 +1247,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof GatewaySecurity) {
             return (GatewaySecurity) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "GatewaysLocation", readOnly = true)
+    public GatewaysLocation getGatewaysLocation() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof GatewaysLocation) {
+            return (GatewaysLocation) obj;
         }
         
         return null;
@@ -1220,21 +1492,11 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
-    @VsoProperty(displayName = "IngressExternalServiceTemplateEntry", readOnly = true)
-    public IngressExternalServiceTemplateEntry getIngressExternalServiceTemplateEntry() {
+    @VsoProperty(displayName = "IngressProfile", readOnly = true)
+    public IngressProfile getIngressProfile() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressExternalServiceTemplateEntry) {
-            return (IngressExternalServiceTemplateEntry) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "IngressExternalServiceTemplate", readOnly = true)
-    public IngressExternalServiceTemplate getIngressExternalServiceTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressExternalServiceTemplate) {
-            return (IngressExternalServiceTemplate) obj;
+        if (obj instanceof IngressProfile) {
+            return (IngressProfile) obj;
         }
         
         return null;
@@ -1250,11 +1512,31 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "IPFilterProfile", readOnly = true)
+    public IPFilterProfile getIPFilterProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IPFilterProfile) {
+            return (IPFilterProfile) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "IPReservation", readOnly = true)
     public IPReservation getIPReservation() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IPReservation) {
             return (IPReservation) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IPv6FilterProfile", readOnly = true)
+    public IPv6FilterProfile getIPv6FilterProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IPv6FilterProfile) {
+            return (IPv6FilterProfile) obj;
         }
         
         return null;
@@ -1340,6 +1622,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "L7applicationsignature", readOnly = true)
+    public L7applicationsignature getL7applicationsignature() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L7applicationsignature) {
+            return (L7applicationsignature) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "LDAPConfiguration", readOnly = true)
     public LDAPConfiguration getLDAPConfiguration() {
         RestObject obj = super.getParentRestObj();
@@ -1355,6 +1647,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof License) {
             return (License) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "LicenseStatus", readOnly = true)
+    public LicenseStatus getLicenseStatus() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof LicenseStatus) {
+            return (LicenseStatus) obj;
         }
         
         return null;
@@ -1380,11 +1682,31 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "LTEInformation", readOnly = true)
+    public LTEInformation getLTEInformation() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof LTEInformation) {
+            return (LTEInformation) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Ltestatistics", readOnly = true)
     public Ltestatistics getLtestatistics() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Ltestatistics) {
             return (Ltestatistics) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "MACFilterProfile", readOnly = true)
+    public MACFilterProfile getMACFilterProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof MACFilterProfile) {
+            return (MACFilterProfile) obj;
         }
         
         return null;
@@ -1415,6 +1737,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof MonitoringPort) {
             return (MonitoringPort) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Monitorscope", readOnly = true)
+    public Monitorscope getMonitorscope() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Monitorscope) {
+            return (Monitorscope) obj;
         }
         
         return null;
@@ -1470,6 +1802,36 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "NetconfManager", readOnly = true)
+    public NetconfManager getNetconfManager() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfManager) {
+            return (NetconfManager) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfProfile", readOnly = true)
+    public NetconfProfile getNetconfProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfProfile) {
+            return (NetconfProfile) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfSession", readOnly = true)
+    public NetconfSession getNetconfSession() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfSession) {
+            return (NetconfSession) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "NetworkLayout", readOnly = true)
     public NetworkLayout getNetworkLayout() {
         RestObject obj = super.getParentRestObj();
@@ -1485,6 +1847,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NetworkMacroGroup) {
             return (NetworkMacroGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetworkPerformanceBinding", readOnly = true)
+    public NetworkPerformanceBinding getNetworkPerformanceBinding() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetworkPerformanceBinding) {
+            return (NetworkPerformanceBinding) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetworkPerformanceMeasurement", readOnly = true)
+    public NetworkPerformanceMeasurement getNetworkPerformanceMeasurement() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetworkPerformanceMeasurement) {
+            return (NetworkPerformanceMeasurement) obj;
         }
         
         return null;
@@ -1510,11 +1892,41 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "NSGatewaysCount", readOnly = true)
+    public NSGatewaysCount getNSGatewaysCount() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NSGatewaysCount) {
+            return (NSGatewaysCount) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NSGatewaySummary", readOnly = true)
+    public NSGatewaySummary getNSGatewaySummary() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NSGatewaySummary) {
+            return (NSGatewaySummary) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "NSGatewayTemplate", readOnly = true)
     public NSGatewayTemplate getNSGatewayTemplate() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSGatewayTemplate) {
             return (NSGatewayTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NSGGroup", readOnly = true)
+    public NSGGroup getNSGGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NSGGroup) {
+            return (NSGGroup) obj;
         }
         
         return null;
@@ -1600,6 +2012,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "OverlayAddressPool", readOnly = true)
+    public OverlayAddressPool getOverlayAddressPool() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof OverlayAddressPool) {
+            return (OverlayAddressPool) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "OverlayMirrorDestination", readOnly = true)
     public OverlayMirrorDestination getOverlayMirrorDestination() {
         RestObject obj = super.getParentRestObj();
@@ -1615,6 +2037,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof OverlayMirrorDestinationTemplate) {
             return (OverlayMirrorDestinationTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "OverlayPATNATEntry", readOnly = true)
+    public OverlayPATNATEntry getOverlayPATNATEntry() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof OverlayPATNATEntry) {
+            return (OverlayPATNATEntry) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Patch", readOnly = true)
+    public Patch getPatch() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Patch) {
+            return (Patch) obj;
         }
         
         return null;
@@ -1650,6 +2092,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "PolicyEntry", readOnly = true)
+    public PolicyEntry getPolicyEntry() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyEntry) {
+            return (PolicyEntry) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "PolicyGroup", readOnly = true)
     public PolicyGroup getPolicyGroup() {
         RestObject obj = super.getParentRestObj();
@@ -1680,6 +2132,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "PolicyObjectGroup", readOnly = true)
+    public PolicyObjectGroup getPolicyObjectGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyObjectGroup) {
+            return (PolicyObjectGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PolicyStatement", readOnly = true)
+    public PolicyStatement getPolicyStatement() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyStatement) {
+            return (PolicyStatement) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Port", readOnly = true)
     public Port getPort() {
         RestObject obj = super.getParentRestObj();
@@ -1695,6 +2167,36 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof PortTemplate) {
             return (PortTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PSNATPool", readOnly = true)
+    public PSNATPool getPSNATPool() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PSNATPool) {
+            return (PSNATPool) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PSPATMap", readOnly = true)
+    public PSPATMap getPSPATMap() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PSPATMap) {
+            return (PSPATMap) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PTranslationMap", readOnly = true)
+    public PTranslationMap getPTranslationMap() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PTranslationMap) {
+            return (PTranslationMap) obj;
         }
         
         return null;
@@ -1810,6 +2312,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "SAPEgressQoSProfile", readOnly = true)
+    public SAPEgressQoSProfile getSAPEgressQoSProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SAPEgressQoSProfile) {
+            return (SAPEgressQoSProfile) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SAPIngressQoSProfile", readOnly = true)
+    public SAPIngressQoSProfile getSAPIngressQoSProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SAPIngressQoSProfile) {
+            return (SAPIngressQoSProfile) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "WANService", readOnly = true)
     public WANService getWANService() {
         RestObject obj = super.getParentRestObj();
@@ -1845,6 +2367,36 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof SiteInfo) {
             return (SiteInfo) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SPATSourcesPool", readOnly = true)
+    public SPATSourcesPool getSPATSourcesPool() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SPATSourcesPool) {
+            return (SPATSourcesPool) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SSHKey", readOnly = true)
+    public SSHKey getSSHKey() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SSHKey) {
+            return (SSHKey) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "SSIDConnection", readOnly = true)
+    public SSIDConnection getSSIDConnection() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof SSIDConnection) {
+            return (SSIDConnection) obj;
         }
         
         return null;
@@ -1940,11 +2492,31 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "Trunk", readOnly = true)
+    public Trunk getTrunk() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Trunk) {
+            return (Trunk) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Underlay", readOnly = true)
     public Underlay getUnderlay() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Underlay) {
             return (Underlay) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "UplinkConnection", readOnly = true)
+    public UplinkConnection getUplinkConnection() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof UplinkConnection) {
+            return (UplinkConnection) obj;
         }
         
         return null;
@@ -1965,6 +2537,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof User) {
             return (User) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "UserContext", readOnly = true)
+    public UserContext getUserContext() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof UserContext) {
+            return (UserContext) obj;
         }
         
         return null;
@@ -2080,6 +2662,86 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "VNF", readOnly = true)
+    public VNF getVNF() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNF) {
+            return (VNF) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VNFCatalog", readOnly = true)
+    public VNFCatalog getVNFCatalog() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNFCatalog) {
+            return (VNFCatalog) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VNFDescriptor", readOnly = true)
+    public VNFDescriptor getVNFDescriptor() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNFDescriptor) {
+            return (VNFDescriptor) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VNFDomainMapping", readOnly = true)
+    public VNFDomainMapping getVNFDomainMapping() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNFDomainMapping) {
+            return (VNFDomainMapping) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VNFInterface", readOnly = true)
+    public VNFInterface getVNFInterface() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNFInterface) {
+            return (VNFInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VNFInterfaceDescriptor", readOnly = true)
+    public VNFInterfaceDescriptor getVNFInterfaceDescriptor() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNFInterfaceDescriptor) {
+            return (VNFInterfaceDescriptor) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VNFMetadata", readOnly = true)
+    public VNFMetadata getVNFMetadata() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNFMetadata) {
+            return (VNFMetadata) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VNFThresholdPolicy", readOnly = true)
+    public VNFThresholdPolicy getVNFThresholdPolicy() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VNFThresholdPolicy) {
+            return (VNFThresholdPolicy) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "VPNConnection", readOnly = true)
     public VPNConnection getVPNConnection() {
         RestObject obj = super.getParentRestObj();
@@ -2175,6 +2837,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VSP) {
             return (VSP) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "WirelessPort", readOnly = true)
+    public WirelessPort getWirelessPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof WirelessPort) {
+            return (WirelessPort) obj;
         }
         
         return null;

@@ -36,6 +36,8 @@ import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.HostInterface;
 
+import net.nuagenetworks.vro.vspk.model.L2Domain;
+
 import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
@@ -99,6 +101,16 @@ public class StaticRoutesFetcher extends BaseFetcher<StaticRoute> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof HostInterface) {
             return (HostInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
         }
         
         return null;

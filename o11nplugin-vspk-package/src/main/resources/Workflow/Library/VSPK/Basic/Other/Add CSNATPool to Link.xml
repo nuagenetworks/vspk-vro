@@ -5,7 +5,11 @@
 <position x='100.0' y='50.0'/>
 <input><param name='linkObj' type='VSPK:Link' >
 </param>
+<param name='description' type='string' >
+</param>
 <param name='endAddress' type='string' >
+</param>
+<param name='externalID' type='string' >
 </param>
 <param name='name' type='string' >
 </param>
@@ -21,8 +25,14 @@
 <script encoded='false'><![CDATA[var session = linkObj.session;
 
 cSNATPoolObj = new VSPKCSNATPool();
+if (description) {
+   cSNATPoolObj.description = description;
+}
 if (endAddress) {
    cSNATPoolObj.endAddress = endAddress;
+}
+if (externalID) {
+   cSNATPoolObj.externalID = externalID;
 }
 if (name) {
    cSNATPoolObj.name = name;
@@ -34,7 +44,9 @@ if (startAddress) {
 linkObj.createCSNATPool(session, cSNATPoolObj);
 ]]></script>
 <in-binding><bind name='linkObj' type='VSPK:Link' export-name="linkObj" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
 <bind name='endAddress' type='string' export-name="endAddress" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 <bind name='startAddress' type='string' export-name="startAddress" ></bind>
 </in-binding><out-binding><bind name='cSNATPoolObj' type='VSPK:CSNATPool' export-name="cSNATPoolObj" ></bind>
@@ -43,7 +55,11 @@ linkObj.createCSNATPool(session, cSNATPoolObj);
 <presentation>
 <p-param name="linkObj"><desc><![CDATA[linkObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
 <p-param name="endAddress"><desc><![CDATA[endAddress]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in DemarcationService</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">453179ba-1198-55f4-ba2c-a5d0c0850d37</entry>
+</properties>

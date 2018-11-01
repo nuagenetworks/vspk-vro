@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.RedirectionTargetTemplateDestinationType;
+
 import net.nuagenetworks.vro.vspk.model.enums.RedirectionTargetTemplateEndPointType;
 
 import net.nuagenetworks.vro.vspk.model.enums.RedirectionTargetTemplateEntityScope;
@@ -63,6 +65,9 @@ public class RedirectionTargetTemplate extends BaseObject {
     
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "destinationType")
+    protected RedirectionTargetTemplateDestinationType destinationType;
     
     @JsonProperty(value = "endPointType")
     protected RedirectionTargetTemplateEndPointType endPointType;
@@ -149,6 +154,17 @@ public class RedirectionTargetTemplate extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DestinationType", readOnly = false)   
+    public RedirectionTargetTemplateDestinationType getDestinationType() {
+       return destinationType;
+    }
+
+    @JsonIgnore
+    public void setDestinationType(RedirectionTargetTemplateDestinationType value) { 
+        this.destinationType = value;
     }
     
     @JsonIgnore
@@ -291,7 +307,7 @@ public class RedirectionTargetTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "RedirectionTargetTemplate [" + "description=" + description + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", triggerType=" + triggerType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "RedirectionTargetTemplate [" + "description=" + description + ", destinationType=" + destinationType + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", triggerType=" + triggerType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

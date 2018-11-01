@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='netconfManagerObj' type='VSPK:NetconfManager' >
 </param>
+<param name='externalID' type='string' >
+</param>
 </input><output><param name='netconfSessionObj' type='VSPK:NetconfSession' >
 </param>
 </output><workflow-item name='item0' type='end' end-mode='0' >
@@ -15,14 +17,20 @@
 <script encoded='false'><![CDATA[var session = netconfManagerObj.session;
 
 netconfSessionObj = new VSPKNetconfSession();
+if (externalID) {
+   netconfSessionObj.externalID = externalID;
+}
 
 netconfManagerObj.createNetconfSession(session, netconfSessionObj);
 ]]></script>
 <in-binding><bind name='netconfManagerObj' type='VSPK:NetconfManager' export-name="netconfManagerObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 </in-binding><out-binding><bind name='netconfSessionObj' type='VSPK:NetconfSession' export-name="netconfSessionObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="netconfManagerObj"><desc><![CDATA[netconfManagerObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
 </presentation></workflow>

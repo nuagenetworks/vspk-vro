@@ -6,7 +6,13 @@
 <input><param name='cSNATPoolObj' type='VSPK:CSNATPool' >
 </param>
 
+<param name='description' type='string' >
+</param>
+
 <param name='endAddress' type='string' >
+</param>
+
+<param name='externalID' type='string' >
 </param>
 
 <param name='name' type='string' >
@@ -22,10 +28,20 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = cSNATPoolObj.session;
 
+if (description) {
+   cSNATPoolObj.description = description;
+} else if (cSNATPoolObj.description) {
+   cSNATPoolObj.description = "";
+}
 if (endAddress) {
    cSNATPoolObj.endAddress = endAddress;
 } else if (cSNATPoolObj.endAddress) {
    cSNATPoolObj.endAddress = "";
+}
+if (externalID) {
+   cSNATPoolObj.externalID = externalID;
+} else if (cSNATPoolObj.externalID) {
+   cSNATPoolObj.externalID = "";
 }
 if (name) {
    cSNATPoolObj.name = name;
@@ -40,7 +56,11 @@ if (startAddress) {
 cSNATPoolObj.save(session, 1);]]></script>
 <in-binding><bind name='cSNATPoolObj' type='VSPK:CSNATPool' export-name="cSNATPoolObj" ></bind>
 
+<bind name='description' type='string' export-name="description" ></bind>
+
 <bind name='endAddress' type='string' export-name="endAddress" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -52,8 +72,14 @@ cSNATPoolObj.save(session, 1);]]></script>
 <p-param name="cSNATPoolObj"><desc><![CDATA[cSNATPoolObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#cSNATPoolObj.description]]></p-qual></p-param>
+
 <p-param name="endAddress"><desc><![CDATA[endAddress]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#cSNATPoolObj.endAddress]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#cSNATPoolObj.externalID]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#cSNATPoolObj.name]]></p-qual></p-param>

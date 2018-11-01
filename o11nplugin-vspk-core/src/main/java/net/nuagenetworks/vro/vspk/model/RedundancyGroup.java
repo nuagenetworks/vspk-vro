@@ -97,21 +97,11 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSPROFILES_FETCHER, type = Constants.INGRESSPROFILES_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.IPFILTERPROFILES_FETCHER, type = Constants.IPFILTERPROFILES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.IPV6FILTERPROFILES_FETCHER, type = Constants.IPV6FILTERPROFILES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.MACFILTERPROFILES_FETCHER, type = Constants.MACFILTERPROFILES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PORTS_FETCHER, type = Constants.PORTS_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.SAPEGRESSQOSPROFILES_FETCHER, type = Constants.SAPEGRESSQOSPROFILES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.SAPINGRESSQOSPROFILES_FETCHER, type = Constants.SAPINGRESSQOSPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.WANSERVICES_FETCHER, type = Constants.WANSERVICES_FETCHER), 
 
@@ -734,35 +724,11 @@ public class RedundancyGroup extends BaseObject {
         }
     }
     @VsoMethod
-    public void createIPFilterProfile(Session session, IPFilterProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.IPFILTERPROFILES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createIPv6FilterProfile(Session session, IPv6FilterProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.IPV6FILTERPROFILES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createMACFilterProfile(Session session, MACFilterProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.MACFILTERPROFILES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -798,22 +764,6 @@ public class RedundancyGroup extends BaseObject {
         }
     }
     
-    @VsoMethod
-    public void createSAPEgressQoSProfile(Session session, SAPEgressQoSProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.SAPEGRESSQOSPROFILES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createSAPIngressQoSProfile(Session session, SAPIngressQoSProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.SAPINGRESSQOSPROFILES_FETCHER, getId());
-        }
-    }
     @VsoMethod
     public void createWANService(Session session, WANService childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;

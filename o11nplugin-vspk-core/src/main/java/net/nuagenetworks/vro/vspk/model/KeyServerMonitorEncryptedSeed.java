@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.KeyServerMonitorEncryptedSeedEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.KeyServerMonitorEncryptedSeedSeedType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -84,6 +86,9 @@ public class KeyServerMonitorEncryptedSeed extends BaseObject {
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "seedType")
+    protected KeyServerMonitorEncryptedSeedSeedType seedType;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -249,6 +254,17 @@ public class KeyServerMonitorEncryptedSeed extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SeedType", readOnly = false)   
+    public KeyServerMonitorEncryptedSeedSeedType getSeedType() {
+       return seedType;
+    }
+
+    @JsonIgnore
+    public void setSeedType(KeyServerMonitorEncryptedSeedSeedType value) { 
+        this.seedType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -305,7 +321,7 @@ public class KeyServerMonitorEncryptedSeed extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "KeyServerMonitorEncryptedSeed [" + "SEKCreationTime=" + SEKCreationTime + ", associatedKeyServerMonitorSEKCreationTime=" + associatedKeyServerMonitorSEKCreationTime + ", associatedKeyServerMonitorSEKID=" + associatedKeyServerMonitorSEKID + ", associatedKeyServerMonitorSeedCreationTime=" + associatedKeyServerMonitorSeedCreationTime + ", associatedKeyServerMonitorSeedID=" + associatedKeyServerMonitorSeedID + ", enterpriseSecuredDataID=" + enterpriseSecuredDataID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", keyServerCertificateSerialNumber=" + keyServerCertificateSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "KeyServerMonitorEncryptedSeed [" + "SEKCreationTime=" + SEKCreationTime + ", associatedKeyServerMonitorSEKCreationTime=" + associatedKeyServerMonitorSEKCreationTime + ", associatedKeyServerMonitorSEKID=" + associatedKeyServerMonitorSEKID + ", associatedKeyServerMonitorSeedCreationTime=" + associatedKeyServerMonitorSeedCreationTime + ", associatedKeyServerMonitorSeedID=" + associatedKeyServerMonitorSeedID + ", enterpriseSecuredDataID=" + enterpriseSecuredDataID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", keyServerCertificateSerialNumber=" + keyServerCertificateSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", seedType=" + seedType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.EnterpriseSecuredDataEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.EnterpriseSecuredDataSeedType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -72,6 +74,9 @@ public class EnterpriseSecuredData extends BaseObject {
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "seedType")
+    protected EnterpriseSecuredDataSeedType seedType;
     
     @JsonProperty(value = "sekId")
     protected Long sekId;
@@ -199,6 +204,17 @@ public class EnterpriseSecuredData extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SeedType", readOnly = false)   
+    public EnterpriseSecuredDataSeedType getSeedType() {
+       return seedType;
+    }
+
+    @JsonIgnore
+    public void setSeedType(EnterpriseSecuredDataSeedType value) { 
+        this.seedType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "SekId", readOnly = false)   
     public Long getSekId() {
        return sekId;
@@ -277,7 +293,7 @@ public class EnterpriseSecuredData extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EnterpriseSecuredData [" + "data=" + data + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hash=" + hash + ", keyserverCertSerialNumber=" + keyserverCertSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", sekId=" + sekId + ", signedHash=" + signedHash + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EnterpriseSecuredData [" + "data=" + data + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hash=" + hash + ", keyserverCertSerialNumber=" + keyserverCertSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", seedType=" + seedType + ", sekId=" + sekId + ", signedHash=" + signedHash + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

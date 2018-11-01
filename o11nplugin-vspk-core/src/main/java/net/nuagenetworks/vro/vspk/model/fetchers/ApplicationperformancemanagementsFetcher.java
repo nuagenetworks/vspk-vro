@@ -32,9 +32,9 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
-import net.nuagenetworks.vro.vspk.model.PerformanceMonitor;
+import net.nuagenetworks.vro.vspk.model.Me;
 
-import net.nuagenetworks.vro.vspk.model.VPort;
+import net.nuagenetworks.vro.vspk.model.PerformanceMonitor;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -78,21 +78,21 @@ public class ApplicationperformancemanagementsFetcher extends BaseFetcher<Applic
         return null;
     }
     
-    @VsoProperty(displayName = "PerformanceMonitor", readOnly = true)
-    public PerformanceMonitor getPerformanceMonitor() {
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof PerformanceMonitor) {
-            return (PerformanceMonitor) obj;
+        if (obj instanceof Me) {
+            return (Me) obj;
         }
         
         return null;
     }
     
-    @VsoProperty(displayName = "VPort", readOnly = true)
-    public VPort getVPort() {
+    @VsoProperty(displayName = "PerformanceMonitor", readOnly = true)
+    public PerformanceMonitor getPerformanceMonitor() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof VPort) {
-            return (VPort) obj;
+        if (obj instanceof PerformanceMonitor) {
+            return (PerformanceMonitor) obj;
         }
         
         return null;

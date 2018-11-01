@@ -72,6 +72,12 @@ public class EgressAdvFwdTemplate extends BaseObject {
     @JsonProperty(value = "autoGeneratePriority")
     protected Boolean autoGeneratePriority;
     
+    @JsonProperty(value = "defaultAllowIP")
+    protected Boolean defaultAllowIP;
+    
+    @JsonProperty(value = "defaultAllowNonIP")
+    protected Boolean defaultAllowNonIP;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -180,6 +186,28 @@ public class EgressAdvFwdTemplate extends BaseObject {
     @JsonIgnore
     public void setAutoGeneratePriority(Boolean value) { 
         this.autoGeneratePriority = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DefaultAllowIP", readOnly = false)   
+    public Boolean getDefaultAllowIP() {
+       return defaultAllowIP;
+    }
+
+    @JsonIgnore
+    public void setDefaultAllowIP(Boolean value) { 
+        this.defaultAllowIP = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DefaultAllowNonIP", readOnly = false)   
+    public Boolean getDefaultAllowNonIP() {
+       return defaultAllowNonIP;
+    }
+
+    @JsonIgnore
+    public void setDefaultAllowNonIP(Boolean value) { 
+        this.defaultAllowNonIP = value;
     }
     
     @JsonIgnore
@@ -341,7 +369,7 @@ public class EgressAdvFwdTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressAdvFwdTemplate [" + "active=" + active + ", associatedLiveEntityID=" + associatedLiveEntityID + ", autoGeneratePriority=" + autoGeneratePriority + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressAdvFwdTemplate [" + "active=" + active + ", associatedLiveEntityID=" + associatedLiveEntityID + ", autoGeneratePriority=" + autoGeneratePriority + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

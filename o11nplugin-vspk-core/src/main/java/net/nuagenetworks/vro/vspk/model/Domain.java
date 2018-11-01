@@ -26,6 +26,10 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ApplicationperformancemanagementbindingsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.BridgeInterfacesFetcher;
@@ -48,8 +52,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DomainFIPAclTemplatesFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIPACLTemplatesFetcher;
-
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.FirewallAclsFetcher;
@@ -69,8 +71,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLEntryTemplatesFetcher
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdTemplatesFetcher;
-
-import net.nuagenetworks.vro.vspk.model.fetchers.IngressExternalServiceTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
@@ -113,6 +113,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.TCAsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkRDsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallPoliciesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VirtualFirewallRulesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
@@ -179,19 +181,13 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINFIPACLTEMPLATES_FETCHER, type = Constants.DOMAINFIPACLTEMPLATES_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPACLTEMPLATES_FETCHER, type = Constants.FLOATINGIPACLTEMPLATES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPS_FETCHER, type = Constants.FLOATINGIPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.FORWARDINGPATHLISTS_FETCHER, type = Constants.FORWARDINGPATHLISTS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLENTRYTEMPLATES_FETCHER, type = Constants.INGRESSACLENTRYTEMPLATES_FETCHER), 
-
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLTEMPLATES_FETCHER, type = Constants.INGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSADVFWDTEMPLATES_FETCHER, type = Constants.INGRESSADVFWDTEMPLATES_FETCHER), 
-
-        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER, type = Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.LINKS_FETCHER, type = Constants.LINKS_FETCHER), 
 
@@ -290,12 +286,6 @@ public class Domain extends BaseObject {
     @JsonProperty(value = "backHaulServiceID")
     protected Long backHaulServiceID;
     
-    @JsonProperty(value = "backHaulSubnetIPAddress")
-    protected String backHaulSubnetIPAddress;
-    
-    @JsonProperty(value = "backHaulSubnetMask")
-    protected String backHaulSubnetMask;
-    
     @JsonProperty(value = "backHaulVNID")
     protected Long backHaulVNID;
     
@@ -316,6 +306,9 @@ public class Domain extends BaseObject {
     
     @JsonProperty(value = "encryption")
     protected DomainEncryption encryption;
+    
+    @JsonProperty(value = "enterpriseID")
+    protected String enterpriseID;
     
     @JsonProperty(value = "entityScope")
     protected DomainEntityScope entityScope;
@@ -390,6 +383,12 @@ public class Domain extends BaseObject {
     protected DomainUplinkPreference uplinkPreference;
     
     @JsonIgnore
+    private AlarmsFetcher alarms;
+    
+    @JsonIgnore
+    private ApplicationsFetcher applications;
+    
+    @JsonIgnore
     private ApplicationperformancemanagementbindingsFetcher applicationperformancemanagementbindings;
     
     @JsonIgnore
@@ -423,9 +422,6 @@ public class Domain extends BaseObject {
     private DomainFIPAclTemplatesFetcher domainFIPAclTemplates;
     
     @JsonIgnore
-    private FloatingIPACLTemplatesFetcher floatingIPACLTemplates;
-    
-    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -454,9 +450,6 @@ public class Domain extends BaseObject {
     
     @JsonIgnore
     private IngressAdvFwdTemplatesFetcher ingressAdvFwdTemplates;
-    
-    @JsonIgnore
-    private IngressExternalServiceTemplatesFetcher ingressExternalServiceTemplates;
     
     @JsonIgnore
     private JobsFetcher jobs;
@@ -522,6 +515,9 @@ public class Domain extends BaseObject {
     private VirtualFirewallPoliciesFetcher virtualFirewallPolicies;
     
     @JsonIgnore
+    private VirtualFirewallRulesFetcher virtualFirewallRules;
+    
+    @JsonIgnore
     private VMsFetcher vMs;
     
     @JsonIgnore
@@ -549,6 +545,10 @@ public class Domain extends BaseObject {
         
         maintenanceMode = DomainMaintenanceMode.DISABLED;
         
+        alarms = new AlarmsFetcher(this);
+        
+        applications = new ApplicationsFetcher(this);
+        
         applicationperformancemanagementbindings = new ApplicationperformancemanagementbindingsFetcher(this);
         
         bridgeInterfaces = new BridgeInterfacesFetcher(this);
@@ -571,8 +571,6 @@ public class Domain extends BaseObject {
         
         domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
         
-        floatingIPACLTemplates = new FloatingIPACLTemplatesFetcher(this);
-        
         eventLogs = new EventLogsFetcher(this);
         
         firewallAcls = new FirewallAclsFetcher(this);
@@ -592,8 +590,6 @@ public class Domain extends BaseObject {
         ingressACLTemplates = new IngressACLTemplatesFetcher(this);
         
         ingressAdvFwdTemplates = new IngressAdvFwdTemplatesFetcher(this);
-        
-        ingressExternalServiceTemplates = new IngressExternalServiceTemplatesFetcher(this);
         
         jobs = new JobsFetcher(this);
         
@@ -636,6 +632,8 @@ public class Domain extends BaseObject {
         uplinkRDs = new UplinkRDsFetcher(this);
         
         virtualFirewallPolicies = new VirtualFirewallPoliciesFetcher(this);
+        
+        virtualFirewallRules = new VirtualFirewallRulesFetcher(this);
         
         vMs = new VMsFetcher(this);
         
@@ -873,28 +871,6 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "BackHaulSubnetIPAddress", readOnly = false)   
-    public String getBackHaulSubnetIPAddress() {
-       return backHaulSubnetIPAddress;
-    }
-
-    @JsonIgnore
-    public void setBackHaulSubnetIPAddress(String value) { 
-        this.backHaulSubnetIPAddress = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "BackHaulSubnetMask", readOnly = false)   
-    public String getBackHaulSubnetMask() {
-       return backHaulSubnetMask;
-    }
-
-    @JsonIgnore
-    public void setBackHaulSubnetMask(String value) { 
-        this.backHaulSubnetMask = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "BackHaulVNID", readOnly = false)   
     public Long getBackHaulVNID() {
        return backHaulVNID;
@@ -969,6 +945,17 @@ public class Domain extends BaseObject {
     @JsonIgnore
     public void setEncryption(DomainEncryption value) { 
         this.encryption = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnterpriseID", readOnly = false)   
+    public String getEnterpriseID() {
+       return enterpriseID;
+    }
+
+    @JsonIgnore
+    public void setEnterpriseID(String value) { 
+        this.enterpriseID = value;
     }
     
     @JsonIgnore
@@ -1236,6 +1223,18 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Alarms", readOnly = true)   
+    public AlarmsFetcher getAlarms() {
+        return alarms;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Applications", readOnly = true)   
+    public ApplicationsFetcher getApplications() {
+        return applications;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Applicationperformancemanagementbindings", readOnly = true)   
     public ApplicationperformancemanagementbindingsFetcher getApplicationperformancemanagementbindings() {
         return applicationperformancemanagementbindings;
@@ -1302,12 +1301,6 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "FloatingIPACLTemplates", readOnly = true)   
-    public FloatingIPACLTemplatesFetcher getFloatingIPACLTemplates() {
-        return floatingIPACLTemplates;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -1365,12 +1358,6 @@ public class Domain extends BaseObject {
     @VsoProperty(displayName = "IngressAdvFwdTemplates", readOnly = true)   
     public IngressAdvFwdTemplatesFetcher getIngressAdvFwdTemplates() {
         return ingressAdvFwdTemplates;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "IngressExternalServiceTemplates", readOnly = true)   
-    public IngressExternalServiceTemplatesFetcher getIngressExternalServiceTemplates() {
-        return ingressExternalServiceTemplates;
     }
     
     @JsonIgnore
@@ -1500,6 +1487,12 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VirtualFirewallRules", readOnly = true)   
+    public VirtualFirewallRulesFetcher getVirtualFirewallRules() {
+        return virtualFirewallRules;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VMs", readOnly = true)   
     public VMsFetcher getVMs() {
         return vMs;
@@ -1601,6 +1594,15 @@ public class Domain extends BaseObject {
     }
     
     @VsoMethod
+    public void assignSPATSourcesPools(Session session, SPATSourcesPool[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.DOMAIN, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createApplicationperformancemanagementbinding(Session session, Applicationperformancemanagementbinding childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1641,14 +1643,6 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
-    public void createFloatingIPACLTemplate(Session session, FloatingIPACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.FLOATINGIPACLTEMPLATES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createFloatingIp(Session session, FloatingIp childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1673,14 +1667,6 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
-    public void createIngressACLEntryTemplate(Session session, IngressACLEntryTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSACLENTRYTEMPLATES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
     public void createIngressACLTemplate(Session session, IngressACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1694,14 +1680,6 @@ public class Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSADVFWDTEMPLATES_FETCHER, getId());
-        }
-    }
-    @VsoMethod
-    public void createIngressExternalServiceTemplate(Session session, IngressExternalServiceTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
-        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
-        super.createChild(session, childRestObj, responseChoice, commit);
-        if (!session.getNotificationsEnabled()) {
-           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSEXTERNALSERVICETEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1900,7 +1878,7 @@ public class Domain extends BaseObject {
         }
     }
     public String toString() {
-        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", FIPIgnoreDefaultRoute=" + FIPIgnoreDefaultRoute + ", FIPUnderlay=" + FIPUnderlay + ", PATEnabled=" + PATEnabled + ", advertiseCriteria=" + advertiseCriteria + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", associatedSharedPATMapperID=" + associatedSharedPATMapperID + ", associatedUnderlayID=" + associatedUnderlayID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulServiceID=" + backHaulServiceID + ", backHaulSubnetIPAddress=" + backHaulSubnetIPAddress + ", backHaulSubnetMask=" + backHaulSubnetMask + ", backHaulVNID=" + backHaulVNID + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", encryption=" + encryption + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", leakingEnabled=" + leakingEnabled + ", localAS=" + localAS + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", FIPIgnoreDefaultRoute=" + FIPIgnoreDefaultRoute + ", FIPUnderlay=" + FIPUnderlay + ", PATEnabled=" + PATEnabled + ", advertiseCriteria=" + advertiseCriteria + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", associatedSharedPATMapperID=" + associatedSharedPATMapperID + ", associatedUnderlayID=" + associatedUnderlayID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulServiceID=" + backHaulServiceID + ", backHaulVNID=" + backHaulVNID + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", encryption=" + encryption + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", leakingEnabled=" + leakingEnabled + ", localAS=" + localAS + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -26,8 +26,6 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
-import net.nuagenetworks.vro.vspk.model.enums.NSGInfoTPMStatus;
-
 import net.nuagenetworks.vro.vspk.model.enums.NSGInfoEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGInfoFamily;
@@ -53,6 +51,12 @@ public class NSGInfo extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "AARApplicationReleaseDate")
+    protected String AARApplicationReleaseDate;
+    
+    @JsonProperty(value = "AARApplicationVersion")
+    protected String AARApplicationVersion;
+    
     @JsonProperty(value = "BIOSReleaseDate")
     protected String BIOSReleaseDate;
     
@@ -72,13 +76,16 @@ public class NSGInfo extends BaseObject {
     protected String SKU;
     
     @JsonProperty(value = "TPMStatus")
-    protected NSGInfoTPMStatus TPMStatus;
+    protected Long TPMStatus;
     
     @JsonProperty(value = "TPMVersion")
     protected String TPMVersion;
     
     @JsonProperty(value = "UUID")
     protected String UUID;
+    
+    @JsonProperty(value = "associatedEntityType")
+    protected String associatedEntityType;
     
     @JsonProperty(value = "associatedNSGatewayID")
     protected String associatedNSGatewayID;
@@ -95,8 +102,8 @@ public class NSGInfo extends BaseObject {
     @JsonProperty(value = "libraries")
     protected String libraries;
     
-    @JsonProperty(value = "patches")
-    protected String patches;
+    @JsonProperty(value = "patchesDetail")
+    protected String patchesDetail;
     
     @JsonProperty(value = "productName")
     protected String productName;
@@ -147,6 +154,28 @@ public class NSGInfo extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AARApplicationReleaseDate", readOnly = false)   
+    public String getAARApplicationReleaseDate() {
+       return AARApplicationReleaseDate;
+    }
+
+    @JsonIgnore
+    public void setAARApplicationReleaseDate(String value) { 
+        this.AARApplicationReleaseDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AARApplicationVersion", readOnly = false)   
+    public String getAARApplicationVersion() {
+       return AARApplicationVersion;
+    }
+
+    @JsonIgnore
+    public void setAARApplicationVersion(String value) { 
+        this.AARApplicationVersion = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "BIOSReleaseDate", readOnly = false)   
     public String getBIOSReleaseDate() {
@@ -215,12 +244,12 @@ public class NSGInfo extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "TPMStatus", readOnly = false)   
-    public NSGInfoTPMStatus getTPMStatus() {
+    public Long getTPMStatus() {
        return TPMStatus;
     }
 
     @JsonIgnore
-    public void setTPMStatus(NSGInfoTPMStatus value) { 
+    public void setTPMStatus(Long value) { 
         this.TPMStatus = value;
     }
     
@@ -244,6 +273,17 @@ public class NSGInfo extends BaseObject {
     @JsonIgnore
     public void setUUID(String value) { 
         this.UUID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEntityType", readOnly = false)   
+    public String getAssociatedEntityType() {
+       return associatedEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEntityType(String value) { 
+        this.associatedEntityType = value;
     }
     
     @JsonIgnore
@@ -302,14 +342,14 @@ public class NSGInfo extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Patches", readOnly = false)   
-    public String getPatches() {
-       return patches;
+    @VsoProperty(displayName = "PatchesDetail", readOnly = false)   
+    public String getPatchesDetail() {
+       return patchesDetail;
     }
 
     @JsonIgnore
-    public void setPatches(String value) { 
-        this.patches = value;
+    public void setPatchesDetail(String value) { 
+        this.patchesDetail = value;
     }
     
     @JsonIgnore
@@ -354,7 +394,7 @@ public class NSGInfo extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGINFO, getId());
         }
     }public String toString() {
-        return "NSGInfo [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", libraries=" + libraries + ", patches=" + patches + ", productName=" + productName + ", serialNumber=" + serialNumber + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGInfo [" + "AARApplicationReleaseDate=" + AARApplicationReleaseDate + ", AARApplicationVersion=" + AARApplicationVersion + ", BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedEntityType=" + associatedEntityType + ", associatedNSGatewayID=" + associatedNSGatewayID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", libraries=" + libraries + ", patchesDetail=" + patchesDetail + ", productName=" + productName + ", serialNumber=" + serialNumber + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

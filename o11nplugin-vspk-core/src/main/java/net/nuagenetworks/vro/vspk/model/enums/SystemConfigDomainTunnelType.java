@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum SystemConfigDomainTunnelType {
 
-    DC_DEFAULT("DC_DEFAULT", "DC_DEFAULT"), GRE("GRE", "GRE"), VLAN("VLAN", "VLAN"), VXLAN("VXLAN", "VXLAN");
+    GRE("GRE", "GRE"), VLAN("VLAN", "VLAN"), VXLAN("VXLAN", "VXLAN");
 
     private final String id;
     private final String name;
@@ -57,11 +57,6 @@ public enum SystemConfigDomainTunnelType {
         return name;
     }
 
-    
-    @VsoProperty(displayName = "DC_DEFAULT", readOnly = true)
-    public SystemConfigDomainTunnelType getDC_DEFAULT() {
-        return DC_DEFAULT;
-    }
     
     @VsoProperty(displayName = "GRE", readOnly = true)
     public SystemConfigDomainTunnelType getGRE() {

@@ -31,8 +31,6 @@ import net.nuagenetworks.vro.vspk.model.CaptivePortalProfile;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
-
-import net.nuagenetworks.vro.vspk.model.SSIDConnection;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -71,16 +69,6 @@ public class CaptivePortalProfilesFetcher extends BaseFetcher<CaptivePortalProfi
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "SSIDConnection", readOnly = true)
-    public SSIDConnection getSSIDConnection() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof SSIDConnection) {
-            return (SSIDConnection) obj;
         }
         
         return null;

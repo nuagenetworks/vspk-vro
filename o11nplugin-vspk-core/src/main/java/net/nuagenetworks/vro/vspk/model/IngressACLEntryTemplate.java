@@ -94,11 +94,17 @@ public class IngressACLEntryTemplate extends BaseObject {
     @JsonProperty(value = "associatedLiveEntityID")
     protected String associatedLiveEntityID;
     
+    @JsonProperty(value = "associatedLiveTemplateID")
+    protected String associatedLiveTemplateID;
+    
     @JsonProperty(value = "associatedTrafficType")
     protected IngressACLEntryTemplateAssociatedTrafficType associatedTrafficType;
     
     @JsonProperty(value = "associatedTrafficTypeID")
     protected String associatedTrafficTypeID;
+    
+    @JsonProperty(value = "associatedVirtualFirewallRuleID")
+    protected String associatedVirtualFirewallRuleID;
     
     @JsonProperty(value = "description")
     protected String description;
@@ -336,6 +342,17 @@ public class IngressACLEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedLiveTemplateID", readOnly = false)   
+    public String getAssociatedLiveTemplateID() {
+       return associatedLiveTemplateID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedLiveTemplateID(String value) { 
+        this.associatedLiveTemplateID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedTrafficType", readOnly = false)   
     public IngressACLEntryTemplateAssociatedTrafficType getAssociatedTrafficType() {
        return associatedTrafficType;
@@ -355,6 +372,17 @@ public class IngressACLEntryTemplate extends BaseObject {
     @JsonIgnore
     public void setAssociatedTrafficTypeID(String value) { 
         this.associatedTrafficTypeID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedVirtualFirewallRuleID", readOnly = false)   
+    public String getAssociatedVirtualFirewallRuleID() {
+       return associatedVirtualFirewallRuleID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedVirtualFirewallRuleID(String value) { 
+        this.associatedVirtualFirewallRuleID = value;
     }
     
     @JsonIgnore
@@ -662,7 +690,7 @@ public class IngressACLEntryTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IngressACLEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", overlayMirrorDestinationID=" + overlayMirrorDestinationID + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IngressACLEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", associatedVirtualFirewallRuleID=" + associatedVirtualFirewallRuleID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", overlayMirrorDestinationID=" + overlayMirrorDestinationID + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

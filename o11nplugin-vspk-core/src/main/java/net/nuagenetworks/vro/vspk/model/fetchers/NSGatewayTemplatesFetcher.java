@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
+import net.nuagenetworks.vro.vspk.model.InfrastructureAccessProfile;
+
 import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -71,6 +73,16 @@ public class NSGatewayTemplatesFetcher extends BaseFetcher<NSGatewayTemplate> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "InfrastructureAccessProfile", readOnly = true)
+    public InfrastructureAccessProfile getInfrastructureAccessProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof InfrastructureAccessProfile) {
+            return (InfrastructureAccessProfile) obj;
         }
         
         return null;

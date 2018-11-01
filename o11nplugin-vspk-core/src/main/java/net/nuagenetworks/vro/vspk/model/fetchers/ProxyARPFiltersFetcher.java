@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.ProxyARPFilter;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.L2Domain;
+
 import net.nuagenetworks.vro.vspk.model.Subnet;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -64,6 +66,16 @@ public class ProxyARPFiltersFetcher extends BaseFetcher<ProxyARPFilter> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Subnet", readOnly = true)
     public Subnet getSubnet() {
         RestObject obj = super.getParentRestObj();

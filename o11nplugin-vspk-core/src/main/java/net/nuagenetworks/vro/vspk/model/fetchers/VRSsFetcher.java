@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.Container;
 
 import net.nuagenetworks.vro.vspk.model.HSC;
 
+import net.nuagenetworks.vro.vspk.model.Me;
+
 import net.nuagenetworks.vro.vspk.model.VM;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
@@ -87,6 +89,16 @@ public class VRSsFetcher extends BaseFetcher<VRS> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof HSC) {
             return (HSC) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Me) {
+            return (Me) obj;
         }
         
         return null;

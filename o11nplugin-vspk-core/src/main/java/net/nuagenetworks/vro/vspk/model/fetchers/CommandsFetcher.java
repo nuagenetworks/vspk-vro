@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Command;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Me;
+
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -64,6 +66,16 @@ public class CommandsFetcher extends BaseFetcher<Command> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Me) {
+            return (Me) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "NSGateway", readOnly = true)
     public NSGateway getNSGateway() {
         RestObject obj = super.getParentRestObj();

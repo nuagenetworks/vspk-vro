@@ -40,15 +40,11 @@ import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.EgressACLEntryTemplate;
 
-import net.nuagenetworks.vro.vspk.model.EgressAdvFwdEntryTemplate;
-
 import net.nuagenetworks.vro.vspk.model.HostInterface;
 
 import net.nuagenetworks.vro.vspk.model.IngressACLEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
-
-import net.nuagenetworks.vro.vspk.model.IngressExternalServiceTemplateEntry;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
@@ -57,8 +53,6 @@ import net.nuagenetworks.vro.vspk.model.NSPort;
 import net.nuagenetworks.vro.vspk.model.PATNATPool;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
-
-import net.nuagenetworks.vro.vspk.model.VirtualFirewallRule;
 
 import net.nuagenetworks.vro.vspk.model.VLAN;
 
@@ -69,8 +63,6 @@ import net.nuagenetworks.vro.vspk.model.VPort;
 import net.nuagenetworks.vro.vspk.model.VRS;
 
 import net.nuagenetworks.vro.vspk.model.VSC;
-
-import net.nuagenetworks.vro.vspk.model.WirelessPort;
 
 import net.nuagenetworks.vro.vspk.model.Zone;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
@@ -156,16 +148,6 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         return null;
     }
     
-    @VsoProperty(displayName = "EgressAdvFwdEntryTemplate", readOnly = true)
-    public EgressAdvFwdEntryTemplate getEgressAdvFwdEntryTemplate() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof EgressAdvFwdEntryTemplate) {
-            return (EgressAdvFwdEntryTemplate) obj;
-        }
-        
-        return null;
-    }
-    
     @VsoProperty(displayName = "HostInterface", readOnly = true)
     public HostInterface getHostInterface() {
         RestObject obj = super.getParentRestObj();
@@ -191,16 +173,6 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IngressAdvFwdEntryTemplate) {
             return (IngressAdvFwdEntryTemplate) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "IngressExternalServiceTemplateEntry", readOnly = true)
-    public IngressExternalServiceTemplateEntry getIngressExternalServiceTemplateEntry() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof IngressExternalServiceTemplateEntry) {
-            return (IngressExternalServiceTemplateEntry) obj;
         }
         
         return null;
@@ -241,16 +213,6 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Subnet) {
             return (Subnet) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VirtualFirewallRule", readOnly = true)
-    public VirtualFirewallRule getVirtualFirewallRule() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VirtualFirewallRule) {
-            return (VirtualFirewallRule) obj;
         }
         
         return null;
@@ -301,16 +263,6 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VSC) {
             return (VSC) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "WirelessPort", readOnly = true)
-    public WirelessPort getWirelessPort() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof WirelessPort) {
-            return (WirelessPort) obj;
         }
         
         return null;

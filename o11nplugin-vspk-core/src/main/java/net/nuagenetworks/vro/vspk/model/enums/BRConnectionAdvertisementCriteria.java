@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum BRConnectionAdvertisementCriteria {
 
-    BFD("BFD", "BFD"), LINK_BASED("LINK_BASED", "LINK_BASED"), OPENFLOW("OPENFLOW", "OPENFLOW"), OPERATIONAL_LINK("OPERATIONAL_LINK", "OPERATIONAL_LINK");
+    OPERATIONAL_LINK("OPERATIONAL_LINK", "OPERATIONAL_LINK");
 
     private final String id;
     private final String name;
@@ -57,21 +57,6 @@ public enum BRConnectionAdvertisementCriteria {
         return name;
     }
 
-    
-    @VsoProperty(displayName = "BFD", readOnly = true)
-    public BRConnectionAdvertisementCriteria getBFD() {
-        return BFD;
-    }
-    
-    @VsoProperty(displayName = "LINK_BASED", readOnly = true)
-    public BRConnectionAdvertisementCriteria getLINK_BASED() {
-        return LINK_BASED;
-    }
-    
-    @VsoProperty(displayName = "OPENFLOW", readOnly = true)
-    public BRConnectionAdvertisementCriteria getOPENFLOW() {
-        return OPENFLOW;
-    }
     
     @VsoProperty(displayName = "OPERATIONAL_LINK", readOnly = true)
     public BRConnectionAdvertisementCriteria getOPERATIONAL_LINK() {

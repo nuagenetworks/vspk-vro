@@ -121,6 +121,9 @@ public class SharedNetworkResource extends BaseObject {
     @JsonProperty(value = "dynamicPATAllocationEnabled")
     protected Boolean dynamicPATAllocationEnabled;
     
+    @JsonProperty(value = "enterpriseID")
+    protected String enterpriseID;
+    
     @JsonProperty(value = "entityScope")
     protected SharedNetworkResourceEntityScope entityScope;
     
@@ -147,6 +150,12 @@ public class SharedNetworkResource extends BaseObject {
     
     @JsonProperty(value = "sharedResourceParentID")
     protected String sharedResourceParentID;
+    
+    @JsonProperty(value = "subnetRouteDistinguisher")
+    protected String subnetRouteDistinguisher;
+    
+    @JsonProperty(value = "subnetRouteTarget")
+    protected String subnetRouteTarget;
     
     @JsonProperty(value = "type")
     protected SharedNetworkResourceType type;
@@ -387,6 +396,17 @@ public class SharedNetworkResource extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EnterpriseID", readOnly = false)   
+    public String getEnterpriseID() {
+       return enterpriseID;
+    }
+
+    @JsonIgnore
+    public void setEnterpriseID(String value) { 
+        this.enterpriseID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public SharedNetworkResourceEntityScope getEntityScope() {
        return entityScope;
@@ -483,6 +503,28 @@ public class SharedNetworkResource extends BaseObject {
     @JsonIgnore
     public void setSharedResourceParentID(String value) { 
         this.sharedResourceParentID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SubnetRouteDistinguisher", readOnly = false)   
+    public String getSubnetRouteDistinguisher() {
+       return subnetRouteDistinguisher;
+    }
+
+    @JsonIgnore
+    public void setSubnetRouteDistinguisher(String value) { 
+        this.subnetRouteDistinguisher = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SubnetRouteTarget", readOnly = false)   
+    public String getSubnetRouteTarget() {
+       return subnetRouteTarget;
+    }
+
+    @JsonIgnore
+    public void setSubnetRouteTarget(String value) { 
+        this.subnetRouteTarget = value;
     }
     
     @JsonIgnore
@@ -714,7 +756,7 @@ public class SharedNetworkResource extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPNCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "SharedNetworkResource [" + "DHCPManaged=" + DHCPManaged + ", ECMPCount=" + ECMPCount + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", associatedPATMapperID=" + associatedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulVNID=" + backHaulVNID + ", description=" + description + ", domainRouteDistinguisher=" + domainRouteDistinguisher + ", domainRouteTarget=" + domainRouteTarget + ", dynamicPATAllocationEnabled=" + dynamicPATAllocationEnabled + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", permittedActionType=" + permittedActionType + ", sharedResourceParentID=" + sharedResourceParentID + ", type=" + type + ", underlay=" + underlay + ", uplinkGWVlanAttachmentID=" + uplinkGWVlanAttachmentID + ", uplinkInterfaceIP=" + uplinkInterfaceIP + ", uplinkInterfaceMAC=" + uplinkInterfaceMAC + ", uplinkVPortName=" + uplinkVPortName + ", useGlobalMAC=" + useGlobalMAC + ", vnID=" + vnID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "SharedNetworkResource [" + "DHCPManaged=" + DHCPManaged + ", ECMPCount=" + ECMPCount + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", associatedPATMapperID=" + associatedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulVNID=" + backHaulVNID + ", description=" + description + ", domainRouteDistinguisher=" + domainRouteDistinguisher + ", domainRouteTarget=" + domainRouteTarget + ", dynamicPATAllocationEnabled=" + dynamicPATAllocationEnabled + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", permittedActionType=" + permittedActionType + ", sharedResourceParentID=" + sharedResourceParentID + ", subnetRouteDistinguisher=" + subnetRouteDistinguisher + ", subnetRouteTarget=" + subnetRouteTarget + ", type=" + type + ", underlay=" + underlay + ", uplinkGWVlanAttachmentID=" + uplinkGWVlanAttachmentID + ", uplinkInterfaceIP=" + uplinkInterfaceIP + ", uplinkInterfaceMAC=" + uplinkInterfaceMAC + ", uplinkVPortName=" + uplinkVPortName + ", useGlobalMAC=" + useGlobalMAC + ", vnID=" + vnID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

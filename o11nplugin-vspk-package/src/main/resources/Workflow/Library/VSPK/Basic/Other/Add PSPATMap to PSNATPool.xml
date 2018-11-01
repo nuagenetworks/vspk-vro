@@ -7,6 +7,8 @@
 </param>
 <param name='associatedSPATSourcesPoolID' type='string' >
 </param>
+<param name='externalID' type='string' >
+</param>
 <param name='name' type='string' >
 </param>
 <param name='reservedSPATIPs' type='Array/string' >
@@ -24,6 +26,9 @@ pSPATMapObj = new VSPKPSPATMap();
 if (associatedSPATSourcesPoolID) {
    pSPATMapObj.associatedSPATSourcesPoolID = associatedSPATSourcesPoolID;
 }
+if (externalID) {
+   pSPATMapObj.externalID = externalID;
+}
 if (name) {
    pSPATMapObj.name = name;
 }
@@ -33,6 +38,7 @@ pSNATPoolObj.createPSPATMap(session, pSPATMapObj);
 ]]></script>
 <in-binding><bind name='pSNATPoolObj' type='VSPK:PSNATPool' export-name="pSNATPoolObj" ></bind>
 <bind name='associatedSPATSourcesPoolID' type='string' export-name="associatedSPATSourcesPoolID" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 <bind name='reservedSPATIPs' type='Array/string' export-name="reservedSPATIPs" ></bind>
 </in-binding><out-binding><bind name='pSPATMapObj' type='VSPK:PSPATMap' export-name="pSPATMapObj" ></bind>
@@ -42,6 +48,8 @@ pSNATPoolObj.createPSPATMap(session, pSPATMapObj);
 <p-param name="pSNATPoolObj"><desc><![CDATA[pSNATPoolObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="associatedSPATSourcesPoolID"><desc><![CDATA[associatedSPATSourcesPoolID]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

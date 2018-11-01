@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.DeploymentFailuresFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.DHCPOptionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
@@ -63,6 +65,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.BRIDGEINTERFACE, datasource = Constants.DATASOURCE, image = Constants.BRIDGEINTERFACE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.DEPLOYMENTFAILURES_FETCHER, type = Constants.DEPLOYMENTFAILURES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.QOSS_FETCHER, type = Constants.QOSS_FETCHER), 
@@ -74,9 +78,6 @@ public class BridgeInterface extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
-    
-    @JsonProperty(value = "IPv6Address")
-    protected String IPv6Address;
     
     @JsonProperty(value = "IPv6Gateway")
     protected String IPv6Gateway;
@@ -136,6 +137,9 @@ public class BridgeInterface extends BaseObject {
     protected String zoneName;
     
     @JsonIgnore
+    private DeploymentFailuresFetcher deploymentFailures;
+    
+    @JsonIgnore
     private DHCPOptionsFetcher dHCPOptions;
     
     @JsonIgnore
@@ -167,6 +171,8 @@ public class BridgeInterface extends BaseObject {
     
     @VsoConstructor
     public BridgeInterface() {
+        deploymentFailures = new DeploymentFailuresFetcher(this);
+        
         dHCPOptions = new DHCPOptionsFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
@@ -223,17 +229,6 @@ public class BridgeInterface extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
-    @JsonIgnore
-    @VsoProperty(displayName = "IPv6Address", readOnly = false)   
-    public String getIPv6Address() {
-       return IPv6Address;
-    }
-
-    @JsonIgnore
-    public void setIPv6Address(String value) { 
-        this.IPv6Address = value;
-    }
-    
     @JsonIgnore
     @VsoProperty(displayName = "IPv6Gateway", readOnly = false)   
     public String getIPv6Gateway() {
@@ -444,6 +439,12 @@ public class BridgeInterface extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DeploymentFailures", readOnly = true)   
+    public DeploymentFailuresFetcher getDeploymentFailures() {
+        return deploymentFailures;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DHCPOptions", readOnly = true)   
     public DHCPOptionsFetcher getDHCPOptions() {
         return dHCPOptions;
@@ -524,6 +525,15 @@ public class BridgeInterface extends BaseObject {
         }
     }
     @VsoMethod
+    public void assignDeploymentFailures(Session session, DeploymentFailure[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.BRIDGEINTERFACE, getId());
+        }
+    }
+    
+    @VsoMethod
     public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
@@ -532,6 +542,14 @@ public class BridgeInterface extends BaseObject {
         }
     }
     
+    @VsoMethod
+    public void createDeploymentFailure(Session session, DeploymentFailure childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DEPLOYMENTFAILURES_FETCHER, getId());
+        }
+    }
     @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
@@ -556,7 +574,7 @@ public class BridgeInterface extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.QOSS_FETCHER, getId());
         }
     }public String toString() {
-        return "BridgeInterface [" + "IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", associatedFloatingIPAddress=" + associatedFloatingIPAddress + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BridgeInterface [" + "IPv6Gateway=" + IPv6Gateway + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", associatedFloatingIPAddress=" + associatedFloatingIPAddress + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

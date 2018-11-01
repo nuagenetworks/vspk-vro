@@ -38,8 +38,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NetconfManagersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VSCsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.fetchers.VSDsFetcher;
-
 import net.nuagenetworks.vro.vspk.model.enums.VSPEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -106,9 +104,6 @@ public class VSP extends BaseObject {
     @JsonIgnore
     private VSCsFetcher vSCs;
     
-    @JsonIgnore
-    private VSDsFetcher vSDs;
-    
     @VsoConstructor
     public VSP() {
         eventLogs = new EventLogsFetcher(this);
@@ -122,8 +117,6 @@ public class VSP extends BaseObject {
         netconfManagers = new NetconfManagersFetcher(this);
         
         vSCs = new VSCsFetcher(this);
-        
-        vSDs = new VSDsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -273,12 +266,6 @@ public class VSP extends BaseObject {
     public VSCsFetcher getVSCs() {
         return vSCs;
     }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "VSDs", readOnly = true)   
-    public VSDsFetcher getVSDs() {
-        return vSDs;
-    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -302,6 +289,15 @@ public class VSP extends BaseObject {
     }
     @VsoMethod
     public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.VSP, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignNetconfManagers(Session session, NetconfManager[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 
