@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getTierTierType" result-type="VSPK:TierTierType" api-version="6.0.0"  id="0f528309-37f1-5dc6-a094-b391ea7b273e"  version="5.3.2"  allowed-operations="vef" ><param n="tierObj" t="VSPK:Tier"></param><script encoded='false'><![CDATA[return tierObj.tierType;]]></script>
+<dunes-script-module name="getTierTierType" result-type="VSPK:TierTierType" api-version="6.0.0"  id="0f528309-37f1-5dc6-a094-b391ea7b273e"  version="5.4.1"  allowed-operations="vef" ><param n="tierObj" t="VSPK:Tier"></param><script encoded='false'><![CDATA[return tierObj.tierType;]]></script>
 </dunes-script-module>
