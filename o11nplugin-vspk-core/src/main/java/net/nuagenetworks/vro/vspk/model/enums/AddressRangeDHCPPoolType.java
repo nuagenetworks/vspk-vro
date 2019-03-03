@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum AddressRangeDHCPPoolType {
 
-    BRIDGE("BRIDGE", "BRIDGE"), HOST("HOST", "HOST");
+    BRIDGE("BRIDGE", "BRIDGE"), HOST("HOST", "HOST"), VRRP("VRRP", "VRRP");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum AddressRangeDHCPPoolType {
     @VsoProperty(displayName = "HOST", readOnly = true)
     public AddressRangeDHCPPoolType getHOST() {
         return HOST;
+    }
+    
+    @VsoProperty(displayName = "VRRP", readOnly = true)
+    public AddressRangeDHCPPoolType getVRRP() {
+        return VRRP;
     }
     
 

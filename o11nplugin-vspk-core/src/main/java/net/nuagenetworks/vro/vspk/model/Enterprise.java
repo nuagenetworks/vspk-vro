@@ -126,6 +126,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NSGGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSRedundantGatewayGroupsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.OverlayManagementProfilesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
@@ -148,6 +150,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.SaaSApplicationTypesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SharedNetworkResourcesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.SyslogDestinationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.TrunksFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UsersFetcher;
@@ -159,6 +163,10 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VNFsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFThresholdPoliciesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.WebCategoriesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.WebDomainNamesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ZFBRequestsFetcher;
 
@@ -255,6 +263,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER, type = Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYMANAGEMENTPROFILES_FETCHER, type = Constants.OVERLAYMANAGEMENTPROFILES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.PERFORMANCEMONITORS_FETCHER, type = Constants.PERFORMANCEMONITORS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.POLICYGROUPCATEGORIES_FETCHER, type = Constants.POLICYGROUPCATEGORIES_FETCHER), 
@@ -273,6 +283,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.SAASAPPLICATIONTYPES_FETCHER, type = Constants.SAASAPPLICATIONTYPES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.SYSLOGDESTINATIONS_FETCHER, type = Constants.SYSLOGDESTINATIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.TRUNKS_FETCHER, type = Constants.TRUNKS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.USERS_FETCHER, type = Constants.USERS_FETCHER), 
@@ -282,6 +294,10 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.VNFMETADATAS_FETCHER, type = Constants.VNFMETADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VNFTHRESHOLDPOLICIES_FETCHER, type = Constants.VNFTHRESHOLDPOLICIES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.WEBCATEGORIES_FETCHER, type = Constants.WEBCATEGORIES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.WEBDOMAINNAMES_FETCHER, type = Constants.WEBDOMAINNAMES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ZFBREQUESTS_FETCHER, type = Constants.ZFBREQUESTS_FETCHER)
 })
@@ -389,8 +405,14 @@ public class Enterprise extends BaseObject {
     @JsonProperty(value = "sharedEnterprise")
     protected Boolean sharedEnterprise;
     
+    @JsonProperty(value = "useGlobalMAC")
+    protected Boolean useGlobalMAC;
+    
     @JsonProperty(value = "virtualFirewallRulesEnabled")
     protected Boolean virtualFirewallRulesEnabled;
+    
+    @JsonProperty(value = "webFilterEnabled")
+    protected Boolean webFilterEnabled;
     
     @JsonIgnore
     private AlarmsFetcher alarms;
@@ -543,6 +565,9 @@ public class Enterprise extends BaseObject {
     private NSRedundantGatewayGroupsFetcher nSRedundantGatewayGroups;
     
     @JsonIgnore
+    private OverlayManagementProfilesFetcher overlayManagementProfiles;
+    
+    @JsonIgnore
     private PATNATPoolsFetcher pATNATPools;
     
     @JsonIgnore
@@ -576,6 +601,9 @@ public class Enterprise extends BaseObject {
     private SharedNetworkResourcesFetcher sharedNetworkResources;
     
     @JsonIgnore
+    private SyslogDestinationsFetcher syslogDestinations;
+    
+    @JsonIgnore
     private TrunksFetcher trunks;
     
     @JsonIgnore
@@ -592,6 +620,12 @@ public class Enterprise extends BaseObject {
     
     @JsonIgnore
     private VNFThresholdPoliciesFetcher vNFThresholdPolicies;
+    
+    @JsonIgnore
+    private WebCategoriesFetcher webCategories;
+    
+    @JsonIgnore
+    private WebDomainNamesFetcher webDomainNames;
     
     @JsonIgnore
     private ZFBRequestsFetcher zFBRequests;
@@ -698,6 +732,8 @@ public class Enterprise extends BaseObject {
         
         nSRedundantGatewayGroups = new NSRedundantGatewayGroupsFetcher(this);
         
+        overlayManagementProfiles = new OverlayManagementProfilesFetcher(this);
+        
         pATNATPools = new PATNATPoolsFetcher(this);
         
         performanceMonitors = new PerformanceMonitorsFetcher(this);
@@ -720,6 +756,8 @@ public class Enterprise extends BaseObject {
         
         sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
         
+        syslogDestinations = new SyslogDestinationsFetcher(this);
+        
         trunks = new TrunksFetcher(this);
         
         users = new UsersFetcher(this);
@@ -731,6 +769,10 @@ public class Enterprise extends BaseObject {
         vNFMetadatas = new VNFMetadatasFetcher(this);
         
         vNFThresholdPolicies = new VNFThresholdPoliciesFetcher(this);
+        
+        webCategories = new WebCategoriesFetcher(this);
+        
+        webDomainNames = new WebDomainNamesFetcher(this);
         
         zFBRequests = new ZFBRequestsFetcher(this);
         }
@@ -1123,6 +1165,17 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "UseGlobalMAC", readOnly = false)   
+    public Boolean getUseGlobalMAC() {
+       return useGlobalMAC;
+    }
+
+    @JsonIgnore
+    public void setUseGlobalMAC(Boolean value) { 
+        this.useGlobalMAC = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VirtualFirewallRulesEnabled", readOnly = false)   
     public Boolean getVirtualFirewallRulesEnabled() {
        return virtualFirewallRulesEnabled;
@@ -1131,6 +1184,17 @@ public class Enterprise extends BaseObject {
     @JsonIgnore
     public void setVirtualFirewallRulesEnabled(Boolean value) { 
         this.virtualFirewallRulesEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "WebFilterEnabled", readOnly = false)   
+    public Boolean getWebFilterEnabled() {
+       return webFilterEnabled;
+    }
+
+    @JsonIgnore
+    public void setWebFilterEnabled(Boolean value) { 
+        this.webFilterEnabled = value;
     }
     
     @JsonIgnore
@@ -1434,6 +1498,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "OverlayManagementProfiles", readOnly = true)   
+    public OverlayManagementProfilesFetcher getOverlayManagementProfiles() {
+        return overlayManagementProfiles;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PATNATPools", readOnly = true)   
     public PATNATPoolsFetcher getPATNATPools() {
         return pATNATPools;
@@ -1500,6 +1570,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SyslogDestinations", readOnly = true)   
+    public SyslogDestinationsFetcher getSyslogDestinations() {
+        return syslogDestinations;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Trunks", readOnly = true)   
     public TrunksFetcher getTrunks() {
         return trunks;
@@ -1533,6 +1609,18 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "VNFThresholdPolicies", readOnly = true)   
     public VNFThresholdPoliciesFetcher getVNFThresholdPolicies() {
         return vNFThresholdPolicies;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "WebCategories", readOnly = true)   
+    public WebCategoriesFetcher getWebCategories() {
+        return webCategories;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "WebDomainNames", readOnly = true)   
+    public WebDomainNamesFetcher getWebDomainNames() {
+        return webDomainNames;
     }
     
     @JsonIgnore
@@ -1886,6 +1974,14 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createOverlayManagementProfile(Session session, OverlayManagementProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.OVERLAYMANAGEMENTPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createPerformanceMonitor(Session session, PerformanceMonitor childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1958,6 +2054,14 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createSyslogDestination(Session session, SyslogDestination childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.SYSLOGDESTINATIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createTrunk(Session session, Trunk childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1998,6 +2102,22 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createWebCategory(Session session, WebCategory childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.WEBCATEGORIES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createWebDomainName(Session session, WebDomainName childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.WEBDOMAINNAMES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createZFBRequest(Session session, ZFBRequest childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -2005,7 +2125,7 @@ public class Enterprise extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", allowedForwardingMode=" + allowedForwardingMode + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", localAS=" + localAS + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", sharedEnterprise=" + sharedEnterprise + ", virtualFirewallRulesEnabled=" + virtualFirewallRulesEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", allowedForwardingMode=" + allowedForwardingMode + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", localAS=" + localAS + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", sharedEnterprise=" + sharedEnterprise + ", useGlobalMAC=" + useGlobalMAC + ", virtualFirewallRulesEnabled=" + virtualFirewallRulesEnabled + ", webFilterEnabled=" + webFilterEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

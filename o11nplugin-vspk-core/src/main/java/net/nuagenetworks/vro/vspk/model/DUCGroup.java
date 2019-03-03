@@ -33,6 +33,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewaysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.DUCGroupEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.DUCGroupFunction;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -70,6 +72,9 @@ public class DUCGroup extends BaseObject {
     
     @JsonProperty(value = "externalID")
     protected String externalID;
+    
+    @JsonProperty(value = "function")
+    protected DUCGroupFunction function;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -172,6 +177,17 @@ public class DUCGroup extends BaseObject {
     @JsonIgnore
     public void setExternalID(String value) { 
         this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Function", readOnly = false)   
+    public DUCGroupFunction getFunction() {
+       return function;
+    }
+
+    @JsonIgnore
+    public void setFunction(DUCGroupFunction value) { 
+        this.function = value;
     }
     
     @JsonIgnore
@@ -285,7 +301,7 @@ public class DUCGroup extends BaseObject {
         }
     }
     public String toString() {
-        return "DUCGroup [" + "associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DUCGroup [" + "associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", function=" + function + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

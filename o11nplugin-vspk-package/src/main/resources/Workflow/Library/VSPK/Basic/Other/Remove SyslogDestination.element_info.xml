@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Remove SyslogDestination</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">1cc18f23-27ac-51ff-ac65-ce9e67e7e2bb</entry>
+</properties>

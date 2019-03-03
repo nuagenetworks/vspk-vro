@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum StaticRouteType {
 
-    EXIT_DOMAIN("EXIT_DOMAIN", "EXIT_DOMAIN"), OVERLAY("OVERLAY", "OVERLAY"), OVERLAY_ADDRESS_TRANSLATION("OVERLAY_ADDRESS_TRANSLATION", "OVERLAY_ADDRESS_TRANSLATION");
+    EXIT_DOMAIN("EXIT_DOMAIN", "EXIT_DOMAIN"), NETCONF("NETCONF", "NETCONF"), OVERLAY("OVERLAY", "OVERLAY"), OVERLAY_ADDRESS_TRANSLATION("OVERLAY_ADDRESS_TRANSLATION", "OVERLAY_ADDRESS_TRANSLATION");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum StaticRouteType {
     @VsoProperty(displayName = "EXIT_DOMAIN", readOnly = true)
     public StaticRouteType getEXIT_DOMAIN() {
         return EXIT_DOMAIN;
+    }
+    
+    @VsoProperty(displayName = "NETCONF", readOnly = true)
+    public StaticRouteType getNETCONF() {
+        return NETCONF;
     }
     
     @VsoProperty(displayName = "OVERLAY", readOnly = true)

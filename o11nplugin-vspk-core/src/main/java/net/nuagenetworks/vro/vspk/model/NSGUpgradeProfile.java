@@ -52,6 +52,9 @@ public class NSGUpgradeProfile extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "downloadRateLimit")
+    protected Long downloadRateLimit;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -117,6 +120,17 @@ public class NSGUpgradeProfile extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DownloadRateLimit", readOnly = false)   
+    public Long getDownloadRateLimit() {
+       return downloadRateLimit;
+    }
+
+    @JsonIgnore
+    public void setDownloadRateLimit(Long value) { 
+        this.downloadRateLimit = value;
     }
     
     @JsonIgnore
@@ -205,7 +219,7 @@ public class NSGUpgradeProfile extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGUPGRADEPROFILE, getId());
         }
     }public String toString() {
-        return "NSGUpgradeProfile [" + "description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGUpgradeProfile [" + "description=" + description + ", downloadRateLimit=" + downloadRateLimit + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

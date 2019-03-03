@@ -30,7 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.DeploymentFailure;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.BGPNeighbor;
+
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
+
+import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.EgressProfile;
 
@@ -41,6 +45,10 @@ import net.nuagenetworks.vro.vspk.model.IngressProfile;
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
+
+import net.nuagenetworks.vro.vspk.model.StaticRoute;
+
+import net.nuagenetworks.vro.vspk.model.Subnet;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
@@ -76,11 +84,31 @@ public class DeploymentFailuresFetcher extends BaseFetcher<DeploymentFailure> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "BGPNeighbor", readOnly = true)
+    public BGPNeighbor getBGPNeighbor() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof BGPNeighbor) {
+            return (BGPNeighbor) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "BridgeInterface", readOnly = true)
     public BridgeInterface getBridgeInterface() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof BridgeInterface) {
             return (BridgeInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Domain", readOnly = true)
+    public Domain getDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Domain) {
+            return (Domain) obj;
         }
         
         return null;
@@ -131,6 +159,26 @@ public class DeploymentFailuresFetcher extends BaseFetcher<DeploymentFailure> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof RedundancyGroup) {
             return (RedundancyGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "StaticRoute", readOnly = true)
+    public StaticRoute getStaticRoute() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof StaticRoute) {
+            return (StaticRoute) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Subnet", readOnly = true)
+    public Subnet getSubnet() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Subnet) {
+            return (Subnet) obj;
         }
         
         return null;

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="83d95226-8db0-5d25-852d-284b97d5506c"  version="5.3.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add OverlayManagementSubnetProfile to OverlayManagementProfile]]></display-name>
+<ref-types><![CDATA[(VSPK:OverlayManagementProfile)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='overlayManagementProfileObj' type='VSPK:OverlayManagementProfile' >
+</param>
+<param name='associatedDNASubnetID' type='string' >
+</param>
+<param name='description' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+</input><output><param name='overlayManagementSubnetProfileObj' type='VSPK:OverlayManagementSubnetProfile' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = overlayManagementProfileObj.session;
+
+overlayManagementSubnetProfileObj = new VSPKOverlayManagementSubnetProfile();
+if (associatedDNASubnetID) {
+   overlayManagementSubnetProfileObj.associatedDNASubnetID = associatedDNASubnetID;
+}
+if (description) {
+   overlayManagementSubnetProfileObj.description = description;
+}
+if (name) {
+   overlayManagementSubnetProfileObj.name = name;
+}
+
+overlayManagementProfileObj.createOverlayManagementSubnetProfile(session, overlayManagementSubnetProfileObj);
+]]></script>
+<in-binding><bind name='overlayManagementProfileObj' type='VSPK:OverlayManagementProfile' export-name="overlayManagementProfileObj" ></bind>
+<bind name='associatedDNASubnetID' type='string' export-name="associatedDNASubnetID" ></bind>
+<bind name='description' type='string' export-name="description" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+</in-binding><out-binding><bind name='overlayManagementSubnetProfileObj' type='VSPK:OverlayManagementSubnetProfile' export-name="overlayManagementSubnetProfileObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="overlayManagementProfileObj"><desc><![CDATA[overlayManagementProfileObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="associatedDNASubnetID"><desc><![CDATA[associatedDNASubnetID]]></desc>
+</p-param>
+<p-param name="description"><desc><![CDATA[description]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+</presentation></workflow>

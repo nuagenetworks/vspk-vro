@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.NetconfSessionEntityScope;
 
+import net.nuagenetworks.vro.vspk.model.enums.NetconfSessionGatewayVendor;
+
 import net.nuagenetworks.vro.vspk.model.enums.NetconfSessionStatus;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -68,6 +70,15 @@ public class NetconfSession extends BaseObject {
     
     @JsonProperty(value = "externalID")
     protected String externalID;
+    
+    @JsonProperty(value = "gatewayModel")
+    protected String gatewayModel;
+    
+    @JsonProperty(value = "gatewayVendor")
+    protected NetconfSessionGatewayVendor gatewayVendor;
+    
+    @JsonProperty(value = "gatewayVersion")
+    protected String gatewayVersion;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -173,6 +184,39 @@ public class NetconfSession extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "GatewayModel", readOnly = false)   
+    public String getGatewayModel() {
+       return gatewayModel;
+    }
+
+    @JsonIgnore
+    public void setGatewayModel(String value) { 
+        this.gatewayModel = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayVendor", readOnly = false)   
+    public NetconfSessionGatewayVendor getGatewayVendor() {
+       return gatewayVendor;
+    }
+
+    @JsonIgnore
+    public void setGatewayVendor(NetconfSessionGatewayVendor value) { 
+        this.gatewayVendor = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayVersion", readOnly = false)   
+    public String getGatewayVersion() {
+       return gatewayVersion;
+    }
+
+    @JsonIgnore
+    public void setGatewayVersion(String value) { 
+        this.gatewayVersion = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
     public String getLastUpdatedBy() {
        return lastUpdatedBy;
@@ -251,7 +295,7 @@ public class NetconfSession extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NetconfSession [" + "associatedGatewayID=" + associatedGatewayID + ", associatedGatewayName=" + associatedGatewayName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NetconfSession [" + "associatedGatewayID=" + associatedGatewayID + ", associatedGatewayName=" + associatedGatewayName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayModel=" + gatewayModel + ", gatewayVendor=" + gatewayVendor + ", gatewayVersion=" + gatewayVersion + ", lastUpdatedBy=" + lastUpdatedBy + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum RedundancyGroupPersonality {
 
-    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NETCONF_7X50("NETCONF_7X50", "NETCONF_7X50"), NSG("NSG", "NSG"), NSGBR("NSGBR", "NSGBR"), NSGDUC("NSGDUC", "NSGDUC"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), OTHER("OTHER", "OTHER"), VDFG("VDFG", "VDFG"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
+    DC7X50("DC7X50", "DC7X50"), HARDWARE_VTEP("HARDWARE_VTEP", "HARDWARE_VTEP"), NETCONF_7X50("NETCONF_7X50", "NETCONF_7X50"), NETCONF_THIRDPARTY_HW_VTEP("NETCONF_THIRDPARTY_HW_VTEP", "NETCONF_THIRDPARTY_HW_VTEP"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), OTHER("OTHER", "OTHER"), VDFG("VDFG", "VDFG"), VRSB("VRSB", "VRSB"), VRSG("VRSG", "VRSG"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
 
     private final String id;
     private final String name;
@@ -73,19 +73,9 @@ public enum RedundancyGroupPersonality {
         return NETCONF_7X50;
     }
     
-    @VsoProperty(displayName = "NSG", readOnly = true)
-    public RedundancyGroupPersonality getNSG() {
-        return NSG;
-    }
-    
-    @VsoProperty(displayName = "NSGBR", readOnly = true)
-    public RedundancyGroupPersonality getNSGBR() {
-        return NSGBR;
-    }
-    
-    @VsoProperty(displayName = "NSGDUC", readOnly = true)
-    public RedundancyGroupPersonality getNSGDUC() {
-        return NSGDUC;
+    @VsoProperty(displayName = "NETCONF_THIRDPARTY_HW_VTEP", readOnly = true)
+    public RedundancyGroupPersonality getNETCONF_THIRDPARTY_HW_VTEP() {
+        return NETCONF_THIRDPARTY_HW_VTEP;
     }
     
     @VsoProperty(displayName = "NUAGE_210_WBX_32_Q", readOnly = true)

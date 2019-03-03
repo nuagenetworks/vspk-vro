@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum DomainUnderlayEnabled {
 
-    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED"), INHERITED("INHERITED", "INHERITED");
+    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
 
     private final String id;
     private final String name;
@@ -66,11 +66,6 @@ public enum DomainUnderlayEnabled {
     @VsoProperty(displayName = "ENABLED", readOnly = true)
     public DomainUnderlayEnabled getENABLED() {
         return ENABLED;
-    }
-    
-    @VsoProperty(displayName = "INHERITED", readOnly = true)
-    public DomainUnderlayEnabled getINHERITED() {
-        return INHERITED;
     }
     
 

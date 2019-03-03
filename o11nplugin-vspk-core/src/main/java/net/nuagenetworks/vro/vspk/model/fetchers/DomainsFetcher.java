@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.FirewallAcl;
 
+import net.nuagenetworks.vro.vspk.model.Gateway;
+
 import net.nuagenetworks.vro.vspk.model.Me;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -107,6 +109,16 @@ public class DomainsFetcher extends BaseFetcher<Domain> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof FirewallAcl) {
             return (FirewallAcl) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Gateway", readOnly = true)
+    public Gateway getGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Gateway) {
+            return (Gateway) obj;
         }
         
         return null;

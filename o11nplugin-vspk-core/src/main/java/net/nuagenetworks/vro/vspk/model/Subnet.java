@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.ContainerResyncsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DefaultGatewaysFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.DeploymentFailuresFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.DHCPOptionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisePermissionsFetcher;
@@ -117,6 +119,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.CONTAINERRESYNCS_FETCHER, type = Constants.CONTAINERRESYNCS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.DEPLOYMENTFAILURES_FETCHER, type = Constants.DEPLOYMENTFAILURES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPERMISSIONS_FETCHER, type = Constants.ENTERPRISEPERMISSIONS_FETCHER), 
@@ -151,6 +155,9 @@ public class Subnet extends BaseObject {
     @JsonProperty(value = "DPI")
     protected SubnetDPI DPI;
     
+    @JsonProperty(value = "EVPNEnabled")
+    protected Boolean EVPNEnabled;
+    
     @JsonProperty(value = "IPType")
     protected SubnetIPType IPType;
     
@@ -178,8 +185,14 @@ public class Subnet extends BaseObject {
     @JsonProperty(value = "associatedSharedNetworkResourceID")
     protected String associatedSharedNetworkResourceID;
     
+    @JsonProperty(value = "customerID")
+    protected Long customerID;
+    
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "domainServiceLabel")
+    protected String domainServiceLabel;
     
     @JsonProperty(value = "dynamicIpv6Address")
     protected Boolean dynamicIpv6Address;
@@ -201,6 +214,9 @@ public class Subnet extends BaseObject {
     
     @JsonProperty(value = "gatewayMACAddress")
     protected String gatewayMACAddress;
+    
+    @JsonProperty(value = "ingressReplicationEnabled")
+    protected Boolean ingressReplicationEnabled;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -281,6 +297,9 @@ public class Subnet extends BaseObject {
     private DefaultGatewaysFetcher defaultGateways;
     
     @JsonIgnore
+    private DeploymentFailuresFetcher deploymentFailures;
+    
+    @JsonIgnore
     private DHCPOptionsFetcher dHCPOptions;
     
     @JsonIgnore
@@ -355,6 +374,8 @@ public class Subnet extends BaseObject {
         containerResyncs = new ContainerResyncsFetcher(this);
         
         defaultGateways = new DefaultGatewaysFetcher(this);
+        
+        deploymentFailures = new DeploymentFailuresFetcher(this);
         
         dHCPOptions = new DHCPOptionsFetcher(this);
         
@@ -448,6 +469,17 @@ public class Subnet extends BaseObject {
     @JsonIgnore
     public void setDPI(SubnetDPI value) { 
         this.DPI = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EVPNEnabled", readOnly = false)   
+    public Boolean getEVPNEnabled() {
+       return EVPNEnabled;
+    }
+
+    @JsonIgnore
+    public void setEVPNEnabled(Boolean value) { 
+        this.EVPNEnabled = value;
     }
     
     @JsonIgnore
@@ -550,6 +582,17 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CustomerID", readOnly = false)   
+    public Long getCustomerID() {
+       return customerID;
+    }
+
+    @JsonIgnore
+    public void setCustomerID(Long value) { 
+        this.customerID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -558,6 +601,17 @@ public class Subnet extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DomainServiceLabel", readOnly = false)   
+    public String getDomainServiceLabel() {
+       return domainServiceLabel;
+    }
+
+    @JsonIgnore
+    public void setDomainServiceLabel(String value) { 
+        this.domainServiceLabel = value;
     }
     
     @JsonIgnore
@@ -635,6 +689,17 @@ public class Subnet extends BaseObject {
     @JsonIgnore
     public void setGatewayMACAddress(String value) { 
         this.gatewayMACAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IngressReplicationEnabled", readOnly = false)   
+    public Boolean getIngressReplicationEnabled() {
+       return ingressReplicationEnabled;
+    }
+
+    @JsonIgnore
+    public void setIngressReplicationEnabled(Boolean value) { 
+        this.ingressReplicationEnabled = value;
     }
     
     @JsonIgnore
@@ -894,6 +959,12 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DeploymentFailures", readOnly = true)   
+    public DeploymentFailuresFetcher getDeploymentFailures() {
+        return deploymentFailures;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DHCPOptions", readOnly = true)   
     public DHCPOptionsFetcher getDHCPOptions() {
         return dHCPOptions;
@@ -1064,6 +1135,14 @@ public class Subnet extends BaseObject {
         }
     }
     @VsoMethod
+    public void createDeploymentFailure(Session session, DeploymentFailure childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DEPLOYMENTFAILURES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createDHCPOption(Session session, DHCPOption childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1151,7 +1230,7 @@ public class Subnet extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", advertise=" + advertise + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multiHomeEnabled=" + multiHomeEnabled + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", resourceType=" + resourceType + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", subnetVLANID=" + subnetVLANID + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", EVPNEnabled=" + EVPNEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", advertise=" + advertise + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", customerID=" + customerID + ", description=" + description + ", domainServiceLabel=" + domainServiceLabel + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multiHomeEnabled=" + multiHomeEnabled + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", resourceType=" + resourceType + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", subnetVLANID=" + subnetVLANID + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

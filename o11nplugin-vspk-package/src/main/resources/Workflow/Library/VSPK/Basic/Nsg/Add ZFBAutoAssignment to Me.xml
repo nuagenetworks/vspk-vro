@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="fd6b7d00-1d35-5310-b88f-b63293511909"  version="5.3.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="fd6b7d00-1d35-5310-b88f-b63293511909"  version="5.3.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add ZFBAutoAssignment to Me]]></display-name>
 <ref-types><![CDATA[(VSPK:Me)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='meObj' type='VSPK:Me' >
+</param>
+<param name='ZFBMatchAttribute' type='VSPK:ZFBAutoAssignmentZFBMatchAttribute' >
+</param>
+<param name='ZFBMatchAttributeValues' type='Array/string' >
+</param>
+<param name='associatedEnterpriseID' type='string' >
 </param>
 <param name='description' type='string' >
 </param>
@@ -23,6 +29,11 @@
 <script encoded='false'><![CDATA[var session = meObj.session;
 
 zFBAutoAssignmentObj = new VSPKZFBAutoAssignment();
+zFBAutoAssignmentObj.ZFBMatchAttribute = ZFBMatchAttribute;
+zFBAutoAssignmentObj.ZFBMatchAttributeValues = ZFBMatchAttributeValues;
+if (associatedEnterpriseID) {
+   zFBAutoAssignmentObj.associatedEnterpriseID = associatedEnterpriseID;
+}
 if (description) {
    zFBAutoAssignmentObj.description = description;
 }
@@ -37,6 +48,9 @@ zFBAutoAssignmentObj.priority = priority;
 meObj.createZFBAutoAssignment(session, zFBAutoAssignmentObj);
 ]]></script>
 <in-binding><bind name='meObj' type='VSPK:Me' export-name="meObj" ></bind>
+<bind name='ZFBMatchAttribute' type='VSPK:ZFBAutoAssignmentZFBMatchAttribute' export-name="ZFBMatchAttribute" ></bind>
+<bind name='ZFBMatchAttributeValues' type='Array/string' export-name="ZFBMatchAttributeValues" ></bind>
+<bind name='associatedEnterpriseID' type='string' export-name="associatedEnterpriseID" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
@@ -47,6 +61,12 @@ meObj.createZFBAutoAssignment(session, zFBAutoAssignmentObj);
 <presentation>
 <p-param name="meObj"><desc><![CDATA[meObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="ZFBMatchAttribute"><desc><![CDATA[ZFBMatchAttribute]]></desc>
+</p-param>
+<p-param name="ZFBMatchAttributeValues"><desc><![CDATA[ZFBMatchAttributeValues]]></desc>
+</p-param>
+<p-param name="associatedEnterpriseID"><desc><![CDATA[associatedEnterpriseID]]></desc>
+</p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>

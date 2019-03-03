@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Domain;
 
+import net.nuagenetworks.vro.vspk.model.Gateway;
+
 import net.nuagenetworks.vro.vspk.model.IKEGatewayConnection;
 
 import net.nuagenetworks.vro.vspk.model.Me;
@@ -81,6 +83,16 @@ public class SubnetsFetcher extends BaseFetcher<Subnet> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Domain) {
             return (Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Gateway", readOnly = true)
+    public Gateway getGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Gateway) {
+            return (Gateway) obj;
         }
         
         return null;

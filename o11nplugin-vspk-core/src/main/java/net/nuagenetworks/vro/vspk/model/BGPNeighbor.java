@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.DeploymentFailuresFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
@@ -47,6 +49,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.BGPNEIGHBOR, datasource = Constants.DATASOURCE, image = Constants.BGPNEIGHBOR_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.DEPLOYMENTFAILURES_FETCHER, type = Constants.DEPLOYMENTFAILURES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
@@ -78,6 +82,9 @@ public class BGPNeighbor extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "domainServiceLabel")
+    protected String domainServiceLabel;
+    
     @JsonProperty(value = "entityScope")
     protected BGPNeighborEntityScope entityScope;
     
@@ -100,6 +107,9 @@ public class BGPNeighbor extends BaseObject {
     protected String session_;
     
     @JsonIgnore
+    private DeploymentFailuresFetcher deploymentFailures;
+    
+    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
@@ -107,6 +117,8 @@ public class BGPNeighbor extends BaseObject {
     
     @VsoConstructor
     public BGPNeighbor() {
+        deploymentFailures = new DeploymentFailuresFetcher(this);
+        
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
@@ -225,6 +237,17 @@ public class BGPNeighbor extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DomainServiceLabel", readOnly = false)   
+    public String getDomainServiceLabel() {
+       return domainServiceLabel;
+    }
+
+    @JsonIgnore
+    public void setDomainServiceLabel(String value) { 
+        this.domainServiceLabel = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public BGPNeighborEntityScope getEntityScope() {
        return entityScope;
@@ -302,6 +325,12 @@ public class BGPNeighbor extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DeploymentFailures", readOnly = true)   
+    public DeploymentFailuresFetcher getDeploymentFailures() {
+        return deploymentFailures;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -343,6 +372,14 @@ public class BGPNeighbor extends BaseObject {
     }
     
     @VsoMethod
+    public void createDeploymentFailure(Session session, DeploymentFailure childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DEPLOYMENTFAILURES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -358,7 +395,7 @@ public class BGPNeighbor extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BGPNeighbor [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerConfiguration=" + peerConfiguration + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BGPNeighbor [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", domainServiceLabel=" + domainServiceLabel + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerConfiguration=" + peerConfiguration + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

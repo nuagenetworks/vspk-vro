@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier {
 
-    GROUP_14_2048_BIT_DH("GROUP_14_2048_BIT_DH", "GROUP_14_2048_BIT_DH"), GROUP_15_3072_BIT_DH("GROUP_15_3072_BIT_DH", "GROUP_15_3072_BIT_DH"), GROUP_16_4096_BIT_DH("GROUP_16_4096_BIT_DH", "GROUP_16_4096_BIT_DH"), GROUP_17_6144_BIT_DH("GROUP_17_6144_BIT_DH", "GROUP_17_6144_BIT_DH"), GROUP_18_8192_BIT_DH("GROUP_18_8192_BIT_DH", "GROUP_18_8192_BIT_DH"), GROUP_1_768_BIT_DH("GROUP_1_768_BIT_DH", "GROUP_1_768_BIT_DH"), GROUP_2_1024_BIT_DH("GROUP_2_1024_BIT_DH", "GROUP_2_1024_BIT_DH"), GROUP_5_1536_BIT_DH("GROUP_5_1536_BIT_DH", "GROUP_5_1536_BIT_DH");
+    GROUP_1_768_BIT_DH("GROUP_1_768_BIT_DH", "GROUP_1_768_BIT_DH"), GROUP_2_1024_BIT_DH("GROUP_2_1024_BIT_DH", "GROUP_2_1024_BIT_DH"), GROUP_5_1536_BIT_DH("GROUP_5_1536_BIT_DH", "GROUP_5_1536_BIT_DH"), GROUP_14_2048_BIT_DH("GROUP_14_2048_BIT_DH", "GROUP_14_2048_BIT_DH"), GROUP_15_3072_BIT_DH("GROUP_15_3072_BIT_DH", "GROUP_15_3072_BIT_DH"), GROUP_16_4096_BIT_DH("GROUP_16_4096_BIT_DH", "GROUP_16_4096_BIT_DH"), GROUP_17_6144_BIT_DH("GROUP_17_6144_BIT_DH", "GROUP_17_6144_BIT_DH"), GROUP_18_8192_BIT_DH("GROUP_18_8192_BIT_DH", "GROUP_18_8192_BIT_DH");
 
     private final String id;
     private final String name;
@@ -57,6 +57,21 @@ public enum IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "GROUP_1_768_BIT_DH", readOnly = true)
+    public IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier getGROUP_1_768_BIT_DH() {
+        return GROUP_1_768_BIT_DH;
+    }
+    
+    @VsoProperty(displayName = "GROUP_2_1024_BIT_DH", readOnly = true)
+    public IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier getGROUP_2_1024_BIT_DH() {
+        return GROUP_2_1024_BIT_DH;
+    }
+    
+    @VsoProperty(displayName = "GROUP_5_1536_BIT_DH", readOnly = true)
+    public IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier getGROUP_5_1536_BIT_DH() {
+        return GROUP_5_1536_BIT_DH;
+    }
     
     @VsoProperty(displayName = "GROUP_14_2048_BIT_DH", readOnly = true)
     public IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier getGROUP_14_2048_BIT_DH() {
@@ -81,21 +96,6 @@ public enum IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier {
     @VsoProperty(displayName = "GROUP_18_8192_BIT_DH", readOnly = true)
     public IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier getGROUP_18_8192_BIT_DH() {
         return GROUP_18_8192_BIT_DH;
-    }
-    
-    @VsoProperty(displayName = "GROUP_1_768_BIT_DH", readOnly = true)
-    public IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier getGROUP_1_768_BIT_DH() {
-        return GROUP_1_768_BIT_DH;
-    }
-    
-    @VsoProperty(displayName = "GROUP_2_1024_BIT_DH", readOnly = true)
-    public IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier getGROUP_2_1024_BIT_DH() {
-        return GROUP_2_1024_BIT_DH;
-    }
-    
-    @VsoProperty(displayName = "GROUP_5_1536_BIT_DH", readOnly = true)
-    public IKEEncryptionprofileISAKMPDiffieHelmanGroupIdentifier getGROUP_5_1536_BIT_DH() {
-        return GROUP_5_1536_BIT_DH;
     }
     
 

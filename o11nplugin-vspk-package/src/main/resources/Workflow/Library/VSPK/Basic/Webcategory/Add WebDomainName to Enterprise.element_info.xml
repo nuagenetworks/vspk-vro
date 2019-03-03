@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Webcategory</entry>
+<entry key="name">Add WebDomainName to Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5e6e2d00-725c-5115-a626-58f510ee244a</entry>
+</properties>

@@ -26,9 +26,15 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.enums.NSGInfoCmdStatus;
+
+import net.nuagenetworks.vro.vspk.model.enums.NSGInfoCmdType;
+
 import net.nuagenetworks.vro.vspk.model.enums.NSGInfoEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGInfoFamily;
+
+import net.nuagenetworks.vro.vspk.model.enums.NSGInfoPersonality;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -90,6 +96,36 @@ public class NSGInfo extends BaseObject {
     @JsonProperty(value = "associatedNSGatewayID")
     protected String associatedNSGatewayID;
     
+    @JsonProperty(value = "bootstrapStatus")
+    protected String bootstrapStatus;
+    
+    @JsonProperty(value = "cmdDetailedStatus")
+    protected String cmdDetailedStatus;
+    
+    @JsonProperty(value = "cmdDetailedStatusCode")
+    protected Long cmdDetailedStatusCode;
+    
+    @JsonProperty(value = "cmdDownloadProgress")
+    protected Object cmdDownloadProgress;
+    
+    @JsonProperty(value = "cmdID")
+    protected String cmdID;
+    
+    @JsonProperty(value = "cmdLastUpdatedDate")
+    protected String cmdLastUpdatedDate;
+    
+    @JsonProperty(value = "cmdStatus")
+    protected NSGInfoCmdStatus cmdStatus;
+    
+    @JsonProperty(value = "cmdType")
+    protected NSGInfoCmdType cmdType;
+    
+    @JsonProperty(value = "enterpriseID")
+    protected String enterpriseID;
+    
+    @JsonProperty(value = "enterpriseName")
+    protected String enterpriseName;
+    
     @JsonProperty(value = "entityScope")
     protected NSGInfoEntityScope entityScope;
     
@@ -102,8 +138,14 @@ public class NSGInfo extends BaseObject {
     @JsonProperty(value = "libraries")
     protected String libraries;
     
+    @JsonProperty(value = "name")
+    protected String name;
+    
     @JsonProperty(value = "patchesDetail")
     protected String patchesDetail;
+    
+    @JsonProperty(value = "personality")
+    protected NSGInfoPersonality personality;
     
     @JsonProperty(value = "productName")
     protected String productName;
@@ -111,18 +153,16 @@ public class NSGInfo extends BaseObject {
     @JsonProperty(value = "serialNumber")
     protected String serialNumber;
     
+    @JsonProperty(value = "systemID")
+    protected String systemID;
+    
     @VsoConstructor
     public NSGInfo() {}
 
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
         return (Session) super.getSession();
-    }
-    @VsoProperty(displayName = "Name", readOnly = false)
-    public String getName() {
-        return getId();
-    }
-    @VsoProperty(displayName = "RestName", readOnly = true)
+    }@VsoProperty(displayName = "RestName", readOnly = true)
     public String getRestName() {
         return super.getRestName();
     }
@@ -298,6 +338,116 @@ public class NSGInfo extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "BootstrapStatus", readOnly = false)   
+    public String getBootstrapStatus() {
+       return bootstrapStatus;
+    }
+
+    @JsonIgnore
+    public void setBootstrapStatus(String value) { 
+        this.bootstrapStatus = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CmdDetailedStatus", readOnly = false)   
+    public String getCmdDetailedStatus() {
+       return cmdDetailedStatus;
+    }
+
+    @JsonIgnore
+    public void setCmdDetailedStatus(String value) { 
+        this.cmdDetailedStatus = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CmdDetailedStatusCode", readOnly = false)   
+    public Long getCmdDetailedStatusCode() {
+       return cmdDetailedStatusCode;
+    }
+
+    @JsonIgnore
+    public void setCmdDetailedStatusCode(Long value) { 
+        this.cmdDetailedStatusCode = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CmdDownloadProgress", readOnly = false)   
+    public Object getCmdDownloadProgress() {
+       return cmdDownloadProgress;
+    }
+
+    @JsonIgnore
+    public void setCmdDownloadProgress(Object value) { 
+        this.cmdDownloadProgress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CmdID", readOnly = false)   
+    public String getCmdID() {
+       return cmdID;
+    }
+
+    @JsonIgnore
+    public void setCmdID(String value) { 
+        this.cmdID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CmdLastUpdatedDate", readOnly = false)   
+    public String getCmdLastUpdatedDate() {
+       return cmdLastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setCmdLastUpdatedDate(String value) { 
+        this.cmdLastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CmdStatus", readOnly = false)   
+    public NSGInfoCmdStatus getCmdStatus() {
+       return cmdStatus;
+    }
+
+    @JsonIgnore
+    public void setCmdStatus(NSGInfoCmdStatus value) { 
+        this.cmdStatus = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CmdType", readOnly = false)   
+    public NSGInfoCmdType getCmdType() {
+       return cmdType;
+    }
+
+    @JsonIgnore
+    public void setCmdType(NSGInfoCmdType value) { 
+        this.cmdType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnterpriseID", readOnly = false)   
+    public String getEnterpriseID() {
+       return enterpriseID;
+    }
+
+    @JsonIgnore
+    public void setEnterpriseID(String value) { 
+        this.enterpriseID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnterpriseName", readOnly = false)   
+    public String getEnterpriseName() {
+       return enterpriseName;
+    }
+
+    @JsonIgnore
+    public void setEnterpriseName(String value) { 
+        this.enterpriseName = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public NSGInfoEntityScope getEntityScope() {
        return entityScope;
@@ -342,6 +492,17 @@ public class NSGInfo extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Name", readOnly = false)   
+    public String getName() {
+       return name;
+    }
+
+    @JsonIgnore
+    public void setName(String value) { 
+        this.name = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PatchesDetail", readOnly = false)   
     public String getPatchesDetail() {
        return patchesDetail;
@@ -350,6 +511,17 @@ public class NSGInfo extends BaseObject {
     @JsonIgnore
     public void setPatchesDetail(String value) { 
         this.patchesDetail = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Personality", readOnly = false)   
+    public NSGInfoPersonality getPersonality() {
+       return personality;
+    }
+
+    @JsonIgnore
+    public void setPersonality(NSGInfoPersonality value) { 
+        this.personality = value;
     }
     
     @JsonIgnore
@@ -373,6 +545,17 @@ public class NSGInfo extends BaseObject {
     public void setSerialNumber(String value) { 
         this.serialNumber = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SystemID", readOnly = false)   
+    public String getSystemID() {
+       return systemID;
+    }
+
+    @JsonIgnore
+    public void setSystemID(String value) { 
+        this.systemID = value;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -394,7 +577,7 @@ public class NSGInfo extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGINFO, getId());
         }
     }public String toString() {
-        return "NSGInfo [" + "AARApplicationReleaseDate=" + AARApplicationReleaseDate + ", AARApplicationVersion=" + AARApplicationVersion + ", BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedEntityType=" + associatedEntityType + ", associatedNSGatewayID=" + associatedNSGatewayID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", libraries=" + libraries + ", patchesDetail=" + patchesDetail + ", productName=" + productName + ", serialNumber=" + serialNumber + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGInfo [" + "AARApplicationReleaseDate=" + AARApplicationReleaseDate + ", AARApplicationVersion=" + AARApplicationVersion + ", BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedEntityType=" + associatedEntityType + ", associatedNSGatewayID=" + associatedNSGatewayID + ", bootstrapStatus=" + bootstrapStatus + ", cmdDetailedStatus=" + cmdDetailedStatus + ", cmdDetailedStatusCode=" + cmdDetailedStatusCode + ", cmdDownloadProgress=" + cmdDownloadProgress + ", cmdID=" + cmdID + ", cmdLastUpdatedDate=" + cmdLastUpdatedDate + ", cmdStatus=" + cmdStatus + ", cmdType=" + cmdType + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", libraries=" + libraries + ", name=" + name + ", patchesDetail=" + patchesDetail + ", personality=" + personality + ", productName=" + productName + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

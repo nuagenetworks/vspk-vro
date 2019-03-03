@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d2baedbd-9352-562e-95b3-06effc4ffa04"  version="5.3.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d2baedbd-9352-562e-95b3-06effc4ffa04"  version="5.3.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add EgressAdvFwdEntryTemplate to EgressAdvFwdTemplate]]></display-name>
 <ref-types><![CDATA[(VSPK:EgressAdvFwdTemplate)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='egressAdvFwdTemplateObj' type='VSPK:EgressAdvFwdTemplate' >
-</param>
-<param name='ACLTemplateName' type='string' >
 </param>
 <param name='DSCP' type='string' >
 </param>
@@ -29,9 +27,6 @@
 <script encoded='false'><![CDATA[var session = egressAdvFwdTemplateObj.session;
 
 egressAdvFwdEntryTemplateObj = new VSPKEgressAdvFwdEntryTemplate();
-if (ACLTemplateName) {
-   egressAdvFwdEntryTemplateObj.ACLTemplateName = ACLTemplateName;
-}
 if (DSCP) {
    egressAdvFwdEntryTemplateObj.DSCP = DSCP;
 }
@@ -50,7 +45,6 @@ egressAdvFwdEntryTemplateObj.locationType = locationType;
 egressAdvFwdTemplateObj.createEgressAdvFwdEntryTemplate(session, egressAdvFwdEntryTemplateObj);
 ]]></script>
 <in-binding><bind name='egressAdvFwdTemplateObj' type='VSPK:EgressAdvFwdTemplate' export-name="egressAdvFwdTemplateObj" ></bind>
-<bind name='ACLTemplateName' type='string' export-name="ACLTemplateName" ></bind>
 <bind name='DSCP' type='string' export-name="DSCP" ></bind>
 <bind name='action' type='VSPK:EgressAdvFwdEntryTemplateAction' export-name="action" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
@@ -63,8 +57,6 @@ egressAdvFwdTemplateObj.createEgressAdvFwdEntryTemplate(session, egressAdvFwdEnt
 <presentation>
 <p-param name="egressAdvFwdTemplateObj"><desc><![CDATA[egressAdvFwdTemplateObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
-<p-param name="ACLTemplateName"><desc><![CDATA[ACLTemplateName]]></desc>
-</p-param>
 <p-param name="DSCP"><desc><![CDATA[DSCP]]></desc>
 </p-param>
 <p-param name="action"><desc><![CDATA[action]]></desc>

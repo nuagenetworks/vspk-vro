@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Find OverlayManagementSubnetProfile in OverlayManagementProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">bfebf372-6c0f-541f-8ead-b954c3bb7b12</entry>
+</properties>

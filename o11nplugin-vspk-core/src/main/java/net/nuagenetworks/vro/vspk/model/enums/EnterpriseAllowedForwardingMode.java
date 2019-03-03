@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum EnterpriseAllowedForwardingMode {
 
-    DISABLED("DISABLED", "DISABLED"), LOCAL_ONLY("LOCAL_ONLY", "LOCAL_ONLY"), LOCAL_AND_REMOTE("LOCAL_AND_REMOTE", "LOCAL_AND_REMOTE");
+    DISABLED("DISABLED", "DISABLED"), LOCAL_AND_REMOTE("LOCAL_AND_REMOTE", "LOCAL_AND_REMOTE"), LOCAL_ONLY("LOCAL_ONLY", "LOCAL_ONLY");
 
     private final String id;
     private final String name;
@@ -63,14 +63,14 @@ public enum EnterpriseAllowedForwardingMode {
         return DISABLED;
     }
     
-    @VsoProperty(displayName = "LOCAL_ONLY", readOnly = true)
-    public EnterpriseAllowedForwardingMode getLOCAL_ONLY() {
-        return LOCAL_ONLY;
-    }
-    
     @VsoProperty(displayName = "LOCAL_AND_REMOTE", readOnly = true)
     public EnterpriseAllowedForwardingMode getLOCAL_AND_REMOTE() {
         return LOCAL_AND_REMOTE;
+    }
+    
+    @VsoProperty(displayName = "LOCAL_ONLY", readOnly = true)
+    public EnterpriseAllowedForwardingMode getLOCAL_ONLY() {
+        return LOCAL_ONLY;
     }
     
 

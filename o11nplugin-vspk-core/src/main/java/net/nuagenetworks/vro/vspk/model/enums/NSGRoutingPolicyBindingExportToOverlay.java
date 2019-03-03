@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGRoutingPolicyBindingExportToOverlay {
 
-    INHERITED("INHERITED", "INHERITED"), DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
+    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED"), INHERITED("INHERITED", "INHERITED");
 
     private final String id;
     private final String name;
@@ -58,11 +58,6 @@ public enum NSGRoutingPolicyBindingExportToOverlay {
     }
 
     
-    @VsoProperty(displayName = "INHERITED", readOnly = true)
-    public NSGRoutingPolicyBindingExportToOverlay getINHERITED() {
-        return INHERITED;
-    }
-    
     @VsoProperty(displayName = "DISABLED", readOnly = true)
     public NSGRoutingPolicyBindingExportToOverlay getDISABLED() {
         return DISABLED;
@@ -71,6 +66,11 @@ public enum NSGRoutingPolicyBindingExportToOverlay {
     @VsoProperty(displayName = "ENABLED", readOnly = true)
     public NSGRoutingPolicyBindingExportToOverlay getENABLED() {
         return ENABLED;
+    }
+    
+    @VsoProperty(displayName = "INHERITED", readOnly = true)
+    public NSGRoutingPolicyBindingExportToOverlay getINHERITED() {
+        return INHERITED;
     }
     
 

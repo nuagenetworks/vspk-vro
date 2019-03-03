@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum SubnetUseGlobalMAC {
 
-    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
+    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED"), ENTERPRISE_DEFAULT("ENTERPRISE_DEFAULT", "ENTERPRISE_DEFAULT");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum SubnetUseGlobalMAC {
     @VsoProperty(displayName = "ENABLED", readOnly = true)
     public SubnetUseGlobalMAC getENABLED() {
         return ENABLED;
+    }
+    
+    @VsoProperty(displayName = "ENTERPRISE_DEFAULT", readOnly = true)
+    public SubnetUseGlobalMAC getENTERPRISE_DEFAULT() {
+        return ENTERPRISE_DEFAULT;
     }
     
 

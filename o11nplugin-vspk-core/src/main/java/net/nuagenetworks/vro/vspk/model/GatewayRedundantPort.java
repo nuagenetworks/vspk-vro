@@ -26,9 +26,15 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisePermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VLANsFetcher;
 
@@ -53,7 +59,11 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.GATEWAYREDUNDANTPORT, datasource = Constants.DATASOURCE, image = Constants.GATEWAYREDUNDANTPORT_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPERMISSIONS_FETCHER, type = Constants.ENTERPRISEPERMISSIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VLANS_FETCHER, type = Constants.VLANS_FETCHER)
 })
@@ -111,19 +121,34 @@ public class GatewayRedundantPort extends BaseObject {
     protected String userMnemonic;
     
     @JsonIgnore
+    private AlarmsFetcher alarms;
+    
+    @JsonIgnore
+    private EnterprisePermissionsFetcher enterprisePermissions;
+    
+    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private VLANsFetcher vLANs;
     
     @VsoConstructor
     public GatewayRedundantPort() {
+        alarms = new AlarmsFetcher(this);
+        
+        enterprisePermissions = new EnterprisePermissionsFetcher(this);
+        
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         vLANs = new VLANsFetcher(this);
         }
@@ -329,6 +354,18 @@ public class GatewayRedundantPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Alarms", readOnly = true)   
+    public AlarmsFetcher getAlarms() {
+        return alarms;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnterprisePermissions", readOnly = true)   
+    public EnterprisePermissionsFetcher getEnterprisePermissions() {
+        return enterprisePermissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -338,6 +375,12 @@ public class GatewayRedundantPort extends BaseObject {
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
     }
     
     @JsonIgnore
@@ -376,6 +419,14 @@ public class GatewayRedundantPort extends BaseObject {
     }
     
     @VsoMethod
+    public void createEnterprisePermission(Session session, EnterprisePermission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ENTERPRISEPERMISSIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -389,6 +440,14 @@ public class GatewayRedundantPort extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }
     @VsoMethod

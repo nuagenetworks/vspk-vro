@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
+import net.nuagenetworks.vro.vspk.model.GatewayRedundantPort;
+
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
@@ -93,6 +95,16 @@ public class EnterprisePermissionsFetcher extends BaseFetcher<EnterprisePermissi
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Gateway) {
             return (Gateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "GatewayRedundantPort", readOnly = true)
+    public GatewayRedundantPort getGatewayRedundantPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof GatewayRedundantPort) {
+            return (GatewayRedundantPort) obj;
         }
         
         return null;

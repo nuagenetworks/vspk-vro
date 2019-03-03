@@ -88,6 +88,9 @@ public class UserContext extends BaseObject {
     @JsonProperty(value = "statisticsEnabled")
     protected Boolean statisticsEnabled;
     
+    @JsonProperty(value = "statsDatabaseProxy")
+    protected String statsDatabaseProxy;
+    
     @JsonProperty(value = "statsTSDBServerAddress")
     protected String statsTSDBServerAddress;
     
@@ -266,6 +269,17 @@ public class UserContext extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "StatsDatabaseProxy", readOnly = false)   
+    public String getStatsDatabaseProxy() {
+       return statsDatabaseProxy;
+    }
+
+    @JsonIgnore
+    public void setStatsDatabaseProxy(String value) { 
+        this.statsDatabaseProxy = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "StatsTSDBServerAddress", readOnly = false)   
     public String getStatsTSDBServerAddress() {
        return statsTSDBServerAddress;
@@ -333,7 +347,7 @@ public class UserContext extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "UserContext [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSFeatureEnabled=" + VSSFeatureEnabled + ", VSSStatsInterval=" + VSSStatsInterval + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", googleMapsAPIKey=" + googleMapsAPIKey + ", lastUpdatedBy=" + lastUpdatedBy + ", pageSize=" + pageSize + ", statisticsEnabled=" + statisticsEnabled + ", statsTSDBServerAddress=" + statsTSDBServerAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UserContext [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSFeatureEnabled=" + VSSFeatureEnabled + ", VSSStatsInterval=" + VSSStatsInterval + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", googleMapsAPIKey=" + googleMapsAPIKey + ", lastUpdatedBy=" + lastUpdatedBy + ", pageSize=" + pageSize + ", statisticsEnabled=" + statisticsEnabled + ", statsDatabaseProxy=" + statsDatabaseProxy + ", statsTSDBServerAddress=" + statsTSDBServerAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

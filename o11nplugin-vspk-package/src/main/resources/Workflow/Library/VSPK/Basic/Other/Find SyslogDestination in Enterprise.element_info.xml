@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Find SyslogDestination in Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c48281dc-bc59-5b23-8fd4-9bae3bb2e630</entry>
+</properties>

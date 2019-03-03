@@ -492,6 +492,10 @@ import net.nuagenetworks.vro.vspk.model.VsgRedundantPort;
 
 import net.nuagenetworks.vro.vspk.model.VSP;
 
+import net.nuagenetworks.vro.vspk.model.WebCategory;
+
+import net.nuagenetworks.vro.vspk.model.WebDomainName;
+
 import net.nuagenetworks.vro.vspk.model.WirelessPort;
 
 import net.nuagenetworks.vro.vspk.model.ZFBRequest;
@@ -2837,6 +2841,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VSP) {
             return (VSP) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "WebCategory", readOnly = true)
+    public WebCategory getWebCategory() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof WebCategory) {
+            return (WebCategory) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "WebDomainName", readOnly = true)
+    public WebDomainName getWebDomainName() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof WebDomainName) {
+            return (WebDomainName) obj;
         }
         
         return null;

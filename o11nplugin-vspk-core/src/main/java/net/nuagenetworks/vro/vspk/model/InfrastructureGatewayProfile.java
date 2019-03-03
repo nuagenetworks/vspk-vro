@@ -142,6 +142,12 @@ public class InfrastructureGatewayProfile extends BaseObject {
     @JsonProperty(value = "useTwoFactor")
     protected Boolean useTwoFactor;
     
+    @JsonProperty(value = "webFilterDownloadPort")
+    protected Long webFilterDownloadPort;
+    
+    @JsonProperty(value = "webFilterQueryPort")
+    protected Long webFilterQueryPort;
+    
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
@@ -154,7 +160,7 @@ public class InfrastructureGatewayProfile extends BaseObject {
         
         statsCollectorPort = 29090L;
         
-        systemSyncScheduler = "0 0 * * 0";
+        systemSyncScheduler = "0 0 * * *";
         
         useTwoFactor = true;
         
@@ -500,6 +506,28 @@ public class InfrastructureGatewayProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "WebFilterDownloadPort", readOnly = false)   
+    public Long getWebFilterDownloadPort() {
+       return webFilterDownloadPort;
+    }
+
+    @JsonIgnore
+    public void setWebFilterDownloadPort(Long value) { 
+        this.webFilterDownloadPort = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "WebFilterQueryPort", readOnly = false)   
+    public Long getWebFilterQueryPort() {
+       return webFilterQueryPort;
+    }
+
+    @JsonIgnore
+    public void setWebFilterQueryPort(Long value) { 
+        this.webFilterQueryPort = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -556,7 +584,7 @@ public class InfrastructureGatewayProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "InfrastructureGatewayProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", controllerLessDuration=" + controllerLessDuration + ", controllerLessEnabled=" + controllerLessEnabled + ", controllerLessForwardingMode=" + controllerLessForwardingMode + ", controllerLessRemoteDuration=" + controllerLessRemoteDuration + ", datapathSyncTimeout=" + datapathSyncTimeout + ", deadTimer=" + deadTimer + ", deadTimerEnabled=" + deadTimerEnabled + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowEvictionThreshold=" + flowEvictionThreshold + ", forceImmediateSystemSync=" + forceImmediateSystemSync + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", openFlowAuditTimer=" + openFlowAuditTimer + ", proxyDNSName=" + proxyDNSName + ", remoteLogMode=" + remoteLogMode + ", remoteLogServerAddress=" + remoteLogServerAddress + ", remoteLogServerPort=" + remoteLogServerPort + ", statsCollectorPort=" + statsCollectorPort + ", systemSyncScheduler=" + systemSyncScheduler + ", upgradeAction=" + upgradeAction + ", useTwoFactor=" + useTwoFactor + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "InfrastructureGatewayProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", controllerLessDuration=" + controllerLessDuration + ", controllerLessEnabled=" + controllerLessEnabled + ", controllerLessForwardingMode=" + controllerLessForwardingMode + ", controllerLessRemoteDuration=" + controllerLessRemoteDuration + ", datapathSyncTimeout=" + datapathSyncTimeout + ", deadTimer=" + deadTimer + ", deadTimerEnabled=" + deadTimerEnabled + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowEvictionThreshold=" + flowEvictionThreshold + ", forceImmediateSystemSync=" + forceImmediateSystemSync + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", openFlowAuditTimer=" + openFlowAuditTimer + ", proxyDNSName=" + proxyDNSName + ", remoteLogMode=" + remoteLogMode + ", remoteLogServerAddress=" + remoteLogServerAddress + ", remoteLogServerPort=" + remoteLogServerPort + ", statsCollectorPort=" + statsCollectorPort + ", systemSyncScheduler=" + systemSyncScheduler + ", upgradeAction=" + upgradeAction + ", useTwoFactor=" + useTwoFactor + ", webFilterDownloadPort=" + webFilterDownloadPort + ", webFilterQueryPort=" + webFilterQueryPort + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="8167e3be-8e2d-5edf-8a06-dee23bf6bce2"  version="5.3.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="8167e3be-8e2d-5edf-8a06-dee23bf6bce2"  version="5.3.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit ZFBAutoAssignment]]></display-name>
 <ref-types><![CDATA[(VSPK:ZFBAutoAssignment)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='zFBAutoAssignmentObj' type='VSPK:ZFBAutoAssignment' >
+</param>
+
+<param name='ZFBMatchAttribute' type='VSPK:ZFBAutoAssignmentZFBMatchAttribute' >
+</param>
+
+<param name='ZFBMatchAttributeValues' type='Array/string' >
+</param>
+
+<param name='associatedEnterpriseID' type='string' >
 </param>
 
 <param name='description' type='string' >
@@ -25,6 +34,13 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = zFBAutoAssignmentObj.session;
 
+zFBAutoAssignmentObj.ZFBMatchAttribute = ZFBMatchAttribute;
+zFBAutoAssignmentObj.ZFBMatchAttributeValues = ZFBMatchAttributeValues;
+if (associatedEnterpriseID) {
+   zFBAutoAssignmentObj.associatedEnterpriseID = associatedEnterpriseID;
+} else if (zFBAutoAssignmentObj.associatedEnterpriseID) {
+   zFBAutoAssignmentObj.associatedEnterpriseID = "";
+}
 if (description) {
    zFBAutoAssignmentObj.description = description;
 } else if (zFBAutoAssignmentObj.description) {
@@ -44,6 +60,12 @@ zFBAutoAssignmentObj.priority = priority;
 zFBAutoAssignmentObj.save(session, 1);]]></script>
 <in-binding><bind name='zFBAutoAssignmentObj' type='VSPK:ZFBAutoAssignment' export-name="zFBAutoAssignmentObj" ></bind>
 
+<bind name='ZFBMatchAttribute' type='VSPK:ZFBAutoAssignmentZFBMatchAttribute' export-name="ZFBMatchAttribute" ></bind>
+
+<bind name='ZFBMatchAttributeValues' type='Array/string' export-name="ZFBMatchAttributeValues" ></bind>
+
+<bind name='associatedEnterpriseID' type='string' export-name="associatedEnterpriseID" ></bind>
+
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
@@ -57,6 +79,15 @@ zFBAutoAssignmentObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="zFBAutoAssignmentObj"><desc><![CDATA[zFBAutoAssignmentObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="ZFBMatchAttribute"><desc><![CDATA[ZFBMatchAttribute]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:ZFBAutoAssignmentZFBMatchAttribute" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getZFBAutoAssignmentZFBMatchAttribute").call( #zFBAutoAssignmentObj )]]></p-qual></p-param>
+
+<p-param name="ZFBMatchAttributeValues"><desc><![CDATA[ZFBMatchAttributeValues]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="Array/string" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getZFBAutoAssignmentZFBMatchAttributeValues").call( #zFBAutoAssignmentObj )]]></p-qual></p-param>
+
+<p-param name="associatedEnterpriseID"><desc><![CDATA[associatedEnterpriseID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#zFBAutoAssignmentObj.associatedEnterpriseID]]></p-qual></p-param>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#zFBAutoAssignmentObj.description]]></p-qual></p-param>

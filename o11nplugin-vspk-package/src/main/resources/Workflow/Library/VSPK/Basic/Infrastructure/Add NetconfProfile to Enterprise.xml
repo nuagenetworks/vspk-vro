@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="f0fd8026-e3b4-58d4-83a7-65f7dd6f5641"  version="5.3.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="f0fd8026-e3b4-58d4-83a7-65f7dd6f5641"  version="5.3.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add NetconfProfile to Enterprise]]></display-name>
 <ref-types><![CDATA[(VSPK:Enterprise)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -10,6 +10,10 @@
 <param name='externalID' type='string' >
 </param>
 <param name='name' type='string' >
+</param>
+<param name='password' type='string' >
+</param>
+<param name='userName' type='string' >
 </param>
 </input><output><param name='netconfProfileObj' type='VSPK:NetconfProfile' >
 </param>
@@ -30,6 +34,12 @@ if (externalID) {
 if (name) {
    netconfProfileObj.name = name;
 }
+if (password) {
+   netconfProfileObj.password = password;
+}
+if (userName) {
+   netconfProfileObj.userName = userName;
+}
 
 enterpriseObj.createNetconfProfile(session, netconfProfileObj);
 ]]></script>
@@ -37,6 +47,8 @@ enterpriseObj.createNetconfProfile(session, netconfProfileObj);
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
+<bind name='password' type='string' export-name="password" ></bind>
+<bind name='userName' type='string' export-name="userName" ></bind>
 </in-binding><out-binding><bind name='netconfProfileObj' type='VSPK:NetconfProfile' export-name="netconfProfileObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -48,5 +60,9 @@ enterpriseObj.createNetconfProfile(session, netconfProfileObj);
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="password"><desc><![CDATA[password]]></desc>
+</p-param>
+<p-param name="userName"><desc><![CDATA[userName]]></desc>
 </p-param>
 </presentation></workflow>

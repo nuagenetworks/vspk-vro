@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.RoutingPolicyContentType;
+
 import net.nuagenetworks.vro.vspk.model.enums.RoutingPolicyDefaultAction;
 
 import net.nuagenetworks.vro.vspk.model.enums.RoutingPolicyEntityScope;
@@ -58,6 +60,9 @@ public class RoutingPolicy extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "contentType")
+    protected RoutingPolicyContentType contentType;
     
     @JsonProperty(value = "defaultAction")
     protected RoutingPolicyDefaultAction defaultAction;
@@ -128,6 +133,17 @@ public class RoutingPolicy extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "ContentType", readOnly = false)   
+    public RoutingPolicyContentType getContentType() {
+       return contentType;
+    }
+
+    @JsonIgnore
+    public void setContentType(RoutingPolicyContentType value) { 
+        this.contentType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "DefaultAction", readOnly = false)   
     public RoutingPolicyDefaultAction getDefaultAction() {
@@ -262,7 +278,7 @@ public class RoutingPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "RoutingPolicy [" + "defaultAction=" + defaultAction + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", policyDefinition=" + policyDefinition + ", routingProtocol=" + routingProtocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "RoutingPolicy [" + "contentType=" + contentType + ", defaultAction=" + defaultAction + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", policyDefinition=" + policyDefinition + ", routingProtocol=" + routingProtocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.DeploymentFailuresFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -51,6 +53,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.STATICROUTE, datasource = Constants.DATASOURCE, image = Constants.STATICROUTE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.DEPLOYMENTFAILURES_FETCHER, type = Constants.DEPLOYMENTFAILURES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
@@ -73,8 +77,14 @@ public class StaticRoute extends BaseObject {
     @JsonProperty(value = "address")
     protected String address;
     
+    @JsonProperty(value = "associatedGatewayIDs")
+    protected java.util.List<String> associatedGatewayIDs;
+    
     @JsonProperty(value = "associatedSubnetID")
     protected String associatedSubnetID;
+    
+    @JsonProperty(value = "blackHoleEnabled")
+    protected Boolean blackHoleEnabled;
     
     @JsonProperty(value = "entityScope")
     protected StaticRouteEntityScope entityScope;
@@ -98,6 +108,9 @@ public class StaticRoute extends BaseObject {
     protected StaticRouteType type;
     
     @JsonIgnore
+    private DeploymentFailuresFetcher deploymentFailures;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -108,6 +121,8 @@ public class StaticRoute extends BaseObject {
     
     @VsoConstructor
     public StaticRoute() {
+        deploymentFailures = new DeploymentFailuresFetcher(this);
+        
         eventLogs = new EventLogsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -200,6 +215,17 @@ public class StaticRoute extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedGatewayIDs", readOnly = false)   
+    public java.util.List<String> getAssociatedGatewayIDs() {
+       return associatedGatewayIDs;
+    }
+
+    @JsonIgnore
+    public void setAssociatedGatewayIDs(java.util.List<String> value) { 
+        this.associatedGatewayIDs = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedSubnetID", readOnly = false)   
     public String getAssociatedSubnetID() {
        return associatedSubnetID;
@@ -208,6 +234,17 @@ public class StaticRoute extends BaseObject {
     @JsonIgnore
     public void setAssociatedSubnetID(String value) { 
         this.associatedSubnetID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "BlackHoleEnabled", readOnly = false)   
+    public Boolean getBlackHoleEnabled() {
+       return blackHoleEnabled;
+    }
+
+    @JsonIgnore
+    public void setBlackHoleEnabled(Boolean value) { 
+        this.blackHoleEnabled = value;
     }
     
     @JsonIgnore
@@ -288,6 +325,12 @@ public class StaticRoute extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DeploymentFailures", readOnly = true)   
+    public DeploymentFailuresFetcher getDeploymentFailures() {
+        return deploymentFailures;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -335,6 +378,14 @@ public class StaticRoute extends BaseObject {
     }
     
     @VsoMethod
+    public void createDeploymentFailure(Session session, DeploymentFailure childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DEPLOYMENTFAILURES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -350,7 +401,7 @@ public class StaticRoute extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "StaticRoute [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedSubnetID=" + associatedSubnetID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", netmask=" + netmask + ", nextHopIp=" + nextHopIp + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "StaticRoute [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedGatewayIDs=" + associatedGatewayIDs + ", associatedSubnetID=" + associatedSubnetID + ", blackHoleEnabled=" + blackHoleEnabled + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", netmask=" + netmask + ", nextHopIp=" + nextHopIp + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

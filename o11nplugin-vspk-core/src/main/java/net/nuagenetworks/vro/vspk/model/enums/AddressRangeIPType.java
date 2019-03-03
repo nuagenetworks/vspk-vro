@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum AddressRangeIPType {
 
-    DUALSTACK("DUALSTACK", "DUALSTACK"), IPV4("IPV4", "IPV4"), IPV6("IPV6", "IPV6");
+    IPV4("IPV4", "IPV4"), IPV6("IPV6", "IPV6");
 
     private final String id;
     private final String name;
@@ -57,11 +57,6 @@ public enum AddressRangeIPType {
         return name;
     }
 
-    
-    @VsoProperty(displayName = "DUALSTACK", readOnly = true)
-    public AddressRangeIPType getDUALSTACK() {
-        return DUALSTACK;
-    }
     
     @VsoProperty(displayName = "IPV4", readOnly = true)
     public AddressRangeIPType getIPV4() {

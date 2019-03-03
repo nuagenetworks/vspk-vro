@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum OverlayMirrorDestinationDestinationType {
 
-    REDIRECTION_TARGET("REDIRECTION_TARGET", "REDIRECTION_TARGET"), OVERLAY_MIRROR_DESTINATION("OVERLAY_MIRROR_DESTINATION", "OVERLAY_MIRROR_DESTINATION");
+    OVERLAY_MIRROR_DESTINATION("OVERLAY_MIRROR_DESTINATION", "OVERLAY_MIRROR_DESTINATION"), REDIRECTION_TARGET("REDIRECTION_TARGET", "REDIRECTION_TARGET");
 
     private final String id;
     private final String name;
@@ -58,14 +58,14 @@ public enum OverlayMirrorDestinationDestinationType {
     }
 
     
-    @VsoProperty(displayName = "REDIRECTION_TARGET", readOnly = true)
-    public OverlayMirrorDestinationDestinationType getREDIRECTION_TARGET() {
-        return REDIRECTION_TARGET;
-    }
-    
     @VsoProperty(displayName = "OVERLAY_MIRROR_DESTINATION", readOnly = true)
     public OverlayMirrorDestinationDestinationType getOVERLAY_MIRROR_DESTINATION() {
         return OVERLAY_MIRROR_DESTINATION;
+    }
+    
+    @VsoProperty(displayName = "REDIRECTION_TARGET", readOnly = true)
+    public OverlayMirrorDestinationDestinationType getREDIRECTION_TARGET() {
+        return REDIRECTION_TARGET;
     }
     
 

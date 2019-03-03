@@ -38,11 +38,15 @@ import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
+import net.nuagenetworks.vro.vspk.model.GatewayRedundantPort;
+
 import net.nuagenetworks.vro.vspk.model.HSC;
 
 import net.nuagenetworks.vro.vspk.model.IKEGatewayConnection;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
+
+import net.nuagenetworks.vro.vspk.model.NetconfManager;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
@@ -150,6 +154,16 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         return null;
     }
     
+    @VsoProperty(displayName = "GatewayRedundantPort", readOnly = true)
+    public GatewayRedundantPort getGatewayRedundantPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof GatewayRedundantPort) {
+            return (GatewayRedundantPort) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "HSC", readOnly = true)
     public HSC getHSC() {
         RestObject obj = super.getParentRestObj();
@@ -175,6 +189,16 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2Domain) {
             return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfManager", readOnly = true)
+    public NetconfManager getNetconfManager() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfManager) {
+            return (NetconfManager) obj;
         }
         
         return null;

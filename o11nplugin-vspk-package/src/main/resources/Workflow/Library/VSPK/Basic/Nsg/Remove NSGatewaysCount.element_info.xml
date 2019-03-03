@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Remove NSGatewaysCount</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2353c713-5a7a-5586-8b46-39c94a7318b8</entry>
+</properties>

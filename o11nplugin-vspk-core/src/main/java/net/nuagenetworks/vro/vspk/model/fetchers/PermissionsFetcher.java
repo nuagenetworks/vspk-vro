@@ -36,6 +36,8 @@ import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
+import net.nuagenetworks.vro.vspk.model.GatewayRedundantPort;
+
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
@@ -117,6 +119,16 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Gateway) {
             return (Gateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "GatewayRedundantPort", readOnly = true)
+    public GatewayRedundantPort getGatewayRedundantPort() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof GatewayRedundantPort) {
+            return (GatewayRedundantPort) obj;
         }
         
         return null;

@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.BFDSessionBFDDestinationIPType;
+
 import net.nuagenetworks.vro.vspk.model.enums.BFDSessionEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -57,6 +59,12 @@ public class BFDSession extends BaseObject {
     
     @JsonProperty(value = "BFDDestinationIP")
     protected String BFDDestinationIP;
+    
+    @JsonProperty(value = "BFDDestinationIPType")
+    protected BFDSessionBFDDestinationIPType BFDDestinationIPType;
+    
+    @JsonProperty(value = "BFDDestinationIPv6")
+    protected String BFDDestinationIPv6;
     
     @JsonProperty(value = "BFDMultiplier")
     protected Long BFDMultiplier;
@@ -138,6 +146,28 @@ public class BFDSession extends BaseObject {
     @JsonIgnore
     public void setBFDDestinationIP(String value) { 
         this.BFDDestinationIP = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "BFDDestinationIPType", readOnly = false)   
+    public BFDSessionBFDDestinationIPType getBFDDestinationIPType() {
+       return BFDDestinationIPType;
+    }
+
+    @JsonIgnore
+    public void setBFDDestinationIPType(BFDSessionBFDDestinationIPType value) { 
+        this.BFDDestinationIPType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "BFDDestinationIPv6", readOnly = false)   
+    public String getBFDDestinationIPv6() {
+       return BFDDestinationIPv6;
+    }
+
+    @JsonIgnore
+    public void setBFDDestinationIPv6(String value) { 
+        this.BFDDestinationIPv6 = value;
     }
     
     @JsonIgnore
@@ -263,7 +293,7 @@ public class BFDSession extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BFDSession [" + "BFDDestinationIP=" + BFDDestinationIP + ", BFDMultiplier=" + BFDMultiplier + ", BFDTimer=" + BFDTimer + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", multiHopEnabled=" + multiHopEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BFDSession [" + "BFDDestinationIP=" + BFDDestinationIP + ", BFDDestinationIPType=" + BFDDestinationIPType + ", BFDDestinationIPv6=" + BFDDestinationIPv6 + ", BFDMultiplier=" + BFDMultiplier + ", BFDTimer=" + BFDTimer + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", multiHopEnabled=" + multiHopEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum CommandStatus {
 
-    ABANDONED("ABANDONED", "ABANDONED"), COMPLETED("COMPLETED", "COMPLETED"), FAILED("FAILED", "FAILED"), RUNNING("RUNNING", "RUNNING"), STARTED("STARTED", "STARTED"), UNKNOWN("UNKNOWN", "UNKNOWN");
+    ABANDONED("ABANDONED", "ABANDONED"), COMPLETED("COMPLETED", "COMPLETED"), FAILED("FAILED", "FAILED"), RUNNING("RUNNING", "RUNNING"), SKIPPED("SKIPPED", "SKIPPED"), STARTED("STARTED", "STARTED"), UNKNOWN("UNKNOWN", "UNKNOWN");
 
     private final String id;
     private final String name;
@@ -76,6 +76,11 @@ public enum CommandStatus {
     @VsoProperty(displayName = "RUNNING", readOnly = true)
     public CommandStatus getRUNNING() {
         return RUNNING;
+    }
+    
+    @VsoProperty(displayName = "SKIPPED", readOnly = true)
+    public CommandStatus getSKIPPED() {
+        return SKIPPED;
     }
     
     @VsoProperty(displayName = "STARTED", readOnly = true)

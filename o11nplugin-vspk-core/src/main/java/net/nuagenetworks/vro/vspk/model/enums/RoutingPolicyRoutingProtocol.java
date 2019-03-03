@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum RoutingPolicyRoutingProtocol {
 
-    BGP("BGP", "BGP"), OSPFv2("OSPFv2", "OSPFv2"), OSPFv3("OSPFv3", "OSPFv3"), ISIS("ISIS", "ISIS"), ROUTING("ROUTING", "ROUTING");
+    BGP("BGP", "BGP"), ISIS("ISIS", "ISIS"), OSPFv2("OSPFv2", "OSPFv2"), OSPFv3("OSPFv3", "OSPFv3"), ROUTING("ROUTING", "ROUTING");
 
     private final String id;
     private final String name;
@@ -63,6 +63,11 @@ public enum RoutingPolicyRoutingProtocol {
         return BGP;
     }
     
+    @VsoProperty(displayName = "ISIS", readOnly = true)
+    public RoutingPolicyRoutingProtocol getISIS() {
+        return ISIS;
+    }
+    
     @VsoProperty(displayName = "OSPFv2", readOnly = true)
     public RoutingPolicyRoutingProtocol getOSPFv2() {
         return OSPFv2;
@@ -71,11 +76,6 @@ public enum RoutingPolicyRoutingProtocol {
     @VsoProperty(displayName = "OSPFv3", readOnly = true)
     public RoutingPolicyRoutingProtocol getOSPFv3() {
         return OSPFv3;
-    }
-    
-    @VsoProperty(displayName = "ISIS", readOnly = true)
-    public RoutingPolicyRoutingProtocol getISIS() {
-        return ISIS;
     }
     
     @VsoProperty(displayName = "ROUTING", readOnly = true)

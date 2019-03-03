@@ -105,6 +105,9 @@ public class L7applicationsignature extends BaseObject {
     @JsonProperty(value = "signatureIndex")
     protected Long signatureIndex;
     
+    @JsonProperty(value = "signatureVersion")
+    protected String signatureVersion;
+    
     @JsonProperty(value = "softwareFlags")
     protected String softwareFlags;
     
@@ -338,6 +341,17 @@ public class L7applicationsignature extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SignatureVersion", readOnly = false)   
+    public String getSignatureVersion() {
+       return signatureVersion;
+    }
+
+    @JsonIgnore
+    public void setSignatureVersion(String value) { 
+        this.signatureVersion = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "SoftwareFlags", readOnly = false)   
     public String getSoftwareFlags() {
        return softwareFlags;
@@ -411,7 +425,7 @@ public class L7applicationsignature extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "L7applicationsignature [" + "category=" + category + ", deprecated=" + deprecated + ", deprecatedVersion=" + deprecatedVersion + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", guidstring=" + guidstring + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", pluginName=" + pluginName + ", productivity=" + productivity + ", readonly=" + readonly + ", reference=" + reference + ", risk=" + risk + ", signatureIndex=" + signatureIndex + ", softwareFlags=" + softwareFlags + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L7applicationsignature [" + "category=" + category + ", deprecated=" + deprecated + ", deprecatedVersion=" + deprecatedVersion + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", guidstring=" + guidstring + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", pluginName=" + pluginName + ", productivity=" + productivity + ", readonly=" + readonly + ", reference=" + reference + ", risk=" + risk + ", signatureIndex=" + signatureIndex + ", signatureVersion=" + signatureVersion + ", softwareFlags=" + softwareFlags + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

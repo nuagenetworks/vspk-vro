@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to WebCategory</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">735ed376-5cc8-5fc2-8ac7-ee46148e6bb0</entry>
+</properties>

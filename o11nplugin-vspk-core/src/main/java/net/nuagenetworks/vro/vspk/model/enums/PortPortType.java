@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum PortPortType {
 
-    ACCESS("ACCESS", "ACCESS"), NETWORK("NETWORK", "NETWORK"), MANAGEMENT("MANAGEMENT", "MANAGEMENT");
+    ACCESS("ACCESS", "ACCESS"), MANAGEMENT("MANAGEMENT", "MANAGEMENT"), NETWORK("NETWORK", "NETWORK");
 
     private final String id;
     private final String name;
@@ -63,14 +63,14 @@ public enum PortPortType {
         return ACCESS;
     }
     
-    @VsoProperty(displayName = "NETWORK", readOnly = true)
-    public PortPortType getNETWORK() {
-        return NETWORK;
-    }
-    
     @VsoProperty(displayName = "MANAGEMENT", readOnly = true)
     public PortPortType getMANAGEMENT() {
         return MANAGEMENT;
+    }
+    
+    @VsoProperty(displayName = "NETWORK", readOnly = true)
+    public PortPortType getNETWORK() {
+        return NETWORK;
     }
     
 

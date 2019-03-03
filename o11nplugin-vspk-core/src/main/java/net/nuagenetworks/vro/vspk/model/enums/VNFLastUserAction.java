@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VNFLastUserAction {
 
-    DEPLOY("DEPLOY", "DEPLOY"), REDEPLOY("REDEPLOY", "REDEPLOY"), RESTART("RESTART", "RESTART"), START("START", "START"), STOP("STOP", "STOP"), UNDEPLOY("UNDEPLOY", "UNDEPLOY");
+    DEPLOY("DEPLOY", "DEPLOY"), NONE("NONE", "NONE"), REDEPLOY("REDEPLOY", "REDEPLOY"), RESTART("RESTART", "RESTART"), START("START", "START"), STOP("STOP", "STOP"), UNDEPLOY("UNDEPLOY", "UNDEPLOY");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum VNFLastUserAction {
     @VsoProperty(displayName = "DEPLOY", readOnly = true)
     public VNFLastUserAction getDEPLOY() {
         return DEPLOY;
+    }
+    
+    @VsoProperty(displayName = "NONE", readOnly = true)
+    public VNFLastUserAction getNONE() {
+        return NONE;
     }
     
     @VsoProperty(displayName = "REDEPLOY", readOnly = true)

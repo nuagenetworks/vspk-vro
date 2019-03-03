@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
@@ -83,6 +85,9 @@ public class NetconfManager extends BaseObject {
     protected NetconfManagerStatus status;
     
     @JsonIgnore
+    private AlarmsFetcher alarms;
+    
+    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
@@ -93,6 +98,8 @@ public class NetconfManager extends BaseObject {
     
     @VsoConstructor
     public NetconfManager() {
+        alarms = new AlarmsFetcher(this);
+        
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
@@ -210,6 +217,12 @@ public class NetconfManager extends BaseObject {
     @JsonIgnore
     public void setStatus(NetconfManagerStatus value) { 
         this.status = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Alarms", readOnly = true)   
+    public AlarmsFetcher getAlarms() {
+        return alarms;
     }
     
     @JsonIgnore

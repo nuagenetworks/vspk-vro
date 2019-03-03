@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.DUCGroupBindingAssociatedUBRGroupFunction;
+
 import net.nuagenetworks.vro.vspk.model.enums.DUCGroupBindingEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -57,6 +59,12 @@ public class DUCGroupBinding extends BaseObject {
     
     @JsonProperty(value = "associatedDUCGroupID")
     protected String associatedDUCGroupID;
+    
+    @JsonProperty(value = "associatedUBRGroupFunction")
+    protected DUCGroupBindingAssociatedUBRGroupFunction associatedUBRGroupFunction;
+    
+    @JsonProperty(value = "associatedUBRGroupName")
+    protected String associatedUBRGroupName;
     
     @JsonProperty(value = "entityScope")
     protected DUCGroupBindingEntityScope entityScope;
@@ -135,6 +143,28 @@ public class DUCGroupBinding extends BaseObject {
     @JsonIgnore
     public void setAssociatedDUCGroupID(String value) { 
         this.associatedDUCGroupID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedUBRGroupFunction", readOnly = false)   
+    public DUCGroupBindingAssociatedUBRGroupFunction getAssociatedUBRGroupFunction() {
+       return associatedUBRGroupFunction;
+    }
+
+    @JsonIgnore
+    public void setAssociatedUBRGroupFunction(DUCGroupBindingAssociatedUBRGroupFunction value) { 
+        this.associatedUBRGroupFunction = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedUBRGroupName", readOnly = false)   
+    public String getAssociatedUBRGroupName() {
+       return associatedUBRGroupName;
+    }
+
+    @JsonIgnore
+    public void setAssociatedUBRGroupName(String value) { 
+        this.associatedUBRGroupName = value;
     }
     
     @JsonIgnore
@@ -249,7 +279,7 @@ public class DUCGroupBinding extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DUCGroupBinding [" + "associatedDUCGroupID=" + associatedDUCGroupID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", oneWayDelay=" + oneWayDelay + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DUCGroupBinding [" + "associatedDUCGroupID=" + associatedDUCGroupID + ", associatedUBRGroupFunction=" + associatedUBRGroupFunction + ", associatedUBRGroupName=" + associatedUBRGroupName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", oneWayDelay=" + oneWayDelay + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

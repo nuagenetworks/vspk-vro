@@ -47,6 +47,8 @@ import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateNetworkTy
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplatePolicyState;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateUplinkPreference;
+
+import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateWebFilterType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -175,6 +177,12 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     
     @JsonProperty(value = "uplinkPreference")
     protected EgressAdvFwdEntryTemplateUplinkPreference uplinkPreference;
+    
+    @JsonProperty(value = "webFilterID")
+    protected String webFilterID;
+    
+    @JsonProperty(value = "webFilterType")
+    protected EgressAdvFwdEntryTemplateWebFilterType webFilterType;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -615,6 +623,28 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "WebFilterID", readOnly = false)   
+    public String getWebFilterID() {
+       return webFilterID;
+    }
+
+    @JsonIgnore
+    public void setWebFilterID(String value) { 
+        this.webFilterID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "WebFilterType", readOnly = false)   
+    public EgressAdvFwdEntryTemplateWebFilterType getWebFilterType() {
+       return webFilterType;
+    }
+
+    @JsonIgnore
+    public void setWebFilterType(EgressAdvFwdEntryTemplateWebFilterType value) { 
+        this.webFilterType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -671,7 +701,7 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectVPortTagID=" + redirectVPortTagID + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectVPortTagID=" + redirectVPortTagID + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", webFilterID=" + webFilterID + ", webFilterType=" + webFilterType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

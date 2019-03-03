@@ -96,6 +96,9 @@ public class VsgRedundantPort extends BaseObject {
     @JsonProperty(value = "name")
     protected String name;
     
+    @JsonProperty(value = "peerLink")
+    protected Boolean peerLink;
+    
     @JsonProperty(value = "permittedAction")
     protected VsgRedundantPortPermittedAction permittedAction;
     
@@ -263,6 +266,17 @@ public class VsgRedundantPort extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PeerLink", readOnly = false)   
+    public Boolean getPeerLink() {
+       return peerLink;
+    }
+
+    @JsonIgnore
+    public void setPeerLink(Boolean value) { 
+        this.peerLink = value;
     }
     
     @JsonIgnore
@@ -467,7 +481,7 @@ public class VsgRedundantPort extends BaseObject {
         }
     }
     public String toString() {
-        return "VsgRedundantPort [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portPeer1ID=" + portPeer1ID + ", portPeer2ID=" + portPeer2ID + ", portType=" + portType + ", status=" + status + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VsgRedundantPort [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", peerLink=" + peerLink + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portPeer1ID=" + portPeer1ID + ", portPeer2ID=" + portPeer2ID + ", portType=" + portType + ", status=" + status + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

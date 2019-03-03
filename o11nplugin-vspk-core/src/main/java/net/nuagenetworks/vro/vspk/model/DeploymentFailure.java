@@ -69,6 +69,15 @@ public class DeploymentFailure extends BaseObject {
     @JsonProperty(value = "assocEntityType")
     protected String assocEntityType;
     
+    @JsonProperty(value = "associatedNetworkEntityID")
+    protected String associatedNetworkEntityID;
+    
+    @JsonProperty(value = "associatedNetworkEntityType")
+    protected String associatedNetworkEntityType;
+    
+    @JsonProperty(value = "diffMap")
+    protected String diffMap;
+    
     @JsonProperty(value = "entityScope")
     protected DeploymentFailureEntityScope entityScope;
     
@@ -188,6 +197,39 @@ public class DeploymentFailure extends BaseObject {
     @JsonIgnore
     public void setAssocEntityType(String value) { 
         this.assocEntityType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedNetworkEntityID", readOnly = false)   
+    public String getAssociatedNetworkEntityID() {
+       return associatedNetworkEntityID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedNetworkEntityID(String value) { 
+        this.associatedNetworkEntityID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedNetworkEntityType", readOnly = false)   
+    public String getAssociatedNetworkEntityType() {
+       return associatedNetworkEntityType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedNetworkEntityType(String value) { 
+        this.associatedNetworkEntityType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DiffMap", readOnly = false)   
+    public String getDiffMap() {
+       return diffMap;
+    }
+
+    @JsonIgnore
+    public void setDiffMap(String value) { 
+        this.diffMap = value;
     }
     
     @JsonIgnore
@@ -335,7 +377,7 @@ public class DeploymentFailure extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DeploymentFailure [" + "affectedEntityID=" + affectedEntityID + ", affectedEntityType=" + affectedEntityType + ", assocEntityId=" + assocEntityId + ", assocEntityType=" + assocEntityType + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", eventType=" + eventType + ", externalID=" + externalID + ", lastFailureReason=" + lastFailureReason + ", lastKnownError=" + lastKnownError + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurences=" + numberOfOccurences + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DeploymentFailure [" + "affectedEntityID=" + affectedEntityID + ", affectedEntityType=" + affectedEntityType + ", assocEntityId=" + assocEntityId + ", assocEntityType=" + assocEntityType + ", associatedNetworkEntityID=" + associatedNetworkEntityID + ", associatedNetworkEntityType=" + associatedNetworkEntityType + ", diffMap=" + diffMap + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", eventType=" + eventType + ", externalID=" + externalID + ", lastFailureReason=" + lastFailureReason + ", lastKnownError=" + lastKnownError + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurences=" + numberOfOccurences + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

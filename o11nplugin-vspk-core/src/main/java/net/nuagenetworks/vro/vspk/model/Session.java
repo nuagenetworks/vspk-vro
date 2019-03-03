@@ -168,6 +168,11 @@ public class Session extends BaseSession<Me> {
     @Override
     protected void onEntityCreated(String entityType, String entityId, String entityParentType, String entityParentId) {
         SessionManager sessionManager = SessionManager.getInstance();
+        if (entityType.equals(Constants.DOWNLOADPROGRESS_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.DOWNLOADPROGRESS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.ADDRESSMAP_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.ADDRESSMAPS_FETCHER, entityParentId);
             return;
@@ -898,6 +903,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.NSGATEWAYMONITOR_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.NSGATEWAYMONITORS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.NSGATEWAYSUMMARY_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.NSGATEWAYSUMMARIES_FETCHER, entityParentId);
             return;
@@ -970,6 +980,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.OVERLAYADDRESSPOOL_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.OVERLAYADDRESSPOOLS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.OVERLAYMANAGEMENTPROFILE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.OVERLAYMANAGEMENTPROFILES_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.OVERLAYMANAGEMENTSUBNETPROFILE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.OVERLAYMANAGEMENTSUBNETPROFILES_FETCHER, entityParentId);
             return;
         }
         
@@ -1065,6 +1085,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.PORT_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.PORTS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.NSPORTINFO_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.NSPORTINFOS_FETCHER, entityParentId);
             return;
         }
         
@@ -1225,6 +1250,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.SUBNETTEMPLATE_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.SUBNETTEMPLATES_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.SYSLOGDESTINATION_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.SYSLOGDESTINATIONS_FETCHER, entityParentId);
             return;
         }
         
@@ -1428,6 +1458,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.WEBCATEGORY_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.WEBCATEGORIES_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WEBDOMAINNAME_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.WEBDOMAINNAMES_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.WIRELESSPORT_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.WIRELESSPORTS_FETCHER, entityParentId);
             return;
@@ -1457,6 +1497,11 @@ public class Session extends BaseSession<Me> {
     @Override
     protected void onEntityUpdated(String entityType, String entityId, String entityParentType, String entityParentId) {
         SessionManager sessionManager = SessionManager.getInstance();
+        if (entityType.equals(Constants.DOWNLOADPROGRESS_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.DOWNLOADPROGRESS, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.ADDRESSMAP_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.ADDRESSMAP, entityId);
             return;
@@ -2187,6 +2232,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.NSGATEWAYMONITOR_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.NSGATEWAYMONITOR, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.NSGATEWAYSUMMARY_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.NSGATEWAYSUMMARY, entityId);
             return;
@@ -2259,6 +2309,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.OVERLAYADDRESSPOOL_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.OVERLAYADDRESSPOOL, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.OVERLAYMANAGEMENTPROFILE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.OVERLAYMANAGEMENTPROFILE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.OVERLAYMANAGEMENTSUBNETPROFILE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.OVERLAYMANAGEMENTSUBNETPROFILE, entityId);
             return;
         }
         
@@ -2354,6 +2414,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.PORT_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.PORT, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.NSPORTINFO_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.NSPORTINFO, entityId);
             return;
         }
         
@@ -2514,6 +2579,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.SUBNETTEMPLATE_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.SUBNETTEMPLATE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.SYSLOGDESTINATION_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.SYSLOGDESTINATION, entityId);
             return;
         }
         
@@ -2717,6 +2787,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.WEBCATEGORY_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.WEBCATEGORY, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WEBDOMAINNAME_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.WEBDOMAINNAME, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.WIRELESSPORT_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.WIRELESSPORT, entityId);
             return;
@@ -2746,6 +2826,11 @@ public class Session extends BaseSession<Me> {
     @Override
     protected void onEntityDeleted(String entityType, String entityId, String entityParentType, String entityParentId) {
         SessionManager sessionManager = SessionManager.getInstance();
+        if (entityType.equals(Constants.DOWNLOADPROGRESS_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.DOWNLOADPROGRESS, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.ADDRESSMAP_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.ADDRESSMAP, entityId);
             return;
@@ -3476,6 +3561,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.NSGATEWAYMONITOR_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.NSGATEWAYMONITOR, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.NSGATEWAYSUMMARY_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.NSGATEWAYSUMMARY, entityId);
             return;
@@ -3548,6 +3638,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.OVERLAYADDRESSPOOL_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.OVERLAYADDRESSPOOL, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.OVERLAYMANAGEMENTPROFILE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.OVERLAYMANAGEMENTPROFILE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.OVERLAYMANAGEMENTSUBNETPROFILE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.OVERLAYMANAGEMENTSUBNETPROFILE, entityId);
             return;
         }
         
@@ -3643,6 +3743,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.PORT_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.PORT, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.NSPORTINFO_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.NSPORTINFO, entityId);
             return;
         }
         
@@ -3803,6 +3908,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.SUBNETTEMPLATE_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.SUBNETTEMPLATE, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.SYSLOGDESTINATION_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.SYSLOGDESTINATION, entityId);
             return;
         }
         
@@ -4003,6 +4113,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.VSP_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.VSP, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WEBCATEGORY_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.WEBCATEGORY, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.WEBDOMAINNAME_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.WEBDOMAINNAME, entityId);
             return;
         }
         

@@ -94,6 +94,9 @@ public class Command extends BaseObject {
     @JsonProperty(value = "override")
     protected CommandOverride override;
     
+    @JsonProperty(value = "progress")
+    protected String progress;
+    
     @JsonProperty(value = "status")
     protected CommandStatus status;
     
@@ -287,6 +290,17 @@ public class Command extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Progress", readOnly = false)   
+    public String getProgress() {
+       return progress;
+    }
+
+    @JsonIgnore
+    public void setProgress(String value) { 
+        this.progress = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Status", readOnly = false)   
     public CommandStatus getStatus() {
        return status;
@@ -328,7 +342,7 @@ public class Command extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.COMMAND, getId());
         }
     }public String toString() {
-        return "Command [" + "assocEntityType=" + assocEntityType + ", associatedParam=" + associatedParam + ", associatedParamType=" + associatedParamType + ", command=" + command + ", commandInformation=" + commandInformation + ", detail=" + detail + ", detailedStatus=" + detailedStatus + ", detailedStatusCode=" + detailedStatusCode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fullCommand=" + fullCommand + ", lastUpdatedBy=" + lastUpdatedBy + ", override=" + override + ", status=" + status + ", summary=" + summary + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Command [" + "assocEntityType=" + assocEntityType + ", associatedParam=" + associatedParam + ", associatedParamType=" + associatedParamType + ", command=" + command + ", commandInformation=" + commandInformation + ", detail=" + detail + ", detailedStatus=" + detailedStatus + ", detailedStatusCode=" + detailedStatusCode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fullCommand=" + fullCommand + ", lastUpdatedBy=" + lastUpdatedBy + ", override=" + override + ", progress=" + progress + ", status=" + status + ", summary=" + summary + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

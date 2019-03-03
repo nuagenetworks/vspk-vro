@@ -132,6 +132,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewayTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGGroupsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGInfosFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGPatchProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSRedundantGatewayGroupsFetcher;
@@ -556,6 +558,9 @@ public class Me extends BaseRootObject {
     private NSGGroupsFetcher nSGGroups;
     
     @JsonIgnore
+    private NSGInfosFetcher nSGInfos;
+    
+    @JsonIgnore
     private NSGPatchProfilesFetcher nSGPatchProfiles;
     
     @JsonIgnore
@@ -785,6 +790,8 @@ public class Me extends BaseRootObject {
         nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
         
         nSGGroups = new NSGGroupsFetcher(this);
+        
+        nSGInfos = new NSGInfosFetcher(this);
         
         nSGPatchProfiles = new NSGPatchProfilesFetcher(this);
         
@@ -1461,6 +1468,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "NSGGroups", readOnly = true)   
     public NSGGroupsFetcher getNSGGroups() {
         return nSGGroups;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NSGInfos", readOnly = true)   
+    public NSGInfosFetcher getNSGInfos() {
+        return nSGInfos;
     }
     
     @JsonIgnore
