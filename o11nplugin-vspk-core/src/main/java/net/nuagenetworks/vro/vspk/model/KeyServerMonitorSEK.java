@@ -62,6 +62,9 @@ public class KeyServerMonitorSEK extends BaseObject {
     @JsonProperty(value = "creationTime")
     protected Long creationTime;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected KeyServerMonitorSEKEntityScope entityScope;
     
@@ -145,6 +148,17 @@ public class KeyServerMonitorSEK extends BaseObject {
     @JsonIgnore
     public void setCreationTime(Long value) { 
         this.creationTime = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -281,7 +295,7 @@ public class KeyServerMonitorSEK extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "KeyServerMonitorSEK [" + "creationTime=" + creationTime + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lifetime=" + lifetime + ", seedPayloadAuthenticationAlgorithm=" + seedPayloadAuthenticationAlgorithm + ", seedPayloadEncryptionAlgorithm=" + seedPayloadEncryptionAlgorithm + ", startTime=" + startTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "KeyServerMonitorSEK [" + "creationTime=" + creationTime + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lifetime=" + lifetime + ", seedPayloadAuthenticationAlgorithm=" + seedPayloadAuthenticationAlgorithm + ", seedPayloadEncryptionAlgorithm=" + seedPayloadEncryptionAlgorithm + ", startTime=" + startTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

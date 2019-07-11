@@ -61,6 +61,9 @@ public class NSGatewaysCount extends BaseObject {
     @JsonProperty(value = "alarmedNSGCount")
     protected Object alarmedNSGCount;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected NSGatewaysCountEntityScope entityScope;
     
@@ -143,6 +146,17 @@ public class NSGatewaysCount extends BaseObject {
     @JsonIgnore
     public void setAlarmedNSGCount(Object value) { 
         this.alarmedNSGCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -235,7 +249,7 @@ public class NSGatewaysCount extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGatewaysCount [" + "activeNSGCount=" + activeNSGCount + ", alarmedNSGCount=" + alarmedNSGCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", inactiveNSGCount=" + inactiveNSGCount + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGatewaysCount [" + "activeNSGCount=" + activeNSGCount + ", alarmedNSGCount=" + alarmedNSGCount + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", inactiveNSGCount=" + inactiveNSGCount + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

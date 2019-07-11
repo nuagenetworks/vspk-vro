@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Find SPATSourcesPool in AggregatedDomain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">605b7b7f-211b-5721-843e-2a9a74e3af50</entry>
+</properties>

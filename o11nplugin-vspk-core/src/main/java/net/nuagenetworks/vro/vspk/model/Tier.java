@@ -67,6 +67,9 @@ public class Tier extends BaseObject {
     @JsonProperty(value = "downThresholdCount")
     protected Long downThresholdCount;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected TierEntityScope entityScope;
     
@@ -166,6 +169,17 @@ public class Tier extends BaseObject {
     @JsonIgnore
     public void setDownThresholdCount(Long value) { 
         this.downThresholdCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -316,7 +330,7 @@ public class Tier extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Tier [" + "description=" + description + ", downThresholdCount=" + downThresholdCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", packetCount=" + packetCount + ", probeInterval=" + probeInterval + ", tierType=" + tierType + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Tier [" + "description=" + description + ", downThresholdCount=" + downThresholdCount + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", packetCount=" + packetCount + ", probeInterval=" + probeInterval + ", tierType=" + tierType + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

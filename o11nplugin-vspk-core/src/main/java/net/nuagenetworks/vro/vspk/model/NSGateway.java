@@ -86,6 +86,8 @@ import net.nuagenetworks.vro.vspk.model.enums.NSGatewayConfigurationReloadState;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayConfigurationStatus;
 
+import net.nuagenetworks.vro.vspk.model.enums.NSGatewayConfigureLoadBalancing;
+
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayDerivedSSHServiceState;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayEntityScope;
@@ -101,6 +103,10 @@ import net.nuagenetworks.vro.vspk.model.enums.NSGatewayNetworkAcceleration;
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayPermittedAction;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewayPersonality;
+
+import net.nuagenetworks.vro.vspk.model.enums.NSGatewaySyslogLevel;
+
+import net.nuagenetworks.vro.vspk.model.enums.NSGatewayTunnelShaping;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -219,6 +225,9 @@ public class NSGateway extends BaseObject {
     @JsonProperty(value = "configurationStatus")
     protected NSGatewayConfigurationStatus configurationStatus;
     
+    @JsonProperty(value = "configureLoadBalancing")
+    protected NSGatewayConfigureLoadBalancing configureLoadBalancing;
+    
     @JsonProperty(value = "controlTrafficCOSValue")
     protected Long controlTrafficCOSValue;
     
@@ -234,6 +243,9 @@ public class NSGateway extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -248,6 +260,12 @@ public class NSGateway extends BaseObject {
     
     @JsonProperty(value = "functions")
     protected java.util.List<NSGatewayFunctions> functions;
+    
+    @JsonProperty(value = "gatewayConfigRawVersion")
+    protected String gatewayConfigRawVersion;
+    
+    @JsonProperty(value = "gatewayConfigVersion")
+    protected String gatewayConfigVersion;
     
     @JsonProperty(value = "gatewayConnected")
     protected Boolean gatewayConnected;
@@ -297,11 +315,17 @@ public class NSGateway extends BaseObject {
     @JsonProperty(value = "serialNumber")
     protected String serialNumber;
     
+    @JsonProperty(value = "syslogLevel")
+    protected NSGatewaySyslogLevel syslogLevel;
+    
     @JsonProperty(value = "systemID")
     protected String systemID;
     
     @JsonProperty(value = "templateID")
     protected String templateID;
+    
+    @JsonProperty(value = "tunnelShaping")
+    protected NSGatewayTunnelShaping tunnelShaping;
     
     @JsonIgnore
     private AlarmsFetcher alarms;
@@ -770,6 +794,17 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ConfigureLoadBalancing", readOnly = false)   
+    public NSGatewayConfigureLoadBalancing getConfigureLoadBalancing() {
+       return configureLoadBalancing;
+    }
+
+    @JsonIgnore
+    public void setConfigureLoadBalancing(NSGatewayConfigureLoadBalancing value) { 
+        this.configureLoadBalancing = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ControlTrafficCOSValue", readOnly = false)   
     public Long getControlTrafficCOSValue() {
        return controlTrafficCOSValue;
@@ -825,6 +860,17 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EnterpriseID", readOnly = false)   
     public String getEnterpriseID() {
        return enterpriseID;
@@ -877,6 +923,28 @@ public class NSGateway extends BaseObject {
     @JsonIgnore
     public void setFunctions(java.util.List<NSGatewayFunctions> value) { 
         this.functions = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayConfigRawVersion", readOnly = false)   
+    public String getGatewayConfigRawVersion() {
+       return gatewayConfigRawVersion;
+    }
+
+    @JsonIgnore
+    public void setGatewayConfigRawVersion(String value) { 
+        this.gatewayConfigRawVersion = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayConfigVersion", readOnly = false)   
+    public String getGatewayConfigVersion() {
+       return gatewayConfigVersion;
+    }
+
+    @JsonIgnore
+    public void setGatewayConfigVersion(String value) { 
+        this.gatewayConfigVersion = value;
     }
     
     @JsonIgnore
@@ -1056,6 +1124,17 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SyslogLevel", readOnly = false)   
+    public NSGatewaySyslogLevel getSyslogLevel() {
+       return syslogLevel;
+    }
+
+    @JsonIgnore
+    public void setSyslogLevel(NSGatewaySyslogLevel value) { 
+        this.syslogLevel = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "SystemID", readOnly = false)   
     public String getSystemID() {
        return systemID;
@@ -1075,6 +1154,17 @@ public class NSGateway extends BaseObject {
     @JsonIgnore
     public void setTemplateID(String value) { 
         this.templateID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "TunnelShaping", readOnly = false)   
+    public NSGatewayTunnelShaping getTunnelShaping() {
+       return tunnelShaping;
+    }
+
+    @JsonIgnore
+    public void setTunnelShaping(NSGatewayTunnelShaping value) { 
+        this.tunnelShaping = value;
     }
     
     @JsonIgnore
@@ -1367,7 +1457,7 @@ public class NSGateway extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.WIRELESSPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGateway [" + "AARApplicationReleaseDate=" + AARApplicationReleaseDate + ", AARApplicationVersion=" + AARApplicationVersion + ", BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", VSDAARApplicationVersion=" + VSDAARApplicationVersion + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", controlTrafficCOSValue=" + controlTrafficCOSValue + ", controlTrafficDSCPValue=" + controlTrafficDSCPValue + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", functions=" + functions + ", gatewayConnected=" + gatewayConnected + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", networkAcceleration=" + networkAcceleration + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGateway [" + "AARApplicationReleaseDate=" + AARApplicationReleaseDate + ", AARApplicationVersion=" + AARApplicationVersion + ", BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", VSDAARApplicationVersion=" + VSDAARApplicationVersion + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", configureLoadBalancing=" + configureLoadBalancing + ", controlTrafficCOSValue=" + controlTrafficCOSValue + ", controlTrafficDSCPValue=" + controlTrafficDSCPValue + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", functions=" + functions + ", gatewayConfigRawVersion=" + gatewayConfigRawVersion + ", gatewayConfigVersion=" + gatewayConfigVersion + ", gatewayConnected=" + gatewayConnected + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", networkAcceleration=" + networkAcceleration + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", syslogLevel=" + syslogLevel + ", systemID=" + systemID + ", templateID=" + templateID + ", tunnelShaping=" + tunnelShaping + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

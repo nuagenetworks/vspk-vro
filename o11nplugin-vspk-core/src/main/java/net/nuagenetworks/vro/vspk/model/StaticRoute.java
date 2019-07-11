@@ -86,6 +86,9 @@ public class StaticRoute extends BaseObject {
     @JsonProperty(value = "blackHoleEnabled")
     protected Boolean blackHoleEnabled;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected StaticRouteEntityScope entityScope;
     
@@ -248,6 +251,17 @@ public class StaticRoute extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public StaticRouteEntityScope getEntityScope() {
        return entityScope;
@@ -401,7 +415,7 @@ public class StaticRoute extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "StaticRoute [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedGatewayIDs=" + associatedGatewayIDs + ", associatedSubnetID=" + associatedSubnetID + ", blackHoleEnabled=" + blackHoleEnabled + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", netmask=" + netmask + ", nextHopIp=" + nextHopIp + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "StaticRoute [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedGatewayIDs=" + associatedGatewayIDs + ", associatedSubnetID=" + associatedSubnetID + ", blackHoleEnabled=" + blackHoleEnabled + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", netmask=" + netmask + ", nextHopIp=" + nextHopIp + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

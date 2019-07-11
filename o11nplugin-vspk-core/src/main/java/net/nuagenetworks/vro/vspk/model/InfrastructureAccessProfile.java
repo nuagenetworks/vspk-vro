@@ -75,6 +75,9 @@ public class InfrastructureAccessProfile extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -182,6 +185,17 @@ public class InfrastructureAccessProfile extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -363,7 +377,7 @@ public class InfrastructureAccessProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.SSHKEYS_FETCHER, getId());
         }
     }public String toString() {
-        return "InfrastructureAccessProfile [" + "SSHAuthMode=" + SSHAuthMode + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", password=" + password + ", sourceIPFilter=" + sourceIPFilter + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "InfrastructureAccessProfile [" + "SSHAuthMode=" + SSHAuthMode + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", password=" + password + ", sourceIPFilter=" + sourceIPFilter + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

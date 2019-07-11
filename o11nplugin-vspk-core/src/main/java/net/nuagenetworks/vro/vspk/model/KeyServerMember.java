@@ -58,6 +58,9 @@ public class KeyServerMember extends BaseObject {
     @JsonProperty(value = "certificateSerialNumber")
     protected Long certificateSerialNumber;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected KeyServerMemberEntityScope entityScope;
     
@@ -144,6 +147,17 @@ public class KeyServerMember extends BaseObject {
     @JsonIgnore
     public void setCertificateSerialNumber(Long value) { 
         this.certificateSerialNumber = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -291,7 +305,7 @@ public class KeyServerMember extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "KeyServerMember [" + "certificateSerialNumber=" + certificateSerialNumber + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fqdn=" + fqdn + ", issuerDN=" + issuerDN + ", lastUpdatedBy=" + lastUpdatedBy + ", pemEncoded=" + pemEncoded + ", publicKey=" + publicKey + ", subjectDN=" + subjectDN + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "KeyServerMember [" + "certificateSerialNumber=" + certificateSerialNumber + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fqdn=" + fqdn + ", issuerDN=" + issuerDN + ", lastUpdatedBy=" + lastUpdatedBy + ", pemEncoded=" + pemEncoded + ", publicKey=" + publicKey + ", subjectDN=" + subjectDN + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

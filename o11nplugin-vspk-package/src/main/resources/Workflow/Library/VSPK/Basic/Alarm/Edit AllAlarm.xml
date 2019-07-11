@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="bf3fa7ab-f0cd-5e3b-a3ad-c14886d28c83"  version="5.4.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="bf3fa7ab-f0cd-5e3b-a3ad-c14886d28c83"  version="6.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit AllAlarm]]></display-name>
 <ref-types><![CDATA[(VSPK:AllAlarm)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -12,7 +12,7 @@
 <param name='externalID' type='string' >
 </param>
 
-<param name='name' type='string' >
+<param name='title' type='string' >
 </param>
 
 </input><workflow-item name='item0' type='end' end-mode='0' >
@@ -32,10 +32,10 @@ if (externalID) {
 } else if (allAlarmObj.externalID) {
    allAlarmObj.externalID = "";
 }
-if (name) {
-   allAlarmObj.name = name;
-} else if (allAlarmObj.name) {
-   allAlarmObj.name = "";
+if (title) {
+   allAlarmObj.title = title;
+} else if (allAlarmObj.title) {
+   allAlarmObj.title = "";
 }
 allAlarmObj.save(session, 1);]]></script>
 <in-binding><bind name='allAlarmObj' type='VSPK:AllAlarm' export-name="allAlarmObj" ></bind>
@@ -44,7 +44,7 @@ allAlarmObj.save(session, 1);]]></script>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
-<bind name='name' type='string' export-name="name" ></bind>
+<bind name='title' type='string' export-name="title" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -58,7 +58,7 @@ allAlarmObj.save(session, 1);]]></script>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#allAlarmObj.externalID]]></p-qual></p-param>
 
-<p-param name="name"><desc><![CDATA[name]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#allAlarmObj.name]]></p-qual></p-param>
+<p-param name="title"><desc><![CDATA[title]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#allAlarmObj.title]]></p-qual></p-param>
 
 </presentation></workflow>

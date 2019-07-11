@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Add BootstrapActivation to NetconfGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3b04cda5-dee9-5715-8e70-5bc39c96333a</entry>
+</properties>

@@ -58,6 +58,9 @@ public class IKESubnet extends BaseObject {
     @JsonProperty(value = "associatedIKEGatewayID")
     protected String associatedIKEGatewayID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected IKESubnetEntityScope entityScope;
     
@@ -132,6 +135,17 @@ public class IKESubnet extends BaseObject {
     @JsonIgnore
     public void setAssociatedIKEGatewayID(String value) { 
         this.associatedIKEGatewayID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -235,7 +249,7 @@ public class IKESubnet extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IKESubnet [" + "associatedIKEGatewayID=" + associatedIKEGatewayID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", prefix=" + prefix + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IKESubnet [" + "associatedIKEGatewayID=" + associatedIKEGatewayID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", prefix=" + prefix + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

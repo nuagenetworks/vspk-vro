@@ -121,6 +121,9 @@ public class SharedNetworkResource extends BaseObject {
     @JsonProperty(value = "dynamicPATAllocationEnabled")
     protected Boolean dynamicPATAllocationEnabled;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -393,6 +396,17 @@ public class SharedNetworkResource extends BaseObject {
     @JsonIgnore
     public void setDynamicPATAllocationEnabled(Boolean value) { 
         this.dynamicPATAllocationEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -756,7 +770,7 @@ public class SharedNetworkResource extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPNCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "SharedNetworkResource [" + "DHCPManaged=" + DHCPManaged + ", ECMPCount=" + ECMPCount + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", associatedPATMapperID=" + associatedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulVNID=" + backHaulVNID + ", description=" + description + ", domainRouteDistinguisher=" + domainRouteDistinguisher + ", domainRouteTarget=" + domainRouteTarget + ", dynamicPATAllocationEnabled=" + dynamicPATAllocationEnabled + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", permittedActionType=" + permittedActionType + ", sharedResourceParentID=" + sharedResourceParentID + ", subnetRouteDistinguisher=" + subnetRouteDistinguisher + ", subnetRouteTarget=" + subnetRouteTarget + ", type=" + type + ", underlay=" + underlay + ", uplinkGWVlanAttachmentID=" + uplinkGWVlanAttachmentID + ", uplinkInterfaceIP=" + uplinkInterfaceIP + ", uplinkInterfaceMAC=" + uplinkInterfaceMAC + ", uplinkVPortName=" + uplinkVPortName + ", useGlobalMAC=" + useGlobalMAC + ", vnID=" + vnID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "SharedNetworkResource [" + "DHCPManaged=" + DHCPManaged + ", ECMPCount=" + ECMPCount + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", associatedPATMapperID=" + associatedPATMapperID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulVNID=" + backHaulVNID + ", description=" + description + ", domainRouteDistinguisher=" + domainRouteDistinguisher + ", domainRouteTarget=" + domainRouteTarget + ", dynamicPATAllocationEnabled=" + dynamicPATAllocationEnabled + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", permittedActionType=" + permittedActionType + ", sharedResourceParentID=" + sharedResourceParentID + ", subnetRouteDistinguisher=" + subnetRouteDistinguisher + ", subnetRouteTarget=" + subnetRouteTarget + ", type=" + type + ", underlay=" + underlay + ", uplinkGWVlanAttachmentID=" + uplinkGWVlanAttachmentID + ", uplinkInterfaceIP=" + uplinkInterfaceIP + ", uplinkInterfaceMAC=" + uplinkInterfaceMAC + ", uplinkVPortName=" + uplinkVPortName + ", useGlobalMAC=" + useGlobalMAC + ", vnID=" + vnID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

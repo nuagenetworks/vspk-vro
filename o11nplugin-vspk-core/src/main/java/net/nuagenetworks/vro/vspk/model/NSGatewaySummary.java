@@ -72,6 +72,9 @@ public class NSGatewaySummary extends BaseObject {
     @JsonProperty(value = "criticalAlarmsCount")
     protected Long criticalAlarmsCount;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -226,6 +229,17 @@ public class NSGatewaySummary extends BaseObject {
     @JsonIgnore
     public void setCriticalAlarmsCount(Long value) { 
         this.criticalAlarmsCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -461,7 +475,7 @@ public class NSGatewaySummary extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGatewaySummary [" + "NSGVersion=" + NSGVersion + ", address=" + address + ", bootstrapStatus=" + bootstrapStatus + ", country=" + country + ", criticalAlarmsCount=" + criticalAlarmsCount + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", gatewayName=" + gatewayName + ", gatewayType=" + gatewayType + ", infoAlarmsCount=" + infoAlarmsCount + ", lastUpdatedBy=" + lastUpdatedBy + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", majorAlarmsCount=" + majorAlarmsCount + ", minorAlarmsCount=" + minorAlarmsCount + ", state=" + state + ", systemID=" + systemID + ", timezoneID=" + timezoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGatewaySummary [" + "NSGVersion=" + NSGVersion + ", address=" + address + ", bootstrapStatus=" + bootstrapStatus + ", country=" + country + ", criticalAlarmsCount=" + criticalAlarmsCount + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", gatewayName=" + gatewayName + ", gatewayType=" + gatewayType + ", infoAlarmsCount=" + infoAlarmsCount + ", lastUpdatedBy=" + lastUpdatedBy + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", majorAlarmsCount=" + majorAlarmsCount + ", minorAlarmsCount=" + minorAlarmsCount + ", state=" + state + ", systemID=" + systemID + ", timezoneID=" + timezoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

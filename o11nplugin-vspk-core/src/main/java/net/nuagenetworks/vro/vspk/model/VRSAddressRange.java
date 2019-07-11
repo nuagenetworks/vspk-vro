@@ -60,6 +60,9 @@ public class VRSAddressRange extends BaseObject {
     @JsonProperty(value = "IPType")
     protected VRSAddressRangeIPType IPType;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected VRSAddressRangeEntityScope entityScope;
     
@@ -137,6 +140,17 @@ public class VRSAddressRange extends BaseObject {
     @JsonIgnore
     public void setIPType(VRSAddressRangeIPType value) { 
         this.IPType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -251,7 +265,7 @@ public class VRSAddressRange extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VRSAddressRange [" + "IPType=" + IPType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VRSAddressRange [" + "IPType=" + IPType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vrs</entry>
+<entry key="name">Remove RemoteVrsInfo</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">dae01cdc-087c-5e70-8c86-25d8e84cd17e</entry>
+</properties>

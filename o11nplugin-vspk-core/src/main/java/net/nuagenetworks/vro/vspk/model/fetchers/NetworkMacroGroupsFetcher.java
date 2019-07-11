@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.NetworkMacroGroup;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Domain;
+
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
 import net.nuagenetworks.vro.vspk.model.EnterpriseNetwork;
@@ -66,6 +68,16 @@ public class NetworkMacroGroupsFetcher extends BaseFetcher<NetworkMacroGroup> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Domain", readOnly = true)
+    public Domain getDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Domain) {
+            return (Domain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Enterprise", readOnly = true)
     public Enterprise getEnterprise() {
         RestObject obj = super.getParentRestObj();

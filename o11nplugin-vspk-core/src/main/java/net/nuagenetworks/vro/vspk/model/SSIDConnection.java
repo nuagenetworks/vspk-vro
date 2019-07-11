@@ -85,6 +85,9 @@ public class SSIDConnection extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected SSIDConnectionEntityScope entityScope;
     
@@ -258,6 +261,17 @@ public class SSIDConnection extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -516,7 +530,7 @@ public class SSIDConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", authenticationMode=" + authenticationMode + ", blackList=" + blackList + ", broadcastSSID=" + broadcastSSID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", genericConfig=" + genericConfig + ", interfaceName=" + interfaceName + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", passphrase=" + passphrase + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", redirectOption=" + redirectOption + ", redirectURL=" + redirectURL + ", restricted=" + restricted + ", status=" + status + ", vlanID=" + vlanID + ", vportID=" + vportID + ", whiteList=" + whiteList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "SSIDConnection [" + "associatedCaptivePortalProfileID=" + associatedCaptivePortalProfileID + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", authenticationMode=" + authenticationMode + ", blackList=" + blackList + ", broadcastSSID=" + broadcastSSID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", genericConfig=" + genericConfig + ", interfaceName=" + interfaceName + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", passphrase=" + passphrase + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", redirectOption=" + redirectOption + ", redirectURL=" + redirectURL + ", restricted=" + restricted + ", status=" + status + ", vlanID=" + vlanID + ", vportID=" + vportID + ", whiteList=" + whiteList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="06849575-8171-5533-bf9b-71adbb28802e"  version="5.4.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="06849575-8171-5533-bf9b-71adbb28802e"  version="6.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit Command]]></display-name>
 <ref-types><![CDATA[(VSPK:Command)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -10,9 +10,6 @@
 </param>
 
 <param name='externalID' type='string' >
-</param>
-
-<param name='summary' type='string' >
 </param>
 
 </input><workflow-item name='item0' type='end' end-mode='0' >
@@ -28,19 +25,12 @@ if (externalID) {
 } else if (commandObj.externalID) {
    commandObj.externalID = "";
 }
-if (summary) {
-   commandObj.summary = summary;
-} else if (commandObj.summary) {
-   commandObj.summary = "";
-}
 commandObj.save(session, 1);]]></script>
 <in-binding><bind name='commandObj' type='VSPK:Command' export-name="commandObj" ></bind>
 
 <bind name='command' type='VSPK:CommandCommand' export-name="command" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
-
-<bind name='summary' type='string' export-name="summary" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -53,8 +43,5 @@ commandObj.save(session, 1);]]></script>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#commandObj.externalID]]></p-qual></p-param>
-
-<p-param name="summary"><desc><![CDATA[summary]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#commandObj.summary]]></p-qual></p-param>
 
 </presentation></workflow>

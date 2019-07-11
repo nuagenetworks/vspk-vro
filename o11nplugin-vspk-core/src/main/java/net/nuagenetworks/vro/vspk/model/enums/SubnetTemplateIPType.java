@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum SubnetTemplateIPType {
 
-    DUALSTACK("DUALSTACK", "DUALSTACK"), IPV4("IPV4", "IPV4");
+    DUALSTACK("DUALSTACK", "DUALSTACK"), IPV4("IPV4", "IPV4"), IPV6("IPV6", "IPV6");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum SubnetTemplateIPType {
     @VsoProperty(displayName = "IPV4", readOnly = true)
     public SubnetTemplateIPType getIPV4() {
         return IPV4;
+    }
+    
+    @VsoProperty(displayName = "IPV6", readOnly = true)
+    public SubnetTemplateIPType getIPV6() {
+        return IPV6;
     }
     
 

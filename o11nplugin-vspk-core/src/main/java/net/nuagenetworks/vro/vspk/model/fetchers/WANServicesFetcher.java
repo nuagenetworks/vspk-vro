@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
+import net.nuagenetworks.vro.vspk.model.NetconfGateway;
+
 import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -83,6 +85,16 @@ public class WANServicesFetcher extends BaseFetcher<WANService> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Gateway) {
             return (Gateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfGateway", readOnly = true)
+    public NetconfGateway getNetconfGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGateway) {
+            return (NetconfGateway) obj;
         }
         
         return null;

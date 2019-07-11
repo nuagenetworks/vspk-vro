@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NextHopType {
 
-    IP("IP", "IP"), BR_PORT("BR_PORT", "BR_PORT"), GATEWAY("GATEWAY", "GATEWAY");
+    BR_PORT("BR_PORT", "BR_PORT"), GATEWAY("GATEWAY", "GATEWAY"), IP("IP", "IP");
 
     private final String id;
     private final String name;
@@ -58,11 +58,6 @@ public enum NextHopType {
     }
 
     
-    @VsoProperty(displayName = "IP", readOnly = true)
-    public NextHopType getIP() {
-        return IP;
-    }
-    
     @VsoProperty(displayName = "BR_PORT", readOnly = true)
     public NextHopType getBR_PORT() {
         return BR_PORT;
@@ -71,6 +66,11 @@ public enum NextHopType {
     @VsoProperty(displayName = "GATEWAY", readOnly = true)
     public NextHopType getGATEWAY() {
         return GATEWAY;
+    }
+    
+    @VsoProperty(displayName = "IP", readOnly = true)
+    public NextHopType getIP() {
+        return IP;
     }
     
 

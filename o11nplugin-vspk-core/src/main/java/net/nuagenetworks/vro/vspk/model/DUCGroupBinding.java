@@ -66,6 +66,9 @@ public class DUCGroupBinding extends BaseObject {
     @JsonProperty(value = "associatedUBRGroupName")
     protected String associatedUBRGroupName;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected DUCGroupBindingEntityScope entityScope;
     
@@ -165,6 +168,17 @@ public class DUCGroupBinding extends BaseObject {
     @JsonIgnore
     public void setAssociatedUBRGroupName(String value) { 
         this.associatedUBRGroupName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -279,7 +293,7 @@ public class DUCGroupBinding extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DUCGroupBinding [" + "associatedDUCGroupID=" + associatedDUCGroupID + ", associatedUBRGroupFunction=" + associatedUBRGroupFunction + ", associatedUBRGroupName=" + associatedUBRGroupName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", oneWayDelay=" + oneWayDelay + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DUCGroupBinding [" + "associatedDUCGroupID=" + associatedDUCGroupID + ", associatedUBRGroupFunction=" + associatedUBRGroupFunction + ", associatedUBRGroupName=" + associatedUBRGroupName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", oneWayDelay=" + oneWayDelay + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

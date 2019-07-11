@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum UplinkRDUplinkType {
 
-    RD_PRIMARY1("RD_PRIMARY1", "RD_PRIMARY1"), RD_PRIMARY2("RD_PRIMARY2", "RD_PRIMARY2"), RD_SECONDARY1("RD_SECONDARY1", "RD_SECONDARY1"), RD_SECONDARY2("RD_SECONDARY2", "RD_SECONDARY2");
+    RD_PRIMARY1("RD_PRIMARY1", "RD_PRIMARY1"), RD_PRIMARY2("RD_PRIMARY2", "RD_PRIMARY2"), RD_PRIMARY3("RD_PRIMARY3", "RD_PRIMARY3"), RD_SECONDARY1("RD_SECONDARY1", "RD_SECONDARY1"), RD_SECONDARY2("RD_SECONDARY2", "RD_SECONDARY2"), RD_SECONDARY3("RD_SECONDARY3", "RD_SECONDARY3");
 
     private final String id;
     private final String name;
@@ -68,6 +68,11 @@ public enum UplinkRDUplinkType {
         return RD_PRIMARY2;
     }
     
+    @VsoProperty(displayName = "RD_PRIMARY3", readOnly = true)
+    public UplinkRDUplinkType getRD_PRIMARY3() {
+        return RD_PRIMARY3;
+    }
+    
     @VsoProperty(displayName = "RD_SECONDARY1", readOnly = true)
     public UplinkRDUplinkType getRD_SECONDARY1() {
         return RD_SECONDARY1;
@@ -76,6 +81,11 @@ public enum UplinkRDUplinkType {
     @VsoProperty(displayName = "RD_SECONDARY2", readOnly = true)
     public UplinkRDUplinkType getRD_SECONDARY2() {
         return RD_SECONDARY2;
+    }
+    
+    @VsoProperty(displayName = "RD_SECONDARY3", readOnly = true)
+    public UplinkRDUplinkType getRD_SECONDARY3() {
+        return RD_SECONDARY3;
     }
     
 

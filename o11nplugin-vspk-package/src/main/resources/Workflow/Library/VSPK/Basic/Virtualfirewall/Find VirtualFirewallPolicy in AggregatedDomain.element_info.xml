@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Virtualfirewall</entry>
+<entry key="name">Find VirtualFirewallPolicy in AggregatedDomain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">06f064f6-910c-5da7-9237-97c62e375c55</entry>
+</properties>

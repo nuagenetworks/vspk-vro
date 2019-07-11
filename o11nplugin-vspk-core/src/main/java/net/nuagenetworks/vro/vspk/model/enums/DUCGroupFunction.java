@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum DUCGroupFunction {
 
-    GATEWAY("GATEWAY", "GATEWAY"), UBR("UBR", "UBR");
+    GATEWAY("GATEWAY", "GATEWAY"), HUB("HUB", "HUB"), UBR("UBR", "UBR");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum DUCGroupFunction {
     @VsoProperty(displayName = "GATEWAY", readOnly = true)
     public DUCGroupFunction getGATEWAY() {
         return GATEWAY;
+    }
+    
+    @VsoProperty(displayName = "HUB", readOnly = true)
+    public DUCGroupFunction getHUB() {
+        return HUB;
     }
     
     @VsoProperty(displayName = "UBR", readOnly = true)

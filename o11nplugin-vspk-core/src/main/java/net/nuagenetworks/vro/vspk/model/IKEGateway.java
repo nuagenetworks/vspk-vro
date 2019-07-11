@@ -38,6 +38,10 @@ import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayIKEVersion;
 
 import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayIKEv1Mode;
 
+import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayAssociatedCloudType;
+
+import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayConfigurationStatus;
+
 import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -74,11 +78,23 @@ public class IKEGateway extends BaseObject {
     @JsonProperty(value = "IPAddress")
     protected String IPAddress;
     
+    @JsonProperty(value = "associatedCloudID")
+    protected String associatedCloudID;
+    
+    @JsonProperty(value = "associatedCloudType")
+    protected IKEGatewayAssociatedCloudType associatedCloudType;
+    
     @JsonProperty(value = "associatedEnterpriseID")
     protected String associatedEnterpriseID;
     
+    @JsonProperty(value = "configurationStatus")
+    protected IKEGatewayConfigurationStatus configurationStatus;
+    
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected IKEGatewayEntityScope entityScope;
@@ -184,6 +200,28 @@ public class IKEGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedCloudID", readOnly = false)   
+    public String getAssociatedCloudID() {
+       return associatedCloudID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedCloudID(String value) { 
+        this.associatedCloudID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedCloudType", readOnly = false)   
+    public IKEGatewayAssociatedCloudType getAssociatedCloudType() {
+       return associatedCloudType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedCloudType(IKEGatewayAssociatedCloudType value) { 
+        this.associatedCloudType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedEnterpriseID", readOnly = false)   
     public String getAssociatedEnterpriseID() {
        return associatedEnterpriseID;
@@ -195,6 +233,17 @@ public class IKEGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ConfigurationStatus", readOnly = false)   
+    public IKEGatewayConfigurationStatus getConfigurationStatus() {
+       return configurationStatus;
+    }
+
+    @JsonIgnore
+    public void setConfigurationStatus(IKEGatewayConfigurationStatus value) { 
+        this.configurationStatus = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -203,6 +252,17 @@ public class IKEGateway extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -335,7 +395,7 @@ public class IKEGateway extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IKEGateway [" + "IKEVersion=" + IKEVersion + ", IKEv1Mode=" + IKEv1Mode + ", IPAddress=" + IPAddress + ", associatedEnterpriseID=" + associatedEnterpriseID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IKEGateway [" + "IKEVersion=" + IKEVersion + ", IKEv1Mode=" + IKEv1Mode + ", IPAddress=" + IPAddress + ", associatedCloudID=" + associatedCloudID + ", associatedCloudType=" + associatedCloudType + ", associatedEnterpriseID=" + associatedEnterpriseID + ", configurationStatus=" + configurationStatus + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

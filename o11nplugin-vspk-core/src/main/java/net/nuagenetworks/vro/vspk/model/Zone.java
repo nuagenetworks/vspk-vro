@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.ContainerInterfacesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DHCPOptionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.DHCPv6OptionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -85,6 +87,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 @VsoFinder(name = Constants.ZONE, datasource = Constants.DATASOURCE, image = Constants.ZONE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.DHCPV6OPTIONS_FETCHER, type = Constants.DHCPV6OPTIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
@@ -125,6 +129,9 @@ public class Zone extends BaseObject {
     
     @JsonProperty(value = "dynamicIpv6Address")
     protected Boolean dynamicIpv6Address;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "encryption")
     protected ZoneEncryption encryption;
@@ -170,6 +177,9 @@ public class Zone extends BaseObject {
     
     @JsonIgnore
     private DHCPOptionsFetcher dHCPOptions;
+    
+    @JsonIgnore
+    private DHCPv6OptionsFetcher dHCPv6Options;
     
     @JsonIgnore
     private EventLogsFetcher eventLogs;
@@ -221,6 +231,8 @@ public class Zone extends BaseObject {
         containerInterfaces = new ContainerInterfacesFetcher(this);
         
         dHCPOptions = new DHCPOptionsFetcher(this);
+        
+        dHCPv6Options = new DHCPv6OptionsFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
         
@@ -359,6 +371,17 @@ public class Zone extends BaseObject {
     @JsonIgnore
     public void setDynamicIpv6Address(Boolean value) { 
         this.dynamicIpv6Address = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -512,6 +535,12 @@ public class Zone extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DHCPv6Options", readOnly = true)   
+    public DHCPv6OptionsFetcher getDHCPv6Options() {
+        return dHCPv6Options;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -636,6 +665,14 @@ public class Zone extends BaseObject {
         }
     }
     @VsoMethod
+    public void createDHCPv6Option(Session session, DHCPv6Option childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DHCPV6OPTIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -700,7 +737,7 @@ public class Zone extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.TCAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", embeddedMetadata=" + embeddedMetadata + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

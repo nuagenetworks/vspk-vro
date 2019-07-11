@@ -66,6 +66,9 @@ public class InfrastructureConfig extends BaseObject {
     @JsonProperty(value = "configStatus")
     protected InfrastructureConfigConfigStatus configStatus;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected InfrastructureConfigEntityScope entityScope;
     
@@ -162,6 +165,17 @@ public class InfrastructureConfig extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public InfrastructureConfigEntityScope getEntityScope() {
        return entityScope;
@@ -251,7 +265,7 @@ public class InfrastructureConfig extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "InfrastructureConfig [" + "associatedEntityType=" + associatedEntityType + ", config=" + config + ", configStatus=" + configStatus + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "InfrastructureConfig [" + "associatedEntityType=" + associatedEntityType + ", config=" + config + ", configStatus=" + configStatus + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

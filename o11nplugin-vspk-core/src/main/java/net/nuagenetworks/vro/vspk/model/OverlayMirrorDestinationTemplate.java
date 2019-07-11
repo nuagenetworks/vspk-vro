@@ -67,6 +67,9 @@ public class OverlayMirrorDestinationTemplate extends BaseObject {
     @JsonProperty(value = "destinationType")
     protected OverlayMirrorDestinationTemplateDestinationType destinationType;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "endPointType")
     protected OverlayMirrorDestinationTemplateEndPointType endPointType;
     
@@ -156,6 +159,17 @@ public class OverlayMirrorDestinationTemplate extends BaseObject {
     @JsonIgnore
     public void setDestinationType(OverlayMirrorDestinationTemplateDestinationType value) { 
         this.destinationType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -292,7 +306,7 @@ public class OverlayMirrorDestinationTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "OverlayMirrorDestinationTemplate [" + "description=" + description + ", destinationType=" + destinationType + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", triggerType=" + triggerType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "OverlayMirrorDestinationTemplate [" + "description=" + description + ", destinationType=" + destinationType + ", embeddedMetadata=" + embeddedMetadata + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", triggerType=" + triggerType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

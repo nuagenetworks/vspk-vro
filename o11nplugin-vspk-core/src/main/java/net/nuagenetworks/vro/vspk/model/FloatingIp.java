@@ -74,6 +74,9 @@ public class FloatingIp extends BaseObject {
     @JsonProperty(value = "associatedSharedNetworkResourceID")
     protected String associatedSharedNetworkResourceID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected FloatingIpEntityScope entityScope;
     
@@ -202,6 +205,17 @@ public class FloatingIp extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public FloatingIpEntityScope getEntityScope() {
        return entityScope;
@@ -303,7 +317,7 @@ public class FloatingIp extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "FloatingIp [" + "accessControl=" + accessControl + ", address=" + address + ", assigned=" + assigned + ", assignedToObjectType=" + assignedToObjectType + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "FloatingIp [" + "accessControl=" + accessControl + ", address=" + address + ", assigned=" + assigned + ", assignedToObjectType=" + assignedToObjectType + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

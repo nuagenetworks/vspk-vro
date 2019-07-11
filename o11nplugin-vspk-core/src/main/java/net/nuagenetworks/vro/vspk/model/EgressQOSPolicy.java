@@ -80,6 +80,9 @@ public class EgressQOSPolicy extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected EgressQOSPolicyEntityScope entityScope;
     
@@ -89,8 +92,14 @@ public class EgressQOSPolicy extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "mgmtQueueAssociatedRateLimiterID")
+    protected String mgmtQueueAssociatedRateLimiterID;
+    
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "networkCtrlQueueAssociatedRateLimiterID")
+    protected String networkCtrlQueueAssociatedRateLimiterID;
     
     @JsonProperty(value = "parentQueueAssociatedRateLimiterID")
     protected String parentQueueAssociatedRateLimiterID;
@@ -223,6 +232,17 @@ public class EgressQOSPolicy extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public EgressQOSPolicyEntityScope getEntityScope() {
        return entityScope;
@@ -256,6 +276,17 @@ public class EgressQOSPolicy extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "MgmtQueueAssociatedRateLimiterID", readOnly = false)   
+    public String getMgmtQueueAssociatedRateLimiterID() {
+       return mgmtQueueAssociatedRateLimiterID;
+    }
+
+    @JsonIgnore
+    public void setMgmtQueueAssociatedRateLimiterID(String value) { 
+        this.mgmtQueueAssociatedRateLimiterID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -264,6 +295,17 @@ public class EgressQOSPolicy extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NetworkCtrlQueueAssociatedRateLimiterID", readOnly = false)   
+    public String getNetworkCtrlQueueAssociatedRateLimiterID() {
+       return networkCtrlQueueAssociatedRateLimiterID;
+    }
+
+    @JsonIgnore
+    public void setNetworkCtrlQueueAssociatedRateLimiterID(String value) { 
+        this.networkCtrlQueueAssociatedRateLimiterID = value;
     }
     
     @JsonIgnore
@@ -422,7 +464,7 @@ public class EgressQOSPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressQOSPolicy [" + "assocEgressQosId=" + assocEgressQosId + ", associatedCOSRemarkingPolicyTableID=" + associatedCOSRemarkingPolicyTableID + ", associatedDSCPRemarkingPolicyTableID=" + associatedDSCPRemarkingPolicyTableID + ", defaultServiceClass=" + defaultServiceClass + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", parentQueueAssociatedRateLimiterID=" + parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + queue4ForwardingClasses + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressQOSPolicy [" + "assocEgressQosId=" + assocEgressQosId + ", associatedCOSRemarkingPolicyTableID=" + associatedCOSRemarkingPolicyTableID + ", associatedDSCPRemarkingPolicyTableID=" + associatedDSCPRemarkingPolicyTableID + ", defaultServiceClass=" + defaultServiceClass + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mgmtQueueAssociatedRateLimiterID=" + mgmtQueueAssociatedRateLimiterID + ", name=" + name + ", networkCtrlQueueAssociatedRateLimiterID=" + networkCtrlQueueAssociatedRateLimiterID + ", parentQueueAssociatedRateLimiterID=" + parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + queue4ForwardingClasses + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

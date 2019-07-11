@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.AddressRange;
 
+import net.nuagenetworks.vro.vspk.model.AggregatedDomain;
+
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
@@ -41,6 +43,8 @@ import net.nuagenetworks.vro.vspk.model.Container;
 import net.nuagenetworks.vro.vspk.model.ContainerInterface;
 
 import net.nuagenetworks.vro.vspk.model.DHCPOption;
+
+import net.nuagenetworks.vro.vspk.model.DHCPv6Option;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
 
@@ -79,6 +83,8 @@ import net.nuagenetworks.vro.vspk.model.Metadata;
 import net.nuagenetworks.vro.vspk.model.MultiCastChannelMap;
 
 import net.nuagenetworks.vro.vspk.model.MultiCastRange;
+
+import net.nuagenetworks.vro.vspk.model.NetconfGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
@@ -184,6 +190,16 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         return null;
     }
     
+    @VsoProperty(displayName = "AggregatedDomain", readOnly = true)
+    public AggregatedDomain getAggregatedDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AggregatedDomain) {
+            return (AggregatedDomain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "AutoDiscoveredGateway", readOnly = true)
     public AutoDiscoveredGateway getAutoDiscoveredGateway() {
         RestObject obj = super.getParentRestObj();
@@ -229,6 +245,16 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof DHCPOption) {
             return (DHCPOption) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DHCPv6Option", readOnly = true)
+    public DHCPv6Option getDHCPv6Option() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DHCPv6Option) {
+            return (DHCPv6Option) obj;
         }
         
         return null;
@@ -419,6 +445,16 @@ public class EventLogsFetcher extends BaseFetcher<EventLog> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof MultiCastRange) {
             return (MultiCastRange) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfGateway", readOnly = true)
+    public NetconfGateway getNetconfGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGateway) {
+            return (NetconfGateway) obj;
         }
         
         return null;

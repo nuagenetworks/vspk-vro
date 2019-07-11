@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ContainersFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.ControllerVRSLinksFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -52,10 +54,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VPortsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VSCsFetcher;
 
-import net.nuagenetworks.vro.vspk.model.enums.VRSJSONRPCConnectionState;
-
-import net.nuagenetworks.vro.vspk.model.enums.VRSClusterNodeRole;
-
 import net.nuagenetworks.vro.vspk.model.enums.VRSEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.VRSHypervisorConnectionState;
@@ -67,10 +65,6 @@ import net.nuagenetworks.vro.vspk.model.enums.VRSPersonality;
 import net.nuagenetworks.vro.vspk.model.enums.VRSRole;
 
 import net.nuagenetworks.vro.vspk.model.enums.VRSStatus;
-
-import net.nuagenetworks.vro.vspk.model.enums.VRSVscConfigState;
-
-import net.nuagenetworks.vro.vspk.model.enums.VRSVscCurrentState;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -95,9 +89,6 @@ public class VRS extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "JSONRPCConnectionState")
-    protected VRSJSONRPCConnectionState JSONRPCConnectionState;
-    
     @JsonProperty(value = "address")
     protected String address;
     
@@ -106,9 +97,6 @@ public class VRS extends BaseObject {
     
     @JsonProperty(value = "averageMemoryUsage")
     protected Float averageMemoryUsage;
-    
-    @JsonProperty(value = "clusterNodeRole")
-    protected VRSClusterNodeRole clusterNodeRole;
     
     @JsonProperty(value = "currentCPUUsage")
     protected Float currentCPUUsage;
@@ -125,8 +113,8 @@ public class VRS extends BaseObject {
     @JsonProperty(value = "disks")
     protected java.util.List<DiskStat> disks;
     
-    @JsonProperty(value = "dynamic")
-    protected Boolean dynamic;
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected VRSEntityScope entityScope;
@@ -206,9 +194,6 @@ public class VRS extends BaseObject {
     @JsonProperty(value = "peakMemoryUsage")
     protected Float peakMemoryUsage;
     
-    @JsonProperty(value = "peer")
-    protected String peer;
-    
     @JsonProperty(value = "personality")
     protected VRSPersonality personality;
     
@@ -239,17 +224,14 @@ public class VRS extends BaseObject {
     @JsonProperty(value = "uptime")
     protected Long uptime;
     
-    @JsonProperty(value = "vscConfigState")
-    protected VRSVscConfigState vscConfigState;
-    
-    @JsonProperty(value = "vscCurrentState")
-    protected VRSVscCurrentState vscCurrentState;
-    
     @JsonIgnore
     private AlarmsFetcher alarms;
     
     @JsonIgnore
     private ContainersFetcher containers;
+    
+    @JsonIgnore
+    private ControllerVRSLinksFetcher controllerVRSLinks;
     
     @JsonIgnore
     private EventLogsFetcher eventLogs;
@@ -289,6 +271,8 @@ public class VRS extends BaseObject {
         alarms = new AlarmsFetcher(this);
         
         containers = new ContainersFetcher(this);
+        
+        controllerVRSLinks = new ControllerVRSLinksFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
         
@@ -349,17 +333,6 @@ public class VRS extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "JSONRPCConnectionState", readOnly = false)   
-    public VRSJSONRPCConnectionState getJSONRPCConnectionState() {
-       return JSONRPCConnectionState;
-    }
-
-    @JsonIgnore
-    public void setJSONRPCConnectionState(VRSJSONRPCConnectionState value) { 
-        this.JSONRPCConnectionState = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
     public String getAddress() {
        return address;
@@ -390,17 +363,6 @@ public class VRS extends BaseObject {
     @JsonIgnore
     public void setAverageMemoryUsage(Float value) { 
         this.averageMemoryUsage = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "ClusterNodeRole", readOnly = false)   
-    public VRSClusterNodeRole getClusterNodeRole() {
-       return clusterNodeRole;
-    }
-
-    @JsonIgnore
-    public void setClusterNodeRole(VRSClusterNodeRole value) { 
-        this.clusterNodeRole = value;
     }
     
     @JsonIgnore
@@ -459,14 +421,14 @@ public class VRS extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Dynamic", readOnly = false)   
-    public Boolean getDynamic() {
-       return dynamic;
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
     }
 
     @JsonIgnore
-    public void setDynamic(Boolean value) { 
-        this.dynamic = value;
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -756,17 +718,6 @@ public class VRS extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Peer", readOnly = false)   
-    public String getPeer() {
-       return peer;
-    }
-
-    @JsonIgnore
-    public void setPeer(String value) { 
-        this.peer = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Personality", readOnly = false)   
     public VRSPersonality getPersonality() {
        return personality;
@@ -877,28 +828,6 @@ public class VRS extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "VscConfigState", readOnly = false)   
-    public VRSVscConfigState getVscConfigState() {
-       return vscConfigState;
-    }
-
-    @JsonIgnore
-    public void setVscConfigState(VRSVscConfigState value) { 
-        this.vscConfigState = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "VscCurrentState", readOnly = false)   
-    public VRSVscCurrentState getVscCurrentState() {
-       return vscCurrentState;
-    }
-
-    @JsonIgnore
-    public void setVscCurrentState(VRSVscCurrentState value) { 
-        this.vscCurrentState = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Alarms", readOnly = true)   
     public AlarmsFetcher getAlarms() {
         return alarms;
@@ -908,6 +837,12 @@ public class VRS extends BaseObject {
     @VsoProperty(displayName = "Containers", readOnly = true)   
     public ContainersFetcher getContainers() {
         return containers;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ControllerVRSLinks", readOnly = true)   
+    public ControllerVRSLinksFetcher getControllerVRSLinks() {
+        return controllerVRSLinks;
     }
     
     @JsonIgnore
@@ -1047,7 +982,7 @@ public class VRS extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VRS [" + "JSONRPCConnectionState=" + JSONRPCConnectionState + ", address=" + address + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", clusterNodeRole=" + clusterNodeRole + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", dbSynced=" + dbSynced + ", description=" + description + ", disks=" + disks + ", dynamic=" + dynamic + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayUUID=" + gatewayUUID + ", hypervisorConnectionState=" + hypervisorConnectionState + ", hypervisorIdentifier=" + hypervisorIdentifier + ", hypervisorName=" + hypervisorName + ", hypervisorType=" + hypervisorType + ", isResilient=" + isResilient + ", lastEventName=" + lastEventName + ", lastEventObject=" + lastEventObject + ", lastEventTimestamp=" + lastEventTimestamp + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", licensedState=" + licensedState + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", multiNICVPortEnabled=" + multiNICVPortEnabled + ", name=" + name + ", numberOfBridgeInterfaces=" + numberOfBridgeInterfaces + ", numberOfContainers=" + numberOfContainers + ", numberOfHostInterfaces=" + numberOfHostInterfaces + ", numberOfVirtualMachines=" + numberOfVirtualMachines + ", parentIDs=" + parentIDs + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", peer=" + peer + ", personality=" + personality + ", primaryVSCConnectionLost=" + primaryVSCConnectionLost + ", productVersion=" + productVersion + ", revertBehaviorEnabled=" + revertBehaviorEnabled + ", revertCompleted=" + revertCompleted + ", revertCount=" + revertCount + ", revertFailedCount=" + revertFailedCount + ", role=" + role + ", status=" + status + ", uptime=" + uptime + ", vscConfigState=" + vscConfigState + ", vscCurrentState=" + vscCurrentState + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VRS [" + "address=" + address + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", dbSynced=" + dbSynced + ", description=" + description + ", disks=" + disks + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayUUID=" + gatewayUUID + ", hypervisorConnectionState=" + hypervisorConnectionState + ", hypervisorIdentifier=" + hypervisorIdentifier + ", hypervisorName=" + hypervisorName + ", hypervisorType=" + hypervisorType + ", isResilient=" + isResilient + ", lastEventName=" + lastEventName + ", lastEventObject=" + lastEventObject + ", lastEventTimestamp=" + lastEventTimestamp + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", licensedState=" + licensedState + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", multiNICVPortEnabled=" + multiNICVPortEnabled + ", name=" + name + ", numberOfBridgeInterfaces=" + numberOfBridgeInterfaces + ", numberOfContainers=" + numberOfContainers + ", numberOfHostInterfaces=" + numberOfHostInterfaces + ", numberOfVirtualMachines=" + numberOfVirtualMachines + ", parentIDs=" + parentIDs + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", personality=" + personality + ", primaryVSCConnectionLost=" + primaryVSCConnectionLost + ", productVersion=" + productVersion + ", revertBehaviorEnabled=" + revertBehaviorEnabled + ", revertCompleted=" + revertCompleted + ", revertCount=" + revertCount + ", revertFailedCount=" + revertFailedCount + ", role=" + role + ", status=" + status + ", uptime=" + uptime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

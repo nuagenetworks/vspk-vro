@@ -63,6 +63,9 @@ public class PolicyDecision extends BaseObject {
     @JsonProperty(value = "egressQos")
     protected Object egressQos;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected PolicyDecisionEntityScope entityScope;
     
@@ -165,6 +168,17 @@ public class PolicyDecision extends BaseObject {
     @JsonIgnore
     public void setEgressQos(Object value) { 
         this.egressQos = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -318,7 +332,7 @@ public class PolicyDecision extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "PolicyDecision [" + "egressACLs=" + egressACLs + ", egressQos=" + egressQos + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fipACLs=" + fipACLs + ", ingressACLs=" + ingressACLs + ", ingressAdvFwd=" + ingressAdvFwd + ", lastUpdatedBy=" + lastUpdatedBy + ", qos=" + qos + ", stats=" + stats + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PolicyDecision [" + "egressACLs=" + egressACLs + ", egressQos=" + egressQos + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fipACLs=" + fipACLs + ", ingressACLs=" + ingressACLs + ", ingressAdvFwd=" + ingressAdvFwd + ", lastUpdatedBy=" + lastUpdatedBy + ", qos=" + qos + ", stats=" + stats + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

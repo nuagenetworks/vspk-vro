@@ -60,6 +60,9 @@ public class EnterpriseSecuredData extends BaseObject {
     @JsonProperty(value = "data")
     protected String data;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected EnterpriseSecuredDataEntityScope entityScope;
     
@@ -146,6 +149,17 @@ public class EnterpriseSecuredData extends BaseObject {
     @JsonIgnore
     public void setData(String value) { 
         this.data = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -293,7 +307,7 @@ public class EnterpriseSecuredData extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EnterpriseSecuredData [" + "data=" + data + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hash=" + hash + ", keyserverCertSerialNumber=" + keyserverCertSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", seedType=" + seedType + ", sekId=" + sekId + ", signedHash=" + signedHash + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EnterpriseSecuredData [" + "data=" + data + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hash=" + hash + ", keyserverCertSerialNumber=" + keyserverCertSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", seedType=" + seedType + ", sekId=" + sekId + ", signedHash=" + signedHash + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -68,6 +68,9 @@ public class MonitoringPort extends BaseObject {
     @JsonProperty(value = "dpdkEnabled")
     protected Boolean dpdkEnabled;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected MonitoringPortEntityScope entityScope;
     
@@ -171,6 +174,17 @@ public class MonitoringPort extends BaseObject {
     @JsonIgnore
     public void setDpdkEnabled(Boolean value) { 
         this.dpdkEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -318,7 +332,7 @@ public class MonitoringPort extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "MonitoringPort [" + "access=" + access + ", description=" + description + ", dpdkEnabled=" + dpdkEnabled + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastStateChange=" + lastStateChange + ", name=" + name + ", resiliencyState=" + resiliencyState + ", resilient=" + resilient + ", state=" + state + ", uplink=" + uplink + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "MonitoringPort [" + "access=" + access + ", description=" + description + ", dpdkEnabled=" + dpdkEnabled + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastStateChange=" + lastStateChange + ", name=" + name + ", resiliencyState=" + resiliencyState + ", resilient=" + resilient + ", state=" + state + ", uplink=" + uplink + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

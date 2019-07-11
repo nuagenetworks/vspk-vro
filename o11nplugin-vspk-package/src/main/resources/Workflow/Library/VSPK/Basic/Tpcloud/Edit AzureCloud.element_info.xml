@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Tpcloud</entry>
+<entry key="name">Edit AzureCloud</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">1d0e673e-9579-5266-bf68-89ca8ee81402</entry>
+</properties>

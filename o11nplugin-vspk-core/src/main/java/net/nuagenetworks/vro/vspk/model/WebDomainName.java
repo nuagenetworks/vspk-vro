@@ -57,6 +57,9 @@ public class WebDomainName extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected WebDomainNameEntityScope entityScope;
     
@@ -68,6 +71,9 @@ public class WebDomainName extends BaseObject {
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "webCategoryIdentifier")
+    protected Long webCategoryIdentifier;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -123,6 +129,17 @@ public class WebDomainName extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public WebDomainNameEntityScope getEntityScope() {
        return entityScope;
@@ -164,6 +181,17 @@ public class WebDomainName extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "WebCategoryIdentifier", readOnly = false)   
+    public Long getWebCategoryIdentifier() {
+       return webCategoryIdentifier;
+    }
+
+    @JsonIgnore
+    public void setWebCategoryIdentifier(Long value) { 
+        this.webCategoryIdentifier = value;
     }
     
     @JsonIgnore
@@ -238,7 +266,7 @@ public class WebDomainName extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "WebDomainName [" + "entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "WebDomainName [" + "embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", webCategoryIdentifier=" + webCategoryIdentifier + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

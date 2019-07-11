@@ -69,6 +69,12 @@ public class DeploymentFailure extends BaseObject {
     @JsonProperty(value = "assocEntityType")
     protected String assocEntityType;
     
+    @JsonProperty(value = "associatedDomainID")
+    protected String associatedDomainID;
+    
+    @JsonProperty(value = "associatedDomainType")
+    protected String associatedDomainType;
+    
     @JsonProperty(value = "associatedNetworkEntityID")
     protected String associatedNetworkEntityID;
     
@@ -77,6 +83,9 @@ public class DeploymentFailure extends BaseObject {
     
     @JsonProperty(value = "diffMap")
     protected String diffMap;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected DeploymentFailureEntityScope entityScope;
@@ -200,6 +209,28 @@ public class DeploymentFailure extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedDomainID", readOnly = false)   
+    public String getAssociatedDomainID() {
+       return associatedDomainID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedDomainID(String value) { 
+        this.associatedDomainID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedDomainType", readOnly = false)   
+    public String getAssociatedDomainType() {
+       return associatedDomainType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedDomainType(String value) { 
+        this.associatedDomainType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedNetworkEntityID", readOnly = false)   
     public String getAssociatedNetworkEntityID() {
        return associatedNetworkEntityID;
@@ -230,6 +261,17 @@ public class DeploymentFailure extends BaseObject {
     @JsonIgnore
     public void setDiffMap(String value) { 
         this.diffMap = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -377,7 +419,7 @@ public class DeploymentFailure extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DeploymentFailure [" + "affectedEntityID=" + affectedEntityID + ", affectedEntityType=" + affectedEntityType + ", assocEntityId=" + assocEntityId + ", assocEntityType=" + assocEntityType + ", associatedNetworkEntityID=" + associatedNetworkEntityID + ", associatedNetworkEntityType=" + associatedNetworkEntityType + ", diffMap=" + diffMap + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", eventType=" + eventType + ", externalID=" + externalID + ", lastFailureReason=" + lastFailureReason + ", lastKnownError=" + lastKnownError + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurences=" + numberOfOccurences + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DeploymentFailure [" + "affectedEntityID=" + affectedEntityID + ", affectedEntityType=" + affectedEntityType + ", assocEntityId=" + assocEntityId + ", assocEntityType=" + assocEntityType + ", associatedDomainID=" + associatedDomainID + ", associatedDomainType=" + associatedDomainType + ", associatedNetworkEntityID=" + associatedNetworkEntityID + ", associatedNetworkEntityType=" + associatedNetworkEntityType + ", diffMap=" + diffMap + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", eventType=" + eventType + ", externalID=" + externalID + ", lastFailureReason=" + lastFailureReason + ", lastKnownError=" + lastKnownError + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurences=" + numberOfOccurences + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

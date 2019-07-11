@@ -78,6 +78,9 @@ public class RedirectionTarget extends BaseObject {
     @JsonProperty(value = "destinationType")
     protected RedirectionTargetDestinationType destinationType;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "endPointType")
     protected RedirectionTargetEndPointType endPointType;
     
@@ -201,6 +204,17 @@ public class RedirectionTarget extends BaseObject {
     @JsonIgnore
     public void setDestinationType(RedirectionTargetDestinationType value) { 
         this.destinationType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -394,7 +408,7 @@ public class RedirectionTarget extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VIRTUALIPS_FETCHER, getId());
         }
     }public String toString() {
-        return "RedirectionTarget [" + "ESI=" + ESI + ", description=" + description + ", destinationType=" + destinationType + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", templateID=" + templateID + ", triggerType=" + triggerType + ", virtualNetworkID=" + virtualNetworkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "RedirectionTarget [" + "ESI=" + ESI + ", description=" + description + ", destinationType=" + destinationType + ", embeddedMetadata=" + embeddedMetadata + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", redundancyEnabled=" + redundancyEnabled + ", templateID=" + templateID + ", triggerType=" + triggerType + ", virtualNetworkID=" + virtualNetworkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

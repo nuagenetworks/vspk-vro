@@ -36,6 +36,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SSIDConnectionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.WirelessPortChannelWidth;
+
 import net.nuagenetworks.vro.vspk.model.enums.WirelessPortCountryCode;
 
 import net.nuagenetworks.vro.vspk.model.enums.WirelessPortEntityScope;
@@ -83,11 +85,17 @@ public class WirelessPort extends BaseObject {
     @JsonProperty(value = "associatedEgressQOSPolicyID")
     protected String associatedEgressQOSPolicyID;
     
+    @JsonProperty(value = "channelWidth")
+    protected WirelessPortChannelWidth channelWidth;
+    
     @JsonProperty(value = "countryCode")
     protected WirelessPortCountryCode countryCode;
     
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected WirelessPortEntityScope entityScope;
@@ -217,6 +225,17 @@ public class WirelessPort extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ChannelWidth", readOnly = false)   
+    public WirelessPortChannelWidth getChannelWidth() {
+       return channelWidth;
+    }
+
+    @JsonIgnore
+    public void setChannelWidth(WirelessPortChannelWidth value) { 
+        this.channelWidth = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "CountryCode", readOnly = false)   
     public WirelessPortCountryCode getCountryCode() {
        return countryCode;
@@ -236,6 +255,17 @@ public class WirelessPort extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -475,7 +505,7 @@ public class WirelessPort extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.SSIDCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "WirelessPort [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", countryCode=" + countryCode + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", frequencyChannel=" + frequencyChannel + ", genericConfig=" + genericConfig + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", status=" + status + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", wifiFrequencyBand=" + wifiFrequencyBand + ", wifiMode=" + wifiMode + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "WirelessPort [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", channelWidth=" + channelWidth + ", countryCode=" + countryCode + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", frequencyChannel=" + frequencyChannel + ", genericConfig=" + genericConfig + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", status=" + status + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", wifiFrequencyBand=" + wifiFrequencyBand + ", wifiMode=" + wifiMode + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

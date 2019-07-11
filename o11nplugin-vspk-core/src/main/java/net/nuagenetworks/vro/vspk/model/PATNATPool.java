@@ -108,6 +108,9 @@ public class PATNATPool extends BaseObject {
     @JsonProperty(value = "dynamicSourceEnabled")
     protected Boolean dynamicSourceEnabled;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "endAddressRange")
     protected String endAddressRange;
     
@@ -310,6 +313,17 @@ public class PATNATPool extends BaseObject {
     @JsonIgnore
     public void setDynamicSourceEnabled(Boolean value) { 
         this.dynamicSourceEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -536,7 +550,7 @@ public class PATNATPool extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.STATISTICSPOLICIES_FETCHER, getId());
         }
     }public String toString() {
-        return "PATNATPool [" + "IPType=" + IPType + ", addressRange=" + addressRange + ", associatedGatewayId=" + associatedGatewayId + ", associatedGatewayType=" + associatedGatewayType + ", associatedSubnetId=" + associatedSubnetId + ", associatedVlanId=" + associatedVlanId + ", defaultPATIP=" + defaultPATIP + ", description=" + description + ", dynamicSourceEnabled=" + dynamicSourceEnabled + ", endAddressRange=" + endAddressRange + ", endSourceAddress=" + endSourceAddress + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", startAddressRange=" + startAddressRange + ", startSourceAddress=" + startSourceAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PATNATPool [" + "IPType=" + IPType + ", addressRange=" + addressRange + ", associatedGatewayId=" + associatedGatewayId + ", associatedGatewayType=" + associatedGatewayType + ", associatedSubnetId=" + associatedSubnetId + ", associatedVlanId=" + associatedVlanId + ", defaultPATIP=" + defaultPATIP + ", description=" + description + ", dynamicSourceEnabled=" + dynamicSourceEnabled + ", embeddedMetadata=" + embeddedMetadata + ", endAddressRange=" + endAddressRange + ", endSourceAddress=" + endSourceAddress + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", startAddressRange=" + startAddressRange + ", startSourceAddress=" + startSourceAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

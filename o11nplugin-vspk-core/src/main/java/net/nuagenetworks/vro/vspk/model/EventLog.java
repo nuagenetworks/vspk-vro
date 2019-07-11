@@ -58,6 +58,9 @@ public class EventLog extends BaseObject {
     @JsonProperty(value = "diff")
     protected Object diff;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterprise")
     protected String enterprise;
     
@@ -156,6 +159,17 @@ public class EventLog extends BaseObject {
     @JsonIgnore
     public void setDiff(Object value) { 
         this.diff = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -347,7 +361,7 @@ public class EventLog extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EventLog [" + "diff=" + diff + ", enterprise=" + enterprise + ", entities=" + entities + ", entityID=" + entityID + ", entityParentID=" + entityParentID + ", entityParentType=" + entityParentType + ", entityScope=" + entityScope + ", entityType=" + entityType + ", eventReceivedTime=" + eventReceivedTime + ", externalID=" + externalID + ", requestID=" + requestID + ", type=" + type + ", user=" + user + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EventLog [" + "diff=" + diff + ", embeddedMetadata=" + embeddedMetadata + ", enterprise=" + enterprise + ", entities=" + entities + ", entityID=" + entityID + ", entityParentID=" + entityParentID + ", entityParentType=" + entityParentType + ", entityScope=" + entityScope + ", entityType=" + entityType + ", eventReceivedTime=" + eventReceivedTime + ", externalID=" + externalID + ", requestID=" + requestID + ", type=" + type + ", user=" + user + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

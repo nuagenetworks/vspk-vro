@@ -107,6 +107,9 @@ public class NSPort extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enableNATProbes")
     protected Boolean enableNATProbes;
     
@@ -304,6 +307,17 @@ public class NSPort extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -617,7 +631,7 @@ public class NSPort extends BaseObject {
         }
     }
     public String toString() {
-        return "NSPort [" + "NATTraversal=" + NATTraversal + ", TrafficThroughUBROnly=" + TrafficThroughUBROnly + ", VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", enableNATProbes=" + enableNATProbes + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", shuntPort=" + shuntPort + ", speed=" + speed + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSPort [" + "NATTraversal=" + NATTraversal + ", TrafficThroughUBROnly=" + TrafficThroughUBROnly + ", VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enableNATProbes=" + enableNATProbes + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mtu=" + mtu + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", shuntPort=" + shuntPort + ", speed=" + speed + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

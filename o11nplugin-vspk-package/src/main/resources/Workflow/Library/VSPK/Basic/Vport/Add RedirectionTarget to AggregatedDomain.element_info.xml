@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Add RedirectionTarget to AggregatedDomain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9cda61ab-3890-5ebb-8574-6e390f59d945</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
+<entry key="name">Add IngressProfile to NetconfGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">bd701a16-52b5-59b4-bd7d-f670d77c0b47</entry>
+</properties>

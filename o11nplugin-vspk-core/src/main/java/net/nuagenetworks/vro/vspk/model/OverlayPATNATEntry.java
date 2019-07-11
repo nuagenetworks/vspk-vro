@@ -64,6 +64,9 @@ public class OverlayPATNATEntry extends BaseObject {
     @JsonProperty(value = "associatedLinkID")
     protected String associatedLinkID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected OverlayPATNATEntryEntityScope entityScope;
     
@@ -163,6 +166,17 @@ public class OverlayPATNATEntry extends BaseObject {
     @JsonIgnore
     public void setAssociatedLinkID(String value) { 
         this.associatedLinkID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -277,7 +291,7 @@ public class OverlayPATNATEntry extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "OverlayPATNATEntry [" + "NATEnabled=" + NATEnabled + ", associatedDomainID=" + associatedDomainID + ", associatedLinkID=" + associatedLinkID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", privateIP=" + privateIP + ", publicIP=" + publicIP + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "OverlayPATNATEntry [" + "NATEnabled=" + NATEnabled + ", associatedDomainID=" + associatedDomainID + ", associatedLinkID=" + associatedLinkID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", privateIP=" + privateIP + ", publicIP=" + publicIP + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

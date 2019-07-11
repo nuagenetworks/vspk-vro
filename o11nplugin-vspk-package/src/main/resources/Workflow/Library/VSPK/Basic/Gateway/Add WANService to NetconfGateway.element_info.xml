@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Add WANService to NetconfGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">765b2f94-0a68-5758-8b9c-33dcd5aa36cc</entry>
+</properties>

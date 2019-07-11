@@ -68,6 +68,9 @@ public class ShuntLink extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected ShuntLinkEntityScope entityScope;
     
@@ -173,6 +176,17 @@ public class ShuntLink extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -315,7 +329,7 @@ public class ShuntLink extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ShuntLink [" + "VLANPeer1ID=" + VLANPeer1ID + ", VLANPeer2ID=" + VLANPeer2ID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer2ID=" + gatewayPeer2ID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ShuntLink [" + "VLANPeer1ID=" + VLANPeer1ID + ", VLANPeer2ID=" + VLANPeer2ID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer2ID=" + gatewayPeer2ID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

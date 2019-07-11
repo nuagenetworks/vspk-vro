@@ -58,6 +58,9 @@ public class ApplicationBinding extends BaseObject {
     @JsonProperty(value = "associatedApplicationID")
     protected String associatedApplicationID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected ApplicationBindingEntityScope entityScope;
     
@@ -135,6 +138,17 @@ public class ApplicationBinding extends BaseObject {
     @JsonIgnore
     public void setAssociatedApplicationID(String value) { 
         this.associatedApplicationID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -249,7 +263,7 @@ public class ApplicationBinding extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ApplicationBinding [" + "associatedApplicationID=" + associatedApplicationID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ApplicationBinding [" + "associatedApplicationID=" + associatedApplicationID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

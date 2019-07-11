@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum WirelessPortPermittedAction {
 
-    USE("USE", "USE"), READ("READ", "READ"), ALL("ALL", "ALL"), INSTANTIATE("INSTANTIATE", "INSTANTIATE"), EXTEND("EXTEND", "EXTEND"), DEPLOY("DEPLOY", "DEPLOY");
+    ALL("ALL", "ALL"), DEPLOY("DEPLOY", "DEPLOY"), EXTEND("EXTEND", "EXTEND"), INSTANTIATE("INSTANTIATE", "INSTANTIATE"), READ("READ", "READ"), USE("USE", "USE");
 
     private final String id;
     private final String name;
@@ -58,24 +58,14 @@ public enum WirelessPortPermittedAction {
     }
 
     
-    @VsoProperty(displayName = "USE", readOnly = true)
-    public WirelessPortPermittedAction getUSE() {
-        return USE;
-    }
-    
-    @VsoProperty(displayName = "READ", readOnly = true)
-    public WirelessPortPermittedAction getREAD() {
-        return READ;
-    }
-    
     @VsoProperty(displayName = "ALL", readOnly = true)
     public WirelessPortPermittedAction getALL() {
         return ALL;
     }
     
-    @VsoProperty(displayName = "INSTANTIATE", readOnly = true)
-    public WirelessPortPermittedAction getINSTANTIATE() {
-        return INSTANTIATE;
+    @VsoProperty(displayName = "DEPLOY", readOnly = true)
+    public WirelessPortPermittedAction getDEPLOY() {
+        return DEPLOY;
     }
     
     @VsoProperty(displayName = "EXTEND", readOnly = true)
@@ -83,9 +73,19 @@ public enum WirelessPortPermittedAction {
         return EXTEND;
     }
     
-    @VsoProperty(displayName = "DEPLOY", readOnly = true)
-    public WirelessPortPermittedAction getDEPLOY() {
-        return DEPLOY;
+    @VsoProperty(displayName = "INSTANTIATE", readOnly = true)
+    public WirelessPortPermittedAction getINSTANTIATE() {
+        return INSTANTIATE;
+    }
+    
+    @VsoProperty(displayName = "READ", readOnly = true)
+    public WirelessPortPermittedAction getREAD() {
+        return READ;
+    }
+    
+    @VsoProperty(displayName = "USE", readOnly = true)
+    public WirelessPortPermittedAction getUSE() {
+        return USE;
     }
     
 

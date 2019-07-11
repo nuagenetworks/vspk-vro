@@ -65,6 +65,9 @@ public class NetconfSession extends BaseObject {
     @JsonProperty(value = "associatedGatewayName")
     protected String associatedGatewayName;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected NetconfSessionEntityScope entityScope;
     
@@ -159,6 +162,17 @@ public class NetconfSession extends BaseObject {
     @JsonIgnore
     public void setAssociatedGatewayName(String value) { 
         this.associatedGatewayName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -295,7 +309,7 @@ public class NetconfSession extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NetconfSession [" + "associatedGatewayID=" + associatedGatewayID + ", associatedGatewayName=" + associatedGatewayName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayModel=" + gatewayModel + ", gatewayVendor=" + gatewayVendor + ", gatewayVersion=" + gatewayVersion + ", lastUpdatedBy=" + lastUpdatedBy + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NetconfSession [" + "associatedGatewayID=" + associatedGatewayID + ", associatedGatewayName=" + associatedGatewayName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayModel=" + gatewayModel + ", gatewayVendor=" + gatewayVendor + ", gatewayVersion=" + gatewayVersion + ", lastUpdatedBy=" + lastUpdatedBy + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -72,6 +72,9 @@ public class KeyServerMonitorEncryptedSeed extends BaseObject {
     @JsonProperty(value = "associatedKeyServerMonitorSeedID")
     protected String associatedKeyServerMonitorSeedID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseSecuredDataID")
     protected String enterpriseSecuredDataID;
     
@@ -199,6 +202,17 @@ public class KeyServerMonitorEncryptedSeed extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EnterpriseSecuredDataID", readOnly = false)   
     public String getEnterpriseSecuredDataID() {
        return enterpriseSecuredDataID;
@@ -321,7 +335,7 @@ public class KeyServerMonitorEncryptedSeed extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "KeyServerMonitorEncryptedSeed [" + "SEKCreationTime=" + SEKCreationTime + ", associatedKeyServerMonitorSEKCreationTime=" + associatedKeyServerMonitorSEKCreationTime + ", associatedKeyServerMonitorSEKID=" + associatedKeyServerMonitorSEKID + ", associatedKeyServerMonitorSeedCreationTime=" + associatedKeyServerMonitorSeedCreationTime + ", associatedKeyServerMonitorSeedID=" + associatedKeyServerMonitorSeedID + ", enterpriseSecuredDataID=" + enterpriseSecuredDataID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", keyServerCertificateSerialNumber=" + keyServerCertificateSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", seedType=" + seedType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "KeyServerMonitorEncryptedSeed [" + "SEKCreationTime=" + SEKCreationTime + ", associatedKeyServerMonitorSEKCreationTime=" + associatedKeyServerMonitorSEKCreationTime + ", associatedKeyServerMonitorSEKID=" + associatedKeyServerMonitorSEKID + ", associatedKeyServerMonitorSeedCreationTime=" + associatedKeyServerMonitorSeedCreationTime + ", associatedKeyServerMonitorSeedID=" + associatedKeyServerMonitorSeedID + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseSecuredDataID=" + enterpriseSecuredDataID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", keyServerCertificateSerialNumber=" + keyServerCertificateSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", seedType=" + seedType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

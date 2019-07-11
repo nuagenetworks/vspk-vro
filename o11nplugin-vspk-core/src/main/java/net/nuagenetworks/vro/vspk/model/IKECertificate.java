@@ -64,6 +64,9 @@ public class IKECertificate extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected IKECertificateEntityScope entityScope;
     
@@ -170,6 +173,17 @@ public class IKECertificate extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -328,7 +342,7 @@ public class IKECertificate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IKECertificate [" + "PEMEncoded=" + PEMEncoded + ", associatedEnterpriseID=" + associatedEnterpriseID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", issuerDN=" + issuerDN + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", notAfter=" + notAfter + ", notBefore=" + notBefore + ", serialNumber=" + serialNumber + ", subjectDN=" + subjectDN + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IKECertificate [" + "PEMEncoded=" + PEMEncoded + ", associatedEnterpriseID=" + associatedEnterpriseID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", issuerDN=" + issuerDN + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", notAfter=" + notAfter + ", notBefore=" + notBefore + ", serialNumber=" + serialNumber + ", subjectDN=" + subjectDN + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

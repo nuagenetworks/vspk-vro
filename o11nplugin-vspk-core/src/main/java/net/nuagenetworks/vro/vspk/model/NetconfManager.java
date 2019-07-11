@@ -66,6 +66,9 @@ public class NetconfManager extends BaseObject {
     @JsonProperty(value = "assocEntityType")
     protected String assocEntityType;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected NetconfManagerEntityScope entityScope;
     
@@ -151,6 +154,17 @@ public class NetconfManager extends BaseObject {
     @JsonIgnore
     public void setAssocEntityType(String value) { 
         this.assocEntityType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -296,7 +310,7 @@ public class NetconfManager extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.NETCONFSESSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "NetconfManager [" + "assocEntityType=" + assocEntityType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", release=" + release + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NetconfManager [" + "assocEntityType=" + assocEntityType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", release=" + release + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

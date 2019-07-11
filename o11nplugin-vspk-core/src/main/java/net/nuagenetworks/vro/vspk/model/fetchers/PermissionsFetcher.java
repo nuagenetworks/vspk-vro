@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Permission;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.AggregatedDomain;
+
 import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
@@ -41,6 +43,8 @@ import net.nuagenetworks.vro.vspk.model.GatewayRedundantPort;
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
+
+import net.nuagenetworks.vro.vspk.model.NetconfGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
@@ -94,6 +98,16 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "AggregatedDomain", readOnly = true)
+    public AggregatedDomain getAggregatedDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AggregatedDomain) {
+            return (AggregatedDomain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Domain", readOnly = true)
     public Domain getDomain() {
         RestObject obj = super.getParentRestObj();
@@ -149,6 +163,16 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2DomainTemplate) {
             return (L2DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfGateway", readOnly = true)
+    public NetconfGateway getNetconfGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGateway) {
+            return (NetconfGateway) obj;
         }
         
         return null;

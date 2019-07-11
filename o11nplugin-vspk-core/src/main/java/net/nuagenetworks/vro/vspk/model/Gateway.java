@@ -175,6 +175,9 @@ public class Gateway extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -186,6 +189,12 @@ public class Gateway extends BaseObject {
     
     @JsonProperty(value = "family")
     protected GatewayFamily family;
+    
+    @JsonProperty(value = "gatewayConfigRawVersion")
+    protected String gatewayConfigRawVersion;
+    
+    @JsonProperty(value = "gatewayConfigVersion")
+    protected String gatewayConfigVersion;
     
     @JsonProperty(value = "gatewayConnected")
     protected Boolean gatewayConnected;
@@ -597,6 +606,17 @@ public class Gateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EnterpriseID", readOnly = false)   
     public String getEnterpriseID() {
        return enterpriseID;
@@ -638,6 +658,28 @@ public class Gateway extends BaseObject {
     @JsonIgnore
     public void setFamily(GatewayFamily value) { 
         this.family = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayConfigRawVersion", readOnly = false)   
+    public String getGatewayConfigRawVersion() {
+       return gatewayConfigRawVersion;
+    }
+
+    @JsonIgnore
+    public void setGatewayConfigRawVersion(String value) { 
+        this.gatewayConfigRawVersion = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayConfigVersion", readOnly = false)   
+    public String getGatewayConfigVersion() {
+       return gatewayConfigVersion;
+    }
+
+    @JsonIgnore
+    public void setGatewayConfigVersion(String value) { 
+        this.gatewayConfigVersion = value;
     }
     
     @JsonIgnore
@@ -1154,7 +1196,7 @@ public class Gateway extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.WANSERVICES_FETCHER, getId());
         }
     }public String toString() {
-        return "Gateway [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", UUID=" + UUID + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNetconfProfileID=" + associatedNetconfProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", datapathID=" + datapathID + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", gatewayConnected=" + gatewayConnected + ", gatewayModel=" + gatewayModel + ", gatewayVersion=" + gatewayVersion + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", managementID=" + managementID + ", name=" + name + ", patches=" + patches + ", peer=" + peer + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", useGatewayVLANVNID=" + useGatewayVLANVNID + ", vendor=" + vendor + ", vtep=" + vtep + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Gateway [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", UUID=" + UUID + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNetconfProfileID=" + associatedNetconfProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", datapathID=" + datapathID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", gatewayConfigRawVersion=" + gatewayConfigRawVersion + ", gatewayConfigVersion=" + gatewayConfigVersion + ", gatewayConnected=" + gatewayConnected + ", gatewayModel=" + gatewayModel + ", gatewayVersion=" + gatewayVersion + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", managementID=" + managementID + ", name=" + name + ", patches=" + patches + ", peer=" + peer + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", useGatewayVLANVNID=" + useGatewayVLANVNID + ", vendor=" + vendor + ", vtep=" + vtep + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

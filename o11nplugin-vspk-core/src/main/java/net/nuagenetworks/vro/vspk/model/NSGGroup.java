@@ -64,6 +64,9 @@ public class NSGGroup extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected NSGGroupEntityScope entityScope;
     
@@ -75,6 +78,9 @@ public class NSGGroup extends BaseObject {
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "nsgGroupId")
+    protected Long nsgGroupId;
     
     @JsonIgnore
     private DUCGroupBindingsFetcher dUCGroupBindings;
@@ -146,6 +152,17 @@ public class NSGGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public NSGGroupEntityScope getEntityScope() {
        return entityScope;
@@ -187,6 +204,17 @@ public class NSGGroup extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NsgGroupId", readOnly = false)   
+    public Long getNsgGroupId() {
+       return nsgGroupId;
+    }
+
+    @JsonIgnore
+    public void setNsgGroupId(Long value) { 
+        this.nsgGroupId = value;
     }
     
     @JsonIgnore
@@ -275,7 +303,7 @@ public class NSGGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGGroup [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGGroup [" + "description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", nsgGroupId=" + nsgGroupId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

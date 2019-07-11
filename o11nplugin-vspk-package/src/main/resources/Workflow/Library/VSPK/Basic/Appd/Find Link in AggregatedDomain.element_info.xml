@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Appd</entry>
+<entry key="name">Find Link in AggregatedDomain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ee1253f0-de2e-5ba1-9d4b-f512f5d8f4b0</entry>
+</properties>

@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.ContainerInterface;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.AggregatedDomain;
+
 import net.nuagenetworks.vro.vspk.model.Container;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
@@ -76,6 +78,16 @@ public class ContainerInterfacesFetcher extends BaseFetcher<ContainerInterface> 
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "AggregatedDomain", readOnly = true)
+    public AggregatedDomain getAggregatedDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AggregatedDomain) {
+            return (AggregatedDomain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Container", readOnly = true)
     public Container getContainer() {
         RestObject obj = super.getParentRestObj();

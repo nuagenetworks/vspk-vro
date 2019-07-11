@@ -93,6 +93,9 @@ public class Container extends BaseObject {
     @JsonProperty(value = "domainIDs")
     protected java.util.List<String> domainIDs;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -149,6 +152,12 @@ public class Container extends BaseObject {
     
     @JsonProperty(value = "userName")
     protected String userName;
+    
+    @JsonProperty(value = "vrsRawVersion")
+    protected String vrsRawVersion;
+    
+    @JsonProperty(value = "vrsVersion")
+    protected String vrsVersion;
     
     @JsonProperty(value = "zoneIDs")
     protected java.util.List<String> zoneIDs;
@@ -290,6 +299,17 @@ public class Container extends BaseObject {
     @JsonIgnore
     public void setDomainIDs(java.util.List<String> value) { 
         this.domainIDs = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -502,6 +522,28 @@ public class Container extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VrsRawVersion", readOnly = false)   
+    public String getVrsRawVersion() {
+       return vrsRawVersion;
+    }
+
+    @JsonIgnore
+    public void setVrsRawVersion(String value) { 
+        this.vrsRawVersion = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VrsVersion", readOnly = false)   
+    public String getVrsVersion() {
+       return vrsVersion;
+    }
+
+    @JsonIgnore
+    public void setVrsVersion(String value) { 
+        this.vrsVersion = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ZoneIDs", readOnly = false)   
     public java.util.List<String> getZoneIDs() {
        return zoneIDs;
@@ -615,7 +657,7 @@ public class Container extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Container [" + "UUID=" + UUID + ", VRSID=" + VRSID + ", computeProvisioned=" + computeProvisioned + ", deleteExpiry=" + deleteExpiry + ", deleteMode=" + deleteMode + ", domainIDs=" + domainIDs + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorIP=" + hypervisorIP + ", imageID=" + imageID + ", imageName=" + imageName + ", interfaces=" + interfaces + ", l2DomainIDs=" + l2DomainIDs + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", orchestrationID=" + orchestrationID + ", reasonType=" + reasonType + ", resyncInfo=" + resyncInfo + ", siteIdentifier=" + siteIdentifier + ", status=" + status + ", subnetIDs=" + subnetIDs + ", userID=" + userID + ", userName=" + userName + ", zoneIDs=" + zoneIDs + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Container [" + "UUID=" + UUID + ", VRSID=" + VRSID + ", computeProvisioned=" + computeProvisioned + ", deleteExpiry=" + deleteExpiry + ", deleteMode=" + deleteMode + ", domainIDs=" + domainIDs + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorIP=" + hypervisorIP + ", imageID=" + imageID + ", imageName=" + imageName + ", interfaces=" + interfaces + ", l2DomainIDs=" + l2DomainIDs + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", orchestrationID=" + orchestrationID + ", reasonType=" + reasonType + ", resyncInfo=" + resyncInfo + ", siteIdentifier=" + siteIdentifier + ", status=" + status + ", subnetIDs=" + subnetIDs + ", userID=" + userID + ", userName=" + userName + ", vrsRawVersion=" + vrsRawVersion + ", vrsVersion=" + vrsVersion + ", zoneIDs=" + zoneIDs + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

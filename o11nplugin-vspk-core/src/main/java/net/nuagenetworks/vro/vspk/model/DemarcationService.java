@@ -63,6 +63,9 @@ public class DemarcationService extends BaseObject {
     @JsonProperty(value = "associatedVLANID")
     protected String associatedVLANID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected DemarcationServiceEntityScope entityScope;
     
@@ -154,6 +157,17 @@ public class DemarcationService extends BaseObject {
     @JsonIgnore
     public void setAssociatedVLANID(String value) { 
         this.associatedVLANID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -279,7 +293,7 @@ public class DemarcationService extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DemarcationService [" + "associatedGatewayID=" + associatedGatewayID + ", associatedVLANID=" + associatedVLANID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DemarcationService [" + "associatedGatewayID=" + associatedGatewayID + ", associatedVLANID=" + associatedVLANID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

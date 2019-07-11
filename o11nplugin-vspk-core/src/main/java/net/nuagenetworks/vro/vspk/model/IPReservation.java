@@ -66,6 +66,9 @@ public class IPReservation extends BaseObject {
     @JsonProperty(value = "dynamicAllocationEnabled")
     protected Boolean dynamicAllocationEnabled;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected IPReservationEntityScope entityScope;
     
@@ -167,6 +170,17 @@ public class IPReservation extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public IPReservationEntityScope getEntityScope() {
        return entityScope;
@@ -262,7 +276,7 @@ public class IPReservation extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IPReservation [" + "IPAddress=" + IPAddress + ", MAC=" + MAC + ", dynamicAllocationEnabled=" + dynamicAllocationEnabled + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IPReservation [" + "IPAddress=" + IPAddress + ", MAC=" + MAC + ", dynamicAllocationEnabled=" + dynamicAllocationEnabled + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

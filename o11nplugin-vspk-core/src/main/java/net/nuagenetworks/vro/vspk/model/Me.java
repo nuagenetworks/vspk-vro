@@ -160,6 +160,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.RedirectionTargetsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RedundancyGroupsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.RemoteVrsInfosFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPoliciesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SaaSApplicationTypesFetcher;
@@ -177,6 +179,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.SubnetsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.SystemConfigsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.TCAsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.TestDefinitionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UnderlaysFetcher;
 
@@ -207,6 +211,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VNFThresholdPoliciesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.VRSsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VCenterVRSConfigsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.vrsInfosFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VSPsFetcher;
 
@@ -307,11 +313,15 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.REDUNDANCYGROUPS_FETCHER, type = Constants.REDUNDANCYGROUPS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.REMOTEVRSINFOS_FETCHER, type = Constants.REMOTEVRSINFOS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.SHAREDNETWORKRESOURCES_FETCHER, type = Constants.SHAREDNETWORKRESOURCES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.SITEINFOS_FETCHER, type = Constants.SITEINFOS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.SYSTEMCONFIGS_FETCHER, type = Constants.SYSTEMCONFIGS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.TESTDEFINITIONS_FETCHER, type = Constants.TESTDEFINITIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.UNDERLAYS_FETCHER, type = Constants.UNDERLAYS_FETCHER), 
 
@@ -358,6 +368,9 @@ public class Me extends BaseRootObject {
     
     @JsonProperty(value = "email")
     protected String email;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
@@ -600,6 +613,9 @@ public class Me extends BaseRootObject {
     private RedundancyGroupsFetcher redundancyGroups;
     
     @JsonIgnore
+    private RemoteVrsInfosFetcher remoteVrsInfos;
+    
+    @JsonIgnore
     private RoutingPoliciesFetcher routingPolicies;
     
     @JsonIgnore
@@ -625,6 +641,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private TCAsFetcher tCAs;
+    
+    @JsonIgnore
+    private TestDefinitionsFetcher testDefinitions;
     
     @JsonIgnore
     private UnderlaysFetcher underlays;
@@ -670,6 +689,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private VCenterVRSConfigsFetcher vCenterVRSConfigs;
+    
+    @JsonIgnore
+    private vrsInfosFetcher vrsInfos;
     
     @JsonIgnore
     private VSPsFetcher vSPs;
@@ -819,6 +841,8 @@ public class Me extends BaseRootObject {
         
         redundancyGroups = new RedundancyGroupsFetcher(this);
         
+        remoteVrsInfos = new RemoteVrsInfosFetcher(this);
+        
         routingPolicies = new RoutingPoliciesFetcher(this);
         
         saaSApplicationTypes = new SaaSApplicationTypesFetcher(this);
@@ -836,6 +860,8 @@ public class Me extends BaseRootObject {
         systemConfigs = new SystemConfigsFetcher(this);
         
         tCAs = new TCAsFetcher(this);
+        
+        testDefinitions = new TestDefinitionsFetcher(this);
         
         underlays = new UnderlaysFetcher(this);
         
@@ -866,6 +892,8 @@ public class Me extends BaseRootObject {
         vRSs = new VRSsFetcher(this);
         
         vCenterVRSConfigs = new VCenterVRSConfigsFetcher(this);
+        
+        vrsInfos = new vrsInfosFetcher(this);
         
         vSPs = new VSPsFetcher(this);
         
@@ -1007,6 +1035,17 @@ public class Me extends BaseRootObject {
     @JsonIgnore
     public void setEmail(String value) { 
         this.email = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -1555,6 +1594,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "RemoteVrsInfos", readOnly = true)   
+    public RemoteVrsInfosFetcher getRemoteVrsInfos() {
+        return remoteVrsInfos;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "RoutingPolicies", readOnly = true)   
     public RoutingPoliciesFetcher getRoutingPolicies() {
         return routingPolicies;
@@ -1606,6 +1651,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "TCAs", readOnly = true)   
     public TCAsFetcher getTCAs() {
         return tCAs;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "TestDefinitions", readOnly = true)   
+    public TestDefinitionsFetcher getTestDefinitions() {
+        return testDefinitions;
     }
     
     @JsonIgnore
@@ -1699,6 +1750,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "vrsInfos", readOnly = true)   
+    public vrsInfosFetcher getvrsInfos() {
+        return vrsInfos;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VSPs", readOnly = true)   
     public VSPsFetcher getVSPs() {
         return vSPs;
@@ -1742,6 +1799,15 @@ public class Me extends BaseRootObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.ME, getId());
         }
     }
+    @VsoMethod
+    public void assignTestDefinitions(Session session, TestDefinition[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.ME, getId());
+        }
+    }
+    
     @VsoMethod
     public void createAllRedundancyGroup(Session session, AllRedundancyGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
@@ -2073,6 +2139,14 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createRemoteVrsInfo(Session session, RemoteVrsInfo childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.REMOTEVRSINFOS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createSharedNetworkResource(Session session, SharedNetworkResource childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -2086,6 +2160,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.SITEINFOS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createTestDefinition(Session session, TestDefinition childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.TESTDEFINITIONS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -2152,7 +2234,7 @@ public class Me extends BaseRootObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Me [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSStatsInterval=" + VSSStatsInterval + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Me [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSStatsInterval=" + VSSStatsInterval + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + ", apiKey=" + apiKey  + "]";
     }
 }

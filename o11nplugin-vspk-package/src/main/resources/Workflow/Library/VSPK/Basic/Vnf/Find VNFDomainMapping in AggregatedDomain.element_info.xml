@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vnf</entry>
+<entry key="name">Find VNFDomainMapping in AggregatedDomain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">6cfbe617-c29d-578a-8c98-dc3efe3ade4f</entry>
+</properties>

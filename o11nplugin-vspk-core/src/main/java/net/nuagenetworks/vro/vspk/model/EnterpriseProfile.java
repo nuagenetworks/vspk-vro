@@ -89,6 +89,9 @@ public class EnterpriseProfile extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enableApplicationPerformanceManagement")
     protected Boolean enableApplicationPerformanceManagement;
     
@@ -103,6 +106,9 @@ public class EnterpriseProfile extends BaseObject {
     
     @JsonProperty(value = "floatingIPsQuota")
     protected Long floatingIPsQuota;
+    
+    @JsonProperty(value = "forwardingClass")
+    protected java.util.List<String> forwardingClass;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -275,6 +281,17 @@ public class EnterpriseProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EnableApplicationPerformanceManagement", readOnly = false)   
     public Boolean getEnableApplicationPerformanceManagement() {
        return enableApplicationPerformanceManagement;
@@ -327,6 +344,17 @@ public class EnterpriseProfile extends BaseObject {
     @JsonIgnore
     public void setFloatingIPsQuota(Long value) { 
         this.floatingIPsQuota = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ForwardingClass", readOnly = false)   
+    public java.util.List<String> getForwardingClass() {
+       return forwardingClass;
+    }
+
+    @JsonIgnore
+    public void setForwardingClass(java.util.List<String> value) { 
+        this.forwardingClass = value;
     }
     
     @JsonIgnore
@@ -459,7 +487,7 @@ public class EnterpriseProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EnterpriseProfile [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", description=" + description + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", webFilterEnabled=" + webFilterEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EnterpriseProfile [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", forwardingClass=" + forwardingClass + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", webFilterEnabled=" + webFilterEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -94,6 +94,9 @@ public class VLANTemplate extends BaseObject {
     @JsonProperty(value = "ducVlan")
     protected Boolean ducVlan;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected VLANTemplateEntityScope entityScope;
     
@@ -275,6 +278,17 @@ public class VLANTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public VLANTemplateEntityScope getEntityScope() {
        return entityScope;
@@ -425,7 +439,7 @@ public class VLANTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UPLINKCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VLANTemplate [" + "associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", type=" + type + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VLANTemplate [" + "associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", type=" + type + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

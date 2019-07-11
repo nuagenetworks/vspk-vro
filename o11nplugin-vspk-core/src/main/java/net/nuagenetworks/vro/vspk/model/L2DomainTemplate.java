@@ -149,8 +149,17 @@ public class L2DomainTemplate extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
-    @JsonProperty(value = "dynamicIpv6Address")
-    protected Boolean dynamicIpv6Address;
+    @JsonProperty(value = "dualStackDynamicIPAllocation")
+    protected Boolean dualStackDynamicIPAllocation;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
+    @JsonProperty(value = "enableDHCPv4")
+    protected Boolean enableDHCPv4;
+    
+    @JsonProperty(value = "enableDHCPv6")
+    protected Boolean enableDHCPv6;
     
     @JsonProperty(value = "encryption")
     protected L2DomainTemplateEncryption encryption;
@@ -402,14 +411,47 @@ public class L2DomainTemplate extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "DynamicIpv6Address", readOnly = false)   
-    public Boolean getDynamicIpv6Address() {
-       return dynamicIpv6Address;
+    @VsoProperty(displayName = "DualStackDynamicIPAllocation", readOnly = false)   
+    public Boolean getDualStackDynamicIPAllocation() {
+       return dualStackDynamicIPAllocation;
     }
 
     @JsonIgnore
-    public void setDynamicIpv6Address(Boolean value) { 
-        this.dynamicIpv6Address = value;
+    public void setDualStackDynamicIPAllocation(Boolean value) { 
+        this.dualStackDynamicIPAllocation = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnableDHCPv4", readOnly = false)   
+    public Boolean getEnableDHCPv4() {
+       return enableDHCPv4;
+    }
+
+    @JsonIgnore
+    public void setEnableDHCPv4(Boolean value) { 
+        this.enableDHCPv4 = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnableDHCPv6", readOnly = false)   
+    public Boolean getEnableDHCPv6() {
+       return enableDHCPv6;
+    }
+
+    @JsonIgnore
+    public void setEnableDHCPv6(Boolean value) { 
+        this.enableDHCPv6 = value;
     }
     
     @JsonIgnore
@@ -799,7 +841,7 @@ public class L2DomainTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VIRTUALFIREWALLPOLICIES_FETCHER, getId());
         }
     }public String toString() {
-        return "L2DomainTemplate [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", useGlobalMAC=" + useGlobalMAC + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L2DomainTemplate [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dualStackDynamicIPAllocation=" + dualStackDynamicIPAllocation + ", embeddedMetadata=" + embeddedMetadata + ", enableDHCPv4=" + enableDHCPv4 + ", enableDHCPv6=" + enableDHCPv6 + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", useGlobalMAC=" + useGlobalMAC + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

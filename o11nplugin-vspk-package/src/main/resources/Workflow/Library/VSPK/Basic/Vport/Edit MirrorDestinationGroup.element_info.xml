@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vport</entry>
+<entry key="name">Edit MirrorDestinationGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">fbd2775b-36f6-54b4-8965-720082093190</entry>
+</properties>

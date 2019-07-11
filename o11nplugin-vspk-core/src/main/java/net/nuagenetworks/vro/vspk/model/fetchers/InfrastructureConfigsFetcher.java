@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
+import net.nuagenetworks.vro.vspk.model.NetconfGateway;
+
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -71,6 +73,16 @@ public class InfrastructureConfigsFetcher extends BaseFetcher<InfrastructureConf
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Gateway) {
             return (Gateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfGateway", readOnly = true)
+    public NetconfGateway getNetconfGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGateway) {
+            return (NetconfGateway) obj;
         }
         
         return null;

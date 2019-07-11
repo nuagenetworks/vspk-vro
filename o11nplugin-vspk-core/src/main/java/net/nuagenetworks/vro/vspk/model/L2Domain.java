@@ -44,6 +44,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.DeploymentFailuresFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DHCPOptionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.DHCPv6OptionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLEntryTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
@@ -69,6 +71,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdTemplatesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MirrorDestinationGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetworkPerformanceBindingsFetcher;
 
@@ -124,6 +128,8 @@ import net.nuagenetworks.vro.vspk.model.enums.L2DomainEntityState;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainFlowCollectionEnabled;
 
+import net.nuagenetworks.vro.vspk.model.enums.L2DomainL2EncapType;
+
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainMaintenanceMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainMulticast;
@@ -153,6 +159,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.DHCPV6OPTIONS_FETCHER, type = Constants.DHCPV6OPTIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSACLTEMPLATES_FETCHER, type = Constants.EGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSADVFWDTEMPLATES_FETCHER, type = Constants.EGRESSADVFWDTEMPLATES_FETCHER), 
@@ -162,6 +170,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSADVFWDTEMPLATES_FETCHER, type = Constants.INGRESSADVFWDTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.MIRRORDESTINATIONGROUPS_FETCHER, type = Constants.MIRRORDESTINATIONGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NETWORKPERFORMANCEBINDINGS_FETCHER, type = Constants.NETWORKPERFORMANCEBINDINGS_FETCHER), 
 
@@ -227,14 +237,26 @@ public class L2Domain extends BaseObject {
     @JsonProperty(value = "associatedUnderlayID")
     protected String associatedUnderlayID;
     
+    @JsonProperty(value = "color")
+    protected Long color;
+    
     @JsonProperty(value = "customerID")
     protected Long customerID;
     
     @JsonProperty(value = "description")
     protected String description;
     
-    @JsonProperty(value = "dynamicIpv6Address")
-    protected Boolean dynamicIpv6Address;
+    @JsonProperty(value = "dualStackDynamicIPAllocation")
+    protected Boolean dualStackDynamicIPAllocation;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
+    @JsonProperty(value = "enableDHCPv4")
+    protected Boolean enableDHCPv4;
+    
+    @JsonProperty(value = "enableDHCPv6")
+    protected Boolean enableDHCPv6;
     
     @JsonProperty(value = "encryption")
     protected L2DomainEncryption encryption;
@@ -259,6 +281,9 @@ public class L2Domain extends BaseObject {
     
     @JsonProperty(value = "ingressReplicationEnabled")
     protected Boolean ingressReplicationEnabled;
+    
+    @JsonProperty(value = "l2EncapType")
+    protected L2DomainL2EncapType l2EncapType;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -333,6 +358,9 @@ public class L2Domain extends BaseObject {
     private DHCPOptionsFetcher dHCPOptions;
     
     @JsonIgnore
+    private DHCPv6OptionsFetcher dHCPv6Options;
+    
+    @JsonIgnore
     private EgressACLEntryTemplatesFetcher egressACLEntryTemplates;
     
     @JsonIgnore
@@ -370,6 +398,9 @@ public class L2Domain extends BaseObject {
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
+    
+    @JsonIgnore
+    private MirrorDestinationGroupsFetcher mirrorDestinationGroups;
     
     @JsonIgnore
     private NetworkPerformanceBindingsFetcher networkPerformanceBindings;
@@ -456,6 +487,8 @@ public class L2Domain extends BaseObject {
         
         dHCPOptions = new DHCPOptionsFetcher(this);
         
+        dHCPv6Options = new DHCPv6OptionsFetcher(this);
+        
         egressACLEntryTemplates = new EgressACLEntryTemplatesFetcher(this);
         
         egressACLTemplates = new EgressACLTemplatesFetcher(this);
@@ -481,6 +514,8 @@ public class L2Domain extends BaseObject {
         jobs = new JobsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        mirrorDestinationGroups = new MirrorDestinationGroupsFetcher(this);
         
         networkPerformanceBindings = new NetworkPerformanceBindingsFetcher(this);
         
@@ -671,6 +706,17 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Color", readOnly = false)   
+    public Long getColor() {
+       return color;
+    }
+
+    @JsonIgnore
+    public void setColor(Long value) { 
+        this.color = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "CustomerID", readOnly = false)   
     public Long getCustomerID() {
        return customerID;
@@ -693,14 +739,47 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "DynamicIpv6Address", readOnly = false)   
-    public Boolean getDynamicIpv6Address() {
-       return dynamicIpv6Address;
+    @VsoProperty(displayName = "DualStackDynamicIPAllocation", readOnly = false)   
+    public Boolean getDualStackDynamicIPAllocation() {
+       return dualStackDynamicIPAllocation;
     }
 
     @JsonIgnore
-    public void setDynamicIpv6Address(Boolean value) { 
-        this.dynamicIpv6Address = value;
+    public void setDualStackDynamicIPAllocation(Boolean value) { 
+        this.dualStackDynamicIPAllocation = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnableDHCPv4", readOnly = false)   
+    public Boolean getEnableDHCPv4() {
+       return enableDHCPv4;
+    }
+
+    @JsonIgnore
+    public void setEnableDHCPv4(Boolean value) { 
+        this.enableDHCPv4 = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnableDHCPv6", readOnly = false)   
+    public Boolean getEnableDHCPv6() {
+       return enableDHCPv6;
+    }
+
+    @JsonIgnore
+    public void setEnableDHCPv6(Boolean value) { 
+        this.enableDHCPv6 = value;
     }
     
     @JsonIgnore
@@ -789,6 +868,17 @@ public class L2Domain extends BaseObject {
     @JsonIgnore
     public void setIngressReplicationEnabled(Boolean value) { 
         this.ingressReplicationEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "L2EncapType", readOnly = false)   
+    public L2DomainL2EncapType getL2EncapType() {
+       return l2EncapType;
+    }
+
+    @JsonIgnore
+    public void setL2EncapType(L2DomainL2EncapType value) { 
+        this.l2EncapType = value;
     }
     
     @JsonIgnore
@@ -1011,6 +1101,12 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DHCPv6Options", readOnly = true)   
+    public DHCPv6OptionsFetcher getDHCPv6Options() {
+        return dHCPv6Options;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EgressACLEntryTemplates", readOnly = true)   
     public EgressACLEntryTemplatesFetcher getEgressACLEntryTemplates() {
         return egressACLEntryTemplates;
@@ -1086,6 +1182,12 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "MirrorDestinationGroups", readOnly = true)   
+    public MirrorDestinationGroupsFetcher getMirrorDestinationGroups() {
+        return mirrorDestinationGroups;
     }
     
     @JsonIgnore
@@ -1286,6 +1388,14 @@ public class L2Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createDHCPv6Option(Session session, DHCPv6Option childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DHCPV6OPTIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createEgressACLTemplate(Session session, EgressACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1339,6 +1449,14 @@ public class L2Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMirrorDestinationGroup(Session session, MirrorDestinationGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.MIRRORDESTINATIONGROUPS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1481,7 +1599,7 @@ public class L2Domain extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", associatedUnderlayID=" + associatedUnderlayID + ", customerID=" + customerID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", routedVPLSEnabled=" + routedVPLSEnabled + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", associatedUnderlayID=" + associatedUnderlayID + ", color=" + color + ", customerID=" + customerID + ", description=" + description + ", dualStackDynamicIPAllocation=" + dualStackDynamicIPAllocation + ", embeddedMetadata=" + embeddedMetadata + ", enableDHCPv4=" + enableDHCPv4 + ", enableDHCPv6=" + enableDHCPv6 + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", l2EncapType=" + l2EncapType + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", routedVPLSEnabled=" + routedVPLSEnabled + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

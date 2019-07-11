@@ -69,6 +69,9 @@ public class VNFThresholdPolicy extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected VNFThresholdPolicyEntityScope entityScope;
     
@@ -183,6 +186,17 @@ public class VNFThresholdPolicy extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -330,7 +344,7 @@ public class VNFThresholdPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNFThresholdPolicy [" + "CPUThreshold=" + CPUThreshold + ", action=" + action + ", assocEntityType=" + assocEntityType + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", memoryThreshold=" + memoryThreshold + ", minOccurrence=" + minOccurrence + ", monitInterval=" + monitInterval + ", name=" + name + ", storageThreshold=" + storageThreshold + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNFThresholdPolicy [" + "CPUThreshold=" + CPUThreshold + ", action=" + action + ", assocEntityType=" + assocEntityType + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", memoryThreshold=" + memoryThreshold + ", minOccurrence=" + minOccurrence + ", monitInterval=" + monitInterval + ", name=" + name + ", storageThreshold=" + storageThreshold + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

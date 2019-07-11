@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Vrs</entry>
+<entry key="name">Find vrsInfo in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">051bb7aa-eded-54ef-be50-2a9ac18c4b65</entry>
+</properties>

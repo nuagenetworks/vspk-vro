@@ -36,6 +36,8 @@ import net.nuagenetworks.vro.vspk.model.enums.ForwardingPathListEntryEntityScope
 
 import net.nuagenetworks.vro.vspk.model.enums.ForwardingPathListEntryForwardingAction;
 
+import net.nuagenetworks.vro.vspk.model.enums.ForwardingPathListEntryRemoteUplinkPreference;
+
 import net.nuagenetworks.vro.vspk.model.enums.ForwardingPathListEntryUplinkPreference;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -61,8 +63,14 @@ public class ForwardingPathListEntry extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "DSCPRemarking")
+    protected String DSCPRemarking;
+    
     @JsonProperty(value = "FCOverride")
     protected ForwardingPathListEntryFCOverride FCOverride;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected ForwardingPathListEntryEntityScope entityScope;
@@ -73,11 +81,17 @@ public class ForwardingPathListEntry extends BaseObject {
     @JsonProperty(value = "forwardingAction")
     protected ForwardingPathListEntryForwardingAction forwardingAction;
     
+    @JsonProperty(value = "isSLAAware")
+    protected Boolean isSLAAware;
+    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
     @JsonProperty(value = "priority")
     protected Long priority;
+    
+    @JsonProperty(value = "remoteUplinkPreference")
+    protected ForwardingPathListEntryRemoteUplinkPreference remoteUplinkPreference;
     
     @JsonProperty(value = "uplinkPreference")
     protected ForwardingPathListEntryUplinkPreference uplinkPreference;
@@ -136,6 +150,17 @@ public class ForwardingPathListEntry extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "DSCPRemarking", readOnly = false)   
+    public String getDSCPRemarking() {
+       return DSCPRemarking;
+    }
+
+    @JsonIgnore
+    public void setDSCPRemarking(String value) { 
+        this.DSCPRemarking = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "FCOverride", readOnly = false)   
     public ForwardingPathListEntryFCOverride getFCOverride() {
        return FCOverride;
@@ -144,6 +169,17 @@ public class ForwardingPathListEntry extends BaseObject {
     @JsonIgnore
     public void setFCOverride(ForwardingPathListEntryFCOverride value) { 
         this.FCOverride = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -180,6 +216,17 @@ public class ForwardingPathListEntry extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IsSLAAware", readOnly = false)   
+    public Boolean getIsSLAAware() {
+       return isSLAAware;
+    }
+
+    @JsonIgnore
+    public void setIsSLAAware(Boolean value) { 
+        this.isSLAAware = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
     public String getLastUpdatedBy() {
        return lastUpdatedBy;
@@ -199,6 +246,17 @@ public class ForwardingPathListEntry extends BaseObject {
     @JsonIgnore
     public void setPriority(Long value) { 
         this.priority = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RemoteUplinkPreference", readOnly = false)   
+    public ForwardingPathListEntryRemoteUplinkPreference getRemoteUplinkPreference() {
+       return remoteUplinkPreference;
+    }
+
+    @JsonIgnore
+    public void setRemoteUplinkPreference(ForwardingPathListEntryRemoteUplinkPreference value) { 
+        this.remoteUplinkPreference = value;
     }
     
     @JsonIgnore
@@ -269,7 +327,7 @@ public class ForwardingPathListEntry extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ForwardingPathListEntry [" + "FCOverride=" + FCOverride + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forwardingAction=" + forwardingAction + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ForwardingPathListEntry [" + "DSCPRemarking=" + DSCPRemarking + ", FCOverride=" + FCOverride + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forwardingAction=" + forwardingAction + ", isSLAAware=" + isSLAAware + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", remoteUplinkPreference=" + remoteUplinkPreference + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

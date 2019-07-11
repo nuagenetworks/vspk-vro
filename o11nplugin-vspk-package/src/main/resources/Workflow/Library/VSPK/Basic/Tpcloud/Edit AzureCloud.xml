@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="1d0e673e-9579-5266-bf68-89ca8ee81402"  version="6.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit AzureCloud]]></display-name>
+<ref-types><![CDATA[(VSPK:AzureCloud)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='azureCloudObj' type='VSPK:AzureCloud' >
+</param>
+
+<param name='associatedIKEPSKID' type='string' >
+</param>
+
+<param name='clientID' type='string' >
+</param>
+
+<param name='clientSecret' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='subscriptionID' type='string' >
+</param>
+
+<param name='tenantID' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = azureCloudObj.session;
+
+if (associatedIKEPSKID) {
+   azureCloudObj.associatedIKEPSKID = associatedIKEPSKID;
+} else if (azureCloudObj.associatedIKEPSKID) {
+   azureCloudObj.associatedIKEPSKID = "";
+}
+if (clientID) {
+   azureCloudObj.clientID = clientID;
+} else if (azureCloudObj.clientID) {
+   azureCloudObj.clientID = "";
+}
+if (clientSecret) {
+   azureCloudObj.clientSecret = clientSecret;
+} else if (azureCloudObj.clientSecret) {
+   azureCloudObj.clientSecret = "";
+}
+if (externalID) {
+   azureCloudObj.externalID = externalID;
+} else if (azureCloudObj.externalID) {
+   azureCloudObj.externalID = "";
+}
+if (name) {
+   azureCloudObj.name = name;
+} else if (azureCloudObj.name) {
+   azureCloudObj.name = "";
+}
+if (subscriptionID) {
+   azureCloudObj.subscriptionID = subscriptionID;
+} else if (azureCloudObj.subscriptionID) {
+   azureCloudObj.subscriptionID = "";
+}
+if (tenantID) {
+   azureCloudObj.tenantID = tenantID;
+} else if (azureCloudObj.tenantID) {
+   azureCloudObj.tenantID = "";
+}
+azureCloudObj.save(session, 1);]]></script>
+<in-binding><bind name='azureCloudObj' type='VSPK:AzureCloud' export-name="azureCloudObj" ></bind>
+
+<bind name='associatedIKEPSKID' type='string' export-name="associatedIKEPSKID" ></bind>
+
+<bind name='clientID' type='string' export-name="clientID" ></bind>
+
+<bind name='clientSecret' type='string' export-name="clientSecret" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='subscriptionID' type='string' export-name="subscriptionID" ></bind>
+
+<bind name='tenantID' type='string' export-name="tenantID" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="azureCloudObj"><desc><![CDATA[azureCloudObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="associatedIKEPSKID"><desc><![CDATA[associatedIKEPSKID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#azureCloudObj.associatedIKEPSKID]]></p-qual></p-param>
+
+<p-param name="clientID"><desc><![CDATA[clientID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#azureCloudObj.clientID]]></p-qual></p-param>
+
+<p-param name="clientSecret"><desc><![CDATA[clientSecret]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#azureCloudObj.clientSecret]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#azureCloudObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#azureCloudObj.name]]></p-qual></p-param>
+
+<p-param name="subscriptionID"><desc><![CDATA[subscriptionID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#azureCloudObj.subscriptionID]]></p-qual></p-param>
+
+<p-param name="tenantID"><desc><![CDATA[tenantID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#azureCloudObj.tenantID]]></p-qual></p-param>
+
+</presentation></workflow>

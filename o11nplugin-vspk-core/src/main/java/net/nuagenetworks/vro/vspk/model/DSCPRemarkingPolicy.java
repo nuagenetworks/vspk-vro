@@ -60,6 +60,9 @@ public class DSCPRemarkingPolicy extends BaseObject {
     @JsonProperty(value = "DSCP")
     protected String DSCP;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected DSCPRemarkingPolicyEntityScope entityScope;
     
@@ -134,6 +137,17 @@ public class DSCPRemarkingPolicy extends BaseObject {
     @JsonIgnore
     public void setDSCP(String value) { 
         this.DSCP = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -237,7 +251,7 @@ public class DSCPRemarkingPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DSCPRemarkingPolicy [" + "DSCP=" + DSCP + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forwardingClass=" + forwardingClass + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DSCPRemarkingPolicy [" + "DSCP=" + DSCP + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forwardingClass=" + forwardingClass + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAddressFamily;
 
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAdvertisementCriteria;
 
+import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAuxMode;
+
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionInterfaceConnectionType;
@@ -103,11 +105,17 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "associatedUnderlayName")
     protected String associatedUnderlayName;
     
+    @JsonProperty(value = "auxMode")
+    protected UplinkConnectionAuxMode auxMode;
+    
     @JsonProperty(value = "auxiliaryLink")
     protected Boolean auxiliaryLink;
     
     @JsonProperty(value = "downloadRateLimit")
     protected Float downloadRateLimit;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected UplinkConnectionEntityScope entityScope;
@@ -343,6 +351,17 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AuxMode", readOnly = false)   
+    public UplinkConnectionAuxMode getAuxMode() {
+       return auxMode;
+    }
+
+    @JsonIgnore
+    public void setAuxMode(UplinkConnectionAuxMode value) { 
+        this.auxMode = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AuxiliaryLink", readOnly = false)   
     public Boolean getAuxiliaryLink() {
        return auxiliaryLink;
@@ -362,6 +381,17 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setDownloadRateLimit(Float value) { 
         this.downloadRateLimit = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -687,7 +717,7 @@ public class UplinkConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", PATEnabled=" + PATEnabled + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxiliaryLink=" + auxiliaryLink + ", downloadRateLimit=" + downloadRateLimit + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", installerManaged=" + installerManaged + ", interfaceConnectionType=" + interfaceConnectionType + ", lastUpdatedBy=" + lastUpdatedBy + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", portName=" + portName + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", underlayEnabled=" + underlayEnabled + ", underlayID=" + underlayID + ", uplinkID=" + uplinkID + ", username=" + username + ", vlan=" + vlan + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", PATEnabled=" + PATEnabled + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxMode=" + auxMode + ", auxiliaryLink=" + auxiliaryLink + ", downloadRateLimit=" + downloadRateLimit + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", installerManaged=" + installerManaged + ", interfaceConnectionType=" + interfaceConnectionType + ", lastUpdatedBy=" + lastUpdatedBy + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", portName=" + portName + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", underlayEnabled=" + underlayEnabled + ", underlayID=" + underlayID + ", uplinkID=" + uplinkID + ", username=" + username + ", vlan=" + vlan + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

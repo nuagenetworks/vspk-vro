@@ -56,6 +56,9 @@ public class BulkStatistics extends BaseObject {
     @JsonProperty(value = "data")
     protected java.util.List<com.fasterxml.jackson.databind.JsonNode> data;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "endTime")
     protected Long endTime;
     
@@ -130,6 +133,17 @@ public class BulkStatistics extends BaseObject {
     @JsonIgnore
     public void setData(java.util.List<com.fasterxml.jackson.databind.JsonNode> value) { 
         this.data = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -233,7 +247,7 @@ public class BulkStatistics extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BulkStatistics [" + "data=" + data + ", endTime=" + endTime + ", numberOfDataPoints=" + numberOfDataPoints + ", startTime=" + startTime + ", version=" + version + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BulkStatistics [" + "data=" + data + ", embeddedMetadata=" + embeddedMetadata + ", endTime=" + endTime + ", numberOfDataPoints=" + numberOfDataPoints + ", startTime=" + startTime + ", version=" + version + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

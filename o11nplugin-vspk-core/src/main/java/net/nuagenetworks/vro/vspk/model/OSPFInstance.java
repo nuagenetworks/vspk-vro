@@ -68,6 +68,9 @@ public class OSPFInstance extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected OSPFInstanceEntityScope entityScope;
     
@@ -179,6 +182,17 @@ public class OSPFInstance extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -351,7 +365,7 @@ public class OSPFInstance extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.OSPFAREAS_FETCHER, getId());
         }
     }public String toString() {
-        return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", description=" + description + ", entityScope=" + entityScope + ", exportLimit=" + exportLimit + ", exportToOverlay=" + exportToOverlay + ", externalID=" + externalID + ", externalPreference=" + externalPreference + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", preference=" + preference + ", superBackboneEnabled=" + superBackboneEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", exportLimit=" + exportLimit + ", exportToOverlay=" + exportToOverlay + ", externalID=" + externalID + ", externalPreference=" + externalPreference + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", preference=" + preference + ", superBackboneEnabled=" + superBackboneEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

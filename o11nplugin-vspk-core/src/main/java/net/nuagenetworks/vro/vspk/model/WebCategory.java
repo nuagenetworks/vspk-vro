@@ -65,6 +65,9 @@ public class WebCategory extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected WebCategoryEntityScope entityScope;
     
@@ -79,6 +82,9 @@ public class WebCategory extends BaseObject {
     
     @JsonProperty(value = "type")
     protected WebCategoryType type;
+    
+    @JsonProperty(value = "webCategoryIdentifier")
+    protected Long webCategoryIdentifier;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -156,6 +162,17 @@ public class WebCategory extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public WebCategoryEntityScope getEntityScope() {
        return entityScope;
@@ -208,6 +225,17 @@ public class WebCategory extends BaseObject {
     @JsonIgnore
     public void setType(WebCategoryType value) { 
         this.type = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "WebCategoryIdentifier", readOnly = false)   
+    public Long getWebCategoryIdentifier() {
+       return webCategoryIdentifier;
+    }
+
+    @JsonIgnore
+    public void setWebCategoryIdentifier(Long value) { 
+        this.webCategoryIdentifier = value;
     }
     
     @JsonIgnore
@@ -282,7 +310,7 @@ public class WebCategory extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "WebCategory [" + "defaultCategory=" + defaultCategory + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "WebCategory [" + "defaultCategory=" + defaultCategory + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", type=" + type + ", webCategoryIdentifier=" + webCategoryIdentifier + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

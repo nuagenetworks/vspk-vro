@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in TestSuite</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b84b0306-599f-5801-b240-7d1bd9ae53fe</entry>
+</properties>

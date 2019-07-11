@@ -60,6 +60,9 @@ public class StatsCollectorInfo extends BaseObject {
     @JsonProperty(value = "addressType")
     protected StatsCollectorInfoAddressType addressType;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected StatsCollectorInfoEntityScope entityScope;
     
@@ -140,6 +143,17 @@ public class StatsCollectorInfo extends BaseObject {
     @JsonIgnore
     public void setAddressType(StatsCollectorInfoAddressType value) { 
         this.addressType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -265,7 +279,7 @@ public class StatsCollectorInfo extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "StatsCollectorInfo [" + "addressType=" + addressType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", ipAddress=" + ipAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", port=" + port + ", protoBufPort=" + protoBufPort + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "StatsCollectorInfo [" + "addressType=" + addressType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", ipAddress=" + ipAddress + ", lastUpdatedBy=" + lastUpdatedBy + ", port=" + port + ", protoBufPort=" + protoBufPort + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -60,6 +60,9 @@ public class PSPATMap extends BaseObject {
     @JsonProperty(value = "associatedSPATSourcesPoolID")
     protected String associatedSPATSourcesPoolID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected PSPATMapEntityScope entityScope;
     
@@ -135,6 +138,17 @@ public class PSPATMap extends BaseObject {
     @JsonIgnore
     public void setAssociatedSPATSourcesPoolID(String value) { 
         this.associatedSPATSourcesPoolID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -260,7 +274,7 @@ public class PSPATMap extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "PSPATMap [" + "associatedSPATSourcesPoolID=" + associatedSPATSourcesPoolID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", reservedSPATIPs=" + reservedSPATIPs + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PSPATMap [" + "associatedSPATSourcesPoolID=" + associatedSPATSourcesPoolID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", reservedSPATIPs=" + reservedSPATIPs + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -30,6 +30,10 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Job;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.AggregatedDomain;
+
+import net.nuagenetworks.vro.vspk.model.AzureCloud;
+
 import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
@@ -42,6 +46,8 @@ import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.HSC;
 
+import net.nuagenetworks.vro.vspk.model.IKEGatewayConnection;
+
 import net.nuagenetworks.vro.vspk.model.IngressACLTemplate;
 
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
@@ -51,6 +57,8 @@ import net.nuagenetworks.vro.vspk.model.L2Domain;
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.NetconfGateway;
 
 import net.nuagenetworks.vro.vspk.model.NSGateway;
 
@@ -106,6 +114,26 @@ public class JobsFetcher extends BaseFetcher<Job> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "AggregatedDomain", readOnly = true)
+    public AggregatedDomain getAggregatedDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AggregatedDomain) {
+            return (AggregatedDomain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "AzureCloud", readOnly = true)
+    public AzureCloud getAzureCloud() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AzureCloud) {
+            return (AzureCloud) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Domain", readOnly = true)
     public Domain getDomain() {
         RestObject obj = super.getParentRestObj();
@@ -166,6 +194,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
         return null;
     }
     
+    @VsoProperty(displayName = "IKEGatewayConnection", readOnly = true)
+    public IKEGatewayConnection getIKEGatewayConnection() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IKEGatewayConnection) {
+            return (IKEGatewayConnection) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "IngressACLTemplate", readOnly = true)
     public IngressACLTemplate getIngressACLTemplate() {
         RestObject obj = super.getParentRestObj();
@@ -211,6 +249,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfGateway", readOnly = true)
+    public NetconfGateway getNetconfGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGateway) {
+            return (NetconfGateway) obj;
         }
         
         return null;

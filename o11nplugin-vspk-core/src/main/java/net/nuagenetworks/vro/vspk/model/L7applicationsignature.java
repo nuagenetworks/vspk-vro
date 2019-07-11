@@ -72,6 +72,9 @@ public class L7applicationsignature extends BaseObject {
     @JsonProperty(value = "dictionaryVersion")
     protected Long dictionaryVersion;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected L7applicationsignatureEntityScope entityScope;
     
@@ -217,6 +220,17 @@ public class L7applicationsignature extends BaseObject {
     @JsonIgnore
     public void setDictionaryVersion(Long value) { 
         this.dictionaryVersion = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -425,7 +439,7 @@ public class L7applicationsignature extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "L7applicationsignature [" + "category=" + category + ", deprecated=" + deprecated + ", deprecatedVersion=" + deprecatedVersion + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", guidstring=" + guidstring + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", pluginName=" + pluginName + ", productivity=" + productivity + ", readonly=" + readonly + ", reference=" + reference + ", risk=" + risk + ", signatureIndex=" + signatureIndex + ", signatureVersion=" + signatureVersion + ", softwareFlags=" + softwareFlags + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L7applicationsignature [" + "category=" + category + ", deprecated=" + deprecated + ", deprecatedVersion=" + deprecatedVersion + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", guidstring=" + guidstring + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", pluginName=" + pluginName + ", productivity=" + productivity + ", readonly=" + readonly + ", reference=" + reference + ", risk=" + risk + ", signatureIndex=" + signatureIndex + ", signatureVersion=" + signatureVersion + ", softwareFlags=" + softwareFlags + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

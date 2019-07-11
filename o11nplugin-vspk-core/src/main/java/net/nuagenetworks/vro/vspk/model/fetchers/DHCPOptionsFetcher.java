@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.DHCPOption;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.AggregatedDomain;
+
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
 
 import net.nuagenetworks.vro.vspk.model.ContainerInterface;
@@ -82,6 +84,16 @@ public class DHCPOptionsFetcher extends BaseFetcher<DHCPOption> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "AggregatedDomain", readOnly = true)
+    public AggregatedDomain getAggregatedDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AggregatedDomain) {
+            return (AggregatedDomain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "BridgeInterface", readOnly = true)
     public BridgeInterface getBridgeInterface() {
         RestObject obj = super.getParentRestObj();

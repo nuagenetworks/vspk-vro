@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d1a23f96-bd5c-5ff5-b729-c7bfaf4e8fff"  version="5.4.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="d1a23f96-bd5c-5ff5-b729-c7bfaf4e8fff"  version="6.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit SubnetTemplate]]></display-name>
 <ref-types><![CDATA[(VSPK:SubnetTemplate)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='subnetTemplateObj' type='VSPK:SubnetTemplate' >
-</param>
-
-<param name='address' type='string' >
 </param>
 
 <param name='description' type='string' >
@@ -37,11 +34,6 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = subnetTemplateObj.session;
 
-if (address) {
-   subnetTemplateObj.address = address;
-} else if (subnetTemplateObj.address) {
-   subnetTemplateObj.address = "";
-}
 if (description) {
    subnetTemplateObj.description = description;
 } else if (subnetTemplateObj.description) {
@@ -72,8 +64,6 @@ subnetTemplateObj.splitSubnet = splitSubnet;
 subnetTemplateObj.save(session, 1);]]></script>
 <in-binding><bind name='subnetTemplateObj' type='VSPK:SubnetTemplate' export-name="subnetTemplateObj" ></bind>
 
-<bind name='address' type='string' export-name="address" ></bind>
-
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
@@ -93,9 +83,6 @@ subnetTemplateObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="subnetTemplateObj"><desc><![CDATA[subnetTemplateObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
-
-<p-param name="address"><desc><![CDATA[address]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetTemplateObj.address]]></p-qual></p-param>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#subnetTemplateObj.description]]></p-qual></p-param>

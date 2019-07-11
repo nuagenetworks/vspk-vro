@@ -67,6 +67,12 @@ public class DUCGroup extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "ducMeshGroupID")
+    protected Long ducMeshGroupID;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected DUCGroupEntityScope entityScope;
     
@@ -155,6 +161,28 @@ public class DUCGroup extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DucMeshGroupID", readOnly = false)   
+    public Long getDucMeshGroupID() {
+       return ducMeshGroupID;
+    }
+
+    @JsonIgnore
+    public void setDucMeshGroupID(Long value) { 
+        this.ducMeshGroupID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -301,7 +329,7 @@ public class DUCGroup extends BaseObject {
         }
     }
     public String toString() {
-        return "DUCGroup [" + "associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", function=" + function + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DUCGroup [" + "associatedPerformanceMonitorID=" + associatedPerformanceMonitorID + ", description=" + description + ", ducMeshGroupID=" + ducMeshGroupID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", function=" + function + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -63,6 +63,9 @@ public class DHCPOption extends BaseObject {
     @JsonProperty(value = "actualValues")
     protected java.util.List<String> actualValues;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected DHCPOptionEntityScope entityScope;
     
@@ -159,6 +162,17 @@ public class DHCPOption extends BaseObject {
     @JsonIgnore
     public void setActualValues(java.util.List<String> value) { 
         this.actualValues = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -290,7 +304,7 @@ public class DHCPOption extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DHCPOption [" + "actualType=" + actualType + ", actualValues=" + actualValues + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", length=" + length + ", type=" + type + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DHCPOption [" + "actualType=" + actualType + ", actualValues=" + actualValues + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", length=" + length + ", type=" + type + ", value=" + value + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -127,6 +127,9 @@ public class VLAN extends BaseObject {
     @JsonProperty(value = "ducVlan")
     protected Boolean ducVlan;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected VLANEntityScope entityScope;
     
@@ -391,6 +394,17 @@ public class VLAN extends BaseObject {
     @JsonIgnore
     public void setDucVlan(Boolean value) { 
         this.ducVlan = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -758,7 +772,7 @@ public class VLAN extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UPLINKCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VLAN [" + "associatedBGPProfileID=" + associatedBGPProfileID + ", associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", restricted=" + restricted + ", shuntVLAN=" + shuntVLAN + ", status=" + status + ", templateID=" + templateID + ", type=" + type + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", value=" + value + ", vportID=" + vportID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VLAN [" + "associatedBGPProfileID=" + associatedBGPProfileID + ", associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", restricted=" + restricted + ", shuntVLAN=" + shuntVLAN + ", status=" + status + ", templateID=" + templateID + ", type=" + type + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", value=" + value + ", vportID=" + vportID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

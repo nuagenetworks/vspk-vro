@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum WirelessPortStatus {
 
-    INITIALIZED("INITIALIZED", "INITIALIZED"), ORPHAN("ORPHAN", "ORPHAN"), READY("READY", "READY"), MISMATCH("MISMATCH", "MISMATCH");
+    INITIALIZED("INITIALIZED", "INITIALIZED"), MISMATCH("MISMATCH", "MISMATCH"), ORPHAN("ORPHAN", "ORPHAN"), READY("READY", "READY");
 
     private final String id;
     private final String name;
@@ -63,6 +63,11 @@ public enum WirelessPortStatus {
         return INITIALIZED;
     }
     
+    @VsoProperty(displayName = "MISMATCH", readOnly = true)
+    public WirelessPortStatus getMISMATCH() {
+        return MISMATCH;
+    }
+    
     @VsoProperty(displayName = "ORPHAN", readOnly = true)
     public WirelessPortStatus getORPHAN() {
         return ORPHAN;
@@ -71,11 +76,6 @@ public enum WirelessPortStatus {
     @VsoProperty(displayName = "READY", readOnly = true)
     public WirelessPortStatus getREADY() {
         return READY;
-    }
-    
-    @VsoProperty(displayName = "MISMATCH", readOnly = true)
-    public WirelessPortStatus getMISMATCH() {
-        return MISMATCH;
     }
     
 

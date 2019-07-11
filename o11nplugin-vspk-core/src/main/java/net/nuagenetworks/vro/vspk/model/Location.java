@@ -67,6 +67,9 @@ public class Location extends BaseObject {
     @JsonProperty(value = "country")
     protected String country;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected LocationEntityScope entityScope;
     
@@ -191,6 +194,17 @@ public class Location extends BaseObject {
     @JsonIgnore
     public void setCountry(String value) { 
         this.country = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -349,7 +363,7 @@ public class Location extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Location [" + "address=" + address + ", associatedEntityName=" + associatedEntityName + ", associatedEntityType=" + associatedEntityType + ", country=" + country + ", entityScope=" + entityScope + ", externalID=" + externalID + ", ignoreGeocode=" + ignoreGeocode + ", lastUpdatedBy=" + lastUpdatedBy + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", state=" + state + ", timeZoneID=" + timeZoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Location [" + "address=" + address + ", associatedEntityName=" + associatedEntityName + ", associatedEntityType=" + associatedEntityType + ", country=" + country + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", ignoreGeocode=" + ignoreGeocode + ", lastUpdatedBy=" + lastUpdatedBy + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", state=" + state + ", timeZoneID=" + timeZoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

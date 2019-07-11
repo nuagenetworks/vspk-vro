@@ -32,7 +32,11 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayProfileIKEGatewayIdentifierType;
 
+import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayProfileAssociatedCloudType;
+
 import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayProfileAssociatedIKEAuthenticationType;
+
+import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayProfileConfigurationStatus;
 
 import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayProfileEntityScope;
 
@@ -70,6 +74,12 @@ public class IKEGatewayProfile extends BaseObject {
     @JsonProperty(value = "antiReplayCheck")
     protected Boolean antiReplayCheck;
     
+    @JsonProperty(value = "associatedCloudID")
+    protected String associatedCloudID;
+    
+    @JsonProperty(value = "associatedCloudType")
+    protected IKEGatewayProfileAssociatedCloudType associatedCloudType;
+    
     @JsonProperty(value = "associatedEnterpriseID")
     protected String associatedEnterpriseID;
     
@@ -85,8 +95,14 @@ public class IKEGatewayProfile extends BaseObject {
     @JsonProperty(value = "associatedIKEGatewayID")
     protected String associatedIKEGatewayID;
     
+    @JsonProperty(value = "configurationStatus")
+    protected IKEGatewayProfileConfigurationStatus configurationStatus;
+    
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected IKEGatewayProfileEntityScope entityScope;
@@ -185,6 +201,28 @@ public class IKEGatewayProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedCloudID", readOnly = false)   
+    public String getAssociatedCloudID() {
+       return associatedCloudID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedCloudID(String value) { 
+        this.associatedCloudID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedCloudType", readOnly = false)   
+    public IKEGatewayProfileAssociatedCloudType getAssociatedCloudType() {
+       return associatedCloudType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedCloudType(IKEGatewayProfileAssociatedCloudType value) { 
+        this.associatedCloudType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedEnterpriseID", readOnly = false)   
     public String getAssociatedEnterpriseID() {
        return associatedEnterpriseID;
@@ -240,6 +278,17 @@ public class IKEGatewayProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ConfigurationStatus", readOnly = false)   
+    public IKEGatewayProfileConfigurationStatus getConfigurationStatus() {
+       return configurationStatus;
+    }
+
+    @JsonIgnore
+    public void setConfigurationStatus(IKEGatewayProfileConfigurationStatus value) { 
+        this.configurationStatus = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -248,6 +297,17 @@ public class IKEGatewayProfile extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -362,7 +422,7 @@ public class IKEGatewayProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IKEGatewayProfile [" + "IKEGatewayIdentifier=" + IKEGatewayIdentifier + ", IKEGatewayIdentifierType=" + IKEGatewayIdentifierType + ", antiReplayCheck=" + antiReplayCheck + ", associatedEnterpriseID=" + associatedEnterpriseID + ", associatedIKEAuthenticationID=" + associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + associatedIKEEncryptionProfileID + ", associatedIKEGatewayID=" + associatedIKEGatewayID + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", serviceClass=" + serviceClass + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IKEGatewayProfile [" + "IKEGatewayIdentifier=" + IKEGatewayIdentifier + ", IKEGatewayIdentifierType=" + IKEGatewayIdentifierType + ", antiReplayCheck=" + antiReplayCheck + ", associatedCloudID=" + associatedCloudID + ", associatedCloudType=" + associatedCloudType + ", associatedEnterpriseID=" + associatedEnterpriseID + ", associatedIKEAuthenticationID=" + associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + associatedIKEEncryptionProfileID + ", associatedIKEGatewayID=" + associatedIKEGatewayID + ", configurationStatus=" + configurationStatus + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", serviceClass=" + serviceClass + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

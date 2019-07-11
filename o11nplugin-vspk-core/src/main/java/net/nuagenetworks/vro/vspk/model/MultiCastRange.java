@@ -62,6 +62,9 @@ public class MultiCastRange extends BaseObject {
     @JsonProperty(value = "IPType")
     protected MultiCastRangeIPType IPType;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected MultiCastRangeEntityScope entityScope;
     
@@ -144,6 +147,17 @@ public class MultiCastRange extends BaseObject {
     @JsonIgnore
     public void setIPType(MultiCastRangeIPType value) { 
         this.IPType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -264,7 +278,7 @@ public class MultiCastRange extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "MultiCastRange [" + "IPType=" + IPType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "MultiCastRange [" + "IPType=" + IPType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

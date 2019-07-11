@@ -32,15 +32,13 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Container;
 
-import net.nuagenetworks.vro.vspk.model.HSC;
+import net.nuagenetworks.vro.vspk.model.ControllerVRSLink;
 
 import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.VM;
 
 import net.nuagenetworks.vro.vspk.model.VPort;
-
-import net.nuagenetworks.vro.vspk.model.VSC;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -84,11 +82,11 @@ public class VRSsFetcher extends BaseFetcher<VRS> {
         return null;
     }
     
-    @VsoProperty(displayName = "HSC", readOnly = true)
-    public HSC getHSC() {
+    @VsoProperty(displayName = "ControllerVRSLink", readOnly = true)
+    public ControllerVRSLink getControllerVRSLink() {
         RestObject obj = super.getParentRestObj();
-        if (obj instanceof HSC) {
-            return (HSC) obj;
+        if (obj instanceof ControllerVRSLink) {
+            return (ControllerVRSLink) obj;
         }
         
         return null;
@@ -119,16 +117,6 @@ public class VRSsFetcher extends BaseFetcher<VRS> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VPort) {
             return (VPort) obj;
-        }
-        
-        return null;
-    }
-    
-    @VsoProperty(displayName = "VSC", readOnly = true)
-    public VSC getVSC() {
-        RestObject obj = super.getParentRestObj();
-        if (obj instanceof VSC) {
-            return (VSC) obj;
         }
         
         return null;

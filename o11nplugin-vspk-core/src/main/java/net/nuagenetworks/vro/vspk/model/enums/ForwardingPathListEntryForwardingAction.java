@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum ForwardingPathListEntryForwardingAction {
 
-    IKE("IKE", "IKE"), UNDERLAY_PAT("UNDERLAY_PAT", "UNDERLAY_PAT"), UNDERLAY_ROUTE("UNDERLAY_ROUTE", "UNDERLAY_ROUTE");
+    IKE("IKE", "IKE"), OVERLAY("OVERLAY", "OVERLAY"), UNDERLAY_PAT("UNDERLAY_PAT", "UNDERLAY_PAT"), UNDERLAY_ROUTE("UNDERLAY_ROUTE", "UNDERLAY_ROUTE");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum ForwardingPathListEntryForwardingAction {
     @VsoProperty(displayName = "IKE", readOnly = true)
     public ForwardingPathListEntryForwardingAction getIKE() {
         return IKE;
+    }
+    
+    @VsoProperty(displayName = "OVERLAY", readOnly = true)
+    public ForwardingPathListEntryForwardingAction getOVERLAY() {
+        return OVERLAY;
     }
     
     @VsoProperty(displayName = "UNDERLAY_PAT", readOnly = true)

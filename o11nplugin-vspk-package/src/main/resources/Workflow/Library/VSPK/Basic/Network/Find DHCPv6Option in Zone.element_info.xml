@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Find DHCPv6Option in Zone</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0a1d7ccc-c07f-5741-b895-8740ab38263b</entry>
+</properties>

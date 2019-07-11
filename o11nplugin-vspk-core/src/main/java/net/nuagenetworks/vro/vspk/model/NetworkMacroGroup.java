@@ -33,6 +33,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.NetworkMacroGroupEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.NetworkMacroGroupMacroGroupType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -60,6 +62,9 @@ public class NetworkMacroGroup extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected NetworkMacroGroupEntityScope entityScope;
     
@@ -71,6 +76,9 @@ public class NetworkMacroGroup extends BaseObject {
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "macroGroupType")
+    protected NetworkMacroGroupMacroGroupType macroGroupType;
     
     @JsonProperty(value = "name")
     protected String name;
@@ -140,6 +148,17 @@ public class NetworkMacroGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public NetworkMacroGroupEntityScope getEntityScope() {
        return entityScope;
@@ -181,6 +200,17 @@ public class NetworkMacroGroup extends BaseObject {
     @JsonIgnore
     public void setLastUpdatedBy(String value) { 
         this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "MacroGroupType", readOnly = false)   
+    public NetworkMacroGroupMacroGroupType getMacroGroupType() {
+       return macroGroupType;
+    }
+
+    @JsonIgnore
+    public void setMacroGroupType(NetworkMacroGroupMacroGroupType value) { 
+        this.macroGroupType = value;
     }
     
     @JsonIgnore
@@ -266,7 +296,7 @@ public class NetworkMacroGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NetworkMacroGroup [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isSaaSType=" + isSaaSType + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NetworkMacroGroup [" + "description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isSaaSType=" + isSaaSType + ", lastUpdatedBy=" + lastUpdatedBy + ", macroGroupType=" + macroGroupType + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

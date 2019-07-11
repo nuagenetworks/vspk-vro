@@ -80,11 +80,20 @@ public class User extends BaseObject {
     @JsonProperty(value = "avatarType")
     protected UserAvatarType avatarType;
     
+    @JsonProperty(value = "disableCertificateAuth")
+    protected Boolean disableCertificateAuth;
+    
+    @JsonProperty(value = "disablePasswordAuth")
+    protected Boolean disablePasswordAuth;
+    
     @JsonProperty(value = "disabled")
     protected Boolean disabled;
     
     @JsonProperty(value = "email")
     protected String email;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected UserEntityScope entityScope;
@@ -225,6 +234,28 @@ public class User extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DisableCertificateAuth", readOnly = false)   
+    public Boolean getDisableCertificateAuth() {
+       return disableCertificateAuth;
+    }
+
+    @JsonIgnore
+    public void setDisableCertificateAuth(Boolean value) { 
+        this.disableCertificateAuth = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DisablePasswordAuth", readOnly = false)   
+    public Boolean getDisablePasswordAuth() {
+       return disablePasswordAuth;
+    }
+
+    @JsonIgnore
+    public void setDisablePasswordAuth(Boolean value) { 
+        this.disablePasswordAuth = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Disabled", readOnly = false)   
     public Boolean getDisabled() {
        return disabled;
@@ -244,6 +275,17 @@ public class User extends BaseObject {
     @JsonIgnore
     public void setEmail(String value) { 
         this.email = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -440,7 +482,7 @@ public class User extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "User [" + "LDAPUserDN=" + LDAPUserDN + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", email=" + email + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", managementMode=" + managementMode + ", mobileNumber=" + mobileNumber + ", password=" + password + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "User [" + "LDAPUserDN=" + LDAPUserDN + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", disableCertificateAuth=" + disableCertificateAuth + ", disablePasswordAuth=" + disablePasswordAuth + ", disabled=" + disabled + ", email=" + email + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", managementMode=" + managementMode + ", mobileNumber=" + mobileNumber + ", password=" + password + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

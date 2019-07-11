@@ -64,6 +64,9 @@ public class Monitorscope extends BaseObject {
     @JsonProperty(value = "destinationNSGs")
     protected java.util.List<String> destinationNSGs;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected MonitorscopeEntityScope entityScope;
     
@@ -161,6 +164,17 @@ public class Monitorscope extends BaseObject {
     @JsonIgnore
     public void setDestinationNSGs(java.util.List<String> value) { 
         this.destinationNSGs = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -286,7 +300,7 @@ public class Monitorscope extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Monitorscope [" + "allowAllDestinationNSGs=" + allowAllDestinationNSGs + ", allowAllSourceNSGs=" + allowAllSourceNSGs + ", destinationNSGs=" + destinationNSGs + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", readOnly=" + readOnly + ", sourceNSGs=" + sourceNSGs + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Monitorscope [" + "allowAllDestinationNSGs=" + allowAllDestinationNSGs + ", allowAllSourceNSGs=" + allowAllSourceNSGs + ", destinationNSGs=" + destinationNSGs + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", readOnly=" + readOnly + ", sourceNSGs=" + sourceNSGs + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

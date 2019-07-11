@@ -66,6 +66,9 @@ public class AddressMap extends BaseObject {
     @JsonProperty(value = "associatedPATNATPoolID")
     protected String associatedPATNATPoolID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected AddressMapEntityScope entityScope;
     
@@ -162,6 +165,17 @@ public class AddressMap extends BaseObject {
     @JsonIgnore
     public void setAssociatedPATNATPoolID(String value) { 
         this.associatedPATNATPoolID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -329,7 +343,7 @@ public class AddressMap extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.STATISTICSPOLICIES_FETCHER, getId());
         }
     }public String toString() {
-        return "AddressMap [" + "associatedPATNATPoolID=" + associatedPATNATPoolID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", privateIP=" + privateIP + ", privatePort=" + privatePort + ", publicIP=" + publicIP + ", publicPort=" + publicPort + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "AddressMap [" + "associatedPATNATPoolID=" + associatedPATNATPoolID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", privateIP=" + privateIP + ", privatePort=" + privatePort + ", publicIP=" + publicIP + ", publicPort=" + publicPort + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

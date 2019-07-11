@@ -70,6 +70,9 @@ public class LDAPConfiguration extends BaseObject {
     @JsonProperty(value = "certificate")
     protected String certificate;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enabled")
     protected Boolean enabled;
     
@@ -212,6 +215,17 @@ public class LDAPConfiguration extends BaseObject {
     @JsonIgnore
     public void setCertificate(String value) { 
         this.certificate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -403,7 +417,7 @@ public class LDAPConfiguration extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "LDAPConfiguration [" + "SSLEnabled=" + SSLEnabled + ", acceptAllCertificates=" + acceptAllCertificates + ", authorizationEnabled=" + authorizationEnabled + ", authorizingUserDN=" + authorizingUserDN + ", certificate=" + certificate + ", enabled=" + enabled + ", entityScope=" + entityScope + ", externalID=" + externalID + ", groupDN=" + groupDN + ", groupNamePrefix=" + groupNamePrefix + ", groupNameSuffix=" + groupNameSuffix + ", lastUpdatedBy=" + lastUpdatedBy + ", password=" + password + ", port=" + port + ", server=" + server + ", userDNTemplate=" + userDNTemplate + ", userNameAttribute=" + userNameAttribute + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "LDAPConfiguration [" + "SSLEnabled=" + SSLEnabled + ", acceptAllCertificates=" + acceptAllCertificates + ", authorizationEnabled=" + authorizationEnabled + ", authorizingUserDN=" + authorizingUserDN + ", certificate=" + certificate + ", embeddedMetadata=" + embeddedMetadata + ", enabled=" + enabled + ", entityScope=" + entityScope + ", externalID=" + externalID + ", groupDN=" + groupDN + ", groupNamePrefix=" + groupNamePrefix + ", groupNameSuffix=" + groupNameSuffix + ", lastUpdatedBy=" + lastUpdatedBy + ", password=" + password + ", port=" + port + ", server=" + server + ", userDNTemplate=" + userDNTemplate + ", userNameAttribute=" + userNameAttribute + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

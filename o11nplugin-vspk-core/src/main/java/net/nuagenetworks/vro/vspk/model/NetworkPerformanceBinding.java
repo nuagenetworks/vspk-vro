@@ -58,6 +58,9 @@ public class NetworkPerformanceBinding extends BaseObject {
     @JsonProperty(value = "associatedNetworkMeasurementID")
     protected String associatedNetworkMeasurementID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected NetworkPerformanceBindingEntityScope entityScope;
     
@@ -135,6 +138,17 @@ public class NetworkPerformanceBinding extends BaseObject {
     @JsonIgnore
     public void setAssociatedNetworkMeasurementID(String value) { 
         this.associatedNetworkMeasurementID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -249,7 +263,7 @@ public class NetworkPerformanceBinding extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NetworkPerformanceBinding [" + "associatedNetworkMeasurementID=" + associatedNetworkMeasurementID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NetworkPerformanceBinding [" + "associatedNetworkMeasurementID=" + associatedNetworkMeasurementID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", readOnly=" + readOnly + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

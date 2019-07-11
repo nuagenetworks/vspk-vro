@@ -67,6 +67,9 @@ public class AddressRange extends BaseObject {
     @JsonProperty(value = "IPType")
     protected AddressRangeIPType IPType;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected AddressRangeEntityScope entityScope;
     
@@ -162,6 +165,17 @@ public class AddressRange extends BaseObject {
     @JsonIgnore
     public void setIPType(AddressRangeIPType value) { 
         this.IPType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -282,7 +296,7 @@ public class AddressRange extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "AddressRange [" + "DHCPPoolType=" + DHCPPoolType + ", IPType=" + IPType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "AddressRange [" + "DHCPPoolType=" + DHCPPoolType + ", IPType=" + IPType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

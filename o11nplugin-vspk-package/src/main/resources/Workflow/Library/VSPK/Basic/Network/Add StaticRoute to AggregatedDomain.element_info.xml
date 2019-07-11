@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Add StaticRoute to AggregatedDomain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">02ce5582-dba2-5a9b-9fd3-ae342f16fbe5</entry>
+</properties>

@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.BGPPeersFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.ControllerVRSLinksFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -41,8 +43,6 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.MonitoringPortsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.StatisticsFetcher;
-
-import net.nuagenetworks.vro.vspk.model.fetchers.VRSsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.VSCEntityScope;
 
@@ -98,6 +98,9 @@ public class VSC extends BaseObject {
     @JsonProperty(value = "disks")
     protected java.util.List<DiskStat> disks;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected VSCEntityScope entityScope;
     
@@ -147,6 +150,9 @@ public class VSC extends BaseObject {
     private BGPPeersFetcher bGPPeers;
     
     @JsonIgnore
+    private ControllerVRSLinksFetcher controllerVRSLinks;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -164,14 +170,13 @@ public class VSC extends BaseObject {
     @JsonIgnore
     private StatisticsFetcher statistics;
     
-    @JsonIgnore
-    private VRSsFetcher vRSs;
-    
     @VsoConstructor
     public VSC() {
         alarms = new AlarmsFetcher(this);
         
         bGPPeers = new BGPPeersFetcher(this);
+        
+        controllerVRSLinks = new ControllerVRSLinksFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
         
@@ -184,8 +189,6 @@ public class VSC extends BaseObject {
         monitoringPorts = new MonitoringPortsFetcher(this);
         
         statistics = new StatisticsFetcher(this);
-        
-        vRSs = new VRSsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -320,6 +323,17 @@ public class VSC extends BaseObject {
     @JsonIgnore
     public void setDisks(java.util.List<DiskStat> value) { 
         this.disks = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -489,6 +503,12 @@ public class VSC extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ControllerVRSLinks", readOnly = true)   
+    public ControllerVRSLinksFetcher getControllerVRSLinks() {
+        return controllerVRSLinks;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -522,12 +542,6 @@ public class VSC extends BaseObject {
     @VsoProperty(displayName = "Statistics", readOnly = true)   
     public StatisticsFetcher getStatistics() {
         return statistics;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "VRSs", readOnly = true)   
-    public VRSsFetcher getVRSs() {
-        return vRSs;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -583,7 +597,7 @@ public class VSC extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VSC [" + "address=" + address + ", addresses=" + addresses + ", alreadyMarkedForUnavailable=" + alreadyMarkedForUnavailable + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", description=" + description + ", disks=" + disks + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", name=" + name + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", productVersion=" + productVersion + ", status=" + status + ", unavailableTimestamp=" + unavailableTimestamp + ", vsds=" + vsds + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VSC [" + "address=" + address + ", addresses=" + addresses + ", alreadyMarkedForUnavailable=" + alreadyMarkedForUnavailable + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", description=" + description + ", disks=" + disks + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", name=" + name + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", productVersion=" + productVersion + ", status=" + status + ", unavailableTimestamp=" + unavailableTimestamp + ", vsds=" + vsds + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

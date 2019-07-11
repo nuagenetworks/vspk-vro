@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.DeploymentFailure;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.AggregatedDomain;
+
 import net.nuagenetworks.vro.vspk.model.BGPNeighbor;
 
 import net.nuagenetworks.vro.vspk.model.BridgeInterface;
@@ -38,11 +40,15 @@ import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.EgressProfile;
 
+import net.nuagenetworks.vro.vspk.model.Enterprise;
+
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.IngressProfile;
 
 import net.nuagenetworks.vro.vspk.model.L2Domain;
+
+import net.nuagenetworks.vro.vspk.model.NetconfGateway;
 
 import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 
@@ -84,6 +90,16 @@ public class DeploymentFailuresFetcher extends BaseFetcher<DeploymentFailure> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "AggregatedDomain", readOnly = true)
+    public AggregatedDomain getAggregatedDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AggregatedDomain) {
+            return (AggregatedDomain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "BGPNeighbor", readOnly = true)
     public BGPNeighbor getBGPNeighbor() {
         RestObject obj = super.getParentRestObj();
@@ -124,6 +140,16 @@ public class DeploymentFailuresFetcher extends BaseFetcher<DeploymentFailure> {
         return null;
     }
     
+    @VsoProperty(displayName = "Enterprise", readOnly = true)
+    public Enterprise getEnterprise() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Enterprise) {
+            return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Gateway", readOnly = true)
     public Gateway getGateway() {
         RestObject obj = super.getParentRestObj();
@@ -149,6 +175,16 @@ public class DeploymentFailuresFetcher extends BaseFetcher<DeploymentFailure> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2Domain) {
             return (L2Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfGateway", readOnly = true)
+    public NetconfGateway getNetconfGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGateway) {
+            return (NetconfGateway) obj;
         }
         
         return null;

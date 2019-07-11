@@ -66,6 +66,9 @@ public class Alarm extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -81,14 +84,11 @@ public class Alarm extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
-    @JsonProperty(value = "name")
-    protected String name;
-    
     @JsonProperty(value = "numberOfOccurances")
     protected Long numberOfOccurances;
     
-    @JsonProperty(value = "reason")
-    protected String reason;
+    @JsonProperty(value = "remedy")
+    protected String remedy;
     
     @JsonProperty(value = "severity")
     protected AlarmSeverity severity;
@@ -98,6 +98,9 @@ public class Alarm extends BaseObject {
     
     @JsonProperty(value = "timestamp")
     protected Long timestamp;
+    
+    @JsonProperty(value = "title")
+    protected String title;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -115,7 +118,12 @@ public class Alarm extends BaseObject {
     @VsoProperty(displayName = "Session", readOnly = true)
     public Session getSession() {
         return (Session) super.getSession();
-    }@VsoProperty(displayName = "RestName", readOnly = true)
+    }
+    @VsoProperty(displayName = "Name", readOnly = false)
+    public String getName() {
+        return getId();
+    }
+    @VsoProperty(displayName = "RestName", readOnly = true)
     public String getRestName() {
         return super.getRestName();
     }
@@ -181,6 +189,17 @@ public class Alarm extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EnterpriseID", readOnly = false)   
     public String getEnterpriseID() {
        return enterpriseID;
@@ -236,17 +255,6 @@ public class Alarm extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Name", readOnly = false)   
-    public String getName() {
-       return name;
-    }
-
-    @JsonIgnore
-    public void setName(String value) { 
-        this.name = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "NumberOfOccurances", readOnly = false)   
     public Long getNumberOfOccurances() {
        return numberOfOccurances;
@@ -258,14 +266,14 @@ public class Alarm extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "Reason", readOnly = false)   
-    public String getReason() {
-       return reason;
+    @VsoProperty(displayName = "Remedy", readOnly = false)   
+    public String getRemedy() {
+       return remedy;
     }
 
     @JsonIgnore
-    public void setReason(String value) { 
-        this.reason = value;
+    public void setRemedy(String value) { 
+        this.remedy = value;
     }
     
     @JsonIgnore
@@ -299,6 +307,17 @@ public class Alarm extends BaseObject {
     @JsonIgnore
     public void setTimestamp(Long value) { 
         this.timestamp = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Title", readOnly = false)   
+    public String getTitle() {
+       return title;
+    }
+
+    @JsonIgnore
+    public void setTitle(String value) { 
+        this.title = value;
     }
     
     @JsonIgnore
@@ -358,7 +377,7 @@ public class Alarm extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Alarm [" + "acknowledged=" + acknowledged + ", alarmedObjectID=" + alarmedObjectID + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", numberOfOccurances=" + numberOfOccurances + ", reason=" + reason + ", severity=" + severity + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Alarm [" + "acknowledged=" + acknowledged + ", alarmedObjectID=" + alarmedObjectID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurances=" + numberOfOccurances + ", remedy=" + remedy + ", severity=" + severity + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", title=" + title + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

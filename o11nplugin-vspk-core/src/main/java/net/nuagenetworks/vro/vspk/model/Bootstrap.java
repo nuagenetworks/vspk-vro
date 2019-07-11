@@ -68,8 +68,14 @@ public class Bootstrap extends BaseObject {
     @JsonProperty(value = "ZFBMatchValue")
     protected String ZFBMatchValue;
     
+    @JsonProperty(value = "activationURL")
+    protected String activationURL;
+    
     @JsonProperty(value = "associatedEntityType")
     protected String associatedEntityType;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected BootstrapEntityScope entityScope;
@@ -175,6 +181,17 @@ public class Bootstrap extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ActivationURL", readOnly = false)   
+    public String getActivationURL() {
+       return activationURL;
+    }
+
+    @JsonIgnore
+    public void setActivationURL(String value) { 
+        this.activationURL = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedEntityType", readOnly = false)   
     public String getAssociatedEntityType() {
        return associatedEntityType;
@@ -183,6 +200,17 @@ public class Bootstrap extends BaseObject {
     @JsonIgnore
     public void setAssociatedEntityType(String value) { 
         this.associatedEntityType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -297,7 +325,7 @@ public class Bootstrap extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Bootstrap [" + "ZFBInfo=" + ZFBInfo + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedEntityType=" + associatedEntityType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", installerID=" + installerID + ", lastUpdatedBy=" + lastUpdatedBy + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Bootstrap [" + "ZFBInfo=" + ZFBInfo + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", activationURL=" + activationURL + ", associatedEntityType=" + associatedEntityType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", installerID=" + installerID + ", lastUpdatedBy=" + lastUpdatedBy + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

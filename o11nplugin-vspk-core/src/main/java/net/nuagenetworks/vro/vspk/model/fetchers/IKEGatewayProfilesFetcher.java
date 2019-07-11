@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.IKEGatewayProfile;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.AzureCloud;
+
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -64,6 +66,16 @@ public class IKEGatewayProfilesFetcher extends BaseFetcher<IKEGatewayProfile> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "AzureCloud", readOnly = true)
+    public AzureCloud getAzureCloud() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AzureCloud) {
+            return (AzureCloud) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Enterprise", readOnly = true)
     public Enterprise getEnterprise() {
         RestObject obj = super.getParentRestObj();

@@ -77,6 +77,9 @@ public class PolicyGroup extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected PolicyGroupEntityScope entityScope;
     
@@ -211,6 +214,17 @@ public class PolicyGroup extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -396,7 +410,7 @@ public class PolicyGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "PolicyGroup [" + "EVPNCommunityTag=" + EVPNCommunityTag + ", assocPolicyGroupCategoryID=" + assocPolicyGroupCategoryID + ", assocPolicyGroupCategoryName=" + assocPolicyGroupCategoryName + ", description=" + description + ", entityScope=" + entityScope + ", entityState=" + entityState + ", external=" + external + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyGroupID=" + policyGroupID + ", templateID=" + templateID + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PolicyGroup [" + "EVPNCommunityTag=" + EVPNCommunityTag + ", assocPolicyGroupCategoryID=" + assocPolicyGroupCategoryID + ", assocPolicyGroupCategoryName=" + assocPolicyGroupCategoryName + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", entityState=" + entityState + ", external=" + external + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyGroupID=" + policyGroupID + ", templateID=" + templateID + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

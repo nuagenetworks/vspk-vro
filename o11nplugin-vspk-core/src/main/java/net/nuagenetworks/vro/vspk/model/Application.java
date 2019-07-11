@@ -95,6 +95,9 @@ public class Application extends BaseObject {
     @JsonProperty(value = "destinationPort")
     protected String destinationPort;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enablePPS")
     protected Boolean enablePPS;
     
@@ -296,6 +299,17 @@ public class Application extends BaseObject {
     @JsonIgnore
     public void setDestinationPort(String value) { 
         this.destinationPort = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -584,7 +598,7 @@ public class Application extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.MONITORSCOPES_FETCHER, getId());
         }
     }public String toString() {
-        return "Application [" + "DSCP=" + DSCP + ", appId=" + appId + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", bandwidth=" + bandwidth + ", certificateCommonName=" + certificateCommonName + ", description=" + description + ", destinationIP=" + destinationIP + ", destinationPort=" + destinationPort + ", enablePPS=" + enablePPS + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", networkSymmetry=" + networkSymmetry + ", oneWayDelay=" + oneWayDelay + ", oneWayJitter=" + oneWayJitter + ", oneWayLoss=" + oneWayLoss + ", optimizePathSelection=" + optimizePathSelection + ", performanceMonitorType=" + performanceMonitorType + ", postClassificationPath=" + postClassificationPath + ", preClassificationPath=" + preClassificationPath + ", protocol=" + protocol + ", readOnly=" + readOnly + ", sourceIP=" + sourceIP + ", sourcePort=" + sourcePort + ", symmetry=" + symmetry + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Application [" + "DSCP=" + DSCP + ", appId=" + appId + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", bandwidth=" + bandwidth + ", certificateCommonName=" + certificateCommonName + ", description=" + description + ", destinationIP=" + destinationIP + ", destinationPort=" + destinationPort + ", embeddedMetadata=" + embeddedMetadata + ", enablePPS=" + enablePPS + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", networkSymmetry=" + networkSymmetry + ", oneWayDelay=" + oneWayDelay + ", oneWayJitter=" + oneWayJitter + ", oneWayLoss=" + oneWayLoss + ", optimizePathSelection=" + optimizePathSelection + ", performanceMonitorType=" + performanceMonitorType + ", postClassificationPath=" + postClassificationPath + ", preClassificationPath=" + preClassificationPath + ", protocol=" + protocol + ", readOnly=" + readOnly + ", sourceIP=" + sourceIP + ", sourcePort=" + sourcePort + ", symmetry=" + symmetry + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

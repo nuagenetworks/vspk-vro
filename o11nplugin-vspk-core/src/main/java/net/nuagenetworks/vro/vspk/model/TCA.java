@@ -85,6 +85,9 @@ public class TCA extends BaseObject {
     @JsonProperty(value = "displayStatus")
     protected String displayStatus;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected TCAEntityScope entityScope;
     
@@ -244,6 +247,17 @@ public class TCA extends BaseObject {
     @JsonIgnore
     public void setDisplayStatus(String value) { 
         this.displayStatus = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -444,7 +458,7 @@ public class TCA extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "TCA [" + "URLEndPoint=" + URLEndPoint + ", action=" + action + ", count=" + count + ", description=" + description + ", disable=" + disable + ", displayStatus=" + displayStatus + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", metric=" + metric + ", name=" + name + ", period=" + period + ", status=" + status + ", targetPolicyGroupID=" + targetPolicyGroupID + ", threshold=" + threshold + ", throttleTime=" + throttleTime + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "TCA [" + "URLEndPoint=" + URLEndPoint + ", action=" + action + ", count=" + count + ", description=" + description + ", disable=" + disable + ", displayStatus=" + displayStatus + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", metric=" + metric + ", name=" + name + ", period=" + period + ", status=" + status + ", targetPolicyGroupID=" + targetPolicyGroupID + ", threshold=" + threshold + ", throttleTime=" + throttleTime + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

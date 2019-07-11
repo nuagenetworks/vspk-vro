@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ad06898b-2912-5f3e-b97f-cd42c8c1c47e"  version="6.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit Test]]></display-name>
+<ref-types><![CDATA[(VSPK:Test)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='testObj' type='VSPK:Test' >
+</param>
+
+<param name='associatedTestDefinitionID' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = testObj.session;
+
+if (associatedTestDefinitionID) {
+   testObj.associatedTestDefinitionID = associatedTestDefinitionID;
+} else if (testObj.associatedTestDefinitionID) {
+   testObj.associatedTestDefinitionID = "";
+}
+if (description) {
+   testObj.description = description;
+} else if (testObj.description) {
+   testObj.description = "";
+}
+if (externalID) {
+   testObj.externalID = externalID;
+} else if (testObj.externalID) {
+   testObj.externalID = "";
+}
+if (name) {
+   testObj.name = name;
+} else if (testObj.name) {
+   testObj.name = "";
+}
+testObj.save(session, 1);]]></script>
+<in-binding><bind name='testObj' type='VSPK:Test' export-name="testObj" ></bind>
+
+<bind name='associatedTestDefinitionID' type='string' export-name="associatedTestDefinitionID" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="testObj"><desc><![CDATA[testObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="associatedTestDefinitionID"><desc><![CDATA[associatedTestDefinitionID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#testObj.associatedTestDefinitionID]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#testObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#testObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#testObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

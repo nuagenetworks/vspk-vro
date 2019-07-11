@@ -53,6 +53,9 @@ public class Ltestatistics extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "endTime")
     protected Long endTime;
     
@@ -118,6 +121,17 @@ public class Ltestatistics extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "EndTime", readOnly = false)   
     public Long getEndTime() {
@@ -219,7 +233,7 @@ public class Ltestatistics extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Ltestatistics [" + "endTime=" + endTime + ", startTime=" + startTime + ", statsData=" + statsData + ", version=" + version + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Ltestatistics [" + "embeddedMetadata=" + embeddedMetadata + ", endTime=" + endTime + ", startTime=" + startTime + ", statsData=" + statsData + ", version=" + version + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

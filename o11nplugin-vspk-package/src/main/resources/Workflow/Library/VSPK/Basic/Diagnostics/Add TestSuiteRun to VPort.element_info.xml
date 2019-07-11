@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Diagnostics</entry>
+<entry key="name">Add TestSuiteRun to VPort</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0d21a2c1-e8a2-5895-846d-f420f911deef</entry>
+</properties>

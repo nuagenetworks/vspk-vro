@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Applicationperformancemanagementbinding;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.AggregatedDomain;
+
 import net.nuagenetworks.vro.vspk.model.Applicationperformancemanagement;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
@@ -68,6 +70,16 @@ public class ApplicationperformancemanagementbindingsFetcher extends BaseFetcher
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "AggregatedDomain", readOnly = true)
+    public AggregatedDomain getAggregatedDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AggregatedDomain) {
+            return (AggregatedDomain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Applicationperformancemanagement", readOnly = true)
     public Applicationperformancemanagement getApplicationperformancemanagement() {
         RestObject obj = super.getParentRestObj();

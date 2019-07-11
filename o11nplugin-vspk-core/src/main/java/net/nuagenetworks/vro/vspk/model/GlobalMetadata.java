@@ -64,6 +64,9 @@ public class GlobalMetadata extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected GlobalMetadataEntityScope entityScope;
     
@@ -164,6 +167,17 @@ public class GlobalMetadata extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -300,7 +314,7 @@ public class GlobalMetadata extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "GlobalMetadata [" + "assocEntityType=" + assocEntityType + ", blob=" + blob + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", globalMetadata=" + globalMetadata + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataTagIDs=" + metadataTagIDs + ", name=" + name + ", networkNotificationDisabled=" + networkNotificationDisabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "GlobalMetadata [" + "assocEntityType=" + assocEntityType + ", blob=" + blob + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", globalMetadata=" + globalMetadata + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataTagIDs=" + metadataTagIDs + ", name=" + name + ", networkNotificationDisabled=" + networkNotificationDisabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

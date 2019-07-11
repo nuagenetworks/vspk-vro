@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.AddressMap;
 
 import net.nuagenetworks.vro.vspk.model.AddressRange;
 
+import net.nuagenetworks.vro.vspk.model.AggregatedDomain;
+
 import net.nuagenetworks.vro.vspk.model.Alarm;
 
 import net.nuagenetworks.vro.vspk.model.AllAlarm;
@@ -53,6 +55,8 @@ import net.nuagenetworks.vro.vspk.model.Applicationperformancemanagementbinding;
 import net.nuagenetworks.vro.vspk.model.AutoDiscoveredGateway;
 
 import net.nuagenetworks.vro.vspk.model.Avatar;
+
+import net.nuagenetworks.vro.vspk.model.AzureCloud;
 
 import net.nuagenetworks.vro.vspk.model.BFDSession;
 
@@ -86,6 +90,8 @@ import net.nuagenetworks.vro.vspk.model.ContainerInterface;
 
 import net.nuagenetworks.vro.vspk.model.ContainerResync;
 
+import net.nuagenetworks.vro.vspk.model.ControllerVRSLink;
+
 import net.nuagenetworks.vro.vspk.model.COSRemarkingPolicy;
 
 import net.nuagenetworks.vro.vspk.model.COSRemarkingPolicyTable;
@@ -106,9 +112,13 @@ import net.nuagenetworks.vro.vspk.model.Destinationurl;
 
 import net.nuagenetworks.vro.vspk.model.DHCPOption;
 
+import net.nuagenetworks.vro.vspk.model.DHCPv6Option;
+
 import net.nuagenetworks.vro.vspk.model.DiskStat;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
+
+import net.nuagenetworks.vro.vspk.model.DomainKindSummary;
 
 import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
@@ -270,6 +280,8 @@ import net.nuagenetworks.vro.vspk.model.Me;
 
 import net.nuagenetworks.vro.vspk.model.MirrorDestination;
 
+import net.nuagenetworks.vro.vspk.model.MirrorDestinationGroup;
+
 import net.nuagenetworks.vro.vspk.model.MonitoringPort;
 
 import net.nuagenetworks.vro.vspk.model.Monitorscope;
@@ -283,6 +295,8 @@ import net.nuagenetworks.vro.vspk.model.MultiCastRange;
 import net.nuagenetworks.vro.vspk.model.MultiNICVPort;
 
 import net.nuagenetworks.vro.vspk.model.NATMapEntry;
+
+import net.nuagenetworks.vro.vspk.model.NetconfGateway;
 
 import net.nuagenetworks.vro.vspk.model.NetconfManager;
 
@@ -378,6 +392,8 @@ import net.nuagenetworks.vro.vspk.model.RedirectionTargetTemplate;
 
 import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 
+import net.nuagenetworks.vro.vspk.model.RemoteVrsInfo;
+
 import net.nuagenetworks.vro.vspk.model.VMResync;
 
 import net.nuagenetworks.vro.vspk.model.RoutingPolicy;
@@ -419,6 +435,16 @@ import net.nuagenetworks.vro.vspk.model.SubnetTemplate;
 import net.nuagenetworks.vro.vspk.model.SystemConfig;
 
 import net.nuagenetworks.vro.vspk.model.TCA;
+
+import net.nuagenetworks.vro.vspk.model.Test;
+
+import net.nuagenetworks.vro.vspk.model.TestDefinition;
+
+import net.nuagenetworks.vro.vspk.model.TestRun;
+
+import net.nuagenetworks.vro.vspk.model.TestSuite;
+
+import net.nuagenetworks.vro.vspk.model.TestSuiteRun;
 
 import net.nuagenetworks.vro.vspk.model.Tier;
 
@@ -483,6 +509,8 @@ import net.nuagenetworks.vro.vspk.model.VRS;
 import net.nuagenetworks.vro.vspk.model.VRSAddressRange;
 
 import net.nuagenetworks.vro.vspk.model.VCenterVRSConfig;
+
+import net.nuagenetworks.vro.vspk.model.vrsInfo;
 
 import net.nuagenetworks.vro.vspk.model.VSC;
 
@@ -551,6 +579,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof AddressRange) {
             return (AddressRange) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "AggregatedDomain", readOnly = true)
+    public AggregatedDomain getAggregatedDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AggregatedDomain) {
+            return (AggregatedDomain) obj;
         }
         
         return null;
@@ -651,6 +689,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Avatar) {
             return (Avatar) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "AzureCloud", readOnly = true)
+    public AzureCloud getAzureCloud() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AzureCloud) {
+            return (AzureCloud) obj;
         }
         
         return null;
@@ -816,6 +864,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "ControllerVRSLink", readOnly = true)
+    public ControllerVRSLink getControllerVRSLink() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ControllerVRSLink) {
+            return (ControllerVRSLink) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "COSRemarkingPolicy", readOnly = true)
     public COSRemarkingPolicy getCOSRemarkingPolicy() {
         RestObject obj = super.getParentRestObj();
@@ -916,6 +974,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "DHCPv6Option", readOnly = true)
+    public DHCPv6Option getDHCPv6Option() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DHCPv6Option) {
+            return (DHCPv6Option) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "DiskStat", readOnly = true)
     public DiskStat getDiskStat() {
         RestObject obj = super.getParentRestObj();
@@ -931,6 +999,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Domain) {
             return (Domain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "DomainKindSummary", readOnly = true)
+    public DomainKindSummary getDomainKindSummary() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof DomainKindSummary) {
+            return (DomainKindSummary) obj;
         }
         
         return null;
@@ -1736,6 +1814,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "MirrorDestinationGroup", readOnly = true)
+    public MirrorDestinationGroup getMirrorDestinationGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof MirrorDestinationGroup) {
+            return (MirrorDestinationGroup) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "MonitoringPort", readOnly = true)
     public MonitoringPort getMonitoringPort() {
         RestObject obj = super.getParentRestObj();
@@ -1801,6 +1889,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NATMapEntry) {
             return (NATMapEntry) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfGateway", readOnly = true)
+    public NetconfGateway getNetconfGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGateway) {
+            return (NetconfGateway) obj;
         }
         
         return null;
@@ -2276,6 +2374,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "RemoteVrsInfo", readOnly = true)
+    public RemoteVrsInfo getRemoteVrsInfo() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RemoteVrsInfo) {
+            return (RemoteVrsInfo) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "VMResync", readOnly = true)
     public VMResync getVMResync() {
         RestObject obj = super.getParentRestObj();
@@ -2481,6 +2589,56 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof TCA) {
             return (TCA) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Test", readOnly = true)
+    public Test getTest() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Test) {
+            return (Test) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "TestDefinition", readOnly = true)
+    public TestDefinition getTestDefinition() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof TestDefinition) {
+            return (TestDefinition) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "TestRun", readOnly = true)
+    public TestRun getTestRun() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof TestRun) {
+            return (TestRun) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "TestSuite", readOnly = true)
+    public TestSuite getTestSuite() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof TestSuite) {
+            return (TestSuite) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "TestSuiteRun", readOnly = true)
+    public TestSuiteRun getTestSuiteRun() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof TestSuiteRun) {
+            return (TestSuiteRun) obj;
         }
         
         return null;
@@ -2801,6 +2959,16 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VCenterVRSConfig) {
             return (VCenterVRSConfig) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "vrsInfo", readOnly = true)
+    public vrsInfo getvrsInfo() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof vrsInfo) {
+            return (vrsInfo) obj;
         }
         
         return null;

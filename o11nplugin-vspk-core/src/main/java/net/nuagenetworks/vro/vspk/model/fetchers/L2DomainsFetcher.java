@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Me;
 
+import net.nuagenetworks.vro.vspk.model.NetconfGateway;
+
 import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -107,6 +109,16 @@ public class L2DomainsFetcher extends BaseFetcher<L2Domain> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfGateway", readOnly = true)
+    public NetconfGateway getNetconfGateway() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGateway) {
+            return (NetconfGateway) obj;
         }
         
         return null;

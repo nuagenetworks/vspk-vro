@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="fbd2775b-36f6-54b4-8965-720082093190"  version="6.0.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit MirrorDestinationGroup]]></display-name>
+<ref-types><![CDATA[(VSPK:MirrorDestinationGroup)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='mirrorDestinationGroupObj' type='VSPK:MirrorDestinationGroup' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = mirrorDestinationGroupObj.session;
+
+if (description) {
+   mirrorDestinationGroupObj.description = description;
+} else if (mirrorDestinationGroupObj.description) {
+   mirrorDestinationGroupObj.description = "";
+}
+if (externalID) {
+   mirrorDestinationGroupObj.externalID = externalID;
+} else if (mirrorDestinationGroupObj.externalID) {
+   mirrorDestinationGroupObj.externalID = "";
+}
+if (name) {
+   mirrorDestinationGroupObj.name = name;
+} else if (mirrorDestinationGroupObj.name) {
+   mirrorDestinationGroupObj.name = "";
+}
+mirrorDestinationGroupObj.save(session, 1);]]></script>
+<in-binding><bind name='mirrorDestinationGroupObj' type='VSPK:MirrorDestinationGroup' export-name="mirrorDestinationGroupObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="mirrorDestinationGroupObj"><desc><![CDATA[mirrorDestinationGroupObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#mirrorDestinationGroupObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#mirrorDestinationGroupObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#mirrorDestinationGroupObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Stats</entry>
+<entry key="name">Find TCA in AggregatedDomain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2a78c1c8-4a4a-50e5-b137-8cc73df5f207</entry>
+</properties>

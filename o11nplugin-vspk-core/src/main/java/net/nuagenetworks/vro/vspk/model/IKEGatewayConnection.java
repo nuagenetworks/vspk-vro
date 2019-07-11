@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
@@ -40,7 +42,11 @@ import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayConnectionNSGIdentifierT
 
 import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayConnectionNSGRole;
 
+import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayConnectionAssociatedCloudType;
+
 import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayConnectionAssociatedIKEAuthenticationType;
+
+import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayConnectionConfigurationStatus;
 
 import net.nuagenetworks.vro.vspk.model.enums.IKEGatewayConnectionEntityScope;
 import net.nuagenetworks.bambou.RestException;
@@ -79,6 +85,12 @@ public class IKEGatewayConnection extends BaseObject {
     @JsonProperty(value = "allowAnySubnet")
     protected Boolean allowAnySubnet;
     
+    @JsonProperty(value = "associatedCloudID")
+    protected String associatedCloudID;
+    
+    @JsonProperty(value = "associatedCloudType")
+    protected IKEGatewayConnectionAssociatedCloudType associatedCloudType;
+    
     @JsonProperty(value = "associatedIKEAuthenticationID")
     protected String associatedIKEAuthenticationID;
     
@@ -93,6 +105,12 @@ public class IKEGatewayConnection extends BaseObject {
     
     @JsonProperty(value = "associatedVLANID")
     protected String associatedVLANID;
+    
+    @JsonProperty(value = "configurationStatus")
+    protected IKEGatewayConnectionConfigurationStatus configurationStatus;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected IKEGatewayConnectionEntityScope entityScope;
@@ -128,6 +146,9 @@ public class IKEGatewayConnection extends BaseObject {
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
+    private JobsFetcher jobs;
+    
+    @JsonIgnore
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
@@ -141,6 +162,8 @@ public class IKEGatewayConnection extends BaseObject {
         alarms = new AlarmsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        jobs = new JobsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         
@@ -229,6 +252,28 @@ public class IKEGatewayConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedCloudID", readOnly = false)   
+    public String getAssociatedCloudID() {
+       return associatedCloudID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedCloudID(String value) { 
+        this.associatedCloudID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedCloudType", readOnly = false)   
+    public IKEGatewayConnectionAssociatedCloudType getAssociatedCloudType() {
+       return associatedCloudType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedCloudType(IKEGatewayConnectionAssociatedCloudType value) { 
+        this.associatedCloudType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedIKEAuthenticationID", readOnly = false)   
     public String getAssociatedIKEAuthenticationID() {
        return associatedIKEAuthenticationID;
@@ -281,6 +326,28 @@ public class IKEGatewayConnection extends BaseObject {
     @JsonIgnore
     public void setAssociatedVLANID(String value) { 
         this.associatedVLANID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ConfigurationStatus", readOnly = false)   
+    public IKEGatewayConnectionConfigurationStatus getConfigurationStatus() {
+       return configurationStatus;
+    }
+
+    @JsonIgnore
+    public void setConfigurationStatus(IKEGatewayConnectionConfigurationStatus value) { 
+        this.configurationStatus = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -395,6 +462,12 @@ public class IKEGatewayConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Jobs", readOnly = true)   
+    public JobsFetcher getJobs() {
+        return jobs;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Metadatas", readOnly = true)   
     public MetadatasFetcher getMetadatas() {
         return metadatas;
@@ -468,6 +541,14 @@ public class IKEGatewayConnection extends BaseObject {
         }
     }
     @VsoMethod
+    public void createJob(Session session, Job childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.JOBS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -475,7 +556,7 @@ public class IKEGatewayConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "IKEGatewayConnection [" + "NSGIdentifier=" + NSGIdentifier + ", NSGIdentifierType=" + NSGIdentifierType + ", NSGRole=" + NSGRole + ", allowAnySubnet=" + allowAnySubnet + ", associatedIKEAuthenticationID=" + associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + associatedIKEGatewayProfileID + ", associatedVLANID=" + associatedVLANID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mark=" + mark + ", name=" + name + ", portVLANName=" + portVLANName + ", priority=" + priority + ", sequence=" + sequence + ", unencryptedPSK=" + unencryptedPSK + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IKEGatewayConnection [" + "NSGIdentifier=" + NSGIdentifier + ", NSGIdentifierType=" + NSGIdentifierType + ", NSGRole=" + NSGRole + ", allowAnySubnet=" + allowAnySubnet + ", associatedCloudID=" + associatedCloudID + ", associatedCloudType=" + associatedCloudType + ", associatedIKEAuthenticationID=" + associatedIKEAuthenticationID + ", associatedIKEAuthenticationType=" + associatedIKEAuthenticationType + ", associatedIKEEncryptionProfileID=" + associatedIKEEncryptionProfileID + ", associatedIKEGatewayProfileID=" + associatedIKEGatewayProfileID + ", associatedVLANID=" + associatedVLANID + ", configurationStatus=" + configurationStatus + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mark=" + mark + ", name=" + name + ", portVLANName=" + portVLANName + ", priority=" + priority + ", sequence=" + sequence + ", unencryptedPSK=" + unencryptedPSK + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

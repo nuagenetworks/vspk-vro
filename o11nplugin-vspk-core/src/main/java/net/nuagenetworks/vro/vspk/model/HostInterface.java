@@ -28,6 +28,8 @@
 package net.nuagenetworks.vro.vspk.model;
 import net.nuagenetworks.vro.vspk.model.fetchers.DHCPOptionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.DHCPv6OptionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
@@ -109,6 +111,9 @@ public class HostInterface extends BaseObject {
     @JsonProperty(value = "domainName")
     protected String domainName;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected HostInterfaceEntityScope entityScope;
     
@@ -146,6 +151,9 @@ public class HostInterface extends BaseObject {
     private DHCPOptionsFetcher dHCPOptions;
     
     @JsonIgnore
+    private DHCPv6OptionsFetcher dHCPv6Options;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -181,6 +189,8 @@ public class HostInterface extends BaseObject {
     @VsoConstructor
     public HostInterface() {
         dHCPOptions = new DHCPOptionsFetcher(this);
+        
+        dHCPv6Options = new DHCPv6OptionsFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
         
@@ -351,6 +361,17 @@ public class HostInterface extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public HostInterfaceEntityScope getEntityScope() {
        return entityScope;
@@ -478,6 +499,12 @@ public class HostInterface extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DHCPv6Options", readOnly = true)   
+    public DHCPv6OptionsFetcher getDHCPv6Options() {
+        return dHCPv6Options;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -596,7 +623,7 @@ public class HostInterface extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.QOSS_FETCHER, getId());
         }
     }public String toString() {
-        return "HostInterface [" + "IPAddress=" + IPAddress + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", MAC=" + MAC + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "HostInterface [" + "IPAddress=" + IPAddress + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", MAC=" + MAC + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", tierID=" + tierID + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

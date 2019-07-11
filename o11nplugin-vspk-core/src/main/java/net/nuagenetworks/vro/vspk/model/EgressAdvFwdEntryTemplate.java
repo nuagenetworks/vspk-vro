@@ -118,6 +118,9 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     @JsonProperty(value = "domainName")
     protected String domainName;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseName")
     protected String enterpriseName;
     
@@ -144,6 +147,9 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     
     @JsonProperty(value = "locationType")
     protected EgressAdvFwdEntryTemplateLocationType locationType;
+    
+    @JsonProperty(value = "mirrorDestinationGroupID")
+    protected String mirrorDestinationGroupID;
     
     @JsonProperty(value = "mirrorDestinationID")
     protected String mirrorDestinationID;
@@ -180,6 +186,9 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     
     @JsonProperty(value = "webFilterID")
     protected String webFilterID;
+    
+    @JsonProperty(value = "webFilterStatsLoggingEnabled")
+    protected Boolean webFilterStatsLoggingEnabled;
     
     @JsonProperty(value = "webFilterType")
     protected EgressAdvFwdEntryTemplateWebFilterType webFilterType;
@@ -403,6 +412,17 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EnterpriseName", readOnly = false)   
     public String getEnterpriseName() {
        return enterpriseName;
@@ -499,6 +519,17 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     @JsonIgnore
     public void setLocationType(EgressAdvFwdEntryTemplateLocationType value) { 
         this.locationType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "MirrorDestinationGroupID", readOnly = false)   
+    public String getMirrorDestinationGroupID() {
+       return mirrorDestinationGroupID;
+    }
+
+    @JsonIgnore
+    public void setMirrorDestinationGroupID(String value) { 
+        this.mirrorDestinationGroupID = value;
     }
     
     @JsonIgnore
@@ -634,6 +665,17 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "WebFilterStatsLoggingEnabled", readOnly = false)   
+    public Boolean getWebFilterStatsLoggingEnabled() {
+       return webFilterStatsLoggingEnabled;
+    }
+
+    @JsonIgnore
+    public void setWebFilterStatsLoggingEnabled(Boolean value) { 
+        this.webFilterStatsLoggingEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "WebFilterType", readOnly = false)   
     public EgressAdvFwdEntryTemplateWebFilterType getWebFilterType() {
        return webFilterType;
@@ -701,7 +743,7 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectVPortTagID=" + redirectVPortTagID + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", webFilterID=" + webFilterID + ", webFilterType=" + webFilterType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationGroupID=" + mirrorDestinationGroupID + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectVPortTagID=" + redirectVPortTagID + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", webFilterID=" + webFilterID + ", webFilterStatsLoggingEnabled=" + webFilterStatsLoggingEnabled + ", webFilterType=" + webFilterType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

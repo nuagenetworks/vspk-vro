@@ -66,6 +66,9 @@ public class Destinationurl extends BaseObject {
     @JsonProperty(value = "downThresholdCount")
     protected Long downThresholdCount;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected DestinationurlEntityScope entityScope;
     
@@ -171,6 +174,17 @@ public class Destinationurl extends BaseObject {
     @JsonIgnore
     public void setDownThresholdCount(Long value) { 
         this.downThresholdCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -307,7 +321,7 @@ public class Destinationurl extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Destinationurl [" + "HTTPMethod=" + HTTPMethod + ", URL=" + URL + ", downThresholdCount=" + downThresholdCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", packetCount=" + packetCount + ", percentageWeight=" + percentageWeight + ", probeInterval=" + probeInterval + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Destinationurl [" + "HTTPMethod=" + HTTPMethod + ", URL=" + URL + ", downThresholdCount=" + downThresholdCount + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", packetCount=" + packetCount + ", percentageWeight=" + percentageWeight + ", probeInterval=" + probeInterval + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

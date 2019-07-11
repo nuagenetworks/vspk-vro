@@ -63,6 +63,9 @@ public class PTranslationMap extends BaseObject {
     @JsonProperty(value = "associatedDomainID")
     protected String associatedDomainID;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected PTranslationMapEntityScope entityScope;
     
@@ -154,6 +157,17 @@ public class PTranslationMap extends BaseObject {
     @JsonIgnore
     public void setAssociatedDomainID(String value) { 
         this.associatedDomainID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -279,7 +293,7 @@ public class PTranslationMap extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "PTranslationMap [" + "SPATSourceList=" + SPATSourceList + ", associatedDomainID=" + associatedDomainID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mappingType=" + mappingType + ", providerAliasIP=" + providerAliasIP + ", providerIP=" + providerIP + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PTranslationMap [" + "SPATSourceList=" + SPATSourceList + ", associatedDomainID=" + associatedDomainID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mappingType=" + mappingType + ", providerAliasIP=" + providerAliasIP + ", providerIP=" + providerIP + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

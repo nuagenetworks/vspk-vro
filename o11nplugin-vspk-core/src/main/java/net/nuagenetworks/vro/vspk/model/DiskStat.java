@@ -60,6 +60,9 @@ public class DiskStat extends BaseObject {
     @JsonProperty(value = "available")
     protected Float available;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected DiskStatEntityScope entityScope;
     
@@ -135,6 +138,17 @@ public class DiskStat extends BaseObject {
     @JsonIgnore
     public void setAvailable(Float value) { 
         this.available = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -260,7 +274,7 @@ public class DiskStat extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DiskStat [" + "available=" + available + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", size=" + size + ", unit=" + unit + ", used=" + used + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DiskStat [" + "available=" + available + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", size=" + size + ", unit=" + unit + ", used=" + used + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -67,6 +67,9 @@ public class KeyServerMonitor extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseSecuredDataRecordCount")
     protected Long enterpriseSecuredDataRecordCount;
     
@@ -165,6 +168,17 @@ public class KeyServerMonitor extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "EnterpriseSecuredDataRecordCount", readOnly = false)   
     public Long getEnterpriseSecuredDataRecordCount() {
@@ -374,7 +388,7 @@ public class KeyServerMonitor extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "KeyServerMonitor [" + "enterpriseSecuredDataRecordCount=" + enterpriseSecuredDataRecordCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewaySecuredDataRecordCount=" + gatewaySecuredDataRecordCount + ", keyserverMonitorEncryptedSEKCount=" + keyserverMonitorEncryptedSEKCount + ", keyserverMonitorEncryptedSeedCount=" + keyserverMonitorEncryptedSeedCount + ", keyserverMonitorSEKCount=" + keyserverMonitorSEKCount + ", keyserverMonitorSeedCount=" + keyserverMonitorSeedCount + ", lastUpdateTime=" + lastUpdateTime + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "KeyServerMonitor [" + "embeddedMetadata=" + embeddedMetadata + ", enterpriseSecuredDataRecordCount=" + enterpriseSecuredDataRecordCount + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewaySecuredDataRecordCount=" + gatewaySecuredDataRecordCount + ", keyserverMonitorEncryptedSEKCount=" + keyserverMonitorEncryptedSEKCount + ", keyserverMonitorEncryptedSeedCount=" + keyserverMonitorEncryptedSeedCount + ", keyserverMonitorSEKCount=" + keyserverMonitorSEKCount + ", keyserverMonitorSeedCount=" + keyserverMonitorSeedCount + ", lastUpdateTime=" + lastUpdateTime + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

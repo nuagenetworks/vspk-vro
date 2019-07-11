@@ -62,6 +62,9 @@ public class NextHop extends BaseObject {
     @JsonProperty(value = "IPType")
     protected NextHopIPType IPType;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected NextHopEntityScope entityScope;
     
@@ -142,6 +145,17 @@ public class NextHop extends BaseObject {
     @JsonIgnore
     public void setIPType(NextHopIPType value) { 
         this.IPType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -267,7 +281,7 @@ public class NextHop extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NextHop [" + "IPType=" + IPType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", ip=" + ip + ", lastUpdatedBy=" + lastUpdatedBy + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NextHop [" + "IPType=" + IPType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", ip=" + ip + ", lastUpdatedBy=" + lastUpdatedBy + ", routeDistinguisher=" + routeDistinguisher + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

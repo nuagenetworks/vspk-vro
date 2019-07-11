@@ -66,6 +66,9 @@ public class CTranslationMap extends BaseObject {
     @JsonProperty(value = "customerIP")
     protected String customerIP;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected CTranslationMapEntityScope entityScope;
     
@@ -162,6 +165,17 @@ public class CTranslationMap extends BaseObject {
     @JsonIgnore
     public void setCustomerIP(String value) { 
         this.customerIP = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -265,7 +279,7 @@ public class CTranslationMap extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "CTranslationMap [" + "associatedDomainID=" + associatedDomainID + ", customerAliasIP=" + customerAliasIP + ", customerIP=" + customerIP + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mappingType=" + mappingType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "CTranslationMap [" + "associatedDomainID=" + associatedDomainID + ", customerAliasIP=" + customerAliasIP + ", customerIP=" + customerIP + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", mappingType=" + mappingType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

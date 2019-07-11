@@ -70,6 +70,9 @@ public class OverlayAddressPool extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "endAddressRange")
     protected String endAddressRange;
     
@@ -172,6 +175,17 @@ public class OverlayAddressPool extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -311,7 +325,7 @@ public class OverlayAddressPool extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.OVERLAYPATNATENTRIES_FETCHER, getId());
         }
     }public String toString() {
-        return "OverlayAddressPool [" + "IPType=" + IPType + ", associatedDomainID=" + associatedDomainID + ", description=" + description + ", endAddressRange=" + endAddressRange + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", startAddressRange=" + startAddressRange + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "OverlayAddressPool [" + "IPType=" + IPType + ", associatedDomainID=" + associatedDomainID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", endAddressRange=" + endAddressRange + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", startAddressRange=" + startAddressRange + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

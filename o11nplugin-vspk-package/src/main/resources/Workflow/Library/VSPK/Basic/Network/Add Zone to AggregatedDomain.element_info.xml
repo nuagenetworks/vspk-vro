@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Add Zone to AggregatedDomain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">88f94c61-9e4a-569a-898c-a89874e64436</entry>
+</properties>

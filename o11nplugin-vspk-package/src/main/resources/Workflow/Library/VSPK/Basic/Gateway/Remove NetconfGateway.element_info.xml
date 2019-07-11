@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Remove NetconfGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b9c964a9-640f-5a7b-b39b-3fb9acb07272</entry>
+</properties>

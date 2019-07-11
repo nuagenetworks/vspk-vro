@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Network</entry>
+<entry key="name">Add RoutingPolicy to AggregatedDomain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7044e020-79b4-5473-974c-3a223bc3e8fb</entry>
+</properties>

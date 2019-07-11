@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Sysmon</entry>
+<entry key="name">Remove ControllerVRSLink</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">88b9c0a0-d422-5b07-9ad5-2fac40e14a47</entry>
+</properties>

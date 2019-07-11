@@ -61,6 +61,9 @@ public class GatewaySecuredData extends BaseObject {
     @JsonProperty(value = "data")
     protected String data;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected GatewaySecuredDataEntityScope entityScope;
     
@@ -152,6 +155,17 @@ public class GatewaySecuredData extends BaseObject {
     @JsonIgnore
     public void setData(String value) { 
         this.data = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -277,7 +291,7 @@ public class GatewaySecuredData extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "GatewaySecuredData [" + "associatedEnterpriseID=" + associatedEnterpriseID + ", data=" + data + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayCertSerialNumber=" + gatewayCertSerialNumber + ", keyserverCertSerialNumber=" + keyserverCertSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", signedData=" + signedData + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "GatewaySecuredData [" + "associatedEnterpriseID=" + associatedEnterpriseID + ", data=" + data + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayCertSerialNumber=" + gatewayCertSerialNumber + ", keyserverCertSerialNumber=" + keyserverCertSerialNumber + ", lastUpdatedBy=" + lastUpdatedBy + ", signedData=" + signedData + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

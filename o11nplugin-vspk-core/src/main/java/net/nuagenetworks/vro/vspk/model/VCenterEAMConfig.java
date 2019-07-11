@@ -64,6 +64,9 @@ public class VCenterEAMConfig extends BaseObject {
     @JsonProperty(value = "eamServerPortType")
     protected String eamServerPortType;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected VCenterEAMConfigEntityScope entityScope;
     
@@ -166,6 +169,17 @@ public class VCenterEAMConfig extends BaseObject {
     @JsonIgnore
     public void setEamServerPortType(String value) { 
         this.eamServerPortType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -291,7 +305,7 @@ public class VCenterEAMConfig extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VCenterEAMConfig [" + "eamServerIP=" + eamServerIP + ", eamServerPortNumber=" + eamServerPortNumber + ", eamServerPortType=" + eamServerPortType + ", entityScope=" + entityScope + ", extensionKey=" + extensionKey + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", ovfURL=" + ovfURL + ", vibURL=" + vibURL + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VCenterEAMConfig [" + "eamServerIP=" + eamServerIP + ", eamServerPortNumber=" + eamServerPortNumber + ", eamServerPortType=" + eamServerPortType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", extensionKey=" + extensionKey + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", ovfURL=" + ovfURL + ", vibURL=" + vibURL + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum ForwardingPathListEntryUplinkPreference {
 
-    PRIMARY("PRIMARY", "PRIMARY"), SECONDARY("SECONDARY", "SECONDARY");
+    DEFAULT("DEFAULT", "DEFAULT"), PRIMARY("PRIMARY", "PRIMARY"), PRIMARY_SECONDARY("PRIMARY_SECONDARY", "PRIMARY_SECONDARY"), SECONDARY("SECONDARY", "SECONDARY"), SECONDARY_PRIMARY("SECONDARY_PRIMARY", "SECONDARY_PRIMARY");
 
     private final String id;
     private final String name;
@@ -58,14 +58,29 @@ public enum ForwardingPathListEntryUplinkPreference {
     }
 
     
+    @VsoProperty(displayName = "DEFAULT", readOnly = true)
+    public ForwardingPathListEntryUplinkPreference getDEFAULT() {
+        return DEFAULT;
+    }
+    
     @VsoProperty(displayName = "PRIMARY", readOnly = true)
     public ForwardingPathListEntryUplinkPreference getPRIMARY() {
         return PRIMARY;
     }
     
+    @VsoProperty(displayName = "PRIMARY_SECONDARY", readOnly = true)
+    public ForwardingPathListEntryUplinkPreference getPRIMARY_SECONDARY() {
+        return PRIMARY_SECONDARY;
+    }
+    
     @VsoProperty(displayName = "SECONDARY", readOnly = true)
     public ForwardingPathListEntryUplinkPreference getSECONDARY() {
         return SECONDARY;
+    }
+    
+    @VsoProperty(displayName = "SECONDARY_PRIMARY", readOnly = true)
+    public ForwardingPathListEntryUplinkPreference getSECONDARY_PRIMARY() {
+        return SECONDARY_PRIMARY;
     }
     
 

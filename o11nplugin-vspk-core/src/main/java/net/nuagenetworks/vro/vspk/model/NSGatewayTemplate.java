@@ -71,6 +71,9 @@ public class NSGatewayTemplate extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -171,6 +174,17 @@ public class NSGatewayTemplate extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -343,7 +357,7 @@ public class NSGatewayTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.NSPORTTEMPLATES_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGatewayTemplate [" + "SSHService=" + SSHService + ", description=" + description + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureAccessProfileID=" + infrastructureAccessProfileID + ", infrastructureProfileID=" + infrastructureProfileID + ", instanceSSHOverride=" + instanceSSHOverride + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", personality=" + personality + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGatewayTemplate [" + "SSHService=" + SSHService + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", infrastructureAccessProfileID=" + infrastructureAccessProfileID + ", infrastructureProfileID=" + infrastructureProfileID + ", instanceSSHOverride=" + instanceSSHOverride + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", personality=" + personality + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

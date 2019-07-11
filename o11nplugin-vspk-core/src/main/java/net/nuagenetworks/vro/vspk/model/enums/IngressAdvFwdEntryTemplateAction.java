@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum IngressAdvFwdEntryTemplateAction {
 
-    DROP("DROP", "DROP"), FORWARD("FORWARD", "FORWARD"), FORWARDING_PATH_LIST("FORWARDING_PATH_LIST", "FORWARDING_PATH_LIST"), REDIRECT("REDIRECT", "REDIRECT");
+    DROP("DROP", "DROP"), FORWARD("FORWARD", "FORWARD"), FORWARDING_PATH_LIST("FORWARDING_PATH_LIST", "FORWARDING_PATH_LIST"), REDIRECT("REDIRECT", "REDIRECT"), TRANSPARENT("TRANSPARENT", "TRANSPARENT");
 
     private final String id;
     private final String name;
@@ -76,6 +76,11 @@ public enum IngressAdvFwdEntryTemplateAction {
     @VsoProperty(displayName = "REDIRECT", readOnly = true)
     public IngressAdvFwdEntryTemplateAction getREDIRECT() {
         return REDIRECT;
+    }
+    
+    @VsoProperty(displayName = "TRANSPARENT", readOnly = true)
+    public IngressAdvFwdEntryTemplateAction getTRANSPARENT() {
+        return TRANSPARENT;
     }
     
 

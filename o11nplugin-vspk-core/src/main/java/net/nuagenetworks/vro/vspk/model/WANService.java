@@ -96,6 +96,9 @@ public class WANService extends BaseObject {
     @JsonProperty(value = "domainName")
     protected String domainName;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseName")
     protected String enterpriseName;
     
@@ -285,6 +288,17 @@ public class WANService extends BaseObject {
     @JsonIgnore
     public void setDomainName(String value) { 
         this.domainName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -538,7 +552,7 @@ public class WANService extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "WANService [" + "IRBEnabled=" + IRBEnabled + ", WANServiceIdentifier=" + WANServiceIdentifier + ", associatedDomainID=" + associatedDomainID + ", associatedVPNConnectID=" + associatedVPNConnectID + ", configType=" + configType + ", description=" + description + ", domainName=" + domainName + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", externalRouteTarget=" + externalRouteTarget + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", orphan=" + orphan + ", permittedAction=" + permittedAction + ", servicePolicy=" + servicePolicy + ", serviceType=" + serviceType + ", tunnelType=" + tunnelType + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "WANService [" + "IRBEnabled=" + IRBEnabled + ", WANServiceIdentifier=" + WANServiceIdentifier + ", associatedDomainID=" + associatedDomainID + ", associatedVPNConnectID=" + associatedVPNConnectID + ", configType=" + configType + ", description=" + description + ", domainName=" + domainName + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", externalRouteTarget=" + externalRouteTarget + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", orphan=" + orphan + ", permittedAction=" + permittedAction + ", servicePolicy=" + servicePolicy + ", serviceType=" + serviceType + ", tunnelType=" + tunnelType + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

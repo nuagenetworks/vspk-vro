@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.HSC;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.ControllerVRSLink;
+
 import net.nuagenetworks.vro.vspk.model.VRS;
 
 import net.nuagenetworks.vro.vspk.model.VSP;
@@ -66,6 +68,16 @@ public class HSCsFetcher extends BaseFetcher<HSC> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "ControllerVRSLink", readOnly = true)
+    public ControllerVRSLink getControllerVRSLink() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ControllerVRSLink) {
+            return (ControllerVRSLink) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "VRS", readOnly = true)
     public VRS getVRS() {
         RestObject obj = super.getParentRestObj();

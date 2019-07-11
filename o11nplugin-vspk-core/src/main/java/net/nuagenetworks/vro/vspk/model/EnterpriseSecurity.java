@@ -59,6 +59,9 @@ public class EnterpriseSecurity extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "enterpriseID")
     protected String enterpriseID;
     
@@ -135,6 +138,17 @@ public class EnterpriseSecurity extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "EnterpriseID", readOnly = false)   
     public String getEnterpriseID() {
@@ -272,7 +286,7 @@ public class EnterpriseSecurity extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EnterpriseSecurity [" + "enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewaySecurityRevision=" + gatewaySecurityRevision + ", lastUpdatedBy=" + lastUpdatedBy + ", revision=" + revision + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EnterpriseSecurity [" + "embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewaySecurityRevision=" + gatewaySecurityRevision + ", lastUpdatedBy=" + lastUpdatedBy + ", revision=" + revision + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

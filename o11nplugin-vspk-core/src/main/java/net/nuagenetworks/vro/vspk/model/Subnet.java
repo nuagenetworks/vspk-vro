@@ -42,6 +42,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.DeploymentFailuresFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.DHCPOptionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.DHCPv6OptionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisePermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
@@ -123,6 +125,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.DHCPOPTIONS_FETCHER, type = Constants.DHCPOPTIONS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.DHCPV6OPTIONS_FETCHER, type = Constants.DHCPV6OPTIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPERMISSIONS_FETCHER, type = Constants.ENTERPRISEPERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.IPRESERVATIONS_FETCHER, type = Constants.IPRESERVATIONS_FETCHER), 
@@ -185,6 +189,9 @@ public class Subnet extends BaseObject {
     @JsonProperty(value = "associatedSharedNetworkResourceID")
     protected String associatedSharedNetworkResourceID;
     
+    @JsonProperty(value = "color")
+    protected Long color;
+    
     @JsonProperty(value = "customerID")
     protected Long customerID;
     
@@ -194,8 +201,17 @@ public class Subnet extends BaseObject {
     @JsonProperty(value = "domainServiceLabel")
     protected String domainServiceLabel;
     
-    @JsonProperty(value = "dynamicIpv6Address")
-    protected Boolean dynamicIpv6Address;
+    @JsonProperty(value = "dualStackDynamicIPAllocation")
+    protected Boolean dualStackDynamicIPAllocation;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
+    @JsonProperty(value = "enableDHCPv4")
+    protected Boolean enableDHCPv4;
+    
+    @JsonProperty(value = "enableDHCPv6")
+    protected Boolean enableDHCPv6;
     
     @JsonProperty(value = "encryption")
     protected SubnetEncryption encryption;
@@ -220,6 +236,9 @@ public class Subnet extends BaseObject {
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "linkLocalAddress")
+    protected String linkLocalAddress;
     
     @JsonProperty(value = "maintenanceMode")
     protected SubnetMaintenanceMode maintenanceMode;
@@ -278,6 +297,9 @@ public class Subnet extends BaseObject {
     @JsonProperty(value = "vnId")
     protected Long vnId;
     
+    @JsonProperty(value = "vrrpIPv6BackupAddress")
+    protected String vrrpIPv6BackupAddress;
+    
     @JsonIgnore
     private AddressRangesFetcher addressRanges;
     
@@ -301,6 +323,9 @@ public class Subnet extends BaseObject {
     
     @JsonIgnore
     private DHCPOptionsFetcher dHCPOptions;
+    
+    @JsonIgnore
+    private DHCPv6OptionsFetcher dHCPv6Options;
     
     @JsonIgnore
     private EnterprisePermissionsFetcher enterprisePermissions;
@@ -378,6 +403,8 @@ public class Subnet extends BaseObject {
         deploymentFailures = new DeploymentFailuresFetcher(this);
         
         dHCPOptions = new DHCPOptionsFetcher(this);
+        
+        dHCPv6Options = new DHCPv6OptionsFetcher(this);
         
         enterprisePermissions = new EnterprisePermissionsFetcher(this);
         
@@ -582,6 +609,17 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Color", readOnly = false)   
+    public Long getColor() {
+       return color;
+    }
+
+    @JsonIgnore
+    public void setColor(Long value) { 
+        this.color = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "CustomerID", readOnly = false)   
     public Long getCustomerID() {
        return customerID;
@@ -615,14 +653,47 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "DynamicIpv6Address", readOnly = false)   
-    public Boolean getDynamicIpv6Address() {
-       return dynamicIpv6Address;
+    @VsoProperty(displayName = "DualStackDynamicIPAllocation", readOnly = false)   
+    public Boolean getDualStackDynamicIPAllocation() {
+       return dualStackDynamicIPAllocation;
     }
 
     @JsonIgnore
-    public void setDynamicIpv6Address(Boolean value) { 
-        this.dynamicIpv6Address = value;
+    public void setDualStackDynamicIPAllocation(Boolean value) { 
+        this.dualStackDynamicIPAllocation = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnableDHCPv4", readOnly = false)   
+    public Boolean getEnableDHCPv4() {
+       return enableDHCPv4;
+    }
+
+    @JsonIgnore
+    public void setEnableDHCPv4(Boolean value) { 
+        this.enableDHCPv4 = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnableDHCPv6", readOnly = false)   
+    public Boolean getEnableDHCPv6() {
+       return enableDHCPv6;
+    }
+
+    @JsonIgnore
+    public void setEnableDHCPv6(Boolean value) { 
+        this.enableDHCPv6 = value;
     }
     
     @JsonIgnore
@@ -711,6 +782,17 @@ public class Subnet extends BaseObject {
     @JsonIgnore
     public void setLastUpdatedBy(String value) { 
         this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LinkLocalAddress", readOnly = false)   
+    public String getLinkLocalAddress() {
+       return linkLocalAddress;
+    }
+
+    @JsonIgnore
+    public void setLinkLocalAddress(String value) { 
+        this.linkLocalAddress = value;
     }
     
     @JsonIgnore
@@ -923,6 +1005,17 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VrrpIPv6BackupAddress", readOnly = false)   
+    public String getVrrpIPv6BackupAddress() {
+       return vrrpIPv6BackupAddress;
+    }
+
+    @JsonIgnore
+    public void setVrrpIPv6BackupAddress(String value) { 
+        this.vrrpIPv6BackupAddress = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AddressRanges", readOnly = true)   
     public AddressRangesFetcher getAddressRanges() {
         return addressRanges;
@@ -968,6 +1061,12 @@ public class Subnet extends BaseObject {
     @VsoProperty(displayName = "DHCPOptions", readOnly = true)   
     public DHCPOptionsFetcher getDHCPOptions() {
         return dHCPOptions;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DHCPv6Options", readOnly = true)   
+    public DHCPv6OptionsFetcher getDHCPv6Options() {
+        return dHCPv6Options;
     }
     
     @JsonIgnore
@@ -1151,6 +1250,14 @@ public class Subnet extends BaseObject {
         }
     }
     @VsoMethod
+    public void createDHCPv6Option(Session session, DHCPv6Option childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DHCPV6OPTIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createEnterprisePermission(Session session, EnterprisePermission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1230,7 +1337,7 @@ public class Subnet extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", EVPNEnabled=" + EVPNEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", advertise=" + advertise + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", customerID=" + customerID + ", description=" + description + ", domainServiceLabel=" + domainServiceLabel + ", dynamicIpv6Address=" + dynamicIpv6Address + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multiHomeEnabled=" + multiHomeEnabled + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", resourceType=" + resourceType + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", subnetVLANID=" + subnetVLANID + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", EVPNEnabled=" + EVPNEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", advertise=" + advertise + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", color=" + color + ", customerID=" + customerID + ", description=" + description + ", domainServiceLabel=" + domainServiceLabel + ", dualStackDynamicIPAllocation=" + dualStackDynamicIPAllocation + ", embeddedMetadata=" + embeddedMetadata + ", enableDHCPv4=" + enableDHCPv4 + ", enableDHCPv6=" + enableDHCPv6 + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", linkLocalAddress=" + linkLocalAddress + ", maintenanceMode=" + maintenanceMode + ", multiHomeEnabled=" + multiHomeEnabled + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", resourceType=" + resourceType + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", subnetVLANID=" + subnetVLANID + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", vrrpIPv6BackupAddress=" + vrrpIPv6BackupAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

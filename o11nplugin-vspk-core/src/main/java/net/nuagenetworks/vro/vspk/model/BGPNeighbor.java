@@ -85,6 +85,9 @@ public class BGPNeighbor extends BaseObject {
     @JsonProperty(value = "domainServiceLabel")
     protected String domainServiceLabel;
     
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
+    
     @JsonProperty(value = "entityScope")
     protected BGPNeighborEntityScope entityScope;
     
@@ -248,6 +251,17 @@ public class BGPNeighbor extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public BGPNeighborEntityScope getEntityScope() {
        return entityScope;
@@ -395,7 +409,7 @@ public class BGPNeighbor extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BGPNeighbor [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", domainServiceLabel=" + domainServiceLabel + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerConfiguration=" + peerConfiguration + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BGPNeighbor [" + "BFDEnabled=" + BFDEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", dampeningEnabled=" + dampeningEnabled + ", description=" + description + ", domainServiceLabel=" + domainServiceLabel + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", peerAS=" + peerAS + ", peerConfiguration=" + peerConfiguration + ", peerIP=" + peerIP + ", session_=" + session_ + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.MirrorDestination;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Me;
+
+import net.nuagenetworks.vro.vspk.model.MirrorDestinationGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -69,6 +71,16 @@ public class MirrorDestinationsFetcher extends BaseFetcher<MirrorDestination> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "MirrorDestinationGroup", readOnly = true)
+    public MirrorDestinationGroup getMirrorDestinationGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof MirrorDestinationGroup) {
+            return (MirrorDestinationGroup) obj;
         }
         
         return null;
