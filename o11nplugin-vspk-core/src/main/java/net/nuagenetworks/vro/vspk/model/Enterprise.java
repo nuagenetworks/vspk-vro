@@ -158,6 +158,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.SharedNetworkResourcesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SyslogDestinationsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.TestDefinitionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.TestSuitesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.TrunksFetcher;
@@ -294,6 +296,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.SAASAPPLICATIONTYPES_FETCHER, type = Constants.SAASAPPLICATIONTYPES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.SYSLOGDESTINATIONS_FETCHER, type = Constants.SYSLOGDESTINATIONS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.TESTDEFINITIONS_FETCHER, type = Constants.TESTDEFINITIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.TESTSUITES_FETCHER, type = Constants.TESTSUITES_FETCHER), 
 
@@ -631,6 +635,9 @@ public class Enterprise extends BaseObject {
     private SyslogDestinationsFetcher syslogDestinations;
     
     @JsonIgnore
+    private TestDefinitionsFetcher testDefinitions;
+    
+    @JsonIgnore
     private TestSuitesFetcher testSuites;
     
     @JsonIgnore
@@ -793,6 +800,8 @@ public class Enterprise extends BaseObject {
         sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
         
         syslogDestinations = new SyslogDestinationsFetcher(this);
+        
+        testDefinitions = new TestDefinitionsFetcher(this);
         
         testSuites = new TestSuitesFetcher(this);
         
@@ -1654,6 +1663,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "TestDefinitions", readOnly = true)   
+    public TestDefinitionsFetcher getTestDefinitions() {
+        return testDefinitions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "TestSuites", readOnly = true)   
     public TestSuitesFetcher getTestSuites() {
         return testSuites;
@@ -2151,6 +2166,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.SYSLOGDESTINATIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createTestDefinition(Session session, TestDefinition childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.TESTDEFINITIONS_FETCHER, getId());
         }
     }
     @VsoMethod

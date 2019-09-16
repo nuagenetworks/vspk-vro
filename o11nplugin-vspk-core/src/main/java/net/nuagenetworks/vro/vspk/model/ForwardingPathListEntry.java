@@ -81,9 +81,6 @@ public class ForwardingPathListEntry extends BaseObject {
     @JsonProperty(value = "forwardingAction")
     protected ForwardingPathListEntryForwardingAction forwardingAction;
     
-    @JsonProperty(value = "isSLAAware")
-    protected Boolean isSLAAware;
-    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
@@ -92,6 +89,9 @@ public class ForwardingPathListEntry extends BaseObject {
     
     @JsonProperty(value = "remoteUplinkPreference")
     protected ForwardingPathListEntryRemoteUplinkPreference remoteUplinkPreference;
+    
+    @JsonProperty(value = "slaAware")
+    protected Boolean slaAware;
     
     @JsonProperty(value = "uplinkPreference")
     protected ForwardingPathListEntryUplinkPreference uplinkPreference;
@@ -216,17 +216,6 @@ public class ForwardingPathListEntry extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "IsSLAAware", readOnly = false)   
-    public Boolean getIsSLAAware() {
-       return isSLAAware;
-    }
-
-    @JsonIgnore
-    public void setIsSLAAware(Boolean value) { 
-        this.isSLAAware = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
     public String getLastUpdatedBy() {
        return lastUpdatedBy;
@@ -257,6 +246,17 @@ public class ForwardingPathListEntry extends BaseObject {
     @JsonIgnore
     public void setRemoteUplinkPreference(ForwardingPathListEntryRemoteUplinkPreference value) { 
         this.remoteUplinkPreference = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SlaAware", readOnly = false)   
+    public Boolean getSlaAware() {
+       return slaAware;
+    }
+
+    @JsonIgnore
+    public void setSlaAware(Boolean value) { 
+        this.slaAware = value;
     }
     
     @JsonIgnore
@@ -327,7 +327,7 @@ public class ForwardingPathListEntry extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ForwardingPathListEntry [" + "DSCPRemarking=" + DSCPRemarking + ", FCOverride=" + FCOverride + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forwardingAction=" + forwardingAction + ", isSLAAware=" + isSLAAware + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", remoteUplinkPreference=" + remoteUplinkPreference + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ForwardingPathListEntry [" + "DSCPRemarking=" + DSCPRemarking + ", FCOverride=" + FCOverride + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", forwardingAction=" + forwardingAction + ", lastUpdatedBy=" + lastUpdatedBy + ", priority=" + priority + ", remoteUplinkPreference=" + remoteUplinkPreference + ", slaAware=" + slaAware + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

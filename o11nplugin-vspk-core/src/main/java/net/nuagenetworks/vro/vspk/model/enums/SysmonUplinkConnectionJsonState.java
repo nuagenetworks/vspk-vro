@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.TCA_TYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.SYSMONUPLINKCONNECTION_JSONSTATE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum TCAType {
+public enum SysmonUplinkConnectionJsonState {
 
-    BREACH("BREACH", "BREACH"), ROLLING_AVERAGE("ROLLING_AVERAGE", "ROLLING_AVERAGE"), UNIQUE_COUNT("UNIQUE_COUNT", "UNIQUE_COUNT");
+    ADMIN_DOWN("ADMIN_DOWN", "ADMIN_DOWN"), DOWN("DOWN", "DOWN"), NONE("NONE", "NONE"), UP("UP", "UP");
 
     private final String id;
     private final String name;
    
-    TCAType(String id, String name) {
+    SysmonUplinkConnectionJsonState(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,24 +58,29 @@ public enum TCAType {
     }
 
     
-    @VsoProperty(displayName = "BREACH", readOnly = true)
-    public TCAType getBREACH() {
-        return BREACH;
+    @VsoProperty(displayName = "ADMIN_DOWN", readOnly = true)
+    public SysmonUplinkConnectionJsonState getADMIN_DOWN() {
+        return ADMIN_DOWN;
     }
     
-    @VsoProperty(displayName = "ROLLING_AVERAGE", readOnly = true)
-    public TCAType getROLLING_AVERAGE() {
-        return ROLLING_AVERAGE;
+    @VsoProperty(displayName = "DOWN", readOnly = true)
+    public SysmonUplinkConnectionJsonState getDOWN() {
+        return DOWN;
     }
     
-    @VsoProperty(displayName = "UNIQUE_COUNT", readOnly = true)
-    public TCAType getUNIQUE_COUNT() {
-        return UNIQUE_COUNT;
+    @VsoProperty(displayName = "NONE", readOnly = true)
+    public SysmonUplinkConnectionJsonState getNONE() {
+        return NONE;
+    }
+    
+    @VsoProperty(displayName = "UP", readOnly = true)
+    public SysmonUplinkConnectionJsonState getUP() {
+        return UP;
     }
     
 
-    public static TCAType getEnumById(String id) {
-        for (TCAType item : values()) {
+    public static SysmonUplinkConnectionJsonState getEnumById(String id) {
+        for (SysmonUplinkConnectionJsonState item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

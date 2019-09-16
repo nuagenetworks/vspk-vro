@@ -36,12 +36,12 @@ public interface Constants extends BaseConstants {
     String PLUGIN_CONFIG_FILENAME = "vspk";
     
     
+    String DOWNLOADPROGRESS = "DownloadProgress";
+    
     String FORWARDINGCLASS = "ForwardingClass";
     
     String SYSMONUPLINKCONNECTION = "SysmonUplinkConnection";
     String SYSMONUPLINKCONNECTIONS = "SysmonUplinkConnections";
-    String DOWNLOADPROGRESS = "DownloadProgress";
-    
     String ADDRESSMAP = "AddressMap";
     String ADDRESSMAPS = "AddressMaps";
     String ADDRESSRANGE = "AddressRange";
@@ -600,9 +600,9 @@ public interface Constants extends BaseConstants {
     String ZONETEMPLATES = "ZoneTemplates";
 
     
+    String DOWNLOADPROGRESS_FETCHER = "DownloadProgressFetcher";
     String FORWARDINGCLASS_FETCHER = "ForwardingClassFetcher";
     String SYSMONUPLINKCONNECTIONS_FETCHER = "SysmonUplinkConnectionsFetcher";
-    String DOWNLOADPROGRESS_FETCHER = "DownloadProgressFetcher";
     String ADDRESSMAPS_FETCHER = "AddressMapsFetcher";
     String ADDRESSRANGES_FETCHER = "AddressRangesFetcher";
     String AGGREGATEDDOMAINS_FETCHER = "AggregatedDomainsFetcher";
@@ -884,12 +884,13 @@ public interface Constants extends BaseConstants {
 
     
     
+    
     String FORWARDINGCLASS_FORWARDINGCLASS_ENUM = "ForwardingClassForwardingClass";
     
-    String SYSMONUPLINKCONNECTION_DTLSSTATE_ENUM = "SysmonUplinkConnectionDTLSState";
-    String SYSMONUPLINKCONNECTION_JSONSTATE_ENUM = "SysmonUplinkConnectionJSONState";
+    String SYSMONUPLINKCONNECTION_IPSECDTLSSTATE_ENUM = "SysmonUplinkConnectionIpsecDtlsState";
+    String SYSMONUPLINKCONNECTION_JSONSTATE_ENUM = "SysmonUplinkConnectionJsonState";
     String SYSMONUPLINKCONNECTION_OPENFLOWSTATE_ENUM = "SysmonUplinkConnectionOpenflowState";
-    
+    String SYSMONUPLINKCONNECTION_VXLANDTLSSTATE_ENUM = "SysmonUplinkConnectionVxlanDtlsState";
     
     String ADDRESSMAP_ENTITYSCOPE_ENUM = "AddressMapEntityScope";
     String ADDRESSMAP_TYPE_ENUM = "AddressMapType";
@@ -1023,6 +1024,7 @@ public interface Constants extends BaseConstants {
     String CONTROLLERVRSLINK_VSCCONFIGSTATE_ENUM = "ControllerVRSLinkVSCConfigState";
     String CONTROLLERVRSLINK_VSCCURRENTSTATE_ENUM = "ControllerVRSLinkVSCCurrentState";
     String CONTROLLERVRSLINK_CLUSTERNODEROLE_ENUM = "ControllerVRSLinkClusterNodeRole";
+    String CONTROLLERVRSLINK_CONTROLLERTYPE_ENUM = "ControllerVRSLinkControllerType";
     String CONTROLLERVRSLINK_ENTITYSCOPE_ENUM = "ControllerVRSLinkEntityScope";
     String CONTROLLERVRSLINK_ROLE_ENUM = "ControllerVRSLinkRole";
     String CONTROLLERVRSLINK_STATUS_ENUM = "ControllerVRSLinkStatus";
@@ -1969,9 +1971,9 @@ public interface Constants extends BaseConstants {
     String ZONETEMPLATE_MULTICAST_ENUM = "ZoneTemplateMulticast";
     
     
+    String DOWNLOADPROGRESS_IMAGE_FILENAME = "images/icon-downloadprogress.png";
     String FORWARDINGCLASS_IMAGE_FILENAME = "images/icon-forwardingclass.png";
     String SYSMONUPLINKCONNECTION_IMAGE_FILENAME = "images/icon-sysmonuplinkconnection.png";
-    String DOWNLOADPROGRESS_IMAGE_FILENAME = "images/icon-downloadprogress.png";
     String ADDRESSMAP_IMAGE_FILENAME = "images/icon-addressmap.png";
     String ADDRESSRANGE_IMAGE_FILENAME = "images/icon-addressrange.png";
     String AGGREGATEDDOMAIN_IMAGE_FILENAME = "images/icon-aggregateddomain.png";
@@ -2253,9 +2255,9 @@ public interface Constants extends BaseConstants {
     String FOLDER_IMAGE_FILENAME = "images/icon-folder.png";
 
     
+    String DOWNLOADPROGRESS_ENTITY_TYPE = "None";
     String FORWARDINGCLASS_ENTITY_TYPE = "None";
     String SYSMONUPLINKCONNECTION_ENTITY_TYPE = "None";
-    String DOWNLOADPROGRESS_ENTITY_TYPE = "None";
     String ADDRESSMAP_ENTITY_TYPE = "addressmap";
     String ADDRESSRANGE_ENTITY_TYPE = "addressrange";
     String AGGREGATEDDOMAIN_ENTITY_TYPE = "aggregateddomain";

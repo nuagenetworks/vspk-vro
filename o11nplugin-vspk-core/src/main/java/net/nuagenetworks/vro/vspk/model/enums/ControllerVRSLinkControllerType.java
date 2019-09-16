@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.TCA_TYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.CONTROLLERVRSLINK_CONTROLLERTYPE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum TCAType {
+public enum ControllerVRSLinkControllerType {
 
-    BREACH("BREACH", "BREACH"), ROLLING_AVERAGE("ROLLING_AVERAGE", "ROLLING_AVERAGE"), UNIQUE_COUNT("UNIQUE_COUNT", "UNIQUE_COUNT");
+    HSC("HSC", "HSC"), VSC("VSC", "VSC");
 
     private final String id;
     private final String name;
    
-    TCAType(String id, String name) {
+    ControllerVRSLinkControllerType(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -58,24 +58,19 @@ public enum TCAType {
     }
 
     
-    @VsoProperty(displayName = "BREACH", readOnly = true)
-    public TCAType getBREACH() {
-        return BREACH;
+    @VsoProperty(displayName = "HSC", readOnly = true)
+    public ControllerVRSLinkControllerType getHSC() {
+        return HSC;
     }
     
-    @VsoProperty(displayName = "ROLLING_AVERAGE", readOnly = true)
-    public TCAType getROLLING_AVERAGE() {
-        return ROLLING_AVERAGE;
-    }
-    
-    @VsoProperty(displayName = "UNIQUE_COUNT", readOnly = true)
-    public TCAType getUNIQUE_COUNT() {
-        return UNIQUE_COUNT;
+    @VsoProperty(displayName = "VSC", readOnly = true)
+    public ControllerVRSLinkControllerType getVSC() {
+        return VSC;
     }
     
 
-    public static TCAType getEnumById(String id) {
-        for (TCAType item : values()) {
+    public static ControllerVRSLinkControllerType getEnumById(String id) {
+        for (ControllerVRSLinkControllerType item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

@@ -74,7 +74,7 @@ public class PolicyEntry extends BaseObject {
     protected String lastUpdatedBy;
     
     @JsonProperty(value = "matchCriteria")
-    protected Object matchCriteria;
+    protected String matchCriteria;
     
     @JsonProperty(value = "name")
     protected String name;
@@ -195,12 +195,12 @@ public class PolicyEntry extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "MatchCriteria", readOnly = false)   
-    public Object getMatchCriteria() {
+    public String getMatchCriteria() {
        return matchCriteria;
     }
 
     @JsonIgnore
-    public void setMatchCriteria(Object value) { 
+    public void setMatchCriteria(String value) { 
         this.matchCriteria = value;
     }
     

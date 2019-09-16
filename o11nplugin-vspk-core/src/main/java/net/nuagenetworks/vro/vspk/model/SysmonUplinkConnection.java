@@ -26,11 +26,13 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
-import net.nuagenetworks.vro.vspk.model.enums.SysmonUplinkConnectionDTLSState;
+import net.nuagenetworks.vro.vspk.model.enums.SysmonUplinkConnectionIpsecDtlsState;
 
-import net.nuagenetworks.vro.vspk.model.enums.SysmonUplinkConnectionJSONState;
+import net.nuagenetworks.vro.vspk.model.enums.SysmonUplinkConnectionJsonState;
 
 import net.nuagenetworks.vro.vspk.model.enums.SysmonUplinkConnectionOpenflowState;
+
+import net.nuagenetworks.vro.vspk.model.enums.SysmonUplinkConnectionVxlanDtlsState;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -53,14 +55,14 @@ public class SysmonUplinkConnection extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "DTLSState")
-    protected SysmonUplinkConnectionDTLSState DTLSState;
-    
-    @JsonProperty(value = "JSONState")
-    protected SysmonUplinkConnectionJSONState JSONState;
-    
     @JsonProperty(value = "datapathUplinkId")
     protected String datapathUplinkId;
+    
+    @JsonProperty(value = "ipsecDtlsState")
+    protected SysmonUplinkConnectionIpsecDtlsState ipsecDtlsState;
+    
+    @JsonProperty(value = "jsonState")
+    protected SysmonUplinkConnectionJsonState jsonState;
     
     @JsonProperty(value = "openflowState")
     protected SysmonUplinkConnectionOpenflowState openflowState;
@@ -70,6 +72,9 @@ public class SysmonUplinkConnection extends BaseObject {
     
     @JsonProperty(value = "publicIP")
     protected String publicIP;
+    
+    @JsonProperty(value = "vxlanDtlsState")
+    protected SysmonUplinkConnectionVxlanDtlsState vxlanDtlsState;
     
     @VsoConstructor
     public SysmonUplinkConnection() {}
@@ -115,28 +120,6 @@ public class SysmonUplinkConnection extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "DTLSState", readOnly = false)   
-    public SysmonUplinkConnectionDTLSState getDTLSState() {
-       return DTLSState;
-    }
-
-    @JsonIgnore
-    public void setDTLSState(SysmonUplinkConnectionDTLSState value) { 
-        this.DTLSState = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "JSONState", readOnly = false)   
-    public SysmonUplinkConnectionJSONState getJSONState() {
-       return JSONState;
-    }
-
-    @JsonIgnore
-    public void setJSONState(SysmonUplinkConnectionJSONState value) { 
-        this.JSONState = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "DatapathUplinkId", readOnly = false)   
     public String getDatapathUplinkId() {
        return datapathUplinkId;
@@ -145,6 +128,28 @@ public class SysmonUplinkConnection extends BaseObject {
     @JsonIgnore
     public void setDatapathUplinkId(String value) { 
         this.datapathUplinkId = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IpsecDtlsState", readOnly = false)   
+    public SysmonUplinkConnectionIpsecDtlsState getIpsecDtlsState() {
+       return ipsecDtlsState;
+    }
+
+    @JsonIgnore
+    public void setIpsecDtlsState(SysmonUplinkConnectionIpsecDtlsState value) { 
+        this.ipsecDtlsState = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "JsonState", readOnly = false)   
+    public SysmonUplinkConnectionJsonState getJsonState() {
+       return jsonState;
+    }
+
+    @JsonIgnore
+    public void setJsonState(SysmonUplinkConnectionJsonState value) { 
+        this.jsonState = value;
     }
     
     @JsonIgnore
@@ -179,6 +184,17 @@ public class SysmonUplinkConnection extends BaseObject {
     public void setPublicIP(String value) { 
         this.publicIP = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VxlanDtlsState", readOnly = false)   
+    public SysmonUplinkConnectionVxlanDtlsState getVxlanDtlsState() {
+       return vxlanDtlsState;
+    }
+
+    @JsonIgnore
+    public void setVxlanDtlsState(SysmonUplinkConnectionVxlanDtlsState value) { 
+        this.vxlanDtlsState = value;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -200,7 +216,7 @@ public class SysmonUplinkConnection extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.SYSMONUPLINKCONNECTION, getId());
         }
     }public String toString() {
-        return "SysmonUplinkConnection [" + "DTLSState=" + DTLSState + ", JSONState=" + JSONState + ", datapathUplinkId=" + datapathUplinkId + ", openflowState=" + openflowState + ", privateIP=" + privateIP + ", publicIP=" + publicIP + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "SysmonUplinkConnection [" + "datapathUplinkId=" + datapathUplinkId + ", ipsecDtlsState=" + ipsecDtlsState + ", jsonState=" + jsonState + ", openflowState=" + openflowState + ", privateIP=" + privateIP + ", publicIP=" + publicIP + ", vxlanDtlsState=" + vxlanDtlsState + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

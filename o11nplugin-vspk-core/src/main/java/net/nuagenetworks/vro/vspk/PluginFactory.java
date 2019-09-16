@@ -46,6 +46,12 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.SESSION)) {
             return ModelHelper.getSessionById(id);
         }
+        if (type.equals(Constants.DOWNLOADPROGRESS)) {
+            return ModelHelper.getDownloadProgressById(id);
+        }
+        if (type.equals(Constants.DOWNLOADPROGRESS_FETCHER)) {
+            return ModelHelper.getDownloadProgressFetcherById(id);
+        }
         if (type.equals(Constants.FORWARDINGCLASS)) {
             return ModelHelper.getForwardingClassById(id);
         }
@@ -62,24 +68,22 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.SYSMONUPLINKCONNECTIONS_FETCHER)) {
             return ModelHelper.getSysmonUplinkConnectionsFetcherById(id);
         }
-        if (type.equals(Constants.SYSMONUPLINKCONNECTION_DTLSSTATE_ENUM)) {
-            return SysmonUplinkConnectionDTLSState.getEnumById(id);
+        if (type.equals(Constants.SYSMONUPLINKCONNECTION_IPSECDTLSSTATE_ENUM)) {
+            return SysmonUplinkConnectionIpsecDtlsState.getEnumById(id);
         }
         
         if (type.equals(Constants.SYSMONUPLINKCONNECTION_JSONSTATE_ENUM)) {
-            return SysmonUplinkConnectionJSONState.getEnumById(id);
+            return SysmonUplinkConnectionJsonState.getEnumById(id);
         }
         
         if (type.equals(Constants.SYSMONUPLINKCONNECTION_OPENFLOWSTATE_ENUM)) {
             return SysmonUplinkConnectionOpenflowState.getEnumById(id);
         }
         
-        if (type.equals(Constants.DOWNLOADPROGRESS)) {
-            return ModelHelper.getDownloadProgressById(id);
+        if (type.equals(Constants.SYSMONUPLINKCONNECTION_VXLANDTLSSTATE_ENUM)) {
+            return SysmonUplinkConnectionVxlanDtlsState.getEnumById(id);
         }
-        if (type.equals(Constants.DOWNLOADPROGRESS_FETCHER)) {
-            return ModelHelper.getDownloadProgressFetcherById(id);
-        }
+        
         if (type.equals(Constants.ADDRESSMAP)) {
             return ModelHelper.getAddressMapById(id);
         }
@@ -684,6 +688,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.CONTROLLERVRSLINK_CLUSTERNODEROLE_ENUM)) {
             return ControllerVRSLinkClusterNodeRole.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.CONTROLLERVRSLINK_CONTROLLERTYPE_ENUM)) {
+            return ControllerVRSLinkControllerType.getEnumById(id);
         }
         
         if (type.equals(Constants.CONTROLLERVRSLINK_ENTITYSCOPE_ENUM)) {
@@ -6839,6 +6847,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getSyslogDestinationsForFetcherId(id);
         }
         
+        if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.TESTDEFINITIONS_FETCHER)) {
+            return toList(ModelHelper.getTestDefinitionsFetcherForEnterpriseId(id));
+        }
+        if (type.equals(Constants.TESTDEFINITIONS_FETCHER) && relationName.equals(Constants.TESTDEFINITIONS)) {
+            return ModelHelper.getTestDefinitionsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.TESTSUITES_FETCHER)) {
             return toList(ModelHelper.getTestSuitesFetcherForEnterpriseId(id));
         }
@@ -8527,9 +8542,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.TESTDEFINITIONS_FETCHER)) {
             return toList(ModelHelper.getTestDefinitionsFetcherForMeId(id));
-        }
-        if (type.equals(Constants.TESTDEFINITIONS_FETCHER) && relationName.equals(Constants.TESTDEFINITIONS)) {
-            return ModelHelper.getTestDefinitionsForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.UNDERLAYS_FETCHER)) {
@@ -11219,6 +11231,14 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<Session> allSessions = ModelHelper.getAllSessions();
             return new QueryResult(allSessions);
         }
+        if (type.equals(Constants.DOWNLOADPROGRESS)) {
+            java.util.List<DownloadProgress> allObjs = ModelHelper.getAllDownloadProgress();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.DOWNLOADPROGRESS_FETCHER)) {
+            java.util.List<DownloadProgressFetcher> allObjs = ModelHelper.getAllDownloadProgressFetchers();
+            return new QueryResult(allObjs);
+        }
         if (type.equals(Constants.FORWARDINGCLASS)) {
             java.util.List<ForwardingClass> allObjs = ModelHelper.getAllForwardingClass();
             return new QueryResult(allObjs);
@@ -11239,26 +11259,22 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<SysmonUplinkConnectionsFetcher> allObjs = ModelHelper.getAllSysmonUplinkConnectionsFetchers();
             return new QueryResult(allObjs);
         }
-        if (type.equals(Constants.SYSMONUPLINKCONNECTION_DTLSSTATE_ENUM)) {
-            return new QueryResult(Arrays.asList(SysmonUplinkConnectionDTLSState.values()));
+        if (type.equals(Constants.SYSMONUPLINKCONNECTION_IPSECDTLSSTATE_ENUM)) {
+            return new QueryResult(Arrays.asList(SysmonUplinkConnectionIpsecDtlsState.values()));
         }
         
         if (type.equals(Constants.SYSMONUPLINKCONNECTION_JSONSTATE_ENUM)) {
-            return new QueryResult(Arrays.asList(SysmonUplinkConnectionJSONState.values()));
+            return new QueryResult(Arrays.asList(SysmonUplinkConnectionJsonState.values()));
         }
         
         if (type.equals(Constants.SYSMONUPLINKCONNECTION_OPENFLOWSTATE_ENUM)) {
             return new QueryResult(Arrays.asList(SysmonUplinkConnectionOpenflowState.values()));
         }
         
-        if (type.equals(Constants.DOWNLOADPROGRESS)) {
-            java.util.List<DownloadProgress> allObjs = ModelHelper.getAllDownloadProgress();
-            return new QueryResult(allObjs);
+        if (type.equals(Constants.SYSMONUPLINKCONNECTION_VXLANDTLSSTATE_ENUM)) {
+            return new QueryResult(Arrays.asList(SysmonUplinkConnectionVxlanDtlsState.values()));
         }
-        if (type.equals(Constants.DOWNLOADPROGRESS_FETCHER)) {
-            java.util.List<DownloadProgressFetcher> allObjs = ModelHelper.getAllDownloadProgressFetchers();
-            return new QueryResult(allObjs);
-        }
+        
         if (type.equals(Constants.ADDRESSMAP)) {
             java.util.List<AddressMap> allObjs = ModelHelper.getAllAddressMaps();
             return new QueryResult(allObjs);
@@ -11937,6 +11953,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.CONTROLLERVRSLINK_CLUSTERNODEROLE_ENUM)) {
             return new QueryResult(Arrays.asList(ControllerVRSLinkClusterNodeRole.values()));
+        }
+        
+        if (type.equals(Constants.CONTROLLERVRSLINK_CONTROLLERTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(ControllerVRSLinkControllerType.values()));
         }
         
         if (type.equals(Constants.CONTROLLERVRSLINK_ENTITYSCOPE_ENUM)) {

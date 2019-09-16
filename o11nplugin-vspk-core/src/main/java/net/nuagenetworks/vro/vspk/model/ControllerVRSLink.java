@@ -46,6 +46,8 @@ import net.nuagenetworks.vro.vspk.model.enums.ControllerVRSLinkVSCCurrentState;
 
 import net.nuagenetworks.vro.vspk.model.enums.ControllerVRSLinkClusterNodeRole;
 
+import net.nuagenetworks.vro.vspk.model.enums.ControllerVRSLinkControllerType;
+
 import net.nuagenetworks.vro.vspk.model.enums.ControllerVRSLinkEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.ControllerVRSLinkRole;
@@ -100,7 +102,7 @@ public class ControllerVRSLink extends BaseObject {
     protected String controllerID;
     
     @JsonProperty(value = "controllerType")
-    protected String controllerType;
+    protected ControllerVRSLinkControllerType controllerType;
     
     @JsonProperty(value = "dynamic")
     protected Boolean dynamic;
@@ -282,12 +284,12 @@ public class ControllerVRSLink extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "ControllerType", readOnly = false)   
-    public String getControllerType() {
+    public ControllerVRSLinkControllerType getControllerType() {
        return controllerType;
     }
 
     @JsonIgnore
-    public void setControllerType(String value) { 
+    public void setControllerType(ControllerVRSLinkControllerType value) { 
         this.controllerType = value;
     }
     

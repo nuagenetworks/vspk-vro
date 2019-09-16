@@ -47,6 +47,55 @@ public class ModelHelper extends BaseModelHelper {
     }
     
     
+    public static DownloadProgress getDownloadProgressById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            DownloadProgress obj = null;
+            obj = new DownloadProgress();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.DOWNLOADPROGRESS, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<DownloadProgress> getDownloadProgressForFetcherId(String id) throws RestException {
+        DownloadProgressFetcher fetcher = getDownloadProgressFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.DOWNLOADPROGRESS);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<DownloadProgress>();
+    }
+
+    public static DownloadProgressFetcher getDownloadProgressFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.DOWNLOADPROGRESS_FETCHER, id);
+        if (fetcher != null) {
+            return (DownloadProgressFetcher) fetcher;
+        }return null;
+    }
+
+    public static java.util.List<DownloadProgress> getAllDownloadProgress() throws RestException {
+        java.util.List<DownloadProgress> allObjs = new ArrayList<DownloadProgress>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<DownloadProgressFetcher> getAllDownloadProgressFetchers() throws RestException {
+        java.util.List<DownloadProgressFetcher> allObjs = new ArrayList<DownloadProgressFetcher>();
+        return allObjs;
+    }
     public static ForwardingClass getForwardingClassById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             ForwardingClass obj = null;
@@ -143,55 +192,6 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<SysmonUplinkConnectionsFetcher> getAllSysmonUplinkConnectionsFetchers() throws RestException {
         java.util.List<SysmonUplinkConnectionsFetcher> allObjs = new ArrayList<SysmonUplinkConnectionsFetcher>();
-        return allObjs;
-    }
-    public static DownloadProgress getDownloadProgressById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            DownloadProgress obj = null;
-            obj = new DownloadProgress();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.DOWNLOADPROGRESS, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }public static java.util.List<DownloadProgress> getDownloadProgressForFetcherId(String id) throws RestException {
-        DownloadProgressFetcher fetcher = getDownloadProgressFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.DOWNLOADPROGRESS);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<DownloadProgress>();
-    }
-
-    public static DownloadProgressFetcher getDownloadProgressFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.DOWNLOADPROGRESS_FETCHER, id);
-        if (fetcher != null) {
-            return (DownloadProgressFetcher) fetcher;
-        }return null;
-    }
-
-    public static java.util.List<DownloadProgress> getAllDownloadProgress() throws RestException {
-        java.util.List<DownloadProgress> allObjs = new ArrayList<DownloadProgress>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<DownloadProgressFetcher> getAllDownloadProgressFetchers() throws RestException {
-        java.util.List<DownloadProgressFetcher> allObjs = new ArrayList<DownloadProgressFetcher>();
         return allObjs;
     }
     public static AddressMap getAddressMapById(String id) {
@@ -9688,6 +9688,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             SyslogDestinationsFetcher fetcher = obj.getSyslogDestinations();
             return addFetcher(Constants.SYSLOGDESTINATIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static TestDefinitionsFetcher getTestDefinitionsFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            TestDefinitionsFetcher fetcher = obj.getTestDefinitions();
+            return addFetcher(Constants.TESTDEFINITIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -32289,6 +32303,10 @@ public class ModelHelper extends BaseModelHelper {
         if (fetcher != null) {
             return (TestDefinitionsFetcher) fetcher;
         }
+        if ((fetcher = getTestDefinitionsFetcherForEnterpriseId(id)) != null) {
+            return (TestDefinitionsFetcher) addFetcher(Constants.TESTDEFINITIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getTestDefinitionsFetcherForMeId(id)) != null) {
             return (TestDefinitionsFetcher) addFetcher(Constants.TESTDEFINITIONS_FETCHER, fetcher);
         }

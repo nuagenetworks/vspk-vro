@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.SYSMONUPLINKCONNECTION_DTLSSTATE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.SYSMONUPLINKCONNECTION_VXLANDTLSSTATE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum SysmonUplinkConnectionDTLSState {
+public enum SysmonUplinkConnectionVxlanDtlsState {
 
     ADMIN_DOWN("ADMIN_DOWN", "ADMIN_DOWN"), DOWN("DOWN", "DOWN"), NONE("NONE", "NONE"), UP("UP", "UP");
 
     private final String id;
     private final String name;
    
-    SysmonUplinkConnectionDTLSState(String id, String name) {
+    SysmonUplinkConnectionVxlanDtlsState(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -59,28 +59,28 @@ public enum SysmonUplinkConnectionDTLSState {
 
     
     @VsoProperty(displayName = "ADMIN_DOWN", readOnly = true)
-    public SysmonUplinkConnectionDTLSState getADMIN_DOWN() {
+    public SysmonUplinkConnectionVxlanDtlsState getADMIN_DOWN() {
         return ADMIN_DOWN;
     }
     
     @VsoProperty(displayName = "DOWN", readOnly = true)
-    public SysmonUplinkConnectionDTLSState getDOWN() {
+    public SysmonUplinkConnectionVxlanDtlsState getDOWN() {
         return DOWN;
     }
     
     @VsoProperty(displayName = "NONE", readOnly = true)
-    public SysmonUplinkConnectionDTLSState getNONE() {
+    public SysmonUplinkConnectionVxlanDtlsState getNONE() {
         return NONE;
     }
     
     @VsoProperty(displayName = "UP", readOnly = true)
-    public SysmonUplinkConnectionDTLSState getUP() {
+    public SysmonUplinkConnectionVxlanDtlsState getUP() {
         return UP;
     }
     
 
-    public static SysmonUplinkConnectionDTLSState getEnumById(String id) {
-        for (SysmonUplinkConnectionDTLSState item : values()) {
+    public static SysmonUplinkConnectionVxlanDtlsState getEnumById(String id) {
+        for (SysmonUplinkConnectionVxlanDtlsState item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

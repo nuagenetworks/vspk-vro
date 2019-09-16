@@ -33,16 +33,16 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoFinder;
 import com.vmware.o11n.plugin.sdk.annotation.VsoObject;
 import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 
-@VsoFinder(name = Constants.SYSMONUPLINKCONNECTION_JSONSTATE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
+@VsoFinder(name = Constants.SYSMONUPLINKCONNECTION_IPSECDTLSSTATE_ENUM, datasource = Constants.DATASOURCE, idAccessor = Constants.ID_ACCESSOR)
 @VsoObject(strict = true)
-public enum SysmonUplinkConnectionJSONState {
+public enum SysmonUplinkConnectionIpsecDtlsState {
 
     ADMIN_DOWN("ADMIN_DOWN", "ADMIN_DOWN"), DOWN("DOWN", "DOWN"), NONE("NONE", "NONE"), UP("UP", "UP");
 
     private final String id;
     private final String name;
    
-    SysmonUplinkConnectionJSONState(String id, String name) {
+    SysmonUplinkConnectionIpsecDtlsState(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -59,28 +59,28 @@ public enum SysmonUplinkConnectionJSONState {
 
     
     @VsoProperty(displayName = "ADMIN_DOWN", readOnly = true)
-    public SysmonUplinkConnectionJSONState getADMIN_DOWN() {
+    public SysmonUplinkConnectionIpsecDtlsState getADMIN_DOWN() {
         return ADMIN_DOWN;
     }
     
     @VsoProperty(displayName = "DOWN", readOnly = true)
-    public SysmonUplinkConnectionJSONState getDOWN() {
+    public SysmonUplinkConnectionIpsecDtlsState getDOWN() {
         return DOWN;
     }
     
     @VsoProperty(displayName = "NONE", readOnly = true)
-    public SysmonUplinkConnectionJSONState getNONE() {
+    public SysmonUplinkConnectionIpsecDtlsState getNONE() {
         return NONE;
     }
     
     @VsoProperty(displayName = "UP", readOnly = true)
-    public SysmonUplinkConnectionJSONState getUP() {
+    public SysmonUplinkConnectionIpsecDtlsState getUP() {
         return UP;
     }
     
 
-    public static SysmonUplinkConnectionJSONState getEnumById(String id) {
-        for (SysmonUplinkConnectionJSONState item : values()) {
+    public static SysmonUplinkConnectionIpsecDtlsState getEnumById(String id) {
+        for (SysmonUplinkConnectionIpsecDtlsState item : values()) {
             if (item.getId().equals(id)) {
                 return item;
             }

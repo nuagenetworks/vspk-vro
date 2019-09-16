@@ -168,6 +168,11 @@ public class Session extends BaseSession<Me> {
     @Override
     protected void onEntityCreated(String entityType, String entityId, String entityParentType, String entityParentId) {
         SessionManager sessionManager = SessionManager.getInstance();
+        if (entityType.equals(Constants.DOWNLOADPROGRESS_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.DOWNLOADPROGRESS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.FORWARDINGCLASS_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.FORWARDINGCLASS_FETCHER, entityParentId);
             return;
@@ -175,11 +180,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.SYSMONUPLINKCONNECTION_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.SYSMONUPLINKCONNECTIONS_FETCHER, entityParentId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.DOWNLOADPROGRESS_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.DOWNLOADPROGRESS_FETCHER, entityParentId);
             return;
         }
         
@@ -1577,6 +1577,11 @@ public class Session extends BaseSession<Me> {
     @Override
     protected void onEntityUpdated(String entityType, String entityId, String entityParentType, String entityParentId) {
         SessionManager sessionManager = SessionManager.getInstance();
+        if (entityType.equals(Constants.DOWNLOADPROGRESS_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.DOWNLOADPROGRESS, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.FORWARDINGCLASS_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.FORWARDINGCLASS, entityId);
             return;
@@ -1584,11 +1589,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.SYSMONUPLINKCONNECTION_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.SYSMONUPLINKCONNECTION, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.DOWNLOADPROGRESS_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.DOWNLOADPROGRESS, entityId);
             return;
         }
         
@@ -2986,6 +2986,11 @@ public class Session extends BaseSession<Me> {
     @Override
     protected void onEntityDeleted(String entityType, String entityId, String entityParentType, String entityParentId) {
         SessionManager sessionManager = SessionManager.getInstance();
+        if (entityType.equals(Constants.DOWNLOADPROGRESS_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.DOWNLOADPROGRESS, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.FORWARDINGCLASS_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.FORWARDINGCLASS, entityId);
             return;
@@ -2993,11 +2998,6 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.SYSMONUPLINKCONNECTION_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.SYSMONUPLINKCONNECTION, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.DOWNLOADPROGRESS_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.DOWNLOADPROGRESS, entityId);
             return;
         }
         

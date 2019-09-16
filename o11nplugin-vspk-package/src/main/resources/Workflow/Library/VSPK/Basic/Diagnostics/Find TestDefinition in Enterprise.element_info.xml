@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Diagnostics</entry>
+<entry key="name">Find TestDefinition in Enterprise</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">e6e3786c-18ec-5e63-b116-7eb40415618d</entry>
+</properties>
