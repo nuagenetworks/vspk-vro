@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getWirelessPortWifiFrequencyBand" result-type="VSPK:WirelessPortWifiFrequencyBand" api-version="6.0.0"  id="44a80dfc-783d-51dc-a11b-105833d599eb"  version="6.0.1"  allowed-operations="vef" ><param n="wirelessPortObj" t="VSPK:WirelessPort"></param><script encoded='false'><![CDATA[return wirelessPortObj.wifiFrequencyBand;]]></script>
+<dunes-script-module name="getWirelessPortWifiFrequencyBand" result-type="VSPK:WirelessPortWifiFrequencyBand" api-version="6.0.0"  id="44a80dfc-783d-51dc-a11b-105833d599eb"  version="6.0.2"  allowed-operations="vef" ><param n="wirelessPortObj" t="VSPK:WirelessPort"></param><script encoded='false'><![CDATA[return wirelessPortObj.wifiFrequencyBand;]]></script>
 </dunes-script-module>
