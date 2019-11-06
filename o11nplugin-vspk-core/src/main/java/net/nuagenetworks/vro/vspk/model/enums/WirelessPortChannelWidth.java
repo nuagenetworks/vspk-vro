@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum WirelessPortChannelWidth {
 
-    WIDTH_20_MHZ("WIDTH_20_MHZ", "WIDTH_20_MHZ"), WIDTH_80_MHZ("WIDTH_80_MHZ", "WIDTH_80_MHZ"), WIDTH_LESS_40_MHZ("WIDTH_LESS_40_MHZ", "WIDTH_LESS_40_MHZ"), WIDTH_PLUS_40_MHZ("WIDTH_PLUS_40_MHZ", "WIDTH_PLUS_40_MHZ");
+    WIDTH_20_MHZ("WIDTH_20_MHZ", "WIDTH_20_MHZ"), WIDTH_40_MHZ("WIDTH_40_MHZ", "WIDTH_40_MHZ"), WIDTH_80_MHZ("WIDTH_80_MHZ", "WIDTH_80_MHZ"), WIDTH_LESS_40_MHZ("WIDTH_LESS_40_MHZ", "WIDTH_LESS_40_MHZ"), WIDTH_PLUS_40_MHZ("WIDTH_PLUS_40_MHZ", "WIDTH_PLUS_40_MHZ");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum WirelessPortChannelWidth {
     @VsoProperty(displayName = "WIDTH_20_MHZ", readOnly = true)
     public WirelessPortChannelWidth getWIDTH_20_MHZ() {
         return WIDTH_20_MHZ;
+    }
+    
+    @VsoProperty(displayName = "WIDTH_40_MHZ", readOnly = true)
+    public WirelessPortChannelWidth getWIDTH_40_MHZ() {
+        return WIDTH_40_MHZ;
     }
     
     @VsoProperty(displayName = "WIDTH_80_MHZ", readOnly = true)

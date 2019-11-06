@@ -1499,6 +1499,7 @@ public interface Constants extends BaseConstants {
     
     String NSGGROUP_ENTITYSCOPE_ENUM = "NSGGroupEntityScope";
     
+    String NSGINFO_BOOTSTRAPSTATUS_ENUM = "NSGInfoBootstrapStatus";
     String NSGINFO_CMDSTATUS_ENUM = "NSGInfoCmdStatus";
     String NSGINFO_CMDTYPE_ENUM = "NSGInfoCmdType";
     String NSGINFO_ENTITYSCOPE_ENUM = "NSGInfoEntityScope";

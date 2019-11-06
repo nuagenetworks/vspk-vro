@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.enums.NSGInfoBootstrapStatus;
+
 import net.nuagenetworks.vro.vspk.model.enums.NSGInfoCmdStatus;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGInfoCmdType;
@@ -97,7 +99,7 @@ public class NSGInfo extends BaseObject {
     protected String associatedNSGatewayID;
     
     @JsonProperty(value = "bootstrapStatus")
-    protected String bootstrapStatus;
+    protected NSGInfoBootstrapStatus bootstrapStatus;
     
     @JsonProperty(value = "cmdDetailedStatus")
     protected String cmdDetailedStatus;
@@ -112,7 +114,7 @@ public class NSGInfo extends BaseObject {
     protected String cmdID;
     
     @JsonProperty(value = "cmdLastUpdatedDate")
-    protected String cmdLastUpdatedDate;
+    protected Float cmdLastUpdatedDate;
     
     @JsonProperty(value = "cmdStatus")
     protected NSGInfoCmdStatus cmdStatus;
@@ -339,12 +341,12 @@ public class NSGInfo extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "BootstrapStatus", readOnly = false)   
-    public String getBootstrapStatus() {
+    public NSGInfoBootstrapStatus getBootstrapStatus() {
        return bootstrapStatus;
     }
 
     @JsonIgnore
-    public void setBootstrapStatus(String value) { 
+    public void setBootstrapStatus(NSGInfoBootstrapStatus value) { 
         this.bootstrapStatus = value;
     }
     
@@ -394,12 +396,12 @@ public class NSGInfo extends BaseObject {
     
     @JsonIgnore
     @VsoProperty(displayName = "CmdLastUpdatedDate", readOnly = false)   
-    public String getCmdLastUpdatedDate() {
+    public Float getCmdLastUpdatedDate() {
        return cmdLastUpdatedDate;
     }
 
     @JsonIgnore
-    public void setCmdLastUpdatedDate(String value) { 
+    public void setCmdLastUpdatedDate(Float value) { 
         this.cmdLastUpdatedDate = value;
     }
     

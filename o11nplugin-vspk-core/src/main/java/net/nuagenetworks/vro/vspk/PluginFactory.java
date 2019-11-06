@@ -2832,6 +2832,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.NSGINFOS_FETCHER)) {
             return ModelHelper.getNSGInfosFetcherById(id);
         }
+        if (type.equals(Constants.NSGINFO_BOOTSTRAPSTATUS_ENUM)) {
+            return NSGInfoBootstrapStatus.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NSGINFO_CMDSTATUS_ENUM)) {
             return NSGInfoCmdStatus.getEnumById(id);
         }
@@ -14339,6 +14343,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<NSGInfosFetcher> allObjs = ModelHelper.getAllNSGInfosFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.NSGINFO_BOOTSTRAPSTATUS_ENUM)) {
+            return new QueryResult(Arrays.asList(NSGInfoBootstrapStatus.values()));
+        }
+        
         if (type.equals(Constants.NSGINFO_CMDSTATUS_ENUM)) {
             return new QueryResult(Arrays.asList(NSGInfoCmdStatus.values()));
         }

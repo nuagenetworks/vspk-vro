@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
-<entry key="name">Find NSGateway in DUCGroup</entry>
-<entry key="type">Workflow</entry>
-<entry key="id">35f3aff4-78de-5256-a14d-f2e53e6c8a38</entry>
-</properties>
