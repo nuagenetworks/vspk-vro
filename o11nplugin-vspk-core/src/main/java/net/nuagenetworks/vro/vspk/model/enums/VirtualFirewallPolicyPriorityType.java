@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VirtualFirewallPolicyPriorityType {
 
-    BOTTOM("BOTTOM", "BOTTOM"), TOP("TOP", "TOP");
+    BOTTOM("BOTTOM", "BOTTOM"), NONE("NONE", "NONE"), TOP("TOP", "TOP");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum VirtualFirewallPolicyPriorityType {
     @VsoProperty(displayName = "BOTTOM", readOnly = true)
     public VirtualFirewallPolicyPriorityType getBOTTOM() {
         return BOTTOM;
+    }
+    
+    @VsoProperty(displayName = "NONE", readOnly = true)
+    public VirtualFirewallPolicyPriorityType getNONE() {
+        return NONE;
     }
     
     @VsoProperty(displayName = "TOP", readOnly = true)

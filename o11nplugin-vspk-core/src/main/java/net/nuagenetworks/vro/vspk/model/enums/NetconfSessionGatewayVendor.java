@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NetconfSessionGatewayVendor {
 
-    CISCO("CISCO", "CISCO");
+    CISCO("CISCO", "CISCO"), NOKIA("NOKIA", "NOKIA");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum NetconfSessionGatewayVendor {
     @VsoProperty(displayName = "CISCO", readOnly = true)
     public NetconfSessionGatewayVendor getCISCO() {
         return CISCO;
+    }
+    
+    @VsoProperty(displayName = "NOKIA", readOnly = true)
+    public NetconfSessionGatewayVendor getNOKIA() {
+        return NOKIA;
     }
     
 
