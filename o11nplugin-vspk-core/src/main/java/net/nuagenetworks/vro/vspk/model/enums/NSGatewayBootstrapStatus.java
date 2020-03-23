@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGatewayBootstrapStatus {
 
-    ACTIVE("ACTIVE", "ACTIVE"), CERTIFICATE_SIGNED("CERTIFICATE_SIGNED", "CERTIFICATE_SIGNED"), INACTIVE("INACTIVE", "INACTIVE"), NOTIFICATION_APP_REQ_ACK("NOTIFICATION_APP_REQ_ACK", "NOTIFICATION_APP_REQ_ACK"), NOTIFICATION_APP_REQ_SENT("NOTIFICATION_APP_REQ_SENT", "NOTIFICATION_APP_REQ_SENT");
+    ACTIVE("ACTIVE", "ACTIVE"), CERTIFICATE_SIGNED("CERTIFICATE_SIGNED", "CERTIFICATE_SIGNED"), INACTIVE("INACTIVE", "INACTIVE"), NOTIFICATION_APP_REQ_ACK("NOTIFICATION_APP_REQ_ACK", "NOTIFICATION_APP_REQ_ACK"), NOTIFICATION_APP_REQ_SENT("NOTIFICATION_APP_REQ_SENT", "NOTIFICATION_APP_REQ_SENT"), QUARANTINED("QUARANTINED", "QUARANTINED"), REVOKED("REVOKED", "REVOKED");
 
     private final String id;
     private final String name;
@@ -81,6 +81,16 @@ public enum NSGatewayBootstrapStatus {
     @VsoProperty(displayName = "NOTIFICATION_APP_REQ_SENT", readOnly = true)
     public NSGatewayBootstrapStatus getNOTIFICATION_APP_REQ_SENT() {
         return NOTIFICATION_APP_REQ_SENT;
+    }
+    
+    @VsoProperty(displayName = "QUARANTINED", readOnly = true)
+    public NSGatewayBootstrapStatus getQUARANTINED() {
+        return QUARANTINED;
+    }
+    
+    @VsoProperty(displayName = "REVOKED", readOnly = true)
+    public NSGatewayBootstrapStatus getREVOKED() {
+        return REVOKED;
     }
     
 

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum DomainPATEnabled {
 
-    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED"), INHERITED("INHERITED", "INHERITED");
+    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
 
     private final String id;
     private final String name;
@@ -66,11 +66,6 @@ public enum DomainPATEnabled {
     @VsoProperty(displayName = "ENABLED", readOnly = true)
     public DomainPATEnabled getENABLED() {
         return ENABLED;
-    }
-    
-    @VsoProperty(displayName = "INHERITED", readOnly = true)
-    public DomainPATEnabled getINHERITED() {
-        return INHERITED;
     }
     
 

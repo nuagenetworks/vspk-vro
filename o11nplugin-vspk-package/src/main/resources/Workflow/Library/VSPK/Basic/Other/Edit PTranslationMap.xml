@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="82491eea-0780-5dc5-b757-1ad089f2e93d"  version="6.0.4" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="82491eea-0780-5dc5-b757-1ad089f2e93d"  version="6.0.5" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit PTranslationMap]]></display-name>
 <ref-types><![CDATA[(VSPK:PTranslationMap)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -7,9 +7,6 @@
 </param>
 
 <param name='externalID' type='string' >
-</param>
-
-<param name='mappingType' type='VSPK:PTranslationMapMappingType' >
 </param>
 
 <param name='providerAliasIP' type='string' >
@@ -30,7 +27,6 @@ if (externalID) {
 } else if (pTranslationMapObj.externalID) {
    pTranslationMapObj.externalID = "";
 }
-pTranslationMapObj.mappingType = mappingType;
 if (providerAliasIP) {
    pTranslationMapObj.providerAliasIP = providerAliasIP;
 } else if (pTranslationMapObj.providerAliasIP) {
@@ -46,8 +42,6 @@ pTranslationMapObj.save(session, 1);]]></script>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
-<bind name='mappingType' type='VSPK:PTranslationMapMappingType' export-name="mappingType" ></bind>
-
 <bind name='providerAliasIP' type='string' export-name="providerAliasIP" ></bind>
 
 <bind name='providerIP' type='string' export-name="providerIP" ></bind>
@@ -60,9 +54,6 @@ pTranslationMapObj.save(session, 1);]]></script>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pTranslationMapObj.externalID]]></p-qual></p-param>
-
-<p-param name="mappingType"><desc><![CDATA[mappingType]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="VSPK:PTranslationMapMappingType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getPTranslationMapMappingType").call( #pTranslationMapObj )]]></p-qual></p-param>
 
 <p-param name="providerAliasIP"><desc><![CDATA[providerAliasIP]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#pTranslationMapObj.providerAliasIP]]></p-qual></p-param>

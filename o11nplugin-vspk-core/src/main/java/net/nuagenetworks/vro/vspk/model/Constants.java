@@ -1957,6 +1957,7 @@ public interface Constants extends BaseConstants {
     String ZFBREQUEST_ZFBAPPROVALSTATUS_ENUM = "ZFBRequestZFBApprovalStatus";
     String ZFBREQUEST_ASSOCIATEDENTITYTYPE_ENUM = "ZFBRequestAssociatedEntityType";
     String ZFBREQUEST_ENTITYSCOPE_ENUM = "ZFBRequestEntityScope";
+    String ZFBREQUEST_REQUESTTYPE_ENUM = "ZFBRequestRequestType";
     
     String ZONE_DPI_ENUM = "ZoneDPI";
     String ZONE_IPTYPE_ENUM = "ZoneIPType";

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Exported from [server]</comment>
-<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
-<entry key="name">getPTranslationMapMappingType</entry>
-<entry key="type">ScriptModule</entry>
-<entry key="id">2c2d0265-d0aa-539d-a053-ef0b6abb6b66</entry>
-</properties>

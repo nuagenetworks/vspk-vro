@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="0e6877f5-a0cf-5b58-8dbd-76070c232d3a"  version="6.0.4" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="0e6877f5-a0cf-5b58-8dbd-76070c232d3a"  version="6.0.5" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit CTranslationMap]]></display-name>
 <ref-types><![CDATA[(VSPK:CTranslationMap)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -13,9 +13,6 @@
 </param>
 
 <param name='externalID' type='string' >
-</param>
-
-<param name='mappingType' type='VSPK:CTranslationMapMappingType' >
 </param>
 
 </input><workflow-item name='item0' type='end' end-mode='0' >
@@ -40,7 +37,6 @@ if (externalID) {
 } else if (cTranslationMapObj.externalID) {
    cTranslationMapObj.externalID = "";
 }
-cTranslationMapObj.mappingType = mappingType;
 cTranslationMapObj.save(session, 1);]]></script>
 <in-binding><bind name='cTranslationMapObj' type='VSPK:CTranslationMap' export-name="cTranslationMapObj" ></bind>
 
@@ -49,8 +45,6 @@ cTranslationMapObj.save(session, 1);]]></script>
 <bind name='customerIP' type='string' export-name="customerIP" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
-
-<bind name='mappingType' type='VSPK:CTranslationMapMappingType' export-name="mappingType" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -66,8 +60,5 @@ cTranslationMapObj.save(session, 1);]]></script>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#cTranslationMapObj.externalID]]></p-qual></p-param>
-
-<p-param name="mappingType"><desc><![CDATA[mappingType]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="VSPK:CTranslationMapMappingType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getCTranslationMapMappingType").call( #cTranslationMapObj )]]></p-qual></p-param>
 
 </presentation></workflow>

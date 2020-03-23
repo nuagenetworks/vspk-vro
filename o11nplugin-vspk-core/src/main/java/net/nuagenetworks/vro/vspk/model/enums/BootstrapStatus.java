@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum BootstrapStatus {
 
-    ACTIVE("ACTIVE", "ACTIVE"), CERTIFICATE_SIGNED("CERTIFICATE_SIGNED", "CERTIFICATE_SIGNED"), INACTIVE("INACTIVE", "INACTIVE"), NOTIFICATION_APP_REQ_ACK("NOTIFICATION_APP_REQ_ACK", "NOTIFICATION_APP_REQ_ACK"), NOTIFICATION_APP_REQ_SENT("NOTIFICATION_APP_REQ_SENT", "NOTIFICATION_APP_REQ_SENT");
+    ACTIVE("ACTIVE", "ACTIVE"), CERTIFICATE_SIGNED("CERTIFICATE_SIGNED", "CERTIFICATE_SIGNED"), INACTIVE("INACTIVE", "INACTIVE"), NOTIFICATION_APP_REQ_ACK("NOTIFICATION_APP_REQ_ACK", "NOTIFICATION_APP_REQ_ACK"), NOTIFICATION_APP_REQ_SENT("NOTIFICATION_APP_REQ_SENT", "NOTIFICATION_APP_REQ_SENT"), QUARANTINED("QUARANTINED", "QUARANTINED"), REVOKED("REVOKED", "REVOKED");
 
     private final String id;
     private final String name;
@@ -81,6 +81,16 @@ public enum BootstrapStatus {
     @VsoProperty(displayName = "NOTIFICATION_APP_REQ_SENT", readOnly = true)
     public BootstrapStatus getNOTIFICATION_APP_REQ_SENT() {
         return NOTIFICATION_APP_REQ_SENT;
+    }
+    
+    @VsoProperty(displayName = "QUARANTINED", readOnly = true)
+    public BootstrapStatus getQUARANTINED() {
+        return QUARANTINED;
+    }
+    
+    @VsoProperty(displayName = "REVOKED", readOnly = true)
+    public BootstrapStatus getREVOKED() {
+        return REVOKED;
     }
     
 

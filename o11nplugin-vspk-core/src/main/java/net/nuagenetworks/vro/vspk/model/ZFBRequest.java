@@ -37,6 +37,8 @@ import net.nuagenetworks.vro.vspk.model.enums.ZFBRequestZFBApprovalStatus;
 import net.nuagenetworks.vro.vspk.model.enums.ZFBRequestAssociatedEntityType;
 
 import net.nuagenetworks.vro.vspk.model.enums.ZFBRequestEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.ZFBRequestRequestType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -133,8 +135,23 @@ public class ZFBRequest extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "originalEnterpriseName")
+    protected String originalEnterpriseName;
+    
+    @JsonProperty(value = "originalGatewayDatapathID")
+    protected String originalGatewayDatapathID;
+    
+    @JsonProperty(value = "originalGatewayName")
+    protected String originalGatewayName;
+    
+    @JsonProperty(value = "originalUplinkConnectionInfo")
+    protected String originalUplinkConnectionInfo;
+    
     @JsonProperty(value = "registrationURL")
     protected String registrationURL;
+    
+    @JsonProperty(value = "requestType")
+    protected ZFBRequestRequestType requestType;
     
     @JsonProperty(value = "serialNumber")
     protected String serialNumber;
@@ -465,6 +482,50 @@ public class ZFBRequest extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "OriginalEnterpriseName", readOnly = false)   
+    public String getOriginalEnterpriseName() {
+       return originalEnterpriseName;
+    }
+
+    @JsonIgnore
+    public void setOriginalEnterpriseName(String value) { 
+        this.originalEnterpriseName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "OriginalGatewayDatapathID", readOnly = false)   
+    public String getOriginalGatewayDatapathID() {
+       return originalGatewayDatapathID;
+    }
+
+    @JsonIgnore
+    public void setOriginalGatewayDatapathID(String value) { 
+        this.originalGatewayDatapathID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "OriginalGatewayName", readOnly = false)   
+    public String getOriginalGatewayName() {
+       return originalGatewayName;
+    }
+
+    @JsonIgnore
+    public void setOriginalGatewayName(String value) { 
+        this.originalGatewayName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "OriginalUplinkConnectionInfo", readOnly = false)   
+    public String getOriginalUplinkConnectionInfo() {
+       return originalUplinkConnectionInfo;
+    }
+
+    @JsonIgnore
+    public void setOriginalUplinkConnectionInfo(String value) { 
+        this.originalUplinkConnectionInfo = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "RegistrationURL", readOnly = false)   
     public String getRegistrationURL() {
        return registrationURL;
@@ -473,6 +534,17 @@ public class ZFBRequest extends BaseObject {
     @JsonIgnore
     public void setRegistrationURL(String value) { 
         this.registrationURL = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RequestType", readOnly = false)   
+    public ZFBRequestRequestType getRequestType() {
+       return requestType;
+    }
+
+    @JsonIgnore
+    public void setRequestType(ZFBRequestRequestType value) { 
+        this.requestType = value;
     }
     
     @JsonIgnore
@@ -568,7 +640,7 @@ public class ZFBRequest extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ZFBRequest [" + "CPUType=" + CPUType + ", IPAddress=" + IPAddress + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", UUID=" + UUID + ", ZFBApprovalStatus=" + ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + ZFBBootstrapEnabled + ", ZFBInfo=" + ZFBInfo + ", ZFBRequestRetryTimer=" + ZFBRequestRetryTimer + ", associatedEnterpriseID=" + associatedEnterpriseID + ", associatedEnterpriseName=" + associatedEnterpriseName + ", associatedEntityType=" + associatedEntityType + ", associatedGatewayID=" + associatedGatewayID + ", associatedGatewayName=" + associatedGatewayName + ", associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", hostname=" + hostname + ", lastConnectedTime=" + lastConnectedTime + ", lastUpdatedBy=" + lastUpdatedBy + ", registrationURL=" + registrationURL + ", serialNumber=" + serialNumber + ", statusString=" + statusString + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ZFBRequest [" + "CPUType=" + CPUType + ", IPAddress=" + IPAddress + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", UUID=" + UUID + ", ZFBApprovalStatus=" + ZFBApprovalStatus + ", ZFBBootstrapEnabled=" + ZFBBootstrapEnabled + ", ZFBInfo=" + ZFBInfo + ", ZFBRequestRetryTimer=" + ZFBRequestRetryTimer + ", associatedEnterpriseID=" + associatedEnterpriseID + ", associatedEnterpriseName=" + associatedEnterpriseName + ", associatedEntityType=" + associatedEntityType + ", associatedGatewayID=" + associatedGatewayID + ", associatedGatewayName=" + associatedGatewayName + ", associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", hostname=" + hostname + ", lastConnectedTime=" + lastConnectedTime + ", lastUpdatedBy=" + lastUpdatedBy + ", originalEnterpriseName=" + originalEnterpriseName + ", originalGatewayDatapathID=" + originalGatewayDatapathID + ", originalGatewayName=" + originalGatewayName + ", originalUplinkConnectionInfo=" + originalUplinkConnectionInfo + ", registrationURL=" + registrationURL + ", requestType=" + requestType + ", serialNumber=" + serialNumber + ", statusString=" + statusString + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

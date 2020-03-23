@@ -4900,6 +4900,10 @@ public final class PluginFactory extends BasePluginFactory {
             return ZFBRequestEntityScope.getEnumById(id);
         }
         
+        if (type.equals(Constants.ZFBREQUEST_REQUESTTYPE_ENUM)) {
+            return ZFBRequestRequestType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.ZONE)) {
             return ModelHelper.getZoneById(id);
         }
@@ -16645,6 +16649,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.ZFBREQUEST_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(ZFBRequestEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.ZFBREQUEST_REQUESTTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(ZFBRequestRequestType.values()));
         }
         
         if (type.equals(Constants.ZONE)) {
