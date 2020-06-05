@@ -71,6 +71,12 @@ public class NSGInfo extends BaseObject {
     @JsonProperty(value = "BIOSVersion")
     protected String BIOSVersion;
     
+    @JsonProperty(value = "CACertificate")
+    protected Object CACertificate;
+    
+    @JsonProperty(value = "CPUCoreAllocation")
+    protected String CPUCoreAllocation;
+    
     @JsonProperty(value = "CPUType")
     protected String CPUType;
     
@@ -100,6 +106,9 @@ public class NSGInfo extends BaseObject {
     
     @JsonProperty(value = "bootstrapStatus")
     protected NSGInfoBootstrapStatus bootstrapStatus;
+    
+    @JsonProperty(value = "certificate")
+    protected Object certificate;
     
     @JsonProperty(value = "cmdDetailedStatus")
     protected String cmdDetailedStatus;
@@ -136,6 +145,9 @@ public class NSGInfo extends BaseObject {
     
     @JsonProperty(value = "family")
     protected NSGInfoFamily family;
+    
+    @JsonProperty(value = "hugePageSetting")
+    protected String hugePageSetting;
     
     @JsonProperty(value = "libraries")
     protected String libraries;
@@ -238,6 +250,28 @@ public class NSGInfo extends BaseObject {
     @JsonIgnore
     public void setBIOSVersion(String value) { 
         this.BIOSVersion = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CACertificate", readOnly = false)   
+    public Object getCACertificate() {
+       return CACertificate;
+    }
+
+    @JsonIgnore
+    public void setCACertificate(Object value) { 
+        this.CACertificate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CPUCoreAllocation", readOnly = false)   
+    public String getCPUCoreAllocation() {
+       return CPUCoreAllocation;
+    }
+
+    @JsonIgnore
+    public void setCPUCoreAllocation(String value) { 
+        this.CPUCoreAllocation = value;
     }
     
     @JsonIgnore
@@ -348,6 +382,17 @@ public class NSGInfo extends BaseObject {
     @JsonIgnore
     public void setBootstrapStatus(NSGInfoBootstrapStatus value) { 
         this.bootstrapStatus = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Certificate", readOnly = false)   
+    public Object getCertificate() {
+       return certificate;
+    }
+
+    @JsonIgnore
+    public void setCertificate(Object value) { 
+        this.certificate = value;
     }
     
     @JsonIgnore
@@ -483,6 +528,17 @@ public class NSGInfo extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "HugePageSetting", readOnly = false)   
+    public String getHugePageSetting() {
+       return hugePageSetting;
+    }
+
+    @JsonIgnore
+    public void setHugePageSetting(String value) { 
+        this.hugePageSetting = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Libraries", readOnly = false)   
     public String getLibraries() {
        return libraries;
@@ -579,7 +635,7 @@ public class NSGInfo extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGINFO, getId());
         }
     }public String toString() {
-        return "NSGInfo [" + "AARApplicationReleaseDate=" + AARApplicationReleaseDate + ", AARApplicationVersion=" + AARApplicationVersion + ", BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedEntityType=" + associatedEntityType + ", associatedNSGatewayID=" + associatedNSGatewayID + ", bootstrapStatus=" + bootstrapStatus + ", cmdDetailedStatus=" + cmdDetailedStatus + ", cmdDetailedStatusCode=" + cmdDetailedStatusCode + ", cmdDownloadProgress=" + cmdDownloadProgress + ", cmdID=" + cmdID + ", cmdLastUpdatedDate=" + cmdLastUpdatedDate + ", cmdStatus=" + cmdStatus + ", cmdType=" + cmdType + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", libraries=" + libraries + ", name=" + name + ", patchesDetail=" + patchesDetail + ", personality=" + personality + ", productName=" + productName + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGInfo [" + "AARApplicationReleaseDate=" + AARApplicationReleaseDate + ", AARApplicationVersion=" + AARApplicationVersion + ", BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CACertificate=" + CACertificate + ", CPUCoreAllocation=" + CPUCoreAllocation + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", associatedEntityType=" + associatedEntityType + ", associatedNSGatewayID=" + associatedNSGatewayID + ", bootstrapStatus=" + bootstrapStatus + ", certificate=" + certificate + ", cmdDetailedStatus=" + cmdDetailedStatus + ", cmdDetailedStatusCode=" + cmdDetailedStatusCode + ", cmdDownloadProgress=" + cmdDownloadProgress + ", cmdID=" + cmdID + ", cmdLastUpdatedDate=" + cmdLastUpdatedDate + ", cmdStatus=" + cmdStatus + ", cmdType=" + cmdType + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", hugePageSetting=" + hugePageSetting + ", libraries=" + libraries + ", name=" + name + ", patchesDetail=" + patchesDetail + ", personality=" + personality + ", productName=" + productName + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

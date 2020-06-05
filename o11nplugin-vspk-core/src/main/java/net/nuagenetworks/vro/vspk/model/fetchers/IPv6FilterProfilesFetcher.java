@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.IPv6FilterProfile;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.EthernetSegmentGWGroup;
+
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.NetconfGateway;
@@ -68,6 +70,16 @@ public class IPv6FilterProfilesFetcher extends BaseFetcher<IPv6FilterProfile> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "EthernetSegmentGWGroup", readOnly = true)
+    public EthernetSegmentGWGroup getEthernetSegmentGWGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EthernetSegmentGWGroup) {
+            return (EthernetSegmentGWGroup) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "Gateway", readOnly = true)
     public Gateway getGateway() {
         RestObject obj = super.getParentRestObj();

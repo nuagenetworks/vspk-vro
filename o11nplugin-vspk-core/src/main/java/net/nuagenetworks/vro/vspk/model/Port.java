@@ -83,6 +83,18 @@ public class Port extends BaseObject {
     @JsonProperty(value = "associatedEgressQOSPolicyID")
     protected String associatedEgressQOSPolicyID;
     
+    @JsonProperty(value = "associatedEthernetSegmentGroupID")
+    protected String associatedEthernetSegmentGroupID;
+    
+    @JsonProperty(value = "associatedEthernetSegmentID")
+    protected String associatedEthernetSegmentID;
+    
+    @JsonProperty(value = "associatedEthernetSegmentVLANRange")
+    protected String associatedEthernetSegmentVLANRange;
+    
+    @JsonProperty(value = "associatedEthernetSegmentVirtual")
+    protected Boolean associatedEthernetSegmentVirtual;
+    
     @JsonProperty(value = "associatedRedundantPortID")
     protected String associatedRedundantPortID;
     
@@ -221,6 +233,50 @@ public class Port extends BaseObject {
     @JsonIgnore
     public void setAssociatedEgressQOSPolicyID(String value) { 
         this.associatedEgressQOSPolicyID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEthernetSegmentGroupID", readOnly = false)   
+    public String getAssociatedEthernetSegmentGroupID() {
+       return associatedEthernetSegmentGroupID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEthernetSegmentGroupID(String value) { 
+        this.associatedEthernetSegmentGroupID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEthernetSegmentID", readOnly = false)   
+    public String getAssociatedEthernetSegmentID() {
+       return associatedEthernetSegmentID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEthernetSegmentID(String value) { 
+        this.associatedEthernetSegmentID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEthernetSegmentVLANRange", readOnly = false)   
+    public String getAssociatedEthernetSegmentVLANRange() {
+       return associatedEthernetSegmentVLANRange;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEthernetSegmentVLANRange(String value) { 
+        this.associatedEthernetSegmentVLANRange = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEthernetSegmentVirtual", readOnly = false)   
+    public Boolean getAssociatedEthernetSegmentVirtual() {
+       return associatedEthernetSegmentVirtual;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEthernetSegmentVirtual(Boolean value) { 
+        this.associatedEthernetSegmentVirtual = value;
     }
     
     @JsonIgnore
@@ -508,7 +564,7 @@ public class Port extends BaseObject {
         }
     }
     public String toString() {
-        return "Port [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isResilient=" + isResilient + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Port [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedEthernetSegmentGroupID=" + associatedEthernetSegmentGroupID + ", associatedEthernetSegmentID=" + associatedEthernetSegmentID + ", associatedEthernetSegmentVLANRange=" + associatedEthernetSegmentVLANRange + ", associatedEthernetSegmentVirtual=" + associatedEthernetSegmentVirtual + ", associatedRedundantPortID=" + associatedRedundantPortID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isResilient=" + isResilient + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

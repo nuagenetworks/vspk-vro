@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Addressmgmt</entry>
+<entry key="name">Find VMIPReservation in L2Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">57308578-6b2f-5930-9460-1a4a795e2d21</entry>
+</properties>

@@ -102,6 +102,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.RedirectionTargetsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPoliciesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPolicyBindingsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.SPATSourcesPoolsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.StaticRoutesFetcher;
@@ -528,6 +530,9 @@ public class AggregatedDomain extends BaseObject {
     private RoutingPoliciesFetcher routingPolicies;
     
     @JsonIgnore
+    private RoutingPolicyBindingsFetcher routingPolicyBindings;
+    
+    @JsonIgnore
     private SPATSourcesPoolsFetcher sPATSourcesPools;
     
     @JsonIgnore
@@ -649,6 +654,8 @@ public class AggregatedDomain extends BaseObject {
         redirectionTargets = new RedirectionTargetsFetcher(this);
         
         routingPolicies = new RoutingPoliciesFetcher(this);
+        
+        routingPolicyBindings = new RoutingPolicyBindingsFetcher(this);
         
         sPATSourcesPools = new SPATSourcesPoolsFetcher(this);
         
@@ -1583,6 +1590,12 @@ public class AggregatedDomain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "RoutingPolicyBindings", readOnly = true)   
+    public RoutingPolicyBindingsFetcher getRoutingPolicyBindings() {
+        return routingPolicyBindings;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "SPATSourcesPools", readOnly = true)   
     public SPATSourcesPoolsFetcher getSPATSourcesPools() {
         return sPATSourcesPools;
@@ -1730,6 +1743,15 @@ public class AggregatedDomain extends BaseObject {
     
     @VsoMethod
     public void assignLinks(Session session, Link[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.AGGREGATEDDOMAIN, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignRoutingPolicyBindings(Session session, RoutingPolicyBinding[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Remove EthernetSegmentGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d823fcf5-76ce-5678-9e0e-c312076a7f68</entry>
+</properties>

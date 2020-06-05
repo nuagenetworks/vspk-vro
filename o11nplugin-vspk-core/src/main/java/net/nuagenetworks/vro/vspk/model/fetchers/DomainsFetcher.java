@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.DomainTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
+import net.nuagenetworks.vro.vspk.model.EthernetSegmentGWGroup;
+
 import net.nuagenetworks.vro.vspk.model.FirewallAcl;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
@@ -113,6 +115,16 @@ public class DomainsFetcher extends BaseFetcher<Domain> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EthernetSegmentGWGroup", readOnly = true)
+    public EthernetSegmentGWGroup getEthernetSegmentGWGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EthernetSegmentGWGroup) {
+            return (EthernetSegmentGWGroup) obj;
         }
         
         return null;

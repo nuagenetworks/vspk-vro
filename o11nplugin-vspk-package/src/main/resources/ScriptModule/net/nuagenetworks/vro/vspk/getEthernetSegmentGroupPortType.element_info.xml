@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getEthernetSegmentGroupPortType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">a6585be6-1ae8-52e2-be40-10665ed44acb</entry>
+</properties>

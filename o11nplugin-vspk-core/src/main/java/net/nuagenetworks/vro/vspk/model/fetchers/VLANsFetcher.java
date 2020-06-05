@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.VLAN;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.EthernetSegmentGroup;
+
 import net.nuagenetworks.vro.vspk.model.GatewayRedundantPort;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
@@ -72,6 +74,16 @@ public class VLANsFetcher extends BaseFetcher<VLAN> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "EthernetSegmentGroup", readOnly = true)
+    public EthernetSegmentGroup getEthernetSegmentGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EthernetSegmentGroup) {
+            return (EthernetSegmentGroup) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "GatewayRedundantPort", readOnly = true)
     public GatewayRedundantPort getGatewayRedundantPort() {
         RestObject obj = super.getParentRestObj();

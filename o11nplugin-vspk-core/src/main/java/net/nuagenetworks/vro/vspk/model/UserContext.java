@@ -67,11 +67,17 @@ public class UserContext extends BaseObject {
     @JsonProperty(value = "VSSStatsInterval")
     protected Long VSSStatsInterval;
     
+    @JsonProperty(value = "deniedFlowCollectionEnabled")
+    protected Boolean deniedFlowCollectionEnabled;
+    
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected UserContextEntityScope entityScope;
+    
+    @JsonProperty(value = "explicitACLMatchingEnabled")
+    protected Boolean explicitACLMatchingEnabled;
     
     @JsonProperty(value = "externalID")
     protected String externalID;
@@ -96,6 +102,9 @@ public class UserContext extends BaseObject {
     
     @JsonProperty(value = "statsTSDBServerAddress")
     protected String statsTSDBServerAddress;
+    
+    @JsonProperty(value = "threatIntelligenceEnabled")
+    protected Boolean threatIntelligenceEnabled;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -195,6 +204,17 @@ public class UserContext extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "DeniedFlowCollectionEnabled", readOnly = false)   
+    public Boolean getDeniedFlowCollectionEnabled() {
+       return deniedFlowCollectionEnabled;
+    }
+
+    @JsonIgnore
+    public void setDeniedFlowCollectionEnabled(Boolean value) { 
+        this.deniedFlowCollectionEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
     public java.util.List<String> getEmbeddedMetadata() {
        return embeddedMetadata;
@@ -214,6 +234,17 @@ public class UserContext extends BaseObject {
     @JsonIgnore
     public void setEntityScope(UserContextEntityScope value) { 
         this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExplicitACLMatchingEnabled", readOnly = false)   
+    public Boolean getExplicitACLMatchingEnabled() {
+       return explicitACLMatchingEnabled;
+    }
+
+    @JsonIgnore
+    public void setExplicitACLMatchingEnabled(Boolean value) { 
+        this.explicitACLMatchingEnabled = value;
     }
     
     @JsonIgnore
@@ -305,6 +336,17 @@ public class UserContext extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ThreatIntelligenceEnabled", readOnly = false)   
+    public Boolean getThreatIntelligenceEnabled() {
+       return threatIntelligenceEnabled;
+    }
+
+    @JsonIgnore
+    public void setThreatIntelligenceEnabled(Boolean value) { 
+        this.threatIntelligenceEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -361,7 +403,7 @@ public class UserContext extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "UserContext [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSFeatureEnabled=" + VSSFeatureEnabled + ", VSSStatsInterval=" + VSSStatsInterval + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", googleMapsAPIKey=" + googleMapsAPIKey + ", lastUpdatedBy=" + lastUpdatedBy + ", pageSize=" + pageSize + ", statisticsEnabled=" + statisticsEnabled + ", statsDatabaseProxy=" + statsDatabaseProxy + ", statsTSDBServerAddress=" + statsTSDBServerAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UserContext [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSFeatureEnabled=" + VSSFeatureEnabled + ", VSSStatsInterval=" + VSSStatsInterval + ", deniedFlowCollectionEnabled=" + deniedFlowCollectionEnabled + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", explicitACLMatchingEnabled=" + explicitACLMatchingEnabled + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", googleMapsAPIKey=" + googleMapsAPIKey + ", lastUpdatedBy=" + lastUpdatedBy + ", pageSize=" + pageSize + ", statisticsEnabled=" + statisticsEnabled + ", statsDatabaseProxy=" + statsDatabaseProxy + ", statsTSDBServerAddress=" + statsTSDBServerAddress + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

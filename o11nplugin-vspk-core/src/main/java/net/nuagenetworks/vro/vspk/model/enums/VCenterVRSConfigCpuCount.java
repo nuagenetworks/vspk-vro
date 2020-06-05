@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VCenterVRSConfigCpuCount {
 
-    DEFAULT_2("DEFAULT_2", "DEFAULT_2"), MEDIUM_4("MEDIUM_4", "MEDIUM_4"), LARGE_6("LARGE_6", "LARGE_6"), XLARGE_8("XLARGE_8", "XLARGE_8");
+    DEFAULT_2("DEFAULT_2", "DEFAULT_2"), LARGE_6("LARGE_6", "LARGE_6"), MEDIUM_4("MEDIUM_4", "MEDIUM_4"), XLARGE_8("XLARGE_8", "XLARGE_8");
 
     private final String id;
     private final String name;
@@ -63,14 +63,14 @@ public enum VCenterVRSConfigCpuCount {
         return DEFAULT_2;
     }
     
-    @VsoProperty(displayName = "MEDIUM_4", readOnly = true)
-    public VCenterVRSConfigCpuCount getMEDIUM_4() {
-        return MEDIUM_4;
-    }
-    
     @VsoProperty(displayName = "LARGE_6", readOnly = true)
     public VCenterVRSConfigCpuCount getLARGE_6() {
         return LARGE_6;
+    }
+    
+    @VsoProperty(displayName = "MEDIUM_4", readOnly = true)
+    public VCenterVRSConfigCpuCount getMEDIUM_4() {
+        return MEDIUM_4;
     }
     
     @VsoProperty(displayName = "XLARGE_8", readOnly = true)

@@ -69,6 +69,9 @@ public class EgressAdvFwdTemplate extends BaseObject {
     @JsonProperty(value = "associatedLiveEntityID")
     protected String associatedLiveEntityID;
     
+    @JsonProperty(value = "associatedVirtualFirewallPolicyID")
+    protected String associatedVirtualFirewallPolicyID;
+    
     @JsonProperty(value = "autoGeneratePriority")
     protected Boolean autoGeneratePriority;
     
@@ -178,6 +181,17 @@ public class EgressAdvFwdTemplate extends BaseObject {
     @JsonIgnore
     public void setAssociatedLiveEntityID(String value) { 
         this.associatedLiveEntityID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedVirtualFirewallPolicyID", readOnly = false)   
+    public String getAssociatedVirtualFirewallPolicyID() {
+       return associatedVirtualFirewallPolicyID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedVirtualFirewallPolicyID(String value) { 
+        this.associatedVirtualFirewallPolicyID = value;
     }
     
     @JsonIgnore
@@ -383,7 +397,7 @@ public class EgressAdvFwdTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressAdvFwdTemplate [" + "active=" + active + ", associatedLiveEntityID=" + associatedLiveEntityID + ", autoGeneratePriority=" + autoGeneratePriority + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressAdvFwdTemplate [" + "active=" + active + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedVirtualFirewallPolicyID=" + associatedVirtualFirewallPolicyID + ", autoGeneratePriority=" + autoGeneratePriority + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

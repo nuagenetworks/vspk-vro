@@ -57,14 +57,29 @@ public class VNFDomainMapping extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "associatedDomainID")
+    protected String associatedDomainID;
+    
+    @JsonProperty(value = "associatedDomainName")
+    protected String associatedDomainName;
+    
+    @JsonProperty(value = "associatedEnterpriseID")
+    protected String associatedEnterpriseID;
+    
     @JsonProperty(value = "associatedNSGatewayID")
     protected String associatedNSGatewayID;
     
     @JsonProperty(value = "associatedNSGatewayName")
     protected String associatedNSGatewayName;
     
+    @JsonProperty(value = "autoCreated")
+    protected Boolean autoCreated;
+    
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
+    
+    @JsonProperty(value = "enterpriseName")
+    protected String enterpriseName;
     
     @JsonProperty(value = "entityScope")
     protected VNFDomainMappingEntityScope entityScope;
@@ -80,6 +95,9 @@ public class VNFDomainMapping extends BaseObject {
     
     @JsonProperty(value = "segmentationType")
     protected VNFDomainMappingSegmentationType segmentationType;
+    
+    @JsonProperty(value = "serviceId")
+    protected String serviceId;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -135,6 +153,39 @@ public class VNFDomainMapping extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedDomainID", readOnly = false)   
+    public String getAssociatedDomainID() {
+       return associatedDomainID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedDomainID(String value) { 
+        this.associatedDomainID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedDomainName", readOnly = false)   
+    public String getAssociatedDomainName() {
+       return associatedDomainName;
+    }
+
+    @JsonIgnore
+    public void setAssociatedDomainName(String value) { 
+        this.associatedDomainName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEnterpriseID", readOnly = false)   
+    public String getAssociatedEnterpriseID() {
+       return associatedEnterpriseID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEnterpriseID(String value) { 
+        this.associatedEnterpriseID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedNSGatewayID", readOnly = false)   
     public String getAssociatedNSGatewayID() {
        return associatedNSGatewayID;
@@ -157,6 +208,17 @@ public class VNFDomainMapping extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AutoCreated", readOnly = false)   
+    public Boolean getAutoCreated() {
+       return autoCreated;
+    }
+
+    @JsonIgnore
+    public void setAutoCreated(Boolean value) { 
+        this.autoCreated = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
     public java.util.List<String> getEmbeddedMetadata() {
        return embeddedMetadata;
@@ -165,6 +227,17 @@ public class VNFDomainMapping extends BaseObject {
     @JsonIgnore
     public void setEmbeddedMetadata(java.util.List<String> value) { 
         this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnterpriseName", readOnly = false)   
+    public String getEnterpriseName() {
+       return enterpriseName;
+    }
+
+    @JsonIgnore
+    public void setEnterpriseName(String value) { 
+        this.enterpriseName = value;
     }
     
     @JsonIgnore
@@ -220,6 +293,17 @@ public class VNFDomainMapping extends BaseObject {
     @JsonIgnore
     public void setSegmentationType(VNFDomainMappingSegmentationType value) { 
         this.segmentationType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ServiceId", readOnly = false)   
+    public String getServiceId() {
+       return serviceId;
+    }
+
+    @JsonIgnore
+    public void setServiceId(String value) { 
+        this.serviceId = value;
     }
     
     @JsonIgnore
@@ -279,7 +363,7 @@ public class VNFDomainMapping extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNFDomainMapping [" + "associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNFDomainMapping [" + "associatedDomainID=" + associatedDomainID + ", associatedDomainName=" + associatedDomainName + ", associatedEnterpriseID=" + associatedEnterpriseID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", autoCreated=" + autoCreated + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", serviceId=" + serviceId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

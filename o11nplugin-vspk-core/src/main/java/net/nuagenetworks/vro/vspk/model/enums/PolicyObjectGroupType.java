@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum PolicyObjectGroupType {
 
-    NSGateway("NSGateway", "NSGateway");
+    Gateway("Gateway", "Gateway"), NSGateway("NSGateway", "NSGateway");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum PolicyObjectGroupType {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "Gateway", readOnly = true)
+    public PolicyObjectGroupType getGateway() {
+        return Gateway;
+    }
     
     @VsoProperty(displayName = "NSGateway", readOnly = true)
     public PolicyObjectGroupType getNSGateway() {

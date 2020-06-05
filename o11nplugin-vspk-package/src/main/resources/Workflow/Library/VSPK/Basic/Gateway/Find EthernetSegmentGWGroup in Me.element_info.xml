@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Gateway</entry>
+<entry key="name">Find EthernetSegmentGWGroup in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">cd04fb58-20c2-5eab-a382-3ed2589d0f5d</entry>
+</properties>

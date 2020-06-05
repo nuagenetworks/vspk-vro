@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VCenterVRSConfigMemorySizeInGB {
 
-    DEFAULT_4("DEFAULT_4", "DEFAULT_4"), MEDIUM_6("MEDIUM_6", "MEDIUM_6"), LARGE_8("LARGE_8", "LARGE_8");
+    DEFAULT_4("DEFAULT_4", "DEFAULT_4"), LARGE_8("LARGE_8", "LARGE_8"), MEDIUM_6("MEDIUM_6", "MEDIUM_6");
 
     private final String id;
     private final String name;
@@ -63,14 +63,14 @@ public enum VCenterVRSConfigMemorySizeInGB {
         return DEFAULT_4;
     }
     
-    @VsoProperty(displayName = "MEDIUM_6", readOnly = true)
-    public VCenterVRSConfigMemorySizeInGB getMEDIUM_6() {
-        return MEDIUM_6;
-    }
-    
     @VsoProperty(displayName = "LARGE_8", readOnly = true)
     public VCenterVRSConfigMemorySizeInGB getLARGE_8() {
         return LARGE_8;
+    }
+    
+    @VsoProperty(displayName = "MEDIUM_6", readOnly = true)
+    public VCenterVRSConfigMemorySizeInGB getMEDIUM_6() {
+        return MEDIUM_6;
     }
     
 

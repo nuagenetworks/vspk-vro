@@ -93,6 +93,9 @@ public class Alarm extends BaseObject {
     @JsonProperty(value = "severity")
     protected AlarmSeverity severity;
     
+    @JsonProperty(value = "systemID")
+    protected String systemID;
+    
     @JsonProperty(value = "targetObject")
     protected String targetObject;
     
@@ -288,6 +291,17 @@ public class Alarm extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SystemID", readOnly = false)   
+    public String getSystemID() {
+       return systemID;
+    }
+
+    @JsonIgnore
+    public void setSystemID(String value) { 
+        this.systemID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "TargetObject", readOnly = false)   
     public String getTargetObject() {
        return targetObject;
@@ -377,7 +391,7 @@ public class Alarm extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Alarm [" + "acknowledged=" + acknowledged + ", alarmedObjectID=" + alarmedObjectID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurances=" + numberOfOccurances + ", remedy=" + remedy + ", severity=" + severity + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", title=" + title + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Alarm [" + "acknowledged=" + acknowledged + ", alarmedObjectID=" + alarmedObjectID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurances=" + numberOfOccurances + ", remedy=" + remedy + ", severity=" + severity + ", systemID=" + systemID + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", title=" + title + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

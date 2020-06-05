@@ -112,6 +112,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMInterfacesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VMIPReservationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VPNConnectionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VPortsFetcher;
@@ -135,6 +137,8 @@ import net.nuagenetworks.vro.vspk.model.enums.L2DomainMaintenanceMode;
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainMulticast;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainPolicyChangeStatus;
+
+import net.nuagenetworks.vro.vspk.model.enums.L2DomainThreatIntelligenceEnabled;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainUplinkPreference;
 
@@ -194,6 +198,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.TCAS_FETCHER, type = Constants.TCAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VIRTUALFIREWALLPOLICIES_FETCHER, type = Constants.VIRTUALFIREWALLPOLICIES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VMIPRESERVATIONS_FETCHER, type = Constants.VMIPRESERVATIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VPNCONNECTIONS_FETCHER, type = Constants.VPNCONNECTIONS_FETCHER), 
 
@@ -320,6 +326,9 @@ public class L2Domain extends BaseObject {
     
     @JsonProperty(value = "templateID")
     protected String templateID;
+    
+    @JsonProperty(value = "threatIntelligenceEnabled")
+    protected L2DomainThreatIntelligenceEnabled threatIntelligenceEnabled;
     
     @JsonProperty(value = "uplinkPreference")
     protected L2DomainUplinkPreference uplinkPreference;
@@ -460,6 +469,9 @@ public class L2Domain extends BaseObject {
     private VMInterfacesFetcher vMInterfaces;
     
     @JsonIgnore
+    private VMIPReservationsFetcher vMIPReservations;
+    
+    @JsonIgnore
     private VPNConnectionsFetcher vPNConnections;
     
     @JsonIgnore
@@ -554,6 +566,8 @@ public class L2Domain extends BaseObject {
         vMs = new VMsFetcher(this);
         
         vMInterfaces = new VMInterfacesFetcher(this);
+        
+        vMIPReservations = new VMIPReservationsFetcher(this);
         
         vPNConnections = new VPNConnectionsFetcher(this);
         
@@ -1014,6 +1028,17 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ThreatIntelligenceEnabled", readOnly = false)   
+    public L2DomainThreatIntelligenceEnabled getThreatIntelligenceEnabled() {
+       return threatIntelligenceEnabled;
+    }
+
+    @JsonIgnore
+    public void setThreatIntelligenceEnabled(L2DomainThreatIntelligenceEnabled value) { 
+        this.threatIntelligenceEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "UplinkPreference", readOnly = false)   
     public L2DomainUplinkPreference getUplinkPreference() {
        return uplinkPreference;
@@ -1305,6 +1330,12 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VMIPReservations", readOnly = true)   
+    public VMIPReservationsFetcher getVMIPReservations() {
+        return vMIPReservations;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VPNConnections", readOnly = true)   
     public VPNConnectionsFetcher getVPNConnections() {
         return vPNConnections;
@@ -1584,6 +1615,14 @@ public class L2Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createVMIPReservation(Session session, VMIPReservation childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VMIPRESERVATIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createVPNConnection(Session session, VPNConnection childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1599,7 +1638,7 @@ public class L2Domain extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", associatedUnderlayID=" + associatedUnderlayID + ", color=" + color + ", customerID=" + customerID + ", description=" + description + ", dualStackDynamicIPAllocation=" + dualStackDynamicIPAllocation + ", embeddedMetadata=" + embeddedMetadata + ", enableDHCPv4=" + enableDHCPv4 + ", enableDHCPv6=" + enableDHCPv6 + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", l2EncapType=" + l2EncapType + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", routedVPLSEnabled=" + routedVPLSEnabled + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", associatedUnderlayID=" + associatedUnderlayID + ", color=" + color + ", customerID=" + customerID + ", description=" + description + ", dualStackDynamicIPAllocation=" + dualStackDynamicIPAllocation + ", embeddedMetadata=" + embeddedMetadata + ", enableDHCPv4=" + enableDHCPv4 + ", enableDHCPv6=" + enableDHCPv6 + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", l2EncapType=" + l2EncapType + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", routedVPLSEnabled=" + routedVPLSEnabled + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

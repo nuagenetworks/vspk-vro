@@ -82,6 +82,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GroupKeyEncryptionProfilesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.IDPProfilesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.IKECertificatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IKEEncryptionprofilesFetcher;
@@ -148,6 +150,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.RateLimitersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RedundancyGroupsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.RolesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPoliciesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SaaSApplicationGroupsFetcher;
@@ -191,6 +195,8 @@ import net.nuagenetworks.vro.vspk.model.enums.EnterpriseEncryptionManagementMode
 import net.nuagenetworks.vro.vspk.model.enums.EnterpriseEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.EnterpriseFlowCollectionEnabled;
+
+import net.nuagenetworks.vro.vspk.model.enums.EnterpriseThreatIntelligenceEnabled;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -240,6 +246,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.GATEWAYTEMPLATES_FETCHER, type = Constants.GATEWAYTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.GROUPS_FETCHER, type = Constants.GROUPS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.IDPPROFILES_FETCHER, type = Constants.IDPPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.IKECERTIFICATES_FETCHER, type = Constants.IKECERTIFICATES_FETCHER), 
 
@@ -427,6 +435,12 @@ public class Enterprise extends BaseObject {
     @JsonProperty(value = "sharedEnterprise")
     protected Boolean sharedEnterprise;
     
+    @JsonProperty(value = "threatIntelligenceEnabled")
+    protected EnterpriseThreatIntelligenceEnabled threatIntelligenceEnabled;
+    
+    @JsonProperty(value = "threatPreventionManagementEnabled")
+    protected Boolean threatPreventionManagementEnabled;
+    
     @JsonProperty(value = "useGlobalMAC")
     protected Boolean useGlobalMAC;
     
@@ -519,6 +533,9 @@ public class Enterprise extends BaseObject {
     
     @JsonIgnore
     private GroupKeyEncryptionProfilesFetcher groupKeyEncryptionProfiles;
+    
+    @JsonIgnore
+    private IDPProfilesFetcher iDPProfiles;
     
     @JsonIgnore
     private IKECertificatesFetcher iKECertificates;
@@ -618,6 +635,9 @@ public class Enterprise extends BaseObject {
     
     @JsonIgnore
     private RedundancyGroupsFetcher redundancyGroups;
+    
+    @JsonIgnore
+    private RolesFetcher roles;
     
     @JsonIgnore
     private RoutingPoliciesFetcher routingPolicies;
@@ -725,6 +745,8 @@ public class Enterprise extends BaseObject {
         
         groupKeyEncryptionProfiles = new GroupKeyEncryptionProfilesFetcher(this);
         
+        iDPProfiles = new IDPProfilesFetcher(this);
+        
         iKECertificates = new IKECertificatesFetcher(this);
         
         iKEEncryptionprofiles = new IKEEncryptionprofilesFetcher(this);
@@ -790,6 +812,8 @@ public class Enterprise extends BaseObject {
         rateLimiters = new RateLimitersFetcher(this);
         
         redundancyGroups = new RedundancyGroupsFetcher(this);
+        
+        roles = new RolesFetcher(this);
         
         routingPolicies = new RoutingPoliciesFetcher(this);
         
@@ -1234,6 +1258,28 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ThreatIntelligenceEnabled", readOnly = false)   
+    public EnterpriseThreatIntelligenceEnabled getThreatIntelligenceEnabled() {
+       return threatIntelligenceEnabled;
+    }
+
+    @JsonIgnore
+    public void setThreatIntelligenceEnabled(EnterpriseThreatIntelligenceEnabled value) { 
+        this.threatIntelligenceEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ThreatPreventionManagementEnabled", readOnly = false)   
+    public Boolean getThreatPreventionManagementEnabled() {
+       return threatPreventionManagementEnabled;
+    }
+
+    @JsonIgnore
+    public void setThreatPreventionManagementEnabled(Boolean value) { 
+        this.threatPreventionManagementEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "UseGlobalMAC", readOnly = false)   
     public Boolean getUseGlobalMAC() {
        return useGlobalMAC;
@@ -1435,6 +1481,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IDPProfiles", readOnly = true)   
+    public IDPProfilesFetcher getIDPProfiles() {
+        return iDPProfiles;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "IKECertificates", readOnly = true)   
     public IKECertificatesFetcher getIKECertificates() {
         return iKECertificates;
@@ -1630,6 +1682,12 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "RedundancyGroups", readOnly = true)   
     public RedundancyGroupsFetcher getRedundancyGroups() {
         return redundancyGroups;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Roles", readOnly = true)   
+    public RolesFetcher getRoles() {
+        return roles;
     }
     
     @JsonIgnore
@@ -1916,6 +1974,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.GROUPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIDPProfile(Session session, IDPProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.IDPPROFILES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -2248,7 +2314,7 @@ public class Enterprise extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", allowedForwardingMode=" + allowedForwardingMode + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", embeddedMetadata=" + embeddedMetadata + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", flowCollectionEnabled=" + flowCollectionEnabled + ", forwardingClass=" + forwardingClass + ", lastUpdatedBy=" + lastUpdatedBy + ", localAS=" + localAS + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", sharedEnterprise=" + sharedEnterprise + ", useGlobalMAC=" + useGlobalMAC + ", virtualFirewallRulesEnabled=" + virtualFirewallRulesEnabled + ", webFilterEnabled=" + webFilterEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", allowedForwardingMode=" + allowedForwardingMode + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", embeddedMetadata=" + embeddedMetadata + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", flowCollectionEnabled=" + flowCollectionEnabled + ", forwardingClass=" + forwardingClass + ", lastUpdatedBy=" + lastUpdatedBy + ", localAS=" + localAS + ", name=" + name + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", sharedEnterprise=" + sharedEnterprise + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", threatPreventionManagementEnabled=" + threatPreventionManagementEnabled + ", useGlobalMAC=" + useGlobalMAC + ", virtualFirewallRulesEnabled=" + virtualFirewallRulesEnabled + ", webFilterEnabled=" + webFilterEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

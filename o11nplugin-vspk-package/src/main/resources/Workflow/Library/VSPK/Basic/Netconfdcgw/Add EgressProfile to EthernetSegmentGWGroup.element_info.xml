@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Netconfdcgw</entry>
+<entry key="name">Add EgressProfile to EthernetSegmentGWGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">08ae0f1f-69b5-524e-a426-9a03fb2afa6e</entry>
+</properties>

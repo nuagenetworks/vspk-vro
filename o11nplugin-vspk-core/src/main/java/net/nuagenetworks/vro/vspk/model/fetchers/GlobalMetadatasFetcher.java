@@ -398,6 +398,8 @@ import net.nuagenetworks.vro.vspk.model.VMResync;
 
 import net.nuagenetworks.vro.vspk.model.RoutingPolicy;
 
+import net.nuagenetworks.vro.vspk.model.RoutingPolicyBinding;
+
 import net.nuagenetworks.vro.vspk.model.SaaSApplicationGroup;
 
 import net.nuagenetworks.vro.vspk.model.SaaSApplicationType;
@@ -481,6 +483,8 @@ import net.nuagenetworks.vro.vspk.model.VLANTemplate;
 import net.nuagenetworks.vro.vspk.model.VM;
 
 import net.nuagenetworks.vro.vspk.model.VMInterface;
+
+import net.nuagenetworks.vro.vspk.model.VMIPReservation;
 
 import net.nuagenetworks.vro.vspk.model.VNF;
 
@@ -2404,6 +2408,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "RoutingPolicyBinding", readOnly = true)
+    public RoutingPolicyBinding getRoutingPolicyBinding() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RoutingPolicyBinding) {
+            return (RoutingPolicyBinding) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "SaaSApplicationGroup", readOnly = true)
     public SaaSApplicationGroup getSaaSApplicationGroup() {
         RestObject obj = super.getParentRestObj();
@@ -2819,6 +2833,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VMInterface) {
             return (VMInterface) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VMIPReservation", readOnly = true)
+    public VMIPReservation getVMIPReservation() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VMIPReservation) {
+            return (VMIPReservation) obj;
         }
         
         return null;

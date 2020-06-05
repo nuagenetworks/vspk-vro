@@ -38,6 +38,10 @@ import net.nuagenetworks.vro.vspk.model.Domain;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
+import net.nuagenetworks.vro.vspk.model.EthernetSegmentGroup;
+
+import net.nuagenetworks.vro.vspk.model.EthernetSegmentGWGroup;
+
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.GatewayRedundantPort;
@@ -153,6 +157,26 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EthernetSegmentGroup", readOnly = true)
+    public EthernetSegmentGroup getEthernetSegmentGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EthernetSegmentGroup) {
+            return (EthernetSegmentGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EthernetSegmentGWGroup", readOnly = true)
+    public EthernetSegmentGWGroup getEthernetSegmentGWGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EthernetSegmentGWGroup) {
+            return (EthernetSegmentGWGroup) obj;
         }
         
         return null;

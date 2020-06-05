@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum CommandCommand {
 
-    NSG_APPLY_PATCH("NSG_APPLY_PATCH", "NSG_APPLY_PATCH"), NSG_DELETE_PATCH("NSG_DELETE_PATCH", "NSG_DELETE_PATCH"), NSG_DOWNLOAD_OS_IMAGE("NSG_DOWNLOAD_OS_IMAGE", "NSG_DOWNLOAD_OS_IMAGE"), NSG_UPGRADE_TO_IMAGE("NSG_UPGRADE_TO_IMAGE", "NSG_UPGRADE_TO_IMAGE"), UNKNOWN("UNKNOWN", "UNKNOWN");
+    NSG_APPLY_PATCH("NSG_APPLY_PATCH", "NSG_APPLY_PATCH"), NSG_DELETE_PATCH("NSG_DELETE_PATCH", "NSG_DELETE_PATCH"), NSG_DOWNLOAD_OS_IMAGE("NSG_DOWNLOAD_OS_IMAGE", "NSG_DOWNLOAD_OS_IMAGE"), NSG_REBOOT("NSG_REBOOT", "NSG_REBOOT"), NSG_RENEW_CERT("NSG_RENEW_CERT", "NSG_RENEW_CERT"), NSG_UPDATE_INFO("NSG_UPDATE_INFO", "NSG_UPDATE_INFO"), NSG_UPGRADE_TO_IMAGE("NSG_UPGRADE_TO_IMAGE", "NSG_UPGRADE_TO_IMAGE"), UNKNOWN("UNKNOWN", "UNKNOWN");
 
     private final String id;
     private final String name;
@@ -71,6 +71,21 @@ public enum CommandCommand {
     @VsoProperty(displayName = "NSG_DOWNLOAD_OS_IMAGE", readOnly = true)
     public CommandCommand getNSG_DOWNLOAD_OS_IMAGE() {
         return NSG_DOWNLOAD_OS_IMAGE;
+    }
+    
+    @VsoProperty(displayName = "NSG_REBOOT", readOnly = true)
+    public CommandCommand getNSG_REBOOT() {
+        return NSG_REBOOT;
+    }
+    
+    @VsoProperty(displayName = "NSG_RENEW_CERT", readOnly = true)
+    public CommandCommand getNSG_RENEW_CERT() {
+        return NSG_RENEW_CERT;
+    }
+    
+    @VsoProperty(displayName = "NSG_UPDATE_INFO", readOnly = true)
+    public CommandCommand getNSG_UPDATE_INFO() {
+        return NSG_UPDATE_INFO;
     }
     
     @VsoProperty(displayName = "NSG_UPGRADE_TO_IMAGE", readOnly = true)

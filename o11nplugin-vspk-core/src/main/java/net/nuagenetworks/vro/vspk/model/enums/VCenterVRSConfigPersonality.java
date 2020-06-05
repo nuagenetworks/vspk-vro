@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VCenterVRSConfigPersonality {
 
-    VRS("VRS", "VRS"), VDF("VDF", "VDF");
+    VDF("VDF", "VDF"), VRS("VRS", "VRS");
 
     private final String id;
     private final String name;
@@ -58,14 +58,14 @@ public enum VCenterVRSConfigPersonality {
     }
 
     
-    @VsoProperty(displayName = "VRS", readOnly = true)
-    public VCenterVRSConfigPersonality getVRS() {
-        return VRS;
-    }
-    
     @VsoProperty(displayName = "VDF", readOnly = true)
     public VCenterVRSConfigPersonality getVDF() {
         return VDF;
+    }
+    
+    @VsoProperty(displayName = "VRS", readOnly = true)
+    public VCenterVRSConfigPersonality getVRS() {
+        return VRS;
     }
     
 

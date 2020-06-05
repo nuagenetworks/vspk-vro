@@ -82,6 +82,9 @@ public class TestSuite extends BaseObject {
     @JsonProperty(value = "name")
     protected String name;
     
+    @JsonProperty(value = "underlayTest")
+    protected Boolean underlayTest;
+    
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
@@ -218,6 +221,17 @@ public class TestSuite extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "UnderlayTest", readOnly = false)   
+    public Boolean getUnderlayTest() {
+       return underlayTest;
+    }
+
+    @JsonIgnore
+    public void setUnderlayTest(Boolean value) { 
+        this.underlayTest = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -294,7 +308,7 @@ public class TestSuite extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.TESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "TestSuite [" + "description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "TestSuite [" + "description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", underlayTest=" + underlayTest + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

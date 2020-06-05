@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VCenterVRSConfigDestinationMirrorPort {
 
-    no_mirror("no_mirror", "no_mirror"), ens160("ens160", "ens160"), ens161("ens161", "ens161"), ens224("ens224", "ens224"), ens256("ens256", "ens256");
+    ens160("ens160", "ens160"), ens161("ens161", "ens161"), ens224("ens224", "ens224"), ens256("ens256", "ens256"), no_mirror("no_mirror", "no_mirror");
 
     private final String id;
     private final String name;
@@ -58,11 +58,6 @@ public enum VCenterVRSConfigDestinationMirrorPort {
     }
 
     
-    @VsoProperty(displayName = "no_mirror", readOnly = true)
-    public VCenterVRSConfigDestinationMirrorPort getno_mirror() {
-        return no_mirror;
-    }
-    
     @VsoProperty(displayName = "ens160", readOnly = true)
     public VCenterVRSConfigDestinationMirrorPort getens160() {
         return ens160;
@@ -81,6 +76,11 @@ public enum VCenterVRSConfigDestinationMirrorPort {
     @VsoProperty(displayName = "ens256", readOnly = true)
     public VCenterVRSConfigDestinationMirrorPort getens256() {
         return ens256;
+    }
+    
+    @VsoProperty(displayName = "no_mirror", readOnly = true)
+    public VCenterVRSConfigDestinationMirrorPort getno_mirror() {
+        return no_mirror;
     }
     
 

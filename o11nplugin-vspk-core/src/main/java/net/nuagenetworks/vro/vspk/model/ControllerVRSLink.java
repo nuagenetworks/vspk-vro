@@ -86,6 +86,9 @@ public class ControllerVRSLink extends BaseObject {
     @JsonProperty(value = "VRSPersonality")
     protected ControllerVRSLinkVRSPersonality VRSPersonality;
     
+    @JsonProperty(value = "VRSSystemId")
+    protected String VRSSystemId;
+    
     @JsonProperty(value = "VSCConfigState")
     protected ControllerVRSLinkVSCConfigState VSCConfigState;
     
@@ -225,6 +228,17 @@ public class ControllerVRSLink extends BaseObject {
     @JsonIgnore
     public void setVRSPersonality(ControllerVRSLinkVRSPersonality value) { 
         this.VRSPersonality = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VRSSystemId", readOnly = false)   
+    public String getVRSSystemId() {
+       return VRSSystemId;
+    }
+
+    @JsonIgnore
+    public void setVRSSystemId(String value) { 
+        this.VRSSystemId = value;
     }
     
     @JsonIgnore
@@ -467,7 +481,7 @@ public class ControllerVRSLink extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "ControllerVRSLink [" + "JSONRPCConnectionState=" + JSONRPCConnectionState + ", VRSID=" + VRSID + ", VRSPersonality=" + VRSPersonality + ", VSCConfigState=" + VSCConfigState + ", VSCCurrentState=" + VSCCurrentState + ", clusterNodeRole=" + clusterNodeRole + ", connections=" + connections + ", controllerID=" + controllerID + ", controllerType=" + controllerType + ", dynamic=" + dynamic + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", peer=" + peer + ", role=" + role + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ControllerVRSLink [" + "JSONRPCConnectionState=" + JSONRPCConnectionState + ", VRSID=" + VRSID + ", VRSPersonality=" + VRSPersonality + ", VRSSystemId=" + VRSSystemId + ", VSCConfigState=" + VSCConfigState + ", VSCCurrentState=" + VSCCurrentState + ", clusterNodeRole=" + clusterNodeRole + ", connections=" + connections + ", controllerID=" + controllerID + ", controllerType=" + controllerType + ", dynamic=" + dynamic + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", peer=" + peer + ", role=" + role + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

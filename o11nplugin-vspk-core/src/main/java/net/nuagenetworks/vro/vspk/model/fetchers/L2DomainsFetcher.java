@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
+import net.nuagenetworks.vro.vspk.model.EthernetSegmentGWGroup;
+
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
@@ -79,6 +81,16 @@ public class L2DomainsFetcher extends BaseFetcher<L2Domain> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EthernetSegmentGWGroup", readOnly = true)
+    public EthernetSegmentGWGroup getEthernetSegmentGWGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EthernetSegmentGWGroup) {
+            return (EthernetSegmentGWGroup) obj;
         }
         
         return null;

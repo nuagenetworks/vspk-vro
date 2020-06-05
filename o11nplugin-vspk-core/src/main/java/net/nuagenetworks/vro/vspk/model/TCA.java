@@ -109,6 +109,9 @@ public class TCA extends BaseObject {
     @JsonProperty(value = "status")
     protected Boolean status;
     
+    @JsonProperty(value = "targetEntityID")
+    protected String targetEntityID;
+    
     @JsonProperty(value = "targetPolicyGroupID")
     protected String targetPolicyGroupID;
     
@@ -117,6 +120,9 @@ public class TCA extends BaseObject {
     
     @JsonProperty(value = "throttleTime")
     protected Long throttleTime;
+    
+    @JsonProperty(value = "triggerInterval")
+    protected Long triggerInterval;
     
     @JsonProperty(value = "type")
     protected TCAType type;
@@ -338,6 +344,17 @@ public class TCA extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "TargetEntityID", readOnly = false)   
+    public String getTargetEntityID() {
+       return targetEntityID;
+    }
+
+    @JsonIgnore
+    public void setTargetEntityID(String value) { 
+        this.targetEntityID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "TargetPolicyGroupID", readOnly = false)   
     public String getTargetPolicyGroupID() {
        return targetPolicyGroupID;
@@ -368,6 +385,17 @@ public class TCA extends BaseObject {
     @JsonIgnore
     public void setThrottleTime(Long value) { 
         this.throttleTime = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "TriggerInterval", readOnly = false)   
+    public Long getTriggerInterval() {
+       return triggerInterval;
+    }
+
+    @JsonIgnore
+    public void setTriggerInterval(Long value) { 
+        this.triggerInterval = value;
     }
     
     @JsonIgnore
@@ -458,7 +486,7 @@ public class TCA extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "TCA [" + "URLEndPoint=" + URLEndPoint + ", action=" + action + ", count=" + count + ", description=" + description + ", disable=" + disable + ", displayStatus=" + displayStatus + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", metric=" + metric + ", name=" + name + ", period=" + period + ", status=" + status + ", targetPolicyGroupID=" + targetPolicyGroupID + ", threshold=" + threshold + ", throttleTime=" + throttleTime + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "TCA [" + "URLEndPoint=" + URLEndPoint + ", action=" + action + ", count=" + count + ", description=" + description + ", disable=" + disable + ", displayStatus=" + displayStatus + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", metric=" + metric + ", name=" + name + ", period=" + period + ", status=" + status + ", targetEntityID=" + targetEntityID + ", targetPolicyGroupID=" + targetPolicyGroupID + ", threshold=" + threshold + ", throttleTime=" + throttleTime + ", triggerInterval=" + triggerInterval + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

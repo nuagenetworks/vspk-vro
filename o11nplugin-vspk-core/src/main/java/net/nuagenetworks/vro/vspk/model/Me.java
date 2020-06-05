@@ -74,6 +74,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EnterpriseProfilesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EthernetSegmentGWGroupsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIpsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GatewaysFetcher;
@@ -162,6 +164,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.RedundancyGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.RemoteVrsInfosFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.RolesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPoliciesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SaaSApplicationTypesFetcher;
@@ -214,6 +218,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VCenterVRSConfigsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.vrsInfosFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VSDConfigsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VSPsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.ZFBAutoAssignmentsFetcher;
@@ -260,6 +266,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISES_FETCHER, type = Constants.ENTERPRISES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPROFILES_FETCHER, type = Constants.ENTERPRISEPROFILES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.ETHERNETSEGMENTGWGROUPS_FETCHER, type = Constants.ETHERNETSEGMENTGWGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.GATEWAYS_FETCHER, type = Constants.GATEWAYS_FETCHER), 
 
@@ -314,6 +322,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.REDUNDANCYGROUPS_FETCHER, type = Constants.REDUNDANCYGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.REMOTEVRSINFOS_FETCHER, type = Constants.REMOTEVRSINFOS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.ROLES_FETCHER, type = Constants.ROLES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.SHAREDNETWORKRESOURCES_FETCHER, type = Constants.SHAREDNETWORKRESOURCES_FETCHER), 
 
@@ -484,6 +494,9 @@ public class Me extends BaseRootObject {
     private EnterpriseProfilesFetcher enterpriseProfiles;
     
     @JsonIgnore
+    private EthernetSegmentGWGroupsFetcher ethernetSegmentGWGroups;
+    
+    @JsonIgnore
     private FloatingIpsFetcher floatingIps;
     
     @JsonIgnore
@@ -616,6 +629,9 @@ public class Me extends BaseRootObject {
     private RemoteVrsInfosFetcher remoteVrsInfos;
     
     @JsonIgnore
+    private RolesFetcher roles;
+    
+    @JsonIgnore
     private RoutingPoliciesFetcher routingPolicies;
     
     @JsonIgnore
@@ -694,6 +710,9 @@ public class Me extends BaseRootObject {
     private vrsInfosFetcher vrsInfos;
     
     @JsonIgnore
+    private VSDConfigsFetcher vSDConfigs;
+    
+    @JsonIgnore
     private VSPsFetcher vSPs;
     
     @JsonIgnore
@@ -754,6 +773,8 @@ public class Me extends BaseRootObject {
         enterprises = new EnterprisesFetcher(this);
         
         enterpriseProfiles = new EnterpriseProfilesFetcher(this);
+        
+        ethernetSegmentGWGroups = new EthernetSegmentGWGroupsFetcher(this);
         
         floatingIps = new FloatingIpsFetcher(this);
         
@@ -843,6 +864,8 @@ public class Me extends BaseRootObject {
         
         remoteVrsInfos = new RemoteVrsInfosFetcher(this);
         
+        roles = new RolesFetcher(this);
+        
         routingPolicies = new RoutingPoliciesFetcher(this);
         
         saaSApplicationTypes = new SaaSApplicationTypesFetcher(this);
@@ -894,6 +917,8 @@ public class Me extends BaseRootObject {
         vCenterVRSConfigs = new VCenterVRSConfigsFetcher(this);
         
         vrsInfos = new vrsInfosFetcher(this);
+        
+        vSDConfigs = new VSDConfigsFetcher(this);
         
         vSPs = new VSPsFetcher(this);
         
@@ -1336,6 +1361,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EthernetSegmentGWGroups", readOnly = true)   
+    public EthernetSegmentGWGroupsFetcher getEthernetSegmentGWGroups() {
+        return ethernetSegmentGWGroups;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "FloatingIps", readOnly = true)   
     public FloatingIpsFetcher getFloatingIps() {
         return floatingIps;
@@ -1600,6 +1631,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Roles", readOnly = true)   
+    public RolesFetcher getRoles() {
+        return roles;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "RoutingPolicies", readOnly = true)   
     public RoutingPoliciesFetcher getRoutingPolicies() {
         return routingPolicies;
@@ -1756,6 +1793,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VSDConfigs", readOnly = true)   
+    public VSDConfigsFetcher getVSDConfigs() {
+        return vSDConfigs;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VSPs", readOnly = true)   
     public VSPsFetcher getVSPs() {
         return vSPs;
@@ -1902,6 +1945,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ENTERPRISEPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createEthernetSegmentGWGroup(Session session, EthernetSegmentGWGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ETHERNETSEGMENTGWGROUPS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -2144,6 +2195,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.REMOTEVRSINFOS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createRole(Session session, Role childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ROLES_FETCHER, getId());
         }
     }
     @VsoMethod

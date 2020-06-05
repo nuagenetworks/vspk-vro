@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find VSDConfig in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">43b64d13-a54e-54a3-b5e0-e142e4a12f20</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getRoleentryRoleAccessTypeList</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">e75715f1-3290-5862-897b-39aff7523a63</entry>
+</properties>

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum SSIDConnectionStatus {
 
-    INITIALIZED("INITIALIZED", "INITIALIZED"), ORPHAN("ORPHAN", "ORPHAN"), READY("READY", "READY"), MISMATCH("MISMATCH", "MISMATCH");
+    INITIALIZED("INITIALIZED", "INITIALIZED"), MISMATCH("MISMATCH", "MISMATCH"), ORPHAN("ORPHAN", "ORPHAN"), READY("READY", "READY");
 
     private final String id;
     private final String name;
@@ -63,6 +63,11 @@ public enum SSIDConnectionStatus {
         return INITIALIZED;
     }
     
+    @VsoProperty(displayName = "MISMATCH", readOnly = true)
+    public SSIDConnectionStatus getMISMATCH() {
+        return MISMATCH;
+    }
+    
     @VsoProperty(displayName = "ORPHAN", readOnly = true)
     public SSIDConnectionStatus getORPHAN() {
         return ORPHAN;
@@ -71,11 +76,6 @@ public enum SSIDConnectionStatus {
     @VsoProperty(displayName = "READY", readOnly = true)
     public SSIDConnectionStatus getREADY() {
         return READY;
-    }
-    
-    @VsoProperty(displayName = "MISMATCH", readOnly = true)
-    public SSIDConnectionStatus getMISMATCH() {
-        return MISMATCH;
     }
     
 

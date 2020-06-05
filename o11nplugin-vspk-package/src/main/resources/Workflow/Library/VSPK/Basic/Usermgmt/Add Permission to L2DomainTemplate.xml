@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7d057b52-4317-5056-8611-24594b08a40c"  version="6.0.5" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="7d057b52-4317-5056-8611-24594b08a40c"  version="20.5.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add Permission to L2DomainTemplate]]></display-name>
 <ref-types><![CDATA[(VSPK:L2DomainTemplate)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -8,8 +8,6 @@
 <param name='externalID' type='string' >
 </param>
 <param name='name' type='string' >
-</param>
-<param name='permittedAction' type='VSPK:PermissionPermittedAction' >
 </param>
 <param name='permittedEntityID' type='string' >
 </param>
@@ -29,7 +27,6 @@ if (externalID) {
 if (name) {
    permissionObj.name = name;
 }
-permissionObj.permittedAction = permittedAction;
 if (permittedEntityID) {
    permissionObj.permittedEntityID = permittedEntityID;
 }
@@ -39,7 +36,6 @@ l2DomainTemplateObj.createPermission(session, permissionObj);
 <in-binding><bind name='l2DomainTemplateObj' type='VSPK:L2DomainTemplate' export-name="l2DomainTemplateObj" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
-<bind name='permittedAction' type='VSPK:PermissionPermittedAction' export-name="permittedAction" ></bind>
 <bind name='permittedEntityID' type='string' export-name="permittedEntityID" ></bind>
 </in-binding><out-binding><bind name='permissionObj' type='VSPK:Permission' export-name="permissionObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -50,8 +46,6 @@ l2DomainTemplateObj.createPermission(session, permissionObj);
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
-</p-param>
-<p-param name="permittedAction"><desc><![CDATA[permittedAction]]></desc>
 </p-param>
 <p-param name="permittedEntityID"><desc><![CDATA[permittedEntityID]]></desc>
 </p-param>

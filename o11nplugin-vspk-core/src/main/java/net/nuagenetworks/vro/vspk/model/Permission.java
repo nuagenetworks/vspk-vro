@@ -59,6 +59,24 @@ public class Permission extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "associatedGroupDescription")
+    protected String associatedGroupDescription;
+    
+    @JsonProperty(value = "associatedGroupID")
+    protected String associatedGroupID;
+    
+    @JsonProperty(value = "associatedGroupName")
+    protected String associatedGroupName;
+    
+    @JsonProperty(value = "associatedRoleDescription")
+    protected String associatedRoleDescription;
+    
+    @JsonProperty(value = "associatedRoleID")
+    protected String associatedRoleID;
+    
+    @JsonProperty(value = "associatedRoleName")
+    protected String associatedRoleName;
+    
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
     
@@ -77,8 +95,11 @@ public class Permission extends BaseObject {
     @JsonProperty(value = "permittedAction")
     protected PermissionPermittedAction permittedAction;
     
-    @JsonProperty(value = "permittedEntityDescription")
-    protected String permittedEntityDescription;
+    @JsonProperty(value = "permittedEnterpriseDescription")
+    protected String permittedEnterpriseDescription;
+    
+    @JsonProperty(value = "permittedEnterpriseName")
+    protected String permittedEnterpriseName;
     
     @JsonProperty(value = "permittedEntityID")
     protected String permittedEntityID;
@@ -142,6 +163,72 @@ public class Permission extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedGroupDescription", readOnly = false)   
+    public String getAssociatedGroupDescription() {
+       return associatedGroupDescription;
+    }
+
+    @JsonIgnore
+    public void setAssociatedGroupDescription(String value) { 
+        this.associatedGroupDescription = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedGroupID", readOnly = false)   
+    public String getAssociatedGroupID() {
+       return associatedGroupID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedGroupID(String value) { 
+        this.associatedGroupID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedGroupName", readOnly = false)   
+    public String getAssociatedGroupName() {
+       return associatedGroupName;
+    }
+
+    @JsonIgnore
+    public void setAssociatedGroupName(String value) { 
+        this.associatedGroupName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedRoleDescription", readOnly = false)   
+    public String getAssociatedRoleDescription() {
+       return associatedRoleDescription;
+    }
+
+    @JsonIgnore
+    public void setAssociatedRoleDescription(String value) { 
+        this.associatedRoleDescription = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedRoleID", readOnly = false)   
+    public String getAssociatedRoleID() {
+       return associatedRoleID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedRoleID(String value) { 
+        this.associatedRoleID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedRoleName", readOnly = false)   
+    public String getAssociatedRoleName() {
+       return associatedRoleName;
+    }
+
+    @JsonIgnore
+    public void setAssociatedRoleName(String value) { 
+        this.associatedRoleName = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
     public java.util.List<String> getEmbeddedMetadata() {
@@ -209,14 +296,25 @@ public class Permission extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "PermittedEntityDescription", readOnly = false)   
-    public String getPermittedEntityDescription() {
-       return permittedEntityDescription;
+    @VsoProperty(displayName = "PermittedEnterpriseDescription", readOnly = false)   
+    public String getPermittedEnterpriseDescription() {
+       return permittedEnterpriseDescription;
     }
 
     @JsonIgnore
-    public void setPermittedEntityDescription(String value) { 
-        this.permittedEntityDescription = value;
+    public void setPermittedEnterpriseDescription(String value) { 
+        this.permittedEnterpriseDescription = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PermittedEnterpriseName", readOnly = false)   
+    public String getPermittedEnterpriseName() {
+       return permittedEnterpriseName;
+    }
+
+    @JsonIgnore
+    public void setPermittedEnterpriseName(String value) { 
+        this.permittedEnterpriseName = value;
     }
     
     @JsonIgnore
@@ -315,7 +413,7 @@ public class Permission extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Permission [" + "embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", permittedEntityDescription=" + permittedEntityDescription + ", permittedEntityID=" + permittedEntityID + ", permittedEntityName=" + permittedEntityName + ", permittedEntityType=" + permittedEntityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Permission [" + "associatedGroupDescription=" + associatedGroupDescription + ", associatedGroupID=" + associatedGroupID + ", associatedGroupName=" + associatedGroupName + ", associatedRoleDescription=" + associatedRoleDescription + ", associatedRoleID=" + associatedRoleID + ", associatedRoleName=" + associatedRoleName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", permittedEnterpriseDescription=" + permittedEnterpriseDescription + ", permittedEnterpriseName=" + permittedEnterpriseName + ", permittedEntityID=" + permittedEntityID + ", permittedEntityName=" + permittedEntityName + ", permittedEntityType=" + permittedEntityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

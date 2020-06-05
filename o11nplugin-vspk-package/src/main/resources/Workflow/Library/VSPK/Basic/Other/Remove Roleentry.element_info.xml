@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Remove Roleentry</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5d9e5c1f-e843-5f66-bb01-6854dece7073</entry>
+</properties>

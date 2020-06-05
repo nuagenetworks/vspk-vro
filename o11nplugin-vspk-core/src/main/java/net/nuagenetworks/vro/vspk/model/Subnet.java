@@ -76,6 +76,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VMInterfacesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VMIPReservationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VPortsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetDHCPRelayStatus;
@@ -91,6 +93,8 @@ import net.nuagenetworks.vro.vspk.model.enums.SubnetEncryption;
 import net.nuagenetworks.vro.vspk.model.enums.SubnetEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetEntityState;
+
+import net.nuagenetworks.vro.vspk.model.enums.SubnetL2EncapType;
 
 import net.nuagenetworks.vro.vspk.model.enums.SubnetMaintenanceMode;
 
@@ -142,6 +146,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.STATISTICSPOLICIES_FETCHER, type = Constants.STATISTICSPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.TCAS_FETCHER, type = Constants.TCAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.VMIPRESERVATIONS_FETCHER, type = Constants.VMIPRESERVATIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.VPORTS_FETCHER, type = Constants.VPORTS_FETCHER)
 })
@@ -233,6 +239,9 @@ public class Subnet extends BaseObject {
     
     @JsonProperty(value = "ingressReplicationEnabled")
     protected Boolean ingressReplicationEnabled;
+    
+    @JsonProperty(value = "l2EncapType")
+    protected SubnetL2EncapType l2EncapType;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
@@ -376,6 +385,9 @@ public class Subnet extends BaseObject {
     private VMInterfacesFetcher vMInterfaces;
     
     @JsonIgnore
+    private VMIPReservationsFetcher vMIPReservations;
+    
+    @JsonIgnore
     private VPortsFetcher vPorts;
     
     @VsoConstructor
@@ -437,6 +449,8 @@ public class Subnet extends BaseObject {
         vMs = new VMsFetcher(this);
         
         vMInterfaces = new VMInterfacesFetcher(this);
+        
+        vMIPReservations = new VMIPReservationsFetcher(this);
         
         vPorts = new VPortsFetcher(this);
         }
@@ -771,6 +785,17 @@ public class Subnet extends BaseObject {
     @JsonIgnore
     public void setIngressReplicationEnabled(Boolean value) { 
         this.ingressReplicationEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "L2EncapType", readOnly = false)   
+    public SubnetL2EncapType getL2EncapType() {
+       return l2EncapType;
+    }
+
+    @JsonIgnore
+    public void setL2EncapType(SubnetL2EncapType value) { 
+        this.l2EncapType = value;
     }
     
     @JsonIgnore
@@ -1166,6 +1191,12 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "VMIPReservations", readOnly = true)   
+    public VMIPReservationsFetcher getVMIPReservations() {
+        return vMIPReservations;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VPorts", readOnly = true)   
     public VPortsFetcher getVPorts() {
         return vPorts;
@@ -1330,6 +1361,14 @@ public class Subnet extends BaseObject {
         }
     }
     @VsoMethod
+    public void createVMIPReservation(Session session, VMIPReservation childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.VMIPRESERVATIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createVPort(Session session, VPort childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1337,7 +1376,7 @@ public class Subnet extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", EVPNEnabled=" + EVPNEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", advertise=" + advertise + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", color=" + color + ", customerID=" + customerID + ", description=" + description + ", domainServiceLabel=" + domainServiceLabel + ", dualStackDynamicIPAllocation=" + dualStackDynamicIPAllocation + ", embeddedMetadata=" + embeddedMetadata + ", enableDHCPv4=" + enableDHCPv4 + ", enableDHCPv6=" + enableDHCPv6 + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", linkLocalAddress=" + linkLocalAddress + ", maintenanceMode=" + maintenanceMode + ", multiHomeEnabled=" + multiHomeEnabled + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", resourceType=" + resourceType + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", subnetVLANID=" + subnetVLANID + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", vrrpIPv6BackupAddress=" + vrrpIPv6BackupAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Subnet [" + "DHCPRelayStatus=" + DHCPRelayStatus + ", DPI=" + DPI + ", EVPNEnabled=" + EVPNEnabled + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", PATEnabled=" + PATEnabled + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", address=" + address + ", advertise=" + advertise + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", color=" + color + ", customerID=" + customerID + ", description=" + description + ", domainServiceLabel=" + domainServiceLabel + ", dualStackDynamicIPAllocation=" + dualStackDynamicIPAllocation + ", embeddedMetadata=" + embeddedMetadata + ", enableDHCPv4=" + enableDHCPv4 + ", enableDHCPv6=" + enableDHCPv6 + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", l2EncapType=" + l2EncapType + ", lastUpdatedBy=" + lastUpdatedBy + ", linkLocalAddress=" + linkLocalAddress + ", maintenanceMode=" + maintenanceMode + ", multiHomeEnabled=" + multiHomeEnabled + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyGroupID=" + policyGroupID + ", proxyARP=" + proxyARP + ", public_=" + public_ + ", resourceType=" + resourceType + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", serviceID=" + serviceID + ", splitSubnet=" + splitSubnet + ", subnetVLANID=" + subnetVLANID + ", templateID=" + templateID + ", underlay=" + underlay + ", underlayEnabled=" + underlayEnabled + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", vrrpIPv6BackupAddress=" + vrrpIPv6BackupAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

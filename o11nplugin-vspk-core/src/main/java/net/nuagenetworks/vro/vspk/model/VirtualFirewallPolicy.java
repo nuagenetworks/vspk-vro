@@ -69,8 +69,14 @@ public class VirtualFirewallPolicy extends BaseObject {
     @JsonProperty(value = "allowAddressSpoof")
     protected Boolean allowAddressSpoof;
     
+    @JsonProperty(value = "associatedEgressAdvFwdRuleTemplateID")
+    protected String associatedEgressAdvFwdRuleTemplateID;
+    
     @JsonProperty(value = "associatedEgressTemplateID")
     protected String associatedEgressTemplateID;
+    
+    @JsonProperty(value = "associatedIngressAdvFwdRuleTemplateID")
+    protected String associatedIngressAdvFwdRuleTemplateID;
     
     @JsonProperty(value = "associatedIngressTemplateID")
     protected String associatedIngressTemplateID;
@@ -193,6 +199,17 @@ public class VirtualFirewallPolicy extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedEgressAdvFwdRuleTemplateID", readOnly = false)   
+    public String getAssociatedEgressAdvFwdRuleTemplateID() {
+       return associatedEgressAdvFwdRuleTemplateID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedEgressAdvFwdRuleTemplateID(String value) { 
+        this.associatedEgressAdvFwdRuleTemplateID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedEgressTemplateID", readOnly = false)   
     public String getAssociatedEgressTemplateID() {
        return associatedEgressTemplateID;
@@ -201,6 +218,17 @@ public class VirtualFirewallPolicy extends BaseObject {
     @JsonIgnore
     public void setAssociatedEgressTemplateID(String value) { 
         this.associatedEgressTemplateID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedIngressAdvFwdRuleTemplateID", readOnly = false)   
+    public String getAssociatedIngressAdvFwdRuleTemplateID() {
+       return associatedIngressAdvFwdRuleTemplateID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedIngressAdvFwdRuleTemplateID(String value) { 
+        this.associatedIngressAdvFwdRuleTemplateID = value;
     }
     
     @JsonIgnore
@@ -439,7 +467,7 @@ public class VirtualFirewallPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VIRTUALFIREWALLRULES_FETCHER, getId());
         }
     }public String toString() {
-        return "VirtualFirewallPolicy [" + "active=" + active + ", allowAddressSpoof=" + allowAddressSpoof + ", associatedEgressTemplateID=" + associatedEgressTemplateID + ", associatedIngressTemplateID=" + associatedIngressTemplateID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", autoGeneratePriority=" + autoGeneratePriority + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", defaultInstallACLImplicitRules=" + defaultInstallACLImplicitRules + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VirtualFirewallPolicy [" + "active=" + active + ", allowAddressSpoof=" + allowAddressSpoof + ", associatedEgressAdvFwdRuleTemplateID=" + associatedEgressAdvFwdRuleTemplateID + ", associatedEgressTemplateID=" + associatedEgressTemplateID + ", associatedIngressAdvFwdRuleTemplateID=" + associatedIngressAdvFwdRuleTemplateID + ", associatedIngressTemplateID=" + associatedIngressTemplateID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", autoGeneratePriority=" + autoGeneratePriority + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", defaultInstallACLImplicitRules=" + defaultInstallACLImplicitRules + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

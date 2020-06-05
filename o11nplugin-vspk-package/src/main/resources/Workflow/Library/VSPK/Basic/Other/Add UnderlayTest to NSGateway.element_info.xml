@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Add UnderlayTest to NSGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">fa5493b4-36cf-5f4b-8bc8-9cbf18135657</entry>
+</properties>

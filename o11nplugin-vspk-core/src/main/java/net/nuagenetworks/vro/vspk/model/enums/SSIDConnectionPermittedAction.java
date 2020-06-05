@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum SSIDConnectionPermittedAction {
 
-    USE("USE", "USE"), READ("READ", "READ"), ALL("ALL", "ALL"), INSTANTIATE("INSTANTIATE", "INSTANTIATE"), EXTEND("EXTEND", "EXTEND"), DEPLOY("DEPLOY", "DEPLOY");
+    ALL("ALL", "ALL"), DEPLOY("DEPLOY", "DEPLOY"), EXTEND("EXTEND", "EXTEND"), INSTANTIATE("INSTANTIATE", "INSTANTIATE"), READ("READ", "READ"), USE("USE", "USE");
 
     private final String id;
     private final String name;
@@ -58,24 +58,14 @@ public enum SSIDConnectionPermittedAction {
     }
 
     
-    @VsoProperty(displayName = "USE", readOnly = true)
-    public SSIDConnectionPermittedAction getUSE() {
-        return USE;
-    }
-    
-    @VsoProperty(displayName = "READ", readOnly = true)
-    public SSIDConnectionPermittedAction getREAD() {
-        return READ;
-    }
-    
     @VsoProperty(displayName = "ALL", readOnly = true)
     public SSIDConnectionPermittedAction getALL() {
         return ALL;
     }
     
-    @VsoProperty(displayName = "INSTANTIATE", readOnly = true)
-    public SSIDConnectionPermittedAction getINSTANTIATE() {
-        return INSTANTIATE;
+    @VsoProperty(displayName = "DEPLOY", readOnly = true)
+    public SSIDConnectionPermittedAction getDEPLOY() {
+        return DEPLOY;
     }
     
     @VsoProperty(displayName = "EXTEND", readOnly = true)
@@ -83,9 +73,19 @@ public enum SSIDConnectionPermittedAction {
         return EXTEND;
     }
     
-    @VsoProperty(displayName = "DEPLOY", readOnly = true)
-    public SSIDConnectionPermittedAction getDEPLOY() {
-        return DEPLOY;
+    @VsoProperty(displayName = "INSTANTIATE", readOnly = true)
+    public SSIDConnectionPermittedAction getINSTANTIATE() {
+        return INSTANTIATE;
+    }
+    
+    @VsoProperty(displayName = "READ", readOnly = true)
+    public SSIDConnectionPermittedAction getREAD() {
+        return READ;
+    }
+    
+    @VsoProperty(displayName = "USE", readOnly = true)
+    public SSIDConnectionPermittedAction getUSE() {
+        return USE;
     }
     
 

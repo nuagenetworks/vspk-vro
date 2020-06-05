@@ -71,9 +71,6 @@ public class HSC extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "address")
-    protected String address;
-    
     @JsonProperty(value = "addresses")
     protected java.util.List<String> addresses;
     
@@ -85,6 +82,9 @@ public class HSC extends BaseObject {
     
     @JsonProperty(value = "averageMemoryUsage")
     protected Float averageMemoryUsage;
+    
+    @JsonProperty(value = "communicationId")
+    protected String communicationId;
     
     @JsonProperty(value = "currentCPUUsage")
     protected Float currentCPUUsage;
@@ -228,17 +228,6 @@ public class HSC extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "Address", readOnly = false)   
-    public String getAddress() {
-       return address;
-    }
-
-    @JsonIgnore
-    public void setAddress(String value) { 
-        this.address = value;
-    }
-    
-    @JsonIgnore
     @VsoProperty(displayName = "Addresses", readOnly = false)   
     public java.util.List<String> getAddresses() {
        return addresses;
@@ -280,6 +269,17 @@ public class HSC extends BaseObject {
     @JsonIgnore
     public void setAverageMemoryUsage(Float value) { 
         this.averageMemoryUsage = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CommunicationId", readOnly = false)   
+    public String getCommunicationId() {
+       return communicationId;
+    }
+
+    @JsonIgnore
+    public void setCommunicationId(String value) { 
+        this.communicationId = value;
     }
     
     @JsonIgnore
@@ -614,7 +614,7 @@ public class HSC extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "HSC [" + "address=" + address + ", addresses=" + addresses + ", alreadyMarkedForUnavailable=" + alreadyMarkedForUnavailable + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", description=" + description + ", disks=" + disks + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", model=" + model + ", name=" + name + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", productVersion=" + productVersion + ", status=" + status + ", type=" + type + ", unavailableTimestamp=" + unavailableTimestamp + ", vsds=" + vsds + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "HSC [" + "addresses=" + addresses + ", alreadyMarkedForUnavailable=" + alreadyMarkedForUnavailable + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", communicationId=" + communicationId + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", description=" + description + ", disks=" + disks + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", model=" + model + ", name=" + name + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", productVersion=" + productVersion + ", status=" + status + ", type=" + type + ", unavailableTimestamp=" + unavailableTimestamp + ", vsds=" + vsds + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

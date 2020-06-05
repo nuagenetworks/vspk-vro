@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="e58807c8-b51b-5519-8c1a-61116a0bec9e"  version="6.0.5" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="e58807c8-b51b-5519-8c1a-61116a0bec9e"  version="20.5.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add IKEGateway to Enterprise]]></display-name>
 <ref-types><![CDATA[(VSPK:Enterprise)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='enterpriseObj' type='VSPK:Enterprise' >
+</param>
+<param name='IPAddress' type='string' >
 </param>
 <param name='description' type='string' >
 </param>
@@ -21,6 +23,9 @@
 <script encoded='false'><![CDATA[var session = enterpriseObj.session;
 
 iKEGatewayObj = new VSPKIKEGateway();
+if (IPAddress) {
+   iKEGatewayObj.IPAddress = IPAddress;
+}
 if (description) {
    iKEGatewayObj.description = description;
 }
@@ -34,6 +39,7 @@ if (name) {
 enterpriseObj.createIKEGateway(session, iKEGatewayObj);
 ]]></script>
 <in-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
+<bind name='IPAddress' type='string' export-name="IPAddress" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
@@ -43,6 +49,8 @@ enterpriseObj.createIKEGateway(session, iKEGatewayObj);
 <presentation>
 <p-param name="enterpriseObj"><desc><![CDATA[enterpriseObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="IPAddress"><desc><![CDATA[IPAddress]]></desc>
+</p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>

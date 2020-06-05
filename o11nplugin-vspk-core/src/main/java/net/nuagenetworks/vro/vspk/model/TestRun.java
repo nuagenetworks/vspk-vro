@@ -33,6 +33,12 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.enums.TestRunEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.TestRunOperationStatus;
+
+import net.nuagenetworks.vro.vspk.model.enums.TestRunTestResult;
+
+import net.nuagenetworks.vro.vspk.model.enums.TestRunTestResultDataType;
+
+import net.nuagenetworks.vro.vspk.model.enums.TestRunUnderlayTestCategory;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -98,6 +104,27 @@ public class TestRun extends BaseObject {
     
     @JsonProperty(value = "stopDateTime")
     protected Long stopDateTime;
+    
+    @JsonProperty(value = "testResult")
+    protected TestRunTestResult testResult;
+    
+    @JsonProperty(value = "testResultData")
+    protected Object testResultData;
+    
+    @JsonProperty(value = "testResultDataType")
+    protected TestRunTestResultDataType testResultDataType;
+    
+    @JsonProperty(value = "testResultSpecificationEntityName")
+    protected String testResultSpecificationEntityName;
+    
+    @JsonProperty(value = "underlayTestCategory")
+    protected TestRunUnderlayTestCategory underlayTestCategory;
+    
+    @JsonProperty(value = "underlayTestDescription")
+    protected String underlayTestDescription;
+    
+    @JsonProperty(value = "underlayTestName")
+    protected String underlayTestName;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -307,6 +334,83 @@ public class TestRun extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "TestResult", readOnly = false)   
+    public TestRunTestResult getTestResult() {
+       return testResult;
+    }
+
+    @JsonIgnore
+    public void setTestResult(TestRunTestResult value) { 
+        this.testResult = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "TestResultData", readOnly = false)   
+    public Object getTestResultData() {
+       return testResultData;
+    }
+
+    @JsonIgnore
+    public void setTestResultData(Object value) { 
+        this.testResultData = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "TestResultDataType", readOnly = false)   
+    public TestRunTestResultDataType getTestResultDataType() {
+       return testResultDataType;
+    }
+
+    @JsonIgnore
+    public void setTestResultDataType(TestRunTestResultDataType value) { 
+        this.testResultDataType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "TestResultSpecificationEntityName", readOnly = false)   
+    public String getTestResultSpecificationEntityName() {
+       return testResultSpecificationEntityName;
+    }
+
+    @JsonIgnore
+    public void setTestResultSpecificationEntityName(String value) { 
+        this.testResultSpecificationEntityName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UnderlayTestCategory", readOnly = false)   
+    public TestRunUnderlayTestCategory getUnderlayTestCategory() {
+       return underlayTestCategory;
+    }
+
+    @JsonIgnore
+    public void setUnderlayTestCategory(TestRunUnderlayTestCategory value) { 
+        this.underlayTestCategory = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UnderlayTestDescription", readOnly = false)   
+    public String getUnderlayTestDescription() {
+       return underlayTestDescription;
+    }
+
+    @JsonIgnore
+    public void setUnderlayTestDescription(String value) { 
+        this.underlayTestDescription = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UnderlayTestName", readOnly = false)   
+    public String getUnderlayTestName() {
+       return underlayTestName;
+    }
+
+    @JsonIgnore
+    public void setUnderlayTestName(String value) { 
+        this.underlayTestName = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -363,7 +467,7 @@ public class TestRun extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "TestRun [" + "associatedTestID=" + associatedTestID + ", associatedTestSuiteRunID=" + associatedTestSuiteRunID + ", command=" + command + ", commandExitCode=" + commandExitCode + ", commandOutput=" + commandOutput + ", commandOutputSummary=" + commandOutputSummary + ", duration=" + duration + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", operationStatus=" + operationStatus + ", startDateTime=" + startDateTime + ", stopDateTime=" + stopDateTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "TestRun [" + "associatedTestID=" + associatedTestID + ", associatedTestSuiteRunID=" + associatedTestSuiteRunID + ", command=" + command + ", commandExitCode=" + commandExitCode + ", commandOutput=" + commandOutput + ", commandOutputSummary=" + commandOutputSummary + ", duration=" + duration + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", operationStatus=" + operationStatus + ", startDateTime=" + startDateTime + ", stopDateTime=" + stopDateTime + ", testResult=" + testResult + ", testResultData=" + testResultData + ", testResultDataType=" + testResultDataType + ", testResultSpecificationEntityName=" + testResultSpecificationEntityName + ", underlayTestCategory=" + underlayTestCategory + ", underlayTestDescription=" + underlayTestDescription + ", underlayTestName=" + underlayTestName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

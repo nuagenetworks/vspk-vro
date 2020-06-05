@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to EthernetSegmentGroup</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">41e34b6c-2876-5211-a371-639c3a03c6a0</entry>
+</properties>

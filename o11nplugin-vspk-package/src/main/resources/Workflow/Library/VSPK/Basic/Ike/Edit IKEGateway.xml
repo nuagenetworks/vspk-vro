@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ef95f0ac-d433-51a1-bcb0-24ed4377e7ac"  version="6.0.5" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ef95f0ac-d433-51a1-bcb0-24ed4377e7ac"  version="20.5.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit IKEGateway]]></display-name>
 <ref-types><![CDATA[(VSPK:IKEGateway)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='iKEGatewayObj' type='VSPK:IKEGateway' >
+</param>
+
+<param name='IPAddress' type='string' >
 </param>
 
 <param name='description' type='string' >
@@ -22,6 +25,11 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = iKEGatewayObj.session;
 
+if (IPAddress) {
+   iKEGatewayObj.IPAddress = IPAddress;
+} else if (iKEGatewayObj.IPAddress) {
+   iKEGatewayObj.IPAddress = "";
+}
 if (description) {
    iKEGatewayObj.description = description;
 } else if (iKEGatewayObj.description) {
@@ -40,6 +48,8 @@ if (name) {
 iKEGatewayObj.save(session, 1);]]></script>
 <in-binding><bind name='iKEGatewayObj' type='VSPK:IKEGateway' export-name="iKEGatewayObj" ></bind>
 
+<bind name='IPAddress' type='string' export-name="IPAddress" ></bind>
+
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
@@ -51,6 +61,9 @@ iKEGatewayObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="iKEGatewayObj"><desc><![CDATA[iKEGatewayObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="IPAddress"><desc><![CDATA[IPAddress]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iKEGatewayObj.IPAddress]]></p-qual></p-param>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#iKEGatewayObj.description]]></p-qual></p-param>

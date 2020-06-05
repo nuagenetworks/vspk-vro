@@ -33,6 +33,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewaySummaryBootstrapStatus;
 
 import net.nuagenetworks.vro.vspk.model.enums.NSGatewaySummaryEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.NSGatewaySummaryPersonality;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -71,6 +73,9 @@ public class NSGatewaySummary extends BaseObject {
     
     @JsonProperty(value = "criticalAlarmsCount")
     protected Long criticalAlarmsCount;
+    
+    @JsonProperty(value = "description")
+    protected String description;
     
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
@@ -114,8 +119,14 @@ public class NSGatewaySummary extends BaseObject {
     @JsonProperty(value = "minorAlarmsCount")
     protected Long minorAlarmsCount;
     
+    @JsonProperty(value = "personality")
+    protected NSGatewaySummaryPersonality personality;
+    
     @JsonProperty(value = "redundantGroupID")
     protected String redundantGroupID;
+    
+    @JsonProperty(value = "redundantGroupName")
+    protected String redundantGroupName;
     
     @JsonProperty(value = "state")
     protected String state;
@@ -232,6 +243,17 @@ public class NSGatewaySummary extends BaseObject {
     @JsonIgnore
     public void setCriticalAlarmsCount(Long value) { 
         this.criticalAlarmsCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Description", readOnly = false)   
+    public String getDescription() {
+       return description;
+    }
+
+    @JsonIgnore
+    public void setDescription(String value) { 
+        this.description = value;
     }
     
     @JsonIgnore
@@ -389,6 +411,17 @@ public class NSGatewaySummary extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Personality", readOnly = false)   
+    public NSGatewaySummaryPersonality getPersonality() {
+       return personality;
+    }
+
+    @JsonIgnore
+    public void setPersonality(NSGatewaySummaryPersonality value) { 
+        this.personality = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "RedundantGroupID", readOnly = false)   
     public String getRedundantGroupID() {
        return redundantGroupID;
@@ -397,6 +430,17 @@ public class NSGatewaySummary extends BaseObject {
     @JsonIgnore
     public void setRedundantGroupID(String value) { 
         this.redundantGroupID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RedundantGroupName", readOnly = false)   
+    public String getRedundantGroupName() {
+       return redundantGroupName;
+    }
+
+    @JsonIgnore
+    public void setRedundantGroupName(String value) { 
+        this.redundantGroupName = value;
     }
     
     @JsonIgnore
@@ -489,7 +533,7 @@ public class NSGatewaySummary extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGatewaySummary [" + "NSGVersion=" + NSGVersion + ", address=" + address + ", bootstrapStatus=" + bootstrapStatus + ", country=" + country + ", criticalAlarmsCount=" + criticalAlarmsCount + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", gatewayName=" + gatewayName + ", gatewayType=" + gatewayType + ", infoAlarmsCount=" + infoAlarmsCount + ", lastUpdatedBy=" + lastUpdatedBy + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", majorAlarmsCount=" + majorAlarmsCount + ", minorAlarmsCount=" + minorAlarmsCount + ", redundantGroupID=" + redundantGroupID + ", state=" + state + ", systemID=" + systemID + ", timezoneID=" + timezoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGatewaySummary [" + "NSGVersion=" + NSGVersion + ", address=" + address + ", bootstrapStatus=" + bootstrapStatus + ", country=" + country + ", criticalAlarmsCount=" + criticalAlarmsCount + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", gatewayName=" + gatewayName + ", gatewayType=" + gatewayType + ", infoAlarmsCount=" + infoAlarmsCount + ", lastUpdatedBy=" + lastUpdatedBy + ", latitude=" + latitude + ", locality=" + locality + ", longitude=" + longitude + ", majorAlarmsCount=" + majorAlarmsCount + ", minorAlarmsCount=" + minorAlarmsCount + ", personality=" + personality + ", redundantGroupID=" + redundantGroupID + ", redundantGroupName=" + redundantGroupName + ", state=" + state + ", systemID=" + systemID + ", timezoneID=" + timezoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

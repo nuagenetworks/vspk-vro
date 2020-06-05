@@ -40,11 +40,17 @@ import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateEntitySco
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateFailsafeDatapath;
 
+import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateLocationEntityType;
+
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateLocationType;
+
+import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateNetworkEntityType;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateNetworkType;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplatePolicyState;
+
+import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateRedirectionTargetEntityType;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressAdvFwdEntryTemplateUplinkPreference;
 
@@ -109,6 +115,9 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     @JsonProperty(value = "associatedTrafficTypeID")
     protected String associatedTrafficTypeID;
     
+    @JsonProperty(value = "associatedVirtualFirewallRuleID")
+    protected String associatedVirtualFirewallRuleID;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -142,6 +151,9 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "locationEntityType")
+    protected EgressAdvFwdEntryTemplateLocationEntityType locationEntityType;
+    
     @JsonProperty(value = "locationID")
     protected String locationID;
     
@@ -153,6 +165,9 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     
     @JsonProperty(value = "mirrorDestinationID")
     protected String mirrorDestinationID;
+    
+    @JsonProperty(value = "networkEntityType")
+    protected EgressAdvFwdEntryTemplateNetworkEntityType networkEntityType;
     
     @JsonProperty(value = "networkID")
     protected String networkID;
@@ -171,6 +186,9 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     
     @JsonProperty(value = "redirectVPortTagID")
     protected String redirectVPortTagID;
+    
+    @JsonProperty(value = "redirectionTargetEntityType")
+    protected EgressAdvFwdEntryTemplateRedirectionTargetEntityType redirectionTargetEntityType;
     
     @JsonProperty(value = "sourcePort")
     protected String sourcePort;
@@ -379,6 +397,17 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedVirtualFirewallRuleID", readOnly = false)   
+    public String getAssociatedVirtualFirewallRuleID() {
+       return associatedVirtualFirewallRuleID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedVirtualFirewallRuleID(String value) { 
+        this.associatedVirtualFirewallRuleID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -500,6 +529,17 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LocationEntityType", readOnly = false)   
+    public EgressAdvFwdEntryTemplateLocationEntityType getLocationEntityType() {
+       return locationEntityType;
+    }
+
+    @JsonIgnore
+    public void setLocationEntityType(EgressAdvFwdEntryTemplateLocationEntityType value) { 
+        this.locationEntityType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LocationID", readOnly = false)   
     public String getLocationID() {
        return locationID;
@@ -541,6 +581,17 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     @JsonIgnore
     public void setMirrorDestinationID(String value) { 
         this.mirrorDestinationID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NetworkEntityType", readOnly = false)   
+    public EgressAdvFwdEntryTemplateNetworkEntityType getNetworkEntityType() {
+       return networkEntityType;
+    }
+
+    @JsonIgnore
+    public void setNetworkEntityType(EgressAdvFwdEntryTemplateNetworkEntityType value) { 
+        this.networkEntityType = value;
     }
     
     @JsonIgnore
@@ -607,6 +658,17 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
     @JsonIgnore
     public void setRedirectVPortTagID(String value) { 
         this.redirectVPortTagID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RedirectionTargetEntityType", readOnly = false)   
+    public EgressAdvFwdEntryTemplateRedirectionTargetEntityType getRedirectionTargetEntityType() {
+       return redirectionTargetEntityType;
+    }
+
+    @JsonIgnore
+    public void setRedirectionTargetEntityType(EgressAdvFwdEntryTemplateRedirectionTargetEntityType value) { 
+        this.redirectionTargetEntityType = value;
     }
     
     @JsonIgnore
@@ -743,7 +805,7 @@ public class EgressAdvFwdEntryTemplate extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationGroupID=" + mirrorDestinationGroupID + ", mirrorDestinationID=" + mirrorDestinationID + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectVPortTagID=" + redirectVPortTagID + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", webFilterID=" + webFilterID + ", webFilterStatsLoggingEnabled=" + webFilterStatsLoggingEnabled + ", webFilterType=" + webFilterType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressAdvFwdEntryTemplate [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", FCOverride=" + FCOverride + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", associatedVirtualFirewallRuleID=" + associatedVirtualFirewallRuleID + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", locationEntityType=" + locationEntityType + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationGroupID=" + mirrorDestinationGroupID + ", mirrorDestinationID=" + mirrorDestinationID + ", networkEntityType=" + networkEntityType + ", networkID=" + networkID + ", networkType=" + networkType + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", redirectVPortTagID=" + redirectVPortTagID + ", redirectionTargetEntityType=" + redirectionTargetEntityType + ", sourcePort=" + sourcePort + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", uplinkPreference=" + uplinkPreference + ", webFilterID=" + webFilterID + ", webFilterStatsLoggingEnabled=" + webFilterStatsLoggingEnabled + ", webFilterType=" + webFilterType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

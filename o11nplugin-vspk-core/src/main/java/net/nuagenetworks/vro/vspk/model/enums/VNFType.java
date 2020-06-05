@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VNFType {
 
-    FIREWALL("FIREWALL", "FIREWALL"), WAN_OPT("WAN_OPT", "WAN_OPT");
+    FIREWALL("FIREWALL", "FIREWALL"), THREAT_PREVENTION("THREAT_PREVENTION", "THREAT_PREVENTION"), WAN_OPT("WAN_OPT", "WAN_OPT");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum VNFType {
     @VsoProperty(displayName = "FIREWALL", readOnly = true)
     public VNFType getFIREWALL() {
         return FIREWALL;
+    }
+    
+    @VsoProperty(displayName = "THREAT_PREVENTION", readOnly = true)
+    public VNFType getTHREAT_PREVENTION() {
+        return THREAT_PREVENTION;
     }
     
     @VsoProperty(displayName = "WAN_OPT", readOnly = true)

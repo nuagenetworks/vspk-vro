@@ -36,6 +36,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetconfManagersFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.ThreatPreventionServerConnectionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VSCsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.VSPEntityScope;
@@ -105,6 +107,9 @@ public class VSP extends BaseObject {
     private NetconfManagersFetcher netconfManagers;
     
     @JsonIgnore
+    private ThreatPreventionServerConnectionsFetcher threatPreventionServerConnections;
+    
+    @JsonIgnore
     private VSCsFetcher vSCs;
     
     @VsoConstructor
@@ -118,6 +123,8 @@ public class VSP extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         netconfManagers = new NetconfManagersFetcher(this);
+        
+        threatPreventionServerConnections = new ThreatPreventionServerConnectionsFetcher(this);
         
         vSCs = new VSCsFetcher(this);
         }
@@ -273,6 +280,12 @@ public class VSP extends BaseObject {
     @VsoProperty(displayName = "NetconfManagers", readOnly = true)   
     public NetconfManagersFetcher getNetconfManagers() {
         return netconfManagers;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ThreatPreventionServerConnections", readOnly = true)   
+    public ThreatPreventionServerConnectionsFetcher getThreatPreventionServerConnections() {
+        return threatPreventionServerConnections;
     }
     
     @JsonIgnore

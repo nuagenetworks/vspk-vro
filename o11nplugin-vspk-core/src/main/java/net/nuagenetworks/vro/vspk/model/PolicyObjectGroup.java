@@ -26,6 +26,8 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GatewaysFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
@@ -81,6 +83,9 @@ public class PolicyObjectGroup extends BaseObject {
     protected PolicyObjectGroupType type;
     
     @JsonIgnore
+    private GatewaysFetcher gateways;
+    
+    @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
     
     @JsonIgnore
@@ -91,6 +96,8 @@ public class PolicyObjectGroup extends BaseObject {
     
     @VsoConstructor
     public PolicyObjectGroup() {
+        gateways = new GatewaysFetcher(this);
+        
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
@@ -211,6 +218,12 @@ public class PolicyObjectGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Gateways", readOnly = true)   
+    public GatewaysFetcher getGateways() {
+        return gateways;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
@@ -248,6 +261,15 @@ public class PolicyObjectGroup extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.POLICYOBJECTGROUP, getId());
         }
     }
+    @VsoMethod
+    public void assignGateways(Session session, Gateway[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.POLICYOBJECTGROUP, getId());
+        }
+    }
+    
     @VsoMethod
     public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;

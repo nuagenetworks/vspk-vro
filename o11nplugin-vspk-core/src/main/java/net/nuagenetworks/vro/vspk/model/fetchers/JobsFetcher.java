@@ -42,6 +42,8 @@ import net.nuagenetworks.vro.vspk.model.EgressACLTemplate;
 
 import net.nuagenetworks.vro.vspk.model.Enterprise;
 
+import net.nuagenetworks.vro.vspk.model.EthernetSegmentGWGroup;
+
 import net.nuagenetworks.vro.vspk.model.Gateway;
 
 import net.nuagenetworks.vro.vspk.model.HSC;
@@ -169,6 +171,16 @@ public class JobsFetcher extends BaseFetcher<Job> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Enterprise) {
             return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EthernetSegmentGWGroup", readOnly = true)
+    public EthernetSegmentGWGroup getEthernetSegmentGWGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EthernetSegmentGWGroup) {
+            return (EthernetSegmentGWGroup) obj;
         }
         
         return null;

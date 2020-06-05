@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="9cde20df-83f2-56a3-9db5-86894b99f7c7"  version="20.5.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit Roleentry]]></display-name>
+<ref-types><![CDATA[(VSPK:Roleentry)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='roleentryObj' type='VSPK:Roleentry' >
+</param>
+
+<param name='associatedEntityType' type='string' >
+</param>
+
+<param name='roleAccessTypeList' type='Array/VSPK:RoleentryRoleAccessTypeList' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = roleentryObj.session;
+
+if (associatedEntityType) {
+   roleentryObj.associatedEntityType = associatedEntityType;
+} else if (roleentryObj.associatedEntityType) {
+   roleentryObj.associatedEntityType = "";
+}
+roleentryObj.roleAccessTypeList = roleAccessTypeList;
+roleentryObj.save(session, 1);]]></script>
+<in-binding><bind name='roleentryObj' type='VSPK:Roleentry' export-name="roleentryObj" ></bind>
+
+<bind name='associatedEntityType' type='string' export-name="associatedEntityType" ></bind>
+
+<bind name='roleAccessTypeList' type='Array/VSPK:RoleentryRoleAccessTypeList' export-name="roleAccessTypeList" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="roleentryObj"><desc><![CDATA[roleentryObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="associatedEntityType"><desc><![CDATA[associatedEntityType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#roleentryObj.associatedEntityType]]></p-qual></p-param>
+
+<p-param name="roleAccessTypeList"><desc><![CDATA[roleAccessTypeList]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="Array/VSPK:RoleentryRoleAccessTypeList" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getRoleentryRoleAccessTypeList").call( #roleentryObj )]]></p-qual></p-param>
+
+</presentation></workflow>

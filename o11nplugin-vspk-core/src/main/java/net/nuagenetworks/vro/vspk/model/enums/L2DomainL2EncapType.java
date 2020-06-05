@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum L2DomainL2EncapType {
 
-    MPLSoUDP("MPLSoUDP", "MPLSoUDP"), VXLAN("VXLAN", "VXLAN");
+    MPLS("MPLS", "MPLS"), MPLSoUDP("MPLSoUDP", "MPLSoUDP"), VXLAN("VXLAN", "VXLAN");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum L2DomainL2EncapType {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "MPLS", readOnly = true)
+    public L2DomainL2EncapType getMPLS() {
+        return MPLS;
+    }
     
     @VsoProperty(displayName = "MPLSoUDP", readOnly = true)
     public L2DomainL2EncapType getMPLSoUDP() {

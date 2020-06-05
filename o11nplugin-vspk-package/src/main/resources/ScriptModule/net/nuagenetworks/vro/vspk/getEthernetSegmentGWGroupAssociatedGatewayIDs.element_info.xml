@@ -3,7 +3,7 @@
 <properties>
 <comment>Exported from [server]</comment>
 <entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
-<entry key="name">getPermissionPermittedAction</entry>
+<entry key="name">getEthernetSegmentGWGroupAssociatedGatewayIDs</entry>
 <entry key="type">ScriptModule</entry>
-<entry key="id">2c2ef5b9-04aa-5458-af7d-61cccca199f7</entry>
+<entry key="id">b7e152a7-a87d-5d6c-836f-efbc112e0c82</entry>
 </properties>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="b90363cc-2313-5e51-8c32-09b6316a51f8"  version="20.5.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit RoutingPolicyBinding]]></display-name>
+<ref-types><![CDATA[(VSPK:RoutingPolicyBinding)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='routingPolicyBindingObj' type='VSPK:RoutingPolicyBinding' >
+</param>
+
+<param name='associatedPolicyObjectGroupID' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = routingPolicyBindingObj.session;
+
+if (associatedPolicyObjectGroupID) {
+   routingPolicyBindingObj.associatedPolicyObjectGroupID = associatedPolicyObjectGroupID;
+} else if (routingPolicyBindingObj.associatedPolicyObjectGroupID) {
+   routingPolicyBindingObj.associatedPolicyObjectGroupID = "";
+}
+if (description) {
+   routingPolicyBindingObj.description = description;
+} else if (routingPolicyBindingObj.description) {
+   routingPolicyBindingObj.description = "";
+}
+if (externalID) {
+   routingPolicyBindingObj.externalID = externalID;
+} else if (routingPolicyBindingObj.externalID) {
+   routingPolicyBindingObj.externalID = "";
+}
+if (name) {
+   routingPolicyBindingObj.name = name;
+} else if (routingPolicyBindingObj.name) {
+   routingPolicyBindingObj.name = "";
+}
+routingPolicyBindingObj.save(session, 1);]]></script>
+<in-binding><bind name='routingPolicyBindingObj' type='VSPK:RoutingPolicyBinding' export-name="routingPolicyBindingObj" ></bind>
+
+<bind name='associatedPolicyObjectGroupID' type='string' export-name="associatedPolicyObjectGroupID" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="routingPolicyBindingObj"><desc><![CDATA[routingPolicyBindingObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="associatedPolicyObjectGroupID"><desc><![CDATA[associatedPolicyObjectGroupID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#routingPolicyBindingObj.associatedPolicyObjectGroupID]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#routingPolicyBindingObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#routingPolicyBindingObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#routingPolicyBindingObj.name]]></p-qual></p-param>
+
+</presentation></workflow>

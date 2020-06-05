@@ -40,6 +40,8 @@ import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.Me;
 
+import net.nuagenetworks.vro.vspk.model.PolicyObjectGroup;
+
 import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -119,6 +121,16 @@ public class GatewaysFetcher extends BaseFetcher<Gateway> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Me) {
             return (Me) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "PolicyObjectGroup", readOnly = true)
+    public PolicyObjectGroup getPolicyObjectGroup() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof PolicyObjectGroup) {
+            return (PolicyObjectGroup) obj;
         }
         
         return null;

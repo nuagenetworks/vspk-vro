@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.OSPFAreasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.OSPFInstanceIPType;
+
 import net.nuagenetworks.vro.vspk.model.enums.OSPFInstanceEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -58,6 +60,9 @@ public class OSPFInstance extends BaseObject {
 
     private static final long serialVersionUID = 1L;
 
+    
+    @JsonProperty(value = "IPType")
+    protected OSPFInstanceIPType IPType;
     
     @JsonProperty(value = "associatedExportRoutingPolicyID")
     protected String associatedExportRoutingPolicyID;
@@ -151,6 +156,17 @@ public class OSPFInstance extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "IPType", readOnly = false)   
+    public OSPFInstanceIPType getIPType() {
+       return IPType;
+    }
+
+    @JsonIgnore
+    public void setIPType(OSPFInstanceIPType value) { 
+        this.IPType = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedExportRoutingPolicyID", readOnly = false)   
     public String getAssociatedExportRoutingPolicyID() {
@@ -365,7 +381,7 @@ public class OSPFInstance extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.OSPFAREAS_FETCHER, getId());
         }
     }public String toString() {
-        return "OSPFInstance [" + "associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", exportLimit=" + exportLimit + ", exportToOverlay=" + exportToOverlay + ", externalID=" + externalID + ", externalPreference=" + externalPreference + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", preference=" + preference + ", superBackboneEnabled=" + superBackboneEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "OSPFInstance [" + "IPType=" + IPType + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", exportLimit=" + exportLimit + ", exportToOverlay=" + exportToOverlay + ", externalID=" + externalID + ", externalPreference=" + externalPreference + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", preference=" + preference + ", superBackboneEnabled=" + superBackboneEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }
