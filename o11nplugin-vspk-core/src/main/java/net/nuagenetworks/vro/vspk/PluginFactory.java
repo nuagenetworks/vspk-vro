@@ -2794,6 +2794,10 @@ public final class PluginFactory extends BasePluginFactory {
             return NSGatewaySummaryEntityScope.getEnumById(id);
         }
         
+        if (type.equals(Constants.NSGATEWAYSUMMARY_PERSONALITY_ENUM)) {
+            return NSGatewaySummaryPersonality.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NSGATEWAYTEMPLATE)) {
             return ModelHelper.getNSGatewayTemplateById(id);
         }
@@ -14301,6 +14305,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.NSGATEWAYSUMMARY_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(NSGatewaySummaryEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.NSGATEWAYSUMMARY_PERSONALITY_ENUM)) {
+            return new QueryResult(Arrays.asList(NSGatewaySummaryPersonality.values()));
         }
         
         if (type.equals(Constants.NSGATEWAYTEMPLATE)) {

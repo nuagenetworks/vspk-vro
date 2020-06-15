@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ac4eb2f7-11e9-5f3f-b723-a37de5fe3ee3"  version="6.0.5" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ac4eb2f7-11e9-5f3f-b723-a37de5fe3ee3"  version="6.0.7" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add L4Service to Enterprise]]></display-name>
 <ref-types><![CDATA[(VSPK:Enterprise)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -10,8 +10,6 @@
 <param name='externalID' type='string' >
 </param>
 <param name='name' type='string' >
-</param>
-<param name='protocol' type='string' >
 </param>
 </input><output><param name='l4ServiceObj' type='VSPK:L4Service' >
 </param>
@@ -32,9 +30,6 @@ if (externalID) {
 if (name) {
    l4ServiceObj.name = name;
 }
-if (protocol) {
-   l4ServiceObj.protocol = protocol;
-}
 
 enterpriseObj.createL4Service(session, l4ServiceObj);
 ]]></script>
@@ -42,7 +37,6 @@ enterpriseObj.createL4Service(session, l4ServiceObj);
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
-<bind name='protocol' type='string' export-name="protocol" ></bind>
 </in-binding><out-binding><bind name='l4ServiceObj' type='VSPK:L4Service' export-name="l4ServiceObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -54,7 +48,5 @@ enterpriseObj.createL4Service(session, l4ServiceObj);
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
-</p-param>
-<p-param name="protocol"><desc><![CDATA[protocol]]></desc>
 </p-param>
 </presentation></workflow>

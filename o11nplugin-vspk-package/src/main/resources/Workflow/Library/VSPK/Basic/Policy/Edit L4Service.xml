@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="9430d48c-a961-5873-9be8-caa693eb46dd"  version="6.0.5" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="9430d48c-a961-5873-9be8-caa693eb46dd"  version="6.0.7" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit L4Service]]></display-name>
 <ref-types><![CDATA[(VSPK:L4Service)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -13,9 +13,6 @@
 </param>
 
 <param name='name' type='string' >
-</param>
-
-<param name='protocol' type='string' >
 </param>
 
 </input><workflow-item name='item0' type='end' end-mode='0' >
@@ -40,11 +37,6 @@ if (name) {
 } else if (l4ServiceObj.name) {
    l4ServiceObj.name = "";
 }
-if (protocol) {
-   l4ServiceObj.protocol = protocol;
-} else if (l4ServiceObj.protocol) {
-   l4ServiceObj.protocol = "";
-}
 l4ServiceObj.save(session, 1);]]></script>
 <in-binding><bind name='l4ServiceObj' type='VSPK:L4Service' export-name="l4ServiceObj" ></bind>
 
@@ -53,8 +45,6 @@ l4ServiceObj.save(session, 1);]]></script>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
-
-<bind name='protocol' type='string' export-name="protocol" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -70,8 +60,5 @@ l4ServiceObj.save(session, 1);]]></script>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#l4ServiceObj.name]]></p-qual></p-param>
-
-<p-param name="protocol"><desc><![CDATA[protocol]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#l4ServiceObj.protocol]]></p-qual></p-param>
 
 </presentation></workflow>

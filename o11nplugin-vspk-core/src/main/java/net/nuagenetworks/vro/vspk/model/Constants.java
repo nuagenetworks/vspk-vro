@@ -1491,6 +1491,7 @@ public interface Constants extends BaseConstants {
     
     String NSGATEWAYSUMMARY_BOOTSTRAPSTATUS_ENUM = "NSGatewaySummaryBootstrapStatus";
     String NSGATEWAYSUMMARY_ENTITYSCOPE_ENUM = "NSGatewaySummaryEntityScope";
+    String NSGATEWAYSUMMARY_PERSONALITY_ENUM = "NSGatewaySummaryPersonality";
     
     String NSGATEWAYTEMPLATE_SSHSERVICE_ENUM = "NSGatewayTemplateSSHService";
     String NSGATEWAYTEMPLATE_ENTITYSCOPE_ENUM = "NSGatewayTemplateEntityScope";
