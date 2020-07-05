@@ -49,8 +49,8 @@ public class Roleentry extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
-    @JsonProperty(value = "associatedEntityType")
-    protected String associatedEntityType;
+    @JsonProperty(value = "endPointType")
+    protected String endPointType;
     
     @JsonProperty(value = "roleAccessTypeList")
     protected java.util.List<RoleentryRoleAccessTypeList> roleAccessTypeList;
@@ -99,14 +99,14 @@ public class Roleentry extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
-    @VsoProperty(displayName = "AssociatedEntityType", readOnly = false)   
-    public String getAssociatedEntityType() {
-       return associatedEntityType;
+    @VsoProperty(displayName = "EndPointType", readOnly = false)   
+    public String getEndPointType() {
+       return endPointType;
     }
 
     @JsonIgnore
-    public void setAssociatedEntityType(String value) { 
-        this.associatedEntityType = value;
+    public void setEndPointType(String value) { 
+        this.endPointType = value;
     }
     
     @JsonIgnore
@@ -140,7 +140,7 @@ public class Roleentry extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.ROLEENTRY, getId());
         }
     }public String toString() {
-        return "Roleentry [" + "associatedEntityType=" + associatedEntityType + ", roleAccessTypeList=" + roleAccessTypeList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Roleentry [" + "endPointType=" + endPointType + ", roleAccessTypeList=" + roleAccessTypeList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

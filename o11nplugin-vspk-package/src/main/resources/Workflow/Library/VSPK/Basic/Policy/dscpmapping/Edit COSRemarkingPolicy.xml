@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="98881737-f162-5a8b-83bd-c54558f49850"  version="20.5.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="98881737-f162-5a8b-83bd-c54558f49850"  version="20.5.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit COSRemarkingPolicy]]></display-name>
 <ref-types><![CDATA[(VSPK:COSRemarkingPolicy)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='cOSRemarkingPolicyObj' type='VSPK:COSRemarkingPolicy' >
 </param>
 
+<param name='DSCP' type='string' >
+</param>
+
 <param name='externalID' type='string' >
+</param>
+
+<param name='forwardingClass' type='VSPK:COSRemarkingPolicyForwardingClass' >
 </param>
 
 </input><workflow-item name='item0' type='end' end-mode='0' >
@@ -16,15 +22,25 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = cOSRemarkingPolicyObj.session;
 
+if (DSCP) {
+   cOSRemarkingPolicyObj.DSCP = DSCP;
+} else if (cOSRemarkingPolicyObj.DSCP) {
+   cOSRemarkingPolicyObj.DSCP = "";
+}
 if (externalID) {
    cOSRemarkingPolicyObj.externalID = externalID;
 } else if (cOSRemarkingPolicyObj.externalID) {
    cOSRemarkingPolicyObj.externalID = "";
 }
+cOSRemarkingPolicyObj.forwardingClass = forwardingClass;
 cOSRemarkingPolicyObj.save(session, 1);]]></script>
 <in-binding><bind name='cOSRemarkingPolicyObj' type='VSPK:COSRemarkingPolicy' export-name="cOSRemarkingPolicyObj" ></bind>
 
+<bind name='DSCP' type='string' export-name="DSCP" ></bind>
+
 <bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='forwardingClass' type='VSPK:COSRemarkingPolicyForwardingClass' export-name="forwardingClass" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -32,7 +48,13 @@ cOSRemarkingPolicyObj.save(session, 1);]]></script>
 <p-param name="cOSRemarkingPolicyObj"><desc><![CDATA[cOSRemarkingPolicyObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 
+<p-param name="DSCP"><desc><![CDATA[DSCP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#cOSRemarkingPolicyObj.DSCP]]></p-qual></p-param>
+
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#cOSRemarkingPolicyObj.externalID]]></p-qual></p-param>
+
+<p-param name="forwardingClass"><desc><![CDATA[forwardingClass]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:COSRemarkingPolicyForwardingClass" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getCOSRemarkingPolicyForwardingClass").call( #cOSRemarkingPolicyObj )]]></p-qual></p-param>
 
 </presentation></workflow>
