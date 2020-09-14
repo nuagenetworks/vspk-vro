@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getCaptivePortalProfilePortalType" result-type="VSPK:CaptivePortalProfilePortalType" api-version="6.0.0"  id="8bb3b4f2-44db-5683-8788-e112ca53da0c"  version="6.0.7"  allowed-operations="vef" ><param n="captivePortalProfileObj" t="VSPK:CaptivePortalProfile"></param><script encoded='false'><![CDATA[return captivePortalProfileObj.portalType;]]></script>
+<dunes-script-module name="getCaptivePortalProfilePortalType" result-type="VSPK:CaptivePortalProfilePortalType" api-version="6.0.0"  id="8bb3b4f2-44db-5683-8788-e112ca53da0c"  version="6.0.8"  allowed-operations="vef" ><param n="captivePortalProfileObj" t="VSPK:CaptivePortalProfile"></param><script encoded='false'><![CDATA[return captivePortalProfileObj.portalType;]]></script>
 </dunes-script-module>
