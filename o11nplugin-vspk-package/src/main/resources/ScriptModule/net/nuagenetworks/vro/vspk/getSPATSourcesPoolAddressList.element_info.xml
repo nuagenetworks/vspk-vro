@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getSPATSourcesPoolAddressList</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">69e479a7-1965-5820-bf4b-787aca1830a6</entry>
+</properties>

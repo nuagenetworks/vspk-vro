@@ -5,6 +5,8 @@
 <position x='100.0' y='50.0'/>
 <input><param name='aggregatedDomainObj' type='VSPK:AggregatedDomain' >
 </param>
+<param name='addressList' type='Array/string' >
+</param>
 <param name='externalID' type='string' >
 </param>
 <param name='name' type='string' >
@@ -19,6 +21,7 @@
 <script encoded='false'><![CDATA[var session = aggregatedDomainObj.session;
 
 sPATSourcesPoolObj = new VSPKSPATSourcesPool();
+sPATSourcesPoolObj.addressList = addressList;
 if (externalID) {
    sPATSourcesPoolObj.externalID = externalID;
 }
@@ -29,6 +32,7 @@ if (name) {
 aggregatedDomainObj.createSPATSourcesPool(session, sPATSourcesPoolObj);
 ]]></script>
 <in-binding><bind name='aggregatedDomainObj' type='VSPK:AggregatedDomain' export-name="aggregatedDomainObj" ></bind>
+<bind name='addressList' type='Array/string' export-name="addressList" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='sPATSourcesPoolObj' type='VSPK:SPATSourcesPool' export-name="sPATSourcesPoolObj" ></bind>
@@ -37,6 +41,8 @@ aggregatedDomainObj.createSPATSourcesPool(session, sPATSourcesPoolObj);
 <presentation>
 <p-param name="aggregatedDomainObj"><desc><![CDATA[aggregatedDomainObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="addressList"><desc><![CDATA[addressList]]></desc>
+</p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>

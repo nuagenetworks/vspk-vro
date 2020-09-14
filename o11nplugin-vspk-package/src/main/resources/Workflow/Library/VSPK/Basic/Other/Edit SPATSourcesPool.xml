@@ -6,6 +6,9 @@
 <input><param name='sPATSourcesPoolObj' type='VSPK:SPATSourcesPool' >
 </param>
 
+<param name='addressList' type='Array/string' >
+</param>
+
 <param name='externalID' type='string' >
 </param>
 
@@ -19,6 +22,7 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = sPATSourcesPoolObj.session;
 
+sPATSourcesPoolObj.addressList = addressList;
 if (externalID) {
    sPATSourcesPoolObj.externalID = externalID;
 } else if (sPATSourcesPoolObj.externalID) {
@@ -32,6 +36,8 @@ if (name) {
 sPATSourcesPoolObj.save(session, 1);]]></script>
 <in-binding><bind name='sPATSourcesPoolObj' type='VSPK:SPATSourcesPool' export-name="sPATSourcesPoolObj" ></bind>
 
+<bind name='addressList' type='Array/string' export-name="addressList" ></bind>
+
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
@@ -41,6 +47,9 @@ sPATSourcesPoolObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="sPATSourcesPoolObj"><desc><![CDATA[sPATSourcesPoolObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="addressList"><desc><![CDATA[addressList]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="Array/string" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getSPATSourcesPoolAddressList").call( #sPATSourcesPoolObj )]]></p-qual></p-param>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#sPATSourcesPoolObj.externalID]]></p-qual></p-param>

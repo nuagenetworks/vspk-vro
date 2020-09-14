@@ -9,6 +9,9 @@
 <param name='externalID' type='string' >
 </param>
 
+<param name='ip' type='string' >
+</param>
+
 </input><workflow-item name='item0' type='end' end-mode='0' >
 <position x='384.5' y='45.40909090909091'/>
 </workflow-item>
@@ -21,10 +24,17 @@ if (externalID) {
 } else if (nextHopObj.externalID) {
    nextHopObj.externalID = "";
 }
+if (ip) {
+   nextHopObj.ip = ip;
+} else if (nextHopObj.ip) {
+   nextHopObj.ip = "";
+}
 nextHopObj.save(session, 1);]]></script>
 <in-binding><bind name='nextHopObj' type='VSPK:NextHop' export-name="nextHopObj" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='ip' type='string' export-name="ip" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -34,5 +44,8 @@ nextHopObj.save(session, 1);]]></script>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nextHopObj.externalID]]></p-qual></p-param>
+
+<p-param name="ip"><desc><![CDATA[ip]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nextHopObj.ip]]></p-qual></p-param>
 
 </presentation></workflow>

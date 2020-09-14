@@ -12,6 +12,9 @@
 <param name='externalID' type='string' >
 </param>
 
+<param name='matchCriteria' type='string' >
+</param>
+
 <param name='name' type='string' >
 </param>
 
@@ -32,6 +35,11 @@ if (externalID) {
 } else if (policyEntryObj.externalID) {
    policyEntryObj.externalID = "";
 }
+if (matchCriteria) {
+   policyEntryObj.matchCriteria = matchCriteria;
+} else if (policyEntryObj.matchCriteria) {
+   policyEntryObj.matchCriteria = "";
+}
 if (name) {
    policyEntryObj.name = name;
 } else if (policyEntryObj.name) {
@@ -43,6 +51,8 @@ policyEntryObj.save(session, 1);]]></script>
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='matchCriteria' type='string' export-name="matchCriteria" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
 
@@ -57,6 +67,9 @@ policyEntryObj.save(session, 1);]]></script>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#policyEntryObj.externalID]]></p-qual></p-param>
+
+<p-param name="matchCriteria"><desc><![CDATA[matchCriteria]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#policyEntryObj.matchCriteria]]></p-qual></p-param>
 
 <p-param name="name"><desc><![CDATA[name]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#policyEntryObj.name]]></p-qual></p-param>
