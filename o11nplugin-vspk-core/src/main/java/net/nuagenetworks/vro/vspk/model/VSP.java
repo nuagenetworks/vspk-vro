@@ -36,6 +36,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetconfManagersFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ThreatPreventionServerConnectionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VSCsFetcher;
@@ -58,6 +60,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NETCONFMANAGERS_FETCHER, type = Constants.NETCONFMANAGERS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -107,6 +111,9 @@ public class VSP extends BaseObject {
     private NetconfManagersFetcher netconfManagers;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private ThreatPreventionServerConnectionsFetcher threatPreventionServerConnections;
     
     @JsonIgnore
@@ -123,6 +130,8 @@ public class VSP extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         netconfManagers = new NetconfManagersFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         threatPreventionServerConnections = new ThreatPreventionServerConnectionsFetcher(this);
         
@@ -283,6 +292,12 @@ public class VSP extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ThreatPreventionServerConnections", readOnly = true)   
     public ThreatPreventionServerConnectionsFetcher getThreatPreventionServerConnections() {
         return threatPreventionServerConnections;
@@ -333,6 +348,15 @@ public class VSP extends BaseObject {
     }
     
     @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.VSP, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -354,6 +378,14 @@ public class VSP extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.NETCONFMANAGERS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
         return "VSP [" + "description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", location=" + location + ", name=" + name + ", productVersion=" + productVersion + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

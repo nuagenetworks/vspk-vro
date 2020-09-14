@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to PortTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3865b789-1eda-55f7-808e-cb6a7026e7fd</entry>
+</properties>

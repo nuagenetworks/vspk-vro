@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.UserAvatarType;
@@ -62,6 +64,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.AVATARS_FETCHER, type = Constants.AVATARS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -141,6 +145,9 @@ public class User extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private VMsFetcher vMs;
     
     @VsoConstructor
@@ -156,6 +163,8 @@ public class User extends BaseObject {
         groups = new GroupsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         vMs = new VMsFetcher(this);
         }
@@ -424,6 +433,12 @@ public class User extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VMs", readOnly = true)   
     public VMsFetcher getVMs() {
         return vMs;
@@ -459,6 +474,15 @@ public class User extends BaseObject {
     }
     
     @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.USER, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createAvatar(Session session, Avatar childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -480,6 +504,14 @@ public class User extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
         return "User [" + "LDAPUserDN=" + LDAPUserDN + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", disableCertificateAuth=" + disableCertificateAuth + ", disablePasswordAuth=" + disablePasswordAuth + ", disabled=" + disabled + ", email=" + email + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", managementMode=" + managementMode + ", mobileNumber=" + mobileNumber + ", password=" + password + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

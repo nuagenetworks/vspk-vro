@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.OSPFAreasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.OSPFInstanceIPType;
 
 import net.nuagenetworks.vro.vspk.model.enums.OSPFInstanceEntityScope;
@@ -51,7 +53,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 @VsoFinder(name = Constants.OSPFINSTANCE, datasource = Constants.DATASOURCE, image = Constants.OSPFINSTANCE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.OSPFAREAS_FETCHER, type = Constants.OSPFAREAS_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.OSPFAREAS_FETCHER, type = Constants.OSPFAREAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -112,6 +116,9 @@ public class OSPFInstance extends BaseObject {
     @JsonIgnore
     private OSPFAreasFetcher oSPFAreas;
     
+    @JsonIgnore
+    private PermissionsFetcher permissions;
+    
     @VsoConstructor
     public OSPFInstance() {
         globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -119,6 +126,8 @@ public class OSPFInstance extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         oSPFAreas = new OSPFAreasFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -327,6 +336,12 @@ public class OSPFInstance extends BaseObject {
     public OSPFAreasFetcher getOSPFAreas() {
         return oSPFAreas;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -358,6 +373,15 @@ public class OSPFInstance extends BaseObject {
     }
     
     @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.OSPFINSTANCE, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -379,6 +403,14 @@ public class OSPFInstance extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.OSPFAREAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
         return "OSPFInstance [" + "IPType=" + IPType + ", associatedExportRoutingPolicyID=" + associatedExportRoutingPolicyID + ", associatedImportRoutingPolicyID=" + associatedImportRoutingPolicyID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", exportLimit=" + exportLimit + ", exportToOverlay=" + exportToOverlay + ", externalID=" + externalID + ", externalPreference=" + externalPreference + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", preference=" + preference + ", superBackboneEnabled=" + superBackboneEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

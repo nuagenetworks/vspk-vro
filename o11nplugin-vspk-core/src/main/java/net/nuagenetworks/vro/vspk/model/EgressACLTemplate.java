@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.VMsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.EgressACLTemplateEntityScope;
@@ -62,6 +64,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSACLENTRYTEMPLATES_FETCHER, type = Constants.EGRESSACLENTRYTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -138,6 +142,9 @@ public class EgressACLTemplate extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private VMsFetcher vMs;
     
     @VsoConstructor
@@ -153,6 +160,8 @@ public class EgressACLTemplate extends BaseObject {
         jobs = new JobsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         vMs = new VMsFetcher(this);
         }
@@ -405,6 +414,12 @@ public class EgressACLTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "VMs", readOnly = true)   
     public VMsFetcher getVMs() {
         return vMs;
@@ -432,6 +447,15 @@ public class EgressACLTemplate extends BaseObject {
     }
     @VsoMethod
     public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.EGRESSACLTEMPLATE, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 
@@ -469,6 +493,14 @@ public class EgressACLTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
         return "EgressACLTemplate [" + "active=" + active + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedVirtualFirewallPolicyID=" + associatedVirtualFirewallPolicyID + ", autoGeneratePriority=" + autoGeneratePriority + ", defaultAllowIP=" + defaultAllowIP + ", defaultAllowNonIP=" + defaultAllowNonIP + ", defaultInstallACLImplicitRules=" + defaultInstallACLImplicitRules + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", policyState=" + policyState + ", priority=" + priority + ", priorityType=" + priorityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

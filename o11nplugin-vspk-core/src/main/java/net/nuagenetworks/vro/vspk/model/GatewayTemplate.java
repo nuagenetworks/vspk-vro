@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PortTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.GatewayTemplateEntityScope;
@@ -50,6 +52,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.GATEWAYTEMPLATE, datasource = Constants.DATASOURCE, image = Constants.GATEWAYTEMPLATE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PORTTEMPLATES_FETCHER, type = Constants.PORTTEMPLATES_FETCHER)
 })
@@ -95,6 +99,9 @@ public class GatewayTemplate extends BaseObject {
     private MetadatasFetcher metadatas;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private PortTemplatesFetcher portTemplates;
     
     @VsoConstructor
@@ -104,6 +111,8 @@ public class GatewayTemplate extends BaseObject {
         globalMetadatas = new GlobalMetadatasFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         portTemplates = new PortTemplatesFetcher(this);
         }
@@ -255,6 +264,12 @@ public class GatewayTemplate extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PortTemplates", readOnly = true)   
     public PortTemplatesFetcher getPortTemplates() {
         return portTemplates;
@@ -290,6 +305,15 @@ public class GatewayTemplate extends BaseObject {
     }
     
     @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.GATEWAYTEMPLATE, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -303,6 +327,14 @@ public class GatewayTemplate extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }
     @VsoMethod

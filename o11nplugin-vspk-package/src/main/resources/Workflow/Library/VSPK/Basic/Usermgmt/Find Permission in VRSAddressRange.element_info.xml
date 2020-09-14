@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in VRSAddressRange</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a33836ac-54ca-55e0-80f2-b21b9b1f44f7</entry>
+</properties>

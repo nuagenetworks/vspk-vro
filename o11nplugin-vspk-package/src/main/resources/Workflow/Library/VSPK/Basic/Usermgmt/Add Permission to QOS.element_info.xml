@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to QOS</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0dd14f04-adf3-5fab-8c37-eb7dbc525e5b</entry>
+</properties>

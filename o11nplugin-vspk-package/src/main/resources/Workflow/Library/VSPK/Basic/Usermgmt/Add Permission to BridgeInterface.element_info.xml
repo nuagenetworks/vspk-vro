@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to BridgeInterface</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">7a33ff41-91a7-5b59-88f7-08db7c190e14</entry>
+</properties>

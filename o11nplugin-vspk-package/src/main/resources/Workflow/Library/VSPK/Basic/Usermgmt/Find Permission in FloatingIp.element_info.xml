@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in FloatingIp</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0165098a-83dd-5016-8c2b-56f47ec6fd75</entry>
+</properties>

@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NextHopsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.OverlayAddressPoolsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyStatementsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PSNATPoolsFetcher;
@@ -72,6 +74,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.NEXTHOPS_FETCHER, type = Constants.NEXTHOPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYADDRESSPOOLS_FETCHER, type = Constants.OVERLAYADDRESSPOOLS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.POLICYSTATEMENTS_FETCHER, type = Constants.POLICYSTATEMENTS_FETCHER), 
 
@@ -143,6 +147,9 @@ public class Link extends BaseObject {
     private OverlayAddressPoolsFetcher overlayAddressPools;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private PolicyStatementsFetcher policyStatements;
     
     @JsonIgnore
@@ -161,6 +168,8 @@ public class Link extends BaseObject {
         nextHops = new NextHopsFetcher(this);
         
         overlayAddressPools = new OverlayAddressPoolsFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         policyStatements = new PolicyStatementsFetcher(this);
         
@@ -387,6 +396,12 @@ public class Link extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PolicyStatements", readOnly = true)   
     public PolicyStatementsFetcher getPolicyStatements() {
         return policyStatements;
@@ -447,6 +462,15 @@ public class Link extends BaseObject {
     
     @VsoMethod
     public void assignNextHops(Session session, NextHop[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.LINK, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 
@@ -518,6 +542,14 @@ public class Link extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.OVERLAYADDRESSPOOLS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }
     @VsoMethod

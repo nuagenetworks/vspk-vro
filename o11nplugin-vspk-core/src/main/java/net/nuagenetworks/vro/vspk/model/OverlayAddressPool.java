@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.OverlayPATNATEntriesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.OverlayAddressPoolIPType;
 
 import net.nuagenetworks.vro.vspk.model.enums.OverlayAddressPoolEntityScope;
@@ -51,7 +53,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 @VsoFinder(name = Constants.OVERLAYADDRESSPOOL, datasource = Constants.DATASOURCE, image = Constants.OVERLAYADDRESSPOOL_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYPATNATENTRIES_FETCHER, type = Constants.OVERLAYPATNATENTRIES_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYPATNATENTRIES_FETCHER, type = Constants.OVERLAYPATNATENTRIES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -100,6 +104,9 @@ public class OverlayAddressPool extends BaseObject {
     @JsonIgnore
     private OverlayPATNATEntriesFetcher overlayPATNATEntries;
     
+    @JsonIgnore
+    private PermissionsFetcher permissions;
+    
     @VsoConstructor
     public OverlayAddressPool() {
         globalMetadatas = new GlobalMetadatasFetcher(this);
@@ -107,6 +114,8 @@ public class OverlayAddressPool extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         overlayPATNATEntries = new OverlayPATNATEntriesFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -271,6 +280,12 @@ public class OverlayAddressPool extends BaseObject {
     public OverlayPATNATEntriesFetcher getOverlayPATNATEntries() {
         return overlayPATNATEntries;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -302,6 +317,15 @@ public class OverlayAddressPool extends BaseObject {
     }
     
     @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.OVERLAYADDRESSPOOL, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -323,6 +347,14 @@ public class OverlayAddressPool extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.OVERLAYPATNATENTRIES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
         return "OverlayAddressPool [" + "IPType=" + IPType + ", associatedDomainID=" + associatedDomainID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", endAddressRange=" + endAddressRange + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", startAddressRange=" + startAddressRange + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

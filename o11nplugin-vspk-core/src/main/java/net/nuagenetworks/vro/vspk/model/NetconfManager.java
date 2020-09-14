@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetconfSessionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.NetconfManagerEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.NetconfManagerStatus;
@@ -53,7 +55,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 @VsoFinder(name = Constants.NETCONFMANAGER, datasource = Constants.DATASOURCE, image = Constants.NETCONFMANAGER_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.NETCONFSESSIONS_FETCHER, type = Constants.NETCONFSESSIONS_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.NETCONFSESSIONS_FETCHER, type = Constants.NETCONFSESSIONS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -99,6 +103,9 @@ public class NetconfManager extends BaseObject {
     @JsonIgnore
     private NetconfSessionsFetcher netconfSessions;
     
+    @JsonIgnore
+    private PermissionsFetcher permissions;
+    
     @VsoConstructor
     public NetconfManager() {
         alarms = new AlarmsFetcher(this);
@@ -108,6 +115,8 @@ public class NetconfManager extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         netconfSessions = new NetconfSessionsFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -256,6 +265,12 @@ public class NetconfManager extends BaseObject {
     public NetconfSessionsFetcher getNetconfSessions() {
         return netconfSessions;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -287,6 +302,15 @@ public class NetconfManager extends BaseObject {
     }
     
     @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.NETCONFMANAGER, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -308,6 +332,14 @@ public class NetconfManager extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.NETCONFSESSIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
         return "NetconfManager [" + "assocEntityType=" + assocEntityType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", release=" + release + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="

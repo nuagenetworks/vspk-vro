@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="f7c2eb39-fef3-5346-a23f-13c9cb366918"  version="20.5.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="f7c2eb39-fef3-5346-a23f-13c9cb366918"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add NextHop to Link]]></display-name>
 <ref-types><![CDATA[(VSPK:Link)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='linkObj' type='VSPK:Link' >
 </param>
 <param name='externalID' type='string' >
+</param>
+<param name='ip' type='string' >
 </param>
 </input><output><param name='nextHopObj' type='VSPK:NextHop' >
 </param>
@@ -20,11 +22,15 @@ nextHopObj = new VSPKNextHop();
 if (externalID) {
    nextHopObj.externalID = externalID;
 }
+if (ip) {
+   nextHopObj.ip = ip;
+}
 
 linkObj.createNextHop(session, nextHopObj);
 ]]></script>
 <in-binding><bind name='linkObj' type='VSPK:Link' export-name="linkObj" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='ip' type='string' export-name="ip" ></bind>
 </in-binding><out-binding><bind name='nextHopObj' type='VSPK:NextHop' export-name="nextHopObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -32,5 +38,7 @@ linkObj.createNextHop(session, nextHopObj);
 <p-param name="linkObj"><desc><![CDATA[linkObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="ip"><desc><![CDATA[ip]]></desc>
 </p-param>
 </presentation></workflow>

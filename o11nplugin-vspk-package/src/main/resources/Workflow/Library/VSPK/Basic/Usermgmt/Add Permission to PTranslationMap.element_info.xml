@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to PTranslationMap</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a90fee49-000e-52e8-9a88-a3c4c95d1823</entry>
+</properties>

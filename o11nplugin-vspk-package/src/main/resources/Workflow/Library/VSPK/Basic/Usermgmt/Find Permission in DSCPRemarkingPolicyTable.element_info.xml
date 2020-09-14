@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in DSCPRemarkingPolicyTable</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">ed634576-8443-5c4a-a617-7bb8c282fe66</entry>
+</properties>

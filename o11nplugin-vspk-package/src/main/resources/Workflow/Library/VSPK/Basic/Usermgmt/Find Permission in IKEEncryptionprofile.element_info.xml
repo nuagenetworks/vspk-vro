@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in IKEEncryptionprofile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">89e5d79c-4c73-5e96-9949-ce66ad76f45c</entry>
+</properties>

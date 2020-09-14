@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in CSNATPool</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c26e61b5-7635-5a63-9b2c-8ece2b9229e0</entry>
+</properties>

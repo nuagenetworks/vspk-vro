@@ -58,6 +58,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PATIPEntriesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ProxyARPFiltersFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
@@ -136,6 +138,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.IPRESERVATIONS_FETCHER, type = Constants.IPRESERVATIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PROXYARPFILTERS_FETCHER, type = Constants.PROXYARPFILTERS_FETCHER), 
 
@@ -358,6 +362,9 @@ public class Subnet extends BaseObject {
     private PATIPEntriesFetcher pATIPEntries;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private ProxyARPFiltersFetcher proxyARPFilters;
     
     @JsonIgnore
@@ -431,6 +438,8 @@ public class Subnet extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         pATIPEntries = new PATIPEntriesFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         proxyARPFilters = new ProxyARPFiltersFetcher(this);
         
@@ -1137,6 +1146,12 @@ public class Subnet extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ProxyARPFilters", readOnly = true)   
     public ProxyARPFiltersFetcher getProxyARPFilters() {
         return proxyARPFilters;
@@ -1241,6 +1256,15 @@ public class Subnet extends BaseObject {
     }
     
     @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.SUBNET, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createAddressRange(Session session, AddressRange childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -1318,6 +1342,14 @@ public class Subnet extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }
     @VsoMethod

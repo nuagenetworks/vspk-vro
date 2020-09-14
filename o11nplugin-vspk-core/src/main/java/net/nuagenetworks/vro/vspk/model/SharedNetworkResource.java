@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PATIPEntriesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.StaticRoutesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VPNConnectionsFetcher;
@@ -72,6 +74,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PATIPENTRIES_FETCHER, type = Constants.PATIPENTRIES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.STATICROUTES_FETCHER, type = Constants.STATICROUTES_FETCHER), 
 
@@ -203,6 +207,9 @@ public class SharedNetworkResource extends BaseObject {
     private PATIPEntriesFetcher pATIPEntries;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private StaticRoutesFetcher staticRoutes;
     
     @JsonIgnore
@@ -225,6 +232,8 @@ public class SharedNetworkResource extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         pATIPEntries = new PATIPEntriesFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         staticRoutes = new StaticRoutesFetcher(this);
         
@@ -666,6 +675,12 @@ public class SharedNetworkResource extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "StaticRoutes", readOnly = true)   
     public StaticRoutesFetcher getStaticRoutes() {
         return staticRoutes;
@@ -699,6 +714,15 @@ public class SharedNetworkResource extends BaseObject {
     }
     @VsoMethod
     public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.SHAREDNETWORKRESOURCE, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
         if (!session.getNotificationsEnabled()) { 
@@ -752,6 +776,14 @@ public class SharedNetworkResource extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PATIPENTRIES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }
     @VsoMethod

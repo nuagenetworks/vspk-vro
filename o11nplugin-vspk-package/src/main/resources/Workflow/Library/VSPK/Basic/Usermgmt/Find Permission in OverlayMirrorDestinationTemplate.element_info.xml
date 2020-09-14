@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in OverlayMirrorDestinationTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">cefbfabb-bd0b-5c0a-85f1-dff3d38cf8b0</entry>
+</properties>

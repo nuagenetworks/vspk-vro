@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in SSHKey</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">be6befd5-75c7-5f3f-aef9-ea3af0218e4f</entry>
+</properties>

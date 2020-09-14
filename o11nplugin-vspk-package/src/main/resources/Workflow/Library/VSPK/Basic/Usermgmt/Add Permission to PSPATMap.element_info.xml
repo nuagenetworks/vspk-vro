@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to PSPATMap</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2a1e92c9-620a-5e75-ba34-9c44edb99193</entry>
+</properties>

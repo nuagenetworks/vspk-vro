@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in VCenterEAMConfig</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">fa581f24-a41f-536b-a745-27c710949131</entry>
+</properties>

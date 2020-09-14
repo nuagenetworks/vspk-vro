@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in NetconfProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a3c8fd7b-3e4b-51f7-9243-227c385186d4</entry>
+</properties>

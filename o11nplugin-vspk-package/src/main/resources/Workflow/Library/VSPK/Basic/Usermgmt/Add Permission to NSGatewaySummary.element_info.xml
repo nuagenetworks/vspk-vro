@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to NSGatewaySummary</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3974e09a-a831-51b3-b931-e7027cc31a41</entry>
+</properties>

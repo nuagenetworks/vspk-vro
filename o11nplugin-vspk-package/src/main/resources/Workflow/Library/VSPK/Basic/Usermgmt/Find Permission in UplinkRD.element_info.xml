@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in UplinkRD</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">a67f912f-d483-5fd0-b7c6-a9298c48fe39</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in COSRemarkingPolicy</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f1aee4f0-6111-5c18-9732-c49868793a81</entry>
+</properties>

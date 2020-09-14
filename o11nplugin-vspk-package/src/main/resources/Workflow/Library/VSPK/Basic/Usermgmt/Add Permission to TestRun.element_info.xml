@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to TestRun</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">928c8eb6-c7ea-5274-b767-e05cb9468c5a</entry>
+</properties>

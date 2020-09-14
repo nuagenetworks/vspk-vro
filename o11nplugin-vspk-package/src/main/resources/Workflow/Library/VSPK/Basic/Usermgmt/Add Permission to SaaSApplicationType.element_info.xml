@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to SaaSApplicationType</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">54c422f6-6cd4-5c6e-ba50-6ffbefdd9644</entry>
+</properties>

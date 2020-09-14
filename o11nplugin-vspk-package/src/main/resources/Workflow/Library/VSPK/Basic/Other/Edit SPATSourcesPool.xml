@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="627dc05f-5cf8-5672-8099-1c34d6261c42"  version="20.5.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="627dc05f-5cf8-5672-8099-1c34d6261c42"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit SPATSourcesPool]]></display-name>
 <ref-types><![CDATA[(VSPK:SPATSourcesPool)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='sPATSourcesPoolObj' type='VSPK:SPATSourcesPool' >
+</param>
+
+<param name='addressList' type='Array/string' >
 </param>
 
 <param name='externalID' type='string' >
@@ -19,6 +22,7 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = sPATSourcesPoolObj.session;
 
+sPATSourcesPoolObj.addressList = addressList;
 if (externalID) {
    sPATSourcesPoolObj.externalID = externalID;
 } else if (sPATSourcesPoolObj.externalID) {
@@ -32,6 +36,8 @@ if (name) {
 sPATSourcesPoolObj.save(session, 1);]]></script>
 <in-binding><bind name='sPATSourcesPoolObj' type='VSPK:SPATSourcesPool' export-name="sPATSourcesPoolObj" ></bind>
 
+<bind name='addressList' type='Array/string' export-name="addressList" ></bind>
+
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='name' type='string' export-name="name" ></bind>
@@ -41,6 +47,9 @@ sPATSourcesPoolObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="sPATSourcesPoolObj"><desc><![CDATA[sPATSourcesPoolObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="addressList"><desc><![CDATA[addressList]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="Array/string" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getSPATSourcesPoolAddressList").call( #sPATSourcesPoolObj )]]></p-qual></p-param>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#sPATSourcesPoolObj.externalID]]></p-qual></p-param>

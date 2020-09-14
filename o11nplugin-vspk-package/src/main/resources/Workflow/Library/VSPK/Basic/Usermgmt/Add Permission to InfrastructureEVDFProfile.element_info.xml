@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to InfrastructureEVDFProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">47714ef2-e0c5-5fbd-839a-83fa8dd86d94</entry>
+</properties>

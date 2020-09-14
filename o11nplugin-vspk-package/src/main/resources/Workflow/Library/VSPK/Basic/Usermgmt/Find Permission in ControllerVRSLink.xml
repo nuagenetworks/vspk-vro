@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="90212758-aa29-5b26-b775-cae08216721f"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Find Permission in ControllerVRSLink]]></display-name>
+<ref-types><![CDATA[(VSPK:ControllerVRSLink)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='controllerVRSLinkObj' type='VSPK:ControllerVRSLink' >
+</param>
+<param name='filter' type='string' >
+</param>
+</input><output><param name='permissionObj' type='VSPK:Permission' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = controllerVRSLinkObj.session;
+
+permissionObj = controllerVRSLinkObj.permissions.getFirst(session, filter);
+]]></script>
+<in-binding><bind name='controllerVRSLinkObj' type='VSPK:ControllerVRSLink' export-name="controllerVRSLinkObj" ></bind>
+<bind name='filter' type='string' export-name="filter" ></bind>
+</in-binding><out-binding><bind name='permissionObj' type='VSPK:Permission' export-name="permissionObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="controllerVRSLinkObj"><desc><![CDATA[controllerVRSLinkObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="filter"><desc><![CDATA[filter]]></desc>
+</p-param>
+</presentation></workflow>

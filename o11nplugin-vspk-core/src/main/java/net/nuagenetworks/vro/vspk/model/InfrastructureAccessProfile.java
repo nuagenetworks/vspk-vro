@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGatewayTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.SSHKeysFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.InfrastructureAccessProfileSSHAuthMode;
@@ -58,6 +60,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.CONNECTIONENDPOINTS_FETCHER, type = Constants.CONNECTIONENDPOINTS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.SSHKEYS_FETCHER, type = Constants.SSHKEYS_FETCHER)
 })
@@ -115,6 +119,9 @@ public class InfrastructureAccessProfile extends BaseObject {
     private NSGatewayTemplatesFetcher nSGatewayTemplates;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private SSHKeysFetcher sSHKeys;
     
     @VsoConstructor
@@ -126,6 +133,8 @@ public class InfrastructureAccessProfile extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         nSGatewayTemplates = new NSGatewayTemplatesFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         sSHKeys = new SSHKeysFetcher(this);
         }
@@ -311,6 +320,12 @@ public class InfrastructureAccessProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "SSHKeys", readOnly = true)   
     public SSHKeysFetcher getSSHKeys() {
         return sSHKeys;
@@ -346,6 +361,15 @@ public class InfrastructureAccessProfile extends BaseObject {
     }
     
     @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.INFRASTRUCTUREACCESSPROFILE, getId());
+        }
+    }
+    
+    @VsoMethod
     public void createConnectionendpoint(Session session, Connectionendpoint childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -367,6 +391,14 @@ public class InfrastructureAccessProfile extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }
     @VsoMethod

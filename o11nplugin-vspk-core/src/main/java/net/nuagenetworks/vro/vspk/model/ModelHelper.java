@@ -534,6 +534,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForAddressMapId(String id) throws RestException {
+        AddressMap obj = getObject(Constants.ADDRESSMAP, id);
+        if (obj == null) {
+            obj = getAddressMapById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static StatisticsFetcher getStatisticsFetcherForAddressMapId(String id) throws RestException {
         AddressMap obj = getObject(Constants.ADDRESSMAP, id);
         if (obj == null) {
@@ -652,6 +666,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForAddressRangeId(String id) throws RestException {
+        AddressRange obj = getObject(Constants.ADDRESSRANGE, id);
+        if (obj == null) {
+            obj = getAddressRangeById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -1615,6 +1643,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForAlarmId(String id) throws RestException {
+        Alarm obj = getObject(Constants.ALARM, id);
+        if (obj == null) {
+            obj = getAlarmById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Alarm> getAlarmsForFetcherId(String id) throws RestException {
         AlarmsFetcher fetcher = getAlarmsFetcherById(id);
         if (fetcher != null) {
@@ -1812,6 +1854,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForAllAlarmId(String id) throws RestException {
+        AllAlarm obj = getObject(Constants.ALLALARM, id);
+        if (obj == null) {
+            obj = getAllAlarmById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<AllAlarm> getAllAlarmsForFetcherId(String id) throws RestException {
         AllAlarmsFetcher fetcher = getAllAlarmsFetcherById(id);
         if (fetcher != null) {
@@ -1889,6 +1945,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForAllGatewayId(String id) throws RestException {
+        AllGateway obj = getObject(Constants.ALLGATEWAY, id);
+        if (obj == null) {
+            obj = getAllGatewayById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -1976,6 +2046,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForAllRedundancyGroupId(String id) throws RestException {
+        AllRedundancyGroup obj = getObject(Constants.ALLREDUNDANCYGROUP, id);
+        if (obj == null) {
+            obj = getAllRedundancyGroupById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -2095,6 +2179,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForApplicationId(String id) throws RestException {
+        Application obj = getObject(Constants.APPLICATION, id);
+        if (obj == null) {
+            obj = getApplicationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Application> getApplicationsForFetcherId(String id) throws RestException {
         ApplicationsFetcher fetcher = getApplicationsFetcherById(id);
         if (fetcher != null) {
@@ -2198,6 +2296,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForApplicationBindingId(String id) throws RestException {
+        ApplicationBinding obj = getObject(Constants.APPLICATIONBINDING, id);
+        if (obj == null) {
+            obj = getApplicationBindingById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -2315,6 +2427,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForApplicationperformancemanagementId(String id) throws RestException {
+        Applicationperformancemanagement obj = getObject(Constants.APPLICATIONPERFORMANCEMANAGEMENT, id);
+        if (obj == null) {
+            obj = getApplicationperformancemanagementById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Applicationperformancemanagement> getApplicationperformancemanagementsForFetcherId(String id) throws RestException {
         ApplicationperformancemanagementsFetcher fetcher = getApplicationperformancemanagementsFetcherById(id);
         if (fetcher != null) {
@@ -2406,6 +2532,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForApplicationperformancemanagementbindingId(String id) throws RestException {
+        Applicationperformancemanagementbinding obj = getObject(Constants.APPLICATIONPERFORMANCEMANAGEMENTBINDING, id);
+        if (obj == null) {
+            obj = getApplicationperformancemanagementbindingById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -2638,6 +2778,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForAutoDiscoveredGatewayId(String id) throws RestException {
+        AutoDiscoveredGateway obj = getObject(Constants.AUTODISCOVEREDGATEWAY, id);
+        if (obj == null) {
+            obj = getAutoDiscoveredGatewayById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PortsFetcher getPortsFetcherForAutoDiscoveredGatewayId(String id) throws RestException {
         AutoDiscoveredGateway obj = getObject(Constants.AUTODISCOVEREDGATEWAY, id);
         if (obj == null) {
@@ -2823,6 +2977,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForAvatarId(String id) throws RestException {
+        Avatar obj = getObject(Constants.AVATAR, id);
+        if (obj == null) {
+            obj = getAvatarById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Avatar> getAvatarsForFetcherId(String id) throws RestException {
         AvatarsFetcher fetcher = getAvatarsFetcherById(id);
         if (fetcher != null) {
@@ -2936,6 +3104,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForAzureCloudId(String id) throws RestException {
+        AzureCloud obj = getObject(Constants.AZURECLOUD, id);
+        if (obj == null) {
+            obj = getAzureCloudById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<AzureCloud> getAzureCloudsForFetcherId(String id) throws RestException {
         AzureCloudsFetcher fetcher = getAzureCloudsFetcherById(id);
         if (fetcher != null) {
@@ -3013,6 +3195,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForBFDSessionId(String id) throws RestException {
+        BFDSession obj = getObject(Constants.BFDSESSION, id);
+        if (obj == null) {
+            obj = getBFDSessionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -3116,6 +3312,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForBGPNeighborId(String id) throws RestException {
+        BGPNeighbor obj = getObject(Constants.BGPNEIGHBOR, id);
+        if (obj == null) {
+            obj = getBGPNeighborById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<BGPNeighbor> getBGPNeighborsForFetcherId(String id) throws RestException {
         BGPNeighborsFetcher fetcher = getBGPNeighborsFetcherById(id);
         if (fetcher != null) {
@@ -3215,6 +3425,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForBGPPeerId(String id) throws RestException {
+        BGPPeer obj = getObject(Constants.BGPPEER, id);
+        if (obj == null) {
+            obj = getBGPPeerById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<BGPPeer> getBGPPeersForFetcherId(String id) throws RestException {
         BGPPeersFetcher fetcher = getBGPPeersFetcherById(id);
         if (fetcher != null) {
@@ -3296,6 +3520,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForBGPProfileId(String id) throws RestException {
+        BGPProfile obj = getObject(Constants.BGPPROFILE, id);
+        if (obj == null) {
+            obj = getBGPProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -3391,6 +3629,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForBootstrapId(String id) throws RestException {
+        Bootstrap obj = getObject(Constants.BOOTSTRAP, id);
+        if (obj == null) {
+            obj = getBootstrapById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Bootstrap> getBootstrapsForFetcherId(String id) throws RestException {
         BootstrapsFetcher fetcher = getBootstrapsFetcherById(id);
         if (fetcher != null) {
@@ -3476,6 +3728,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForBootstrapActivationId(String id) throws RestException {
+        BootstrapActivation obj = getObject(Constants.BOOTSTRAPACTIVATION, id);
+        if (obj == null) {
+            obj = getBootstrapActivationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -3579,6 +3845,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForBRConnectionId(String id) throws RestException {
+        BRConnection obj = getObject(Constants.BRCONNECTION, id);
+        if (obj == null) {
+            obj = getBRConnectionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -3720,6 +4000,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForBridgeInterfaceId(String id) throws RestException {
+        BridgeInterface obj = getObject(Constants.BRIDGEINTERFACE, id);
+        if (obj == null) {
+            obj = getBridgeInterfaceById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -3901,6 +4195,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForBulkStatisticsId(String id) throws RestException {
+        BulkStatistics obj = getObject(Constants.BULKSTATISTICS, id);
+        if (obj == null) {
+            obj = getBulkStatisticsById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<BulkStatistics> getBulkStatisticsForFetcherId(String id) throws RestException {
         BulkStatisticsFetcher fetcher = getBulkStatisticsFetcherById(id);
         if (fetcher != null) {
@@ -4035,6 +4343,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForCertificateId(String id) throws RestException {
+        Certificate obj = getObject(Constants.CERTIFICATE, id);
+        if (obj == null) {
+            obj = getCertificateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Certificate> getCertificatesForFetcherId(String id) throws RestException {
         CertificatesFetcher fetcher = getCertificatesFetcherById(id);
         if (fetcher != null) {
@@ -4118,6 +4440,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForCloudMgmtSystemId(String id) throws RestException {
+        CloudMgmtSystem obj = getObject(Constants.CLOUDMGMTSYSTEM, id);
+        if (obj == null) {
+            obj = getCloudMgmtSystemById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -4272,6 +4608,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVSDComponentId(String id) throws RestException {
+        VSDComponent obj = getObject(Constants.VSDCOMPONENT, id);
+        if (obj == null) {
+            obj = getVSDComponentById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<VSDComponent> getVSDComponentsForFetcherId(String id) throws RestException {
         VSDComponentsFetcher fetcher = getVSDComponentsFetcherById(id);
         if (fetcher != null) {
@@ -4349,6 +4699,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForConnectionendpointId(String id) throws RestException {
+        Connectionendpoint obj = getObject(Constants.CONNECTIONENDPOINT, id);
+        if (obj == null) {
+            obj = getConnectionendpointById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -4486,6 +4850,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForContainerId(String id) throws RestException {
+        Container obj = getObject(Constants.CONTAINER, id);
+        if (obj == null) {
+            obj = getContainerById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -4696,6 +5074,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForContainerInterfaceId(String id) throws RestException {
+        ContainerInterface obj = getObject(Constants.CONTAINERINTERFACE, id);
+        if (obj == null) {
+            obj = getContainerInterfaceById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PolicyDecisionsFetcher getPolicyDecisionsFetcherForContainerInterfaceId(String id) throws RestException {
         ContainerInterface obj = getObject(Constants.CONTAINERINTERFACE, id);
         if (obj == null) {
@@ -4894,6 +5286,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForContainerResyncId(String id) throws RestException {
+        ContainerResync obj = getObject(Constants.CONTAINERRESYNC, id);
+        if (obj == null) {
+            obj = getContainerResyncById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<ContainerResync> getContainerResyncsForFetcherId(String id) throws RestException {
         ContainerResyncsFetcher fetcher = getContainerResyncsFetcherById(id);
         if (fetcher != null) {
@@ -4989,6 +5395,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForControllerVRSLinkId(String id) throws RestException {
+        ControllerVRSLink obj = getObject(Constants.CONTROLLERVRSLINK, id);
+        if (obj == null) {
+            obj = getControllerVRSLinkById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -5110,6 +5530,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForCOSRemarkingPolicyId(String id) throws RestException {
+        COSRemarkingPolicy obj = getObject(Constants.COSREMARKINGPOLICY, id);
+        if (obj == null) {
+            obj = getCOSRemarkingPolicyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<COSRemarkingPolicy> getCOSRemarkingPoliciesForFetcherId(String id) throws RestException {
         COSRemarkingPoliciesFetcher fetcher = getCOSRemarkingPoliciesFetcherById(id);
         if (fetcher != null) {
@@ -5201,6 +5635,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForCOSRemarkingPolicyTableId(String id) throws RestException {
+        COSRemarkingPolicyTable obj = getObject(Constants.COSREMARKINGPOLICYTABLE, id);
+        if (obj == null) {
+            obj = getCOSRemarkingPolicyTableById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -5310,6 +5758,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForCSNATPoolId(String id) throws RestException {
+        CSNATPool obj = getObject(Constants.CSNATPOOL, id);
+        if (obj == null) {
+            obj = getCSNATPoolById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<CSNATPool> getCSNATPoolsForFetcherId(String id) throws RestException {
         CSNATPoolsFetcher fetcher = getCSNATPoolsFetcherById(id);
         if (fetcher != null) {
@@ -5387,6 +5849,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForCTranslationMapId(String id) throws RestException {
+        CTranslationMap obj = getObject(Constants.CTRANSLATIONMAP, id);
+        if (obj == null) {
+            obj = getCTranslationMapById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -5472,6 +5948,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForCustomPropertyId(String id) throws RestException {
+        CustomProperty obj = getObject(Constants.CUSTOMPROPERTY, id);
+        if (obj == null) {
+            obj = getCustomPropertyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<CustomProperty> getCustomPropertiesForFetcherId(String id) throws RestException {
         CustomPropertiesFetcher fetcher = getCustomPropertiesFetcherById(id);
         if (fetcher != null) {
@@ -5549,6 +6039,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDefaultGatewayId(String id) throws RestException {
+        DefaultGateway obj = getObject(Constants.DEFAULTGATEWAY, id);
+        if (obj == null) {
+            obj = getDefaultGatewayById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -5634,6 +6138,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDemarcationServiceId(String id) throws RestException {
+        DemarcationService obj = getObject(Constants.DEMARCATIONSERVICE, id);
+        if (obj == null) {
+            obj = getDemarcationServiceById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<DemarcationService> getDemarcationServicesForFetcherId(String id) throws RestException {
         DemarcationServicesFetcher fetcher = getDemarcationServicesFetcherById(id);
         if (fetcher != null) {
@@ -5711,6 +6229,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDeploymentFailureId(String id) throws RestException {
+        DeploymentFailure obj = getObject(Constants.DEPLOYMENTFAILURE, id);
+        if (obj == null) {
+            obj = getDeploymentFailureById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -5852,6 +6384,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDestinationurlId(String id) throws RestException {
+        Destinationurl obj = getObject(Constants.DESTINATIONURL, id);
+        if (obj == null) {
+            obj = getDestinationurlById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Destinationurl> getDestinationurlsForFetcherId(String id) throws RestException {
         DestinationurlsFetcher fetcher = getDestinationurlsFetcherById(id);
         if (fetcher != null) {
@@ -5943,6 +6489,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDHCPOptionId(String id) throws RestException {
+        DHCPOption obj = getObject(Constants.DHCPOPTION, id);
+        if (obj == null) {
+            obj = getDHCPOptionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -6082,6 +6642,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDHCPv6OptionId(String id) throws RestException {
+        DHCPv6Option obj = getObject(Constants.DHCPV6OPTION, id);
+        if (obj == null) {
+            obj = getDHCPv6OptionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<DHCPv6Option> getDHCPv6OptionsForFetcherId(String id) throws RestException {
         DHCPv6OptionsFetcher fetcher = getDHCPv6OptionsFetcherById(id);
         if (fetcher != null) {
@@ -6191,6 +6765,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDiskStatId(String id) throws RestException {
+        DiskStat obj = getObject(Constants.DISKSTAT, id);
+        if (obj == null) {
+            obj = getDiskStatById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -7189,6 +7777,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDomainKindSummaryId(String id) throws RestException {
+        DomainKindSummary obj = getObject(Constants.DOMAINKINDSUMMARY, id);
+        if (obj == null) {
+            obj = getDomainKindSummaryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<DomainKindSummary> getDomainKindSummariesForFetcherId(String id) throws RestException {
         DomainKindSummariesFetcher fetcher = getDomainKindSummariesFetcherById(id);
         if (fetcher != null) {
@@ -7597,6 +8199,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDSCPForwardingClassMappingId(String id) throws RestException {
+        DSCPForwardingClassMapping obj = getObject(Constants.DSCPFORWARDINGCLASSMAPPING, id);
+        if (obj == null) {
+            obj = getDSCPForwardingClassMappingById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<DSCPForwardingClassMapping> getDSCPForwardingClassMappingsForFetcherId(String id) throws RestException {
         DSCPForwardingClassMappingsFetcher fetcher = getDSCPForwardingClassMappingsFetcherById(id);
         if (fetcher != null) {
@@ -7692,6 +8308,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDSCPForwardingClassTableId(String id) throws RestException {
+        DSCPForwardingClassTable obj = getObject(Constants.DSCPFORWARDINGCLASSTABLE, id);
+        if (obj == null) {
+            obj = getDSCPForwardingClassTableById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<DSCPForwardingClassTable> getDSCPForwardingClassTablesForFetcherId(String id) throws RestException {
         DSCPForwardingClassTablesFetcher fetcher = getDSCPForwardingClassTablesFetcherById(id);
         if (fetcher != null) {
@@ -7769,6 +8399,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDSCPRemarkingPolicyId(String id) throws RestException {
+        DSCPRemarkingPolicy obj = getObject(Constants.DSCPREMARKINGPOLICY, id);
+        if (obj == null) {
+            obj = getDSCPRemarkingPolicyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -7864,6 +8508,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDSCPRemarkingPolicyTableId(String id) throws RestException {
+        DSCPRemarkingPolicyTable obj = getObject(Constants.DSCPREMARKINGPOLICYTABLE, id);
+        if (obj == null) {
+            obj = getDSCPRemarkingPolicyTableById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -7973,6 +8631,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDUCGroupId(String id) throws RestException {
+        DUCGroup obj = getObject(Constants.DUCGROUP, id);
+        if (obj == null) {
+            obj = getDUCGroupById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<DUCGroup> getDUCGroupsForFetcherId(String id) throws RestException {
         DUCGroupsFetcher fetcher = getDUCGroupsFetcherById(id);
         if (fetcher != null) {
@@ -8060,6 +8732,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDUCGroupBindingId(String id) throws RestException {
+        DUCGroupBinding obj = getObject(Constants.DUCGROUPBINDING, id);
+        if (obj == null) {
+            obj = getDUCGroupBindingById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<DUCGroupBinding> getDUCGroupBindingsForFetcherId(String id) throws RestException {
         DUCGroupBindingsFetcher fetcher = getDUCGroupBindingsFetcherById(id);
         if (fetcher != null) {
@@ -8137,6 +8823,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVCenterEAMConfigId(String id) throws RestException {
+        VCenterEAMConfig obj = getObject(Constants.VCENTEREAMCONFIG, id);
+        if (obj == null) {
+            obj = getVCenterEAMConfigById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -8224,6 +8924,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEgressACLEntryTemplateId(String id) throws RestException {
+        EgressACLEntryTemplate obj = getObject(Constants.EGRESSACLENTRYTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressACLEntryTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -8410,6 +9124,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForEgressACLTemplateId(String id) throws RestException {
+        EgressACLTemplate obj = getObject(Constants.EGRESSACLTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressACLTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VMsFetcher getVMsFetcherForEgressACLTemplateId(String id) throws RestException {
         EgressACLTemplate obj = getObject(Constants.EGRESSACLTEMPLATE, id);
         if (obj == null) {
@@ -8530,6 +9258,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEgressAdvFwdEntryTemplateId(String id) throws RestException {
+        EgressAdvFwdEntryTemplate obj = getObject(Constants.EGRESSADVFWDENTRYTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdEntryTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<EgressAdvFwdEntryTemplate> getEgressAdvFwdEntryTemplatesForFetcherId(String id) throws RestException {
         EgressAdvFwdEntryTemplatesFetcher fetcher = getEgressAdvFwdEntryTemplatesFetcherById(id);
         if (fetcher != null) {
@@ -8635,6 +9377,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEgressAdvFwdTemplateId(String id) throws RestException {
+        EgressAdvFwdTemplate obj = getObject(Constants.EGRESSADVFWDTEMPLATE, id);
+        if (obj == null) {
+            obj = getEgressAdvFwdTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<EgressAdvFwdTemplate> getEgressAdvFwdTemplatesForFetcherId(String id) throws RestException {
         EgressAdvFwdTemplatesFetcher fetcher = getEgressAdvFwdTemplatesFetcherById(id);
         if (fetcher != null) {
@@ -8732,6 +9488,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDomainFIPAclTemplateEntryId(String id) throws RestException {
+        DomainFIPAclTemplateEntry obj = getObject(Constants.DOMAINFIPACLTEMPLATEENTRY, id);
+        if (obj == null) {
+            obj = getDomainFIPAclTemplateEntryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<DomainFIPAclTemplateEntry> getDomainFIPAclTemplateEntriesForFetcherId(String id) throws RestException {
         DomainFIPAclTemplateEntriesFetcher fetcher = getDomainFIPAclTemplateEntriesFetcherById(id);
         if (fetcher != null) {
@@ -8823,6 +9593,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForDomainFIPAclTemplateId(String id) throws RestException {
+        DomainFIPAclTemplate obj = getObject(Constants.DOMAINFIPACLTEMPLATE, id);
+        if (obj == null) {
+            obj = getDomainFIPAclTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -8941,6 +9725,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForEgressProfileId(String id) throws RestException {
+        EgressProfile obj = getObject(Constants.EGRESSPROFILE, id);
+        if (obj == null) {
+            obj = getEgressProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VPortsFetcher getVPortsFetcherForEgressProfileId(String id) throws RestException {
         EgressProfile obj = getObject(Constants.EGRESSPROFILE, id);
         if (obj == null) {
@@ -9043,6 +9841,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEgressQOSPolicyId(String id) throws RestException {
+        EgressQOSPolicy obj = getObject(Constants.EGRESSQOSPOLICY, id);
+        if (obj == null) {
+            obj = getEgressQOSPolicyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -9909,6 +10721,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PolicyGroupCategoriesFetcher getPolicyGroupCategoriesFetcherForEnterpriseId(String id) throws RestException {
         Enterprise obj = getObject(Constants.ENTERPRISE, id);
         if (obj == null) {
@@ -10335,6 +11161,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEnterpriseNetworkId(String id) throws RestException {
+        EnterpriseNetwork obj = getObject(Constants.ENTERPRISENETWORK, id);
+        if (obj == null) {
+            obj = getEnterpriseNetworkById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<EnterpriseNetwork> getEnterpriseNetworksForFetcherId(String id) throws RestException {
         EnterpriseNetworksFetcher fetcher = getEnterpriseNetworksFetcherById(id);
         if (fetcher != null) {
@@ -10420,6 +11260,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEnterprisePermissionId(String id) throws RestException {
+        EnterprisePermission obj = getObject(Constants.ENTERPRISEPERMISSION, id);
+        if (obj == null) {
+            obj = getEnterprisePermissionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -10611,6 +11465,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEnterpriseProfileId(String id) throws RestException {
+        EnterpriseProfile obj = getObject(Constants.ENTERPRISEPROFILE, id);
+        if (obj == null) {
+            obj = getEnterpriseProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<EnterpriseProfile> getEnterpriseProfilesForFetcherId(String id) throws RestException {
         EnterpriseProfilesFetcher fetcher = getEnterpriseProfilesFetcherById(id);
         if (fetcher != null) {
@@ -10694,6 +11562,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEnterpriseSecuredDataId(String id) throws RestException {
+        EnterpriseSecuredData obj = getObject(Constants.ENTERPRISESECUREDDATA, id);
+        if (obj == null) {
+            obj = getEnterpriseSecuredDataById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -10789,6 +11671,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEnterpriseSecurityId(String id) throws RestException {
+        EnterpriseSecurity obj = getObject(Constants.ENTERPRISESECURITY, id);
+        if (obj == null) {
+            obj = getEnterpriseSecurityById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -11252,6 +12148,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForEventLogId(String id) throws RestException {
+        EventLog obj = getObject(Constants.EVENTLOG, id);
+        if (obj == null) {
+            obj = getEventLogById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<EventLog> getEventLogsForFetcherId(String id) throws RestException {
         EventLogsFetcher fetcher = getEventLogsFetcherById(id);
         if (fetcher != null) {
@@ -11593,6 +12503,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForFirewallAclId(String id) throws RestException {
+        FirewallAcl obj = getObject(Constants.FIREWALLACL, id);
+        if (obj == null) {
+            obj = getFirewallAclById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<FirewallAcl> getFirewallAclsForFetcherId(String id) throws RestException {
         FirewallAclsFetcher fetcher = getFirewallAclsFetcherById(id);
         if (fetcher != null) {
@@ -11678,6 +12602,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForFirewallRuleId(String id) throws RestException {
+        FirewallRule obj = getObject(Constants.FIREWALLRULE, id);
+        if (obj == null) {
+            obj = getFirewallRuleById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -11777,6 +12715,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForFloatingIpId(String id) throws RestException {
+        FloatingIp obj = getObject(Constants.FLOATINGIP, id);
+        if (obj == null) {
+            obj = getFloatingIpById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -11904,6 +12856,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForForwardingPathListId(String id) throws RestException {
+        ForwardingPathList obj = getObject(Constants.FORWARDINGPATHLIST, id);
+        if (obj == null) {
+            obj = getForwardingPathListById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<ForwardingPathList> getForwardingPathListsForFetcherId(String id) throws RestException {
         ForwardingPathListsFetcher fetcher = getForwardingPathListsFetcherById(id);
         if (fetcher != null) {
@@ -11985,6 +12951,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForForwardingPathListEntryId(String id) throws RestException {
+        ForwardingPathListEntry obj = getObject(Constants.FORWARDINGPATHLISTENTRY, id);
+        if (obj == null) {
+            obj = getForwardingPathListEntryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -12654,6 +13634,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForGatewaySecuredDataId(String id) throws RestException {
+        GatewaySecuredData obj = getObject(Constants.GATEWAYSECUREDDATA, id);
+        if (obj == null) {
+            obj = getGatewaySecuredDataById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<GatewaySecuredData> getGatewaySecuredDatasForFetcherId(String id) throws RestException {
         GatewaySecuredDatasFetcher fetcher = getGatewaySecuredDatasFetcherById(id);
         if (fetcher != null) {
@@ -12749,6 +13743,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForGatewaySecurityId(String id) throws RestException {
+        GatewaySecurity obj = getObject(Constants.GATEWAYSECURITY, id);
+        if (obj == null) {
+            obj = getGatewaySecurityById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<GatewaySecurity> getGatewaySecuritiesForFetcherId(String id) throws RestException {
         GatewaySecuritiesFetcher fetcher = getGatewaySecuritiesFetcherById(id);
         if (fetcher != null) {
@@ -12838,6 +13846,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForGatewaysLocationId(String id) throws RestException {
+        GatewaysLocation obj = getObject(Constants.GATEWAYSLOCATION, id);
+        if (obj == null) {
+            obj = getGatewaysLocationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<GatewaysLocation> getGatewaysLocationsForFetcherId(String id) throws RestException {
         GatewaysLocationsFetcher fetcher = getGatewaysLocationsFetcherById(id);
         if (fetcher != null) {
@@ -12915,6 +13937,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForGatewayTemplateId(String id) throws RestException {
+        GatewayTemplate obj = getObject(Constants.GATEWAYTEMPLATE, id);
+        if (obj == null) {
+            obj = getGatewayTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -13020,6 +14056,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForGlobalMetadataId(String id) throws RestException {
+        GlobalMetadata obj = getObject(Constants.GLOBALMETADATA, id);
+        if (obj == null) {
+            obj = getGlobalMetadataById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -14134,6 +15184,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForGroupId(String id) throws RestException {
+        Group obj = getObject(Constants.GROUP, id);
+        if (obj == null) {
+            obj = getGroupById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static UsersFetcher getUsersFetcherForGroupId(String id) throws RestException {
         Group obj = getObject(Constants.GROUP, id);
         if (obj == null) {
@@ -14252,6 +15316,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForGroupKeyEncryptionProfileId(String id) throws RestException {
+        GroupKeyEncryptionProfile obj = getObject(Constants.GROUPKEYENCRYPTIONPROFILE, id);
+        if (obj == null) {
+            obj = getGroupKeyEncryptionProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -14389,6 +15467,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MultiCastChannelMapsFetcher fetcher = obj.getMultiCastChannelMaps();
             return addFetcher(Constants.MULTICASTCHANNELMAPS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForHostInterfaceId(String id) throws RestException {
+        HostInterface obj = getObject(Constants.HOSTINTERFACE, id);
+        if (obj == null) {
+            obj = getHostInterfaceById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -14678,6 +15770,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForHSCId(String id) throws RestException {
+        HSC obj = getObject(Constants.HSC, id);
+        if (obj == null) {
+            obj = getHSCById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<HSC> getHSCsForFetcherId(String id) throws RestException {
         HSCsFetcher fetcher = getHSCsFetcherById(id);
         if (fetcher != null) {
@@ -14936,6 +16042,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIKECertificateId(String id) throws RestException {
+        IKECertificate obj = getObject(Constants.IKECERTIFICATE, id);
+        if (obj == null) {
+            obj = getIKECertificateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<IKECertificate> getIKECertificatesForFetcherId(String id) throws RestException {
         IKECertificatesFetcher fetcher = getIKECertificatesFetcherById(id);
         if (fetcher != null) {
@@ -15013,6 +16133,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIKEEncryptionprofileId(String id) throws RestException {
+        IKEEncryptionprofile obj = getObject(Constants.IKEENCRYPTIONPROFILE, id);
+        if (obj == null) {
+            obj = getIKEEncryptionprofileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -15126,6 +16260,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIKEGatewayId(String id) throws RestException {
+        IKEGateway obj = getObject(Constants.IKEGATEWAY, id);
+        if (obj == null) {
+            obj = getIKEGatewayById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<IKEGateway> getIKEGatewaysForFetcherId(String id) throws RestException {
         IKEGatewaysFetcher fetcher = getIKEGatewaysFetcherById(id);
         if (fetcher != null) {
@@ -15203,6 +16351,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIKEGatewayConfigId(String id) throws RestException {
+        IKEGatewayConfig obj = getObject(Constants.IKEGATEWAYCONFIG, id);
+        if (obj == null) {
+            obj = getIKEGatewayConfigById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -15331,6 +16493,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForIKEGatewayConnectionId(String id) throws RestException {
+        IKEGatewayConnection obj = getObject(Constants.IKEGATEWAYCONNECTION, id);
+        if (obj == null) {
+            obj = getIKEGatewayConnectionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static SubnetsFetcher getSubnetsFetcherForIKEGatewayConnectionId(String id) throws RestException {
         IKEGatewayConnection obj = getObject(Constants.IKEGATEWAYCONNECTION, id);
         if (obj == null) {
@@ -15429,6 +16605,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIKEGatewayProfileId(String id) throws RestException {
+        IKEGatewayProfile obj = getObject(Constants.IKEGATEWAYPROFILE, id);
+        if (obj == null) {
+            obj = getIKEGatewayProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<IKEGatewayProfile> getIKEGatewayProfilesForFetcherId(String id) throws RestException {
         IKEGatewayProfilesFetcher fetcher = getIKEGatewayProfilesFetcherById(id);
         if (fetcher != null) {
@@ -15514,6 +16704,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIKEPSKId(String id) throws RestException {
+        IKEPSK obj = getObject(Constants.IKEPSK, id);
+        if (obj == null) {
+            obj = getIKEPSKById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<IKEPSK> getIKEPSKsForFetcherId(String id) throws RestException {
         IKEPSKsFetcher fetcher = getIKEPSKsFetcherById(id);
         if (fetcher != null) {
@@ -15595,6 +16799,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIKESubnetId(String id) throws RestException {
+        IKESubnet obj = getObject(Constants.IKESUBNET, id);
+        if (obj == null) {
+            obj = getIKESubnetById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<IKESubnet> getIKESubnetsForFetcherId(String id) throws RestException {
         IKESubnetsFetcher fetcher = getIKESubnetsFetcherById(id);
         if (fetcher != null) {
@@ -15672,6 +16890,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForInfrastructureConfigId(String id) throws RestException {
+        InfrastructureConfig obj = getObject(Constants.INFRASTRUCTURECONFIG, id);
+        if (obj == null) {
+            obj = getInfrastructureConfigById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -15794,6 +17026,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForInfrastructureAccessProfileId(String id) throws RestException {
+        InfrastructureAccessProfile obj = getObject(Constants.INFRASTRUCTUREACCESSPROFILE, id);
+        if (obj == null) {
+            obj = getInfrastructureAccessProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static SSHKeysFetcher getSSHKeysFetcherForInfrastructureAccessProfileId(String id) throws RestException {
         InfrastructureAccessProfile obj = getObject(Constants.INFRASTRUCTUREACCESSPROFILE, id);
         if (obj == null) {
@@ -15894,6 +17140,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForInfrastructureEVDFProfileId(String id) throws RestException {
+        InfrastructureEVDFProfile obj = getObject(Constants.INFRASTRUCTUREEVDFPROFILE, id);
+        if (obj == null) {
+            obj = getInfrastructureEVDFProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<InfrastructureEVDFProfile> getInfrastructureEVDFProfilesForFetcherId(String id) throws RestException {
         InfrastructureEVDFProfilesFetcher fetcher = getInfrastructureEVDFProfilesFetcherById(id);
         if (fetcher != null) {
@@ -15977,6 +17237,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForInfrastructureGatewayProfileId(String id) throws RestException {
+        InfrastructureGatewayProfile obj = getObject(Constants.INFRASTRUCTUREGATEWAYPROFILE, id);
+        if (obj == null) {
+            obj = getInfrastructureGatewayProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -16068,6 +17342,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForInfrastructureVscProfileId(String id) throws RestException {
+        InfrastructureVscProfile obj = getObject(Constants.INFRASTRUCTUREVSCPROFILE, id);
+        if (obj == null) {
+            obj = getInfrastructureVscProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<InfrastructureVscProfile> getInfrastructureVscProfilesForFetcherId(String id) throws RestException {
         InfrastructureVscProfilesFetcher fetcher = getInfrastructureVscProfilesFetcherById(id);
         if (fetcher != null) {
@@ -16151,6 +17439,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIngressACLEntryTemplateId(String id) throws RestException {
+        IngressACLEntryTemplate obj = getObject(Constants.INGRESSACLENTRYTEMPLATE, id);
+        if (obj == null) {
+            obj = getIngressACLEntryTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -16337,6 +17639,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForIngressACLTemplateId(String id) throws RestException {
+        IngressACLTemplate obj = getObject(Constants.INGRESSACLTEMPLATE, id);
+        if (obj == null) {
+            obj = getIngressACLTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VMsFetcher getVMsFetcherForIngressACLTemplateId(String id) throws RestException {
         IngressACLTemplate obj = getObject(Constants.INGRESSACLTEMPLATE, id);
         if (obj == null) {
@@ -16453,6 +17769,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIngressAdvFwdEntryTemplateId(String id) throws RestException {
+        IngressAdvFwdEntryTemplate obj = getObject(Constants.INGRESSADVFWDENTRYTEMPLATE, id);
+        if (obj == null) {
+            obj = getIngressAdvFwdEntryTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -16598,6 +17928,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIngressAdvFwdTemplateId(String id) throws RestException {
+        IngressAdvFwdTemplate obj = getObject(Constants.INGRESSADVFWDTEMPLATE, id);
+        if (obj == null) {
+            obj = getIngressAdvFwdTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<IngressAdvFwdTemplate> getIngressAdvFwdTemplatesForFetcherId(String id) throws RestException {
         IngressAdvFwdTemplatesFetcher fetcher = getIngressAdvFwdTemplatesFetcherById(id);
         if (fetcher != null) {
@@ -16710,6 +18054,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForIngressProfileId(String id) throws RestException {
+        IngressProfile obj = getObject(Constants.INGRESSPROFILE, id);
+        if (obj == null) {
+            obj = getIngressProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VPortsFetcher getVPortsFetcherForIngressProfileId(String id) throws RestException {
         IngressProfile obj = getObject(Constants.INGRESSPROFILE, id);
         if (obj == null) {
@@ -16816,6 +18174,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIngressQOSPolicyId(String id) throws RestException {
+        IngressQOSPolicy obj = getObject(Constants.INGRESSQOSPOLICY, id);
+        if (obj == null) {
+            obj = getIngressQOSPolicyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<IngressQOSPolicy> getIngressQOSPoliciesForFetcherId(String id) throws RestException {
         IngressQOSPoliciesFetcher fetcher = getIngressQOSPoliciesFetcherById(id);
         if (fetcher != null) {
@@ -16903,6 +18275,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIPFilterProfileId(String id) throws RestException {
+        IPFilterProfile obj = getObject(Constants.IPFILTERPROFILE, id);
+        if (obj == null) {
+            obj = getIPFilterProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -17014,6 +18400,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIPReservationId(String id) throws RestException {
+        IPReservation obj = getObject(Constants.IPRESERVATION, id);
+        if (obj == null) {
+            obj = getIPReservationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<IPReservation> getIPReservationsForFetcherId(String id) throws RestException {
         IPReservationsFetcher fetcher = getIPReservationsFetcherById(id);
         if (fetcher != null) {
@@ -17091,6 +18491,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForIPv6FilterProfileId(String id) throws RestException {
+        IPv6FilterProfile obj = getObject(Constants.IPV6FILTERPROFILE, id);
+        if (obj == null) {
+            obj = getIPv6FilterProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -17184,6 +18598,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForJobId(String id) throws RestException {
+        Job obj = getObject(Constants.JOB, id);
+        if (obj == null) {
+            obj = getJobById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -17379,6 +18807,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForKeyServerMemberId(String id) throws RestException {
+        KeyServerMember obj = getObject(Constants.KEYSERVERMEMBER, id);
+        if (obj == null) {
+            obj = getKeyServerMemberById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<KeyServerMember> getKeyServerMembersForFetcherId(String id) throws RestException {
         KeyServerMembersFetcher fetcher = getKeyServerMembersFetcherById(id);
         if (fetcher != null) {
@@ -17508,6 +18950,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForKeyServerMonitorId(String id) throws RestException {
+        KeyServerMonitor obj = getObject(Constants.KEYSERVERMONITOR, id);
+        if (obj == null) {
+            obj = getKeyServerMonitorById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<KeyServerMonitor> getKeyServerMonitorsForFetcherId(String id) throws RestException {
         KeyServerMonitorsFetcher fetcher = getKeyServerMonitorsFetcherById(id);
         if (fetcher != null) {
@@ -17585,6 +19041,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForKeyServerMonitorEncryptedSeedId(String id) throws RestException {
+        KeyServerMonitorEncryptedSeed obj = getObject(Constants.KEYSERVERMONITORENCRYPTEDSEED, id);
+        if (obj == null) {
+            obj = getKeyServerMonitorEncryptedSeedById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -17688,6 +19158,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForKeyServerMonitorSeedId(String id) throws RestException {
+        KeyServerMonitorSeed obj = getObject(Constants.KEYSERVERMONITORSEED, id);
+        if (obj == null) {
+            obj = getKeyServerMonitorSeedById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<KeyServerMonitorSeed> getKeyServerMonitorSeedsForFetcherId(String id) throws RestException {
         KeyServerMonitorSeedsFetcher fetcher = getKeyServerMonitorSeedsFetcherById(id);
         if (fetcher != null) {
@@ -17765,6 +19249,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForKeyServerMonitorSEKId(String id) throws RestException {
+        KeyServerMonitorSEK obj = getObject(Constants.KEYSERVERMONITORSEK, id);
+        if (obj == null) {
+            obj = getKeyServerMonitorSEKById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -19048,6 +20546,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForL7applicationsignatureId(String id) throws RestException {
+        L7applicationsignature obj = getObject(Constants.L7APPLICATIONSIGNATURE, id);
+        if (obj == null) {
+            obj = getL7applicationsignatureById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<L7applicationsignature> getL7applicationsignaturesForFetcherId(String id) throws RestException {
         L7applicationsignaturesFetcher fetcher = getL7applicationsignaturesFetcherById(id);
         if (fetcher != null) {
@@ -19135,6 +20647,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForLDAPConfigurationId(String id) throws RestException {
+        LDAPConfiguration obj = getObject(Constants.LDAPCONFIGURATION, id);
+        if (obj == null) {
+            obj = getLDAPConfigurationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -19234,6 +20760,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForLicenseId(String id) throws RestException {
+        License obj = getObject(Constants.LICENSE, id);
+        if (obj == null) {
+            obj = getLicenseById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<License> getLicensesForFetcherId(String id) throws RestException {
         LicensesFetcher fetcher = getLicensesFetcherById(id);
         if (fetcher != null) {
@@ -19317,6 +20857,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForLicenseStatusId(String id) throws RestException {
+        LicenseStatus obj = getObject(Constants.LICENSESTATUS, id);
+        if (obj == null) {
+            obj = getLicenseStatusById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -19465,6 +21019,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForLinkId(String id) throws RestException {
+        Link obj = getObject(Constants.LINK, id);
+        if (obj == null) {
+            obj = getLinkById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PolicyStatementsFetcher getPolicyStatementsFetcherForLinkId(String id) throws RestException {
         Link obj = getObject(Constants.LINK, id);
         if (obj == null) {
@@ -19577,6 +21145,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForLocationId(String id) throws RestException {
+        Location obj = getObject(Constants.LOCATION, id);
+        if (obj == null) {
+            obj = getLocationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Location> getLocationsForFetcherId(String id) throws RestException {
         LocationsFetcher fetcher = getLocationsFetcherById(id);
         if (fetcher != null) {
@@ -19666,6 +21248,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForLTEInformationId(String id) throws RestException {
+        LTEInformation obj = getObject(Constants.LTEINFORMATION, id);
+        if (obj == null) {
+            obj = getLTEInformationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<LTEInformation> getLTEInformationsForFetcherId(String id) throws RestException {
         LTEInformationsFetcher fetcher = getLTEInformationsFetcherById(id);
         if (fetcher != null) {
@@ -19747,6 +21343,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForLtestatisticsId(String id) throws RestException {
+        Ltestatistics obj = getObject(Constants.LTESTATISTICS, id);
+        if (obj == null) {
+            obj = getLtestatisticsById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Ltestatistics> getLtestatisticsForFetcherId(String id) throws RestException {
         LtestatisticsFetcher fetcher = getLtestatisticsFetcherById(id);
         if (fetcher != null) {
@@ -19824,6 +21434,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForMACFilterProfileId(String id) throws RestException {
+        MACFilterProfile obj = getObject(Constants.MACFILTERPROFILE, id);
+        if (obj == null) {
+            obj = getMACFilterProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -22502,6 +24126,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForMirrorDestinationId(String id) throws RestException {
+        MirrorDestination obj = getObject(Constants.MIRRORDESTINATION, id);
+        if (obj == null) {
+            obj = getMirrorDestinationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VPortMirrorsFetcher getVPortMirrorsFetcherForMirrorDestinationId(String id) throws RestException {
         MirrorDestination obj = getObject(Constants.MIRRORDESTINATION, id);
         if (obj == null) {
@@ -22634,6 +24272,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForMirrorDestinationGroupId(String id) throws RestException {
+        MirrorDestinationGroup obj = getObject(Constants.MIRRORDESTINATIONGROUP, id);
+        if (obj == null) {
+            obj = getMirrorDestinationGroupById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<MirrorDestinationGroup> getMirrorDestinationGroupsForFetcherId(String id) throws RestException {
         MirrorDestinationGroupsFetcher fetcher = getMirrorDestinationGroupsFetcherById(id);
         if (fetcher != null) {
@@ -22715,6 +24367,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForMonitoringPortId(String id) throws RestException {
+        MonitoringPort obj = getObject(Constants.MONITORINGPORT, id);
+        if (obj == null) {
+            obj = getMonitoringPortById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -22804,6 +24470,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForMonitorscopeId(String id) throws RestException {
+        Monitorscope obj = getObject(Constants.MONITORSCOPE, id);
+        if (obj == null) {
+            obj = getMonitorscopeById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -22917,6 +24597,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MultiCastRangesFetcher fetcher = obj.getMultiCastRanges();
             return addFetcher(Constants.MULTICASTRANGES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForMultiCastChannelMapId(String id) throws RestException {
+        MultiCastChannelMap obj = getObject(Constants.MULTICASTCHANNELMAP, id);
+        if (obj == null) {
+            obj = getMultiCastChannelMapById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -23038,6 +24732,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForMultiCastListId(String id) throws RestException {
+        MultiCastList obj = getObject(Constants.MULTICASTLIST, id);
+        if (obj == null) {
+            obj = getMultiCastListById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<MultiCastList> getMultiCastListsForFetcherId(String id) throws RestException {
         MultiCastListsFetcher fetcher = getMultiCastListsFetcherById(id);
         if (fetcher != null) {
@@ -23137,6 +24845,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForMultiCastRangeId(String id) throws RestException {
+        MultiCastRange obj = getObject(Constants.MULTICASTRANGE, id);
+        if (obj == null) {
+            obj = getMultiCastRangeById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<MultiCastRange> getMultiCastRangesForFetcherId(String id) throws RestException {
         MultiCastRangesFetcher fetcher = getMultiCastRangesFetcherById(id);
         if (fetcher != null) {
@@ -23214,6 +24936,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForMultiNICVPortId(String id) throws RestException {
+        MultiNICVPort obj = getObject(Constants.MULTINICVPORT, id);
+        if (obj == null) {
+            obj = getMultiNICVPortById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -23309,6 +25045,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNATMapEntryId(String id) throws RestException {
+        NATMapEntry obj = getObject(Constants.NATMAPENTRY, id);
+        if (obj == null) {
+            obj = getNATMapEntryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -23839,6 +25589,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNetconfManagerId(String id) throws RestException {
+        NetconfManager obj = getObject(Constants.NETCONFMANAGER, id);
+        if (obj == null) {
+            obj = getNetconfManagerById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<NetconfManager> getNetconfManagersForFetcherId(String id) throws RestException {
         NetconfManagersFetcher fetcher = getNetconfManagersFetcherById(id);
         if (fetcher != null) {
@@ -23916,6 +25680,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNetconfProfileId(String id) throws RestException {
+        NetconfProfile obj = getObject(Constants.NETCONFPROFILE, id);
+        if (obj == null) {
+            obj = getNetconfProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -24011,6 +25789,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNetconfSessionId(String id) throws RestException {
+        NetconfSession obj = getObject(Constants.NETCONFSESSION, id);
+        if (obj == null) {
+            obj = getNetconfSessionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<NetconfSession> getNetconfSessionsForFetcherId(String id) throws RestException {
         NetconfSessionsFetcher fetcher = getNetconfSessionsFetcherById(id);
         if (fetcher != null) {
@@ -24088,6 +25880,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNetworkLayoutId(String id) throws RestException {
+        NetworkLayout obj = getObject(Constants.NETWORKLAYOUT, id);
+        if (obj == null) {
+            obj = getNetworkLayoutById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -24193,6 +25999,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNetworkMacroGroupId(String id) throws RestException {
+        NetworkMacroGroup obj = getObject(Constants.NETWORKMACROGROUP, id);
+        if (obj == null) {
+            obj = getNetworkMacroGroupById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<NetworkMacroGroup> getNetworkMacroGroupsForFetcherId(String id) throws RestException {
         NetworkMacroGroupsFetcher fetcher = getNetworkMacroGroupsFetcherById(id);
         if (fetcher != null) {
@@ -24278,6 +26098,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNetworkPerformanceBindingId(String id) throws RestException {
+        NetworkPerformanceBinding obj = getObject(Constants.NETWORKPERFORMANCEBINDING, id);
+        if (obj == null) {
+            obj = getNetworkPerformanceBindingById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -24403,6 +26237,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNetworkPerformanceMeasurementId(String id) throws RestException {
+        NetworkPerformanceMeasurement obj = getObject(Constants.NETWORKPERFORMANCEMEASUREMENT, id);
+        if (obj == null) {
+            obj = getNetworkPerformanceMeasurementById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<NetworkPerformanceMeasurement> getNetworkPerformanceMeasurementsForFetcherId(String id) throws RestException {
         NetworkPerformanceMeasurementsFetcher fetcher = getNetworkPerformanceMeasurementsFetcherById(id);
         if (fetcher != null) {
@@ -24490,6 +26338,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNextHopId(String id) throws RestException {
+        NextHop obj = getObject(Constants.NEXTHOP, id);
+        if (obj == null) {
+            obj = getNextHopById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -25018,6 +26880,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNSGatewaysCountId(String id) throws RestException {
+        NSGatewaysCount obj = getObject(Constants.NSGATEWAYSCOUNT, id);
+        if (obj == null) {
+            obj = getNSGatewaysCountById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<NSGatewaysCount> getNSGatewaysCountsForFetcherId(String id) throws RestException {
         NSGatewaysCountsFetcher fetcher = getNSGatewaysCountsFetcherById(id);
         if (fetcher != null) {
@@ -25152,6 +27028,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNSGatewaySummaryId(String id) throws RestException {
+        NSGatewaySummary obj = getObject(Constants.NSGATEWAYSUMMARY, id);
+        if (obj == null) {
+            obj = getNSGatewaySummaryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<NSGatewaySummary> getNSGatewaySummariesForFetcherId(String id) throws RestException {
         NSGatewaySummariesFetcher fetcher = getNSGatewaySummariesFetcherById(id);
         if (fetcher != null) {
@@ -25259,6 +27149,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             NSPortTemplatesFetcher fetcher = obj.getNSPortTemplates();
             return addFetcher(Constants.NSPORTTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNSGatewayTemplateId(String id) throws RestException {
+        NSGatewayTemplate obj = getObject(Constants.NSGATEWAYTEMPLATE, id);
+        if (obj == null) {
+            obj = getNSGatewayTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -25382,6 +27286,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             NSGatewaysFetcher fetcher = obj.getNSGateways();
             return addFetcher(Constants.NSGATEWAYS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNSGGroupId(String id) throws RestException {
+        NSGGroup obj = getObject(Constants.NSGGROUP, id);
+        if (obj == null) {
+            obj = getNSGGroupById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -25788,6 +27706,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNSGRoutingPolicyBindingId(String id) throws RestException {
+        NSGRoutingPolicyBinding obj = getObject(Constants.NSGROUTINGPOLICYBINDING, id);
+        if (obj == null) {
+            obj = getNSGRoutingPolicyBindingById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<NSGRoutingPolicyBinding> getNSGRoutingPolicyBindingsForFetcherId(String id) throws RestException {
         NSGRoutingPolicyBindingsFetcher fetcher = getNSGRoutingPolicyBindingsFetcherById(id);
         if (fetcher != null) {
@@ -26134,6 +28066,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForNSPortTemplateId(String id) throws RestException {
+        NSPortTemplate obj = getObject(Constants.NSPORTTEMPLATE, id);
+        if (obj == null) {
+            obj = getNSPortTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VLANTemplatesFetcher getVLANTemplatesFetcherForNSPortTemplateId(String id) throws RestException {
         NSPortTemplate obj = getObject(Constants.NSPORTTEMPLATE, id);
         if (obj == null) {
@@ -26379,6 +28325,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForOSPFAreaId(String id) throws RestException {
+        OSPFArea obj = getObject(Constants.OSPFAREA, id);
+        if (obj == null) {
+            obj = getOSPFAreaById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<OSPFArea> getOSPFAreasForFetcherId(String id) throws RestException {
         OSPFAreasFetcher fetcher = getOSPFAreasFetcherById(id);
         if (fetcher != null) {
@@ -26474,6 +28434,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForOSPFInstanceId(String id) throws RestException {
+        OSPFInstance obj = getObject(Constants.OSPFINSTANCE, id);
+        if (obj == null) {
+            obj = getOSPFInstanceById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<OSPFInstance> getOSPFInstancesForFetcherId(String id) throws RestException {
         OSPFInstancesFetcher fetcher = getOSPFInstancesFetcherById(id);
         if (fetcher != null) {
@@ -26555,6 +28529,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForOSPFInterfaceId(String id) throws RestException {
+        OSPFInterface obj = getObject(Constants.OSPFINTERFACE, id);
+        if (obj == null) {
+            obj = getOSPFInterfaceById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -26650,6 +28638,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             OverlayPATNATEntriesFetcher fetcher = obj.getOverlayPATNATEntries();
             return addFetcher(Constants.OVERLAYPATNATENTRIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForOverlayAddressPoolId(String id) throws RestException {
+        OverlayAddressPool obj = getObject(Constants.OVERLAYADDRESSPOOL, id);
+        if (obj == null) {
+            obj = getOverlayAddressPoolById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -26856,6 +28858,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForOverlayMirrorDestinationId(String id) throws RestException {
+        OverlayMirrorDestination obj = getObject(Constants.OVERLAYMIRRORDESTINATION, id);
+        if (obj == null) {
+            obj = getOverlayMirrorDestinationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VPortsFetcher getVPortsFetcherForOverlayMirrorDestinationId(String id) throws RestException {
         OverlayMirrorDestination obj = getObject(Constants.OVERLAYMIRRORDESTINATION, id);
         if (obj == null) {
@@ -26964,6 +28980,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForOverlayMirrorDestinationTemplateId(String id) throws RestException {
+        OverlayMirrorDestinationTemplate obj = getObject(Constants.OVERLAYMIRRORDESTINATIONTEMPLATE, id);
+        if (obj == null) {
+            obj = getOverlayMirrorDestinationTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<OverlayMirrorDestinationTemplate> getOverlayMirrorDestinationTemplatesForFetcherId(String id) throws RestException {
         OverlayMirrorDestinationTemplatesFetcher fetcher = getOverlayMirrorDestinationTemplatesFetcherById(id);
         if (fetcher != null) {
@@ -27045,6 +29075,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForOverlayPATNATEntryId(String id) throws RestException {
+        OverlayPATNATEntry obj = getObject(Constants.OVERLAYPATNATENTRY, id);
+        if (obj == null) {
+            obj = getOverlayPATNATEntryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<OverlayPATNATEntry> getOverlayPATNATEntriesForFetcherId(String id) throws RestException {
         OverlayPATNATEntriesFetcher fetcher = getOverlayPATNATEntriesFetcherById(id);
         if (fetcher != null) {
@@ -27122,6 +29166,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPatchId(String id) throws RestException {
+        Patch obj = getObject(Constants.PATCH, id);
+        if (obj == null) {
+            obj = getPatchById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -27408,6 +29466,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForPATNATPoolId(String id) throws RestException {
+        PATNATPool obj = getObject(Constants.PATNATPOOL, id);
+        if (obj == null) {
+            obj = getPATNATPoolById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static StatisticsFetcher getStatisticsFetcherForPATNATPoolId(String id) throws RestException {
         PATNATPool obj = getObject(Constants.PATNATPOOL, id);
         if (obj == null) {
@@ -27651,6 +29723,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPermissionId(String id) throws RestException {
+        Permission obj = getObject(Constants.PERMISSION, id);
+        if (obj == null) {
+            obj = getPermissionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Permission> getPermissionsForFetcherId(String id) throws RestException {
         PermissionsFetcher fetcher = getPermissionsFetcherById(id);
         if (fetcher != null) {
@@ -27671,7 +29757,175 @@ public class ModelHelper extends BaseModelHelper {
         if (fetcher != null) {
             return (PermissionsFetcher) fetcher;
         }
+        if ((fetcher = getPermissionsFetcherForAddressMapId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForAddressRangeId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForAggregatedDomainId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForAlarmId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForAllAlarmId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForAllGatewayId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForAllRedundancyGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForApplicationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForApplicationBindingId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForApplicationperformancemanagementId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForApplicationperformancemanagementbindingId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForAutoDiscoveredGatewayId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForAvatarId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForAzureCloudId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForBFDSessionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForBGPNeighborId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForBGPPeerId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForBGPProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForBootstrapId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForBootstrapActivationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForBRConnectionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForBridgeInterfaceId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForBulkStatisticsId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForCertificateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForCloudMgmtSystemId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVSDComponentId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForConnectionendpointId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForContainerId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForContainerInterfaceId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForContainerResyncId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForControllerVRSLinkId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForCOSRemarkingPolicyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForCOSRemarkingPolicyTableId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForCSNATPoolId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForCTranslationMapId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForCustomPropertyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDefaultGatewayId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDemarcationServiceId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDeploymentFailureId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDestinationurlId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDHCPOptionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDHCPv6OptionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDiskStatId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
@@ -27679,7 +29933,95 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForDomainKindSummaryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForDomainTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDSCPForwardingClassMappingId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDSCPForwardingClassTableId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDSCPRemarkingPolicyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDSCPRemarkingPolicyTableId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDUCGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDUCGroupBindingId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVCenterEAMConfigId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEgressACLEntryTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEgressACLTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEgressAdvFwdEntryTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEgressAdvFwdTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDomainFIPAclTemplateEntryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForDomainFIPAclTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEgressProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEgressQOSPolicyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEnterpriseId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEnterpriseNetworkId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEnterprisePermissionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEnterpriseProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEnterpriseSecuredDataId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForEnterpriseSecurityId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
@@ -27691,11 +30033,183 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForEventLogId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForFirewallAclId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForFirewallRuleId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForFloatingIpId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForForwardingPathListId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForForwardingPathListEntryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForGatewayId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
         if ((fetcher = getPermissionsFetcherForGatewayRedundantPortId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForGatewaySecuredDataId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForGatewaySecurityId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForGatewaysLocationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForGatewayTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForGlobalMetadataId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForGroupKeyEncryptionProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForHostInterfaceId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForHSCId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIKECertificateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIKEEncryptionprofileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIKEGatewayId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIKEGatewayConfigId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIKEGatewayConnectionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIKEGatewayProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIKEPSKId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIKESubnetId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForInfrastructureConfigId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForInfrastructureAccessProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForInfrastructureEVDFProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForInfrastructureGatewayProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForInfrastructureVscProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIngressACLEntryTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIngressACLTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIngressAdvFwdEntryTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIngressAdvFwdTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIngressProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIngressQOSPolicyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIPFilterProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIPReservationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForIPv6FilterProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForJobId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForKeyServerMemberId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForKeyServerMonitorId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForKeyServerMonitorEncryptedSeedId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForKeyServerMonitorSeedId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForKeyServerMonitorSEKId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
@@ -27707,7 +30221,111 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForL7applicationsignatureId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForLDAPConfigurationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForLicenseId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForLicenseStatusId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForLinkId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForLocationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForLTEInformationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForLtestatisticsId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForMACFilterProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForMirrorDestinationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForMirrorDestinationGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForMonitoringPortId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForMonitorscopeId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForMultiCastChannelMapId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForMultiCastListId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForMultiCastRangeId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForMultiNICVPortId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNATMapEntryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForNetconfGatewayId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNetconfManagerId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNetconfProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNetconfSessionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNetworkLayoutId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNetworkMacroGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNetworkPerformanceBindingId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNetworkPerformanceMeasurementId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNextHopId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
@@ -27715,7 +30333,27 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForNSGatewaysCountId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNSGatewaySummaryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNSGatewayTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNSGGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForNSRedundantGatewayGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNSGRoutingPolicyBindingId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
@@ -27723,7 +30361,79 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForNSPortTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForRedundantPortId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForOSPFAreaId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForOSPFInstanceId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForOSPFInterfaceId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForOverlayAddressPoolId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForOverlayMirrorDestinationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForOverlayMirrorDestinationTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForOverlayPATNATEntryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPatchId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPATNATPoolId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPermissionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPolicyDecisionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPolicyEntryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPolicyGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPolicyGroupCategoryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPolicyGroupTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPolicyObjectGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPolicyStatementId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
@@ -27731,7 +30441,79 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForPortTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPSNATPoolId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPSPATMapId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPTranslationMapId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForPublicNetworkMacroId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForQOSId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForQosPolicerId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForRateLimiterId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForRedirectionTargetId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForRedirectionTargetTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForRedundancyGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForRemoteVrsInfoId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVMResyncId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForRoutingPolicyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForRoutingPolicyBindingId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSaaSApplicationGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSaaSApplicationTypeId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSAPEgressQoSProfileId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSAPIngressQoSProfileId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
@@ -27739,7 +30521,223 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForSharedNetworkResourceId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForShuntLinkId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSiteInfoId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSPATSourcesPoolId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSSHKeyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSSIDConnectionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForStaticRouteId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForStatisticsId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForStatsCollectorInfoId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForStatisticsPolicyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSubnetId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSubnetTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForSystemConfigId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForTCAId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForTestId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForTestDefinitionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForTestRunId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForTestSuiteId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForTestSuiteRunId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForTierId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForTrunkId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForUnderlayId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForUplinkConnectionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForUplinkRDId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForUserId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForUserContextId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVCenterId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVCenterClusterId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVCenterDataCenterId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVCenterHypervisorId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVirtualFirewallPolicyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVirtualFirewallRuleId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVirtualIPId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForVLANId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVLANTemplateId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVMId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVMInterfaceId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVMIPReservationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVNFId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVNFCatalogId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVNFDescriptorId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVNFDomainMappingId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVNFInterfaceId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVNFInterfaceDescriptorId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVNFMetadataId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVNFThresholdPolicyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVPNConnectionId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVPortId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVPortMirrorId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVRSId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVRSAddressRangeId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVCenterVRSConfigId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForvrsInfoId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVSCId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForVSDId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
@@ -27747,7 +30745,31 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForVSPId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForWebCategoryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForWebDomainNameId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForWirelessPortId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForZFBRequestId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForZoneId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForZoneTemplateId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         return null;
@@ -27927,6 +30949,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForPolicyDecisionId(String id) throws RestException {
+        PolicyDecision obj = getObject(Constants.POLICYDECISION, id);
+        if (obj == null) {
+            obj = getPolicyDecisionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static QOSsFetcher getQOSsFetcherForPolicyDecisionId(String id) throws RestException {
         PolicyDecision obj = getObject(Constants.POLICYDECISION, id);
         if (obj == null) {
@@ -28033,6 +31069,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPolicyEntryId(String id) throws RestException {
+        PolicyEntry obj = getObject(Constants.POLICYENTRY, id);
+        if (obj == null) {
+            obj = getPolicyEntryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<PolicyEntry> getPolicyEntriesForFetcherId(String id) throws RestException {
         PolicyEntriesFetcher fetcher = getPolicyEntriesFetcherById(id);
         if (fetcher != null) {
@@ -28124,6 +31174,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPolicyGroupId(String id) throws RestException {
+        PolicyGroup obj = getObject(Constants.POLICYGROUP, id);
+        if (obj == null) {
+            obj = getPolicyGroupById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -28280,6 +31344,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForPolicyGroupCategoryId(String id) throws RestException {
+        PolicyGroupCategory obj = getObject(Constants.POLICYGROUPCATEGORY, id);
+        if (obj == null) {
+            obj = getPolicyGroupCategoryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PolicyGroupsFetcher getPolicyGroupsFetcherForPolicyGroupCategoryId(String id) throws RestException {
         PolicyGroupCategory obj = getObject(Constants.POLICYGROUPCATEGORY, id);
         if (obj == null) {
@@ -28388,6 +31466,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPolicyGroupTemplateId(String id) throws RestException {
+        PolicyGroupTemplate obj = getObject(Constants.POLICYGROUPTEMPLATE, id);
+        if (obj == null) {
+            obj = getPolicyGroupTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -28505,6 +31597,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPolicyObjectGroupId(String id) throws RestException {
+        PolicyObjectGroup obj = getObject(Constants.POLICYOBJECTGROUP, id);
+        if (obj == null) {
+            obj = getPolicyObjectGroupById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<PolicyObjectGroup> getPolicyObjectGroupsForFetcherId(String id) throws RestException {
         PolicyObjectGroupsFetcher fetcher = getPolicyObjectGroupsFetcherById(id);
         if (fetcher != null) {
@@ -28592,6 +31698,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPolicyStatementId(String id) throws RestException {
+        PolicyStatement obj = getObject(Constants.POLICYSTATEMENT, id);
+        if (obj == null) {
+            obj = getPolicyStatementById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -28961,6 +32081,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForPortTemplateId(String id) throws RestException {
+        PortTemplate obj = getObject(Constants.PORTTEMPLATE, id);
+        if (obj == null) {
+            obj = getPortTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VLANTemplatesFetcher getVLANTemplatesFetcherForPortTemplateId(String id) throws RestException {
         PortTemplate obj = getObject(Constants.PORTTEMPLATE, id);
         if (obj == null) {
@@ -29113,6 +32247,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForPSNATPoolId(String id) throws RestException {
+        PSNATPool obj = getObject(Constants.PSNATPOOL, id);
+        if (obj == null) {
+            obj = getPSNATPoolById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PSPATMapsFetcher getPSPATMapsFetcherForPSNATPoolId(String id) throws RestException {
         PSNATPool obj = getObject(Constants.PSNATPOOL, id);
         if (obj == null) {
@@ -29221,6 +32369,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPSPATMapId(String id) throws RestException {
+        PSPATMap obj = getObject(Constants.PSPATMAP, id);
+        if (obj == null) {
+            obj = getPSPATMapById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<PSPATMap> getPSPATMapsForFetcherId(String id) throws RestException {
         PSPATMapsFetcher fetcher = getPSPATMapsFetcherById(id);
         if (fetcher != null) {
@@ -29298,6 +32460,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPTranslationMapId(String id) throws RestException {
+        PTranslationMap obj = getObject(Constants.PTRANSLATIONMAP, id);
+        if (obj == null) {
+            obj = getPTranslationMapById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -29393,6 +32569,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForPublicNetworkMacroId(String id) throws RestException {
+        PublicNetworkMacro obj = getObject(Constants.PUBLICNETWORKMACRO, id);
+        if (obj == null) {
+            obj = getPublicNetworkMacroById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -29502,6 +32692,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForQOSId(String id) throws RestException {
+        QOS obj = getObject(Constants.QOS, id);
+        if (obj == null) {
+            obj = getQOSById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -29649,6 +32853,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForQosPolicerId(String id) throws RestException {
+        QosPolicer obj = getObject(Constants.QOSPOLICER, id);
+        if (obj == null) {
+            obj = getQosPolicerById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<QosPolicer> getQosPolicersForFetcherId(String id) throws RestException {
         QosPolicersFetcher fetcher = getQosPolicersFetcherById(id);
         if (fetcher != null) {
@@ -29732,6 +32950,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForRateLimiterId(String id) throws RestException {
+        RateLimiter obj = getObject(Constants.RATELIMITER, id);
+        if (obj == null) {
+            obj = getRateLimiterById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -29837,6 +33069,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForRedirectionTargetId(String id) throws RestException {
+        RedirectionTarget obj = getObject(Constants.REDIRECTIONTARGET, id);
+        if (obj == null) {
+            obj = getRedirectionTargetById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -29998,6 +33244,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForRedirectionTargetTemplateId(String id) throws RestException {
+        RedirectionTargetTemplate obj = getObject(Constants.REDIRECTIONTARGETTEMPLATE, id);
+        if (obj == null) {
+            obj = getRedirectionTargetTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -30448,6 +33708,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForRemoteVrsInfoId(String id) throws RestException {
+        RemoteVrsInfo obj = getObject(Constants.REMOTEVRSINFO, id);
+        if (obj == null) {
+            obj = getRemoteVrsInfoById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<RemoteVrsInfo> getRemoteVrsInfosForFetcherId(String id) throws RestException {
         RemoteVrsInfosFetcher fetcher = getRemoteVrsInfosFetcherById(id);
         if (fetcher != null) {
@@ -30531,6 +33805,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVMResyncId(String id) throws RestException {
+        VMResync obj = getObject(Constants.VMRESYNC, id);
+        if (obj == null) {
+            obj = getVMResyncById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -30750,6 +34038,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForRoutingPolicyId(String id) throws RestException {
+        RoutingPolicy obj = getObject(Constants.ROUTINGPOLICY, id);
+        if (obj == null) {
+            obj = getRoutingPolicyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<RoutingPolicy> getRoutingPoliciesForFetcherId(String id) throws RestException {
         RoutingPoliciesFetcher fetcher = getRoutingPoliciesFetcherById(id);
         if (fetcher != null) {
@@ -30849,6 +34151,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForRoutingPolicyBindingId(String id) throws RestException {
+        RoutingPolicyBinding obj = getObject(Constants.ROUTINGPOLICYBINDING, id);
+        if (obj == null) {
+            obj = getRoutingPolicyBindingById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<RoutingPolicyBinding> getRoutingPolicyBindingsForFetcherId(String id) throws RestException {
         RoutingPolicyBindingsFetcher fetcher = getRoutingPolicyBindingsFetcherById(id);
         if (fetcher != null) {
@@ -30930,6 +34246,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForSaaSApplicationGroupId(String id) throws RestException {
+        SaaSApplicationGroup obj = getObject(Constants.SAASAPPLICATIONGROUP, id);
+        if (obj == null) {
+            obj = getSaaSApplicationGroupById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -31043,6 +34373,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForSaaSApplicationTypeId(String id) throws RestException {
+        SaaSApplicationType obj = getObject(Constants.SAASAPPLICATIONTYPE, id);
+        if (obj == null) {
+            obj = getSaaSApplicationTypeById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<SaaSApplicationType> getSaaSApplicationTypesForFetcherId(String id) throws RestException {
         SaaSApplicationTypesFetcher fetcher = getSaaSApplicationTypesFetcherById(id);
         if (fetcher != null) {
@@ -31138,6 +34482,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForSAPEgressQoSProfileId(String id) throws RestException {
+        SAPEgressQoSProfile obj = getObject(Constants.SAPEGRESSQOSPROFILE, id);
+        if (obj == null) {
+            obj = getSAPEgressQoSProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<SAPEgressQoSProfile> getSAPEgressQoSProfilesForFetcherId(String id) throws RestException {
         SAPEgressQoSProfilesFetcher fetcher = getSAPEgressQoSProfilesFetcherById(id);
         if (fetcher != null) {
@@ -31227,6 +34585,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForSAPIngressQoSProfileId(String id) throws RestException {
+        SAPIngressQoSProfile obj = getObject(Constants.SAPINGRESSQOSPROFILE, id);
+        if (obj == null) {
+            obj = getSAPIngressQoSProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -31530,6 +34902,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForSharedNetworkResourceId(String id) throws RestException {
+        SharedNetworkResource obj = getObject(Constants.SHAREDNETWORKRESOURCE, id);
+        if (obj == null) {
+            obj = getSharedNetworkResourceById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static StaticRoutesFetcher getStaticRoutesFetcherForSharedNetworkResourceId(String id) throws RestException {
         SharedNetworkResource obj = getObject(Constants.SHAREDNETWORKRESOURCE, id);
         if (obj == null) {
@@ -31666,6 +35052,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForShuntLinkId(String id) throws RestException {
+        ShuntLink obj = getObject(Constants.SHUNTLINK, id);
+        if (obj == null) {
+            obj = getShuntLinkById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<ShuntLink> getShuntLinksForFetcherId(String id) throws RestException {
         ShuntLinksFetcher fetcher = getShuntLinksFetcherById(id);
         if (fetcher != null) {
@@ -31743,6 +35143,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForSiteInfoId(String id) throws RestException {
+        SiteInfo obj = getObject(Constants.SITEINFO, id);
+        if (obj == null) {
+            obj = getSiteInfoById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -31834,6 +35248,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForSPATSourcesPoolId(String id) throws RestException {
+        SPATSourcesPool obj = getObject(Constants.SPATSOURCESPOOL, id);
+        if (obj == null) {
+            obj = getSPATSourcesPoolById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<SPATSourcesPool> getSPATSourcesPoolsForFetcherId(String id) throws RestException {
         SPATSourcesPoolsFetcher fetcher = getSPATSourcesPoolsFetcherById(id);
         if (fetcher != null) {
@@ -31915,6 +35343,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForSSHKeyId(String id) throws RestException {
+        SSHKey obj = getObject(Constants.SSHKEY, id);
+        if (obj == null) {
+            obj = getSSHKeyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -32028,6 +35470,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForSSIDConnectionId(String id) throws RestException {
+        SSIDConnection obj = getObject(Constants.SSIDCONNECTION, id);
+        if (obj == null) {
+            obj = getSSIDConnectionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<SSIDConnection> getSSIDConnectionsForFetcherId(String id) throws RestException {
         SSIDConnectionsFetcher fetcher = getSSIDConnectionsFetcherById(id);
         if (fetcher != null) {
@@ -32133,6 +35589,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForStaticRouteId(String id) throws RestException {
+        StaticRoute obj = getObject(Constants.STATICROUTE, id);
+        if (obj == null) {
+            obj = getStaticRouteById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -32248,6 +35718,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForStatisticsId(String id) throws RestException {
+        Statistics obj = getObject(Constants.STATISTICS, id);
+        if (obj == null) {
+            obj = getStatisticsById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -32405,6 +35889,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForStatsCollectorInfoId(String id) throws RestException {
+        StatsCollectorInfo obj = getObject(Constants.STATSCOLLECTORINFO, id);
+        if (obj == null) {
+            obj = getStatsCollectorInfoById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<StatsCollectorInfo> getStatsCollectorInfosForFetcherId(String id) throws RestException {
         StatsCollectorInfosFetcher fetcher = getStatsCollectorInfosFetcherById(id);
         if (fetcher != null) {
@@ -32488,6 +35986,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForStatisticsPolicyId(String id) throws RestException {
+        StatisticsPolicy obj = getObject(Constants.STATISTICSPOLICY, id);
+        if (obj == null) {
+            obj = getStatisticsPolicyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -32802,6 +36314,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForSubnetId(String id) throws RestException {
+        Subnet obj = getObject(Constants.SUBNET, id);
+        if (obj == null) {
+            obj = getSubnetById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static ProxyARPFiltersFetcher getProxyARPFiltersFetcherForSubnetId(String id) throws RestException {
         Subnet obj = getObject(Constants.SUBNET, id);
         if (obj == null) {
@@ -33107,6 +36633,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForSubnetTemplateId(String id) throws RestException {
+        SubnetTemplate obj = getObject(Constants.SUBNETTEMPLATE, id);
+        if (obj == null) {
+            obj = getSubnetTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static QOSsFetcher getQOSsFetcherForSubnetTemplateId(String id) throws RestException {
         SubnetTemplate obj = getObject(Constants.SUBNETTEMPLATE, id);
         if (obj == null) {
@@ -33272,6 +36812,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForSystemConfigId(String id) throws RestException {
+        SystemConfig obj = getObject(Constants.SYSTEMCONFIG, id);
+        if (obj == null) {
+            obj = getSystemConfigById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<SystemConfig> getSystemConfigsForFetcherId(String id) throws RestException {
         SystemConfigsFetcher fetcher = getSystemConfigsFetcherById(id);
         if (fetcher != null) {
@@ -33383,6 +36937,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForTCAId(String id) throws RestException {
+        TCA obj = getObject(Constants.TCA, id);
+        if (obj == null) {
+            obj = getTCAById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -33514,6 +37082,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForTestId(String id) throws RestException {
+        Test obj = getObject(Constants.TEST, id);
+        if (obj == null) {
+            obj = getTestById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Test> getTestsForFetcherId(String id) throws RestException {
         TestsFetcher fetcher = getTestsFetcherById(id);
         if (fetcher != null) {
@@ -33591,6 +37173,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForTestDefinitionId(String id) throws RestException {
+        TestDefinition obj = getObject(Constants.TESTDEFINITION, id);
+        if (obj == null) {
+            obj = getTestDefinitionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -33686,6 +37282,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForTestRunId(String id) throws RestException {
+        TestRun obj = getObject(Constants.TESTRUN, id);
+        if (obj == null) {
+            obj = getTestRunById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<TestRun> getTestRunsForFetcherId(String id) throws RestException {
         TestRunsFetcher fetcher = getTestRunsFetcherById(id);
         if (fetcher != null) {
@@ -33763,6 +37373,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForTestSuiteId(String id) throws RestException {
+        TestSuite obj = getObject(Constants.TESTSUITE, id);
+        if (obj == null) {
+            obj = getTestSuiteById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -33872,6 +37496,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForTestSuiteRunId(String id) throws RestException {
+        TestSuiteRun obj = getObject(Constants.TESTSUITERUN, id);
+        if (obj == null) {
+            obj = getTestSuiteRunById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -34095,6 +37733,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForTierId(String id) throws RestException {
+        Tier obj = getObject(Constants.TIER, id);
+        if (obj == null) {
+            obj = getTierById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<Tier> getTiersForFetcherId(String id) throws RestException {
         TiersFetcher fetcher = getTiersFetcherById(id);
         if (fetcher != null) {
@@ -34172,6 +37824,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForTrunkId(String id) throws RestException {
+        Trunk obj = getObject(Constants.TRUNK, id);
+        if (obj == null) {
+            obj = getTrunkById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -34271,6 +37937,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForUnderlayId(String id) throws RestException {
+        Underlay obj = getObject(Constants.UNDERLAY, id);
+        if (obj == null) {
+            obj = getUnderlayById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -34443,6 +38123,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForUplinkConnectionId(String id) throws RestException {
+        UplinkConnection obj = getObject(Constants.UPLINKCONNECTION, id);
+        if (obj == null) {
+            obj = getUplinkConnectionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<UplinkConnection> getUplinkConnectionsForFetcherId(String id) throws RestException {
         UplinkConnectionsFetcher fetcher = getUplinkConnectionsFetcherById(id);
         if (fetcher != null) {
@@ -34528,6 +38222,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForUplinkRDId(String id) throws RestException {
+        UplinkRD obj = getObject(Constants.UPLINKRD, id);
+        if (obj == null) {
+            obj = getUplinkRDById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -34688,6 +38396,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForUserId(String id) throws RestException {
+        User obj = getObject(Constants.USER, id);
+        if (obj == null) {
+            obj = getUserById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VMsFetcher getVMsFetcherForUserId(String id) throws RestException {
         User obj = getObject(Constants.USER, id);
         if (obj == null) {
@@ -34792,6 +38514,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForUserContextId(String id) throws RestException {
+        UserContext obj = getObject(Constants.USERCONTEXT, id);
+        if (obj == null) {
+            obj = getUserContextById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -34907,6 +38643,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVCenterId(String id) throws RestException {
+        VCenter obj = getObject(Constants.VCENTER, id);
+        if (obj == null) {
+            obj = getVCenterById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -35069,6 +38819,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVCenterClusterId(String id) throws RestException {
+        VCenterCluster obj = getObject(Constants.VCENTERCLUSTER, id);
+        if (obj == null) {
+            obj = getVCenterClusterById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VCenterHypervisorsFetcher getVCenterHypervisorsFetcherForVCenterClusterId(String id) throws RestException {
         VCenterCluster obj = getObject(Constants.VCENTERCLUSTER, id);
         if (obj == null) {
@@ -35215,6 +38979,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVCenterDataCenterId(String id) throws RestException {
+        VCenterDataCenter obj = getObject(Constants.VCENTERDATACENTER, id);
+        if (obj == null) {
+            obj = getVCenterDataCenterById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -35371,6 +39149,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVCenterHypervisorId(String id) throws RestException {
+        VCenterHypervisor obj = getObject(Constants.VCENTERHYPERVISOR, id);
+        if (obj == null) {
+            obj = getVCenterHypervisorById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VRSAddressRangesFetcher getVRSAddressRangesFetcherForVCenterHypervisorId(String id) throws RestException {
         VCenterHypervisor obj = getObject(Constants.VCENTERHYPERVISOR, id);
         if (obj == null) {
@@ -35508,6 +39300,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVirtualFirewallPolicyId(String id) throws RestException {
+        VirtualFirewallPolicy obj = getObject(Constants.VIRTUALFIREWALLPOLICY, id);
+        if (obj == null) {
+            obj = getVirtualFirewallPolicyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VirtualFirewallRulesFetcher getVirtualFirewallRulesFetcherForVirtualFirewallPolicyId(String id) throws RestException {
         VirtualFirewallPolicy obj = getObject(Constants.VIRTUALFIREWALLPOLICY, id);
         if (obj == null) {
@@ -35628,6 +39434,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVirtualFirewallRuleId(String id) throws RestException {
+        VirtualFirewallRule obj = getObject(Constants.VIRTUALFIREWALLRULE, id);
+        if (obj == null) {
+            obj = getVirtualFirewallRuleById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<VirtualFirewallRule> getVirtualFirewallRulesForFetcherId(String id) throws RestException {
         VirtualFirewallRulesFetcher fetcher = getVirtualFirewallRulesFetcherById(id);
         if (fetcher != null) {
@@ -35741,6 +39561,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVirtualIPId(String id) throws RestException {
+        VirtualIP obj = getObject(Constants.VIRTUALIP, id);
+        if (obj == null) {
+            obj = getVirtualIPById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -36104,6 +39938,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVLANTemplateId(String id) throws RestException {
+        VLANTemplate obj = getObject(Constants.VLANTEMPLATE, id);
+        if (obj == null) {
+            obj = getVLANTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static UplinkConnectionsFetcher getUplinkConnectionsFetcherForVLANTemplateId(String id) throws RestException {
         VLANTemplate obj = getObject(Constants.VLANTEMPLATE, id);
         if (obj == null) {
@@ -36226,6 +40074,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVMId(String id) throws RestException {
+        VM obj = getObject(Constants.VM, id);
+        if (obj == null) {
+            obj = getVMById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -36464,6 +40326,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVMInterfaceId(String id) throws RestException {
+        VMInterface obj = getObject(Constants.VMINTERFACE, id);
+        if (obj == null) {
+            obj = getVMInterfaceById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static PolicyDecisionsFetcher getPolicyDecisionsFetcherForVMInterfaceId(String id) throws RestException {
         VMInterface obj = getObject(Constants.VMINTERFACE, id);
         if (obj == null) {
@@ -36662,6 +40538,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVMIPReservationId(String id) throws RestException {
+        VMIPReservation obj = getObject(Constants.VMIPRESERVATION, id);
+        if (obj == null) {
+            obj = getVMIPReservationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<VMIPReservation> getVMIPReservationsForFetcherId(String id) throws RestException {
         VMIPReservationsFetcher fetcher = getVMIPReservationsFetcherById(id);
         if (fetcher != null) {
@@ -36757,6 +40647,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVNFId(String id) throws RestException {
+        VNF obj = getObject(Constants.VNF, id);
+        if (obj == null) {
+            obj = getVNFById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -36889,6 +40793,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVNFCatalogId(String id) throws RestException {
+        VNFCatalog obj = getObject(Constants.VNFCATALOG, id);
+        if (obj == null) {
+            obj = getVNFCatalogById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VNFDescriptorsFetcher getVNFDescriptorsFetcherForVNFCatalogId(String id) throws RestException {
         VNFCatalog obj = getObject(Constants.VNFCATALOG, id);
         if (obj == null) {
@@ -36990,6 +40908,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVNFDescriptorId(String id) throws RestException {
+        VNFDescriptor obj = getObject(Constants.VNFDESCRIPTOR, id);
+        if (obj == null) {
+            obj = getVNFDescriptorById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static VNFInterfaceDescriptorsFetcher getVNFInterfaceDescriptorsFetcherForVNFDescriptorId(String id) throws RestException {
         VNFDescriptor obj = getObject(Constants.VNFDESCRIPTOR, id);
         if (obj == null) {
@@ -37084,6 +41016,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVNFDomainMappingId(String id) throws RestException {
+        VNFDomainMapping obj = getObject(Constants.VNFDOMAINMAPPING, id);
+        if (obj == null) {
+            obj = getVNFDomainMappingById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<VNFDomainMapping> getVNFDomainMappingsForFetcherId(String id) throws RestException {
         VNFDomainMappingsFetcher fetcher = getVNFDomainMappingsFetcherById(id);
         if (fetcher != null) {
@@ -37165,6 +41111,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVNFInterfaceId(String id) throws RestException {
+        VNFInterface obj = getObject(Constants.VNFINTERFACE, id);
+        if (obj == null) {
+            obj = getVNFInterfaceById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -37254,6 +41214,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVNFInterfaceDescriptorId(String id) throws RestException {
+        VNFInterfaceDescriptor obj = getObject(Constants.VNFINTERFACEDESCRIPTOR, id);
+        if (obj == null) {
+            obj = getVNFInterfaceDescriptorById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<VNFInterfaceDescriptor> getVNFInterfaceDescriptorsForFetcherId(String id) throws RestException {
         VNFInterfaceDescriptorsFetcher fetcher = getVNFInterfaceDescriptorsFetcherById(id);
         if (fetcher != null) {
@@ -37331,6 +41305,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVNFMetadataId(String id) throws RestException {
+        VNFMetadata obj = getObject(Constants.VNFMETADATA, id);
+        if (obj == null) {
+            obj = getVNFMetadataById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -37430,6 +41418,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVNFThresholdPolicyId(String id) throws RestException {
+        VNFThresholdPolicy obj = getObject(Constants.VNFTHRESHOLDPOLICY, id);
+        if (obj == null) {
+            obj = getVNFThresholdPolicyById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<VNFThresholdPolicy> getVNFThresholdPoliciesForFetcherId(String id) throws RestException {
         VNFThresholdPoliciesFetcher fetcher = getVNFThresholdPoliciesFetcherById(id);
         if (fetcher != null) {
@@ -37521,6 +41523,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVPNConnectionId(String id) throws RestException {
+        VPNConnection obj = getObject(Constants.VPNCONNECTION, id);
+        if (obj == null) {
+            obj = getVPNConnectionById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -37824,6 +41840,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVPortId(String id) throws RestException {
+        VPort obj = getObject(Constants.VPORT, id);
+        if (obj == null) {
+            obj = getVPortById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -38171,6 +42201,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVPortMirrorId(String id) throws RestException {
+        VPortMirror obj = getObject(Constants.VPORTMIRROR, id);
+        if (obj == null) {
+            obj = getVPortMirrorById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<VPortMirror> getVPortMirrorsForFetcherId(String id) throws RestException {
         VPortMirrorsFetcher fetcher = getVPortMirrorsFetcherById(id);
         if (fetcher != null) {
@@ -38369,6 +42413,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVRSId(String id) throws RestException {
+        VRS obj = getObject(Constants.VRS, id);
+        if (obj == null) {
+            obj = getVRSById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static StatisticsFetcher getStatisticsFetcherForVRSId(String id) throws RestException {
         VRS obj = getObject(Constants.VRS, id);
         if (obj == null) {
@@ -38527,6 +42585,20 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVRSAddressRangeId(String id) throws RestException {
+        VRSAddressRange obj = getObject(Constants.VRSADDRESSRANGE, id);
+        if (obj == null) {
+            obj = getVRSAddressRangeById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
     public static java.util.List<VRSAddressRange> getVRSAddressRangesForFetcherId(String id) throws RestException {
         VRSAddressRangesFetcher fetcher = getVRSAddressRangesFetcherById(id);
         if (fetcher != null) {
@@ -38620,6 +42692,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVCenterVRSConfigId(String id) throws RestException {
+        VCenterVRSConfig obj = getObject(Constants.VCENTERVRSCONFIG, id);
+        if (obj == null) {
+            obj = getVCenterVRSConfigById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -38735,6 +42821,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForvrsInfoId(String id) throws RestException {
+        vrsInfo obj = getObject(Constants.VRSINFO, id);
+        if (obj == null) {
+            obj = getvrsInfoById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -39033,6 +43133,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVSCId(String id) throws RestException {
+        VSC obj = getObject(Constants.VSC, id);
+        if (obj == null) {
+            obj = getVSCById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static StatisticsFetcher getStatisticsFetcherForVSCId(String id) throws RestException {
         VSC obj = getObject(Constants.VSC, id);
         if (obj == null) {
@@ -39187,6 +43301,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForVSDId(String id) throws RestException {
+        VSD obj = getObject(Constants.VSD, id);
+        if (obj == null) {
+            obj = getVSDById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -39507,6 +43635,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForVSPId(String id) throws RestException {
+        VSP obj = getObject(Constants.VSP, id);
+        if (obj == null) {
+            obj = getVSPById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static ThreatPreventionServerConnectionsFetcher getThreatPreventionServerConnectionsFetcherForVSPId(String id) throws RestException {
         VSP obj = getObject(Constants.VSP, id);
         if (obj == null) {
@@ -39622,6 +43764,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static PermissionsFetcher getPermissionsFetcherForWebCategoryId(String id) throws RestException {
+        WebCategory obj = getObject(Constants.WEBCATEGORY, id);
+        if (obj == null) {
+            obj = getWebCategoryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static WebDomainNamesFetcher getWebDomainNamesFetcherForWebCategoryId(String id) throws RestException {
         WebCategory obj = getObject(Constants.WEBCATEGORY, id);
         if (obj == null) {
@@ -39716,6 +43872,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForWebDomainNameId(String id) throws RestException {
+        WebDomainName obj = getObject(Constants.WEBDOMAINNAME, id);
+        if (obj == null) {
+            obj = getWebDomainNameById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -39843,6 +44013,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForWirelessPortId(String id) throws RestException {
+        WirelessPort obj = getObject(Constants.WIRELESSPORT, id);
+        if (obj == null) {
+            obj = getWirelessPortById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -40015,6 +44199,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForZFBRequestId(String id) throws RestException {
+        ZFBRequest obj = getObject(Constants.ZFBREQUEST, id);
+        if (obj == null) {
+            obj = getZFBRequestById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -40425,6 +44623,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForZoneTemplateId(String id) throws RestException {
+        ZoneTemplate obj = getObject(Constants.ZONETEMPLATE, id);
+        if (obj == null) {
+            obj = getZoneTemplateById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
 
         return null;

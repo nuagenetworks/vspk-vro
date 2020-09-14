@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="100c7a8f-50ed-52c5-afe2-e389fd0e9de5"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add Permission to Avatar]]></display-name>
+<ref-types><![CDATA[(VSPK:Avatar)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='avatarObj' type='VSPK:Avatar' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='name' type='string' >
+</param>
+<param name='permittedEntityID' type='string' >
+</param>
+</input><output><param name='permissionObj' type='VSPK:Permission' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = avatarObj.session;
+
+permissionObj = new VSPKPermission();
+if (externalID) {
+   permissionObj.externalID = externalID;
+}
+if (name) {
+   permissionObj.name = name;
+}
+if (permittedEntityID) {
+   permissionObj.permittedEntityID = permittedEntityID;
+}
+
+avatarObj.createPermission(session, permissionObj);
+]]></script>
+<in-binding><bind name='avatarObj' type='VSPK:Avatar' export-name="avatarObj" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='name' type='string' export-name="name" ></bind>
+<bind name='permittedEntityID' type='string' export-name="permittedEntityID" ></bind>
+</in-binding><out-binding><bind name='permissionObj' type='VSPK:Permission' export-name="permissionObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="avatarObj"><desc><![CDATA[avatarObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="name"><desc><![CDATA[name]]></desc>
+</p-param>
+<p-param name="permittedEntityID"><desc><![CDATA[permittedEntityID]]></desc>
+</p-param>
+</presentation></workflow>

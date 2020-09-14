@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to DomainFIPAclTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">d1f90f1b-0014-505a-a771-bdcea4a7f77f</entry>
+</properties>

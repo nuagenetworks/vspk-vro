@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to AzureCloud</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">58934b8a-71c7-5eca-9e1b-8c076ce75e91</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in PolicyGroupTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b5605693-2f8d-5b2a-a7d9-54537dec8918</entry>
+</properties>

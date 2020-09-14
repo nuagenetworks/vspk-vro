@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in EgressProfile</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f2f74677-a07e-59f3-8f74-1a4a063b2c39</entry>
+</properties>

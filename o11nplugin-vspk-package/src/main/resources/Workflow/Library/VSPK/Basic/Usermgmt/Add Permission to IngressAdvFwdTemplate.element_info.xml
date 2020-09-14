@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to IngressAdvFwdTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">899aac1c-4a3a-5f11-bc2e-5b8ff5b6d72a</entry>
+</properties>

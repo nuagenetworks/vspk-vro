@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Find Permission in VCenterHypervisor</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">75b72c1e-03e0-58e4-b835-9175c961ed30</entry>
+</properties>

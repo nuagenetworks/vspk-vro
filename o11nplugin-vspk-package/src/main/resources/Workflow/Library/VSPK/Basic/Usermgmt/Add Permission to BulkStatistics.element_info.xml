@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to BulkStatistics</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">5cfc7350-83af-5bc7-b86c-7f1170ef1210</entry>
+</properties>

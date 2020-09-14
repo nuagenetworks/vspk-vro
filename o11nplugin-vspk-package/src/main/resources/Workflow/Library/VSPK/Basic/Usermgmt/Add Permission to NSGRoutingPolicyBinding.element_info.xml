@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to NSGRoutingPolicyBinding</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0a6eec78-fe05-5a76-b01f-519704345c1c</entry>
+</properties>

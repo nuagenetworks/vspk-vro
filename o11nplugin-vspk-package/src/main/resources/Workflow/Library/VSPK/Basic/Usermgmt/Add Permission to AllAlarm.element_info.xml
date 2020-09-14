@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to AllAlarm</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">b4493248-16eb-5d74-a51f-1c1ff21be5aa</entry>
+</properties>

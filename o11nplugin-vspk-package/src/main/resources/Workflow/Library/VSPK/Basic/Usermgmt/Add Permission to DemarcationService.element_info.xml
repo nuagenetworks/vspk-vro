@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to DemarcationService</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">86c4605b-9b6a-50de-8de0-4b90cd0ea218</entry>
+</properties>

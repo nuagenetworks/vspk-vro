@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to VCenter</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">baef47f1-998e-5ce0-a0af-f97ed7dfc5f1</entry>
+</properties>

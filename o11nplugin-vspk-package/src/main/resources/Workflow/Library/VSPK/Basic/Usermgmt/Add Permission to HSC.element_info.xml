@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to HSC</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">1c7bafab-61c6-53f2-98cd-3836ab2f864c</entry>
+</properties>

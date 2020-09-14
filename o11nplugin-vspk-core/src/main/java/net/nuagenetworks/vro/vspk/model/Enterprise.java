@@ -140,6 +140,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PATNATPoolsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupCategoriesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyObjectGroupsFetcher;
@@ -286,6 +288,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.OVERLAYMANAGEMENTPROFILES_FETCHER, type = Constants.OVERLAYMANAGEMENTPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.PERFORMANCEMONITORS_FETCHER, type = Constants.PERFORMANCEMONITORS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.POLICYGROUPCATEGORIES_FETCHER, type = Constants.POLICYGROUPCATEGORIES_FETCHER), 
 
@@ -622,6 +626,9 @@ public class Enterprise extends BaseObject {
     private PerformanceMonitorsFetcher performanceMonitors;
     
     @JsonIgnore
+    private PermissionsFetcher permissions;
+    
+    @JsonIgnore
     private PolicyGroupCategoriesFetcher policyGroupCategories;
     
     @JsonIgnore
@@ -802,6 +809,8 @@ public class Enterprise extends BaseObject {
         pATNATPools = new PATNATPoolsFetcher(this);
         
         performanceMonitors = new PerformanceMonitorsFetcher(this);
+        
+        permissions = new PermissionsFetcher(this);
         
         policyGroupCategories = new PolicyGroupCategoriesFetcher(this);
         
@@ -1655,6 +1664,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Permissions", readOnly = true)   
+    public PermissionsFetcher getPermissions() {
+        return permissions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PolicyGroupCategories", readOnly = true)   
     public PolicyGroupCategoriesFetcher getPolicyGroupCategories() {
         return policyGroupCategories;
@@ -1806,6 +1821,15 @@ public class Enterprise extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.ENTERPRISE, getId());
         }
     }
+    @VsoMethod
+    public void assignPermissions(Session session, Permission[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.ENTERPRISE, getId());
+        }
+    }
+    
     @VsoMethod
     public void createApplication(Session session, Application childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
@@ -2160,6 +2184,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERFORMANCEMONITORS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createPermission(Session session, Permission childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }
     @VsoMethod

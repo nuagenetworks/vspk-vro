@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to LTEInformation</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f01f6c33-0214-5b51-9cbc-581ce34fd032</entry>
+</properties>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to BootstrapActivation</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">33f9ac3f-a10f-595d-96be-d22f5cef8362</entry>
+</properties>
