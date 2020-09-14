@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getSPATSourcesPoolAddressList" result-type="Array/string" api-version="6.0.0"  id="69e479a7-1965-5820-bf4b-787aca1830a6"  version="6.0.8"  allowed-operations="vef" ><param n="sPATSourcesPoolObj" t="VSPK:SPATSourcesPool"></param><script encoded='false'><![CDATA[return sPATSourcesPoolObj.addressList;]]></script>
+<dunes-script-module name="getSPATSourcesPoolAddressList" result-type="Array/string" api-version="6.0.0"  id="69e479a7-1965-5820-bf4b-787aca1830a6"  version="6.0.9"  allowed-operations="vef" ><param n="sPATSourcesPoolObj" t="VSPK:SPATSourcesPool"></param><script encoded='false'><![CDATA[return sPATSourcesPoolObj.addressList;]]></script>
 </dunes-script-module>
