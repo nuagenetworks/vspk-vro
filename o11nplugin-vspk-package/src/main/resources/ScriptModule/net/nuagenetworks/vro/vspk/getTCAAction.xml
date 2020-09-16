@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getTCAAction" result-type="VSPK:TCAAction" api-version="6.0.0"  id="27f1babd-2385-5883-ba56-77970c12ca5a"  version="6.0.9"  allowed-operations="vef" ><param n="tCAObj" t="VSPK:TCA"></param><script encoded='false'><![CDATA[return tCAObj.action;]]></script>
+<dunes-script-module name="getTCAAction" result-type="VSPK:TCAAction" api-version="6.0.0"  id="27f1babd-2385-5883-ba56-77970c12ca5a"  version="6.0.8"  allowed-operations="vef" ><param n="tCAObj" t="VSPK:TCA"></param><script encoded='false'><![CDATA[return tCAObj.action;]]></script>
 </dunes-script-module>
