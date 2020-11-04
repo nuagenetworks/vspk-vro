@@ -44,6 +44,8 @@ import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.L2DomainTemplate;
 
+import net.nuagenetworks.vro.vspk.model.Me;
+
 import net.nuagenetworks.vro.vspk.model.PolicyDecision;
 
 import net.nuagenetworks.vro.vspk.model.Subnet;
@@ -153,6 +155,16 @@ public class QOSsFetcher extends BaseFetcher<QOS> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof L2DomainTemplate) {
             return (L2DomainTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Me", readOnly = true)
+    public Me getMe() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Me) {
+            return (Me) obj;
         }
         
         return null;

@@ -60,8 +60,17 @@ public class UnderlayTest extends BaseObject {
     @JsonProperty(value = "associatedNSGatewayName")
     protected String associatedNSGatewayName;
     
+    @JsonProperty(value = "associatedSystemID")
+    protected String associatedSystemID;
+    
     @JsonProperty(value = "associatedTestSuiteRunID")
     protected String associatedTestSuiteRunID;
+    
+    @JsonProperty(value = "associatedUplinkConnectionID")
+    protected String associatedUplinkConnectionID;
+    
+    @JsonProperty(value = "associatedUplinkInterface")
+    protected String associatedUplinkInterface;
     
     @JsonProperty(value = "createOnly")
     protected Boolean createOnly;
@@ -168,6 +177,17 @@ public class UnderlayTest extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedSystemID", readOnly = false)   
+    public String getAssociatedSystemID() {
+       return associatedSystemID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedSystemID(String value) { 
+        this.associatedSystemID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedTestSuiteRunID", readOnly = false)   
     public String getAssociatedTestSuiteRunID() {
        return associatedTestSuiteRunID;
@@ -176,6 +196,28 @@ public class UnderlayTest extends BaseObject {
     @JsonIgnore
     public void setAssociatedTestSuiteRunID(String value) { 
         this.associatedTestSuiteRunID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedUplinkConnectionID", readOnly = false)   
+    public String getAssociatedUplinkConnectionID() {
+       return associatedUplinkConnectionID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedUplinkConnectionID(String value) { 
+        this.associatedUplinkConnectionID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedUplinkInterface", readOnly = false)   
+    public String getAssociatedUplinkInterface() {
+       return associatedUplinkInterface;
+    }
+
+    @JsonIgnore
+    public void setAssociatedUplinkInterface(String value) { 
+        this.associatedUplinkInterface = value;
     }
     
     @JsonIgnore
@@ -319,7 +361,7 @@ public class UnderlayTest extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.UNDERLAYTEST, getId());
         }
     }public String toString() {
-        return "UnderlayTest [" + "associatedDataPathID=" + associatedDataPathID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", associatedTestSuiteRunID=" + associatedTestSuiteRunID + ", createOnly=" + createOnly + ", duration=" + duration + ", name=" + name + ", runBandwidthTest=" + runBandwidthTest + ", runConnectivityTest=" + runConnectivityTest + ", runMTUDiscoveryTest=" + runMTUDiscoveryTest + ", startDateTime=" + startDateTime + ", stopDateTime=" + stopDateTime + ", testResult=" + testResult + ", underlayTestServer=" + underlayTestServer + ", underlayTestType=" + underlayTestType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UnderlayTest [" + "associatedDataPathID=" + associatedDataPathID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", associatedSystemID=" + associatedSystemID + ", associatedTestSuiteRunID=" + associatedTestSuiteRunID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedUplinkInterface=" + associatedUplinkInterface + ", createOnly=" + createOnly + ", duration=" + duration + ", name=" + name + ", runBandwidthTest=" + runBandwidthTest + ", runConnectivityTest=" + runConnectivityTest + ", runMTUDiscoveryTest=" + runMTUDiscoveryTest + ", startDateTime=" + startDateTime + ", stopDateTime=" + stopDateTime + ", testResult=" + testResult + ", underlayTestServer=" + underlayTestServer + ", underlayTestType=" + underlayTestType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

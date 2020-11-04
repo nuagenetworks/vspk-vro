@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="b494c168-d573-5e5b-82d5-c0609643cadd"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="b494c168-d573-5e5b-82d5-c0609643cadd"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit VirtualFirewallRule]]></display-name>
 <ref-types><![CDATA[(VSPK:VirtualFirewallRule)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -16,6 +16,9 @@
 </param>
 
 <param name='locationType' type='VSPK:VirtualFirewallRuleLocationType' >
+</param>
+
+<param name='type' type='VSPK:VirtualFirewallRuleType' >
 </param>
 
 </input><workflow-item name='item0' type='end' end-mode='0' >
@@ -37,6 +40,7 @@ if (externalID) {
    virtualFirewallRuleObj.externalID = "";
 }
 virtualFirewallRuleObj.locationType = locationType;
+virtualFirewallRuleObj.type = type;
 virtualFirewallRuleObj.save(session, 1);]]></script>
 <in-binding><bind name='virtualFirewallRuleObj' type='VSPK:VirtualFirewallRule' export-name="virtualFirewallRuleObj" ></bind>
 
@@ -47,6 +51,8 @@ virtualFirewallRuleObj.save(session, 1);]]></script>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='locationType' type='VSPK:VirtualFirewallRuleLocationType' export-name="locationType" ></bind>
+
+<bind name='type' type='VSPK:VirtualFirewallRuleType' export-name="type" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -65,5 +71,8 @@ virtualFirewallRuleObj.save(session, 1);]]></script>
 
 <p-param name="locationType"><desc><![CDATA[locationType]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="VSPK:VirtualFirewallRuleLocationType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getVirtualFirewallRuleLocationType").call( #virtualFirewallRuleObj )]]></p-qual></p-param>
+
+<p-param name="type"><desc><![CDATA[type]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:VirtualFirewallRuleType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getVirtualFirewallRuleType").call( #virtualFirewallRuleObj )]]></p-qual></p-param>
 
 </presentation></workflow>

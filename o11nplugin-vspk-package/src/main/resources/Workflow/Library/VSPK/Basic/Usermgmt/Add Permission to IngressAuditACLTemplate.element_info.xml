@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Usermgmt</entry>
+<entry key="name">Add Permission to IngressAuditACLTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">3a65e6ae-20d0-5578-9448-1094477508f9</entry>
+</properties>

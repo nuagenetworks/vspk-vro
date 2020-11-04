@@ -52,6 +52,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressAuditACLTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GatewaysFetcher;
@@ -67,6 +69,10 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLEntryTemplatesFetcher
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdTemplatesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressAuditACLEntryTemplatesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressAuditACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
@@ -130,6 +136,8 @@ import net.nuagenetworks.vro.vspk.model.enums.L2DomainEntityState;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainFlowCollectionEnabled;
 
+import net.nuagenetworks.vro.vspk.model.enums.L2DomainFlowLimitEnabled;
+
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainL2EncapType;
 
 import net.nuagenetworks.vro.vspk.model.enums.L2DomainMaintenanceMode;
@@ -169,9 +177,15 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSADVFWDTEMPLATES_FETCHER, type = Constants.EGRESSADVFWDTEMPLATES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.EGRESSAUDITACLTEMPLATES_FETCHER, type = Constants.EGRESSAUDITACLTEMPLATES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLENTRYTEMPLATES_FETCHER, type = Constants.INGRESSACLENTRYTEMPLATES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLTEMPLATES_FETCHER, type = Constants.INGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSADVFWDTEMPLATES_FETCHER, type = Constants.INGRESSADVFWDTEMPLATES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSAUDITACLTEMPLATES_FETCHER, type = Constants.INGRESSAUDITACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
@@ -246,6 +260,9 @@ public class L2Domain extends BaseObject {
     @JsonProperty(value = "color")
     protected Long color;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "customerID")
     protected Long customerID;
     
@@ -279,6 +296,12 @@ public class L2Domain extends BaseObject {
     @JsonProperty(value = "flowCollectionEnabled")
     protected L2DomainFlowCollectionEnabled flowCollectionEnabled;
     
+    @JsonProperty(value = "flowCount")
+    protected Long flowCount;
+    
+    @JsonProperty(value = "flowLimitEnabled")
+    protected L2DomainFlowLimitEnabled flowLimitEnabled;
+    
     @JsonProperty(value = "gateway")
     protected String gateway;
     
@@ -288,11 +311,17 @@ public class L2Domain extends BaseObject {
     @JsonProperty(value = "ingressReplicationEnabled")
     protected Boolean ingressReplicationEnabled;
     
+    @JsonProperty(value = "interfaceID")
+    protected Long interfaceID;
+    
     @JsonProperty(value = "l2EncapType")
     protected L2DomainL2EncapType l2EncapType;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
     
     @JsonProperty(value = "maintenanceMode")
     protected L2DomainMaintenanceMode maintenanceMode;
@@ -305,6 +334,9 @@ public class L2Domain extends BaseObject {
     
     @JsonProperty(value = "netmask")
     protected String netmask;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "policyChangeStatus")
     protected L2DomainPolicyChangeStatus policyChangeStatus;
@@ -379,6 +411,9 @@ public class L2Domain extends BaseObject {
     private EgressAdvFwdTemplatesFetcher egressAdvFwdTemplates;
     
     @JsonIgnore
+    private EgressAuditACLTemplatesFetcher egressAuditACLTemplates;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -401,6 +436,12 @@ public class L2Domain extends BaseObject {
     
     @JsonIgnore
     private IngressAdvFwdTemplatesFetcher ingressAdvFwdTemplates;
+    
+    @JsonIgnore
+    private IngressAuditACLEntryTemplatesFetcher ingressAuditACLEntryTemplates;
+    
+    @JsonIgnore
+    private IngressAuditACLTemplatesFetcher ingressAuditACLTemplates;
     
     @JsonIgnore
     private JobsFetcher jobs;
@@ -507,6 +548,8 @@ public class L2Domain extends BaseObject {
         
         egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
         
+        egressAuditACLTemplates = new EgressAuditACLTemplatesFetcher(this);
+        
         eventLogs = new EventLogsFetcher(this);
         
         gateways = new GatewaysFetcher(this);
@@ -522,6 +565,10 @@ public class L2Domain extends BaseObject {
         ingressACLTemplates = new IngressACLTemplatesFetcher(this);
         
         ingressAdvFwdTemplates = new IngressAdvFwdTemplatesFetcher(this);
+        
+        ingressAuditACLEntryTemplates = new IngressAuditACLEntryTemplatesFetcher(this);
+        
+        ingressAuditACLTemplates = new IngressAuditACLTemplatesFetcher(this);
         
         jobs = new JobsFetcher(this);
         
@@ -731,6 +778,17 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "CustomerID", readOnly = false)   
     public Long getCustomerID() {
        return customerID;
@@ -852,6 +910,28 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FlowCount", readOnly = false)   
+    public Long getFlowCount() {
+       return flowCount;
+    }
+
+    @JsonIgnore
+    public void setFlowCount(Long value) { 
+        this.flowCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FlowLimitEnabled", readOnly = false)   
+    public L2DomainFlowLimitEnabled getFlowLimitEnabled() {
+       return flowLimitEnabled;
+    }
+
+    @JsonIgnore
+    public void setFlowLimitEnabled(L2DomainFlowLimitEnabled value) { 
+        this.flowLimitEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Gateway", readOnly = false)   
     public String getGateway() {
        return gateway;
@@ -885,6 +965,17 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "InterfaceID", readOnly = false)   
+    public Long getInterfaceID() {
+       return interfaceID;
+    }
+
+    @JsonIgnore
+    public void setInterfaceID(Long value) { 
+        this.interfaceID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "L2EncapType", readOnly = false)   
     public L2DomainL2EncapType getL2EncapType() {
        return l2EncapType;
@@ -904,6 +995,17 @@ public class L2Domain extends BaseObject {
     @JsonIgnore
     public void setLastUpdatedBy(String value) { 
         this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
     }
     
     @JsonIgnore
@@ -948,6 +1050,17 @@ public class L2Domain extends BaseObject {
     @JsonIgnore
     public void setNetmask(String value) { 
         this.netmask = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -1150,6 +1263,12 @@ public class L2Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EgressAuditACLTemplates", readOnly = true)   
+    public EgressAuditACLTemplatesFetcher getEgressAuditACLTemplates() {
+        return egressAuditACLTemplates;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -1195,6 +1314,18 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "IngressAdvFwdTemplates", readOnly = true)   
     public IngressAdvFwdTemplatesFetcher getIngressAdvFwdTemplates() {
         return ingressAdvFwdTemplates;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IngressAuditACLEntryTemplates", readOnly = true)   
+    public IngressAuditACLEntryTemplatesFetcher getIngressAuditACLEntryTemplates() {
+        return ingressAuditACLEntryTemplates;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IngressAuditACLTemplates", readOnly = true)   
+    public IngressAuditACLTemplatesFetcher getIngressAuditACLTemplates() {
+        return ingressAuditACLTemplates;
     }
     
     @JsonIgnore
@@ -1443,11 +1574,27 @@ public class L2Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createEgressAuditACLTemplate(Session session, EgressAuditACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.EGRESSAUDITACLTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIngressACLEntryTemplate(Session session, IngressACLEntryTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSACLENTRYTEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1464,6 +1611,14 @@ public class L2Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSADVFWDTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIngressAuditACLTemplate(Session session, IngressAuditACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSAUDITACLTEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -1638,7 +1793,7 @@ public class L2Domain extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", associatedUnderlayID=" + associatedUnderlayID + ", color=" + color + ", customerID=" + customerID + ", description=" + description + ", dualStackDynamicIPAllocation=" + dualStackDynamicIPAllocation + ", embeddedMetadata=" + embeddedMetadata + ", enableDHCPv4=" + enableDHCPv4 + ", enableDHCPv6=" + enableDHCPv6 + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", l2EncapType=" + l2EncapType + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", routedVPLSEnabled=" + routedVPLSEnabled + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "L2Domain [" + "DHCPManaged=" + DHCPManaged + ", DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSharedNetworkResourceID=" + associatedSharedNetworkResourceID + ", associatedUnderlayID=" + associatedUnderlayID + ", color=" + color + ", creationDate=" + creationDate + ", customerID=" + customerID + ", description=" + description + ", dualStackDynamicIPAllocation=" + dualStackDynamicIPAllocation + ", embeddedMetadata=" + embeddedMetadata + ", enableDHCPv4=" + enableDHCPv4 + ", enableDHCPv6=" + enableDHCPv6 + ", encryption=" + encryption + ", entityScope=" + entityScope + ", entityState=" + entityState + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", flowCount=" + flowCount + ", flowLimitEnabled=" + flowLimitEnabled + ", gateway=" + gateway + ", gatewayMACAddress=" + gatewayMACAddress + ", ingressReplicationEnabled=" + ingressReplicationEnabled + ", interfaceID=" + interfaceID + ", l2EncapType=" + l2EncapType + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", owner=" + owner + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", routedVPLSEnabled=" + routedVPLSEnabled + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", uplinkPreference=" + uplinkPreference + ", useGlobalMAC=" + useGlobalMAC + ", vnId=" + vnId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

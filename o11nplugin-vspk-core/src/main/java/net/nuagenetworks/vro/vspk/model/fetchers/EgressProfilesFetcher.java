@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.EgressProfile;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Enterprise;
+
 import net.nuagenetworks.vro.vspk.model.EthernetSegmentGWGroup;
 
 import net.nuagenetworks.vro.vspk.model.Gateway;
@@ -70,6 +72,16 @@ public class EgressProfilesFetcher extends BaseFetcher<EgressProfile> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Enterprise", readOnly = true)
+    public Enterprise getEnterprise() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Enterprise) {
+            return (Enterprise) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "EthernetSegmentGWGroup", readOnly = true)
     public EthernetSegmentGWGroup getEthernetSegmentGWGroup() {
         RestObject obj = super.getParentRestObj();

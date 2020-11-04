@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a725fcf8-7c63-5a0d-aa0e-64807bdc1473"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="a725fcf8-7c63-5a0d-aa0e-64807bdc1473"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit NetworkPerformanceBinding]]></display-name>
 <ref-types><![CDATA[(VSPK:NetworkPerformanceBinding)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='networkPerformanceBindingObj' type='VSPK:NetworkPerformanceBinding' >
+</param>
+
+<param name='associatedNetworkMeasurementID' type='string' >
 </param>
 
 <param name='externalID' type='string' >
@@ -16,6 +19,11 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = networkPerformanceBindingObj.session;
 
+if (associatedNetworkMeasurementID) {
+   networkPerformanceBindingObj.associatedNetworkMeasurementID = associatedNetworkMeasurementID;
+} else if (networkPerformanceBindingObj.associatedNetworkMeasurementID) {
+   networkPerformanceBindingObj.associatedNetworkMeasurementID = "";
+}
 if (externalID) {
    networkPerformanceBindingObj.externalID = externalID;
 } else if (networkPerformanceBindingObj.externalID) {
@@ -24,6 +32,8 @@ if (externalID) {
 networkPerformanceBindingObj.save(session, 1);]]></script>
 <in-binding><bind name='networkPerformanceBindingObj' type='VSPK:NetworkPerformanceBinding' export-name="networkPerformanceBindingObj" ></bind>
 
+<bind name='associatedNetworkMeasurementID' type='string' export-name="associatedNetworkMeasurementID" ></bind>
+
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +41,9 @@ networkPerformanceBindingObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="networkPerformanceBindingObj"><desc><![CDATA[networkPerformanceBindingObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="associatedNetworkMeasurementID"><desc><![CDATA[associatedNetworkMeasurementID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#networkPerformanceBindingObj.associatedNetworkMeasurementID]]></p-qual></p-param>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#networkPerformanceBindingObj.externalID]]></p-qual></p-param>

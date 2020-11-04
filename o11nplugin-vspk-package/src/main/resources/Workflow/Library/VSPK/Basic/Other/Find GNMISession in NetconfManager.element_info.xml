@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Find GNMISession in NetconfManager</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">682c93b4-4861-5cb4-b199-89410d6ea53d</entry>
+</properties>

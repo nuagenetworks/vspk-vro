@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.SAPIngressQoSProfileBlobType;
+
 import net.nuagenetworks.vro.vspk.model.enums.SAPIngressQoSProfileEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -62,6 +64,18 @@ public class SAPIngressQoSProfile extends BaseObject {
     @JsonProperty(value = "assocEntityType")
     protected String assocEntityType;
     
+    @JsonProperty(value = "blobText")
+    protected String blobText;
+    
+    @JsonProperty(value = "blobType")
+    protected SAPIngressQoSProfileBlobType blobType;
+    
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
+    @JsonProperty(value = "customerID")
+    protected Long customerID;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -77,8 +91,14 @@ public class SAPIngressQoSProfile extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -145,6 +165,50 @@ public class SAPIngressQoSProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "BlobText", readOnly = false)   
+    public String getBlobText() {
+       return blobText;
+    }
+
+    @JsonIgnore
+    public void setBlobText(String value) { 
+        this.blobText = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "BlobType", readOnly = false)   
+    public SAPIngressQoSProfileBlobType getBlobType() {
+       return blobType;
+    }
+
+    @JsonIgnore
+    public void setBlobType(SAPIngressQoSProfileBlobType value) { 
+        this.blobType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CustomerID", readOnly = false)   
+    public Long getCustomerID() {
+       return customerID;
+    }
+
+    @JsonIgnore
+    public void setCustomerID(Long value) { 
+        this.customerID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -200,6 +264,17 @@ public class SAPIngressQoSProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -208,6 +283,17 @@ public class SAPIngressQoSProfile extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -290,7 +376,7 @@ public class SAPIngressQoSProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "SAPIngressQoSProfile [" + "assocEntityType=" + assocEntityType + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "SAPIngressQoSProfile [" + "assocEntityType=" + assocEntityType + ", blobText=" + blobText + ", blobType=" + blobType + ", creationDate=" + creationDate + ", customerID=" + customerID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

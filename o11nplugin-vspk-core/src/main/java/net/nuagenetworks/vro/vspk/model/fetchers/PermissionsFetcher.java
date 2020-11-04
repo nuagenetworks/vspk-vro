@@ -144,6 +144,10 @@ import net.nuagenetworks.vro.vspk.model.EgressAdvFwdEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.EgressAdvFwdTemplate;
 
+import net.nuagenetworks.vro.vspk.model.EgressAuditACLEntryTemplate;
+
+import net.nuagenetworks.vro.vspk.model.EgressAuditACLTemplate;
+
 import net.nuagenetworks.vro.vspk.model.DomainFIPAclTemplateEntry;
 
 import net.nuagenetworks.vro.vspk.model.DomainFIPAclTemplate;
@@ -163,6 +167,10 @@ import net.nuagenetworks.vro.vspk.model.EnterpriseProfile;
 import net.nuagenetworks.vro.vspk.model.EnterpriseSecuredData;
 
 import net.nuagenetworks.vro.vspk.model.EnterpriseSecurity;
+
+import net.nuagenetworks.vro.vspk.model.EsIlmPolicy;
+
+import net.nuagenetworks.vro.vspk.model.EsIndexConfig;
 
 import net.nuagenetworks.vro.vspk.model.EthernetSegmentGroup;
 
@@ -235,6 +243,10 @@ import net.nuagenetworks.vro.vspk.model.IngressACLTemplate;
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdTemplate;
+
+import net.nuagenetworks.vro.vspk.model.IngressAuditACLEntryTemplate;
+
+import net.nuagenetworks.vro.vspk.model.IngressAuditACLTemplate;
 
 import net.nuagenetworks.vro.vspk.model.IngressProfile;
 
@@ -1140,6 +1152,26 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         return null;
     }
     
+    @VsoProperty(displayName = "EgressAuditACLEntryTemplate", readOnly = true)
+    public EgressAuditACLEntryTemplate getEgressAuditACLEntryTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EgressAuditACLEntryTemplate) {
+            return (EgressAuditACLEntryTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EgressAuditACLTemplate", readOnly = true)
+    public EgressAuditACLTemplate getEgressAuditACLTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EgressAuditACLTemplate) {
+            return (EgressAuditACLTemplate) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "DomainFIPAclTemplateEntry", readOnly = true)
     public DomainFIPAclTemplateEntry getDomainFIPAclTemplateEntry() {
         RestObject obj = super.getParentRestObj();
@@ -1235,6 +1267,26 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof EnterpriseSecurity) {
             return (EnterpriseSecurity) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EsIlmPolicy", readOnly = true)
+    public EsIlmPolicy getEsIlmPolicy() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EsIlmPolicy) {
+            return (EsIlmPolicy) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "EsIndexConfig", readOnly = true)
+    public EsIndexConfig getEsIndexConfig() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof EsIndexConfig) {
+            return (EsIndexConfig) obj;
         }
         
         return null;
@@ -1595,6 +1647,26 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IngressAdvFwdTemplate) {
             return (IngressAdvFwdTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressAuditACLEntryTemplate", readOnly = true)
+    public IngressAuditACLEntryTemplate getIngressAuditACLEntryTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressAuditACLEntryTemplate) {
+            return (IngressAuditACLEntryTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressAuditACLTemplate", readOnly = true)
+    public IngressAuditACLTemplate getIngressAuditACLTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressAuditACLTemplate) {
+            return (IngressAuditACLTemplate) obj;
         }
         
         return null;

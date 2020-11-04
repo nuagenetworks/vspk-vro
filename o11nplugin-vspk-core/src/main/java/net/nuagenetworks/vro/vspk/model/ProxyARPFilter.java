@@ -54,6 +54,9 @@ public class ProxyARPFilter extends BaseObject {
     @JsonProperty(value = "IPType")
     protected ProxyARPFilterIPType IPType;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "entityScope")
     protected ProxyARPFilterEntityScope entityScope;
     
@@ -63,11 +66,17 @@ public class ProxyARPFilter extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "maxAddress")
     protected String maxAddress;
     
     @JsonProperty(value = "minAddress")
     protected String minAddress;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @VsoConstructor
     public ProxyARPFilter() {}
@@ -124,6 +133,17 @@ public class ProxyARPFilter extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public ProxyARPFilterEntityScope getEntityScope() {
        return entityScope;
@@ -157,6 +177,17 @@ public class ProxyARPFilter extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MaxAddress", readOnly = false)   
     public String getMaxAddress() {
        return maxAddress;
@@ -176,6 +207,17 @@ public class ProxyARPFilter extends BaseObject {
     @JsonIgnore
     public void setMinAddress(String value) { 
         this.minAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -198,7 +240,7 @@ public class ProxyARPFilter extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.PROXYARPFILTER, getId());
         }
     }public String toString() {
-        return "ProxyARPFilter [" + "IPType=" + IPType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ProxyARPFilter [" + "IPType=" + IPType + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

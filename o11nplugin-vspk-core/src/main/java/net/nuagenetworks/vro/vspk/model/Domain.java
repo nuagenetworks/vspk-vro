@@ -56,6 +56,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressAuditACLTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.DomainFIPAclTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
@@ -79,6 +81,10 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLEntryTemplatesFetcher
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IngressAdvFwdTemplatesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressAuditACLEntryTemplatesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.IngressAuditACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.JobsFetcher;
 
@@ -164,6 +170,8 @@ import net.nuagenetworks.vro.vspk.model.enums.DomainEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainFlowCollectionEnabled;
 
+import net.nuagenetworks.vro.vspk.model.enums.DomainFlowLimitEnabled;
+
 import net.nuagenetworks.vro.vspk.model.enums.DomainMaintenanceMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainMulticast;
@@ -203,15 +211,21 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSADVFWDTEMPLATES_FETCHER, type = Constants.EGRESSADVFWDTEMPLATES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.EGRESSAUDITACLTEMPLATES_FETCHER, type = Constants.EGRESSAUDITACLTEMPLATES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.DOMAINFIPACLTEMPLATES_FETCHER, type = Constants.DOMAINFIPACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.FLOATINGIPS_FETCHER, type = Constants.FLOATINGIPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.FORWARDINGPATHLISTS_FETCHER, type = Constants.FORWARDINGPATHLISTS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLENTRYTEMPLATES_FETCHER, type = Constants.INGRESSACLENTRYTEMPLATES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSACLTEMPLATES_FETCHER, type = Constants.INGRESSACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.INGRESSADVFWDTEMPLATES_FETCHER, type = Constants.INGRESSADVFWDTEMPLATES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.INGRESSAUDITACLTEMPLATES_FETCHER, type = Constants.INGRESSAUDITACLTEMPLATES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.LINKS_FETCHER, type = Constants.LINKS_FETCHER), 
 
@@ -341,6 +355,9 @@ public class Domain extends BaseObject {
     @JsonProperty(value = "createBackHaulSubnet")
     protected Boolean createBackHaulSubnet;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "customerID")
     protected Long customerID;
     
@@ -380,8 +397,17 @@ public class Domain extends BaseObject {
     @JsonProperty(value = "externalLabel")
     protected String externalLabel;
     
+    @JsonProperty(value = "fecEnabled")
+    protected Boolean fecEnabled;
+    
     @JsonProperty(value = "flowCollectionEnabled")
     protected DomainFlowCollectionEnabled flowCollectionEnabled;
+    
+    @JsonProperty(value = "flowCount")
+    protected Long flowCount;
+    
+    @JsonProperty(value = "flowLimitEnabled")
+    protected DomainFlowLimitEnabled flowLimitEnabled;
     
     @JsonProperty(value = "globalRoutingEnabled")
     protected Boolean globalRoutingEnabled;
@@ -394,6 +420,9 @@ public class Domain extends BaseObject {
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
     
     @JsonProperty(value = "leakingEnabled")
     protected Boolean leakingEnabled;
@@ -409,6 +438,9 @@ public class Domain extends BaseObject {
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "permittedAction")
     protected DomainPermittedAction permittedAction;
@@ -495,6 +527,9 @@ public class Domain extends BaseObject {
     private EgressAdvFwdTemplatesFetcher egressAdvFwdTemplates;
     
     @JsonIgnore
+    private EgressAuditACLTemplatesFetcher egressAuditACLTemplates;
+    
+    @JsonIgnore
     private DomainFIPAclTemplatesFetcher domainFIPAclTemplates;
     
     @JsonIgnore
@@ -529,6 +564,12 @@ public class Domain extends BaseObject {
     
     @JsonIgnore
     private IngressAdvFwdTemplatesFetcher ingressAdvFwdTemplates;
+    
+    @JsonIgnore
+    private IngressAuditACLEntryTemplatesFetcher ingressAuditACLEntryTemplates;
+    
+    @JsonIgnore
+    private IngressAuditACLTemplatesFetcher ingressAuditACLTemplates;
     
     @JsonIgnore
     private JobsFetcher jobs;
@@ -666,6 +707,8 @@ public class Domain extends BaseObject {
         
         egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
         
+        egressAuditACLTemplates = new EgressAuditACLTemplatesFetcher(this);
+        
         domainFIPAclTemplates = new DomainFIPAclTemplatesFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
@@ -689,6 +732,10 @@ public class Domain extends BaseObject {
         ingressACLTemplates = new IngressACLTemplatesFetcher(this);
         
         ingressAdvFwdTemplates = new IngressAdvFwdTemplatesFetcher(this);
+        
+        ingressAuditACLEntryTemplates = new IngressAuditACLEntryTemplatesFetcher(this);
+        
+        ingressAuditACLTemplates = new IngressAuditACLTemplatesFetcher(this);
         
         jobs = new JobsFetcher(this);
         
@@ -1077,6 +1124,17 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "CustomerID", readOnly = false)   
     public Long getCustomerID() {
        return customerID;
@@ -1220,6 +1278,17 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FecEnabled", readOnly = false)   
+    public Boolean getFecEnabled() {
+       return fecEnabled;
+    }
+
+    @JsonIgnore
+    public void setFecEnabled(Boolean value) { 
+        this.fecEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "FlowCollectionEnabled", readOnly = false)   
     public DomainFlowCollectionEnabled getFlowCollectionEnabled() {
        return flowCollectionEnabled;
@@ -1228,6 +1297,28 @@ public class Domain extends BaseObject {
     @JsonIgnore
     public void setFlowCollectionEnabled(DomainFlowCollectionEnabled value) { 
         this.flowCollectionEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FlowCount", readOnly = false)   
+    public Long getFlowCount() {
+       return flowCount;
+    }
+
+    @JsonIgnore
+    public void setFlowCount(Long value) { 
+        this.flowCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FlowLimitEnabled", readOnly = false)   
+    public DomainFlowLimitEnabled getFlowLimitEnabled() {
+       return flowLimitEnabled;
+    }
+
+    @JsonIgnore
+    public void setFlowLimitEnabled(DomainFlowLimitEnabled value) { 
+        this.flowLimitEnabled = value;
     }
     
     @JsonIgnore
@@ -1272,6 +1363,17 @@ public class Domain extends BaseObject {
     @JsonIgnore
     public void setLastUpdatedBy(String value) { 
         this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
     }
     
     @JsonIgnore
@@ -1327,6 +1429,17 @@ public class Domain extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -1563,6 +1676,12 @@ public class Domain extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EgressAuditACLTemplates", readOnly = true)   
+    public EgressAuditACLTemplatesFetcher getEgressAuditACLTemplates() {
+        return egressAuditACLTemplates;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DomainFIPAclTemplates", readOnly = true)   
     public DomainFIPAclTemplatesFetcher getDomainFIPAclTemplates() {
         return domainFIPAclTemplates;
@@ -1632,6 +1751,18 @@ public class Domain extends BaseObject {
     @VsoProperty(displayName = "IngressAdvFwdTemplates", readOnly = true)   
     public IngressAdvFwdTemplatesFetcher getIngressAdvFwdTemplates() {
         return ingressAdvFwdTemplates;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IngressAuditACLEntryTemplates", readOnly = true)   
+    public IngressAuditACLEntryTemplatesFetcher getIngressAuditACLEntryTemplates() {
+        return ingressAuditACLEntryTemplates;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "IngressAuditACLTemplates", readOnly = true)   
+    public IngressAuditACLTemplatesFetcher getIngressAuditACLTemplates() {
+        return ingressAuditACLTemplates;
     }
     
     @JsonIgnore
@@ -1968,6 +2099,14 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createEgressAuditACLTemplate(Session session, EgressAuditACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.EGRESSAUDITACLTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createDomainFIPAclTemplate(Session session, DomainFIPAclTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -2000,6 +2139,14 @@ public class Domain extends BaseObject {
         }
     }
     @VsoMethod
+    public void createIngressACLEntryTemplate(Session session, IngressACLEntryTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSACLENTRYTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createIngressACLTemplate(Session session, IngressACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -2013,6 +2160,14 @@ public class Domain extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSADVFWDTEMPLATES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createIngressAuditACLTemplate(Session session, IngressAuditACLTemplate childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.INGRESSAUDITACLTEMPLATES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -2227,7 +2382,7 @@ public class Domain extends BaseObject {
         }
     }
     public String toString() {
-        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", EVPNRT5Type=" + EVPNRT5Type + ", FIPIgnoreDefaultRoute=" + FIPIgnoreDefaultRoute + ", FIPUnderlay=" + FIPUnderlay + ", GRTEnabled=" + GRTEnabled + ", PATEnabled=" + PATEnabled + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", advertiseCriteria=" + advertiseCriteria + ", aggregateFlowsEnabled=" + aggregateFlowsEnabled + ", aggregationFlowType=" + aggregationFlowType + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedIDPProfileID=" + associatedIDPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", associatedSharedPATMapperID=" + associatedSharedPATMapperID + ", associatedUnderlayID=" + associatedUnderlayID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulServiceID=" + backHaulServiceID + ", backHaulVNID=" + backHaulVNID + ", color=" + color + ", createBackHaulSubnet=" + createBackHaulSubnet + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainAggregationEnabled=" + domainAggregationEnabled + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", embeddedMetadata=" + embeddedMetadata + ", encryption=" + encryption + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", externalLabel=" + externalLabel + ", flowCollectionEnabled=" + flowCollectionEnabled + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", leakingEnabled=" + leakingEnabled + ", localAS=" + localAS + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", secondaryRouteTarget=" + secondaryRouteTarget + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", EVPNRT5Type=" + EVPNRT5Type + ", FIPIgnoreDefaultRoute=" + FIPIgnoreDefaultRoute + ", FIPUnderlay=" + FIPUnderlay + ", GRTEnabled=" + GRTEnabled + ", PATEnabled=" + PATEnabled + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", advertiseCriteria=" + advertiseCriteria + ", aggregateFlowsEnabled=" + aggregateFlowsEnabled + ", aggregationFlowType=" + aggregationFlowType + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedIDPProfileID=" + associatedIDPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", associatedSharedPATMapperID=" + associatedSharedPATMapperID + ", associatedUnderlayID=" + associatedUnderlayID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulServiceID=" + backHaulServiceID + ", backHaulVNID=" + backHaulVNID + ", color=" + color + ", createBackHaulSubnet=" + createBackHaulSubnet + ", creationDate=" + creationDate + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainAggregationEnabled=" + domainAggregationEnabled + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", embeddedMetadata=" + embeddedMetadata + ", encryption=" + encryption + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", externalLabel=" + externalLabel + ", fecEnabled=" + fecEnabled + ", flowCollectionEnabled=" + flowCollectionEnabled + ", flowCount=" + flowCount + ", flowLimitEnabled=" + flowLimitEnabled + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", leakingEnabled=" + leakingEnabled + ", localAS=" + localAS + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", owner=" + owner + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", secondaryRouteTarget=" + secondaryRouteTarget + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

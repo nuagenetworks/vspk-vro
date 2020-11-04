@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="6b7b62e5-73b4-54ec-8e3f-d3d1e9cca2e2"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="6b7b62e5-73b4-54ec-8e3f-d3d1e9cca2e2"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add VNFDescriptor to VNFCatalog]]></display-name>
 <ref-types><![CDATA[(VSPK:VNFCatalog)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='vNFCatalogObj' type='VSPK:VNFCatalog' >
+</param>
+<param name='CPUCount' type='number' >
 </param>
 <param name='description' type='string' >
 </param>
@@ -27,6 +29,7 @@
 <script encoded='false'><![CDATA[var session = vNFCatalogObj.session;
 
 vNFDescriptorObj = new VSPKVNFDescriptor();
+vNFDescriptorObj.CPUCount = CPUCount;
 if (description) {
    vNFDescriptorObj.description = description;
 }
@@ -45,6 +48,7 @@ vNFDescriptorObj.storageGB = storageGB;
 vNFCatalogObj.createVNFDescriptor(session, vNFDescriptorObj);
 ]]></script>
 <in-binding><bind name='vNFCatalogObj' type='VSPK:VNFCatalog' export-name="vNFCatalogObj" ></bind>
+<bind name='CPUCount' type='number' export-name="CPUCount" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='memoryMB' type='number' export-name="memoryMB" ></bind>
@@ -57,6 +61,8 @@ vNFCatalogObj.createVNFDescriptor(session, vNFDescriptorObj);
 <presentation>
 <p-param name="vNFCatalogObj"><desc><![CDATA[vNFCatalogObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="CPUCount"><desc><![CDATA[CPUCount]]></desc>
+</p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>

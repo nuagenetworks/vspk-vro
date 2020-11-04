@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.AggregatedDomain;
 
+import net.nuagenetworks.vro.vspk.model.AzureCloud;
+
 import net.nuagenetworks.vro.vspk.model.Container;
 
 import net.nuagenetworks.vro.vspk.model.Domain;
@@ -127,6 +129,16 @@ public class AlarmsFetcher extends BaseFetcher<Alarm> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof AggregatedDomain) {
             return (AggregatedDomain) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "AzureCloud", readOnly = true)
+    public AzureCloud getAzureCloud() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof AzureCloud) {
+            return (AzureCloud) obj;
         }
         
         return null;

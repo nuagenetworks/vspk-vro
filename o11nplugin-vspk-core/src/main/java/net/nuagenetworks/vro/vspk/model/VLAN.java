@@ -97,6 +97,9 @@ public class VLAN extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "TrafficThroughUBROnly")
+    protected Boolean TrafficThroughUBROnly;
+    
     @JsonProperty(value = "associatedBGPProfileID")
     protected String associatedBGPProfileID;
     
@@ -121,6 +124,9 @@ public class VLAN extends BaseObject {
     @JsonProperty(value = "associatedVSCProfileID")
     protected String associatedVSCProfileID;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -129,6 +135,9 @@ public class VLAN extends BaseObject {
     
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
+    
+    @JsonProperty(value = "enableNATProbes")
+    protected Boolean enableNATProbes;
     
     @JsonProperty(value = "entityScope")
     protected VLANEntityScope entityScope;
@@ -139,11 +148,23 @@ public class VLAN extends BaseObject {
     @JsonProperty(value = "gatewayID")
     protected String gatewayID;
     
+    @JsonProperty(value = "inheritedPortPropertiesDiverged")
+    protected Boolean inheritedPortPropertiesDiverged;
+    
     @JsonProperty(value = "isUplink")
     protected Boolean isUplink;
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
+    @JsonProperty(value = "mtu")
+    protected Long mtu;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "permittedAction")
     protected VLANPermittedAction permittedAction;
@@ -287,6 +308,17 @@ public class VLAN extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "TrafficThroughUBROnly", readOnly = false)   
+    public Boolean getTrafficThroughUBROnly() {
+       return TrafficThroughUBROnly;
+    }
+
+    @JsonIgnore
+    public void setTrafficThroughUBROnly(Boolean value) { 
+        this.TrafficThroughUBROnly = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedBGPProfileID", readOnly = false)   
     public String getAssociatedBGPProfileID() {
        return associatedBGPProfileID;
@@ -375,6 +407,17 @@ public class VLAN extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -405,6 +448,17 @@ public class VLAN extends BaseObject {
     @JsonIgnore
     public void setEmbeddedMetadata(java.util.List<String> value) { 
         this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EnableNATProbes", readOnly = false)   
+    public Boolean getEnableNATProbes() {
+       return enableNATProbes;
+    }
+
+    @JsonIgnore
+    public void setEnableNATProbes(Boolean value) { 
+        this.enableNATProbes = value;
     }
     
     @JsonIgnore
@@ -441,6 +495,17 @@ public class VLAN extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "InheritedPortPropertiesDiverged", readOnly = false)   
+    public Boolean getInheritedPortPropertiesDiverged() {
+       return inheritedPortPropertiesDiverged;
+    }
+
+    @JsonIgnore
+    public void setInheritedPortPropertiesDiverged(Boolean value) { 
+        this.inheritedPortPropertiesDiverged = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "IsUplink", readOnly = false)   
     public Boolean getIsUplink() {
        return isUplink;
@@ -460,6 +525,39 @@ public class VLAN extends BaseObject {
     @JsonIgnore
     public void setLastUpdatedBy(String value) { 
         this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Mtu", readOnly = false)   
+    public Long getMtu() {
+       return mtu;
+    }
+
+    @JsonIgnore
+    public void setMtu(Long value) { 
+        this.mtu = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -772,7 +870,7 @@ public class VLAN extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.UPLINKCONNECTIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VLAN [" + "associatedBGPProfileID=" + associatedBGPProfileID + ", associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", description=" + description + ", ducVlan=" + ducVlan + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", restricted=" + restricted + ", shuntVLAN=" + shuntVLAN + ", status=" + status + ", templateID=" + templateID + ", type=" + type + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", value=" + value + ", vportID=" + vportID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VLAN [" + "TrafficThroughUBROnly=" + TrafficThroughUBROnly + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedConnectionType=" + associatedConnectionType + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQOSPolicyID=" + associatedIngressQOSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", creationDate=" + creationDate + ", description=" + description + ", ducVlan=" + ducVlan + ", embeddedMetadata=" + embeddedMetadata + ", enableNATProbes=" + enableNATProbes + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayID=" + gatewayID + ", inheritedPortPropertiesDiverged=" + inheritedPortPropertiesDiverged + ", isUplink=" + isUplink + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", mtu=" + mtu + ", owner=" + owner + ", permittedAction=" + permittedAction + ", readonly=" + readonly + ", restricted=" + restricted + ", shuntVLAN=" + shuntVLAN + ", status=" + status + ", templateID=" + templateID + ", type=" + type + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", value=" + value + ", vportID=" + vportID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

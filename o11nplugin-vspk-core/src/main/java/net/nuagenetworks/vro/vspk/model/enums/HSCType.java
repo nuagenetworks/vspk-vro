@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum HSCType {
 
-    DC7X50("DC7X50", "DC7X50"), NONE("NONE", "NONE"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
+    DC7X50("DC7X50", "DC7X50"), NONE("NONE", "NONE"), NUAGE_210_WBX_32_Q("NUAGE_210_WBX_32_Q", "NUAGE_210_WBX_32_Q"), NUAGE_210_WBX_48_S("NUAGE_210_WBX_48_S", "NUAGE_210_WBX_48_S"), VSA("VSA", "VSA"), VSG("VSG", "VSG");
 
     private final String id;
     private final String name;
@@ -66,6 +66,16 @@ public enum HSCType {
     @VsoProperty(displayName = "NONE", readOnly = true)
     public HSCType getNONE() {
         return NONE;
+    }
+    
+    @VsoProperty(displayName = "NUAGE_210_WBX_32_Q", readOnly = true)
+    public HSCType getNUAGE_210_WBX_32_Q() {
+        return NUAGE_210_WBX_32_Q;
+    }
+    
+    @VsoProperty(displayName = "NUAGE_210_WBX_48_S", readOnly = true)
+    public HSCType getNUAGE_210_WBX_48_S() {
+        return NUAGE_210_WBX_48_S;
     }
     
     @VsoProperty(displayName = "VSA", readOnly = true)

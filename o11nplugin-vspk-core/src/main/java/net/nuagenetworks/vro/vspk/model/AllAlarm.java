@@ -67,6 +67,9 @@ public class AllAlarm extends BaseObject {
     @JsonProperty(value = "alarmedObjectID")
     protected String alarmedObjectID;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -88,8 +91,14 @@ public class AllAlarm extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "numberOfOccurances")
     protected Long numberOfOccurances;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "remedy")
     protected String remedy;
@@ -190,6 +199,17 @@ public class AllAlarm extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -267,6 +287,17 @@ public class AllAlarm extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NumberOfOccurances", readOnly = false)   
     public Long getNumberOfOccurances() {
        return numberOfOccurances;
@@ -275,6 +306,17 @@ public class AllAlarm extends BaseObject {
     @JsonIgnore
     public void setNumberOfOccurances(Long value) { 
         this.numberOfOccurances = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -423,7 +465,7 @@ public class AllAlarm extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "AllAlarm [" + "acknowledged=" + acknowledged + ", alarmedObjectID=" + alarmedObjectID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurances=" + numberOfOccurances + ", remedy=" + remedy + ", severity=" + severity + ", systemID=" + systemID + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", title=" + title + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "AllAlarm [" + "acknowledged=" + acknowledged + ", alarmedObjectID=" + alarmedObjectID + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", numberOfOccurances=" + numberOfOccurances + ", owner=" + owner + ", remedy=" + remedy + ", severity=" + severity + ", systemID=" + systemID + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", title=" + title + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

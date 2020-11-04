@@ -38,6 +38,8 @@ import net.nuagenetworks.vro.vspk.model.enums.InfrastructureGatewayProfileEntity
 
 import net.nuagenetworks.vro.vspk.model.enums.InfrastructureGatewayProfileRemoteLogMode;
 
+import net.nuagenetworks.vro.vspk.model.enums.InfrastructureGatewayProfileUnderlayTestUplinkMode;
+
 import net.nuagenetworks.vro.vspk.model.enums.InfrastructureGatewayProfileUpgradeAction;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -83,6 +85,9 @@ public class InfrastructureGatewayProfile extends BaseObject {
     @JsonProperty(value = "controllerLessRemoteDuration")
     protected String controllerLessRemoteDuration;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "datapathSyncTimeout")
     protected Long datapathSyncTimeout;
     
@@ -119,6 +124,9 @@ public class InfrastructureGatewayProfile extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "metadataUpgradePath")
     protected String metadataUpgradePath;
     
@@ -127,6 +135,9 @@ public class InfrastructureGatewayProfile extends BaseObject {
     
     @JsonProperty(value = "openFlowAuditTimer")
     protected Long openFlowAuditTimer;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "proxyDNSName")
     protected String proxyDNSName;
@@ -157,6 +168,9 @@ public class InfrastructureGatewayProfile extends BaseObject {
     
     @JsonProperty(value = "underlayTestServer")
     protected String underlayTestServer;
+    
+    @JsonProperty(value = "underlayTestUplinkMode")
+    protected InfrastructureGatewayProfileUnderlayTestUplinkMode underlayTestUplinkMode;
     
     @JsonProperty(value = "upgradeAction")
     protected InfrastructureGatewayProfileUpgradeAction upgradeAction;
@@ -302,6 +316,17 @@ public class InfrastructureGatewayProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DatapathSyncTimeout", readOnly = false)   
     public Long getDatapathSyncTimeout() {
        return datapathSyncTimeout;
@@ -434,6 +459,17 @@ public class InfrastructureGatewayProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MetadataUpgradePath", readOnly = false)   
     public String getMetadataUpgradePath() {
        return metadataUpgradePath;
@@ -464,6 +500,17 @@ public class InfrastructureGatewayProfile extends BaseObject {
     @JsonIgnore
     public void setOpenFlowAuditTimer(Long value) { 
         this.openFlowAuditTimer = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -574,6 +621,17 @@ public class InfrastructureGatewayProfile extends BaseObject {
     @JsonIgnore
     public void setUnderlayTestServer(String value) { 
         this.underlayTestServer = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UnderlayTestUplinkMode", readOnly = false)   
+    public InfrastructureGatewayProfileUnderlayTestUplinkMode getUnderlayTestUplinkMode() {
+       return underlayTestUplinkMode;
+    }
+
+    @JsonIgnore
+    public void setUnderlayTestUplinkMode(InfrastructureGatewayProfileUnderlayTestUplinkMode value) { 
+        this.underlayTestUplinkMode = value;
     }
     
     @JsonIgnore
@@ -700,7 +758,7 @@ public class InfrastructureGatewayProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "InfrastructureGatewayProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", controllerLessDuration=" + controllerLessDuration + ", controllerLessEnabled=" + controllerLessEnabled + ", controllerLessForwardingMode=" + controllerLessForwardingMode + ", controllerLessRemoteDuration=" + controllerLessRemoteDuration + ", datapathSyncTimeout=" + datapathSyncTimeout + ", deadTimer=" + deadTimer + ", deadTimerEnabled=" + deadTimerEnabled + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enableUnderlayTestsDuringActivation=" + enableUnderlayTestsDuringActivation + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowEvictionThreshold=" + flowEvictionThreshold + ", forceImmediateSystemSync=" + forceImmediateSystemSync + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", openFlowAuditTimer=" + openFlowAuditTimer + ", proxyDNSName=" + proxyDNSName + ", remoteLogMode=" + remoteLogMode + ", remoteLogServerAddress=" + remoteLogServerAddress + ", remoteLogServerPort=" + remoteLogServerPort + ", runUnderlayBandwidthTest=" + runUnderlayBandwidthTest + ", runUnderlayConnectivityTest=" + runUnderlayConnectivityTest + ", runUnderlayMTUDiscoveryTest=" + runUnderlayMTUDiscoveryTest + ", statsCollectorPort=" + statsCollectorPort + ", systemSyncScheduler=" + systemSyncScheduler + ", underlayTestServer=" + underlayTestServer + ", upgradeAction=" + upgradeAction + ", useTwoFactor=" + useTwoFactor + ", webFilterDownloadPort=" + webFilterDownloadPort + ", webFilterQueryPort=" + webFilterQueryPort + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "InfrastructureGatewayProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", controllerLessDuration=" + controllerLessDuration + ", controllerLessEnabled=" + controllerLessEnabled + ", controllerLessForwardingMode=" + controllerLessForwardingMode + ", controllerLessRemoteDuration=" + controllerLessRemoteDuration + ", creationDate=" + creationDate + ", datapathSyncTimeout=" + datapathSyncTimeout + ", deadTimer=" + deadTimer + ", deadTimerEnabled=" + deadTimerEnabled + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enableUnderlayTestsDuringActivation=" + enableUnderlayTestsDuringActivation + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowEvictionThreshold=" + flowEvictionThreshold + ", forceImmediateSystemSync=" + forceImmediateSystemSync + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", openFlowAuditTimer=" + openFlowAuditTimer + ", owner=" + owner + ", proxyDNSName=" + proxyDNSName + ", remoteLogMode=" + remoteLogMode + ", remoteLogServerAddress=" + remoteLogServerAddress + ", remoteLogServerPort=" + remoteLogServerPort + ", runUnderlayBandwidthTest=" + runUnderlayBandwidthTest + ", runUnderlayConnectivityTest=" + runUnderlayConnectivityTest + ", runUnderlayMTUDiscoveryTest=" + runUnderlayMTUDiscoveryTest + ", statsCollectorPort=" + statsCollectorPort + ", systemSyncScheduler=" + systemSyncScheduler + ", underlayTestServer=" + underlayTestServer + ", underlayTestUplinkMode=" + underlayTestUplinkMode + ", upgradeAction=" + upgradeAction + ", useTwoFactor=" + useTwoFactor + ", webFilterDownloadPort=" + webFilterDownloadPort + ", webFilterQueryPort=" + webFilterQueryPort + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum EthernetSegmentGWGroupPersonality {
 
-    NETCONF_7X50("NETCONF_7X50", "NETCONF_7X50");
+    NETCONF_7X50("NETCONF_7X50", "NETCONF_7X50"), SR_LINUX("SR_LINUX", "SR_LINUX");
 
     private final String id;
     private final String name;
@@ -61,6 +61,11 @@ public enum EthernetSegmentGWGroupPersonality {
     @VsoProperty(displayName = "NETCONF_7X50", readOnly = true)
     public EthernetSegmentGWGroupPersonality getNETCONF_7X50() {
         return NETCONF_7X50;
+    }
+    
+    @VsoProperty(displayName = "SR_LINUX", readOnly = true)
+    public EthernetSegmentGWGroupPersonality getSR_LINUX() {
+        return SR_LINUX;
     }
     
 

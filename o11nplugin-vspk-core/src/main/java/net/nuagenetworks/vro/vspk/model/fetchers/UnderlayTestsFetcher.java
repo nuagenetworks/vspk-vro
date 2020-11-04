@@ -31,6 +31,8 @@ import net.nuagenetworks.vro.vspk.model.UnderlayTest;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.NSGateway;
+
+import net.nuagenetworks.vro.vspk.model.UplinkConnection;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -69,6 +71,16 @@ public class UnderlayTestsFetcher extends BaseFetcher<UnderlayTest> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSGateway) {
             return (NSGateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "UplinkConnection", readOnly = true)
+    public UplinkConnection getUplinkConnection() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof UplinkConnection) {
+            return (UplinkConnection) obj;
         }
         
         return null;

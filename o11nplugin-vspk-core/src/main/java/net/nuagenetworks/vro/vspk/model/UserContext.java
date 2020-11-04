@@ -33,6 +33,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.UserContextEntityScope;
+
+import net.nuagenetworks.vro.vspk.model.enums.UserContextSystemAvatarType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -71,6 +73,12 @@ public class UserContext extends BaseObject {
     @JsonProperty(value = "VSSStatsInterval")
     protected Long VSSStatsInterval;
     
+    @JsonProperty(value = "allowEnterpriseAvatarOnNSG")
+    protected Boolean allowEnterpriseAvatarOnNSG;
+    
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "deniedFlowCollectionEnabled")
     protected Boolean deniedFlowCollectionEnabled;
     
@@ -95,8 +103,17 @@ public class UserContext extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
+    
     @JsonProperty(value = "pageSize")
     protected Long pageSize;
+    
+    @JsonProperty(value = "rbacEnabled")
+    protected Boolean rbacEnabled;
     
     @JsonProperty(value = "statisticsEnabled")
     protected Boolean statisticsEnabled;
@@ -106,6 +123,12 @@ public class UserContext extends BaseObject {
     
     @JsonProperty(value = "statsTSDBServerAddress")
     protected String statsTSDBServerAddress;
+    
+    @JsonProperty(value = "systemAvatarData")
+    protected String systemAvatarData;
+    
+    @JsonProperty(value = "systemAvatarType")
+    protected UserContextSystemAvatarType systemAvatarType;
     
     @JsonProperty(value = "threatIntelligenceEnabled")
     protected Boolean threatIntelligenceEnabled;
@@ -213,6 +236,28 @@ public class UserContext extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AllowEnterpriseAvatarOnNSG", readOnly = false)   
+    public Boolean getAllowEnterpriseAvatarOnNSG() {
+       return allowEnterpriseAvatarOnNSG;
+    }
+
+    @JsonIgnore
+    public void setAllowEnterpriseAvatarOnNSG(Boolean value) { 
+        this.allowEnterpriseAvatarOnNSG = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DeniedFlowCollectionEnabled", readOnly = false)   
     public Boolean getDeniedFlowCollectionEnabled() {
        return deniedFlowCollectionEnabled;
@@ -301,6 +346,28 @@ public class UserContext extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PageSize", readOnly = false)   
     public Long getPageSize() {
        return pageSize;
@@ -309,6 +376,17 @@ public class UserContext extends BaseObject {
     @JsonIgnore
     public void setPageSize(Long value) { 
         this.pageSize = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "RbacEnabled", readOnly = false)   
+    public Boolean getRbacEnabled() {
+       return rbacEnabled;
+    }
+
+    @JsonIgnore
+    public void setRbacEnabled(Boolean value) { 
+        this.rbacEnabled = value;
     }
     
     @JsonIgnore
@@ -342,6 +420,28 @@ public class UserContext extends BaseObject {
     @JsonIgnore
     public void setStatsTSDBServerAddress(String value) { 
         this.statsTSDBServerAddress = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SystemAvatarData", readOnly = false)   
+    public String getSystemAvatarData() {
+       return systemAvatarData;
+    }
+
+    @JsonIgnore
+    public void setSystemAvatarData(String value) { 
+        this.systemAvatarData = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SystemAvatarType", readOnly = false)   
+    public UserContextSystemAvatarType getSystemAvatarType() {
+       return systemAvatarType;
+    }
+
+    @JsonIgnore
+    public void setSystemAvatarType(UserContextSystemAvatarType value) { 
+        this.systemAvatarType = value;
     }
     
     @JsonIgnore
@@ -435,7 +535,7 @@ public class UserContext extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "UserContext [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSFeatureEnabled=" + VSSFeatureEnabled + ", VSSStatsInterval=" + VSSStatsInterval + ", deniedFlowCollectionEnabled=" + deniedFlowCollectionEnabled + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", explicitACLMatchingEnabled=" + explicitACLMatchingEnabled + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", googleMapsAPIKey=" + googleMapsAPIKey + ", lastUpdatedBy=" + lastUpdatedBy + ", pageSize=" + pageSize + ", statisticsEnabled=" + statisticsEnabled + ", statsDatabaseProxy=" + statsDatabaseProxy + ", statsTSDBServerAddress=" + statsTSDBServerAddress + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UserContext [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSFeatureEnabled=" + VSSFeatureEnabled + ", VSSStatsInterval=" + VSSStatsInterval + ", allowEnterpriseAvatarOnNSG=" + allowEnterpriseAvatarOnNSG + ", creationDate=" + creationDate + ", deniedFlowCollectionEnabled=" + deniedFlowCollectionEnabled + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", explicitACLMatchingEnabled=" + explicitACLMatchingEnabled + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", googleMapsAPIKey=" + googleMapsAPIKey + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", pageSize=" + pageSize + ", rbacEnabled=" + rbacEnabled + ", statisticsEnabled=" + statisticsEnabled + ", statsDatabaseProxy=" + statsDatabaseProxy + ", statsTSDBServerAddress=" + statsTSDBServerAddress + ", systemAvatarData=" + systemAvatarData + ", systemAvatarType=" + systemAvatarType + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -48,6 +48,8 @@ import net.nuagenetworks.vro.vspk.model.IngressACLEntryTemplate;
 
 import net.nuagenetworks.vro.vspk.model.IngressAdvFwdEntryTemplate;
 
+import net.nuagenetworks.vro.vspk.model.IngressAuditACLEntryTemplate;
+
 import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.NSPort;
@@ -185,6 +187,16 @@ public class StatisticsFetcher extends BaseFetcher<Statistics> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof IngressAdvFwdEntryTemplate) {
             return (IngressAdvFwdEntryTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "IngressAuditACLEntryTemplate", readOnly = true)
+    public IngressAuditACLEntryTemplate getIngressAuditACLEntryTemplate() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof IngressAuditACLEntryTemplate) {
+            return (IngressAuditACLEntryTemplate) obj;
         }
         
         return null;

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VPortOperationalState {
 
-    DOWN("DOWN", "DOWN"), INIT("INIT", "INIT"), UP("UP", "UP");
+    DEGRADED("DEGRADED", "DEGRADED"), DOWN("DOWN", "DOWN"), INIT("INIT", "INIT"), UP("UP", "UP");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum VPortOperationalState {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "DEGRADED", readOnly = true)
+    public VPortOperationalState getDEGRADED() {
+        return DEGRADED;
+    }
     
     @VsoProperty(displayName = "DOWN", readOnly = true)
     public VPortOperationalState getDOWN() {

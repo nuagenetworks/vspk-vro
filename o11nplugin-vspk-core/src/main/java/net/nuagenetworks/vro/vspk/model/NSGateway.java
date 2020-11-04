@@ -68,11 +68,15 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NSPortInfosFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SubnetsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.SupplementalInfraConfigsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ThreatPreventionInfosFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UnderlayTestsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.UplinkConnectionsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.VirtualUplinksFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.VNFsFetcher;
 
@@ -246,6 +250,9 @@ public class NSGateway extends BaseObject {
     @JsonProperty(value = "controlTrafficDSCPValue")
     protected Long controlTrafficDSCPValue;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "datapathID")
     protected String datapathID;
     
@@ -294,6 +301,9 @@ public class NSGateway extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "libraries")
     protected String libraries;
     
@@ -311,6 +321,9 @@ public class NSGateway extends BaseObject {
     
     @JsonProperty(value = "operationStatus")
     protected String operationStatus;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "pending")
     protected Boolean pending;
@@ -409,6 +422,9 @@ public class NSGateway extends BaseObject {
     private SubnetsFetcher subnets;
     
     @JsonIgnore
+    private SupplementalInfraConfigsFetcher supplementalInfraConfigs;
+    
+    @JsonIgnore
     private ThreatPreventionInfosFetcher threatPreventionInfos;
     
     @JsonIgnore
@@ -416,6 +432,9 @@ public class NSGateway extends BaseObject {
     
     @JsonIgnore
     private UplinkConnectionsFetcher uplinkConnections;
+    
+    @JsonIgnore
+    private VirtualUplinksFetcher virtualUplinks;
     
     @JsonIgnore
     private VNFsFetcher vNFs;
@@ -467,11 +486,15 @@ public class NSGateway extends BaseObject {
         
         subnets = new SubnetsFetcher(this);
         
+        supplementalInfraConfigs = new SupplementalInfraConfigsFetcher(this);
+        
         threatPreventionInfos = new ThreatPreventionInfosFetcher(this);
         
         underlayTests = new UnderlayTestsFetcher(this);
         
         uplinkConnections = new UplinkConnectionsFetcher(this);
+        
+        virtualUplinks = new VirtualUplinksFetcher(this);
         
         vNFs = new VNFsFetcher(this);
         
@@ -877,6 +900,17 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DatapathID", readOnly = false)   
     public String getDatapathID() {
        return datapathID;
@@ -1053,6 +1087,17 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Libraries", readOnly = false)   
     public String getLibraries() {
        return libraries;
@@ -1116,6 +1161,17 @@ public class NSGateway extends BaseObject {
     @JsonIgnore
     public void setOperationStatus(String value) { 
         this.operationStatus = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -1366,6 +1422,12 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SupplementalInfraConfigs", readOnly = true)   
+    public SupplementalInfraConfigsFetcher getSupplementalInfraConfigs() {
+        return supplementalInfraConfigs;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ThreatPreventionInfos", readOnly = true)   
     public ThreatPreventionInfosFetcher getThreatPreventionInfos() {
         return threatPreventionInfos;
@@ -1381,6 +1443,12 @@ public class NSGateway extends BaseObject {
     @VsoProperty(displayName = "UplinkConnections", readOnly = true)   
     public UplinkConnectionsFetcher getUplinkConnections() {
         return uplinkConnections;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VirtualUplinks", readOnly = true)   
+    public VirtualUplinksFetcher getVirtualUplinks() {
+        return virtualUplinks;
     }
     
     @JsonIgnore
@@ -1549,7 +1617,7 @@ public class NSGateway extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.WIRELESSPORTS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSGateway [" + "AARApplicationReleaseDate=" + AARApplicationReleaseDate + ", AARApplicationVersion=" + AARApplicationVersion + ", BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUCoreAllocation=" + CPUCoreAllocation + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", VSDAARApplicationVersion=" + VSDAARApplicationVersion + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", certValidityDays=" + certValidityDays + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", configureLoadBalancing=" + configureLoadBalancing + ", controlTrafficCOSValue=" + controlTrafficCOSValue + ", controlTrafficDSCPValue=" + controlTrafficDSCPValue + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", functions=" + functions + ", gatewayConfigRawVersion=" + gatewayConfigRawVersion + ", gatewayConfigVersion=" + gatewayConfigVersion + ", gatewayConnected=" + gatewayConnected + ", hugePageSetting=" + hugePageSetting + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", networkAcceleration=" + networkAcceleration + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", syslogLevel=" + syslogLevel + ", systemID=" + systemID + ", templateID=" + templateID + ", threatPreventionEnabled=" + threatPreventionEnabled + ", tunnelShaping=" + tunnelShaping + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGateway [" + "AARApplicationReleaseDate=" + AARApplicationReleaseDate + ", AARApplicationVersion=" + AARApplicationVersion + ", BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUCoreAllocation=" + CPUCoreAllocation + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", NATTraversalEnabled=" + NATTraversalEnabled + ", NSGVersion=" + NSGVersion + ", SKU=" + SKU + ", SSHService=" + SSHService + ", TCPMSSEnabled=" + TCPMSSEnabled + ", TCPMaximumSegmentSize=" + TCPMaximumSegmentSize + ", TPMStatus=" + TPMStatus + ", TPMVersion=" + TPMVersion + ", UUID=" + UUID + ", VSDAARApplicationVersion=" + VSDAARApplicationVersion + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNSGUpgradeProfileID=" + associatedNSGUpgradeProfileID + ", associatedOverlayManagementProfileID=" + associatedOverlayManagementProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", certValidityDays=" + certValidityDays + ", configurationReloadState=" + configurationReloadState + ", configurationStatus=" + configurationStatus + ", configureLoadBalancing=" + configureLoadBalancing + ", controlTrafficCOSValue=" + controlTrafficCOSValue + ", controlTrafficDSCPValue=" + controlTrafficDSCPValue + ", creationDate=" + creationDate + ", datapathID=" + datapathID + ", derivedSSHServiceState=" + derivedSSHServiceState + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", functions=" + functions + ", gatewayConfigRawVersion=" + gatewayConfigRawVersion + ", gatewayConfigVersion=" + gatewayConfigVersion + ", gatewayConnected=" + gatewayConnected + ", hugePageSetting=" + hugePageSetting + ", inheritedSSHServiceState=" + inheritedSSHServiceState + ", lastConfigurationReloadTimestamp=" + lastConfigurationReloadTimestamp + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", libraries=" + libraries + ", locationID=" + locationID + ", name=" + name + ", networkAcceleration=" + networkAcceleration + ", operationMode=" + operationMode + ", operationStatus=" + operationStatus + ", owner=" + owner + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", syslogLevel=" + syslogLevel + ", systemID=" + systemID + ", templateID=" + templateID + ", threatPreventionEnabled=" + threatPreventionEnabled + ", tunnelShaping=" + tunnelShaping + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

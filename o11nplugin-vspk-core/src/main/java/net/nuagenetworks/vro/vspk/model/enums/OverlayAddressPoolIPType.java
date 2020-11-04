@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum OverlayAddressPoolIPType {
 
-    IPV4("IPV4", "IPV4"), IPV6("IPV6", "IPV6"), DUALSTACK("DUALSTACK", "DUALSTACK");
+    DUALSTACK("DUALSTACK", "DUALSTACK"), IPV4("IPV4", "IPV4"), IPV6("IPV6", "IPV6");
 
     private final String id;
     private final String name;
@@ -58,6 +58,11 @@ public enum OverlayAddressPoolIPType {
     }
 
     
+    @VsoProperty(displayName = "DUALSTACK", readOnly = true)
+    public OverlayAddressPoolIPType getDUALSTACK() {
+        return DUALSTACK;
+    }
+    
     @VsoProperty(displayName = "IPV4", readOnly = true)
     public OverlayAddressPoolIPType getIPV4() {
         return IPV4;
@@ -66,11 +71,6 @@ public enum OverlayAddressPoolIPType {
     @VsoProperty(displayName = "IPV6", readOnly = true)
     public OverlayAddressPoolIPType getIPV6() {
         return IPV6;
-    }
-    
-    @VsoProperty(displayName = "DUALSTACK", readOnly = true)
-    public OverlayAddressPoolIPType getDUALSTACK() {
-        return DUALSTACK;
     }
     
 

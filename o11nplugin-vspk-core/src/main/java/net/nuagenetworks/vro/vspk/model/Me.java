@@ -74,6 +74,10 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EnterpriseProfilesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EsIlmPoliciesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.EsIndexConfigsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EthernetSegmentGWGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.FloatingIpsFetcher;
@@ -153,6 +157,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PerformanceMonitorsFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PolicyObjectGroupsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.QOSsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.QosPolicersFetcher;
 
@@ -267,6 +273,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPROFILES_FETCHER, type = Constants.ENTERPRISEPROFILES_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.ESILMPOLICIES_FETCHER, type = Constants.ESILMPOLICIES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.ETHERNETSEGMENTGWGROUPS_FETCHER, type = Constants.ETHERNETSEGMENTGWGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.GATEWAYS_FETCHER, type = Constants.GATEWAYS_FETCHER), 
@@ -370,6 +378,9 @@ public class Me extends BaseRootObject {
     @JsonProperty(value = "avatarType")
     protected MeAvatarType avatarType;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "disabled")
     protected Boolean disabled;
     
@@ -406,8 +417,14 @@ public class Me extends BaseRootObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "mobileNumber")
     protected String mobileNumber;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "password")
     protected String password;
@@ -492,6 +509,12 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private EnterpriseProfilesFetcher enterpriseProfiles;
+    
+    @JsonIgnore
+    private EsIlmPoliciesFetcher esIlmPolicies;
+    
+    @JsonIgnore
+    private EsIndexConfigsFetcher esIndexConfigs;
     
     @JsonIgnore
     private EthernetSegmentGWGroupsFetcher ethernetSegmentGWGroups;
@@ -612,6 +635,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private PolicyObjectGroupsFetcher policyObjectGroups;
+    
+    @JsonIgnore
+    private QOSsFetcher qOSs;
     
     @JsonIgnore
     private QosPolicersFetcher qosPolicers;
@@ -774,6 +800,10 @@ public class Me extends BaseRootObject {
         
         enterpriseProfiles = new EnterpriseProfilesFetcher(this);
         
+        esIlmPolicies = new EsIlmPoliciesFetcher(this);
+        
+        esIndexConfigs = new EsIndexConfigsFetcher(this);
+        
         ethernetSegmentGWGroups = new EthernetSegmentGWGroupsFetcher(this);
         
         floatingIps = new FloatingIpsFetcher(this);
@@ -853,6 +883,8 @@ public class Me extends BaseRootObject {
         policyGroups = new PolicyGroupsFetcher(this);
         
         policyObjectGroups = new PolicyObjectGroupsFetcher(this);
+        
+        qOSs = new QOSsFetcher(this);
         
         qosPolicers = new QosPolicersFetcher(this);
         
@@ -1030,6 +1062,17 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Disabled", readOnly = false)   
     public Boolean getDisabled() {
        return disabled;
@@ -1162,6 +1205,17 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MobileNumber", readOnly = false)   
     public String getMobileNumber() {
        return mobileNumber;
@@ -1170,6 +1224,17 @@ public class Me extends BaseRootObject {
     @JsonIgnore
     public void setMobileNumber(String value) { 
         this.mobileNumber = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -1358,6 +1423,18 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "EnterpriseProfiles", readOnly = true)   
     public EnterpriseProfilesFetcher getEnterpriseProfiles() {
         return enterpriseProfiles;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EsIlmPolicies", readOnly = true)   
+    public EsIlmPoliciesFetcher getEsIlmPolicies() {
+        return esIlmPolicies;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EsIndexConfigs", readOnly = true)   
+    public EsIndexConfigsFetcher getEsIndexConfigs() {
+        return esIndexConfigs;
     }
     
     @JsonIgnore
@@ -1598,6 +1675,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "PolicyObjectGroups", readOnly = true)   
     public PolicyObjectGroupsFetcher getPolicyObjectGroups() {
         return policyObjectGroups;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "QOSs", readOnly = true)   
+    public QOSsFetcher getQOSs() {
+        return qOSs;
     }
     
     @JsonIgnore
@@ -1843,6 +1926,24 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void assignEsIlmPolicies(Session session, EsIlmPolicy[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.ME, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void assignEsIndexConfigs(Session session, EsIndexConfig[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.ME, getId());
+        }
+    }
+    
+    @VsoMethod
     public void assignTestDefinitions(Session session, TestDefinition[] childRestObjs, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
@@ -1945,6 +2046,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ENTERPRISEPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createEsIlmPolicy(Session session, EsIlmPolicy childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ESILMPOLICIES_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -2293,7 +2402,7 @@ public class Me extends BaseRootObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Me [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSStatsInterval=" + VSSStatsInterval + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", mobileNumber=" + mobileNumber + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Me [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSStatsInterval=" + VSSStatsInterval + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", creationDate=" + creationDate + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", mobileNumber=" + mobileNumber + ", owner=" + owner + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + ", apiKey=" + apiKey  + "]";
     }
 }

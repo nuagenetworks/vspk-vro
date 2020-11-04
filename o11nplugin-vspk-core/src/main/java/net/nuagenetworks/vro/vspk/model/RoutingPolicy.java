@@ -65,6 +65,9 @@ public class RoutingPolicy extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "CustomerID")
+    protected Long CustomerID;
+    
     @JsonProperty(value = "contentType")
     protected RoutingPolicyContentType contentType;
     
@@ -145,6 +148,17 @@ public class RoutingPolicy extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "CustomerID", readOnly = false)   
+    public Long getCustomerID() {
+       return CustomerID;
+    }
+
+    @JsonIgnore
+    public void setCustomerID(Long value) { 
+        this.CustomerID = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "ContentType", readOnly = false)   
     public RoutingPolicyContentType getContentType() {
@@ -324,7 +338,7 @@ public class RoutingPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "RoutingPolicy [" + "contentType=" + contentType + ", defaultAction=" + defaultAction + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", policyDefinition=" + policyDefinition + ", routingProtocol=" + routingProtocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "RoutingPolicy [" + "CustomerID=" + CustomerID + ", contentType=" + contentType + ", defaultAction=" + defaultAction + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", policyDefinition=" + policyDefinition + ", routingProtocol=" + routingProtocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

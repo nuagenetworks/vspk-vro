@@ -36,6 +36,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.UnderlayTestsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAddressFamily;
 
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAdvertisementCriteria;
@@ -44,11 +46,15 @@ import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionAuxMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionEntityScope;
 
+import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionFecEnabled;
+
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionInterfaceConnectionType;
 
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionRole;
+
+import net.nuagenetworks.vro.vspk.model.enums.UplinkConnectionUplinkType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
 import net.nuagenetworks.vro.model.BaseObject;
@@ -69,7 +75,9 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.UNDERLAYTESTS_FETCHER, type = Constants.UNDERLAYTESTS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -115,6 +123,9 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "auxiliaryLink")
     protected Boolean auxiliaryLink;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "downloadRateLimit")
     protected Float downloadRateLimit;
     
@@ -127,8 +138,14 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "externalID")
     protected String externalID;
     
+    @JsonProperty(value = "fecEnabled")
+    protected UplinkConnectionFecEnabled fecEnabled;
+    
     @JsonProperty(value = "gateway")
     protected String gateway;
+    
+    @JsonProperty(value = "gatewayID")
+    protected String gatewayID;
     
     @JsonProperty(value = "gatewayV6")
     protected String gatewayV6;
@@ -145,14 +162,23 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "mode")
     protected UplinkConnectionMode mode;
     
     @JsonProperty(value = "netmask")
     protected String netmask;
     
+    @JsonProperty(value = "owner")
+    protected String owner;
+    
     @JsonProperty(value = "password")
     protected String password;
+    
+    @JsonProperty(value = "portID")
+    protected String portID;
     
     @JsonProperty(value = "portName")
     protected String portName;
@@ -178,11 +204,20 @@ public class UplinkConnection extends BaseObject {
     @JsonProperty(value = "uplinkID")
     protected Long uplinkID;
     
+    @JsonProperty(value = "uplinkName")
+    protected String uplinkName;
+    
+    @JsonProperty(value = "uplinkType")
+    protected UplinkConnectionUplinkType uplinkType;
+    
     @JsonProperty(value = "username")
     protected String username;
     
     @JsonProperty(value = "vlan")
     protected Long vlan;
+    
+    @JsonProperty(value = "vlanID")
+    protected String vlanID;
     
     @JsonIgnore
     private BFDSessionsFetcher bFDSessions;
@@ -199,6 +234,9 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     private PermissionsFetcher permissions;
     
+    @JsonIgnore
+    private UnderlayTestsFetcher underlayTests;
+    
     @VsoConstructor
     public UplinkConnection() {
         bFDSessions = new BFDSessionsFetcher(this);
@@ -210,6 +248,8 @@ public class UplinkConnection extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         permissions = new PermissionsFetcher(this);
+        
+        underlayTests = new UnderlayTestsFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -385,6 +425,17 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DownloadRateLimit", readOnly = false)   
     public Float getDownloadRateLimit() {
        return downloadRateLimit;
@@ -429,6 +480,17 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "FecEnabled", readOnly = false)   
+    public UplinkConnectionFecEnabled getFecEnabled() {
+       return fecEnabled;
+    }
+
+    @JsonIgnore
+    public void setFecEnabled(UplinkConnectionFecEnabled value) { 
+        this.fecEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Gateway", readOnly = false)   
     public String getGateway() {
        return gateway;
@@ -437,6 +499,17 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setGateway(String value) { 
         this.gateway = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GatewayID", readOnly = false)   
+    public String getGatewayID() {
+       return gatewayID;
+    }
+
+    @JsonIgnore
+    public void setGatewayID(String value) { 
+        this.gatewayID = value;
     }
     
     @JsonIgnore
@@ -495,6 +568,17 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Mode", readOnly = false)   
     public UplinkConnectionMode getMode() {
        return mode;
@@ -517,6 +601,17 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Password", readOnly = false)   
     public String getPassword() {
        return password;
@@ -525,6 +620,17 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setPassword(String value) { 
         this.password = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "PortID", readOnly = false)   
+    public String getPortID() {
+       return portID;
+    }
+
+    @JsonIgnore
+    public void setPortID(String value) { 
+        this.portID = value;
     }
     
     @JsonIgnore
@@ -616,6 +722,28 @@ public class UplinkConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "UplinkName", readOnly = false)   
+    public String getUplinkName() {
+       return uplinkName;
+    }
+
+    @JsonIgnore
+    public void setUplinkName(String value) { 
+        this.uplinkName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UplinkType", readOnly = false)   
+    public UplinkConnectionUplinkType getUplinkType() {
+       return uplinkType;
+    }
+
+    @JsonIgnore
+    public void setUplinkType(UplinkConnectionUplinkType value) { 
+        this.uplinkType = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Username", readOnly = false)   
     public String getUsername() {
        return username;
@@ -635,6 +763,17 @@ public class UplinkConnection extends BaseObject {
     @JsonIgnore
     public void setVlan(Long value) { 
         this.vlan = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VlanID", readOnly = false)   
+    public String getVlanID() {
+       return vlanID;
+    }
+
+    @JsonIgnore
+    public void setVlanID(String value) { 
+        this.vlanID = value;
     }
     
     @JsonIgnore
@@ -665,6 +804,12 @@ public class UplinkConnection extends BaseObject {
     @VsoProperty(displayName = "Permissions", readOnly = true)   
     public PermissionsFetcher getPermissions() {
         return permissions;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UnderlayTests", readOnly = true)   
+    public UnderlayTestsFetcher getUnderlayTests() {
+        return underlayTests;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -762,8 +907,16 @@ public class UplinkConnection extends BaseObject {
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
+    }
+    @VsoMethod
+    public void createUnderlayTest(Session session, UnderlayTest childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.UNDERLAYTESTS_FETCHER, getId());
+        }
     }public String toString() {
-        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", PATEnabled=" + PATEnabled + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxMode=" + auxMode + ", auxiliaryLink=" + auxiliaryLink + ", downloadRateLimit=" + downloadRateLimit + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", installerManaged=" + installerManaged + ", interfaceConnectionType=" + interfaceConnectionType + ", lastUpdatedBy=" + lastUpdatedBy + ", mode=" + mode + ", netmask=" + netmask + ", password=" + password + ", portName=" + portName + ", primaryDataPathID=" + primaryDataPathID + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", underlayEnabled=" + underlayEnabled + ", underlayID=" + underlayID + ", uplinkID=" + uplinkID + ", username=" + username + ", vlan=" + vlan + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UplinkConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", PATEnabled=" + PATEnabled + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", assocUnderlayID=" + assocUnderlayID + ", associatedBGPNeighborID=" + associatedBGPNeighborID + ", associatedUnderlayName=" + associatedUnderlayName + ", auxMode=" + auxMode + ", auxiliaryLink=" + auxiliaryLink + ", creationDate=" + creationDate + ", downloadRateLimit=" + downloadRateLimit + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", fecEnabled=" + fecEnabled + ", gateway=" + gateway + ", gatewayID=" + gatewayID + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", installerManaged=" + installerManaged + ", interfaceConnectionType=" + interfaceConnectionType + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", mode=" + mode + ", netmask=" + netmask + ", owner=" + owner + ", password=" + password + ", portID=" + portID + ", portName=" + portName + ", primaryDataPathID=" + primaryDataPathID + ", role=" + role + ", roleOrder=" + roleOrder + ", secondaryAddress=" + secondaryAddress + ", underlayEnabled=" + underlayEnabled + ", underlayID=" + underlayID + ", uplinkID=" + uplinkID + ", uplinkName=" + uplinkName + ", uplinkType=" + uplinkType + ", username=" + username + ", vlan=" + vlan + ", vlanID=" + vlanID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

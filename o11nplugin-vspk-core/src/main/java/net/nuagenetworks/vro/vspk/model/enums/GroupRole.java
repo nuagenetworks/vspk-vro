@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum GroupRole {
 
-    ADMINOPERATOR("ADMINOPERATOR", "ADMINOPERATOR"), CMS("CMS", "CMS"), CSPOPERATOR("CSPOPERATOR", "CSPOPERATOR"), CSPROOT("CSPROOT", "CSPROOT"), JMS("JMS", "JMS"), ORGADMIN("ORGADMIN", "ORGADMIN"), PREACTIVATION("PREACTIVATION", "PREACTIVATION"), POSTACTIVATION("POSTACTIVATION", "POSTACTIVATION"), NETCONFMGR("NETCONFMGR", "NETCONFMGR"), STATS("STATS", "STATS"), ORGNETWORKDESIGNER("ORGNETWORKDESIGNER", "ORGNETWORKDESIGNER"), ORGUSER("ORGUSER", "ORGUSER"), SECURITYADMINISTRATOR("SECURITYADMINISTRATOR", "SECURITYADMINISTRATOR"), SYSTEM("SYSTEM", "SYSTEM"), UNKNOWN("UNKNOWN", "UNKNOWN"), USER("USER", "USER");
+    ADMINOPERATOR("ADMINOPERATOR", "ADMINOPERATOR"), AUDITADMIN("AUDITADMIN", "AUDITADMIN"), CMS("CMS", "CMS"), CSPOPERATOR("CSPOPERATOR", "CSPOPERATOR"), CSPROOT("CSPROOT", "CSPROOT"), JMS("JMS", "JMS"), NETCONFMGR("NETCONFMGR", "NETCONFMGR"), ORGADMIN("ORGADMIN", "ORGADMIN"), ORGNETWORKDESIGNER("ORGNETWORKDESIGNER", "ORGNETWORKDESIGNER"), ORGUSER("ORGUSER", "ORGUSER"), POSTACTIVATION("POSTACTIVATION", "POSTACTIVATION"), PREACTIVATION("PREACTIVATION", "PREACTIVATION"), SECURITYADMINISTRATOR("SECURITYADMINISTRATOR", "SECURITYADMINISTRATOR"), STATS("STATS", "STATS"), SYSTEM("SYSTEM", "SYSTEM"), UNKNOWN("UNKNOWN", "UNKNOWN"), USER("USER", "USER");
 
     private final String id;
     private final String name;
@@ -63,6 +63,11 @@ public enum GroupRole {
         return ADMINOPERATOR;
     }
     
+    @VsoProperty(displayName = "AUDITADMIN", readOnly = true)
+    public GroupRole getAUDITADMIN() {
+        return AUDITADMIN;
+    }
+    
     @VsoProperty(displayName = "CMS", readOnly = true)
     public GroupRole getCMS() {
         return CMS;
@@ -83,29 +88,14 @@ public enum GroupRole {
         return JMS;
     }
     
-    @VsoProperty(displayName = "ORGADMIN", readOnly = true)
-    public GroupRole getORGADMIN() {
-        return ORGADMIN;
-    }
-    
-    @VsoProperty(displayName = "PREACTIVATION", readOnly = true)
-    public GroupRole getPREACTIVATION() {
-        return PREACTIVATION;
-    }
-    
-    @VsoProperty(displayName = "POSTACTIVATION", readOnly = true)
-    public GroupRole getPOSTACTIVATION() {
-        return POSTACTIVATION;
-    }
-    
     @VsoProperty(displayName = "NETCONFMGR", readOnly = true)
     public GroupRole getNETCONFMGR() {
         return NETCONFMGR;
     }
     
-    @VsoProperty(displayName = "STATS", readOnly = true)
-    public GroupRole getSTATS() {
-        return STATS;
+    @VsoProperty(displayName = "ORGADMIN", readOnly = true)
+    public GroupRole getORGADMIN() {
+        return ORGADMIN;
     }
     
     @VsoProperty(displayName = "ORGNETWORKDESIGNER", readOnly = true)
@@ -118,9 +108,24 @@ public enum GroupRole {
         return ORGUSER;
     }
     
+    @VsoProperty(displayName = "POSTACTIVATION", readOnly = true)
+    public GroupRole getPOSTACTIVATION() {
+        return POSTACTIVATION;
+    }
+    
+    @VsoProperty(displayName = "PREACTIVATION", readOnly = true)
+    public GroupRole getPREACTIVATION() {
+        return PREACTIVATION;
+    }
+    
     @VsoProperty(displayName = "SECURITYADMINISTRATOR", readOnly = true)
     public GroupRole getSECURITYADMINISTRATOR() {
         return SECURITYADMINISTRATOR;
+    }
+    
+    @VsoProperty(displayName = "STATS", readOnly = true)
+    public GroupRole getSTATS() {
+        return STATS;
     }
     
     @VsoProperty(displayName = "SYSTEM", readOnly = true)

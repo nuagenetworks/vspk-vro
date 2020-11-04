@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getEgressAuditACLEntryTemplateLocationType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">6b7510d2-e136-5287-83b4-ebab488eb14a</entry>
+</properties>

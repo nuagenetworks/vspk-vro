@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
 import net.nuagenetworks.vro.vspk.model.Subnet;
 
+import net.nuagenetworks.vro.vspk.model.VirtualUplink;
+
 import net.nuagenetworks.vro.vspk.model.VLAN;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -71,6 +73,16 @@ public class IKEGatewayConnectionsFetcher extends BaseFetcher<IKEGatewayConnecti
         RestObject obj = super.getParentRestObj();
         if (obj instanceof Subnet) {
             return (Subnet) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "VirtualUplink", readOnly = true)
+    public VirtualUplink getVirtualUplink() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof VirtualUplink) {
+            return (VirtualUplink) obj;
         }
         
         return null;

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum EgressAdvFwdEntryTemplateNetworkEntityType {
 
-    PGEXPRESSION("PGEXPRESSION", "PGEXPRESSION"), PGEXPRESSIONTEMPLATE("PGEXPRESSIONTEMPLATE", "PGEXPRESSIONTEMPLATE"), POLICYGROUP("POLICYGROUP", "POLICYGROUP"), POLICYGROUPTEMPLATE("POLICYGROUPTEMPLATE", "POLICYGROUPTEMPLATE"), SUBNET("SUBNET", "SUBNET"), SUBNETTEMPLATE("SUBNETTEMPLATE", "SUBNETTEMPLATE"), ZONE("ZONE", "ZONE"), ZONETEMPLATE("ZONETEMPLATE", "ZONETEMPLATE");
+    ENTERPRISENETWORK("ENTERPRISENETWORK", "ENTERPRISENETWORK"), NETWORKMACROGROUP("NETWORKMACROGROUP", "NETWORKMACROGROUP"), PGEXPRESSION("PGEXPRESSION", "PGEXPRESSION"), PGEXPRESSIONTEMPLATE("PGEXPRESSIONTEMPLATE", "PGEXPRESSIONTEMPLATE"), POLICYGROUP("POLICYGROUP", "POLICYGROUP"), POLICYGROUPTEMPLATE("POLICYGROUPTEMPLATE", "POLICYGROUPTEMPLATE"), PUBLICNETWORK("PUBLICNETWORK", "PUBLICNETWORK"), SAASAPPLICATIONGROUP("SAASAPPLICATIONGROUP", "SAASAPPLICATIONGROUP"), SUBNET("SUBNET", "SUBNET"), SUBNETTEMPLATE("SUBNETTEMPLATE", "SUBNETTEMPLATE"), ZONE("ZONE", "ZONE"), ZONETEMPLATE("ZONETEMPLATE", "ZONETEMPLATE");
 
     private final String id;
     private final String name;
@@ -58,6 +58,16 @@ public enum EgressAdvFwdEntryTemplateNetworkEntityType {
     }
 
     
+    @VsoProperty(displayName = "ENTERPRISENETWORK", readOnly = true)
+    public EgressAdvFwdEntryTemplateNetworkEntityType getENTERPRISENETWORK() {
+        return ENTERPRISENETWORK;
+    }
+    
+    @VsoProperty(displayName = "NETWORKMACROGROUP", readOnly = true)
+    public EgressAdvFwdEntryTemplateNetworkEntityType getNETWORKMACROGROUP() {
+        return NETWORKMACROGROUP;
+    }
+    
     @VsoProperty(displayName = "PGEXPRESSION", readOnly = true)
     public EgressAdvFwdEntryTemplateNetworkEntityType getPGEXPRESSION() {
         return PGEXPRESSION;
@@ -76,6 +86,16 @@ public enum EgressAdvFwdEntryTemplateNetworkEntityType {
     @VsoProperty(displayName = "POLICYGROUPTEMPLATE", readOnly = true)
     public EgressAdvFwdEntryTemplateNetworkEntityType getPOLICYGROUPTEMPLATE() {
         return POLICYGROUPTEMPLATE;
+    }
+    
+    @VsoProperty(displayName = "PUBLICNETWORK", readOnly = true)
+    public EgressAdvFwdEntryTemplateNetworkEntityType getPUBLICNETWORK() {
+        return PUBLICNETWORK;
+    }
+    
+    @VsoProperty(displayName = "SAASAPPLICATIONGROUP", readOnly = true)
+    public EgressAdvFwdEntryTemplateNetworkEntityType getSAASAPPLICATIONGROUP() {
+        return SAASAPPLICATIONGROUP;
     }
     
     @VsoProperty(displayName = "SUBNET", readOnly = true)

@@ -59,6 +59,9 @@ public class DomainKindSummary extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "criticalAlarmsCount")
     protected Long criticalAlarmsCount;
     
@@ -86,6 +89,9 @@ public class DomainKindSummary extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "majorAlarmsCount")
     protected Long majorAlarmsCount;
     
@@ -97,6 +103,9 @@ public class DomainKindSummary extends BaseObject {
     
     @JsonProperty(value = "nsgCount")
     protected Long nsgCount;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "subNetworkCount")
     protected Long subNetworkCount;
@@ -165,6 +174,17 @@ public class DomainKindSummary extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "CriticalAlarmsCount", readOnly = false)   
     public Long getCriticalAlarmsCount() {
@@ -265,6 +285,17 @@ public class DomainKindSummary extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MajorAlarmsCount", readOnly = false)   
     public Long getMajorAlarmsCount() {
        return majorAlarmsCount;
@@ -306,6 +337,17 @@ public class DomainKindSummary extends BaseObject {
     @JsonIgnore
     public void setNsgCount(Long value) { 
         this.nsgCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -421,7 +463,7 @@ public class DomainKindSummary extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "DomainKindSummary [" + "criticalAlarmsCount=" + criticalAlarmsCount + ", domainKindDescription=" + domainKindDescription + ", domainKindName=" + domainKindName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayCount=" + gatewayCount + ", infoAlarmsCount=" + infoAlarmsCount + ", lastUpdatedBy=" + lastUpdatedBy + ", majorAlarmsCount=" + majorAlarmsCount + ", meshGroupCount=" + meshGroupCount + ", minorAlarmsCount=" + minorAlarmsCount + ", nsgCount=" + nsgCount + ", subNetworkCount=" + subNetworkCount + ", trafficVolume=" + trafficVolume + ", zoneCount=" + zoneCount + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DomainKindSummary [" + "creationDate=" + creationDate + ", criticalAlarmsCount=" + criticalAlarmsCount + ", domainKindDescription=" + domainKindDescription + ", domainKindName=" + domainKindName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayCount=" + gatewayCount + ", infoAlarmsCount=" + infoAlarmsCount + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", majorAlarmsCount=" + majorAlarmsCount + ", meshGroupCount=" + meshGroupCount + ", minorAlarmsCount=" + minorAlarmsCount + ", nsgCount=" + nsgCount + ", owner=" + owner + ", subNetworkCount=" + subNetworkCount + ", trafficVolume=" + trafficVolume + ", zoneCount=" + zoneCount + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

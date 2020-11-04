@@ -70,6 +70,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PortsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.RoutingPoliciesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.SAPEgressQoSProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SAPIngressQoSProfilesFetcher;
@@ -148,6 +150,9 @@ public class Gateway extends BaseObject {
     @JsonProperty(value = "ZFBMatchValue")
     protected String ZFBMatchValue;
     
+    @JsonProperty(value = "associatedGNMIProfileID")
+    protected String associatedGNMIProfileID;
+    
     @JsonProperty(value = "associatedGatewaySecurityID")
     protected String associatedGatewaySecurityID;
     
@@ -168,6 +173,9 @@ public class Gateway extends BaseObject {
     
     @JsonProperty(value = "bootstrapStatus")
     protected GatewayBootstrapStatus bootstrapStatus;
+    
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
     
     @JsonProperty(value = "datapathID")
     protected String datapathID;
@@ -208,6 +216,9 @@ public class Gateway extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "libraries")
     protected String libraries;
     
@@ -219,6 +230,12 @@ public class Gateway extends BaseObject {
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "nativeVLAN")
+    protected String nativeVLAN;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "patches")
     protected String patches;
@@ -326,6 +343,9 @@ public class Gateway extends BaseObject {
     private PortsFetcher ports;
     
     @JsonIgnore
+    private RoutingPoliciesFetcher routingPolicies;
+    
+    @JsonIgnore
     private SAPEgressQoSProfilesFetcher sAPEgressQoSProfiles;
     
     @JsonIgnore
@@ -384,6 +404,8 @@ public class Gateway extends BaseObject {
         permissions = new PermissionsFetcher(this);
         
         ports = new PortsFetcher(this);
+        
+        routingPolicies = new RoutingPoliciesFetcher(this);
         
         sAPEgressQoSProfiles = new SAPEgressQoSProfilesFetcher(this);
         
@@ -507,6 +529,17 @@ public class Gateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "AssociatedGNMIProfileID", readOnly = false)   
+    public String getAssociatedGNMIProfileID() {
+       return associatedGNMIProfileID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedGNMIProfileID(String value) { 
+        this.associatedGNMIProfileID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "AssociatedGatewaySecurityID", readOnly = false)   
     public String getAssociatedGatewaySecurityID() {
        return associatedGatewaySecurityID;
@@ -581,6 +614,17 @@ public class Gateway extends BaseObject {
     @JsonIgnore
     public void setBootstrapStatus(GatewayBootstrapStatus value) { 
         this.bootstrapStatus = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
     }
     
     @JsonIgnore
@@ -727,6 +771,17 @@ public class Gateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Libraries", readOnly = false)   
     public String getLibraries() {
        return libraries;
@@ -768,6 +823,28 @@ public class Gateway extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NativeVLAN", readOnly = false)   
+    public String getNativeVLAN() {
+       return nativeVLAN;
+    }
+
+    @JsonIgnore
+    public void setNativeVLAN(String value) { 
+        this.nativeVLAN = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -1046,6 +1123,12 @@ public class Gateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "RoutingPolicies", readOnly = true)   
+    public RoutingPoliciesFetcher getRoutingPolicies() {
+        return routingPolicies;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "SAPEgressQoSProfiles", readOnly = true)   
     public SAPEgressQoSProfilesFetcher getSAPEgressQoSProfiles() {
         return sAPEgressQoSProfiles;
@@ -1196,7 +1279,7 @@ public class Gateway extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.WANSERVICES_FETCHER, getId());
         }
     }public String toString() {
-        return "Gateway [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", UUID=" + UUID + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNetconfProfileID=" + associatedNetconfProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", datapathID=" + datapathID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", gatewayConfigRawVersion=" + gatewayConfigRawVersion + ", gatewayConfigVersion=" + gatewayConfigVersion + ", gatewayConnected=" + gatewayConnected + ", gatewayModel=" + gatewayModel + ", gatewayVersion=" + gatewayVersion + ", lastUpdatedBy=" + lastUpdatedBy + ", libraries=" + libraries + ", locationID=" + locationID + ", managementID=" + managementID + ", name=" + name + ", patches=" + patches + ", peer=" + peer + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", useGatewayVLANVNID=" + useGatewayVLANVNID + ", vendor=" + vendor + ", vtep=" + vtep + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Gateway [" + "BIOSReleaseDate=" + BIOSReleaseDate + ", BIOSVersion=" + BIOSVersion + ", CPUType=" + CPUType + ", MACAddress=" + MACAddress + ", UUID=" + UUID + ", ZFBMatchAttribute=" + ZFBMatchAttribute + ", ZFBMatchValue=" + ZFBMatchValue + ", associatedGNMIProfileID=" + associatedGNMIProfileID + ", associatedGatewaySecurityID=" + associatedGatewaySecurityID + ", associatedGatewaySecurityProfileID=" + associatedGatewaySecurityProfileID + ", associatedNSGInfoID=" + associatedNSGInfoID + ", associatedNetconfProfileID=" + associatedNetconfProfileID + ", autoDiscGatewayID=" + autoDiscGatewayID + ", bootstrapID=" + bootstrapID + ", bootstrapStatus=" + bootstrapStatus + ", creationDate=" + creationDate + ", datapathID=" + datapathID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", family=" + family + ", gatewayConfigRawVersion=" + gatewayConfigRawVersion + ", gatewayConfigVersion=" + gatewayConfigVersion + ", gatewayConnected=" + gatewayConnected + ", gatewayModel=" + gatewayModel + ", gatewayVersion=" + gatewayVersion + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", libraries=" + libraries + ", locationID=" + locationID + ", managementID=" + managementID + ", name=" + name + ", nativeVLAN=" + nativeVLAN + ", owner=" + owner + ", patches=" + patches + ", peer=" + peer + ", pending=" + pending + ", permittedAction=" + permittedAction + ", personality=" + personality + ", productName=" + productName + ", redundancyGroupID=" + redundancyGroupID + ", serialNumber=" + serialNumber + ", systemID=" + systemID + ", templateID=" + templateID + ", useGatewayVLANVNID=" + useGatewayVLANVNID + ", vendor=" + vendor + ", vtep=" + vtep + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

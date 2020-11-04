@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.AlarmsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.GNMISessionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetconfSessionsFetcher;
@@ -53,6 +55,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.NETCONFMANAGER, datasource = Constants.DATASOURCE, image = Constants.NETCONFMANAGER_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.GNMISESSIONS_FETCHER, type = Constants.GNMISESSIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NETCONFSESSIONS_FETCHER, type = Constants.NETCONFSESSIONS_FETCHER), 
@@ -70,11 +74,17 @@ public class NetconfManager extends BaseObject {
     @JsonProperty(value = "assocEntityType")
     protected String assocEntityType;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "entityScope")
     protected NetconfManagerEntityScope entityScope;
+    
+    @JsonProperty(value = "eventProcessingEnabled")
+    protected Boolean eventProcessingEnabled;
     
     @JsonProperty(value = "externalID")
     protected String externalID;
@@ -82,8 +92,14 @@ public class NetconfManager extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "release")
     protected String release;
@@ -96,6 +112,9 @@ public class NetconfManager extends BaseObject {
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private GNMISessionsFetcher gNMISessions;
     
     @JsonIgnore
     private MetadatasFetcher metadatas;
@@ -111,6 +130,8 @@ public class NetconfManager extends BaseObject {
         alarms = new AlarmsFetcher(this);
         
         globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        gNMISessions = new GNMISessionsFetcher(this);
         
         metadatas = new MetadatasFetcher(this);
         
@@ -166,6 +187,17 @@ public class NetconfManager extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
     public java.util.List<String> getEmbeddedMetadata() {
        return embeddedMetadata;
@@ -185,6 +217,17 @@ public class NetconfManager extends BaseObject {
     @JsonIgnore
     public void setEntityScope(NetconfManagerEntityScope value) { 
         this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EventProcessingEnabled", readOnly = false)   
+    public Boolean getEventProcessingEnabled() {
+       return eventProcessingEnabled;
+    }
+
+    @JsonIgnore
+    public void setEventProcessingEnabled(Boolean value) { 
+        this.eventProcessingEnabled = value;
     }
     
     @JsonIgnore
@@ -210,6 +253,17 @@ public class NetconfManager extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -218,6 +272,17 @@ public class NetconfManager extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -252,6 +317,12 @@ public class NetconfManager extends BaseObject {
     @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
     public GlobalMetadatasFetcher getGlobalMetadatas() {
         return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "GNMISessions", readOnly = true)   
+    public GNMISessionsFetcher getGNMISessions() {
+        return gNMISessions;
     }
     
     @JsonIgnore
@@ -319,6 +390,14 @@ public class NetconfManager extends BaseObject {
         }
     }
     @VsoMethod
+    public void createGNMISession(Session session, GNMISession childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GNMISESSIONS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -342,7 +421,7 @@ public class NetconfManager extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "NetconfManager [" + "assocEntityType=" + assocEntityType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", release=" + release + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NetconfManager [" + "assocEntityType=" + assocEntityType + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", eventProcessingEnabled=" + eventProcessingEnabled + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", release=" + release + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

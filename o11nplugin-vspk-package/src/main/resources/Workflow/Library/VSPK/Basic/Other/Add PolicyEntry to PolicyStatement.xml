@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="b9cc2ce7-62a1-5deb-b003-de5ed3e7fd7a"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="b9cc2ce7-62a1-5deb-b003-de5ed3e7fd7a"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add PolicyEntry to PolicyStatement]]></display-name>
 <ref-types><![CDATA[(VSPK:PolicyStatement)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -8,6 +8,8 @@
 <param name='description' type='string' >
 </param>
 <param name='externalID' type='string' >
+</param>
+<param name='matchCriteria' type='string' >
 </param>
 <param name='name' type='string' >
 </param>
@@ -27,6 +29,9 @@ if (description) {
 if (externalID) {
    policyEntryObj.externalID = externalID;
 }
+if (matchCriteria) {
+   policyEntryObj.matchCriteria = matchCriteria;
+}
 if (name) {
    policyEntryObj.name = name;
 }
@@ -36,6 +41,7 @@ policyStatementObj.createPolicyEntry(session, policyEntryObj);
 <in-binding><bind name='policyStatementObj' type='VSPK:PolicyStatement' export-name="policyStatementObj" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='matchCriteria' type='string' export-name="matchCriteria" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
 </in-binding><out-binding><bind name='policyEntryObj' type='VSPK:PolicyEntry' export-name="policyEntryObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -46,6 +52,8 @@ policyStatementObj.createPolicyEntry(session, policyEntryObj);
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="matchCriteria"><desc><![CDATA[matchCriteria]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
 </p-param>

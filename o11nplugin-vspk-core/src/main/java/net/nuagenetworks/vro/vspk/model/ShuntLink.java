@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.VirtualUplinksFetcher;
+
 import net.nuagenetworks.vro.vspk.model.enums.ShuntLinkEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.ShuntLinkPermittedAction;
@@ -53,7 +55,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 @VsoFinder(name = Constants.SHUNTLINK, datasource = Constants.DATASOURCE, image = Constants.SHUNTLINK_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
 
-        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER)
+        @VsoRelation(inventoryChildren = true, name = Constants.PERMISSIONS_FETCHER, type = Constants.PERMISSIONS_FETCHER), 
 })
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -68,6 +70,9 @@ public class ShuntLink extends BaseObject {
     
     @JsonProperty(value = "VLANPeer2ID")
     protected String VLANPeer2ID;
+    
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
     
     @JsonProperty(value = "description")
     protected String description;
@@ -90,8 +95,14 @@ public class ShuntLink extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "permittedAction")
     protected ShuntLinkPermittedAction permittedAction;
@@ -108,6 +119,9 @@ public class ShuntLink extends BaseObject {
     @JsonIgnore
     private PermissionsFetcher permissions;
     
+    @JsonIgnore
+    private VirtualUplinksFetcher virtualUplinks;
+    
     @VsoConstructor
     public ShuntLink() {
         alarms = new AlarmsFetcher(this);
@@ -117,6 +131,8 @@ public class ShuntLink extends BaseObject {
         metadatas = new MetadatasFetcher(this);
         
         permissions = new PermissionsFetcher(this);
+        
+        virtualUplinks = new VirtualUplinksFetcher(this);
         }
 
     @VsoProperty(displayName = "Session", readOnly = true)
@@ -174,6 +190,17 @@ public class ShuntLink extends BaseObject {
     @JsonIgnore
     public void setVLANPeer2ID(String value) { 
         this.VLANPeer2ID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
     }
     
     @JsonIgnore
@@ -254,6 +281,17 @@ public class ShuntLink extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -262,6 +300,17 @@ public class ShuntLink extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -297,6 +346,12 @@ public class ShuntLink extends BaseObject {
     @VsoProperty(displayName = "Permissions", readOnly = true)   
     public PermissionsFetcher getPermissions() {
         return permissions;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "VirtualUplinks", readOnly = true)   
+    public VirtualUplinksFetcher getVirtualUplinks() {
+        return virtualUplinks;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -361,7 +416,7 @@ public class ShuntLink extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "ShuntLink [" + "VLANPeer1ID=" + VLANPeer1ID + ", VLANPeer2ID=" + VLANPeer2ID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer2ID=" + gatewayPeer2ID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ShuntLink [" + "VLANPeer1ID=" + VLANPeer1ID + ", VLANPeer2ID=" + VLANPeer2ID + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer2ID=" + gatewayPeer2ID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", permittedAction=" + permittedAction + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

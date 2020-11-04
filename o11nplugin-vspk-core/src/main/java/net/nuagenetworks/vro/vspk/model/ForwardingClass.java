@@ -49,6 +49,9 @@ public class ForwardingClass extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "fecEnabled")
+    protected Boolean fecEnabled;
+    
     @JsonProperty(value = "forwardingClass")
     protected ForwardingClassForwardingClass forwardingClass;
     
@@ -99,6 +102,17 @@ public class ForwardingClass extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "FecEnabled", readOnly = false)   
+    public Boolean getFecEnabled() {
+       return fecEnabled;
+    }
+
+    @JsonIgnore
+    public void setFecEnabled(Boolean value) { 
+        this.fecEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ForwardingClass", readOnly = false)   
     public ForwardingClassForwardingClass getForwardingClass() {
        return forwardingClass;
@@ -140,7 +154,7 @@ public class ForwardingClass extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.FORWARDINGCLASS, getId());
         }
     }public String toString() {
-        return "ForwardingClass [" + "forwardingClass=" + forwardingClass + ", loadBalancing=" + loadBalancing + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ForwardingClass [" + "fecEnabled=" + fecEnabled + ", forwardingClass=" + forwardingClass + ", loadBalancing=" + loadBalancing + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

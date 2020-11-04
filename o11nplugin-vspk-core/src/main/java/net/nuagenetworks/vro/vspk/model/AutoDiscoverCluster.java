@@ -52,6 +52,9 @@ public class AutoDiscoverCluster extends BaseObject {
     @JsonProperty(value = "assocVCenterDataCenterID")
     protected String assocVCenterDataCenterID;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "entityScope")
     protected AutoDiscoverClusterEntityScope entityScope;
     
@@ -61,11 +64,17 @@ public class AutoDiscoverCluster extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "managedObjectID")
     protected String managedObjectID;
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @VsoConstructor
     public AutoDiscoverCluster() {}
@@ -117,6 +126,17 @@ public class AutoDiscoverCluster extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public AutoDiscoverClusterEntityScope getEntityScope() {
        return entityScope;
@@ -150,6 +170,17 @@ public class AutoDiscoverCluster extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ManagedObjectID", readOnly = false)   
     public String getManagedObjectID() {
        return managedObjectID;
@@ -169,6 +200,17 @@ public class AutoDiscoverCluster extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -191,7 +233,7 @@ public class AutoDiscoverCluster extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.AUTODISCOVERCLUSTER, getId());
         }
     }public String toString() {
-        return "AutoDiscoverCluster [" + "assocVCenterDataCenterID=" + assocVCenterDataCenterID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", managedObjectID=" + managedObjectID + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "AutoDiscoverCluster [" + "assocVCenterDataCenterID=" + assocVCenterDataCenterID + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", managedObjectID=" + managedObjectID + ", name=" + name + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

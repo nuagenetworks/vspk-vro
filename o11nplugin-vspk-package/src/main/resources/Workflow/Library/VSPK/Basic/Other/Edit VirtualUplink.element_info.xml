@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Edit VirtualUplink</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">07e95132-886f-5a42-8d3a-0a924e02ce95</entry>
+</properties>

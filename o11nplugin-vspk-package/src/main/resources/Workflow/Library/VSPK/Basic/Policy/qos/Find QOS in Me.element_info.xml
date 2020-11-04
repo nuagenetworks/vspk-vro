@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/qos</entry>
+<entry key="name">Find QOS in Me</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">91cf7ee2-4a7c-5092-b312-0b8f3ca07d2d</entry>
+</properties>

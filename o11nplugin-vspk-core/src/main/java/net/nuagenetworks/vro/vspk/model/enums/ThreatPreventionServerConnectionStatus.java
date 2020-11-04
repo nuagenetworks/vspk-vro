@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum ThreatPreventionServerConnectionStatus {
 
-    AUTHENTICATION_FAILED("AUTHENTICATION_FAILED", "AUTHENTICATION_FAILED"), CONNECTED("CONNECTED", "CONNECTED"), DISCONNECTED("DISCONNECTED", "DISCONNECTED");
+    AUTHENTICATION_FAILED("AUTHENTICATION_FAILED", "AUTHENTICATION_FAILED"), CONNECTED("CONNECTED", "CONNECTED"), DEGRADED("DEGRADED", "DEGRADED"), DISCONNECTED("DISCONNECTED", "DISCONNECTED"), UNREACHABLE("UNREACHABLE", "UNREACHABLE");
 
     private final String id;
     private final String name;
@@ -68,9 +68,19 @@ public enum ThreatPreventionServerConnectionStatus {
         return CONNECTED;
     }
     
+    @VsoProperty(displayName = "DEGRADED", readOnly = true)
+    public ThreatPreventionServerConnectionStatus getDEGRADED() {
+        return DEGRADED;
+    }
+    
     @VsoProperty(displayName = "DISCONNECTED", readOnly = true)
     public ThreatPreventionServerConnectionStatus getDISCONNECTED() {
         return DISCONNECTED;
+    }
+    
+    @VsoProperty(displayName = "UNREACHABLE", readOnly = true)
+    public ThreatPreventionServerConnectionStatus getUNREACHABLE() {
+        return UNREACHABLE;
     }
     
 

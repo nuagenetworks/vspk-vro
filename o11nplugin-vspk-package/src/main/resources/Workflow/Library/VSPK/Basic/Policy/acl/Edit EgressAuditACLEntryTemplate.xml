@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="0e73e749-e641-5a28-ac78-965870071b93"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit EgressAuditACLEntryTemplate]]></display-name>
+<ref-types><![CDATA[(VSPK:EgressAuditACLEntryTemplate)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='egressAuditACLEntryTemplateObj' type='VSPK:EgressAuditACLEntryTemplate' >
+</param>
+
+<param name='DSCP' type='string' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='etherType' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='locationType' type='VSPK:EgressAuditACLEntryTemplateLocationType' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = egressAuditACLEntryTemplateObj.session;
+
+if (DSCP) {
+   egressAuditACLEntryTemplateObj.DSCP = DSCP;
+} else if (egressAuditACLEntryTemplateObj.DSCP) {
+   egressAuditACLEntryTemplateObj.DSCP = "";
+}
+if (description) {
+   egressAuditACLEntryTemplateObj.description = description;
+} else if (egressAuditACLEntryTemplateObj.description) {
+   egressAuditACLEntryTemplateObj.description = "";
+}
+if (etherType) {
+   egressAuditACLEntryTemplateObj.etherType = etherType;
+} else if (egressAuditACLEntryTemplateObj.etherType) {
+   egressAuditACLEntryTemplateObj.etherType = "";
+}
+if (externalID) {
+   egressAuditACLEntryTemplateObj.externalID = externalID;
+} else if (egressAuditACLEntryTemplateObj.externalID) {
+   egressAuditACLEntryTemplateObj.externalID = "";
+}
+egressAuditACLEntryTemplateObj.locationType = locationType;
+egressAuditACLEntryTemplateObj.save(session, 1);]]></script>
+<in-binding><bind name='egressAuditACLEntryTemplateObj' type='VSPK:EgressAuditACLEntryTemplate' export-name="egressAuditACLEntryTemplateObj" ></bind>
+
+<bind name='DSCP' type='string' export-name="DSCP" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='etherType' type='string' export-name="etherType" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='locationType' type='VSPK:EgressAuditACLEntryTemplateLocationType' export-name="locationType" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="egressAuditACLEntryTemplateObj"><desc><![CDATA[egressAuditACLEntryTemplateObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="DSCP"><desc><![CDATA[DSCP]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressAuditACLEntryTemplateObj.DSCP]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressAuditACLEntryTemplateObj.description]]></p-qual></p-param>
+
+<p-param name="etherType"><desc><![CDATA[etherType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressAuditACLEntryTemplateObj.etherType]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#egressAuditACLEntryTemplateObj.externalID]]></p-qual></p-param>
+
+<p-param name="locationType"><desc><![CDATA[locationType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:EgressAuditACLEntryTemplateLocationType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEgressAuditACLEntryTemplateLocationType").call( #egressAuditACLEntryTemplateObj )]]></p-qual></p-param>
+
+</presentation></workflow>

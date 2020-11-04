@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="671fbe9a-fca5-5a92-8872-87540e1def3f"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit EsIndexConfig]]></display-name>
+<ref-types><![CDATA[(VSPK:EsIndexConfig)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='esIndexConfigObj' type='VSPK:EsIndexConfig' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='indexPattern' type='string' >
+</param>
+
+<param name='indexType' type='VSPK:EsIndexConfigIndexType' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+<param name='numShards' type='number' >
+</param>
+
+<param name='rolloverAlias' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = esIndexConfigObj.session;
+
+if (description) {
+   esIndexConfigObj.description = description;
+} else if (esIndexConfigObj.description) {
+   esIndexConfigObj.description = "";
+}
+if (externalID) {
+   esIndexConfigObj.externalID = externalID;
+} else if (esIndexConfigObj.externalID) {
+   esIndexConfigObj.externalID = "";
+}
+if (indexPattern) {
+   esIndexConfigObj.indexPattern = indexPattern;
+} else if (esIndexConfigObj.indexPattern) {
+   esIndexConfigObj.indexPattern = "";
+}
+esIndexConfigObj.indexType = indexType;
+if (name) {
+   esIndexConfigObj.name = name;
+} else if (esIndexConfigObj.name) {
+   esIndexConfigObj.name = "";
+}
+esIndexConfigObj.numShards = numShards;
+if (rolloverAlias) {
+   esIndexConfigObj.rolloverAlias = rolloverAlias;
+} else if (esIndexConfigObj.rolloverAlias) {
+   esIndexConfigObj.rolloverAlias = "";
+}
+esIndexConfigObj.save(session, 1);]]></script>
+<in-binding><bind name='esIndexConfigObj' type='VSPK:EsIndexConfig' export-name="esIndexConfigObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='indexPattern' type='string' export-name="indexPattern" ></bind>
+
+<bind name='indexType' type='VSPK:EsIndexConfigIndexType' export-name="indexType" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+<bind name='numShards' type='number' export-name="numShards" ></bind>
+
+<bind name='rolloverAlias' type='string' export-name="rolloverAlias" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="esIndexConfigObj"><desc><![CDATA[esIndexConfigObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#esIndexConfigObj.description]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#esIndexConfigObj.externalID]]></p-qual></p-param>
+
+<p-param name="indexPattern"><desc><![CDATA[indexPattern]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#esIndexConfigObj.indexPattern]]></p-qual></p-param>
+
+<p-param name="indexType"><desc><![CDATA[indexType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:EsIndexConfigIndexType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getEsIndexConfigIndexType").call( #esIndexConfigObj )]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#esIndexConfigObj.name]]></p-qual></p-param>
+
+<p-param name="numShards"><desc><![CDATA[numShards]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#esIndexConfigObj.numShards]]></p-qual></p-param>
+
+<p-param name="rolloverAlias"><desc><![CDATA[rolloverAlias]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#esIndexConfigObj.rolloverAlias]]></p-qual></p-param>
+
+</presentation></workflow>

@@ -52,6 +52,9 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
     @JsonProperty(value = "assocEntityID")
     protected String assocEntityID;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "entityScope")
     protected AutoDiscoverHypervisorFromClusterEntityScope entityScope;
     
@@ -64,11 +67,17 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "managedObjectID")
     protected String managedObjectID;
     
     @JsonProperty(value = "networkList")
     protected java.util.List<String> networkList;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @VsoConstructor
     public AutoDiscoverHypervisorFromCluster() {}
@@ -125,6 +134,17 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public AutoDiscoverHypervisorFromClusterEntityScope getEntityScope() {
        return entityScope;
@@ -169,6 +189,17 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ManagedObjectID", readOnly = false)   
     public String getManagedObjectID() {
        return managedObjectID;
@@ -188,6 +219,17 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
     @JsonIgnore
     public void setNetworkList(java.util.List<String> value) { 
         this.networkList = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -210,7 +252,7 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.AUTODISCOVERHYPERVISORFROMCLUSTER, getId());
         }
     }public String toString() {
-        return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + assocEntityID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorIP=" + hypervisorIP + ", lastUpdatedBy=" + lastUpdatedBy + ", managedObjectID=" + managedObjectID + ", networkList=" + networkList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + assocEntityID + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorIP=" + hypervisorIP + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", managedObjectID=" + managedObjectID + ", networkList=" + networkList + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

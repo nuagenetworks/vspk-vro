@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="43fac868-b8bc-5404-96bf-e4a8f37ace67"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="43fac868-b8bc-5404-96bf-e4a8f37ace67"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add VRSRedeploymentpolicy to VCenterHypervisor]]></display-name>
 <ref-types><![CDATA[(VSPK:VCenterHypervisor)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='vCenterHypervisorObj' type='VSPK:VCenterHypervisor' >
 </param>
+<param name='ALUbr0StatusRedeploymentEnabled' type='boolean' >
+</param>
+<param name='CPUUtilizationRedeploymentEnabled' type='boolean' >
+</param>
+<param name='CPUUtilizationThreshold' type='number' >
+</param>
+<param name='VRSCorrectiveActionDelay' type='number' >
+</param>
+<param name='VRSProcessRedeploymentEnabled' type='boolean' >
+</param>
+<param name='VRSVSCStatusRedeploymentEnabled' type='boolean' >
+</param>
+<param name='deploymentCountThreshold' type='number' >
+</param>
 <param name='externalID' type='string' >
+</param>
+<param name='jesxmonProcessRedeploymentEnabled' type='boolean' >
+</param>
+<param name='logDiskUtilizationRedeploymentEnabled' type='boolean' >
+</param>
+<param name='logDiskUtilizationThreshold' type='number' >
+</param>
+<param name='memoryUtilizationRedeploymentEnabled' type='boolean' >
+</param>
+<param name='memoryUtilizationThreshold' type='number' >
+</param>
+<param name='redeploymentDelay' type='number' >
+</param>
+<param name='rootDiskUtilizationRedeploymentEnabled' type='boolean' >
+</param>
+<param name='rootDiskUtilizationThreshold' type='number' >
 </param>
 </input><output><param name='vRSRedeploymentpolicyObj' type='VSPK:VRSRedeploymentpolicy' >
 </param>
@@ -17,20 +47,80 @@
 <script encoded='false'><![CDATA[var session = vCenterHypervisorObj.session;
 
 vRSRedeploymentpolicyObj = new VSPKVRSRedeploymentpolicy();
+vRSRedeploymentpolicyObj.ALUbr0StatusRedeploymentEnabled = ALUbr0StatusRedeploymentEnabled;
+vRSRedeploymentpolicyObj.CPUUtilizationRedeploymentEnabled = CPUUtilizationRedeploymentEnabled;
+vRSRedeploymentpolicyObj.CPUUtilizationThreshold = CPUUtilizationThreshold;
+vRSRedeploymentpolicyObj.VRSCorrectiveActionDelay = VRSCorrectiveActionDelay;
+vRSRedeploymentpolicyObj.VRSProcessRedeploymentEnabled = VRSProcessRedeploymentEnabled;
+vRSRedeploymentpolicyObj.VRSVSCStatusRedeploymentEnabled = VRSVSCStatusRedeploymentEnabled;
+vRSRedeploymentpolicyObj.deploymentCountThreshold = deploymentCountThreshold;
 if (externalID) {
    vRSRedeploymentpolicyObj.externalID = externalID;
 }
+vRSRedeploymentpolicyObj.jesxmonProcessRedeploymentEnabled = jesxmonProcessRedeploymentEnabled;
+vRSRedeploymentpolicyObj.logDiskUtilizationRedeploymentEnabled = logDiskUtilizationRedeploymentEnabled;
+vRSRedeploymentpolicyObj.logDiskUtilizationThreshold = logDiskUtilizationThreshold;
+vRSRedeploymentpolicyObj.memoryUtilizationRedeploymentEnabled = memoryUtilizationRedeploymentEnabled;
+vRSRedeploymentpolicyObj.memoryUtilizationThreshold = memoryUtilizationThreshold;
+vRSRedeploymentpolicyObj.redeploymentDelay = redeploymentDelay;
+vRSRedeploymentpolicyObj.rootDiskUtilizationRedeploymentEnabled = rootDiskUtilizationRedeploymentEnabled;
+vRSRedeploymentpolicyObj.rootDiskUtilizationThreshold = rootDiskUtilizationThreshold;
 
 vCenterHypervisorObj.createVRSRedeploymentpolicy(session, vRSRedeploymentpolicyObj);
 ]]></script>
 <in-binding><bind name='vCenterHypervisorObj' type='VSPK:VCenterHypervisor' export-name="vCenterHypervisorObj" ></bind>
+<bind name='ALUbr0StatusRedeploymentEnabled' type='boolean' export-name="ALUbr0StatusRedeploymentEnabled" ></bind>
+<bind name='CPUUtilizationRedeploymentEnabled' type='boolean' export-name="CPUUtilizationRedeploymentEnabled" ></bind>
+<bind name='CPUUtilizationThreshold' type='number' export-name="CPUUtilizationThreshold" ></bind>
+<bind name='VRSCorrectiveActionDelay' type='number' export-name="VRSCorrectiveActionDelay" ></bind>
+<bind name='VRSProcessRedeploymentEnabled' type='boolean' export-name="VRSProcessRedeploymentEnabled" ></bind>
+<bind name='VRSVSCStatusRedeploymentEnabled' type='boolean' export-name="VRSVSCStatusRedeploymentEnabled" ></bind>
+<bind name='deploymentCountThreshold' type='number' export-name="deploymentCountThreshold" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='jesxmonProcessRedeploymentEnabled' type='boolean' export-name="jesxmonProcessRedeploymentEnabled" ></bind>
+<bind name='logDiskUtilizationRedeploymentEnabled' type='boolean' export-name="logDiskUtilizationRedeploymentEnabled" ></bind>
+<bind name='logDiskUtilizationThreshold' type='number' export-name="logDiskUtilizationThreshold" ></bind>
+<bind name='memoryUtilizationRedeploymentEnabled' type='boolean' export-name="memoryUtilizationRedeploymentEnabled" ></bind>
+<bind name='memoryUtilizationThreshold' type='number' export-name="memoryUtilizationThreshold" ></bind>
+<bind name='redeploymentDelay' type='number' export-name="redeploymentDelay" ></bind>
+<bind name='rootDiskUtilizationRedeploymentEnabled' type='boolean' export-name="rootDiskUtilizationRedeploymentEnabled" ></bind>
+<bind name='rootDiskUtilizationThreshold' type='number' export-name="rootDiskUtilizationThreshold" ></bind>
 </in-binding><out-binding><bind name='vRSRedeploymentpolicyObj' type='VSPK:VRSRedeploymentpolicy' export-name="vRSRedeploymentpolicyObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
 <presentation>
 <p-param name="vCenterHypervisorObj"><desc><![CDATA[vCenterHypervisorObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="ALUbr0StatusRedeploymentEnabled"><desc><![CDATA[ALUbr0StatusRedeploymentEnabled]]></desc>
+</p-param>
+<p-param name="CPUUtilizationRedeploymentEnabled"><desc><![CDATA[CPUUtilizationRedeploymentEnabled]]></desc>
+</p-param>
+<p-param name="CPUUtilizationThreshold"><desc><![CDATA[CPUUtilizationThreshold]]></desc>
+</p-param>
+<p-param name="VRSCorrectiveActionDelay"><desc><![CDATA[VRSCorrectiveActionDelay]]></desc>
+</p-param>
+<p-param name="VRSProcessRedeploymentEnabled"><desc><![CDATA[VRSProcessRedeploymentEnabled]]></desc>
+</p-param>
+<p-param name="VRSVSCStatusRedeploymentEnabled"><desc><![CDATA[VRSVSCStatusRedeploymentEnabled]]></desc>
+</p-param>
+<p-param name="deploymentCountThreshold"><desc><![CDATA[deploymentCountThreshold]]></desc>
+</p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="jesxmonProcessRedeploymentEnabled"><desc><![CDATA[jesxmonProcessRedeploymentEnabled]]></desc>
+</p-param>
+<p-param name="logDiskUtilizationRedeploymentEnabled"><desc><![CDATA[logDiskUtilizationRedeploymentEnabled]]></desc>
+</p-param>
+<p-param name="logDiskUtilizationThreshold"><desc><![CDATA[logDiskUtilizationThreshold]]></desc>
+</p-param>
+<p-param name="memoryUtilizationRedeploymentEnabled"><desc><![CDATA[memoryUtilizationRedeploymentEnabled]]></desc>
+</p-param>
+<p-param name="memoryUtilizationThreshold"><desc><![CDATA[memoryUtilizationThreshold]]></desc>
+</p-param>
+<p-param name="redeploymentDelay"><desc><![CDATA[redeploymentDelay]]></desc>
+</p-param>
+<p-param name="rootDiskUtilizationRedeploymentEnabled"><desc><![CDATA[rootDiskUtilizationRedeploymentEnabled]]></desc>
+</p-param>
+<p-param name="rootDiskUtilizationThreshold"><desc><![CDATA[rootDiskUtilizationThreshold]]></desc>
 </p-param>
 </presentation></workflow>

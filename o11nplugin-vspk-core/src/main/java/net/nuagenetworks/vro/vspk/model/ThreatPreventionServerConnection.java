@@ -52,8 +52,8 @@ public class ThreatPreventionServerConnection extends BaseObject {
     @JsonProperty(value = "FQDN")
     protected String FQDN;
     
-    @JsonProperty(value = "VSDName")
-    protected String VSDName;
+    @JsonProperty(value = "nodeInfo")
+    protected java.util.List<String> nodeInfo;
     
     @JsonProperty(value = "status")
     protected ThreatPreventionServerConnectionStatus status;
@@ -113,14 +113,14 @@ public class ThreatPreventionServerConnection extends BaseObject {
     }
     
     @JsonIgnore
-    @VsoProperty(displayName = "VSDName", readOnly = false)   
-    public String getVSDName() {
-       return VSDName;
+    @VsoProperty(displayName = "NodeInfo", readOnly = false)   
+    public java.util.List<String> getNodeInfo() {
+       return nodeInfo;
     }
 
     @JsonIgnore
-    public void setVSDName(String value) { 
-        this.VSDName = value;
+    public void setNodeInfo(java.util.List<String> value) { 
+        this.nodeInfo = value;
     }
     
     @JsonIgnore
@@ -154,7 +154,7 @@ public class ThreatPreventionServerConnection extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.THREATPREVENTIONSERVERCONNECTION, getId());
         }
     }public String toString() {
-        return "ThreatPreventionServerConnection [" + "FQDN=" + FQDN + ", VSDName=" + VSDName + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "ThreatPreventionServerConnection [" + "FQDN=" + FQDN + ", nodeInfo=" + nodeInfo + ", status=" + status + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

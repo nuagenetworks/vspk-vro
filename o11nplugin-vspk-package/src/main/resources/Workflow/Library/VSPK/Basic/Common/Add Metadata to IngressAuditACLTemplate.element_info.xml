@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Add Metadata to IngressAuditACLTemplate</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">85d1d4fa-b7bf-5961-8708-d283a6d7e187</entry>
+</properties>

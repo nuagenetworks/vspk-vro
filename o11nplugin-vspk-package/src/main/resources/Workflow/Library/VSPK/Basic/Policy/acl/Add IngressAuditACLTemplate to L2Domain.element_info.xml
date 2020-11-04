@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Policy/acl</entry>
+<entry key="name">Add IngressAuditACLTemplate to L2Domain</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">c5f48516-1df8-58ae-a330-3b92653e131e</entry>
+</properties>

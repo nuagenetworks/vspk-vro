@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="32867a5e-5be0-5bf4-8ca0-619e65e0fa82"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="32867a5e-5be0-5bf4-8ca0-619e65e0fa82"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit VNFDescriptor]]></display-name>
 <ref-types><![CDATA[(VSPK:VNFDescriptor)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='vNFDescriptorObj' type='VSPK:VNFDescriptor' >
+</param>
+
+<param name='CPUCount' type='number' >
 </param>
 
 <param name='description' type='string' >
@@ -31,6 +34,7 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = vNFDescriptorObj.session;
 
+vNFDescriptorObj.CPUCount = CPUCount;
 if (description) {
    vNFDescriptorObj.description = description;
 } else if (vNFDescriptorObj.description) {
@@ -56,6 +60,8 @@ vNFDescriptorObj.storageGB = storageGB;
 vNFDescriptorObj.save(session, 1);]]></script>
 <in-binding><bind name='vNFDescriptorObj' type='VSPK:VNFDescriptor' export-name="vNFDescriptorObj" ></bind>
 
+<bind name='CPUCount' type='number' export-name="CPUCount" ></bind>
+
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
@@ -73,6 +79,9 @@ vNFDescriptorObj.save(session, 1);]]></script>
 <presentation>
 <p-param name="vNFDescriptorObj"><desc><![CDATA[vNFDescriptorObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="CPUCount"><desc><![CDATA[CPUCount]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#vNFDescriptorObj.CPUCount]]></p-qual></p-param>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#vNFDescriptorObj.description]]></p-qual></p-param>

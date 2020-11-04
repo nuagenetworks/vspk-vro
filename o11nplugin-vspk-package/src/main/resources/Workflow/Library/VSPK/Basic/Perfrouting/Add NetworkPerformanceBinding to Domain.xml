@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="aad6747b-331f-50d3-9ce6-a007e5c22b15"  version="20.5.3" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="aad6747b-331f-50d3-9ce6-a007e5c22b15"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add NetworkPerformanceBinding to Domain]]></display-name>
 <ref-types><![CDATA[(VSPK:Domain)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='domainObj' type='VSPK:Domain' >
+</param>
+<param name='associatedNetworkMeasurementID' type='string' >
 </param>
 <param name='externalID' type='string' >
 </param>
@@ -17,6 +19,9 @@
 <script encoded='false'><![CDATA[var session = domainObj.session;
 
 networkPerformanceBindingObj = new VSPKNetworkPerformanceBinding();
+if (associatedNetworkMeasurementID) {
+   networkPerformanceBindingObj.associatedNetworkMeasurementID = associatedNetworkMeasurementID;
+}
 if (externalID) {
    networkPerformanceBindingObj.externalID = externalID;
 }
@@ -24,6 +29,7 @@ if (externalID) {
 domainObj.createNetworkPerformanceBinding(session, networkPerformanceBindingObj);
 ]]></script>
 <in-binding><bind name='domainObj' type='VSPK:Domain' export-name="domainObj" ></bind>
+<bind name='associatedNetworkMeasurementID' type='string' export-name="associatedNetworkMeasurementID" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 </in-binding><out-binding><bind name='networkPerformanceBindingObj' type='VSPK:NetworkPerformanceBinding' export-name="networkPerformanceBindingObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
@@ -31,6 +37,8 @@ domainObj.createNetworkPerformanceBinding(session, networkPerformanceBindingObj)
 <presentation>
 <p-param name="domainObj"><desc><![CDATA[domainObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="associatedNetworkMeasurementID"><desc><![CDATA[associatedNetworkMeasurementID]]></desc>
+</p-param>
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 </presentation></workflow>

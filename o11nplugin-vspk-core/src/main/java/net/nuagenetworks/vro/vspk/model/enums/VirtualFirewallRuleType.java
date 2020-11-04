@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VirtualFirewallRuleType {
 
-    THREAT_PREVENTION("THREAT_PREVENTION", "THREAT_PREVENTION");
+    L4("L4", "L4"), L7("L7", "L7"), THREAT_PREVENTION("THREAT_PREVENTION", "THREAT_PREVENTION"), WEB_FILTER("WEB_FILTER", "WEB_FILTER");
 
     private final String id;
     private final String name;
@@ -58,9 +58,24 @@ public enum VirtualFirewallRuleType {
     }
 
     
+    @VsoProperty(displayName = "L4", readOnly = true)
+    public VirtualFirewallRuleType getL4() {
+        return L4;
+    }
+    
+    @VsoProperty(displayName = "L7", readOnly = true)
+    public VirtualFirewallRuleType getL7() {
+        return L7;
+    }
+    
     @VsoProperty(displayName = "THREAT_PREVENTION", readOnly = true)
     public VirtualFirewallRuleType getTHREAT_PREVENTION() {
         return THREAT_PREVENTION;
+    }
+    
+    @VsoProperty(displayName = "WEB_FILTER", readOnly = true)
+    public VirtualFirewallRuleType getWEB_FILTER() {
+        return WEB_FILTER;
     }
     
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Stats</entry>
+<entry key="name">Edit EsIndexConfig</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">671fbe9a-fca5-5a92-8872-87540e1def3f</entry>
+</properties>
