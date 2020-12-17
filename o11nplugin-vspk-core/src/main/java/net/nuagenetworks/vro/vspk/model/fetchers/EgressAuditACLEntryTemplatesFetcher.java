@@ -30,7 +30,11 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.EgressAuditACLEntryTemplate;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.Domain;
+
 import net.nuagenetworks.vro.vspk.model.EgressAuditACLTemplate;
+
+import net.nuagenetworks.vro.vspk.model.L2Domain;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.RestObject;
@@ -64,11 +68,31 @@ public class EgressAuditACLEntryTemplatesFetcher extends BaseFetcher<EgressAudit
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "Domain", readOnly = true)
+    public Domain getDomain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Domain) {
+            return (Domain) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "EgressAuditACLTemplate", readOnly = true)
     public EgressAuditACLTemplate getEgressAuditACLTemplate() {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof EgressAuditACLTemplate) {
             return (EgressAuditACLTemplate) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "L2Domain", readOnly = true)
+    public L2Domain getL2Domain() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof L2Domain) {
+            return (L2Domain) obj;
         }
         
         return null;

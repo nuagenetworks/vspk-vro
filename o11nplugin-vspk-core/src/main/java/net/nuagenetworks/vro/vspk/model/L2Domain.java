@@ -52,6 +52,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EgressACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressAdvFwdTemplatesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EgressAuditACLEntryTemplatesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EgressAuditACLTemplatesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
@@ -411,6 +413,9 @@ public class L2Domain extends BaseObject {
     private EgressAdvFwdTemplatesFetcher egressAdvFwdTemplates;
     
     @JsonIgnore
+    private EgressAuditACLEntryTemplatesFetcher egressAuditACLEntryTemplates;
+    
+    @JsonIgnore
     private EgressAuditACLTemplatesFetcher egressAuditACLTemplates;
     
     @JsonIgnore
@@ -547,6 +552,8 @@ public class L2Domain extends BaseObject {
         egressACLTemplates = new EgressACLTemplatesFetcher(this);
         
         egressAdvFwdTemplates = new EgressAdvFwdTemplatesFetcher(this);
+        
+        egressAuditACLEntryTemplates = new EgressAuditACLEntryTemplatesFetcher(this);
         
         egressAuditACLTemplates = new EgressAuditACLTemplatesFetcher(this);
         
@@ -1260,6 +1267,12 @@ public class L2Domain extends BaseObject {
     @VsoProperty(displayName = "EgressAdvFwdTemplates", readOnly = true)   
     public EgressAdvFwdTemplatesFetcher getEgressAdvFwdTemplates() {
         return egressAdvFwdTemplates;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EgressAuditACLEntryTemplates", readOnly = true)   
+    public EgressAuditACLEntryTemplatesFetcher getEgressAuditACLEntryTemplates() {
+        return egressAuditACLEntryTemplates;
     }
     
     @JsonIgnore

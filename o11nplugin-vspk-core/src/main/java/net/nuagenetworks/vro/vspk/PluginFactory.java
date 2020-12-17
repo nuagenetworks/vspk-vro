@@ -6729,6 +6729,13 @@ public final class PluginFactory extends BasePluginFactory {
             return toList(ModelHelper.getEgressAdvFwdTemplatesFetcherForDomainId(id));
         }
         
+        if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER)) {
+            return toList(ModelHelper.getEgressAuditACLEntryTemplatesFetcherForDomainId(id));
+        }
+        if (type.equals(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER) && relationName.equals(Constants.EGRESSAUDITACLENTRYTEMPLATES)) {
+            return ModelHelper.getEgressAuditACLEntryTemplatesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.EGRESSAUDITACLTEMPLATES_FETCHER)) {
             return toList(ModelHelper.getEgressAuditACLTemplatesFetcherForDomainId(id));
         }
@@ -7236,9 +7243,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.EGRESSAUDITACLTEMPLATE) && relationName.equals(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER)) {
             return toList(ModelHelper.getEgressAuditACLEntryTemplatesFetcherForEgressAuditACLTemplateId(id));
-        }
-        if (type.equals(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER) && relationName.equals(Constants.EGRESSAUDITACLENTRYTEMPLATES)) {
-            return ModelHelper.getEgressAuditACLEntryTemplatesForFetcherId(id);
         }
         
         if (type.equals(Constants.EGRESSAUDITACLTEMPLATE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -9084,6 +9088,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.EGRESSADVFWDTEMPLATES_FETCHER)) {
             return toList(ModelHelper.getEgressAdvFwdTemplatesFetcherForL2DomainId(id));
+        }
+        
+        if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER)) {
+            return toList(ModelHelper.getEgressAuditACLEntryTemplatesFetcherForL2DomainId(id));
         }
         
         if (type.equals(Constants.L2DOMAIN) && relationName.equals(Constants.EGRESSAUDITACLTEMPLATES_FETCHER)) {

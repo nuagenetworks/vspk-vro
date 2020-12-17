@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="11d4eba4-56a6-5c22-9c98-298a449d7dd5"  version="20.10.1" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="11d4eba4-56a6-5c22-9c98-298a449d7dd5"  version="20.10.2" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add VNF to Enterprise]]></display-name>
 <ref-types><![CDATA[(VSPK:Enterprise)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='enterpriseObj' type='VSPK:Enterprise' >
 </param>
 <param name='NSGatewayID' type='string' >
+</param>
+<param name='VNFDescriptorID' type='string' >
 </param>
 <param name='description' type='string' >
 </param>
@@ -26,6 +28,9 @@ vNFObj = new VSPKVNF();
 if (NSGatewayID) {
    vNFObj.NSGatewayID = NSGatewayID;
 }
+if (VNFDescriptorID) {
+   vNFObj.VNFDescriptorID = VNFDescriptorID;
+}
 if (description) {
    vNFObj.description = description;
 }
@@ -40,6 +45,7 @@ enterpriseObj.createVNF(session, vNFObj);
 ]]></script>
 <in-binding><bind name='enterpriseObj' type='VSPK:Enterprise' export-name="enterpriseObj" ></bind>
 <bind name='NSGatewayID' type='string' export-name="NSGatewayID" ></bind>
+<bind name='VNFDescriptorID' type='string' export-name="VNFDescriptorID" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
@@ -50,6 +56,8 @@ enterpriseObj.createVNF(session, vNFObj);
 <p-param name="enterpriseObj"><desc><![CDATA[enterpriseObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="NSGatewayID"><desc><![CDATA[NSGatewayID]]></desc>
+</p-param>
+<p-param name="VNFDescriptorID"><desc><![CDATA[VNFDescriptorID]]></desc>
 </p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>

@@ -7159,6 +7159,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static EgressAuditACLEntryTemplatesFetcher getEgressAuditACLEntryTemplatesFetcherForDomainId(String id) throws RestException {
+        Domain obj = getObject(Constants.DOMAIN, id);
+        if (obj == null) {
+            obj = getDomainById(id);
+        }
+
+        if (obj != null) {
+            EgressAuditACLEntryTemplatesFetcher fetcher = obj.getEgressAuditACLEntryTemplates();
+            return addFetcher(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static EgressAuditACLTemplatesFetcher getEgressAuditACLTemplatesFetcherForDomainId(String id) throws RestException {
         Domain obj = getObject(Constants.DOMAIN, id);
         if (obj == null) {
@@ -9680,7 +9694,15 @@ public class ModelHelper extends BaseModelHelper {
         if (fetcher != null) {
             return (EgressAuditACLEntryTemplatesFetcher) fetcher;
         }
+        if ((fetcher = getEgressAuditACLEntryTemplatesFetcherForDomainId(id)) != null) {
+            return (EgressAuditACLEntryTemplatesFetcher) addFetcher(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getEgressAuditACLEntryTemplatesFetcherForEgressAuditACLTemplateId(id)) != null) {
+            return (EgressAuditACLEntryTemplatesFetcher) addFetcher(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getEgressAuditACLEntryTemplatesFetcherForL2DomainId(id)) != null) {
             return (EgressAuditACLEntryTemplatesFetcher) addFetcher(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER, fetcher);
         }
         return null;
@@ -20622,6 +20644,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             EgressAdvFwdTemplatesFetcher fetcher = obj.getEgressAdvFwdTemplates();
             return addFetcher(Constants.EGRESSADVFWDTEMPLATES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static EgressAuditACLEntryTemplatesFetcher getEgressAuditACLEntryTemplatesFetcherForL2DomainId(String id) throws RestException {
+        L2Domain obj = getObject(Constants.L2DOMAIN, id);
+        if (obj == null) {
+            obj = getL2DomainById(id);
+        }
+
+        if (obj != null) {
+            EgressAuditACLEntryTemplatesFetcher fetcher = obj.getEgressAuditACLEntryTemplates();
+            return addFetcher(Constants.EGRESSAUDITACLENTRYTEMPLATES_FETCHER, fetcher);
         }
 
         return null;

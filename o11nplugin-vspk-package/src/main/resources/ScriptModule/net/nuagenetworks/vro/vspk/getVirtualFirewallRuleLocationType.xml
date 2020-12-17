@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getVirtualFirewallRuleLocationType" result-type="VSPK:VirtualFirewallRuleLocationType" api-version="6.0.0"  id="536e5d8c-7e36-5d53-8c60-5c99cc48f79c"  version="20.10.1"  allowed-operations="vef" ><param n="virtualFirewallRuleObj" t="VSPK:VirtualFirewallRule"></param><script encoded='false'><![CDATA[return virtualFirewallRuleObj.locationType;]]></script>
+<dunes-script-module name="getVirtualFirewallRuleLocationType" result-type="VSPK:VirtualFirewallRuleLocationType" api-version="6.0.0"  id="536e5d8c-7e36-5d53-8c60-5c99cc48f79c"  version="20.10.2"  allowed-operations="vef" ><param n="virtualFirewallRuleObj" t="VSPK:VirtualFirewallRule"></param><script encoded='false'><![CDATA[return virtualFirewallRuleObj.locationType;]]></script>
 </dunes-script-module>
