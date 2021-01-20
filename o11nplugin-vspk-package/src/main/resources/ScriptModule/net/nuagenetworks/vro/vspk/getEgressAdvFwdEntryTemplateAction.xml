@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getEgressAdvFwdEntryTemplateAction" result-type="VSPK:EgressAdvFwdEntryTemplateAction" api-version="6.0.0"  id="9838fde3-867b-516f-a2d5-ff159fb10445"  version="6.0.9"  allowed-operations="vef" ><param n="egressAdvFwdEntryTemplateObj" t="VSPK:EgressAdvFwdEntryTemplate"></param><script encoded='false'><![CDATA[return egressAdvFwdEntryTemplateObj.action;]]></script>
+<dunes-script-module name="getEgressAdvFwdEntryTemplateAction" result-type="VSPK:EgressAdvFwdEntryTemplateAction" api-version="6.0.0"  id="9838fde3-867b-516f-a2d5-ff159fb10445"  version="6.0.11"  allowed-operations="vef" ><param n="egressAdvFwdEntryTemplateObj" t="VSPK:EgressAdvFwdEntryTemplate"></param><script encoded='false'><![CDATA[return egressAdvFwdEntryTemplateObj.action;]]></script>
 </dunes-script-module>
