@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum VMStatus {
 
-    BLOCKED("BLOCKED", "BLOCKED"), CRASHED("CRASHED", "CRASHED"), DELETE_PENDING("DELETE_PENDING", "DELETE_PENDING"), INIT("INIT", "INIT"), LAST("LAST", "LAST"), NOSTATE("NOSTATE", "NOSTATE"), PAUSED("PAUSED", "PAUSED"), RUNNING("RUNNING", "RUNNING"), SHUTDOWN("SHUTDOWN", "SHUTDOWN"), SHUTOFF("SHUTOFF", "SHUTOFF"), UNKNOWN("UNKNOWN", "UNKNOWN"), UNREACHABLE("UNREACHABLE", "UNREACHABLE");
+    BLOCKED("BLOCKED", "BLOCKED"), CRASHED("CRASHED", "CRASHED"), DELETE_PENDING("DELETE_PENDING", "DELETE_PENDING"), INIT("INIT", "INIT"), LAST("LAST", "LAST"), NOSTATE("NOSTATE", "NOSTATE"), PAUSED("PAUSED", "PAUSED"), RUNNING("RUNNING", "RUNNING"), SHUTDOWN("SHUTDOWN", "SHUTDOWN"), SHUTOFF("SHUTOFF", "SHUTOFF"), UNKNOWN("UNKNOWN", "UNKNOWN"), UNREACHABLE("UNREACHABLE", "UNREACHABLE"), IDLE("IDLE", "IDLE");
 
     private final String id;
     private final String name;
@@ -116,6 +116,11 @@ public enum VMStatus {
     @VsoProperty(displayName = "UNREACHABLE", readOnly = true)
     public VMStatus getUNREACHABLE() {
         return UNREACHABLE;
+    }
+    
+    @VsoProperty(displayName = "IDLE", readOnly = true)
+    public VMStatus getIDLE() {
+        return IDLE;
     }
     
 

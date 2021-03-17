@@ -3952,12 +3952,20 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.ROLES_FETCHER)) {
             return ModelHelper.getRolesFetcherById(id);
         }
+        if (type.equals(Constants.ROLE_ENTITYSCOPE_ENUM)) {
+            return RoleEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.ROLEENTRY)) {
             return ModelHelper.getRoleentryById(id);
         }
         if (type.equals(Constants.ROLEENTRIES_FETCHER)) {
             return ModelHelper.getRoleentriesFetcherById(id);
         }
+        if (type.equals(Constants.ROLEENTRY_ENTITYSCOPE_ENUM)) {
+            return RoleentryEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.ROLEENTRY_ROLEACCESSTYPELIST_ENUM)) {
             return RoleentryRoleAccessTypeList.getEnumById(id);
         }
@@ -11410,11 +11418,35 @@ public final class PluginFactory extends BasePluginFactory {
             return toList(ModelHelper.getPermissionsFetcherForVMResyncId(id));
         }
         
+        if (type.equals(Constants.ROLE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForRoleId(id));
+        }
+        
+        if (type.equals(Constants.ROLE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForRoleId(id));
+        }
+        
+        if (type.equals(Constants.ROLE) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
+            return toList(ModelHelper.getPermissionsFetcherForRoleId(id));
+        }
+        
         if (type.equals(Constants.ROLE) && relationName.equals(Constants.ROLEENTRIES_FETCHER)) {
             return toList(ModelHelper.getRoleentriesFetcherForRoleId(id));
         }
         if (type.equals(Constants.ROLEENTRIES_FETCHER) && relationName.equals(Constants.ROLEENTRIES)) {
             return ModelHelper.getRoleentriesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ROLEENTRY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForRoleentryId(id));
+        }
+        
+        if (type.equals(Constants.ROLEENTRY) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForRoleentryId(id));
+        }
+        
+        if (type.equals(Constants.ROLEENTRY) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
+            return toList(ModelHelper.getPermissionsFetcherForRoleentryId(id));
         }
         
         if (type.equals(Constants.ROUTINGPOLICY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -17535,6 +17567,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<RolesFetcher> allObjs = ModelHelper.getAllRolesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.ROLE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(RoleEntityScope.values()));
+        }
+        
         if (type.equals(Constants.ROLEENTRY)) {
             java.util.List<Roleentry> allObjs = ModelHelper.getAllRoleentries();
             return new QueryResult(allObjs);
@@ -17543,6 +17579,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<RoleentriesFetcher> allObjs = ModelHelper.getAllRoleentriesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.ROLEENTRY_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(RoleentryEntityScope.values()));
+        }
+        
         if (type.equals(Constants.ROLEENTRY_ROLEACCESSTYPELIST_ENUM)) {
             return new QueryResult(Arrays.asList(RoleentryRoleAccessTypeList.values()));
         }

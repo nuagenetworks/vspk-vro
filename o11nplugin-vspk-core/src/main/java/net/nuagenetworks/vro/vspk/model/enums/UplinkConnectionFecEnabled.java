@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum UplinkConnectionFecEnabled {
 
-    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED"), SUPPORTED("SUPPORTED", "SUPPORTED");
+    ACTIVE("ACTIVE", "ACTIVE"), DISABLED("DISABLED", "DISABLED"), PASSIVE("PASSIVE", "PASSIVE");
 
     private final String id;
     private final String name;
@@ -58,19 +58,19 @@ public enum UplinkConnectionFecEnabled {
     }
 
     
+    @VsoProperty(displayName = "ACTIVE", readOnly = true)
+    public UplinkConnectionFecEnabled getACTIVE() {
+        return ACTIVE;
+    }
+    
     @VsoProperty(displayName = "DISABLED", readOnly = true)
     public UplinkConnectionFecEnabled getDISABLED() {
         return DISABLED;
     }
     
-    @VsoProperty(displayName = "ENABLED", readOnly = true)
-    public UplinkConnectionFecEnabled getENABLED() {
-        return ENABLED;
-    }
-    
-    @VsoProperty(displayName = "SUPPORTED", readOnly = true)
-    public UplinkConnectionFecEnabled getSUPPORTED() {
-        return SUPPORTED;
+    @VsoProperty(displayName = "PASSIVE", readOnly = true)
+    public UplinkConnectionFecEnabled getPASSIVE() {
+        return PASSIVE;
     }
     
 

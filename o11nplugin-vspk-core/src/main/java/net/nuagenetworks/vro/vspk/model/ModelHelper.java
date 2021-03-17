@@ -15564,6 +15564,14 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForRoleId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForRoleentryId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForRoutingPolicyId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -25016,6 +25024,14 @@ public class ModelHelper extends BaseModelHelper {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getMetadatasFetcherForRoleId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForRoleentryId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getMetadatasFetcherForRoutingPolicyId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
@@ -31835,6 +31851,14 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForRoleId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForRoleentryId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForRoutingPolicyId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
@@ -35233,6 +35257,48 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForRoleId(String id) throws RestException {
+        Role obj = getObject(Constants.ROLE, id);
+        if (obj == null) {
+            obj = getRoleById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForRoleId(String id) throws RestException {
+        Role obj = getObject(Constants.ROLE, id);
+        if (obj == null) {
+            obj = getRoleById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForRoleId(String id) throws RestException {
+        Role obj = getObject(Constants.ROLE, id);
+        if (obj == null) {
+            obj = getRoleById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static RoleentriesFetcher getRoleentriesFetcherForRoleId(String id) throws RestException {
         Role obj = getObject(Constants.ROLE, id);
         if (obj == null) {
@@ -35309,7 +35375,49 @@ public class ModelHelper extends BaseModelHelper {
         }
 
         return null;
-    }public static java.util.List<Roleentry> getRoleentriesForFetcherId(String id) throws RestException {
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForRoleentryId(String id) throws RestException {
+        Roleentry obj = getObject(Constants.ROLEENTRY, id);
+        if (obj == null) {
+            obj = getRoleentryById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForRoleentryId(String id) throws RestException {
+        Roleentry obj = getObject(Constants.ROLEENTRY, id);
+        if (obj == null) {
+            obj = getRoleentryById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForRoleentryId(String id) throws RestException {
+        Roleentry obj = getObject(Constants.ROLEENTRY, id);
+        if (obj == null) {
+            obj = getRoleentryById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<Roleentry> getRoleentriesForFetcherId(String id) throws RestException {
         RoleentriesFetcher fetcher = getRoleentriesFetcherById(id);
         if (fetcher != null) {
             try {

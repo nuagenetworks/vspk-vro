@@ -1837,7 +1837,9 @@ public interface Constants extends BaseConstants {
     String VMRESYNC_ENTITYSCOPE_ENUM = "VMResyncEntityScope";
     String VMRESYNC_STATUS_ENUM = "VMResyncStatus";
     
+    String ROLE_ENTITYSCOPE_ENUM = "RoleEntityScope";
     
+    String ROLEENTRY_ENTITYSCOPE_ENUM = "RoleentryEntityScope";
     String ROLEENTRY_ROLEACCESSTYPELIST_ENUM = "RoleentryRoleAccessTypeList";
     
     String ROUTINGPOLICY_CONTENTTYPE_ENUM = "RoutingPolicyContentType";

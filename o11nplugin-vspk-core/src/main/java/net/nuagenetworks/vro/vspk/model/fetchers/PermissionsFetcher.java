@@ -410,6 +410,10 @@ import net.nuagenetworks.vro.vspk.model.RemoteVrsInfo;
 
 import net.nuagenetworks.vro.vspk.model.VMResync;
 
+import net.nuagenetworks.vro.vspk.model.Role;
+
+import net.nuagenetworks.vro.vspk.model.Roleentry;
+
 import net.nuagenetworks.vro.vspk.model.RoutingPolicy;
 
 import net.nuagenetworks.vro.vspk.model.RoutingPolicyBinding;
@@ -2477,6 +2481,26 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof VMResync) {
             return (VMResync) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Role", readOnly = true)
+    public Role getRole() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Role) {
+            return (Role) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Roleentry", readOnly = true)
+    public Roleentry getRoleentry() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Roleentry) {
+            return (Roleentry) obj;
         }
         
         return null;

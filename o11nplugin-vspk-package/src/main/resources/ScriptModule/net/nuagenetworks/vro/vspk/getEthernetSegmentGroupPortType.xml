@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getEthernetSegmentGroupPortType" result-type="VSPK:EthernetSegmentGroupPortType" api-version="6.0.0"  id="a6585be6-1ae8-52e2-be40-10665ed44acb"  version="20.10.2"  allowed-operations="vef" ><param n="ethernetSegmentGroupObj" t="VSPK:EthernetSegmentGroup"></param><script encoded='false'><![CDATA[return ethernetSegmentGroupObj.portType;]]></script>
+<dunes-script-module name="getEthernetSegmentGroupPortType" result-type="VSPK:EthernetSegmentGroupPortType" api-version="6.0.0"  id="a6585be6-1ae8-52e2-be40-10665ed44acb"  version="20.10.3"  allowed-operations="vef" ><param n="ethernetSegmentGroupObj" t="VSPK:EthernetSegmentGroup"></param><script encoded='false'><![CDATA[return ethernetSegmentGroupObj.portType;]]></script>
 </dunes-script-module>

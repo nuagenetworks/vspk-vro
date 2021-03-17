@@ -41,7 +41,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 @VsoFinder(name = Constants.SUPPLEMENTALINFRACONFIG, datasource = Constants.DATASOURCE, image = Constants.SUPPLEMENTALINFRACONFIG_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {})
 @VsoObject(create = false, strict = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-@RestEntity(restName = "supplementalinfraconfig", resourceName = "supplementalinfraconfigs")
+@RestEntity(restName = "supplementalinfraconfig", resourceName = "supplementalinfraconfig")
 public class SupplementalInfraConfig extends BaseObject {
 
     private static final long serialVersionUID = 1L;
