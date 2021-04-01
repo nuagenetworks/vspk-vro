@@ -83,6 +83,9 @@ public class BRConnection extends BaseObject {
     @JsonProperty(value = "advertisementCriteria")
     protected BRConnectionAdvertisementCriteria advertisementCriteria;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
     
@@ -104,11 +107,17 @@ public class BRConnection extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "mode")
     protected BRConnectionMode mode;
     
     @JsonProperty(value = "netmask")
     protected String netmask;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "uplinkID")
     protected Long uplinkID;
@@ -238,6 +247,17 @@ public class BRConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
     public java.util.List<String> getEmbeddedMetadata() {
        return embeddedMetadata;
@@ -315,6 +335,17 @@ public class BRConnection extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Mode", readOnly = false)   
     public BRConnectionMode getMode() {
        return mode;
@@ -334,6 +365,17 @@ public class BRConnection extends BaseObject {
     @JsonIgnore
     public void setNetmask(String value) { 
         this.netmask = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -427,7 +469,7 @@ public class BRConnection extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", lastUpdatedBy=" + lastUpdatedBy + ", mode=" + mode + ", netmask=" + netmask + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BRConnection [" + "DNSAddress=" + DNSAddress + ", DNSAddressV6=" + DNSAddressV6 + ", address=" + address + ", addressFamily=" + addressFamily + ", addressV6=" + addressV6 + ", advertisementCriteria=" + advertisementCriteria + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", gatewayV6=" + gatewayV6 + ", inherited=" + inherited + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", mode=" + mode + ", netmask=" + netmask + ", owner=" + owner + ", uplinkID=" + uplinkID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

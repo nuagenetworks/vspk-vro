@@ -61,6 +61,9 @@ public class Tier extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -78,6 +81,12 @@ public class Tier extends BaseObject {
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "packetCount")
     protected Long packetCount;
@@ -150,6 +159,17 @@ public class Tier extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -213,6 +233,28 @@ public class Tier extends BaseObject {
     @JsonIgnore
     public void setLastUpdatedBy(String value) { 
         this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -330,7 +372,7 @@ public class Tier extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Tier [" + "description=" + description + ", downThresholdCount=" + downThresholdCount + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", packetCount=" + packetCount + ", probeInterval=" + probeInterval + ", tierType=" + tierType + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Tier [" + "creationDate=" + creationDate + ", description=" + description + ", downThresholdCount=" + downThresholdCount + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", packetCount=" + packetCount + ", probeInterval=" + probeInterval + ", tierType=" + tierType + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

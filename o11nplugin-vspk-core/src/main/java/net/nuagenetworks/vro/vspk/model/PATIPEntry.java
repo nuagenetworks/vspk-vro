@@ -63,6 +63,9 @@ public class PATIPEntry extends BaseObject {
     @JsonProperty(value = "associatedDomainID")
     protected String associatedDomainID;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "entityScope")
     protected PATIPEntryEntityScope entityScope;
     
@@ -74,6 +77,12 @@ public class PATIPEntry extends BaseObject {
     
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @VsoConstructor
     public PATIPEntry() {}
@@ -163,6 +172,17 @@ public class PATIPEntry extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EntityScope", readOnly = false)   
     public PATIPEntryEntityScope getEntityScope() {
        return entityScope;
@@ -205,6 +225,28 @@ public class PATIPEntry extends BaseObject {
     public void setLastUpdatedBy(String value) { 
         this.lastUpdatedBy = value;
     }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
+    }
     @VsoMethod
     public void fetch(Session session) throws RestException {
         super.fetch(session);
@@ -226,7 +268,7 @@ public class PATIPEntry extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.PATIPENTRY, getId());
         }
     }public String toString() {
-        return "PATIPEntry [" + "IPAddress=" + IPAddress + ", IPType=" + IPType + ", PATCentralized=" + PATCentralized + ", associatedDomainID=" + associatedDomainID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorID=" + hypervisorID + ", lastUpdatedBy=" + lastUpdatedBy + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PATIPEntry [" + "IPAddress=" + IPAddress + ", IPType=" + IPType + ", PATCentralized=" + PATCentralized + ", associatedDomainID=" + associatedDomainID + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorID=" + hypervisorID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

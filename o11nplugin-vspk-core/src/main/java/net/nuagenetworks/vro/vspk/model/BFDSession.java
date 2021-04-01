@@ -72,6 +72,9 @@ public class BFDSession extends BaseObject {
     @JsonProperty(value = "BFDTimer")
     protected Long BFDTimer;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
     
@@ -84,8 +87,14 @@ public class BFDSession extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "multiHopEnabled")
     protected Boolean multiHopEnabled;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -196,6 +205,17 @@ public class BFDSession extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
     public java.util.List<String> getEmbeddedMetadata() {
        return embeddedMetadata;
@@ -240,6 +260,17 @@ public class BFDSession extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MultiHopEnabled", readOnly = false)   
     public Boolean getMultiHopEnabled() {
        return multiHopEnabled;
@@ -248,6 +279,17 @@ public class BFDSession extends BaseObject {
     @JsonIgnore
     public void setMultiHopEnabled(Boolean value) { 
         this.multiHopEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -307,7 +349,7 @@ public class BFDSession extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "BFDSession [" + "BFDDestinationIP=" + BFDDestinationIP + ", BFDDestinationIPType=" + BFDDestinationIPType + ", BFDDestinationIPv6=" + BFDDestinationIPv6 + ", BFDMultiplier=" + BFDMultiplier + ", BFDTimer=" + BFDTimer + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", multiHopEnabled=" + multiHopEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "BFDSession [" + "BFDDestinationIP=" + BFDDestinationIP + ", BFDDestinationIPType=" + BFDDestinationIPType + ", BFDDestinationIPv6=" + BFDDestinationIPv6 + ", BFDMultiplier=" + BFDMultiplier + ", BFDTimer=" + BFDTimer + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", multiHopEnabled=" + multiHopEnabled + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

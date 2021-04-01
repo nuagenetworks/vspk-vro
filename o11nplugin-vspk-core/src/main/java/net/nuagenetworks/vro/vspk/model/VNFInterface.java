@@ -86,6 +86,9 @@ public class VNFInterface extends BaseObject {
     @JsonProperty(value = "attachedNetworkType")
     protected VNFInterfaceAttachedNetworkType attachedNetworkType;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "domainID")
     protected String domainID;
     
@@ -107,6 +110,9 @@ public class VNFInterface extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "name")
     protected String name;
     
@@ -115,6 +121,9 @@ public class VNFInterface extends BaseObject {
     
     @JsonProperty(value = "networkName")
     protected String networkName;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "policyDecisionID")
     protected String policyDecisionID;
@@ -276,6 +285,17 @@ public class VNFInterface extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DomainID", readOnly = false)   
     public String getDomainID() {
        return domainID;
@@ -353,6 +373,17 @@ public class VNFInterface extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -383,6 +414,17 @@ public class VNFInterface extends BaseObject {
     @JsonIgnore
     public void setNetworkName(String value) { 
         this.networkName = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -486,7 +528,7 @@ public class VNFInterface extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNFInterface [" + "IPAddress=" + IPAddress + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", MAC=" + MAC + ", VNFUUID=" + VNFUUID + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", domainID=" + domainID + ", domainName=" + domainName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", policyDecisionID=" + policyDecisionID + ", type=" + type + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VNFInterface [" + "IPAddress=" + IPAddress + ", IPv6Address=" + IPv6Address + ", IPv6Gateway=" + IPv6Gateway + ", MAC=" + MAC + ", VNFUUID=" + VNFUUID + ", VPortID=" + VPortID + ", VPortName=" + VPortName + ", attachedNetworkID=" + attachedNetworkID + ", attachedNetworkType=" + attachedNetworkType + ", creationDate=" + creationDate + ", domainID=" + domainID + ", domainName=" + domainName + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gateway=" + gateway + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", netmask=" + netmask + ", networkName=" + networkName + ", owner=" + owner + ", policyDecisionID=" + policyDecisionID + ", type=" + type + ", zoneID=" + zoneID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

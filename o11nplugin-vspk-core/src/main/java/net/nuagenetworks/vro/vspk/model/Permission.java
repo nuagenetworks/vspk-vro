@@ -59,6 +59,9 @@ public class Permission extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
     
@@ -71,8 +74,14 @@ public class Permission extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "permittedAction")
     protected PermissionPermittedAction permittedAction;
@@ -143,6 +152,17 @@ public class Permission extends BaseObject {
         return super.getOwner();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
     public java.util.List<String> getEmbeddedMetadata() {
        return embeddedMetadata;
@@ -187,6 +207,17 @@ public class Permission extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -195,6 +226,17 @@ public class Permission extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -315,7 +357,7 @@ public class Permission extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Permission [" + "embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", permittedAction=" + permittedAction + ", permittedEntityDescription=" + permittedEntityDescription + ", permittedEntityID=" + permittedEntityID + ", permittedEntityName=" + permittedEntityName + ", permittedEntityType=" + permittedEntityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Permission [" + "creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", permittedAction=" + permittedAction + ", permittedEntityDescription=" + permittedEntityDescription + ", permittedEntityID=" + permittedEntityID + ", permittedEntityName=" + permittedEntityName + ", permittedEntityType=" + permittedEntityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

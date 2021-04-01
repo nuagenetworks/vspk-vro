@@ -81,6 +81,9 @@ public class DeploymentFailure extends BaseObject {
     @JsonProperty(value = "associatedNetworkEntityType")
     protected String associatedNetworkEntityType;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "diffMap")
     protected String diffMap;
     
@@ -108,8 +111,14 @@ public class DeploymentFailure extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "numberOfOccurences")
     protected Long numberOfOccurences;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -253,6 +262,17 @@ public class DeploymentFailure extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DiffMap", readOnly = false)   
     public String getDiffMap() {
        return diffMap;
@@ -352,6 +372,17 @@ public class DeploymentFailure extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NumberOfOccurences", readOnly = false)   
     public Long getNumberOfOccurences() {
        return numberOfOccurences;
@@ -360,6 +391,17 @@ public class DeploymentFailure extends BaseObject {
     @JsonIgnore
     public void setNumberOfOccurences(Long value) { 
         this.numberOfOccurences = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -419,7 +461,7 @@ public class DeploymentFailure extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "DeploymentFailure [" + "affectedEntityID=" + affectedEntityID + ", affectedEntityType=" + affectedEntityType + ", assocEntityId=" + assocEntityId + ", assocEntityType=" + assocEntityType + ", associatedDomainID=" + associatedDomainID + ", associatedDomainType=" + associatedDomainType + ", associatedNetworkEntityID=" + associatedNetworkEntityID + ", associatedNetworkEntityType=" + associatedNetworkEntityType + ", diffMap=" + diffMap + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", eventType=" + eventType + ", externalID=" + externalID + ", lastFailureReason=" + lastFailureReason + ", lastKnownError=" + lastKnownError + ", lastUpdatedBy=" + lastUpdatedBy + ", numberOfOccurences=" + numberOfOccurences + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "DeploymentFailure [" + "affectedEntityID=" + affectedEntityID + ", affectedEntityType=" + affectedEntityType + ", assocEntityId=" + assocEntityId + ", assocEntityType=" + assocEntityType + ", associatedDomainID=" + associatedDomainID + ", associatedDomainType=" + associatedDomainType + ", associatedNetworkEntityID=" + associatedNetworkEntityID + ", associatedNetworkEntityType=" + associatedNetworkEntityType + ", creationDate=" + creationDate + ", diffMap=" + diffMap + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", eventType=" + eventType + ", externalID=" + externalID + ", lastFailureReason=" + lastFailureReason + ", lastKnownError=" + lastKnownError + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", numberOfOccurences=" + numberOfOccurences + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

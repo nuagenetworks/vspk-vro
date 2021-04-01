@@ -73,6 +73,9 @@ public class OSPFInterface extends BaseObject {
     @JsonProperty(value = "authenticationType")
     protected OSPFInterfaceAuthenticationType authenticationType;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "deadInterval")
     protected Long deadInterval;
     
@@ -97,6 +100,9 @@ public class OSPFInterface extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "messageDigestKeys")
     protected java.util.List<String> messageDigestKeys;
     
@@ -108,6 +114,9 @@ public class OSPFInterface extends BaseObject {
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "passiveEnabled")
     protected Boolean passiveEnabled;
@@ -208,6 +217,17 @@ public class OSPFInterface extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "DeadInterval", readOnly = false)   
     public Long getDeadInterval() {
        return deadInterval;
@@ -296,6 +316,17 @@ public class OSPFInterface extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MessageDigestKeys", readOnly = false)   
     public java.util.List<String> getMessageDigestKeys() {
        return messageDigestKeys;
@@ -337,6 +368,17 @@ public class OSPFInterface extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -418,7 +460,7 @@ public class OSPFInterface extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "OSPFInterface [" + "adminState=" + adminState + ", associatedSubnetID=" + associatedSubnetID + ", authenticationKey=" + authenticationKey + ", authenticationType=" + authenticationType + ", deadInterval=" + deadInterval + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", helloInterval=" + helloInterval + ", interfaceType=" + interfaceType + ", lastUpdatedBy=" + lastUpdatedBy + ", messageDigestKeys=" + messageDigestKeys + ", metric=" + metric + ", mtu=" + mtu + ", name=" + name + ", passiveEnabled=" + passiveEnabled + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "OSPFInterface [" + "adminState=" + adminState + ", associatedSubnetID=" + associatedSubnetID + ", authenticationKey=" + authenticationKey + ", authenticationType=" + authenticationType + ", creationDate=" + creationDate + ", deadInterval=" + deadInterval + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", helloInterval=" + helloInterval + ", interfaceType=" + interfaceType + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", messageDigestKeys=" + messageDigestKeys + ", metric=" + metric + ", mtu=" + mtu + ", name=" + name + ", owner=" + owner + ", passiveEnabled=" + passiveEnabled + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

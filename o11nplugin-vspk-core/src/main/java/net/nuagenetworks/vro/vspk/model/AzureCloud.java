@@ -71,6 +71,9 @@ public class AzureCloud extends BaseObject {
     @JsonProperty(value = "clientSecret")
     protected String clientSecret;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
     
@@ -83,8 +86,14 @@ public class AzureCloud extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "subscriptionID")
     protected String subscriptionID;
@@ -195,6 +204,17 @@ public class AzureCloud extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
     public java.util.List<String> getEmbeddedMetadata() {
        return embeddedMetadata;
@@ -239,6 +259,17 @@ public class AzureCloud extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -247,6 +278,17 @@ public class AzureCloud extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -348,7 +390,7 @@ public class AzureCloud extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "AzureCloud [" + "associatedIKEEncryptionProfileID=" + associatedIKEEncryptionProfileID + ", associatedIKEPSKID=" + associatedIKEPSKID + ", clientID=" + clientID + ", clientSecret=" + clientSecret + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", subscriptionID=" + subscriptionID + ", tenantID=" + tenantID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "AzureCloud [" + "associatedIKEEncryptionProfileID=" + associatedIKEEncryptionProfileID + ", associatedIKEPSKID=" + associatedIKEPSKID + ", clientID=" + clientID + ", clientSecret=" + clientSecret + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", subscriptionID=" + subscriptionID + ", tenantID=" + tenantID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

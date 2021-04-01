@@ -75,6 +75,9 @@ public class TestRun extends BaseObject {
     @JsonProperty(value = "commandOutputSummary")
     protected String commandOutputSummary;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "duration")
     protected Long duration;
     
@@ -90,8 +93,14 @@ public class TestRun extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "operationStatus")
     protected TestRunOperationStatus operationStatus;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "startDateTime")
     protected Long startDateTime;
@@ -219,6 +228,17 @@ public class TestRun extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Duration", readOnly = false)   
     public Long getDuration() {
        return duration;
@@ -274,6 +294,17 @@ public class TestRun extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "OperationStatus", readOnly = false)   
     public TestRunOperationStatus getOperationStatus() {
        return operationStatus;
@@ -282,6 +313,17 @@ public class TestRun extends BaseObject {
     @JsonIgnore
     public void setOperationStatus(TestRunOperationStatus value) { 
         this.operationStatus = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -363,7 +405,7 @@ public class TestRun extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "TestRun [" + "associatedTestID=" + associatedTestID + ", associatedTestSuiteRunID=" + associatedTestSuiteRunID + ", command=" + command + ", commandExitCode=" + commandExitCode + ", commandOutput=" + commandOutput + ", commandOutputSummary=" + commandOutputSummary + ", duration=" + duration + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", operationStatus=" + operationStatus + ", startDateTime=" + startDateTime + ", stopDateTime=" + stopDateTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "TestRun [" + "associatedTestID=" + associatedTestID + ", associatedTestSuiteRunID=" + associatedTestSuiteRunID + ", command=" + command + ", commandExitCode=" + commandExitCode + ", commandOutput=" + commandOutput + ", commandOutputSummary=" + commandOutputSummary + ", creationDate=" + creationDate + ", duration=" + duration + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", operationStatus=" + operationStatus + ", owner=" + owner + ", startDateTime=" + startDateTime + ", stopDateTime=" + stopDateTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

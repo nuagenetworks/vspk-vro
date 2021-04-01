@@ -61,6 +61,9 @@ public class GlobalMetadata extends BaseObject {
     @JsonProperty(value = "blob")
     protected String blob;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -79,6 +82,9 @@ public class GlobalMetadata extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "metadataTagIDs")
     protected java.util.List<String> metadataTagIDs;
     
@@ -87,6 +93,9 @@ public class GlobalMetadata extends BaseObject {
     
     @JsonProperty(value = "networkNotificationDisabled")
     protected Boolean networkNotificationDisabled;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonIgnore
     private GlobalMetadatasFetcher globalMetadatas;
@@ -159,6 +168,17 @@ public class GlobalMetadata extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -225,6 +245,17 @@ public class GlobalMetadata extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MetadataTagIDs", readOnly = false)   
     public java.util.List<String> getMetadataTagIDs() {
        return metadataTagIDs;
@@ -255,6 +286,17 @@ public class GlobalMetadata extends BaseObject {
     @JsonIgnore
     public void setNetworkNotificationDisabled(Boolean value) { 
         this.networkNotificationDisabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -314,7 +356,7 @@ public class GlobalMetadata extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "GlobalMetadata [" + "assocEntityType=" + assocEntityType + ", blob=" + blob + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", globalMetadata=" + globalMetadata + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataTagIDs=" + metadataTagIDs + ", name=" + name + ", networkNotificationDisabled=" + networkNotificationDisabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "GlobalMetadata [" + "assocEntityType=" + assocEntityType + ", blob=" + blob + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", globalMetadata=" + globalMetadata + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", metadataTagIDs=" + metadataTagIDs + ", name=" + name + ", networkNotificationDisabled=" + networkNotificationDisabled + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

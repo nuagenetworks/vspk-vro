@@ -67,6 +67,9 @@ public class VRSMetrics extends BaseObject {
     @JsonProperty(value = "associatedVCenterHypervisorID")
     protected String associatedVCenterHypervisorID;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "currentVersion")
     protected String currentVersion;
     
@@ -82,11 +85,17 @@ public class VRSMetrics extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "logDiskPartitionUtilization")
     protected Float logDiskPartitionUtilization;
     
     @JsonProperty(value = "memoryUtilization")
     protected Float memoryUtilization;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "reDeploy")
     protected Boolean reDeploy;
@@ -207,6 +216,17 @@ public class VRSMetrics extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "CurrentVersion", readOnly = false)   
     public String getCurrentVersion() {
        return currentVersion;
@@ -262,6 +282,17 @@ public class VRSMetrics extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LogDiskPartitionUtilization", readOnly = false)   
     public Float getLogDiskPartitionUtilization() {
        return logDiskPartitionUtilization;
@@ -281,6 +312,17 @@ public class VRSMetrics extends BaseObject {
     @JsonIgnore
     public void setMemoryUtilization(Float value) { 
         this.memoryUtilization = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -336,7 +378,7 @@ public class VRSMetrics extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.VRSMETRICS, getId());
         }
     }public String toString() {
-        return "VRSMetrics [" + "ALUbr0Status=" + ALUbr0Status + ", CPUUtilization=" + CPUUtilization + ", VRSProcess=" + VRSProcess + ", VRSVSCStatus=" + VRSVSCStatus + ", appliedMetricsPushInterval=" + appliedMetricsPushInterval + ", associatedVCenterHypervisorID=" + associatedVCenterHypervisorID + ", currentVersion=" + currentVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcess=" + jesxmonProcess + ", lastUpdatedBy=" + lastUpdatedBy + ", logDiskPartitionUtilization=" + logDiskPartitionUtilization + ", memoryUtilization=" + memoryUtilization + ", reDeploy=" + reDeploy + ", receivingMetrics=" + receivingMetrics + ", rootDiskPartitionUtilization=" + rootDiskPartitionUtilization + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VRSMetrics [" + "ALUbr0Status=" + ALUbr0Status + ", CPUUtilization=" + CPUUtilization + ", VRSProcess=" + VRSProcess + ", VRSVSCStatus=" + VRSVSCStatus + ", appliedMetricsPushInterval=" + appliedMetricsPushInterval + ", associatedVCenterHypervisorID=" + associatedVCenterHypervisorID + ", creationDate=" + creationDate + ", currentVersion=" + currentVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcess=" + jesxmonProcess + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", logDiskPartitionUtilization=" + logDiskPartitionUtilization + ", memoryUtilization=" + memoryUtilization + ", owner=" + owner + ", reDeploy=" + reDeploy + ", receivingMetrics=" + receivingMetrics + ", rootDiskPartitionUtilization=" + rootDiskPartitionUtilization + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

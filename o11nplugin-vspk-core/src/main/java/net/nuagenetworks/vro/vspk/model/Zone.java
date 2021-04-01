@@ -124,6 +124,9 @@ public class Zone extends BaseObject {
     @JsonProperty(value = "associatedMulticastChannelMapID")
     protected String associatedMulticastChannelMapID;
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -145,6 +148,9 @@ public class Zone extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "maintenanceMode")
     protected ZoneMaintenanceMode maintenanceMode;
     
@@ -159,6 +165,9 @@ public class Zone extends BaseObject {
     
     @JsonProperty(value = "numberOfHostsInSubnets")
     protected Long numberOfHostsInSubnets;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "policyGroupID")
     protected Long policyGroupID;
@@ -352,6 +361,17 @@ public class Zone extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -429,6 +449,17 @@ public class Zone extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MaintenanceMode", readOnly = false)   
     public ZoneMaintenanceMode getMaintenanceMode() {
        return maintenanceMode;
@@ -481,6 +512,17 @@ public class Zone extends BaseObject {
     @JsonIgnore
     public void setNumberOfHostsInSubnets(Long value) { 
         this.numberOfHostsInSubnets = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -737,7 +779,7 @@ public class Zone extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.TCAS_FETCHER, getId());
         }
     }public String toString() {
-        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", embeddedMetadata=" + embeddedMetadata + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Zone [" + "DPI=" + DPI + ", IPType=" + IPType + ", IPv6Address=" + IPv6Address + ", address=" + address + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", creationDate=" + creationDate + ", description=" + description + ", dynamicIpv6Address=" + dynamicIpv6Address + ", embeddedMetadata=" + embeddedMetadata + ", encryption=" + encryption + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", netmask=" + netmask + ", numberOfHostsInSubnets=" + numberOfHostsInSubnets + ", owner=" + owner + ", policyGroupID=" + policyGroupID + ", publicZone=" + publicZone + ", templateID=" + templateID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

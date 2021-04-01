@@ -55,6 +55,9 @@ public class VCenterEAMConfig extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "eamServerIP")
     protected String eamServerIP;
     
@@ -79,8 +82,14 @@ public class VCenterEAMConfig extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "ovfURL")
     protected String ovfURL;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "vibURL")
     protected String vibURL;
@@ -138,6 +147,17 @@ public class VCenterEAMConfig extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "EamServerIP", readOnly = false)   
     public String getEamServerIP() {
@@ -227,6 +247,17 @@ public class VCenterEAMConfig extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "OvfURL", readOnly = false)   
     public String getOvfURL() {
        return ovfURL;
@@ -235,6 +266,17 @@ public class VCenterEAMConfig extends BaseObject {
     @JsonIgnore
     public void setOvfURL(String value) { 
         this.ovfURL = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -305,7 +347,7 @@ public class VCenterEAMConfig extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
         }
     }public String toString() {
-        return "VCenterEAMConfig [" + "eamServerIP=" + eamServerIP + ", eamServerPortNumber=" + eamServerPortNumber + ", eamServerPortType=" + eamServerPortType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", extensionKey=" + extensionKey + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", ovfURL=" + ovfURL + ", vibURL=" + vibURL + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VCenterEAMConfig [" + "creationDate=" + creationDate + ", eamServerIP=" + eamServerIP + ", eamServerPortNumber=" + eamServerPortNumber + ", eamServerPortType=" + eamServerPortType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", extensionKey=" + extensionKey + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", ovfURL=" + ovfURL + ", owner=" + owner + ", vibURL=" + vibURL + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

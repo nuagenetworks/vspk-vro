@@ -49,6 +49,9 @@ public class NSGUpgradeProfile extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -67,11 +70,17 @@ public class NSGUpgradeProfile extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "metadataUpgradePath")
     protected String metadataUpgradePath;
     
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @VsoConstructor
     public NSGUpgradeProfile() {}
@@ -111,6 +120,17 @@ public class NSGUpgradeProfile extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
@@ -178,6 +198,17 @@ public class NSGUpgradeProfile extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "MetadataUpgradePath", readOnly = false)   
     public String getMetadataUpgradePath() {
        return metadataUpgradePath;
@@ -197,6 +228,17 @@ public class NSGUpgradeProfile extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     @VsoMethod
     public void fetch(Session session) throws RestException {
@@ -219,7 +261,7 @@ public class NSGUpgradeProfile extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGUPGRADEPROFILE, getId());
         }
     }public String toString() {
-        return "NSGUpgradeProfile [" + "description=" + description + ", downloadRateLimit=" + downloadRateLimit + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSGUpgradeProfile [" + "creationDate=" + creationDate + ", description=" + description + ", downloadRateLimit=" + downloadRateLimit + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

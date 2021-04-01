@@ -57,6 +57,9 @@ public class PerformanceMonitor extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -75,11 +78,17 @@ public class PerformanceMonitor extends BaseObject {
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "name")
     protected String name;
     
     @JsonProperty(value = "numberOfPackets")
     protected Long numberOfPackets;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "payloadSize")
     protected Long payloadSize;
@@ -141,6 +150,17 @@ public class PerformanceMonitor extends BaseObject {
     public String getOwner() {
         return super.getOwner();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
@@ -208,6 +228,17 @@ public class PerformanceMonitor extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -227,6 +258,17 @@ public class PerformanceMonitor extends BaseObject {
     @JsonIgnore
     public void setNumberOfPackets(Long value) { 
         this.numberOfPackets = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -314,7 +356,7 @@ public class PerformanceMonitor extends BaseObject {
         }
     }
     public String toString() {
-        return "PerformanceMonitor [" + "description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", holdDownTimer=" + holdDownTimer + ", interval=" + interval + ", lastUpdatedBy=" + lastUpdatedBy + ", name=" + name + ", numberOfPackets=" + numberOfPackets + ", payloadSize=" + payloadSize + ", probeType=" + probeType + ", readOnly=" + readOnly + ", serviceClass=" + serviceClass + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "PerformanceMonitor [" + "creationDate=" + creationDate + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", holdDownTimer=" + holdDownTimer + ", interval=" + interval + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", numberOfPackets=" + numberOfPackets + ", owner=" + owner + ", payloadSize=" + payloadSize + ", probeType=" + probeType + ", readOnly=" + readOnly + ", serviceClass=" + serviceClass + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }
