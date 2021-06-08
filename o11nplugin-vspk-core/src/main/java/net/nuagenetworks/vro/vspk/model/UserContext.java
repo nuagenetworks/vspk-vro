@@ -106,6 +106,9 @@ public class UserContext extends BaseObject {
     @JsonProperty(value = "lastUpdatedDate")
     protected String lastUpdatedDate;
     
+    @JsonProperty(value = "maintenanceModeEnabled")
+    protected Boolean maintenanceModeEnabled;
+    
     @JsonProperty(value = "owner")
     protected String owner;
     
@@ -357,6 +360,17 @@ public class UserContext extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "MaintenanceModeEnabled", readOnly = false)   
+    public Boolean getMaintenanceModeEnabled() {
+       return maintenanceModeEnabled;
+    }
+
+    @JsonIgnore
+    public void setMaintenanceModeEnabled(Boolean value) { 
+        this.maintenanceModeEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Owner", readOnly = false)   
     public String getOwner() {
        return owner;
@@ -535,7 +549,7 @@ public class UserContext extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "UserContext [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSFeatureEnabled=" + VSSFeatureEnabled + ", VSSStatsInterval=" + VSSStatsInterval + ", allowEnterpriseAvatarOnNSG=" + allowEnterpriseAvatarOnNSG + ", creationDate=" + creationDate + ", deniedFlowCollectionEnabled=" + deniedFlowCollectionEnabled + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", explicitACLMatchingEnabled=" + explicitACLMatchingEnabled + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", googleMapsAPIKey=" + googleMapsAPIKey + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", pageSize=" + pageSize + ", rbacEnabled=" + rbacEnabled + ", statisticsEnabled=" + statisticsEnabled + ", statsDatabaseProxy=" + statsDatabaseProxy + ", statsTSDBServerAddress=" + statsTSDBServerAddress + ", systemAvatarData=" + systemAvatarData + ", systemAvatarType=" + systemAvatarType + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "UserContext [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSFeatureEnabled=" + VSSFeatureEnabled + ", VSSStatsInterval=" + VSSStatsInterval + ", allowEnterpriseAvatarOnNSG=" + allowEnterpriseAvatarOnNSG + ", creationDate=" + creationDate + ", deniedFlowCollectionEnabled=" + deniedFlowCollectionEnabled + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", explicitACLMatchingEnabled=" + explicitACLMatchingEnabled + ", externalID=" + externalID + ", flowCollectionEnabled=" + flowCollectionEnabled + ", googleMapsAPIKey=" + googleMapsAPIKey + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", maintenanceModeEnabled=" + maintenanceModeEnabled + ", owner=" + owner + ", pageSize=" + pageSize + ", rbacEnabled=" + rbacEnabled + ", statisticsEnabled=" + statisticsEnabled + ", statsDatabaseProxy=" + statsDatabaseProxy + ", statsTSDBServerAddress=" + statsTSDBServerAddress + ", systemAvatarData=" + systemAvatarData + ", systemAvatarType=" + systemAvatarType + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

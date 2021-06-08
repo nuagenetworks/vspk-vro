@@ -4394,6 +4394,10 @@ public final class PluginFactory extends BasePluginFactory {
             return SystemConfigSystemAvatarType.getEnumById(id);
         }
         
+        if (type.equals(Constants.SYSTEMCONFIG_WEBFILTERINGTYPE_ENUM)) {
+            return SystemConfigWebFilteringType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.TCA)) {
             return ModelHelper.getTCAById(id);
         }
@@ -18053,6 +18057,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.SYSTEMCONFIG_SYSTEMAVATARTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(SystemConfigSystemAvatarType.values()));
+        }
+        
+        if (type.equals(Constants.SYSTEMCONFIG_WEBFILTERINGTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(SystemConfigWebFilteringType.values()));
         }
         
         if (type.equals(Constants.TCA)) {

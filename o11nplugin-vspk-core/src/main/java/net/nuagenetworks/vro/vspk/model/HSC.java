@@ -138,6 +138,9 @@ public class HSC extends BaseObject {
     @JsonProperty(value = "name")
     protected String name;
     
+    @JsonProperty(value = "numberOfInactiveGateways")
+    protected Long numberOfInactiveGateways;
+    
     @JsonProperty(value = "owner")
     protected String owner;
     
@@ -147,8 +150,14 @@ public class HSC extends BaseObject {
     @JsonProperty(value = "peakMemoryUsage")
     protected Float peakMemoryUsage;
     
+    @JsonProperty(value = "primaryRoleCount")
+    protected Long primaryRoleCount;
+    
     @JsonProperty(value = "productVersion")
     protected String productVersion;
+    
+    @JsonProperty(value = "secondaryRoleCount")
+    protected Long secondaryRoleCount;
     
     @JsonProperty(value = "status")
     protected HSCStatus status;
@@ -477,6 +486,17 @@ public class HSC extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NumberOfInactiveGateways", readOnly = false)   
+    public Long getNumberOfInactiveGateways() {
+       return numberOfInactiveGateways;
+    }
+
+    @JsonIgnore
+    public void setNumberOfInactiveGateways(Long value) { 
+        this.numberOfInactiveGateways = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Owner", readOnly = false)   
     public String getOwner() {
        return owner;
@@ -510,6 +530,17 @@ public class HSC extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PrimaryRoleCount", readOnly = false)   
+    public Long getPrimaryRoleCount() {
+       return primaryRoleCount;
+    }
+
+    @JsonIgnore
+    public void setPrimaryRoleCount(Long value) { 
+        this.primaryRoleCount = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ProductVersion", readOnly = false)   
     public String getProductVersion() {
        return productVersion;
@@ -518,6 +549,17 @@ public class HSC extends BaseObject {
     @JsonIgnore
     public void setProductVersion(String value) { 
         this.productVersion = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "SecondaryRoleCount", readOnly = false)   
+    public Long getSecondaryRoleCount() {
+       return secondaryRoleCount;
+    }
+
+    @JsonIgnore
+    public void setSecondaryRoleCount(Long value) { 
+        this.secondaryRoleCount = value;
     }
     
     @JsonIgnore
@@ -688,7 +730,7 @@ public class HSC extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "HSC [" + "addresses=" + addresses + ", alreadyMarkedForUnavailable=" + alreadyMarkedForUnavailable + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", communicationId=" + communicationId + ", creationDate=" + creationDate + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", description=" + description + ", disks=" + disks + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", model=" + model + ", name=" + name + ", owner=" + owner + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", productVersion=" + productVersion + ", status=" + status + ", type=" + type + ", unavailableTimestamp=" + unavailableTimestamp + ", vsds=" + vsds + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "HSC [" + "addresses=" + addresses + ", alreadyMarkedForUnavailable=" + alreadyMarkedForUnavailable + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", communicationId=" + communicationId + ", creationDate=" + creationDate + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", description=" + description + ", disks=" + disks + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", model=" + model + ", name=" + name + ", numberOfInactiveGateways=" + numberOfInactiveGateways + ", owner=" + owner + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", primaryRoleCount=" + primaryRoleCount + ", productVersion=" + productVersion + ", secondaryRoleCount=" + secondaryRoleCount + ", status=" + status + ", type=" + type + ", unavailableTimestamp=" + unavailableTimestamp + ", vsds=" + vsds + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

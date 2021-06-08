@@ -158,6 +158,9 @@ public class NSRedundantGatewayGroup extends BaseObject {
     @JsonProperty(value = "redundantGatewayStatus")
     protected NSRedundantGatewayGroupRedundantGatewayStatus redundantGatewayStatus;
     
+    @JsonProperty(value = "threatPreventionEnabled")
+    protected Boolean threatPreventionEnabled;
+    
     @JsonIgnore
     private AlarmsFetcher alarms;
     
@@ -517,6 +520,17 @@ public class NSRedundantGatewayGroup extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ThreatPreventionEnabled", readOnly = false)   
+    public Boolean getThreatPreventionEnabled() {
+       return threatPreventionEnabled;
+    }
+
+    @JsonIgnore
+    public void setThreatPreventionEnabled(Boolean value) { 
+        this.threatPreventionEnabled = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Alarms", readOnly = true)   
     public AlarmsFetcher getAlarms() {
         return alarms;
@@ -674,7 +688,7 @@ public class NSRedundantGatewayGroup extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.SHUNTLINKS_FETCHER, getId());
         }
     }public String toString() {
-        return "NSRedundantGatewayGroup [" + "consecutiveFailuresCount=" + consecutiveFailuresCount + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1Connected=" + gatewayPeer1Connected + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer1Name=" + gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2Connected=" + gatewayPeer2Connected + ", gatewayPeer2ID=" + gatewayPeer2ID + ", gatewayPeer2Name=" + gatewayPeer2Name + ", heartbeatInterval=" + heartbeatInterval + ", heartbeatVLANID=" + heartbeatVLANID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", permittedAction=" + permittedAction + ", personality=" + personality + ", redundancyPortIDs=" + redundancyPortIDs + ", redundantGatewayStatus=" + redundantGatewayStatus + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "NSRedundantGatewayGroup [" + "consecutiveFailuresCount=" + consecutiveFailuresCount + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayPeer1AutodiscoveredGatewayID=" + gatewayPeer1AutodiscoveredGatewayID + ", gatewayPeer1Connected=" + gatewayPeer1Connected + ", gatewayPeer1ID=" + gatewayPeer1ID + ", gatewayPeer1Name=" + gatewayPeer1Name + ", gatewayPeer2AutodiscoveredGatewayID=" + gatewayPeer2AutodiscoveredGatewayID + ", gatewayPeer2Connected=" + gatewayPeer2Connected + ", gatewayPeer2ID=" + gatewayPeer2ID + ", gatewayPeer2Name=" + gatewayPeer2Name + ", heartbeatInterval=" + heartbeatInterval + ", heartbeatVLANID=" + heartbeatVLANID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", permittedAction=" + permittedAction + ", personality=" + personality + ", redundancyPortIDs=" + redundancyPortIDs + ", redundantGatewayStatus=" + redundantGatewayStatus + ", threatPreventionEnabled=" + threatPreventionEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

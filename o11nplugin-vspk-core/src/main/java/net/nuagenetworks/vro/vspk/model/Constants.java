@@ -1936,6 +1936,7 @@ public interface Constants extends BaseConstants {
     String SYSTEMCONFIG_GROUPKEYDEFAULTTRAFFICENCRYPTIONALGORITHM_ENUM = "SystemConfigGroupKeyDefaultTrafficEncryptionAlgorithm";
     String SYSTEMCONFIG_LASTEXECUTEDMIGRATIONPHASE_ENUM = "SystemConfigLastExecutedMigrationPhase";
     String SYSTEMCONFIG_SYSTEMAVATARTYPE_ENUM = "SystemConfigSystemAvatarType";
+    String SYSTEMCONFIG_WEBFILTERINGTYPE_ENUM = "SystemConfigWebFilteringType";
     
     String TCA_ACTION_ENUM = "TCAAction";
     String TCA_ENTITYSCOPE_ENUM = "TCAEntityScope";
