@@ -64,9 +64,6 @@ public class Role extends BaseObject {
     @JsonProperty(value = "creationDate")
     protected String creationDate;
     
-    @JsonProperty(value = "cspOnly")
-    protected Boolean cspOnly;
-    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -158,17 +155,6 @@ public class Role extends BaseObject {
     @JsonIgnore
     public void setCreationDate(String value) { 
         this.creationDate = value;
-    }
-    
-    @JsonIgnore
-    @VsoProperty(displayName = "CspOnly", readOnly = false)   
-    public Boolean getCspOnly() {
-       return cspOnly;
-    }
-
-    @JsonIgnore
-    public void setCspOnly(Boolean value) { 
-        this.cspOnly = value;
     }
     
     @JsonIgnore
@@ -345,7 +331,7 @@ public class Role extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "Role [" + "creationDate=" + creationDate + ", cspOnly=" + cspOnly + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Role [" + "creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

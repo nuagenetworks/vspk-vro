@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum IngressACLEntryTemplateWebFilterType {
 
-    WEB_CATEGORY("WEB_CATEGORY", "WEB_CATEGORY"), WEB_DOMAIN_NAME("WEB_DOMAIN_NAME", "WEB_DOMAIN_NAME");
+    WEB_CATEGORY("WEB_CATEGORY", "WEB_CATEGORY"), WEB_DOMAIN_NAME("WEB_DOMAIN_NAME", "WEB_DOMAIN_NAME"), WEB_DOMAIN_REPUTATION("WEB_DOMAIN_REPUTATION", "WEB_DOMAIN_REPUTATION");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum IngressACLEntryTemplateWebFilterType {
     @VsoProperty(displayName = "WEB_DOMAIN_NAME", readOnly = true)
     public IngressACLEntryTemplateWebFilterType getWEB_DOMAIN_NAME() {
         return WEB_DOMAIN_NAME;
+    }
+    
+    @VsoProperty(displayName = "WEB_DOMAIN_REPUTATION", readOnly = true)
+    public IngressACLEntryTemplateWebFilterType getWEB_DOMAIN_REPUTATION() {
+        return WEB_DOMAIN_REPUTATION;
     }
     
 

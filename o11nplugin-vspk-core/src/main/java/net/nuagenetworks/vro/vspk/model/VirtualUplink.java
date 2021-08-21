@@ -30,6 +30,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.IKEGatewayConnectionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.VirtualUplinkAuxMode;
 
+import net.nuagenetworks.vro.vspk.model.enums.VirtualUplinkFecEnabled;
+
 import net.nuagenetworks.vro.vspk.model.enums.VirtualUplinkRole;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -76,6 +78,9 @@ public class VirtualUplink extends BaseObject {
     
     @JsonProperty(value = "enableNATProbes")
     protected Boolean enableNATProbes;
+    
+    @JsonProperty(value = "fecEnabled")
+    protected VirtualUplinkFecEnabled fecEnabled;
     
     @JsonProperty(value = "peerEndpoint")
     protected String peerEndpoint;
@@ -265,6 +270,17 @@ public class VirtualUplink extends BaseObject {
     @JsonIgnore
     public void setEnableNATProbes(Boolean value) { 
         this.enableNATProbes = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FecEnabled", readOnly = false)   
+    public VirtualUplinkFecEnabled getFecEnabled() {
+       return fecEnabled;
+    }
+
+    @JsonIgnore
+    public void setFecEnabled(VirtualUplinkFecEnabled value) { 
+        this.fecEnabled = value;
     }
     
     @JsonIgnore
@@ -491,7 +507,7 @@ public class VirtualUplink extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.VIRTUALUPLINK, getId());
         }
     }public String toString() {
-        return "VirtualUplink [" + "associatedEgressQoSPolicyID=" + associatedEgressQoSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQoSPolicyID=" + associatedIngressQoSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", auxMode=" + auxMode + ", enableNATProbes=" + enableNATProbes + ", peerEndpoint=" + peerEndpoint + ", peerGatewayID=" + peerGatewayID + ", peerGatewayName=" + peerGatewayName + ", peerGatewaySystemID=" + peerGatewaySystemID + ", peerPortID=" + peerPortID + ", peerUplinkID=" + peerUplinkID + ", peerVLANID=" + peerVLANID + ", role=" + role + ", roleOrder=" + roleOrder + ", shuntEndpoint=" + shuntEndpoint + ", shuntPortID=" + shuntPortID + ", shuntVLANID=" + shuntVLANID + ", trafficThroughUBROnly=" + trafficThroughUBROnly + ", underlayID=" + underlayID + ", underlayNAT=" + underlayNAT + ", underlayName=" + underlayName + ", underlayRouting=" + underlayRouting + ", virtualUplinkDatapathID=" + virtualUplinkDatapathID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VirtualUplink [" + "associatedEgressQoSPolicyID=" + associatedEgressQoSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQoSPolicyID=" + associatedIngressQoSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", auxMode=" + auxMode + ", enableNATProbes=" + enableNATProbes + ", fecEnabled=" + fecEnabled + ", peerEndpoint=" + peerEndpoint + ", peerGatewayID=" + peerGatewayID + ", peerGatewayName=" + peerGatewayName + ", peerGatewaySystemID=" + peerGatewaySystemID + ", peerPortID=" + peerPortID + ", peerUplinkID=" + peerUplinkID + ", peerVLANID=" + peerVLANID + ", role=" + role + ", roleOrder=" + roleOrder + ", shuntEndpoint=" + shuntEndpoint + ", shuntPortID=" + shuntPortID + ", shuntVLANID=" + shuntVLANID + ", trafficThroughUBROnly=" + trafficThroughUBROnly + ", underlayID=" + underlayID + ", underlayNAT=" + underlayNAT + ", underlayName=" + underlayName + ", underlayRouting=" + underlayRouting + ", virtualUplinkDatapathID=" + virtualUplinkDatapathID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

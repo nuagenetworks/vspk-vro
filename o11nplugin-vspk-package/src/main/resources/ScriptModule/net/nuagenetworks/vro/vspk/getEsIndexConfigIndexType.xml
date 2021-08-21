@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getEsIndexConfigIndexType" result-type="VSPK:EsIndexConfigIndexType" api-version="6.0.0"  id="7dc5be42-c777-5db6-8b7a-14d0dd3f085a"  version="20.10.4"  allowed-operations="vef" ><param n="esIndexConfigObj" t="VSPK:EsIndexConfig"></param><script encoded='false'><![CDATA[return esIndexConfigObj.indexType;]]></script>
+<dunes-script-module name="getEsIndexConfigIndexType" result-type="VSPK:EsIndexConfigIndexType" api-version="6.0.0"  id="7dc5be42-c777-5db6-8b7a-14d0dd3f085a"  version="20.10.5"  allowed-operations="vef" ><param n="esIndexConfigObj" t="VSPK:EsIndexConfig"></param><script encoded='false'><![CDATA[return esIndexConfigObj.indexType;]]></script>
 </dunes-script-module>

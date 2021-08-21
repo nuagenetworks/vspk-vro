@@ -145,6 +145,9 @@ public class Port extends BaseObject {
     @JsonProperty(value = "portType")
     protected PortPortType portType;
     
+    @JsonProperty(value = "routed")
+    protected Boolean routed;
+    
     @JsonProperty(value = "status")
     protected PortStatus status;
     
@@ -473,6 +476,17 @@ public class Port extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Routed", readOnly = false)   
+    public Boolean getRouted() {
+       return routed;
+    }
+
+    @JsonIgnore
+    public void setRouted(Boolean value) { 
+        this.routed = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Status", readOnly = false)   
     public PortStatus getStatus() {
        return status;
@@ -636,7 +650,7 @@ public class Port extends BaseObject {
         }
     }
     public String toString() {
-        return "Port [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedEthernetSegmentGroupID=" + associatedEthernetSegmentGroupID + ", associatedEthernetSegmentID=" + associatedEthernetSegmentID + ", associatedEthernetSegmentVLANRange=" + associatedEthernetSegmentVLANRange + ", associatedEthernetSegmentVirtual=" + associatedEthernetSegmentVirtual + ", associatedRedundantPortID=" + associatedRedundantPortID + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isResilient=" + isResilient + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", nativeVLAN=" + nativeVLAN + ", operationalState=" + operationalState + ", owner=" + owner + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Port [" + "VLANRange=" + VLANRange + ", associatedEgressQOSPolicyID=" + associatedEgressQOSPolicyID + ", associatedEthernetSegmentGroupID=" + associatedEthernetSegmentGroupID + ", associatedEthernetSegmentID=" + associatedEthernetSegmentID + ", associatedEthernetSegmentVLANRange=" + associatedEthernetSegmentVLANRange + ", associatedEthernetSegmentVirtual=" + associatedEthernetSegmentVirtual + ", associatedRedundantPortID=" + associatedRedundantPortID + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", isResilient=" + isResilient + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", nativeVLAN=" + nativeVLAN + ", operationalState=" + operationalState + ", owner=" + owner + ", permittedAction=" + permittedAction + ", physicalName=" + physicalName + ", portType=" + portType + ", routed=" + routed + ", status=" + status + ", templateID=" + templateID + ", useUserMnemonic=" + useUserMnemonic + ", userMnemonic=" + userMnemonic + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -64,6 +64,9 @@ public class Roleentry extends BaseObject {
     @JsonProperty(value = "embeddedMetadata")
     protected java.util.List<String> embeddedMetadata;
     
+    @JsonProperty(value = "endPointRestName")
+    protected String endPointRestName;
+    
     @JsonProperty(value = "endPointType")
     protected String endPointType;
     
@@ -143,6 +146,17 @@ public class Roleentry extends BaseObject {
     @JsonIgnore
     public void setEmbeddedMetadata(java.util.List<String> value) { 
         this.embeddedMetadata = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EndPointRestName", readOnly = false)   
+    public String getEndPointRestName() {
+       return endPointRestName;
+    }
+
+    @JsonIgnore
+    public void setEndPointRestName(String value) { 
+        this.endPointRestName = value;
     }
     
     @JsonIgnore
@@ -269,7 +283,7 @@ public class Roleentry extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "Roleentry [" + "embeddedMetadata=" + embeddedMetadata + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", roleAccessTypeList=" + roleAccessTypeList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Roleentry [" + "embeddedMetadata=" + embeddedMetadata + ", endPointRestName=" + endPointRestName + ", endPointType=" + endPointType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", roleAccessTypeList=" + roleAccessTypeList + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

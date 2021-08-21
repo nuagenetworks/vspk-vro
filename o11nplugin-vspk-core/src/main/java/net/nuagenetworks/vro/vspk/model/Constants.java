@@ -36,18 +36,16 @@ public interface Constants extends BaseConstants {
     String PLUGIN_CONFIG_FILENAME = "vspk";
     
     
-    String UDPPROBETESTRESULT = "UDPProbeTestResult";
-    String UDPPROBETESTRESULTS = "UDPProbeTestResults";
     String CERTIFICATEMETADATA = "CertificateMetadata";
     String CERTIFICATEMETADATAS = "CertificateMetadatas";
-    String VPORTINFO = "VPortInfo";
-    String VPORTINFOS = "VPortInfos";
-    String THREATPREVENTIONNODEINFO = "ThreatPreventionNodeInfo";
-    String THREATPREVENTIONNODEINFOS = "ThreatPreventionNodeInfos";
     String DOWNLOADPROGRESS = "DownloadProgress";
     
     String TCPCONNECTTESTRESULT = "TCPConnectTestResult";
     String TCPCONNECTTESTRESULTS = "TCPConnectTestResults";
+    String THREATPREVENTIONNODEINFO = "ThreatPreventionNodeInfo";
+    String THREATPREVENTIONNODEINFOS = "ThreatPreventionNodeInfos";
+    String VPORTINFO = "VPortInfo";
+    String VPORTINFOS = "VPortInfos";
     String FORWARDINGCLASS = "ForwardingClass";
     
     String BANDWIDTHTESTRESULT = "BandwidthTestResult";
@@ -56,6 +54,8 @@ public interface Constants extends BaseConstants {
     String MTUDISCOVERYTESTRESULTS = "MTUDiscoveryTestResults";
     String SYSMONUPLINKCONNECTION = "SysmonUplinkConnection";
     String SYSMONUPLINKCONNECTIONS = "SysmonUplinkConnections";
+    String UDPPROBETESTRESULT = "UDPProbeTestResult";
+    String UDPPROBETESTRESULTS = "UDPProbeTestResults";
     String ALLOCATIONPOOL = "AllocationPool";
     String ALLOCATIONPOOLS = "AllocationPools";
     String ADDRESSMAP = "AddressMap";
@@ -662,16 +662,16 @@ public interface Constants extends BaseConstants {
     String ZONETEMPLATES = "ZoneTemplates";
 
     
-    String UDPPROBETESTRESULTS_FETCHER = "UDPProbeTestResultsFetcher";
     String CERTIFICATEMETADATAS_FETCHER = "CertificateMetadatasFetcher";
-    String VPORTINFOS_FETCHER = "VPortInfosFetcher";
-    String THREATPREVENTIONNODEINFOS_FETCHER = "ThreatPreventionNodeInfosFetcher";
     String DOWNLOADPROGRESS_FETCHER = "DownloadProgressFetcher";
     String TCPCONNECTTESTRESULTS_FETCHER = "TCPConnectTestResultsFetcher";
+    String THREATPREVENTIONNODEINFOS_FETCHER = "ThreatPreventionNodeInfosFetcher";
+    String VPORTINFOS_FETCHER = "VPortInfosFetcher";
     String FORWARDINGCLASS_FETCHER = "ForwardingClassFetcher";
     String BANDWIDTHTESTRESULTS_FETCHER = "BandwidthTestResultsFetcher";
     String MTUDISCOVERYTESTRESULTS_FETCHER = "MTUDiscoveryTestResultsFetcher";
     String SYSMONUPLINKCONNECTIONS_FETCHER = "SysmonUplinkConnectionsFetcher";
+    String UDPPROBETESTRESULTS_FETCHER = "UDPProbeTestResultsFetcher";
     String ALLOCATIONPOOLS_FETCHER = "AllocationPoolsFetcher";
     String ADDRESSMAPS_FETCHER = "AddressMapsFetcher";
     String ADDRESSRANGES_FETCHER = "AddressRangesFetcher";
@@ -979,10 +979,9 @@ public interface Constants extends BaseConstants {
     
     
     
+    
+    
     String VPORTINFO_VPORTOPERATIONALSTATE_ENUM = "VPortInfoVPortOperationalState";
-    
-    
-    
     
     String FORWARDINGCLASS_FORWARDINGCLASS_ENUM = "ForwardingClassForwardingClass";
     
@@ -992,6 +991,7 @@ public interface Constants extends BaseConstants {
     String SYSMONUPLINKCONNECTION_JSONSTATE_ENUM = "SysmonUplinkConnectionJsonState";
     String SYSMONUPLINKCONNECTION_OPENFLOWSTATE_ENUM = "SysmonUplinkConnectionOpenflowState";
     String SYSMONUPLINKCONNECTION_VXLANDTLSSTATE_ENUM = "SysmonUplinkConnectionVxlanDtlsState";
+    
     
     
     String ADDRESSMAP_ENTITYSCOPE_ENUM = "AddressMapEntityScope";
@@ -1456,6 +1456,7 @@ public interface Constants extends BaseConstants {
     String INGRESSACLENTRYTEMPLATE_NETWORKENTITYTYPE_ENUM = "IngressACLEntryTemplateNetworkEntityType";
     String INGRESSACLENTRYTEMPLATE_NETWORKTYPE_ENUM = "IngressACLEntryTemplateNetworkType";
     String INGRESSACLENTRYTEMPLATE_POLICYSTATE_ENUM = "IngressACLEntryTemplatePolicyState";
+    String INGRESSACLENTRYTEMPLATE_REPUTATIONSCORE_ENUM = "IngressACLEntryTemplateReputationScore";
     String INGRESSACLENTRYTEMPLATE_WEBFILTERTYPE_ENUM = "IngressACLEntryTemplateWebFilterType";
     
     String INGRESSACLTEMPLATE_ENTITYSCOPE_ENUM = "IngressACLTemplateEntityScope";
@@ -1492,6 +1493,7 @@ public interface Constants extends BaseConstants {
     String INGRESSAUDITACLENTRYTEMPLATE_NETWORKENTITYTYPE_ENUM = "IngressAuditACLEntryTemplateNetworkEntityType";
     String INGRESSAUDITACLENTRYTEMPLATE_NETWORKTYPE_ENUM = "IngressAuditACLEntryTemplateNetworkType";
     String INGRESSAUDITACLENTRYTEMPLATE_POLICYSTATE_ENUM = "IngressAuditACLEntryTemplatePolicyState";
+    String INGRESSAUDITACLENTRYTEMPLATE_REPUTATIONSCORE_ENUM = "IngressAuditACLEntryTemplateReputationScore";
     String INGRESSAUDITACLENTRYTEMPLATE_WEBFILTERTYPE_ENUM = "IngressAuditACLEntryTemplateWebFilterType";
     
     String INGRESSAUDITACLTEMPLATE_ENTITYSCOPE_ENUM = "IngressAuditACLTemplateEntityScope";
@@ -2040,6 +2042,7 @@ public interface Constants extends BaseConstants {
     String VIRTUALFIREWALLRULE_NETWORKENTITYTYPE_ENUM = "VirtualFirewallRuleNetworkEntityType";
     String VIRTUALFIREWALLRULE_NETWORKTYPE_ENUM = "VirtualFirewallRuleNetworkType";
     String VIRTUALFIREWALLRULE_POLICYSTATE_ENUM = "VirtualFirewallRulePolicyState";
+    String VIRTUALFIREWALLRULE_REPUTATIONSCORE_ENUM = "VirtualFirewallRuleReputationScore";
     String VIRTUALFIREWALLRULE_TYPE_ENUM = "VirtualFirewallRuleType";
     String VIRTUALFIREWALLRULE_WEBFILTERTYPE_ENUM = "VirtualFirewallRuleWebFilterType";
     
@@ -2047,6 +2050,7 @@ public interface Constants extends BaseConstants {
     String VIRTUALIP_ENTITYSCOPE_ENUM = "VirtualIPEntityScope";
     
     String VIRTUALUPLINK_AUXMODE_ENUM = "VirtualUplinkAuxMode";
+    String VIRTUALUPLINK_FECENABLED_ENUM = "VirtualUplinkFecEnabled";
     String VIRTUALUPLINK_ROLE_ENUM = "VirtualUplinkRole";
     
     String VLAN_ASSOCIATEDCONNECTIONTYPE_ENUM = "VLANAssociatedConnectionType";
@@ -2196,16 +2200,16 @@ public interface Constants extends BaseConstants {
     String ZONETEMPLATE_MULTICAST_ENUM = "ZoneTemplateMulticast";
     
     
-    String UDPPROBETESTRESULT_IMAGE_FILENAME = "images/icon-udpprobetestresult.png";
     String CERTIFICATEMETADATA_IMAGE_FILENAME = "images/icon-certificatemetadata.png";
-    String VPORTINFO_IMAGE_FILENAME = "images/icon-vportinfo.png";
-    String THREATPREVENTIONNODEINFO_IMAGE_FILENAME = "images/icon-threatpreventionnodeinfo.png";
     String DOWNLOADPROGRESS_IMAGE_FILENAME = "images/icon-downloadprogress.png";
     String TCPCONNECTTESTRESULT_IMAGE_FILENAME = "images/icon-tcpconnecttestresult.png";
+    String THREATPREVENTIONNODEINFO_IMAGE_FILENAME = "images/icon-threatpreventionnodeinfo.png";
+    String VPORTINFO_IMAGE_FILENAME = "images/icon-vportinfo.png";
     String FORWARDINGCLASS_IMAGE_FILENAME = "images/icon-forwardingclass.png";
     String BANDWIDTHTESTRESULT_IMAGE_FILENAME = "images/icon-bandwidthtestresult.png";
     String MTUDISCOVERYTESTRESULT_IMAGE_FILENAME = "images/icon-mtudiscoverytestresult.png";
     String SYSMONUPLINKCONNECTION_IMAGE_FILENAME = "images/icon-sysmonuplinkconnection.png";
+    String UDPPROBETESTRESULT_IMAGE_FILENAME = "images/icon-udpprobetestresult.png";
     String ALLOCATIONPOOL_IMAGE_FILENAME = "images/icon-allocationpool.png";
     String ADDRESSMAP_IMAGE_FILENAME = "images/icon-addressmap.png";
     String ADDRESSRANGE_IMAGE_FILENAME = "images/icon-addressrange.png";
@@ -2511,16 +2515,16 @@ public interface Constants extends BaseConstants {
     String FOLDER_IMAGE_FILENAME = "images/icon-folder.png";
 
     
-    String UDPPROBETESTRESULT_ENTITY_TYPE = "None";
     String CERTIFICATEMETADATA_ENTITY_TYPE = "None";
-    String VPORTINFO_ENTITY_TYPE = "None";
-    String THREATPREVENTIONNODEINFO_ENTITY_TYPE = "None";
     String DOWNLOADPROGRESS_ENTITY_TYPE = "None";
     String TCPCONNECTTESTRESULT_ENTITY_TYPE = "None";
+    String THREATPREVENTIONNODEINFO_ENTITY_TYPE = "None";
+    String VPORTINFO_ENTITY_TYPE = "None";
     String FORWARDINGCLASS_ENTITY_TYPE = "None";
     String BANDWIDTHTESTRESULT_ENTITY_TYPE = "None";
     String MTUDISCOVERYTESTRESULT_ENTITY_TYPE = "None";
     String SYSMONUPLINKCONNECTION_ENTITY_TYPE = "None";
+    String UDPPROBETESTRESULT_ENTITY_TYPE = "None";
     String ALLOCATIONPOOL_ENTITY_TYPE = "None";
     String ADDRESSMAP_ENTITY_TYPE = "addressmap";
     String ADDRESSRANGE_ENTITY_TYPE = "addressrange";

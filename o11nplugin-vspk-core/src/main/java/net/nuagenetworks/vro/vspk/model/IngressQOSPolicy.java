@@ -73,6 +73,9 @@ public class IngressQOSPolicy extends BaseObject {
     @JsonProperty(value = "creationDate")
     protected String creationDate;
     
+    @JsonProperty(value = "customSpqDepth")
+    protected Long customSpqDepth;
+    
     @JsonProperty(value = "description")
     protected String description;
     
@@ -197,6 +200,17 @@ public class IngressQOSPolicy extends BaseObject {
     @JsonIgnore
     public void setCreationDate(String value) { 
         this.creationDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CustomSpqDepth", readOnly = false)   
+    public Long getCustomSpqDepth() {
+       return customSpqDepth;
+    }
+
+    @JsonIgnore
+    public void setCustomSpqDepth(Long value) { 
+        this.customSpqDepth = value;
     }
     
     @JsonIgnore
@@ -466,7 +480,7 @@ public class IngressQOSPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "IngressQOSPolicy [" + "assocEgressQosId=" + assocEgressQosId + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", parentQueueAssociatedRateLimiterID=" + parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + queue4ForwardingClasses + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "IngressQOSPolicy [" + "assocEgressQosId=" + assocEgressQosId + ", creationDate=" + creationDate + ", customSpqDepth=" + customSpqDepth + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", parentQueueAssociatedRateLimiterID=" + parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + queue4ForwardingClasses + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

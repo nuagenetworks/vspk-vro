@@ -46,33 +46,11 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.SESSION)) {
             return ModelHelper.getSessionById(id);
         }
-        if (type.equals(Constants.UDPPROBETESTRESULT)) {
-            return ModelHelper.getUDPProbeTestResultById(id);
-        }
-        if (type.equals(Constants.UDPPROBETESTRESULTS_FETCHER)) {
-            return ModelHelper.getUDPProbeTestResultsFetcherById(id);
-        }
         if (type.equals(Constants.CERTIFICATEMETADATA)) {
             return ModelHelper.getCertificateMetadataById(id);
         }
         if (type.equals(Constants.CERTIFICATEMETADATAS_FETCHER)) {
             return ModelHelper.getCertificateMetadatasFetcherById(id);
-        }
-        if (type.equals(Constants.VPORTINFO)) {
-            return ModelHelper.getVPortInfoById(id);
-        }
-        if (type.equals(Constants.VPORTINFOS_FETCHER)) {
-            return ModelHelper.getVPortInfosFetcherById(id);
-        }
-        if (type.equals(Constants.VPORTINFO_VPORTOPERATIONALSTATE_ENUM)) {
-            return VPortInfoVPortOperationalState.getEnumById(id);
-        }
-        
-        if (type.equals(Constants.THREATPREVENTIONNODEINFO)) {
-            return ModelHelper.getThreatPreventionNodeInfoById(id);
-        }
-        if (type.equals(Constants.THREATPREVENTIONNODEINFOS_FETCHER)) {
-            return ModelHelper.getThreatPreventionNodeInfosFetcherById(id);
         }
         if (type.equals(Constants.DOWNLOADPROGRESS)) {
             return ModelHelper.getDownloadProgressById(id);
@@ -86,6 +64,22 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.TCPCONNECTTESTRESULTS_FETCHER)) {
             return ModelHelper.getTCPConnectTestResultsFetcherById(id);
         }
+        if (type.equals(Constants.THREATPREVENTIONNODEINFO)) {
+            return ModelHelper.getThreatPreventionNodeInfoById(id);
+        }
+        if (type.equals(Constants.THREATPREVENTIONNODEINFOS_FETCHER)) {
+            return ModelHelper.getThreatPreventionNodeInfosFetcherById(id);
+        }
+        if (type.equals(Constants.VPORTINFO)) {
+            return ModelHelper.getVPortInfoById(id);
+        }
+        if (type.equals(Constants.VPORTINFOS_FETCHER)) {
+            return ModelHelper.getVPortInfosFetcherById(id);
+        }
+        if (type.equals(Constants.VPORTINFO_VPORTOPERATIONALSTATE_ENUM)) {
+            return VPortInfoVPortOperationalState.getEnumById(id);
+        }
+        
         if (type.equals(Constants.FORWARDINGCLASS)) {
             return ModelHelper.getForwardingClassById(id);
         }
@@ -130,6 +124,12 @@ public final class PluginFactory extends BasePluginFactory {
             return SysmonUplinkConnectionVxlanDtlsState.getEnumById(id);
         }
         
+        if (type.equals(Constants.UDPPROBETESTRESULT)) {
+            return ModelHelper.getUDPProbeTestResultById(id);
+        }
+        if (type.equals(Constants.UDPPROBETESTRESULTS_FETCHER)) {
+            return ModelHelper.getUDPProbeTestResultsFetcherById(id);
+        }
         if (type.equals(Constants.ALLOCATIONPOOL)) {
             return ModelHelper.getAllocationPoolById(id);
         }
@@ -2218,6 +2218,10 @@ public final class PluginFactory extends BasePluginFactory {
             return IngressACLEntryTemplatePolicyState.getEnumById(id);
         }
         
+        if (type.equals(Constants.INGRESSACLENTRYTEMPLATE_REPUTATIONSCORE_ENUM)) {
+            return IngressACLEntryTemplateReputationScore.getEnumById(id);
+        }
+        
         if (type.equals(Constants.INGRESSACLENTRYTEMPLATE_WEBFILTERTYPE_ENUM)) {
             return IngressACLEntryTemplateWebFilterType.getEnumById(id);
         }
@@ -2368,6 +2372,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.INGRESSAUDITACLENTRYTEMPLATE_POLICYSTATE_ENUM)) {
             return IngressAuditACLEntryTemplatePolicyState.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.INGRESSAUDITACLENTRYTEMPLATE_REPUTATIONSCORE_ENUM)) {
+            return IngressAuditACLEntryTemplateReputationScore.getEnumById(id);
         }
         
         if (type.equals(Constants.INGRESSAUDITACLENTRYTEMPLATE_WEBFILTERTYPE_ENUM)) {
@@ -4854,6 +4862,10 @@ public final class PluginFactory extends BasePluginFactory {
             return VirtualFirewallRulePolicyState.getEnumById(id);
         }
         
+        if (type.equals(Constants.VIRTUALFIREWALLRULE_REPUTATIONSCORE_ENUM)) {
+            return VirtualFirewallRuleReputationScore.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VIRTUALFIREWALLRULE_TYPE_ENUM)) {
             return VirtualFirewallRuleType.getEnumById(id);
         }
@@ -4884,6 +4896,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VIRTUALUPLINK_AUXMODE_ENUM)) {
             return VirtualUplinkAuxMode.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VIRTUALUPLINK_FECENABLED_ENUM)) {
+            return VirtualUplinkFecEnabled.getEnumById(id);
         }
         
         if (type.equals(Constants.VIRTUALUPLINK_ROLE_ENUM)) {
@@ -13203,40 +13219,12 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<Session> allSessions = ModelHelper.getAllSessions();
             return new QueryResult(allSessions);
         }
-        if (type.equals(Constants.UDPPROBETESTRESULT)) {
-            java.util.List<UDPProbeTestResult> allObjs = ModelHelper.getAllUDPProbeTestResults();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.UDPPROBETESTRESULTS_FETCHER)) {
-            java.util.List<UDPProbeTestResultsFetcher> allObjs = ModelHelper.getAllUDPProbeTestResultsFetchers();
-            return new QueryResult(allObjs);
-        }
         if (type.equals(Constants.CERTIFICATEMETADATA)) {
             java.util.List<CertificateMetadata> allObjs = ModelHelper.getAllCertificateMetadatas();
             return new QueryResult(allObjs);
         }
         if (type.equals(Constants.CERTIFICATEMETADATAS_FETCHER)) {
             java.util.List<CertificateMetadatasFetcher> allObjs = ModelHelper.getAllCertificateMetadatasFetchers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.VPORTINFO)) {
-            java.util.List<VPortInfo> allObjs = ModelHelper.getAllVPortInfos();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.VPORTINFOS_FETCHER)) {
-            java.util.List<VPortInfosFetcher> allObjs = ModelHelper.getAllVPortInfosFetchers();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.VPORTINFO_VPORTOPERATIONALSTATE_ENUM)) {
-            return new QueryResult(Arrays.asList(VPortInfoVPortOperationalState.values()));
-        }
-        
-        if (type.equals(Constants.THREATPREVENTIONNODEINFO)) {
-            java.util.List<ThreatPreventionNodeInfo> allObjs = ModelHelper.getAllThreatPreventionNodeInfos();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.THREATPREVENTIONNODEINFOS_FETCHER)) {
-            java.util.List<ThreatPreventionNodeInfosFetcher> allObjs = ModelHelper.getAllThreatPreventionNodeInfosFetchers();
             return new QueryResult(allObjs);
         }
         if (type.equals(Constants.DOWNLOADPROGRESS)) {
@@ -13255,6 +13243,26 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<TCPConnectTestResultsFetcher> allObjs = ModelHelper.getAllTCPConnectTestResultsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.THREATPREVENTIONNODEINFO)) {
+            java.util.List<ThreatPreventionNodeInfo> allObjs = ModelHelper.getAllThreatPreventionNodeInfos();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.THREATPREVENTIONNODEINFOS_FETCHER)) {
+            java.util.List<ThreatPreventionNodeInfosFetcher> allObjs = ModelHelper.getAllThreatPreventionNodeInfosFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.VPORTINFO)) {
+            java.util.List<VPortInfo> allObjs = ModelHelper.getAllVPortInfos();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.VPORTINFOS_FETCHER)) {
+            java.util.List<VPortInfosFetcher> allObjs = ModelHelper.getAllVPortInfosFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.VPORTINFO_VPORTOPERATIONALSTATE_ENUM)) {
+            return new QueryResult(Arrays.asList(VPortInfoVPortOperationalState.values()));
+        }
+        
         if (type.equals(Constants.FORWARDINGCLASS)) {
             java.util.List<ForwardingClass> allObjs = ModelHelper.getAllForwardingClass();
             return new QueryResult(allObjs);
@@ -13307,6 +13315,14 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(SysmonUplinkConnectionVxlanDtlsState.values()));
         }
         
+        if (type.equals(Constants.UDPPROBETESTRESULT)) {
+            java.util.List<UDPProbeTestResult> allObjs = ModelHelper.getAllUDPProbeTestResults();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.UDPPROBETESTRESULTS_FETCHER)) {
+            java.util.List<UDPProbeTestResultsFetcher> allObjs = ModelHelper.getAllUDPProbeTestResultsFetchers();
+            return new QueryResult(allObjs);
+        }
         if (type.equals(Constants.ALLOCATIONPOOL)) {
             java.util.List<AllocationPool> allObjs = ModelHelper.getAllAllocationPools();
             return new QueryResult(allObjs);
@@ -15627,6 +15643,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(IngressACLEntryTemplatePolicyState.values()));
         }
         
+        if (type.equals(Constants.INGRESSACLENTRYTEMPLATE_REPUTATIONSCORE_ENUM)) {
+            return new QueryResult(Arrays.asList(IngressACLEntryTemplateReputationScore.values()));
+        }
+        
         if (type.equals(Constants.INGRESSACLENTRYTEMPLATE_WEBFILTERTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(IngressACLEntryTemplateWebFilterType.values()));
         }
@@ -15785,6 +15805,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.INGRESSAUDITACLENTRYTEMPLATE_POLICYSTATE_ENUM)) {
             return new QueryResult(Arrays.asList(IngressAuditACLEntryTemplatePolicyState.values()));
+        }
+        
+        if (type.equals(Constants.INGRESSAUDITACLENTRYTEMPLATE_REPUTATIONSCORE_ENUM)) {
+            return new QueryResult(Arrays.asList(IngressAuditACLEntryTemplateReputationScore.values()));
         }
         
         if (type.equals(Constants.INGRESSAUDITACLENTRYTEMPLATE_WEBFILTERTYPE_ENUM)) {
@@ -18563,6 +18587,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(VirtualFirewallRulePolicyState.values()));
         }
         
+        if (type.equals(Constants.VIRTUALFIREWALLRULE_REPUTATIONSCORE_ENUM)) {
+            return new QueryResult(Arrays.asList(VirtualFirewallRuleReputationScore.values()));
+        }
+        
         if (type.equals(Constants.VIRTUALFIREWALLRULE_TYPE_ENUM)) {
             return new QueryResult(Arrays.asList(VirtualFirewallRuleType.values()));
         }
@@ -18597,6 +18625,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VIRTUALUPLINK_AUXMODE_ENUM)) {
             return new QueryResult(Arrays.asList(VirtualUplinkAuxMode.values()));
+        }
+        
+        if (type.equals(Constants.VIRTUALUPLINK_FECENABLED_ENUM)) {
+            return new QueryResult(Arrays.asList(VirtualUplinkFecEnabled.values()));
         }
         
         if (type.equals(Constants.VIRTUALUPLINK_ROLE_ENUM)) {

@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGatewayNetworkAcceleration {
 
-    NONE("NONE", "NONE"), PERFORMANCE("PERFORMANCE", "PERFORMANCE"), SESSION_OPTIMIZED("SESSION_OPTIMIZED", "SESSION_OPTIMIZED"), VNF_AWARE("VNF_AWARE", "VNF_AWARE");
+    NONE("NONE", "NONE"), PERFORMANCE("PERFORMANCE", "PERFORMANCE"), SESSION_OPTIMIZED("SESSION_OPTIMIZED", "SESSION_OPTIMIZED"), TP_AWARE("TP_AWARE", "TP_AWARE"), VNF_AWARE("VNF_AWARE", "VNF_AWARE");
 
     private final String id;
     private final String name;
@@ -71,6 +71,11 @@ public enum NSGatewayNetworkAcceleration {
     @VsoProperty(displayName = "SESSION_OPTIMIZED", readOnly = true)
     public NSGatewayNetworkAcceleration getSESSION_OPTIMIZED() {
         return SESSION_OPTIMIZED;
+    }
+    
+    @VsoProperty(displayName = "TP_AWARE", readOnly = true)
+    public NSGatewayNetworkAcceleration getTP_AWARE() {
+        return TP_AWARE;
     }
     
     @VsoProperty(displayName = "VNF_AWARE", readOnly = true)

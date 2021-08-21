@@ -111,6 +111,9 @@ public class Permission extends BaseObject {
     @JsonProperty(value = "permittedEnterpriseDescription")
     protected String permittedEnterpriseDescription;
     
+    @JsonProperty(value = "permittedEnterpriseID")
+    protected String permittedEnterpriseID;
+    
     @JsonProperty(value = "permittedEnterpriseName")
     protected String permittedEnterpriseName;
     
@@ -358,6 +361,17 @@ public class Permission extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PermittedEnterpriseID", readOnly = false)   
+    public String getPermittedEnterpriseID() {
+       return permittedEnterpriseID;
+    }
+
+    @JsonIgnore
+    public void setPermittedEnterpriseID(String value) { 
+        this.permittedEnterpriseID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "PermittedEnterpriseName", readOnly = false)   
     public String getPermittedEnterpriseName() {
        return permittedEnterpriseName;
@@ -487,7 +501,7 @@ public class Permission extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "Permission [" + "associatedGroupDescription=" + associatedGroupDescription + ", associatedGroupID=" + associatedGroupID + ", associatedGroupName=" + associatedGroupName + ", associatedRoleDescription=" + associatedRoleDescription + ", associatedRoleID=" + associatedRoleID + ", associatedRoleName=" + associatedRoleName + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", permittedAction=" + permittedAction + ", permittedEnterpriseDescription=" + permittedEnterpriseDescription + ", permittedEnterpriseName=" + permittedEnterpriseName + ", permittedEntityID=" + permittedEntityID + ", permittedEntityName=" + permittedEntityName + ", permittedEntityType=" + permittedEntityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Permission [" + "associatedGroupDescription=" + associatedGroupDescription + ", associatedGroupID=" + associatedGroupID + ", associatedGroupName=" + associatedGroupName + ", associatedRoleDescription=" + associatedRoleDescription + ", associatedRoleID=" + associatedRoleID + ", associatedRoleName=" + associatedRoleName + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", permittedAction=" + permittedAction + ", permittedEnterpriseDescription=" + permittedEnterpriseDescription + ", permittedEnterpriseID=" + permittedEnterpriseID + ", permittedEnterpriseName=" + permittedEnterpriseName + ", permittedEntityID=" + permittedEntityID + ", permittedEntityName=" + permittedEntityName + ", permittedEntityType=" + permittedEntityType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="8e6effe5-affb-5a97-b47b-b3e66099b18a"  version="20.10.4" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="8e6effe5-affb-5a97-b47b-b3e66099b18a"  version="20.10.5" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add Permission to VSD]]></display-name>
 <ref-types><![CDATA[(VSPK:VSD)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -8,8 +8,6 @@
 <param name='externalID' type='string' >
 </param>
 <param name='name' type='string' >
-</param>
-<param name='permittedEntityID' type='string' >
 </param>
 </input><output><param name='permissionObj' type='VSPK:Permission' >
 </param>
@@ -27,16 +25,12 @@ if (externalID) {
 if (name) {
    permissionObj.name = name;
 }
-if (permittedEntityID) {
-   permissionObj.permittedEntityID = permittedEntityID;
-}
 
 vSDObj.createPermission(session, permissionObj);
 ]]></script>
 <in-binding><bind name='vSDObj' type='VSPK:VSD' export-name="vSDObj" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
-<bind name='permittedEntityID' type='string' export-name="permittedEntityID" ></bind>
 </in-binding><out-binding><bind name='permissionObj' type='VSPK:Permission' export-name="permissionObj" ></bind>
 </out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -46,7 +40,5 @@ vSDObj.createPermission(session, permissionObj);
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 </p-param>
 <p-param name="name"><desc><![CDATA[name]]></desc>
-</p-param>
-<p-param name="permittedEntityID"><desc><![CDATA[permittedEntityID]]></desc>
 </p-param>
 </presentation></workflow>

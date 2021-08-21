@@ -81,6 +81,9 @@ public class EgressQOSPolicy extends BaseObject {
     @JsonProperty(value = "creationDate")
     protected String creationDate;
     
+    @JsonProperty(value = "customSpqDepth")
+    protected Long customSpqDepth;
+    
     @JsonProperty(value = "defaultServiceClass")
     protected EgressQOSPolicyDefaultServiceClass defaultServiceClass;
     
@@ -236,6 +239,17 @@ public class EgressQOSPolicy extends BaseObject {
     @JsonIgnore
     public void setCreationDate(String value) { 
         this.creationDate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "CustomSpqDepth", readOnly = false)   
+    public Long getCustomSpqDepth() {
+       return customSpqDepth;
+    }
+
+    @JsonIgnore
+    public void setCustomSpqDepth(Long value) { 
+        this.customSpqDepth = value;
     }
     
     @JsonIgnore
@@ -538,7 +552,7 @@ public class EgressQOSPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "EgressQOSPolicy [" + "assocEgressQosId=" + assocEgressQosId + ", associatedCOSRemarkingPolicyTableID=" + associatedCOSRemarkingPolicyTableID + ", associatedDSCPRemarkingPolicyTableID=" + associatedDSCPRemarkingPolicyTableID + ", creationDate=" + creationDate + ", defaultServiceClass=" + defaultServiceClass + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", mgmtQueueAssociatedRateLimiterID=" + mgmtQueueAssociatedRateLimiterID + ", name=" + name + ", networkCtrlQueueAssociatedRateLimiterID=" + networkCtrlQueueAssociatedRateLimiterID + ", owner=" + owner + ", parentQueueAssociatedRateLimiterID=" + parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + queue4ForwardingClasses + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "EgressQOSPolicy [" + "assocEgressQosId=" + assocEgressQosId + ", associatedCOSRemarkingPolicyTableID=" + associatedCOSRemarkingPolicyTableID + ", associatedDSCPRemarkingPolicyTableID=" + associatedDSCPRemarkingPolicyTableID + ", creationDate=" + creationDate + ", customSpqDepth=" + customSpqDepth + ", defaultServiceClass=" + defaultServiceClass + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", mgmtQueueAssociatedRateLimiterID=" + mgmtQueueAssociatedRateLimiterID + ", name=" + name + ", networkCtrlQueueAssociatedRateLimiterID=" + networkCtrlQueueAssociatedRateLimiterID + ", owner=" + owner + ", parentQueueAssociatedRateLimiterID=" + parentQueueAssociatedRateLimiterID + ", queue1AssociatedRateLimiterID=" + queue1AssociatedRateLimiterID + ", queue1ForwardingClasses=" + queue1ForwardingClasses + ", queue2AssociatedRateLimiterID=" + queue2AssociatedRateLimiterID + ", queue2ForwardingClasses=" + queue2ForwardingClasses + ", queue3AssociatedRateLimiterID=" + queue3AssociatedRateLimiterID + ", queue3ForwardingClasses=" + queue3ForwardingClasses + ", queue4AssociatedRateLimiterID=" + queue4AssociatedRateLimiterID + ", queue4ForwardingClasses=" + queue4ForwardingClasses + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

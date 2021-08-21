@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="9cde20df-83f2-56a3-9db5-86894b99f7c7"  version="20.10.4" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="9cde20df-83f2-56a3-9db5-86894b99f7c7"  version="20.10.5" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit Roleentry]]></display-name>
 <ref-types><![CDATA[(VSPK:Roleentry)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='roleentryObj' type='VSPK:Roleentry' >
 </param>
 
-<param name='endPointType' type='string' >
+<param name='endPointRestName' type='string' >
 </param>
 
 <param name='externalID' type='string' >
@@ -22,10 +22,10 @@
 <display-name><![CDATA[Scriptable task]]></display-name>
 <script encoded='false'><![CDATA[var session = roleentryObj.session;
 
-if (endPointType) {
-   roleentryObj.endPointType = endPointType;
-} else if (roleentryObj.endPointType) {
-   roleentryObj.endPointType = "";
+if (endPointRestName) {
+   roleentryObj.endPointRestName = endPointRestName;
+} else if (roleentryObj.endPointRestName) {
+   roleentryObj.endPointRestName = "";
 }
 if (externalID) {
    roleentryObj.externalID = externalID;
@@ -36,7 +36,7 @@ roleentryObj.roleAccessTypeList = roleAccessTypeList;
 roleentryObj.save(session, 1);]]></script>
 <in-binding><bind name='roleentryObj' type='VSPK:Roleentry' export-name="roleentryObj" ></bind>
 
-<bind name='endPointType' type='string' export-name="endPointType" ></bind>
+<bind name='endPointRestName' type='string' export-name="endPointRestName" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
@@ -48,8 +48,8 @@ roleentryObj.save(session, 1);]]></script>
 <p-param name="roleentryObj"><desc><![CDATA[roleentryObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 
-<p-param name="endPointType"><desc><![CDATA[endPointType]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#roleentryObj.endPointType]]></p-qual></p-param>
+<p-param name="endPointRestName"><desc><![CDATA[endPointRestName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#roleentryObj.endPointRestName]]></p-qual></p-param>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#roleentryObj.externalID]]></p-qual></p-param>

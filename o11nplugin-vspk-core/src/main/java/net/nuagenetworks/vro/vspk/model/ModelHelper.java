@@ -47,55 +47,6 @@ public class ModelHelper extends BaseModelHelper {
     }
     
     
-    public static UDPProbeTestResult getUDPProbeTestResultById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            UDPProbeTestResult obj = null;
-            obj = new UDPProbeTestResult();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.UDPPROBETESTRESULT, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }public static java.util.List<UDPProbeTestResult> getUDPProbeTestResultsForFetcherId(String id) throws RestException {
-        UDPProbeTestResultsFetcher fetcher = getUDPProbeTestResultsFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.UDPPROBETESTRESULT);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<UDPProbeTestResult>();
-    }
-
-    public static UDPProbeTestResultsFetcher getUDPProbeTestResultsFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.UDPPROBETESTRESULTS_FETCHER, id);
-        if (fetcher != null) {
-            return (UDPProbeTestResultsFetcher) fetcher;
-        }return null;
-    }
-
-    public static java.util.List<UDPProbeTestResult> getAllUDPProbeTestResults() throws RestException {
-        java.util.List<UDPProbeTestResult> allObjs = new ArrayList<UDPProbeTestResult>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<UDPProbeTestResultsFetcher> getAllUDPProbeTestResultsFetchers() throws RestException {
-        java.util.List<UDPProbeTestResultsFetcher> allObjs = new ArrayList<UDPProbeTestResultsFetcher>();
-        return allObjs;
-    }
     public static CertificateMetadata getCertificateMetadataById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             CertificateMetadata obj = null;
@@ -143,104 +94,6 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<CertificateMetadatasFetcher> getAllCertificateMetadatasFetchers() throws RestException {
         java.util.List<CertificateMetadatasFetcher> allObjs = new ArrayList<CertificateMetadatasFetcher>();
-        return allObjs;
-    }
-    public static VPortInfo getVPortInfoById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            VPortInfo obj = null;
-            obj = new VPortInfo();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.VPORTINFO, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }public static java.util.List<VPortInfo> getVPortInfosForFetcherId(String id) throws RestException {
-        VPortInfosFetcher fetcher = getVPortInfosFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.VPORTINFO);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<VPortInfo>();
-    }
-
-    public static VPortInfosFetcher getVPortInfosFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.VPORTINFOS_FETCHER, id);
-        if (fetcher != null) {
-            return (VPortInfosFetcher) fetcher;
-        }return null;
-    }
-
-    public static java.util.List<VPortInfo> getAllVPortInfos() throws RestException {
-        java.util.List<VPortInfo> allObjs = new ArrayList<VPortInfo>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<VPortInfosFetcher> getAllVPortInfosFetchers() throws RestException {
-        java.util.List<VPortInfosFetcher> allObjs = new ArrayList<VPortInfosFetcher>();
-        return allObjs;
-    }
-    public static ThreatPreventionNodeInfo getThreatPreventionNodeInfoById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            ThreatPreventionNodeInfo obj = null;
-            obj = new ThreatPreventionNodeInfo();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.THREATPREVENTIONNODEINFO, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }public static java.util.List<ThreatPreventionNodeInfo> getThreatPreventionNodeInfosForFetcherId(String id) throws RestException {
-        ThreatPreventionNodeInfosFetcher fetcher = getThreatPreventionNodeInfosFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.THREATPREVENTIONNODEINFO);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<ThreatPreventionNodeInfo>();
-    }
-
-    public static ThreatPreventionNodeInfosFetcher getThreatPreventionNodeInfosFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.THREATPREVENTIONNODEINFOS_FETCHER, id);
-        if (fetcher != null) {
-            return (ThreatPreventionNodeInfosFetcher) fetcher;
-        }return null;
-    }
-
-    public static java.util.List<ThreatPreventionNodeInfo> getAllThreatPreventionNodeInfos() throws RestException {
-        java.util.List<ThreatPreventionNodeInfo> allObjs = new ArrayList<ThreatPreventionNodeInfo>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<ThreatPreventionNodeInfosFetcher> getAllThreatPreventionNodeInfosFetchers() throws RestException {
-        java.util.List<ThreatPreventionNodeInfosFetcher> allObjs = new ArrayList<ThreatPreventionNodeInfosFetcher>();
         return allObjs;
     }
     public static DownloadProgress getDownloadProgressById(String id) {
@@ -339,6 +192,104 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<TCPConnectTestResultsFetcher> getAllTCPConnectTestResultsFetchers() throws RestException {
         java.util.List<TCPConnectTestResultsFetcher> allObjs = new ArrayList<TCPConnectTestResultsFetcher>();
+        return allObjs;
+    }
+    public static ThreatPreventionNodeInfo getThreatPreventionNodeInfoById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            ThreatPreventionNodeInfo obj = null;
+            obj = new ThreatPreventionNodeInfo();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.THREATPREVENTIONNODEINFO, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<ThreatPreventionNodeInfo> getThreatPreventionNodeInfosForFetcherId(String id) throws RestException {
+        ThreatPreventionNodeInfosFetcher fetcher = getThreatPreventionNodeInfosFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.THREATPREVENTIONNODEINFO);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<ThreatPreventionNodeInfo>();
+    }
+
+    public static ThreatPreventionNodeInfosFetcher getThreatPreventionNodeInfosFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.THREATPREVENTIONNODEINFOS_FETCHER, id);
+        if (fetcher != null) {
+            return (ThreatPreventionNodeInfosFetcher) fetcher;
+        }return null;
+    }
+
+    public static java.util.List<ThreatPreventionNodeInfo> getAllThreatPreventionNodeInfos() throws RestException {
+        java.util.List<ThreatPreventionNodeInfo> allObjs = new ArrayList<ThreatPreventionNodeInfo>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<ThreatPreventionNodeInfosFetcher> getAllThreatPreventionNodeInfosFetchers() throws RestException {
+        java.util.List<ThreatPreventionNodeInfosFetcher> allObjs = new ArrayList<ThreatPreventionNodeInfosFetcher>();
+        return allObjs;
+    }
+    public static VPortInfo getVPortInfoById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            VPortInfo obj = null;
+            obj = new VPortInfo();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.VPORTINFO, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<VPortInfo> getVPortInfosForFetcherId(String id) throws RestException {
+        VPortInfosFetcher fetcher = getVPortInfosFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.VPORTINFO);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<VPortInfo>();
+    }
+
+    public static VPortInfosFetcher getVPortInfosFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.VPORTINFOS_FETCHER, id);
+        if (fetcher != null) {
+            return (VPortInfosFetcher) fetcher;
+        }return null;
+    }
+
+    public static java.util.List<VPortInfo> getAllVPortInfos() throws RestException {
+        java.util.List<VPortInfo> allObjs = new ArrayList<VPortInfo>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<VPortInfosFetcher> getAllVPortInfosFetchers() throws RestException {
+        java.util.List<VPortInfosFetcher> allObjs = new ArrayList<VPortInfosFetcher>();
         return allObjs;
     }
     public static ForwardingClass getForwardingClassById(String id) {
@@ -535,6 +486,55 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<SysmonUplinkConnectionsFetcher> getAllSysmonUplinkConnectionsFetchers() throws RestException {
         java.util.List<SysmonUplinkConnectionsFetcher> allObjs = new ArrayList<SysmonUplinkConnectionsFetcher>();
+        return allObjs;
+    }
+    public static UDPProbeTestResult getUDPProbeTestResultById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            UDPProbeTestResult obj = null;
+            obj = new UDPProbeTestResult();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.UDPPROBETESTRESULT, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<UDPProbeTestResult> getUDPProbeTestResultsForFetcherId(String id) throws RestException {
+        UDPProbeTestResultsFetcher fetcher = getUDPProbeTestResultsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.UDPPROBETESTRESULT);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<UDPProbeTestResult>();
+    }
+
+    public static UDPProbeTestResultsFetcher getUDPProbeTestResultsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.UDPPROBETESTRESULTS_FETCHER, id);
+        if (fetcher != null) {
+            return (UDPProbeTestResultsFetcher) fetcher;
+        }return null;
+    }
+
+    public static java.util.List<UDPProbeTestResult> getAllUDPProbeTestResults() throws RestException {
+        java.util.List<UDPProbeTestResult> allObjs = new ArrayList<UDPProbeTestResult>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<UDPProbeTestResultsFetcher> getAllUDPProbeTestResultsFetchers() throws RestException {
+        java.util.List<UDPProbeTestResultsFetcher> allObjs = new ArrayList<UDPProbeTestResultsFetcher>();
         return allObjs;
     }
     public static AllocationPool getAllocationPoolById(String id) {

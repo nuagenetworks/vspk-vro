@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum RoleentryRoleAccessTypeList {
 
-    CREATE("CREATE", "CREATE"), CUD_CHILDREN("CUD_CHILDREN", "CUD_CHILDREN"), DELETE("DELETE", "DELETE"), MODIFY("MODIFY", "MODIFY"), NO_ACCESS("NO_ACCESS", "NO_ACCESS"), NO_ACCESS_CHILDREN("NO_ACCESS_CHILDREN", "NO_ACCESS_CHILDREN"), READ("READ", "READ"), READ_CHILDREN("READ_CHILDREN", "READ_CHILDREN");
+    CREATE("CREATE", "CREATE"), CUD_CHILDREN("CUD_CHILDREN", "CUD_CHILDREN"), DELETE("DELETE", "DELETE"), MODIFY("MODIFY", "MODIFY"), NO_ACCESS("NO_ACCESS", "NO_ACCESS"), NO_ACCESS_CHILDREN("NO_ACCESS_CHILDREN", "NO_ACCESS_CHILDREN"), READ("READ", "READ"), READ_CHILDREN("READ_CHILDREN", "READ_CHILDREN"), USE("USE", "USE");
 
     private final String id;
     private final String name;
@@ -96,6 +96,11 @@ public enum RoleentryRoleAccessTypeList {
     @VsoProperty(displayName = "READ_CHILDREN", readOnly = true)
     public RoleentryRoleAccessTypeList getREAD_CHILDREN() {
         return READ_CHILDREN;
+    }
+    
+    @VsoProperty(displayName = "USE", readOnly = true)
+    public RoleentryRoleAccessTypeList getUSE() {
+        return USE;
     }
     
 
