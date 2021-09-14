@@ -23520,6 +23520,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static NSGMigrationProfilesFetcher getNSGMigrationProfilesFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            NSGMigrationProfilesFetcher fetcher = obj.getNSGMigrationProfiles();
+            return addFetcher(Constants.NSGMIGRATIONPROFILES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static NSGPatchProfilesFetcher getNSGPatchProfilesFetcherForMeId(String id) throws RestException {
         Me obj = getObject(Constants.ME, id);
         if (obj == null) {
@@ -28747,6 +28761,79 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<NSGInfosFetcher> allObjs = new ArrayList<NSGInfosFetcher>();
         return allObjs;
     }
+    public static NSGMigrationProfile getNSGMigrationProfileById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            NSGMigrationProfile obj = null;
+            obj = new NSGMigrationProfile();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.NSGMIGRATIONPROFILE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static PermissionsFetcher getPermissionsFetcherForNSGMigrationProfileId(String id) throws RestException {
+        NSGMigrationProfile obj = getObject(Constants.NSGMIGRATIONPROFILE, id);
+        if (obj == null) {
+            obj = getNSGMigrationProfileById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<NSGMigrationProfile> getNSGMigrationProfilesForFetcherId(String id) throws RestException {
+        NSGMigrationProfilesFetcher fetcher = getNSGMigrationProfilesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.NSGMIGRATIONPROFILE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<NSGMigrationProfile>();
+    }
+
+    public static NSGMigrationProfilesFetcher getNSGMigrationProfilesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.NSGMIGRATIONPROFILES_FETCHER, id);
+        if (fetcher != null) {
+            return (NSGMigrationProfilesFetcher) fetcher;
+        }
+        if ((fetcher = getNSGMigrationProfilesFetcherForMeId(id)) != null) {
+            return (NSGMigrationProfilesFetcher) addFetcher(Constants.NSGMIGRATIONPROFILES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<NSGMigrationProfile> getAllNSGMigrationProfiles() throws RestException {
+        java.util.List<NSGMigrationProfile> allObjs = new ArrayList<NSGMigrationProfile>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            NSGMigrationProfilesFetcher fetcher = getNSGMigrationProfilesFetcherForMeId(session.getId());
+            java.util.List<NSGMigrationProfile> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<NSGMigrationProfilesFetcher> getAllNSGMigrationProfilesFetchers() throws RestException {
+        java.util.List<NSGMigrationProfilesFetcher> allObjs = new ArrayList<NSGMigrationProfilesFetcher>();
+        return allObjs;
+    }
     public static NSGPatchProfile getNSGPatchProfileById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             NSGPatchProfile obj = null;
@@ -31704,6 +31791,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getPermissionsFetcherForNSGGroupId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForNSGMigrationProfileId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         

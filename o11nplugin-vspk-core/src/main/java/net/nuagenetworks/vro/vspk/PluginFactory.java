@@ -956,6 +956,10 @@ public final class PluginFactory extends BasePluginFactory {
             return DomainFlowLimitEnabled.getEnumById(id);
         }
         
+        if (type.equals(Constants.DOMAIN_FLOWSETUPRATELIMITENABLED_ENUM)) {
+            return DomainFlowSetupRateLimitEnabled.getEnumById(id);
+        }
+        
         if (type.equals(Constants.DOMAIN_MAINTENANCEMODE_ENUM)) {
             return DomainMaintenanceMode.getEnumById(id);
         }
@@ -3242,6 +3246,16 @@ public final class PluginFactory extends BasePluginFactory {
             return NSGInfoPersonality.getEnumById(id);
         }
         
+        if (type.equals(Constants.NSGMIGRATIONPROFILE)) {
+            return ModelHelper.getNSGMigrationProfileById(id);
+        }
+        if (type.equals(Constants.NSGMIGRATIONPROFILES_FETCHER)) {
+            return ModelHelper.getNSGMigrationProfilesFetcherById(id);
+        }
+        if (type.equals(Constants.NSGMIGRATIONPROFILE_ENTITYSCOPE_ENUM)) {
+            return NSGMigrationProfileEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NSGPATCHPROFILE)) {
             return ModelHelper.getNSGPatchProfileById(id);
         }
@@ -5166,6 +5180,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.VPORT_FLOWLIMITENABLED_ENUM)) {
             return VPortFlowLimitEnabled.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VPORT_FLOWSETUPRATELIMITENABLED_ENUM)) {
+            return VPortFlowSetupRateLimitEnabled.getEnumById(id);
         }
         
         if (type.equals(Constants.VPORT_GATEWAYMACMOVEROLE_ENUM)) {
@@ -9816,6 +9834,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getNSGInfosForFetcherId(id);
         }
         
+        if (type.equals(Constants.ME) && relationName.equals(Constants.NSGMIGRATIONPROFILES_FETCHER)) {
+            return toList(ModelHelper.getNSGMigrationProfilesFetcherForMeId(id));
+        }
+        if (type.equals(Constants.NSGMIGRATIONPROFILES_FETCHER) && relationName.equals(Constants.NSGMIGRATIONPROFILES)) {
+            return ModelHelper.getNSGMigrationProfilesForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ME) && relationName.equals(Constants.NSGPATCHPROFILES_FETCHER)) {
             return toList(ModelHelper.getNSGPatchProfilesFetcherForMeId(id));
         }
@@ -10650,6 +10675,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.NSGGROUP) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
             return toList(ModelHelper.getPermissionsFetcherForNSGGroupId(id));
+        }
+        
+        if (type.equals(Constants.NSGMIGRATIONPROFILE) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
+            return toList(ModelHelper.getPermissionsFetcherForNSGMigrationProfileId(id));
         }
         
         if (type.equals(Constants.NSREDUNDANTGATEWAYGROUP) && relationName.equals(Constants.ALARMS_FETCHER)) {
@@ -14251,6 +14280,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(DomainFlowLimitEnabled.values()));
         }
         
+        if (type.equals(Constants.DOMAIN_FLOWSETUPRATELIMITENABLED_ENUM)) {
+            return new QueryResult(Arrays.asList(DomainFlowSetupRateLimitEnabled.values()));
+        }
+        
         if (type.equals(Constants.DOMAIN_MAINTENANCEMODE_ENUM)) {
             return new QueryResult(Arrays.asList(DomainMaintenanceMode.values()));
         }
@@ -16779,6 +16812,18 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(NSGInfoPersonality.values()));
         }
         
+        if (type.equals(Constants.NSGMIGRATIONPROFILE)) {
+            java.util.List<NSGMigrationProfile> allObjs = ModelHelper.getAllNSGMigrationProfiles();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.NSGMIGRATIONPROFILES_FETCHER)) {
+            java.util.List<NSGMigrationProfilesFetcher> allObjs = ModelHelper.getAllNSGMigrationProfilesFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.NSGMIGRATIONPROFILE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NSGMigrationProfileEntityScope.values()));
+        }
+        
         if (type.equals(Constants.NSGPATCHPROFILE)) {
             java.util.List<NSGPatchProfile> allObjs = ModelHelper.getAllNSGPatchProfiles();
             return new QueryResult(allObjs);
@@ -18925,6 +18970,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.VPORT_FLOWLIMITENABLED_ENUM)) {
             return new QueryResult(Arrays.asList(VPortFlowLimitEnabled.values()));
+        }
+        
+        if (type.equals(Constants.VPORT_FLOWSETUPRATELIMITENABLED_ENUM)) {
+            return new QueryResult(Arrays.asList(VPortFlowSetupRateLimitEnabled.values()));
         }
         
         if (type.equals(Constants.VPORT_GATEWAYMACMOVEROLE_ENUM)) {

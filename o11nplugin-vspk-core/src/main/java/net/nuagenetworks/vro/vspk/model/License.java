@@ -80,6 +80,9 @@ public class License extends BaseObject {
     @JsonProperty(value = "allowedNICsCount")
     protected Long allowedNICsCount;
     
+    @JsonProperty(value = "allowedOVRSsCount")
+    protected Long allowedOVRSsCount;
+    
     @JsonProperty(value = "allowedVDFGsCount")
     protected Long allowedVDFGsCount;
     
@@ -313,6 +316,17 @@ public class License extends BaseObject {
     @JsonIgnore
     public void setAllowedNICsCount(Long value) { 
         this.allowedNICsCount = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AllowedOVRSsCount", readOnly = false)   
+    public Long getAllowedOVRSsCount() {
+       return allowedOVRSsCount;
+    }
+
+    @JsonIgnore
+    public void setAllowedOVRSsCount(Long value) { 
+        this.allowedOVRSsCount = value;
     }
     
     @JsonIgnore
@@ -830,7 +844,7 @@ public class License extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "License [" + "additionalSupportedVersions=" + additionalSupportedVersions + ", allowedAVRSGsCount=" + allowedAVRSGsCount + ", allowedAVRSsCount=" + allowedAVRSsCount + ", allowedCPEsCount=" + allowedCPEsCount + ", allowedNICsCount=" + allowedNICsCount + ", allowedVDFGsCount=" + allowedVDFGsCount + ", allowedVDFsCount=" + allowedVDFsCount + ", allowedVMsCount=" + allowedVMsCount + ", allowedVRSGsCount=" + allowedVRSGsCount + ", allowedVRSsCount=" + allowedVRSsCount + ", city=" + city + ", company=" + company + ", country=" + country + ", creationDate=" + creationDate + ", customerKey=" + customerKey + ", email=" + email + ", embeddedMetadata=" + embeddedMetadata + ", encryptionMode=" + encryptionMode + ", entityScope=" + entityScope + ", expirationDate=" + expirationDate + ", expiryTimestamp=" + expiryTimestamp + ", externalID=" + externalID + ", isClusterLicense=" + isClusterLicense + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", license=" + license + ", licenseEncryption=" + licenseEncryption + ", licenseEntities=" + licenseEntities + ", licenseID=" + licenseID + ", licenseType=" + licenseType + ", licensedFeature=" + licensedFeature + ", majorRelease=" + majorRelease + ", minorRelease=" + minorRelease + ", owner=" + owner + ", phone=" + phone + ", productVersion=" + productVersion + ", provider=" + provider + ", requestID=" + requestID + ", state=" + state + ", street=" + street + ", system=" + system + ", uniqueLicenseIdentifier=" + uniqueLicenseIdentifier + ", userName=" + userName + ", zip=" + zip + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "License [" + "additionalSupportedVersions=" + additionalSupportedVersions + ", allowedAVRSGsCount=" + allowedAVRSGsCount + ", allowedAVRSsCount=" + allowedAVRSsCount + ", allowedCPEsCount=" + allowedCPEsCount + ", allowedNICsCount=" + allowedNICsCount + ", allowedOVRSsCount=" + allowedOVRSsCount + ", allowedVDFGsCount=" + allowedVDFGsCount + ", allowedVDFsCount=" + allowedVDFsCount + ", allowedVMsCount=" + allowedVMsCount + ", allowedVRSGsCount=" + allowedVRSGsCount + ", allowedVRSsCount=" + allowedVRSsCount + ", city=" + city + ", company=" + company + ", country=" + country + ", creationDate=" + creationDate + ", customerKey=" + customerKey + ", email=" + email + ", embeddedMetadata=" + embeddedMetadata + ", encryptionMode=" + encryptionMode + ", entityScope=" + entityScope + ", expirationDate=" + expirationDate + ", expiryTimestamp=" + expiryTimestamp + ", externalID=" + externalID + ", isClusterLicense=" + isClusterLicense + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", license=" + license + ", licenseEncryption=" + licenseEncryption + ", licenseEntities=" + licenseEntities + ", licenseID=" + licenseID + ", licenseType=" + licenseType + ", licensedFeature=" + licensedFeature + ", majorRelease=" + majorRelease + ", minorRelease=" + minorRelease + ", owner=" + owner + ", phone=" + phone + ", productVersion=" + productVersion + ", provider=" + provider + ", requestID=" + requestID + ", state=" + state + ", street=" + street + ", system=" + system + ", uniqueLicenseIdentifier=" + uniqueLicenseIdentifier + ", userName=" + userName + ", zip=" + zip + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

@@ -104,6 +104,8 @@ import net.nuagenetworks.vro.vspk.model.enums.VPortEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.VPortFlowLimitEnabled;
 
+import net.nuagenetworks.vro.vspk.model.enums.VPortFlowSetupRateLimitEnabled;
+
 import net.nuagenetworks.vro.vspk.model.enums.VPortGatewayMACMoveRole;
 
 import net.nuagenetworks.vro.vspk.model.enums.VPortMulticast;
@@ -273,6 +275,12 @@ public class VPort extends BaseObject {
     
     @JsonProperty(value = "flowLimitEnabled")
     protected VPortFlowLimitEnabled flowLimitEnabled;
+    
+    @JsonProperty(value = "flowSetupRate")
+    protected Long flowSetupRate;
+    
+    @JsonProperty(value = "flowSetupRateLimitEnabled")
+    protected VPortFlowSetupRateLimitEnabled flowSetupRateLimitEnabled;
     
     @JsonProperty(value = "gatewayMACMoveRole")
     protected VPortGatewayMACMoveRole gatewayMACMoveRole;
@@ -912,6 +920,28 @@ public class VPort extends BaseObject {
     @JsonIgnore
     public void setFlowLimitEnabled(VPortFlowLimitEnabled value) { 
         this.flowLimitEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FlowSetupRate", readOnly = false)   
+    public Long getFlowSetupRate() {
+       return flowSetupRate;
+    }
+
+    @JsonIgnore
+    public void setFlowSetupRate(Long value) { 
+        this.flowSetupRate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FlowSetupRateLimitEnabled", readOnly = false)   
+    public VPortFlowSetupRateLimitEnabled getFlowSetupRateLimitEnabled() {
+       return flowSetupRateLimitEnabled;
+    }
+
+    @JsonIgnore
+    public void setFlowSetupRateLimitEnabled(VPortFlowSetupRateLimitEnabled value) { 
+        this.flowSetupRateLimitEnabled = value;
     }
     
     @JsonIgnore
@@ -1555,7 +1585,7 @@ public class VPort extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VPORTMIRRORS_FETCHER, getId());
         }
     }public String toString() {
-        return "VPort [" + "DPI=" + DPI + ", FIPIgnoreDefaultRoute=" + FIPIgnoreDefaultRoute + ", VLAN=" + VLAN + ", VLANID=" + VLANID + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", active=" + active + ", addressSpoofing=" + addressSpoofing + ", assocEntityID=" + assocEntityID + ", associatedEgressProfileID=" + associatedEgressProfileID + ", associatedFloatingIPID=" + associatedFloatingIPID + ", associatedGatewayID=" + associatedGatewayID + ", associatedGatewayPersonality=" + associatedGatewayPersonality + ", associatedGatewayType=" + associatedGatewayType + ", associatedIngressProfileID=" + associatedIngressProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSSID=" + associatedSSID + ", associatedSendMulticastChannelMapID=" + associatedSendMulticastChannelMapID + ", associatedTrunkID=" + associatedTrunkID + ", autoCreated=" + autoCreated + ", backhaulSubnetVNID=" + backhaulSubnetVNID + ", color=" + color + ", creationDate=" + creationDate + ", description=" + description + ", domainID=" + domainID + ", domainName=" + domainName + ", domainServiceLabel=" + domainServiceLabel + ", domainVLANID=" + domainVLANID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", esGroupVPortInfos=" + esGroupVPortInfos + ", externalID=" + externalID + ", flowCount=" + flowCount + ", flowLimitEnabled=" + flowLimitEnabled + ", gatewayMACMoveRole=" + gatewayMACMoveRole + ", gatewayPortName=" + gatewayPortName + ", gwEligible=" + gwEligible + ", hasAttachedInterfaces=" + hasAttachedInterfaces + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", multiNICVPortID=" + multiNICVPortID + ", multicast=" + multicast + ", name=" + name + ", operationalState=" + operationalState + ", owner=" + owner + ", peerOperationalState=" + peerOperationalState + ", routed=" + routed + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", serviceID=" + serviceID + ", subType=" + subType + ", subnetVNID=" + subnetVNID + ", systemType=" + systemType + ", trunkRole=" + trunkRole + ", type=" + type + ", zoneID=" + zoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "VPort [" + "DPI=" + DPI + ", FIPIgnoreDefaultRoute=" + FIPIgnoreDefaultRoute + ", VLAN=" + VLAN + ", VLANID=" + VLANID + ", accessRestrictionEnabled=" + accessRestrictionEnabled + ", active=" + active + ", addressSpoofing=" + addressSpoofing + ", assocEntityID=" + assocEntityID + ", associatedEgressProfileID=" + associatedEgressProfileID + ", associatedFloatingIPID=" + associatedFloatingIPID + ", associatedGatewayID=" + associatedGatewayID + ", associatedGatewayPersonality=" + associatedGatewayPersonality + ", associatedGatewayType=" + associatedGatewayType + ", associatedIngressProfileID=" + associatedIngressProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedSSID=" + associatedSSID + ", associatedSendMulticastChannelMapID=" + associatedSendMulticastChannelMapID + ", associatedTrunkID=" + associatedTrunkID + ", autoCreated=" + autoCreated + ", backhaulSubnetVNID=" + backhaulSubnetVNID + ", color=" + color + ", creationDate=" + creationDate + ", description=" + description + ", domainID=" + domainID + ", domainName=" + domainName + ", domainServiceLabel=" + domainServiceLabel + ", domainVLANID=" + domainVLANID + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", esGroupVPortInfos=" + esGroupVPortInfos + ", externalID=" + externalID + ", flowCount=" + flowCount + ", flowLimitEnabled=" + flowLimitEnabled + ", flowSetupRate=" + flowSetupRate + ", flowSetupRateLimitEnabled=" + flowSetupRateLimitEnabled + ", gatewayMACMoveRole=" + gatewayMACMoveRole + ", gatewayPortName=" + gatewayPortName + ", gwEligible=" + gwEligible + ", hasAttachedInterfaces=" + hasAttachedInterfaces + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", multiNICVPortID=" + multiNICVPortID + ", multicast=" + multicast + ", name=" + name + ", operationalState=" + operationalState + ", owner=" + owner + ", peerOperationalState=" + peerOperationalState + ", routed=" + routed + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", serviceID=" + serviceID + ", subType=" + subType + ", subnetVNID=" + subnetVNID + ", systemType=" + systemType + ", trunkRole=" + trunkRole + ", type=" + type + ", zoneID=" + zoneID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

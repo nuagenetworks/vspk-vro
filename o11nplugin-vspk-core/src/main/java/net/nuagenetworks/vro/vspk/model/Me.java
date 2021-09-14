@@ -140,6 +140,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.NSGGroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGInfosFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NSGMigrationProfilesFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.NSGPatchProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NSRedundantGatewayGroupsFetcher;
@@ -311,6 +313,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSGGROUPS_FETCHER, type = Constants.NSGGROUPS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.NSGMIGRATIONPROFILES_FETCHER, type = Constants.NSGMIGRATIONPROFILES_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.NSGPATCHPROFILES_FETCHER, type = Constants.NSGPATCHPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER, type = Constants.NSREDUNDANTGATEWAYGROUPS_FETCHER), 
@@ -368,6 +372,9 @@ public class Me extends BaseRootObject {
     
     @JsonProperty(value = "AARProbeStatsInterval")
     protected Long AARProbeStatsInterval;
+    
+    @JsonProperty(value = "APIKeyExpiry")
+    protected Long APIKeyExpiry;
     
     @JsonProperty(value = "VSSStatsInterval")
     protected Long VSSStatsInterval;
@@ -608,6 +615,9 @@ public class Me extends BaseRootObject {
     
     @JsonIgnore
     private NSGInfosFetcher nSGInfos;
+    
+    @JsonIgnore
+    private NSGMigrationProfilesFetcher nSGMigrationProfiles;
     
     @JsonIgnore
     private NSGPatchProfilesFetcher nSGPatchProfiles;
@@ -866,6 +876,8 @@ public class Me extends BaseRootObject {
         
         nSGInfos = new NSGInfosFetcher(this);
         
+        nSGMigrationProfiles = new NSGMigrationProfilesFetcher(this);
+        
         nSGPatchProfiles = new NSGPatchProfilesFetcher(this);
         
         nSRedundantGatewayGroups = new NSRedundantGatewayGroupsFetcher(this);
@@ -1026,6 +1038,17 @@ public class Me extends BaseRootObject {
     @JsonIgnore
     public void setAARProbeStatsInterval(Long value) { 
         this.AARProbeStatsInterval = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "APIKeyExpiry", readOnly = false)   
+    public Long getAPIKeyExpiry() {
+       return APIKeyExpiry;
+    }
+
+    @JsonIgnore
+    public void setAPIKeyExpiry(Long value) { 
+        this.APIKeyExpiry = value;
     }
     
     @JsonIgnore
@@ -1621,6 +1644,12 @@ public class Me extends BaseRootObject {
     @VsoProperty(displayName = "NSGInfos", readOnly = true)   
     public NSGInfosFetcher getNSGInfos() {
         return nSGInfos;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "NSGMigrationProfiles", readOnly = true)   
+    public NSGMigrationProfilesFetcher getNSGMigrationProfiles() {
+        return nSGMigrationProfiles;
     }
     
     @JsonIgnore
@@ -2227,6 +2256,14 @@ public class Me extends BaseRootObject {
         }
     }
     @VsoMethod
+    public void createNSGMigrationProfile(Session session, NSGMigrationProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NSGMIGRATIONPROFILES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createNSGPatchProfile(Session session, NSGPatchProfile childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -2402,7 +2439,7 @@ public class Me extends BaseRootObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Me [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", VSSStatsInterval=" + VSSStatsInterval + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", creationDate=" + creationDate + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", mobileNumber=" + mobileNumber + ", owner=" + owner + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Me [" + "AARFlowStatsInterval=" + AARFlowStatsInterval + ", AARProbeStatsInterval=" + AARProbeStatsInterval + ", APIKeyExpiry=" + APIKeyExpiry + ", VSSStatsInterval=" + VSSStatsInterval + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", creationDate=" + creationDate + ", disabled=" + disabled + ", elasticSearchAddress=" + elasticSearchAddress + ", email=" + email + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", firstName=" + firstName + ", flowCollectionEnabled=" + flowCollectionEnabled + ", lastName=" + lastName + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", mobileNumber=" + mobileNumber + ", owner=" + owner + ", password=" + password + ", role=" + role + ", statisticsEnabled=" + statisticsEnabled + ", userName=" + userName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + ", apiKey=" + apiKey  + "]";
     }
 }

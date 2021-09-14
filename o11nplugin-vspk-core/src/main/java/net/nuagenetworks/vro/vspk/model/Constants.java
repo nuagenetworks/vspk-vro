@@ -400,6 +400,8 @@ public interface Constants extends BaseConstants {
     String NSGGROUPS = "NSGGroups";
     String NSGINFO = "NSGInfo";
     String NSGINFOS = "NSGInfos";
+    String NSGMIGRATIONPROFILE = "NSGMigrationProfile";
+    String NSGMIGRATIONPROFILES = "NSGMigrationProfiles";
     String NSGPATCHPROFILE = "NSGPatchProfile";
     String NSGPATCHPROFILES = "NSGPatchProfiles";
     String NSREDUNDANTGATEWAYGROUP = "NSRedundantGatewayGroup";
@@ -844,6 +846,7 @@ public interface Constants extends BaseConstants {
     String NSGATEWAYTEMPLATES_FETCHER = "NSGatewayTemplatesFetcher";
     String NSGGROUPS_FETCHER = "NSGGroupsFetcher";
     String NSGINFOS_FETCHER = "NSGInfosFetcher";
+    String NSGMIGRATIONPROFILES_FETCHER = "NSGMigrationProfilesFetcher";
     String NSGPATCHPROFILES_FETCHER = "NSGPatchProfilesFetcher";
     String NSREDUNDANTGATEWAYGROUPS_FETCHER = "NSRedundantGatewayGroupsFetcher";
     String NSGROUTINGPOLICYBINDINGS_FETCHER = "NSGRoutingPolicyBindingsFetcher";
@@ -1173,6 +1176,7 @@ public interface Constants extends BaseConstants {
     String DOMAIN_ENTITYSCOPE_ENUM = "DomainEntityScope";
     String DOMAIN_FLOWCOLLECTIONENABLED_ENUM = "DomainFlowCollectionEnabled";
     String DOMAIN_FLOWLIMITENABLED_ENUM = "DomainFlowLimitEnabled";
+    String DOMAIN_FLOWSETUPRATELIMITENABLED_ENUM = "DomainFlowSetupRateLimitEnabled";
     String DOMAIN_MAINTENANCEMODE_ENUM = "DomainMaintenanceMode";
     String DOMAIN_MULTICAST_ENUM = "DomainMulticast";
     String DOMAIN_PERMITTEDACTION_ENUM = "DomainPermittedAction";
@@ -1685,6 +1689,8 @@ public interface Constants extends BaseConstants {
     String NSGINFO_FAMILY_ENUM = "NSGInfoFamily";
     String NSGINFO_PERSONALITY_ENUM = "NSGInfoPersonality";
     
+    String NSGMIGRATIONPROFILE_ENTITYSCOPE_ENUM = "NSGMigrationProfileEntityScope";
+    
     String NSGPATCHPROFILE_ENTITYSCOPE_ENUM = "NSGPatchProfileEntityScope";
     
     String NSREDUNDANTGATEWAYGROUP_ENTITYSCOPE_ENUM = "NSRedundantGatewayGroupEntityScope";
@@ -2110,6 +2116,7 @@ public interface Constants extends BaseConstants {
     String VPORT_ASSOCIATEDGATEWAYPERSONALITY_ENUM = "VPortAssociatedGatewayPersonality";
     String VPORT_ENTITYSCOPE_ENUM = "VPortEntityScope";
     String VPORT_FLOWLIMITENABLED_ENUM = "VPortFlowLimitEnabled";
+    String VPORT_FLOWSETUPRATELIMITENABLED_ENUM = "VPortFlowSetupRateLimitEnabled";
     String VPORT_GATEWAYMACMOVEROLE_ENUM = "VPortGatewayMACMoveRole";
     String VPORT_MULTICAST_ENUM = "VPortMulticast";
     String VPORT_OPERATIONALSTATE_ENUM = "VPortOperationalState";
@@ -2382,6 +2389,7 @@ public interface Constants extends BaseConstants {
     String NSGATEWAYTEMPLATE_IMAGE_FILENAME = "images/icon-nsgatewaytemplate.png";
     String NSGGROUP_IMAGE_FILENAME = "images/icon-nsggroup.png";
     String NSGINFO_IMAGE_FILENAME = "images/icon-nsginfo.png";
+    String NSGMIGRATIONPROFILE_IMAGE_FILENAME = "images/icon-nsgmigrationprofile.png";
     String NSGPATCHPROFILE_IMAGE_FILENAME = "images/icon-nsgpatchprofile.png";
     String NSREDUNDANTGATEWAYGROUP_IMAGE_FILENAME = "images/icon-nsredundantgatewaygroup.png";
     String NSGROUTINGPOLICYBINDING_IMAGE_FILENAME = "images/icon-nsgroutingpolicybinding.png";
@@ -2697,6 +2705,7 @@ public interface Constants extends BaseConstants {
     String NSGATEWAYTEMPLATE_ENTITY_TYPE = "nsgatewaytemplate";
     String NSGGROUP_ENTITY_TYPE = "nsggroup";
     String NSGINFO_ENTITY_TYPE = "nsginfo";
+    String NSGMIGRATIONPROFILE_ENTITY_TYPE = "nsgmigrationprofile";
     String NSGPATCHPROFILE_ENTITY_TYPE = "nsgpatchprofile";
     String NSREDUNDANTGATEWAYGROUP_ENTITY_TYPE = "nsgredundancygroup";
     String NSGROUTINGPOLICYBINDING_ENTITY_TYPE = "nsgroutingpolicybinding";

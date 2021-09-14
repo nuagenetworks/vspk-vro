@@ -338,6 +338,8 @@ import net.nuagenetworks.vro.vspk.model.NSGatewayTemplate;
 
 import net.nuagenetworks.vro.vspk.model.NSGGroup;
 
+import net.nuagenetworks.vro.vspk.model.NSGMigrationProfile;
+
 import net.nuagenetworks.vro.vspk.model.NSRedundantGatewayGroup;
 
 import net.nuagenetworks.vro.vspk.model.NSGRoutingPolicyBinding;
@@ -2121,6 +2123,16 @@ public class PermissionsFetcher extends BaseFetcher<Permission> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NSGGroup) {
             return (NSGGroup) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NSGMigrationProfile", readOnly = true)
+    public NSGMigrationProfile getNSGMigrationProfile() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NSGMigrationProfile) {
+            return (NSGMigrationProfile) obj;
         }
         
         return null;

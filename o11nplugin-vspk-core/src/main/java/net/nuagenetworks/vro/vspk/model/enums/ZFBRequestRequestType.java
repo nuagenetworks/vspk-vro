@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum ZFBRequestRequestType {
 
-    SELF_REBOOTSTRAP("SELF_REBOOTSTRAP", "SELF_REBOOTSTRAP"), ZFB("ZFB", "ZFB");
+    MIGRATING("MIGRATING", "MIGRATING"), SELF_REBOOTSTRAP("SELF_REBOOTSTRAP", "SELF_REBOOTSTRAP"), ZFB("ZFB", "ZFB");
 
     private final String id;
     private final String name;
@@ -57,6 +57,11 @@ public enum ZFBRequestRequestType {
         return name;
     }
 
+    
+    @VsoProperty(displayName = "MIGRATING", readOnly = true)
+    public ZFBRequestRequestType getMIGRATING() {
+        return MIGRATING;
+    }
     
     @VsoProperty(displayName = "SELF_REBOOTSTRAP", readOnly = true)
     public ZFBRequestRequestType getSELF_REBOOTSTRAP() {

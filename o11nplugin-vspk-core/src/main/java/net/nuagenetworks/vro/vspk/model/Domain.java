@@ -174,6 +174,8 @@ import net.nuagenetworks.vro.vspk.model.enums.DomainFlowCollectionEnabled;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainFlowLimitEnabled;
 
+import net.nuagenetworks.vro.vspk.model.enums.DomainFlowSetupRateLimitEnabled;
+
 import net.nuagenetworks.vro.vspk.model.enums.DomainMaintenanceMode;
 
 import net.nuagenetworks.vro.vspk.model.enums.DomainMulticast;
@@ -410,6 +412,12 @@ public class Domain extends BaseObject {
     
     @JsonProperty(value = "flowLimitEnabled")
     protected DomainFlowLimitEnabled flowLimitEnabled;
+    
+    @JsonProperty(value = "flowSetupRate")
+    protected Long flowSetupRate;
+    
+    @JsonProperty(value = "flowSetupRateLimitEnabled")
+    protected DomainFlowSetupRateLimitEnabled flowSetupRateLimitEnabled;
     
     @JsonProperty(value = "globalRoutingEnabled")
     protected Boolean globalRoutingEnabled;
@@ -1326,6 +1334,28 @@ public class Domain extends BaseObject {
     @JsonIgnore
     public void setFlowLimitEnabled(DomainFlowLimitEnabled value) { 
         this.flowLimitEnabled = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FlowSetupRate", readOnly = false)   
+    public Long getFlowSetupRate() {
+       return flowSetupRate;
+    }
+
+    @JsonIgnore
+    public void setFlowSetupRate(Long value) { 
+        this.flowSetupRate = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "FlowSetupRateLimitEnabled", readOnly = false)   
+    public DomainFlowSetupRateLimitEnabled getFlowSetupRateLimitEnabled() {
+       return flowSetupRateLimitEnabled;
+    }
+
+    @JsonIgnore
+    public void setFlowSetupRateLimitEnabled(DomainFlowSetupRateLimitEnabled value) { 
+        this.flowSetupRateLimitEnabled = value;
     }
     
     @JsonIgnore
@@ -2395,7 +2425,7 @@ public class Domain extends BaseObject {
         }
     }
     public String toString() {
-        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", EVPNRT5Type=" + EVPNRT5Type + ", FIPIgnoreDefaultRoute=" + FIPIgnoreDefaultRoute + ", FIPUnderlay=" + FIPUnderlay + ", GRTEnabled=" + GRTEnabled + ", PATEnabled=" + PATEnabled + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", advertiseCriteria=" + advertiseCriteria + ", aggregateFlowsEnabled=" + aggregateFlowsEnabled + ", aggregationFlowType=" + aggregationFlowType + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedIDPProfileID=" + associatedIDPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", associatedSharedPATMapperID=" + associatedSharedPATMapperID + ", associatedUnderlayID=" + associatedUnderlayID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulServiceID=" + backHaulServiceID + ", backHaulVNID=" + backHaulVNID + ", color=" + color + ", createBackHaulSubnet=" + createBackHaulSubnet + ", creationDate=" + creationDate + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainAggregationEnabled=" + domainAggregationEnabled + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", embeddedMetadata=" + embeddedMetadata + ", encryption=" + encryption + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", externalLabel=" + externalLabel + ", fecEnabled=" + fecEnabled + ", flowCollectionEnabled=" + flowCollectionEnabled + ", flowCount=" + flowCount + ", flowLimitEnabled=" + flowLimitEnabled + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", leakingEnabled=" + leakingEnabled + ", localAS=" + localAS + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", owner=" + owner + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", secondaryRouteTarget=" + secondaryRouteTarget + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
+        return "Domain [" + "BGPEnabled=" + BGPEnabled + ", DHCPBehavior=" + DHCPBehavior + ", DHCPServerAddress=" + DHCPServerAddress + ", DPI=" + DPI + ", ECMPCount=" + ECMPCount + ", EVPNRT5Type=" + EVPNRT5Type + ", FIPIgnoreDefaultRoute=" + FIPIgnoreDefaultRoute + ", FIPUnderlay=" + FIPUnderlay + ", GRTEnabled=" + GRTEnabled + ", PATEnabled=" + PATEnabled + ", VXLANECMPEnabled=" + VXLANECMPEnabled + ", advertiseCriteria=" + advertiseCriteria + ", aggregateFlowsEnabled=" + aggregateFlowsEnabled + ", aggregationFlowType=" + aggregationFlowType + ", associatedBGPProfileID=" + associatedBGPProfileID + ", associatedIDPProfileID=" + associatedIDPProfileID + ", associatedMulticastChannelMapID=" + associatedMulticastChannelMapID + ", associatedPATMapperID=" + associatedPATMapperID + ", associatedSharedPATMapperID=" + associatedSharedPATMapperID + ", associatedUnderlayID=" + associatedUnderlayID + ", backHaulRouteDistinguisher=" + backHaulRouteDistinguisher + ", backHaulRouteTarget=" + backHaulRouteTarget + ", backHaulServiceID=" + backHaulServiceID + ", backHaulVNID=" + backHaulVNID + ", color=" + color + ", createBackHaulSubnet=" + createBackHaulSubnet + ", creationDate=" + creationDate + ", customerID=" + customerID + ", description=" + description + ", dhcpServerAddresses=" + dhcpServerAddresses + ", domainAggregationEnabled=" + domainAggregationEnabled + ", domainID=" + domainID + ", domainVLANID=" + domainVLANID + ", embeddedMetadata=" + embeddedMetadata + ", encryption=" + encryption + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", exportRouteTarget=" + exportRouteTarget + ", externalID=" + externalID + ", externalLabel=" + externalLabel + ", fecEnabled=" + fecEnabled + ", flowCollectionEnabled=" + flowCollectionEnabled + ", flowCount=" + flowCount + ", flowLimitEnabled=" + flowLimitEnabled + ", flowSetupRate=" + flowSetupRate + ", flowSetupRateLimitEnabled=" + flowSetupRateLimitEnabled + ", globalRoutingEnabled=" + globalRoutingEnabled + ", importRouteTarget=" + importRouteTarget + ", labelID=" + labelID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", leakingEnabled=" + leakingEnabled + ", localAS=" + localAS + ", maintenanceMode=" + maintenanceMode + ", multicast=" + multicast + ", name=" + name + ", owner=" + owner + ", permittedAction=" + permittedAction + ", policyChangeStatus=" + policyChangeStatus + ", routeDistinguisher=" + routeDistinguisher + ", routeTarget=" + routeTarget + ", secondaryDHCPServerAddress=" + secondaryDHCPServerAddress + ", secondaryRouteTarget=" + secondaryRouteTarget + ", serviceID=" + serviceID + ", stretched=" + stretched + ", templateID=" + templateID + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", tunnelType=" + tunnelType + ", underlayEnabled=" + underlayEnabled + ", uplinkPreference=" + uplinkPreference + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
                  + lastUpdatedDate + ", owner=" + owner  + "]";
     }
 }

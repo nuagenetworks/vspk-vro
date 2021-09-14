@@ -1078,6 +1078,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.NSGMIGRATIONPROFILE_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.NSGMIGRATIONPROFILES_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.NSGPATCHPROFILE_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.NSGPATCHPROFILES_FETCHER, entityParentId);
             return;
@@ -2642,6 +2647,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.NSGMIGRATIONPROFILE_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.NSGMIGRATIONPROFILE, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.NSGPATCHPROFILE_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.NSGPATCHPROFILE, entityId);
             return;
@@ -4203,6 +4213,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.NSGINFO_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.NSGINFO, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.NSGMIGRATIONPROFILE_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.NSGMIGRATIONPROFILE, entityId);
             return;
         }
         
