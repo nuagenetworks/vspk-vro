@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="b7dbf8b2-fff6-5c08-9059-c3a53fad0aa3"  version="20.10.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit NSGMigrationProfile]]></display-name>
+<ref-types><![CDATA[(VSPK:NSGMigrationProfile)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='nSGMigrationProfileObj' type='VSPK:NSGMigrationProfile' >
+</param>
+
+<param name='description' type='string' >
+</param>
+
+<param name='destinationProxyFQDN' type='string' >
+</param>
+
+<param name='externalID' type='string' >
+</param>
+
+<param name='name' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = nSGMigrationProfileObj.session;
+
+if (description) {
+   nSGMigrationProfileObj.description = description;
+} else if (nSGMigrationProfileObj.description) {
+   nSGMigrationProfileObj.description = "";
+}
+if (destinationProxyFQDN) {
+   nSGMigrationProfileObj.destinationProxyFQDN = destinationProxyFQDN;
+} else if (nSGMigrationProfileObj.destinationProxyFQDN) {
+   nSGMigrationProfileObj.destinationProxyFQDN = "";
+}
+if (externalID) {
+   nSGMigrationProfileObj.externalID = externalID;
+} else if (nSGMigrationProfileObj.externalID) {
+   nSGMigrationProfileObj.externalID = "";
+}
+if (name) {
+   nSGMigrationProfileObj.name = name;
+} else if (nSGMigrationProfileObj.name) {
+   nSGMigrationProfileObj.name = "";
+}
+nSGMigrationProfileObj.save(session, 1);]]></script>
+<in-binding><bind name='nSGMigrationProfileObj' type='VSPK:NSGMigrationProfile' export-name="nSGMigrationProfileObj" ></bind>
+
+<bind name='description' type='string' export-name="description" ></bind>
+
+<bind name='destinationProxyFQDN' type='string' export-name="destinationProxyFQDN" ></bind>
+
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='name' type='string' export-name="name" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="nSGMigrationProfileObj"><desc><![CDATA[nSGMigrationProfileObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="description"><desc><![CDATA[description]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSGMigrationProfileObj.description]]></p-qual></p-param>
+
+<p-param name="destinationProxyFQDN"><desc><![CDATA[destinationProxyFQDN]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSGMigrationProfileObj.destinationProxyFQDN]]></p-qual></p-param>
+
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSGMigrationProfileObj.externalID]]></p-qual></p-param>
+
+<p-param name="name"><desc><![CDATA[name]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nSGMigrationProfileObj.name]]></p-qual></p-param>
+
+</presentation></workflow>
