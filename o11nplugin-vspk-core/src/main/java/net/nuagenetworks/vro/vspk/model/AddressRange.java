@@ -148,21 +148,6 @@ public class AddressRange extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "DHCPPoolType", readOnly = false)   
     public AddressRangeDHCPPoolType getDHCPPoolType() {
@@ -370,7 +355,6 @@ public class AddressRange extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "AddressRange [" + "DHCPPoolType=" + DHCPPoolType + ", IPType=" + IPType + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "AddressRange [" + "DHCPPoolType=" + DHCPPoolType + ", IPType=" + IPType + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

@@ -104,21 +104,6 @@ public class CaptivePortalProfile extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "CaptivePage", readOnly = false)   
     public String getCaptivePage() {
@@ -249,7 +234,6 @@ public class CaptivePortalProfile extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.CAPTIVEPORTALPROFILE, getId());
         }
     }public String toString() {
-        return "CaptivePortalProfile [" + "captivePage=" + captivePage + ", creationDate=" + creationDate + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", portalType=" + portalType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "CaptivePortalProfile [" + "captivePage=" + captivePage + ", creationDate=" + creationDate + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", portalType=" + portalType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

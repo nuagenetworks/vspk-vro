@@ -169,21 +169,6 @@ public class VirtualUplink extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedEgressQoSPolicyID", readOnly = false)   
     public String getAssociatedEgressQoSPolicyID() {
@@ -507,7 +492,6 @@ public class VirtualUplink extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.VIRTUALUPLINK, getId());
         }
     }public String toString() {
-        return "VirtualUplink [" + "associatedEgressQoSPolicyID=" + associatedEgressQoSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQoSPolicyID=" + associatedIngressQoSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", auxMode=" + auxMode + ", enableNATProbes=" + enableNATProbes + ", fecEnabled=" + fecEnabled + ", peerEndpoint=" + peerEndpoint + ", peerGatewayID=" + peerGatewayID + ", peerGatewayName=" + peerGatewayName + ", peerGatewaySystemID=" + peerGatewaySystemID + ", peerPortID=" + peerPortID + ", peerUplinkID=" + peerUplinkID + ", peerVLANID=" + peerVLANID + ", role=" + role + ", roleOrder=" + roleOrder + ", shuntEndpoint=" + shuntEndpoint + ", shuntPortID=" + shuntPortID + ", shuntVLANID=" + shuntVLANID + ", trafficThroughUBROnly=" + trafficThroughUBROnly + ", underlayID=" + underlayID + ", underlayNAT=" + underlayNAT + ", underlayName=" + underlayName + ", underlayRouting=" + underlayRouting + ", virtualUplinkDatapathID=" + virtualUplinkDatapathID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "VirtualUplink [" + "associatedEgressQoSPolicyID=" + associatedEgressQoSPolicyID + ", associatedIngressOverlayQoSPolicerID=" + associatedIngressOverlayQoSPolicerID + ", associatedIngressQoSPolicyID=" + associatedIngressQoSPolicyID + ", associatedIngressUnderlayQoSPolicerID=" + associatedIngressUnderlayQoSPolicerID + ", associatedUplinkConnectionID=" + associatedUplinkConnectionID + ", associatedVSCProfileID=" + associatedVSCProfileID + ", auxMode=" + auxMode + ", enableNATProbes=" + enableNATProbes + ", fecEnabled=" + fecEnabled + ", peerEndpoint=" + peerEndpoint + ", peerGatewayID=" + peerGatewayID + ", peerGatewayName=" + peerGatewayName + ", peerGatewaySystemID=" + peerGatewaySystemID + ", peerPortID=" + peerPortID + ", peerUplinkID=" + peerUplinkID + ", peerVLANID=" + peerVLANID + ", role=" + role + ", roleOrder=" + roleOrder + ", shuntEndpoint=" + shuntEndpoint + ", shuntPortID=" + shuntPortID + ", shuntVLANID=" + shuntVLANID + ", trafficThroughUBROnly=" + trafficThroughUBROnly + ", underlayID=" + underlayID + ", underlayNAT=" + underlayNAT + ", underlayName=" + underlayName + ", underlayRouting=" + underlayRouting + ", virtualUplinkDatapathID=" + virtualUplinkDatapathID + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

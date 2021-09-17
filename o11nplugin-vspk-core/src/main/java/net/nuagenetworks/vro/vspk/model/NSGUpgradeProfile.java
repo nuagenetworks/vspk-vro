@@ -105,21 +105,6 @@ public class NSGUpgradeProfile extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "CreationDate", readOnly = false)   
     public String getCreationDate() {
@@ -261,7 +246,6 @@ public class NSGUpgradeProfile extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGUPGRADEPROFILE, getId());
         }
     }public String toString() {
-        return "NSGUpgradeProfile [" + "creationDate=" + creationDate + ", description=" + description + ", downloadRateLimit=" + downloadRateLimit + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "NSGUpgradeProfile [" + "creationDate=" + creationDate + ", description=" + description + ", downloadRateLimit=" + downloadRateLimit + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

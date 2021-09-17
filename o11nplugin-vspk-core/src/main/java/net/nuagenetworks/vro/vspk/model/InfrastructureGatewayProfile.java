@@ -234,21 +234,6 @@ public class InfrastructureGatewayProfile extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "NTPServerKey", readOnly = false)   
     public String getNTPServerKey() {
@@ -758,7 +743,6 @@ public class InfrastructureGatewayProfile extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "InfrastructureGatewayProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", controllerLessDuration=" + controllerLessDuration + ", controllerLessEnabled=" + controllerLessEnabled + ", controllerLessForwardingMode=" + controllerLessForwardingMode + ", controllerLessRemoteDuration=" + controllerLessRemoteDuration + ", creationDate=" + creationDate + ", datapathSyncTimeout=" + datapathSyncTimeout + ", deadTimer=" + deadTimer + ", deadTimerEnabled=" + deadTimerEnabled + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enableUnderlayTestsDuringActivation=" + enableUnderlayTestsDuringActivation + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowEvictionThreshold=" + flowEvictionThreshold + ", forceImmediateSystemSync=" + forceImmediateSystemSync + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", openFlowAuditTimer=" + openFlowAuditTimer + ", owner=" + owner + ", proxyDNSName=" + proxyDNSName + ", remoteLogMode=" + remoteLogMode + ", remoteLogServerAddress=" + remoteLogServerAddress + ", remoteLogServerPort=" + remoteLogServerPort + ", runUnderlayBandwidthTest=" + runUnderlayBandwidthTest + ", runUnderlayConnectivityTest=" + runUnderlayConnectivityTest + ", runUnderlayMTUDiscoveryTest=" + runUnderlayMTUDiscoveryTest + ", statsCollectorPort=" + statsCollectorPort + ", systemSyncScheduler=" + systemSyncScheduler + ", underlayTestServer=" + underlayTestServer + ", underlayTestUplinkMode=" + underlayTestUplinkMode + ", upgradeAction=" + upgradeAction + ", useTwoFactor=" + useTwoFactor + ", webFilterDownloadPort=" + webFilterDownloadPort + ", webFilterQueryPort=" + webFilterQueryPort + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "InfrastructureGatewayProfile [" + "NTPServerKey=" + NTPServerKey + ", NTPServerKeyID=" + NTPServerKeyID + ", controllerLessDuration=" + controllerLessDuration + ", controllerLessEnabled=" + controllerLessEnabled + ", controllerLessForwardingMode=" + controllerLessForwardingMode + ", controllerLessRemoteDuration=" + controllerLessRemoteDuration + ", creationDate=" + creationDate + ", datapathSyncTimeout=" + datapathSyncTimeout + ", deadTimer=" + deadTimer + ", deadTimerEnabled=" + deadTimerEnabled + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enableUnderlayTestsDuringActivation=" + enableUnderlayTestsDuringActivation + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", externalID=" + externalID + ", flowEvictionThreshold=" + flowEvictionThreshold + ", forceImmediateSystemSync=" + forceImmediateSystemSync + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", metadataUpgradePath=" + metadataUpgradePath + ", name=" + name + ", openFlowAuditTimer=" + openFlowAuditTimer + ", owner=" + owner + ", proxyDNSName=" + proxyDNSName + ", remoteLogMode=" + remoteLogMode + ", remoteLogServerAddress=" + remoteLogServerAddress + ", remoteLogServerPort=" + remoteLogServerPort + ", runUnderlayBandwidthTest=" + runUnderlayBandwidthTest + ", runUnderlayConnectivityTest=" + runUnderlayConnectivityTest + ", runUnderlayMTUDiscoveryTest=" + runUnderlayMTUDiscoveryTest + ", statsCollectorPort=" + statsCollectorPort + ", systemSyncScheduler=" + systemSyncScheduler + ", underlayTestServer=" + underlayTestServer + ", underlayTestUplinkMode=" + underlayTestUplinkMode + ", upgradeAction=" + upgradeAction + ", useTwoFactor=" + useTwoFactor + ", webFilterDownloadPort=" + webFilterDownloadPort + ", webFilterQueryPort=" + webFilterQueryPort + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

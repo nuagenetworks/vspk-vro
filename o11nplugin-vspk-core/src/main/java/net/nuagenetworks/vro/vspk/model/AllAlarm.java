@@ -161,21 +161,6 @@ public class AllAlarm extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "Acknowledged", readOnly = false)   
     public Boolean getAcknowledged() {
@@ -465,7 +450,6 @@ public class AllAlarm extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "AllAlarm [" + "acknowledged=" + acknowledged + ", alarmedObjectID=" + alarmedObjectID + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", numberOfOccurances=" + numberOfOccurances + ", owner=" + owner + ", remedy=" + remedy + ", severity=" + severity + ", systemID=" + systemID + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", title=" + title + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "AllAlarm [" + "acknowledged=" + acknowledged + ", alarmedObjectID=" + alarmedObjectID + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseID=" + enterpriseID + ", entityScope=" + entityScope + ", errorCondition=" + errorCondition + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", numberOfOccurances=" + numberOfOccurances + ", owner=" + owner + ", remedy=" + remedy + ", severity=" + severity + ", systemID=" + systemID + ", targetObject=" + targetObject + ", timestamp=" + timestamp + ", title=" + title + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

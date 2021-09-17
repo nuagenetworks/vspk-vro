@@ -169,21 +169,6 @@ public class OSPFInterface extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "BFDEnabled", readOnly = false)   
     public Boolean getBFDEnabled() {
@@ -506,7 +491,6 @@ public class OSPFInterface extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "OSPFInterface [" + "BFDEnabled=" + BFDEnabled + ", adminState=" + adminState + ", associatedSubnetID=" + associatedSubnetID + ", authenticationKey=" + authenticationKey + ", authenticationType=" + authenticationType + ", creationDate=" + creationDate + ", deadInterval=" + deadInterval + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", helloInterval=" + helloInterval + ", interfaceType=" + interfaceType + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", messageDigestKeys=" + messageDigestKeys + ", metric=" + metric + ", mtu=" + mtu + ", name=" + name + ", owner=" + owner + ", passiveEnabled=" + passiveEnabled + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "OSPFInterface [" + "BFDEnabled=" + BFDEnabled + ", adminState=" + adminState + ", associatedSubnetID=" + associatedSubnetID + ", authenticationKey=" + authenticationKey + ", authenticationType=" + authenticationType + ", creationDate=" + creationDate + ", deadInterval=" + deadInterval + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", helloInterval=" + helloInterval + ", interfaceType=" + interfaceType + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", messageDigestKeys=" + messageDigestKeys + ", metric=" + metric + ", mtu=" + mtu + ", name=" + name + ", owner=" + owner + ", passiveEnabled=" + passiveEnabled + ", priority=" + priority + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

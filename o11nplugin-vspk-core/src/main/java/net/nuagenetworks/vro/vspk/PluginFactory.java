@@ -46,11 +46,23 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.SESSION)) {
             return ModelHelper.getSessionById(id);
         }
+        if (type.equals(Constants.UDPPROBETESTRESULT)) {
+            return ModelHelper.getUDPProbeTestResultById(id);
+        }
+        if (type.equals(Constants.UDPPROBETESTRESULTS_FETCHER)) {
+            return ModelHelper.getUDPProbeTestResultsFetcherById(id);
+        }
         if (type.equals(Constants.CERTIFICATEMETADATA)) {
             return ModelHelper.getCertificateMetadataById(id);
         }
         if (type.equals(Constants.CERTIFICATEMETADATAS_FETCHER)) {
             return ModelHelper.getCertificateMetadatasFetcherById(id);
+        }
+        if (type.equals(Constants.MTUDISCOVERYTESTRESULT)) {
+            return ModelHelper.getMTUDiscoveryTestResultById(id);
+        }
+        if (type.equals(Constants.MTUDISCOVERYTESTRESULTS_FETCHER)) {
+            return ModelHelper.getMTUDiscoveryTestResultsFetcherById(id);
         }
         if (type.equals(Constants.DOWNLOADPROGRESS)) {
             return ModelHelper.getDownloadProgressById(id);
@@ -96,12 +108,6 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.BANDWIDTHTESTRESULTS_FETCHER)) {
             return ModelHelper.getBandwidthTestResultsFetcherById(id);
         }
-        if (type.equals(Constants.MTUDISCOVERYTESTRESULT)) {
-            return ModelHelper.getMTUDiscoveryTestResultById(id);
-        }
-        if (type.equals(Constants.MTUDISCOVERYTESTRESULTS_FETCHER)) {
-            return ModelHelper.getMTUDiscoveryTestResultsFetcherById(id);
-        }
         if (type.equals(Constants.SYSMONUPLINKCONNECTION)) {
             return ModelHelper.getSysmonUplinkConnectionById(id);
         }
@@ -124,12 +130,6 @@ public final class PluginFactory extends BasePluginFactory {
             return SysmonUplinkConnectionVxlanDtlsState.getEnumById(id);
         }
         
-        if (type.equals(Constants.UDPPROBETESTRESULT)) {
-            return ModelHelper.getUDPProbeTestResultById(id);
-        }
-        if (type.equals(Constants.UDPPROBETESTRESULTS_FETCHER)) {
-            return ModelHelper.getUDPProbeTestResultsFetcherById(id);
-        }
         if (type.equals(Constants.ALLOCATIONPOOL)) {
             return ModelHelper.getAllocationPoolById(id);
         }
@@ -13219,12 +13219,28 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<Session> allSessions = ModelHelper.getAllSessions();
             return new QueryResult(allSessions);
         }
+        if (type.equals(Constants.UDPPROBETESTRESULT)) {
+            java.util.List<UDPProbeTestResult> allObjs = ModelHelper.getAllUDPProbeTestResults();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.UDPPROBETESTRESULTS_FETCHER)) {
+            java.util.List<UDPProbeTestResultsFetcher> allObjs = ModelHelper.getAllUDPProbeTestResultsFetchers();
+            return new QueryResult(allObjs);
+        }
         if (type.equals(Constants.CERTIFICATEMETADATA)) {
             java.util.List<CertificateMetadata> allObjs = ModelHelper.getAllCertificateMetadatas();
             return new QueryResult(allObjs);
         }
         if (type.equals(Constants.CERTIFICATEMETADATAS_FETCHER)) {
             java.util.List<CertificateMetadatasFetcher> allObjs = ModelHelper.getAllCertificateMetadatasFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.MTUDISCOVERYTESTRESULT)) {
+            java.util.List<MTUDiscoveryTestResult> allObjs = ModelHelper.getAllMTUDiscoveryTestResults();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.MTUDISCOVERYTESTRESULTS_FETCHER)) {
+            java.util.List<MTUDiscoveryTestResultsFetcher> allObjs = ModelHelper.getAllMTUDiscoveryTestResultsFetchers();
             return new QueryResult(allObjs);
         }
         if (type.equals(Constants.DOWNLOADPROGRESS)) {
@@ -13283,14 +13299,6 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<BandwidthTestResultsFetcher> allObjs = ModelHelper.getAllBandwidthTestResultsFetchers();
             return new QueryResult(allObjs);
         }
-        if (type.equals(Constants.MTUDISCOVERYTESTRESULT)) {
-            java.util.List<MTUDiscoveryTestResult> allObjs = ModelHelper.getAllMTUDiscoveryTestResults();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.MTUDISCOVERYTESTRESULTS_FETCHER)) {
-            java.util.List<MTUDiscoveryTestResultsFetcher> allObjs = ModelHelper.getAllMTUDiscoveryTestResultsFetchers();
-            return new QueryResult(allObjs);
-        }
         if (type.equals(Constants.SYSMONUPLINKCONNECTION)) {
             java.util.List<SysmonUplinkConnection> allObjs = ModelHelper.getAllSysmonUplinkConnections();
             return new QueryResult(allObjs);
@@ -13315,14 +13323,6 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(SysmonUplinkConnectionVxlanDtlsState.values()));
         }
         
-        if (type.equals(Constants.UDPPROBETESTRESULT)) {
-            java.util.List<UDPProbeTestResult> allObjs = ModelHelper.getAllUDPProbeTestResults();
-            return new QueryResult(allObjs);
-        }
-        if (type.equals(Constants.UDPPROBETESTRESULTS_FETCHER)) {
-            java.util.List<UDPProbeTestResultsFetcher> allObjs = ModelHelper.getAllUDPProbeTestResultsFetchers();
-            return new QueryResult(allObjs);
-        }
         if (type.equals(Constants.ALLOCATIONPOOL)) {
             java.util.List<AllocationPool> allObjs = ModelHelper.getAllAllocationPools();
             return new QueryResult(allObjs);

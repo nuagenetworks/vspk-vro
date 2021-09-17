@@ -141,21 +141,6 @@ public class VCenterEAMConfig extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "CreationDate", readOnly = false)   
     public String getCreationDate() {
@@ -379,7 +364,6 @@ public class VCenterEAMConfig extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VCenterEAMConfig [" + "creationDate=" + creationDate + ", eamServerIP=" + eamServerIP + ", eamServerPortNumber=" + eamServerPortNumber + ", eamServerPortType=" + eamServerPortType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", extensionKey=" + extensionKey + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", ovfURL=" + ovfURL + ", owner=" + owner + ", vibURL=" + vibURL + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "VCenterEAMConfig [" + "creationDate=" + creationDate + ", eamServerIP=" + eamServerIP + ", eamServerPortNumber=" + eamServerPortNumber + ", eamServerPortType=" + eamServerPortType + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", extensionKey=" + extensionKey + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", ovfURL=" + ovfURL + ", owner=" + owner + ", vibURL=" + vibURL + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

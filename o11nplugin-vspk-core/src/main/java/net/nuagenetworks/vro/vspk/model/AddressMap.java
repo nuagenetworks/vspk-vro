@@ -159,21 +159,6 @@ public class AddressMap extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedPATNATPoolID", readOnly = false)   
     public String getAssociatedPATNATPoolID() {
@@ -417,7 +402,6 @@ public class AddressMap extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.STATISTICSPOLICIES_FETCHER, getId());
         }
     }public String toString() {
-        return "AddressMap [" + "associatedPATNATPoolID=" + associatedPATNATPoolID + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", privateIP=" + privateIP + ", privatePort=" + privatePort + ", publicIP=" + publicIP + ", publicPort=" + publicPort + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "AddressMap [" + "associatedPATNATPoolID=" + associatedPATNATPoolID + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", privateIP=" + privateIP + ", privatePort=" + privatePort + ", publicIP=" + publicIP + ", publicPort=" + publicPort + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

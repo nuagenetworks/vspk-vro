@@ -115,21 +115,6 @@ public class Ltestatistics extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
     public java.util.List<String> getEmbeddedMetadata() {
@@ -265,7 +250,6 @@ public class Ltestatistics extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "Ltestatistics [" + "embeddedMetadata=" + embeddedMetadata + ", endTime=" + endTime + ", startTime=" + startTime + ", statsData=" + statsData + ", version=" + version + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "Ltestatistics [" + "embeddedMetadata=" + embeddedMetadata + ", endTime=" + endTime + ", startTime=" + startTime + ", statsData=" + statsData + ", version=" + version + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

@@ -36,8 +36,12 @@ public interface Constants extends BaseConstants {
     String PLUGIN_CONFIG_FILENAME = "vspk";
     
     
+    String UDPPROBETESTRESULT = "UDPProbeTestResult";
+    String UDPPROBETESTRESULTS = "UDPProbeTestResults";
     String CERTIFICATEMETADATA = "CertificateMetadata";
     String CERTIFICATEMETADATAS = "CertificateMetadatas";
+    String MTUDISCOVERYTESTRESULT = "MTUDiscoveryTestResult";
+    String MTUDISCOVERYTESTRESULTS = "MTUDiscoveryTestResults";
     String DOWNLOADPROGRESS = "DownloadProgress";
     
     String TCPCONNECTTESTRESULT = "TCPConnectTestResult";
@@ -50,12 +54,8 @@ public interface Constants extends BaseConstants {
     
     String BANDWIDTHTESTRESULT = "BandwidthTestResult";
     String BANDWIDTHTESTRESULTS = "BandwidthTestResults";
-    String MTUDISCOVERYTESTRESULT = "MTUDiscoveryTestResult";
-    String MTUDISCOVERYTESTRESULTS = "MTUDiscoveryTestResults";
     String SYSMONUPLINKCONNECTION = "SysmonUplinkConnection";
     String SYSMONUPLINKCONNECTIONS = "SysmonUplinkConnections";
-    String UDPPROBETESTRESULT = "UDPProbeTestResult";
-    String UDPPROBETESTRESULTS = "UDPProbeTestResults";
     String ALLOCATIONPOOL = "AllocationPool";
     String ALLOCATIONPOOLS = "AllocationPools";
     String ADDRESSMAP = "AddressMap";
@@ -662,16 +662,16 @@ public interface Constants extends BaseConstants {
     String ZONETEMPLATES = "ZoneTemplates";
 
     
+    String UDPPROBETESTRESULTS_FETCHER = "UDPProbeTestResultsFetcher";
     String CERTIFICATEMETADATAS_FETCHER = "CertificateMetadatasFetcher";
+    String MTUDISCOVERYTESTRESULTS_FETCHER = "MTUDiscoveryTestResultsFetcher";
     String DOWNLOADPROGRESS_FETCHER = "DownloadProgressFetcher";
     String TCPCONNECTTESTRESULTS_FETCHER = "TCPConnectTestResultsFetcher";
     String THREATPREVENTIONNODEINFOS_FETCHER = "ThreatPreventionNodeInfosFetcher";
     String VPORTINFOS_FETCHER = "VPortInfosFetcher";
     String FORWARDINGCLASS_FETCHER = "ForwardingClassFetcher";
     String BANDWIDTHTESTRESULTS_FETCHER = "BandwidthTestResultsFetcher";
-    String MTUDISCOVERYTESTRESULTS_FETCHER = "MTUDiscoveryTestResultsFetcher";
     String SYSMONUPLINKCONNECTIONS_FETCHER = "SysmonUplinkConnectionsFetcher";
-    String UDPPROBETESTRESULTS_FETCHER = "UDPProbeTestResultsFetcher";
     String ALLOCATIONPOOLS_FETCHER = "AllocationPoolsFetcher";
     String ADDRESSMAPS_FETCHER = "AddressMapsFetcher";
     String ADDRESSRANGES_FETCHER = "AddressRangesFetcher";
@@ -981,17 +981,17 @@ public interface Constants extends BaseConstants {
     
     
     
+    
+    
     String VPORTINFO_VPORTOPERATIONALSTATE_ENUM = "VPortInfoVPortOperationalState";
     
     String FORWARDINGCLASS_FORWARDINGCLASS_ENUM = "ForwardingClassForwardingClass";
-    
     
     
     String SYSMONUPLINKCONNECTION_IPSECDTLSSTATE_ENUM = "SysmonUplinkConnectionIpsecDtlsState";
     String SYSMONUPLINKCONNECTION_JSONSTATE_ENUM = "SysmonUplinkConnectionJsonState";
     String SYSMONUPLINKCONNECTION_OPENFLOWSTATE_ENUM = "SysmonUplinkConnectionOpenflowState";
     String SYSMONUPLINKCONNECTION_VXLANDTLSSTATE_ENUM = "SysmonUplinkConnectionVxlanDtlsState";
-    
     
     
     String ADDRESSMAP_ENTITYSCOPE_ENUM = "AddressMapEntityScope";
@@ -2200,16 +2200,16 @@ public interface Constants extends BaseConstants {
     String ZONETEMPLATE_MULTICAST_ENUM = "ZoneTemplateMulticast";
     
     
+    String UDPPROBETESTRESULT_IMAGE_FILENAME = "images/icon-udpprobetestresult.png";
     String CERTIFICATEMETADATA_IMAGE_FILENAME = "images/icon-certificatemetadata.png";
+    String MTUDISCOVERYTESTRESULT_IMAGE_FILENAME = "images/icon-mtudiscoverytestresult.png";
     String DOWNLOADPROGRESS_IMAGE_FILENAME = "images/icon-downloadprogress.png";
     String TCPCONNECTTESTRESULT_IMAGE_FILENAME = "images/icon-tcpconnecttestresult.png";
     String THREATPREVENTIONNODEINFO_IMAGE_FILENAME = "images/icon-threatpreventionnodeinfo.png";
     String VPORTINFO_IMAGE_FILENAME = "images/icon-vportinfo.png";
     String FORWARDINGCLASS_IMAGE_FILENAME = "images/icon-forwardingclass.png";
     String BANDWIDTHTESTRESULT_IMAGE_FILENAME = "images/icon-bandwidthtestresult.png";
-    String MTUDISCOVERYTESTRESULT_IMAGE_FILENAME = "images/icon-mtudiscoverytestresult.png";
     String SYSMONUPLINKCONNECTION_IMAGE_FILENAME = "images/icon-sysmonuplinkconnection.png";
-    String UDPPROBETESTRESULT_IMAGE_FILENAME = "images/icon-udpprobetestresult.png";
     String ALLOCATIONPOOL_IMAGE_FILENAME = "images/icon-allocationpool.png";
     String ADDRESSMAP_IMAGE_FILENAME = "images/icon-addressmap.png";
     String ADDRESSRANGE_IMAGE_FILENAME = "images/icon-addressrange.png";
@@ -2515,16 +2515,16 @@ public interface Constants extends BaseConstants {
     String FOLDER_IMAGE_FILENAME = "images/icon-folder.png";
 
     
+    String UDPPROBETESTRESULT_ENTITY_TYPE = "None";
     String CERTIFICATEMETADATA_ENTITY_TYPE = "None";
+    String MTUDISCOVERYTESTRESULT_ENTITY_TYPE = "None";
     String DOWNLOADPROGRESS_ENTITY_TYPE = "None";
     String TCPCONNECTTESTRESULT_ENTITY_TYPE = "None";
     String THREATPREVENTIONNODEINFO_ENTITY_TYPE = "None";
     String VPORTINFO_ENTITY_TYPE = "None";
     String FORWARDINGCLASS_ENTITY_TYPE = "None";
     String BANDWIDTHTESTRESULT_ENTITY_TYPE = "None";
-    String MTUDISCOVERYTESTRESULT_ENTITY_TYPE = "None";
     String SYSMONUPLINKCONNECTION_ENTITY_TYPE = "None";
-    String UDPPROBETESTRESULT_ENTITY_TYPE = "None";
     String ALLOCATIONPOOL_ENTITY_TYPE = "None";
     String ADDRESSMAP_ENTITY_TYPE = "addressmap";
     String ADDRESSRANGE_ENTITY_TYPE = "addressrange";

@@ -47,6 +47,55 @@ public class ModelHelper extends BaseModelHelper {
     }
     
     
+    public static UDPProbeTestResult getUDPProbeTestResultById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            UDPProbeTestResult obj = null;
+            obj = new UDPProbeTestResult();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.UDPPROBETESTRESULT, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<UDPProbeTestResult> getUDPProbeTestResultsForFetcherId(String id) throws RestException {
+        UDPProbeTestResultsFetcher fetcher = getUDPProbeTestResultsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.UDPPROBETESTRESULT);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<UDPProbeTestResult>();
+    }
+
+    public static UDPProbeTestResultsFetcher getUDPProbeTestResultsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.UDPPROBETESTRESULTS_FETCHER, id);
+        if (fetcher != null) {
+            return (UDPProbeTestResultsFetcher) fetcher;
+        }return null;
+    }
+
+    public static java.util.List<UDPProbeTestResult> getAllUDPProbeTestResults() throws RestException {
+        java.util.List<UDPProbeTestResult> allObjs = new ArrayList<UDPProbeTestResult>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<UDPProbeTestResultsFetcher> getAllUDPProbeTestResultsFetchers() throws RestException {
+        java.util.List<UDPProbeTestResultsFetcher> allObjs = new ArrayList<UDPProbeTestResultsFetcher>();
+        return allObjs;
+    }
     public static CertificateMetadata getCertificateMetadataById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             CertificateMetadata obj = null;
@@ -94,6 +143,55 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<CertificateMetadatasFetcher> getAllCertificateMetadatasFetchers() throws RestException {
         java.util.List<CertificateMetadatasFetcher> allObjs = new ArrayList<CertificateMetadatasFetcher>();
+        return allObjs;
+    }
+    public static MTUDiscoveryTestResult getMTUDiscoveryTestResultById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            MTUDiscoveryTestResult obj = null;
+            obj = new MTUDiscoveryTestResult();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.MTUDISCOVERYTESTRESULT, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<MTUDiscoveryTestResult> getMTUDiscoveryTestResultsForFetcherId(String id) throws RestException {
+        MTUDiscoveryTestResultsFetcher fetcher = getMTUDiscoveryTestResultsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.MTUDISCOVERYTESTRESULT);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<MTUDiscoveryTestResult>();
+    }
+
+    public static MTUDiscoveryTestResultsFetcher getMTUDiscoveryTestResultsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.MTUDISCOVERYTESTRESULTS_FETCHER, id);
+        if (fetcher != null) {
+            return (MTUDiscoveryTestResultsFetcher) fetcher;
+        }return null;
+    }
+
+    public static java.util.List<MTUDiscoveryTestResult> getAllMTUDiscoveryTestResults() throws RestException {
+        java.util.List<MTUDiscoveryTestResult> allObjs = new ArrayList<MTUDiscoveryTestResult>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<MTUDiscoveryTestResultsFetcher> getAllMTUDiscoveryTestResultsFetchers() throws RestException {
+        java.util.List<MTUDiscoveryTestResultsFetcher> allObjs = new ArrayList<MTUDiscoveryTestResultsFetcher>();
         return allObjs;
     }
     public static DownloadProgress getDownloadProgressById(String id) {
@@ -390,55 +488,6 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<BandwidthTestResultsFetcher> allObjs = new ArrayList<BandwidthTestResultsFetcher>();
         return allObjs;
     }
-    public static MTUDiscoveryTestResult getMTUDiscoveryTestResultById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            MTUDiscoveryTestResult obj = null;
-            obj = new MTUDiscoveryTestResult();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.MTUDISCOVERYTESTRESULT, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }public static java.util.List<MTUDiscoveryTestResult> getMTUDiscoveryTestResultsForFetcherId(String id) throws RestException {
-        MTUDiscoveryTestResultsFetcher fetcher = getMTUDiscoveryTestResultsFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.MTUDISCOVERYTESTRESULT);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<MTUDiscoveryTestResult>();
-    }
-
-    public static MTUDiscoveryTestResultsFetcher getMTUDiscoveryTestResultsFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.MTUDISCOVERYTESTRESULTS_FETCHER, id);
-        if (fetcher != null) {
-            return (MTUDiscoveryTestResultsFetcher) fetcher;
-        }return null;
-    }
-
-    public static java.util.List<MTUDiscoveryTestResult> getAllMTUDiscoveryTestResults() throws RestException {
-        java.util.List<MTUDiscoveryTestResult> allObjs = new ArrayList<MTUDiscoveryTestResult>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<MTUDiscoveryTestResultsFetcher> getAllMTUDiscoveryTestResultsFetchers() throws RestException {
-        java.util.List<MTUDiscoveryTestResultsFetcher> allObjs = new ArrayList<MTUDiscoveryTestResultsFetcher>();
-        return allObjs;
-    }
     public static SysmonUplinkConnection getSysmonUplinkConnectionById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             SysmonUplinkConnection obj = null;
@@ -486,55 +535,6 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<SysmonUplinkConnectionsFetcher> getAllSysmonUplinkConnectionsFetchers() throws RestException {
         java.util.List<SysmonUplinkConnectionsFetcher> allObjs = new ArrayList<SysmonUplinkConnectionsFetcher>();
-        return allObjs;
-    }
-    public static UDPProbeTestResult getUDPProbeTestResultById(String id) {
-        for (Session session : SessionManager.getInstance().getSessions()) {
-            UDPProbeTestResult obj = null;
-            obj = new UDPProbeTestResult();
-            obj.setId(id);
-
-            try {
-                session.fetch(obj);
-                return addObject(Constants.UDPPROBETESTRESULT, obj);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Object not found in session
-            }
-
-            
-        }
-
-        return null;
-    }public static java.util.List<UDPProbeTestResult> getUDPProbeTestResultsForFetcherId(String id) throws RestException {
-        UDPProbeTestResultsFetcher fetcher = getUDPProbeTestResultsFetcherById(id);
-        if (fetcher != null) {
-            try {
-                Session session = fetcher.getSession();
-                session.fetch(fetcher);
-                return addFetcherObjects(fetcher, Constants.UDPPROBETESTRESULT);
-            } catch (RestException | HttpClientErrorException ex) {
-                // Error fetching objects
-            }
-        }
-
-        return new ArrayList<UDPProbeTestResult>();
-    }
-
-    public static UDPProbeTestResultsFetcher getUDPProbeTestResultsFetcherById(String id) throws RestException {
-        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.UDPPROBETESTRESULTS_FETCHER, id);
-        if (fetcher != null) {
-            return (UDPProbeTestResultsFetcher) fetcher;
-        }return null;
-    }
-
-    public static java.util.List<UDPProbeTestResult> getAllUDPProbeTestResults() throws RestException {
-        java.util.List<UDPProbeTestResult> allObjs = new ArrayList<UDPProbeTestResult>();
-
-        return allObjs;
-    }
-
-    public static java.util.List<UDPProbeTestResultsFetcher> getAllUDPProbeTestResultsFetchers() throws RestException {
-        java.util.List<UDPProbeTestResultsFetcher> allObjs = new ArrayList<UDPProbeTestResultsFetcher>();
         return allObjs;
     }
     public static AllocationPool getAllocationPoolById(String id) {

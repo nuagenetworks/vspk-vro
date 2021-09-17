@@ -147,21 +147,6 @@ public class VNFThresholdPolicy extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "CPUThreshold", readOnly = false)   
     public Long getCPUThreshold() {
@@ -418,7 +403,6 @@ public class VNFThresholdPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNFThresholdPolicy [" + "CPUThreshold=" + CPUThreshold + ", action=" + action + ", assocEntityType=" + assocEntityType + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", memoryThreshold=" + memoryThreshold + ", minOccurrence=" + minOccurrence + ", monitInterval=" + monitInterval + ", name=" + name + ", owner=" + owner + ", storageThreshold=" + storageThreshold + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "VNFThresholdPolicy [" + "CPUThreshold=" + CPUThreshold + ", action=" + action + ", assocEntityType=" + assocEntityType + ", creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", memoryThreshold=" + memoryThreshold + ", minOccurrence=" + minOccurrence + ", monitInterval=" + monitInterval + ", name=" + name + ", owner=" + owner + ", storageThreshold=" + storageThreshold + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

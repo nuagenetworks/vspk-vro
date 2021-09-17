@@ -118,21 +118,6 @@ public class L4Service extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "ICMPCode", readOnly = false)   
     public String getICMPCode() {
@@ -311,7 +296,6 @@ public class L4Service extends BaseObject {
         }
     }
     public String toString() {
-        return "L4Service [" + "ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", creationDate=" + creationDate + ", defaultService=" + defaultService + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", ports=" + ports + ", protocol=" + protocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "L4Service [" + "ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", creationDate=" + creationDate + ", defaultService=" + defaultService + ", description=" + description + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", ports=" + ports + ", protocol=" + protocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

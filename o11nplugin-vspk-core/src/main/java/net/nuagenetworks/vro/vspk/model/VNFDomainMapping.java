@@ -155,21 +155,6 @@ public class VNFDomainMapping extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedDomainID", readOnly = false)   
     public String getAssociatedDomainID() {
@@ -437,7 +422,6 @@ public class VNFDomainMapping extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNFDomainMapping [" + "associatedDomainID=" + associatedDomainID + ", associatedDomainName=" + associatedDomainName + ", associatedEnterpriseID=" + associatedEnterpriseID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", autoCreated=" + autoCreated + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", serviceId=" + serviceId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "VNFDomainMapping [" + "associatedDomainID=" + associatedDomainID + ", associatedDomainName=" + associatedDomainName + ", associatedEnterpriseID=" + associatedEnterpriseID + ", associatedNSGatewayID=" + associatedNSGatewayID + ", associatedNSGatewayName=" + associatedNSGatewayName + ", autoCreated=" + autoCreated + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", segmentationID=" + segmentationID + ", segmentationType=" + segmentationType + ", serviceId=" + serviceId + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

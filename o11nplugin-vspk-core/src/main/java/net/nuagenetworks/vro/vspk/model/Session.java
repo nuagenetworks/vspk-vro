@@ -168,8 +168,18 @@ public class Session extends BaseSession<Me> {
     @Override
     protected void onEntityCreated(String entityType, String entityId, String entityParentType, String entityParentId) {
         SessionManager sessionManager = SessionManager.getInstance();
+        if (entityType.equals(Constants.UDPPROBETESTRESULT_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.UDPPROBETESTRESULTS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.CERTIFICATEMETADATA_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.CERTIFICATEMETADATAS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.MTUDISCOVERYTESTRESULT_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.MTUDISCOVERYTESTRESULTS_FETCHER, entityParentId);
             return;
         }
         
@@ -203,18 +213,8 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.MTUDISCOVERYTESTRESULT_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.MTUDISCOVERYTESTRESULTS_FETCHER, entityParentId);
-            return;
-        }
-        
         if (entityType.equals(Constants.SYSMONUPLINKCONNECTION_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.SYSMONUPLINKCONNECTIONS_FETCHER, entityParentId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.UDPPROBETESTRESULT_ENTITY_TYPE)) {
-            notifyElementInvalidate(sessionManager, Constants.UDPPROBETESTRESULTS_FETCHER, entityParentId);
             return;
         }
         
@@ -1732,8 +1732,18 @@ public class Session extends BaseSession<Me> {
     @Override
     protected void onEntityUpdated(String entityType, String entityId, String entityParentType, String entityParentId) {
         SessionManager sessionManager = SessionManager.getInstance();
+        if (entityType.equals(Constants.UDPPROBETESTRESULT_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.UDPPROBETESTRESULT, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.CERTIFICATEMETADATA_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.CERTIFICATEMETADATA, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.MTUDISCOVERYTESTRESULT_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.MTUDISCOVERYTESTRESULT, entityId);
             return;
         }
         
@@ -1767,18 +1777,8 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.MTUDISCOVERYTESTRESULT_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.MTUDISCOVERYTESTRESULT, entityId);
-            return;
-        }
-        
         if (entityType.equals(Constants.SYSMONUPLINKCONNECTION_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.SYSMONUPLINKCONNECTION, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.UDPPROBETESTRESULT_ENTITY_TYPE)) {
-            sessionManager.notifyElementUpdated(Constants.UDPPROBETESTRESULT, entityId);
             return;
         }
         
@@ -3296,8 +3296,18 @@ public class Session extends BaseSession<Me> {
     @Override
     protected void onEntityDeleted(String entityType, String entityId, String entityParentType, String entityParentId) {
         SessionManager sessionManager = SessionManager.getInstance();
+        if (entityType.equals(Constants.UDPPROBETESTRESULT_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.UDPPROBETESTRESULT, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.CERTIFICATEMETADATA_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.CERTIFICATEMETADATA, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.MTUDISCOVERYTESTRESULT_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.MTUDISCOVERYTESTRESULT, entityId);
             return;
         }
         
@@ -3331,18 +3341,8 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
-        if (entityType.equals(Constants.MTUDISCOVERYTESTRESULT_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.MTUDISCOVERYTESTRESULT, entityId);
-            return;
-        }
-        
         if (entityType.equals(Constants.SYSMONUPLINKCONNECTION_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.SYSMONUPLINKCONNECTION, entityId);
-            return;
-        }
-        
-        if (entityType.equals(Constants.UDPPROBETESTRESULT_ENTITY_TYPE)) {
-            sessionManager.notifyElementDeleted(Constants.UDPPROBETESTRESULT, entityId);
             return;
         }
         

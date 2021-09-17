@@ -106,21 +106,6 @@ public class ProxyARPFilter extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "IPType", readOnly = false)   
     public ProxyARPFilterIPType getIPType() {
@@ -240,7 +225,6 @@ public class ProxyARPFilter extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.PROXYARPFILTER, getId());
         }
     }public String toString() {
-        return "ProxyARPFilter [" + "IPType=" + IPType + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "ProxyARPFilter [" + "IPType=" + IPType + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", maxAddress=" + maxAddress + ", minAddress=" + minAddress + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }
