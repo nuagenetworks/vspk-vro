@@ -112,21 +112,6 @@ public class PATIPEntry extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "IPAddress", readOnly = false)   
     public String getIPAddress() {
@@ -268,7 +253,6 @@ public class PATIPEntry extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.PATIPENTRY, getId());
         }
     }public String toString() {
-        return "PATIPEntry [" + "IPAddress=" + IPAddress + ", IPType=" + IPType + ", PATCentralized=" + PATCentralized + ", associatedDomainID=" + associatedDomainID + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorID=" + hypervisorID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "PATIPEntry [" + "IPAddress=" + IPAddress + ", IPType=" + IPType + ", PATCentralized=" + PATCentralized + ", associatedDomainID=" + associatedDomainID + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorID=" + hypervisorID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

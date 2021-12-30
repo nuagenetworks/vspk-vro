@@ -134,21 +134,6 @@ public class VRSMetrics extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "ALUbr0Status", readOnly = false)   
     public Boolean getALUbr0Status() {
@@ -378,7 +363,6 @@ public class VRSMetrics extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.VRSMETRICS, getId());
         }
     }public String toString() {
-        return "VRSMetrics [" + "ALUbr0Status=" + ALUbr0Status + ", CPUUtilization=" + CPUUtilization + ", VRSProcess=" + VRSProcess + ", VRSVSCStatus=" + VRSVSCStatus + ", appliedMetricsPushInterval=" + appliedMetricsPushInterval + ", associatedVCenterHypervisorID=" + associatedVCenterHypervisorID + ", creationDate=" + creationDate + ", currentVersion=" + currentVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcess=" + jesxmonProcess + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", logDiskPartitionUtilization=" + logDiskPartitionUtilization + ", memoryUtilization=" + memoryUtilization + ", owner=" + owner + ", reDeploy=" + reDeploy + ", receivingMetrics=" + receivingMetrics + ", rootDiskPartitionUtilization=" + rootDiskPartitionUtilization + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "VRSMetrics [" + "ALUbr0Status=" + ALUbr0Status + ", CPUUtilization=" + CPUUtilization + ", VRSProcess=" + VRSProcess + ", VRSVSCStatus=" + VRSVSCStatus + ", appliedMetricsPushInterval=" + appliedMetricsPushInterval + ", associatedVCenterHypervisorID=" + associatedVCenterHypervisorID + ", creationDate=" + creationDate + ", currentVersion=" + currentVersion + ", entityScope=" + entityScope + ", externalID=" + externalID + ", jesxmonProcess=" + jesxmonProcess + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", logDiskPartitionUtilization=" + logDiskPartitionUtilization + ", memoryUtilization=" + memoryUtilization + ", owner=" + owner + ", reDeploy=" + reDeploy + ", receivingMetrics=" + receivingMetrics + ", rootDiskPartitionUtilization=" + rootDiskPartitionUtilization + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

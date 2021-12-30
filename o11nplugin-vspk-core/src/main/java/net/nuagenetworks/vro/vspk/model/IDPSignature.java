@@ -78,21 +78,6 @@ public class IDPSignature extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "IDPSignatures", readOnly = false)   
     public java.util.List<String> getIDPSignatures() {
@@ -124,7 +109,6 @@ public class IDPSignature extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.IDPSIGNATURE, getId());
         }
     }public String toString() {
-        return "IDPSignature [" + "IDPSignatures=" + IDPSignatures + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "IDPSignature [" + "IDPSignatures=" + IDPSignatures + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

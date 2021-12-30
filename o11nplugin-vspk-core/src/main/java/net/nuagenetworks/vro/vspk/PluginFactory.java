@@ -1908,6 +1908,12 @@ public final class PluginFactory extends BasePluginFactory {
             return HSCType.getEnumById(id);
         }
         
+        if (type.equals(Constants.ICMPECHOTESTDEFINITION)) {
+            return ModelHelper.getICMPEchoTestDefinitionById(id);
+        }
+        if (type.equals(Constants.ICMPECHOTESTDEFINITIONS_FETCHER)) {
+            return ModelHelper.getICMPEchoTestDefinitionsFetcherById(id);
+        }
         if (type.equals(Constants.IDPPROFILE)) {
             return ModelHelper.getIDPProfileById(id);
         }
@@ -4080,6 +4086,26 @@ public final class PluginFactory extends BasePluginFactory {
             return SAPIngressQoSProfileEntityScope.getEnumById(id);
         }
         
+        if (type.equals(Constants.SCHEDULEDTESTSUITE)) {
+            return ModelHelper.getScheduledTestSuiteById(id);
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITES_FETCHER)) {
+            return ModelHelper.getScheduledTestSuitesFetcherById(id);
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITE_SCHEDULEINTERVALUNITS_ENUM)) {
+            return ScheduledTestSuiteScheduleIntervalUnits.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUN)) {
+            return ModelHelper.getScheduledtestsuiterunById(id);
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUNS_FETCHER)) {
+            return ModelHelper.getScheduledtestsuiterunsFetcherById(id);
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUN_OPERATIONSTATUS_ENUM)) {
+            return ScheduledtestsuiterunOperationStatus.getEnumById(id);
+        }
+        
         if (type.equals(Constants.WANSERVICE)) {
             return ModelHelper.getWANServiceById(id);
         }
@@ -4438,6 +4464,10 @@ public final class PluginFactory extends BasePluginFactory {
             return TCAMetric.getEnumById(id);
         }
         
+        if (type.equals(Constants.TCA_PROTOCOL_ENUM)) {
+            return TCAProtocol.getEnumById(id);
+        }
+        
         if (type.equals(Constants.TCA_TYPE_ENUM)) {
             return TCAType.getEnumById(id);
         }
@@ -4448,6 +4478,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.TESTS_FETCHER)) {
             return ModelHelper.getTestsFetcherById(id);
         }
+        if (type.equals(Constants.TEST_ASSOCIATEDTESTDEFINITIONTYPE_ENUM)) {
+            return TestAssociatedTestDefinitionType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.TEST_ENTITYSCOPE_ENUM)) {
             return TestEntityScope.getEnumById(id);
         }
@@ -4468,6 +4502,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.TESTRUNS_FETCHER)) {
             return ModelHelper.getTestRunsFetcherById(id);
         }
+        if (type.equals(Constants.TESTRUN_ASSOCIATEDTESTSUITERUNTYPE_ENUM)) {
+            return TestRunAssociatedTestSuiteRunType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.TESTRUN_ENTITYSCOPE_ENUM)) {
             return TestRunEntityScope.getEnumById(id);
         }
@@ -4844,6 +4882,10 @@ public final class PluginFactory extends BasePluginFactory {
             return VirtualFirewallRuleAction.getEnumById(id);
         }
         
+        if (type.equals(Constants.VIRTUALFIREWALLRULE_APPTYPE_ENUM)) {
+            return VirtualFirewallRuleAppType.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VIRTUALFIREWALLRULE_ASSOCIATEDTRAFFICTYPE_ENUM)) {
             return VirtualFirewallRuleAssociatedTrafficType.getEnumById(id);
         }
@@ -4876,12 +4918,20 @@ public final class PluginFactory extends BasePluginFactory {
             return VirtualFirewallRulePolicyState.getEnumById(id);
         }
         
+        if (type.equals(Constants.VIRTUALFIREWALLRULE_REMOTEUPLINKPREFERENCE_ENUM)) {
+            return VirtualFirewallRuleRemoteUplinkPreference.getEnumById(id);
+        }
+        
         if (type.equals(Constants.VIRTUALFIREWALLRULE_REPUTATIONSCORE_ENUM)) {
             return VirtualFirewallRuleReputationScore.getEnumById(id);
         }
         
         if (type.equals(Constants.VIRTUALFIREWALLRULE_TYPE_ENUM)) {
             return VirtualFirewallRuleType.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.VIRTUALFIREWALLRULE_UPLINKPREFERENCE_ENUM)) {
+            return VirtualFirewallRuleUplinkPreference.getEnumById(id);
         }
         
         if (type.equals(Constants.VIRTUALFIREWALLRULE_WEBFILTERTYPE_ENUM)) {
@@ -7543,6 +7593,13 @@ public final class PluginFactory extends BasePluginFactory {
             return ModelHelper.getGroupKeyEncryptionProfilesForFetcherId(id);
         }
         
+        if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.ICMPECHOTESTDEFINITIONS_FETCHER)) {
+            return toList(ModelHelper.getICMPEchoTestDefinitionsFetcherForEnterpriseId(id));
+        }
+        if (type.equals(Constants.ICMPECHOTESTDEFINITIONS_FETCHER) && relationName.equals(Constants.ICMPECHOTESTDEFINITIONS)) {
+            return ModelHelper.getICMPEchoTestDefinitionsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.IDPPROFILES_FETCHER)) {
             return toList(ModelHelper.getIDPProfilesFetcherForEnterpriseId(id));
         }
@@ -7825,6 +7882,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.SAPINGRESSQOSPROFILES_FETCHER) && relationName.equals(Constants.SAPINGRESSQOSPROFILES)) {
             return ModelHelper.getSAPIngressQoSProfilesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.SCHEDULEDTESTSUITES_FETCHER)) {
+            return toList(ModelHelper.getScheduledTestSuitesFetcherForEnterpriseId(id));
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITES_FETCHER) && relationName.equals(Constants.SCHEDULEDTESTSUITES)) {
+            return ModelHelper.getScheduledTestSuitesForFetcherId(id);
         }
         
         if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.SHAREDNETWORKRESOURCES_FETCHER)) {
@@ -11578,6 +11642,27 @@ public final class PluginFactory extends BasePluginFactory {
             return toList(ModelHelper.getPermissionsFetcherForSAPIngressQoSProfileId(id));
         }
         
+        if (type.equals(Constants.SCHEDULEDTESTSUITE) && relationName.equals(Constants.SCHEDULEDTESTSUITERUNS_FETCHER)) {
+            return toList(ModelHelper.getScheduledtestsuiterunsFetcherForScheduledTestSuiteId(id));
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUNS_FETCHER) && relationName.equals(Constants.SCHEDULEDTESTSUITERUNS)) {
+            return ModelHelper.getScheduledtestsuiterunsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SCHEDULEDTESTSUITE) && relationName.equals(Constants.TESTS_FETCHER)) {
+            return toList(ModelHelper.getTestsFetcherForScheduledTestSuiteId(id));
+        }
+        if (type.equals(Constants.TESTS_FETCHER) && relationName.equals(Constants.TESTS)) {
+            return ModelHelper.getTestsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUN) && relationName.equals(Constants.TESTRUNS_FETCHER)) {
+            return toList(ModelHelper.getTestRunsFetcherForScheduledtestsuiterunId(id));
+        }
+        if (type.equals(Constants.TESTRUNS_FETCHER) && relationName.equals(Constants.TESTRUNS)) {
+            return ModelHelper.getTestRunsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.WANSERVICE) && relationName.equals(Constants.ALARMS_FETCHER)) {
             return toList(ModelHelper.getAlarmsFetcherForWANServiceId(id));
         }
@@ -12008,9 +12093,6 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.TESTSUITE) && relationName.equals(Constants.TESTS_FETCHER)) {
             return toList(ModelHelper.getTestsFetcherForTestSuiteId(id));
         }
-        if (type.equals(Constants.TESTS_FETCHER) && relationName.equals(Constants.TESTS)) {
-            return ModelHelper.getTestsForFetcherId(id);
-        }
         
         if (type.equals(Constants.TESTSUITE) && relationName.equals(Constants.TESTSUITERUNS_FETCHER)) {
             return toList(ModelHelper.getTestSuiteRunsFetcherForTestSuiteId(id));
@@ -12033,9 +12115,6 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.TESTSUITERUN) && relationName.equals(Constants.TESTRUNS_FETCHER)) {
             return toList(ModelHelper.getTestRunsFetcherForTestSuiteRunId(id));
-        }
-        if (type.equals(Constants.TESTRUNS_FETCHER) && relationName.equals(Constants.TESTRUNS)) {
-            return ModelHelper.getTestRunsForFetcherId(id);
         }
         
         if (type.equals(Constants.TIER) && relationName.equals(Constants.DESTINATIONURLS_FETCHER)) {
@@ -12775,6 +12854,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.VPORT) && relationName.equals(Constants.REDIRECTIONTARGETS_FETCHER)) {
             return toList(ModelHelper.getRedirectionTargetsFetcherForVPortId(id));
+        }
+        
+        if (type.equals(Constants.VPORT) && relationName.equals(Constants.SCHEDULEDTESTSUITERUNS_FETCHER)) {
+            return toList(ModelHelper.getScheduledtestsuiterunsFetcherForVPortId(id));
         }
         
         if (type.equals(Constants.VPORT) && relationName.equals(Constants.STATISTICS_FETCHER)) {
@@ -15328,6 +15411,14 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(HSCType.values()));
         }
         
+        if (type.equals(Constants.ICMPECHOTESTDEFINITION)) {
+            java.util.List<ICMPEchoTestDefinition> allObjs = ModelHelper.getAllICMPEchoTestDefinitions();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.ICMPECHOTESTDEFINITIONS_FETCHER)) {
+            java.util.List<ICMPEchoTestDefinitionsFetcher> allObjs = ModelHelper.getAllICMPEchoTestDefinitionsFetchers();
+            return new QueryResult(allObjs);
+        }
         if (type.equals(Constants.IDPPROFILE)) {
             java.util.List<IDPProfile> allObjs = ModelHelper.getAllIDPProfiles();
             return new QueryResult(allObjs);
@@ -17760,6 +17851,30 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(SAPIngressQoSProfileEntityScope.values()));
         }
         
+        if (type.equals(Constants.SCHEDULEDTESTSUITE)) {
+            java.util.List<ScheduledTestSuite> allObjs = ModelHelper.getAllScheduledTestSuites();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITES_FETCHER)) {
+            java.util.List<ScheduledTestSuitesFetcher> allObjs = ModelHelper.getAllScheduledTestSuitesFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITE_SCHEDULEINTERVALUNITS_ENUM)) {
+            return new QueryResult(Arrays.asList(ScheduledTestSuiteScheduleIntervalUnits.values()));
+        }
+        
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUN)) {
+            java.util.List<Scheduledtestsuiterun> allObjs = ModelHelper.getAllScheduledtestsuiteruns();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUNS_FETCHER)) {
+            java.util.List<ScheduledtestsuiterunsFetcher> allObjs = ModelHelper.getAllScheduledtestsuiterunsFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUN_OPERATIONSTATUS_ENUM)) {
+            return new QueryResult(Arrays.asList(ScheduledtestsuiterunOperationStatus.values()));
+        }
+        
         if (type.equals(Constants.WANSERVICE)) {
             java.util.List<WANService> allObjs = ModelHelper.getAllWANServices();
             return new QueryResult(allObjs);
@@ -18152,6 +18267,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(TCAMetric.values()));
         }
         
+        if (type.equals(Constants.TCA_PROTOCOL_ENUM)) {
+            return new QueryResult(Arrays.asList(TCAProtocol.values()));
+        }
+        
         if (type.equals(Constants.TCA_TYPE_ENUM)) {
             return new QueryResult(Arrays.asList(TCAType.values()));
         }
@@ -18164,6 +18283,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<TestsFetcher> allObjs = ModelHelper.getAllTestsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.TEST_ASSOCIATEDTESTDEFINITIONTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(TestAssociatedTestDefinitionType.values()));
+        }
+        
         if (type.equals(Constants.TEST_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(TestEntityScope.values()));
         }
@@ -18188,6 +18311,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<TestRunsFetcher> allObjs = ModelHelper.getAllTestRunsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.TESTRUN_ASSOCIATEDTESTSUITERUNTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(TestRunAssociatedTestSuiteRunType.values()));
+        }
+        
         if (type.equals(Constants.TESTRUN_ENTITYSCOPE_ENUM)) {
             return new QueryResult(Arrays.asList(TestRunEntityScope.values()));
         }
@@ -18600,6 +18727,10 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(VirtualFirewallRuleAction.values()));
         }
         
+        if (type.equals(Constants.VIRTUALFIREWALLRULE_APPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(VirtualFirewallRuleAppType.values()));
+        }
+        
         if (type.equals(Constants.VIRTUALFIREWALLRULE_ASSOCIATEDTRAFFICTYPE_ENUM)) {
             return new QueryResult(Arrays.asList(VirtualFirewallRuleAssociatedTrafficType.values()));
         }
@@ -18632,12 +18763,20 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(VirtualFirewallRulePolicyState.values()));
         }
         
+        if (type.equals(Constants.VIRTUALFIREWALLRULE_REMOTEUPLINKPREFERENCE_ENUM)) {
+            return new QueryResult(Arrays.asList(VirtualFirewallRuleRemoteUplinkPreference.values()));
+        }
+        
         if (type.equals(Constants.VIRTUALFIREWALLRULE_REPUTATIONSCORE_ENUM)) {
             return new QueryResult(Arrays.asList(VirtualFirewallRuleReputationScore.values()));
         }
         
         if (type.equals(Constants.VIRTUALFIREWALLRULE_TYPE_ENUM)) {
             return new QueryResult(Arrays.asList(VirtualFirewallRuleType.values()));
+        }
+        
+        if (type.equals(Constants.VIRTUALFIREWALLRULE_UPLINKPREFERENCE_ENUM)) {
+            return new QueryResult(Arrays.asList(VirtualFirewallRuleUplinkPreference.values()));
         }
         
         if (type.equals(Constants.VIRTUALFIREWALLRULE_WEBFILTERTYPE_ENUM)) {

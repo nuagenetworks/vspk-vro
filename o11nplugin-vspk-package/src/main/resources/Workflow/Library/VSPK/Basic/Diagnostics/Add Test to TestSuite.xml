@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="5ab32daa-498e-5596-b8f1-617a40b20fd4"  version="20.10.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="5ab32daa-498e-5596-b8f1-617a40b20fd4"  version="20.10.7" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Add Test to TestSuite]]></display-name>
 <ref-types><![CDATA[(VSPK:TestSuite)]]></ref-types>
 <position x='100.0' y='50.0'/>
 <input><param name='testSuiteObj' type='VSPK:TestSuite' >
 </param>
 <param name='associatedTestDefinitionID' type='string' >
+</param>
+<param name='associatedTestDefinitionType' type='VSPK:TestAssociatedTestDefinitionType' >
 </param>
 <param name='description' type='string' >
 </param>
@@ -26,6 +28,7 @@ testObj = new VSPKTest();
 if (associatedTestDefinitionID) {
    testObj.associatedTestDefinitionID = associatedTestDefinitionID;
 }
+testObj.associatedTestDefinitionType = associatedTestDefinitionType;
 if (description) {
    testObj.description = description;
 }
@@ -40,6 +43,7 @@ testSuiteObj.createTest(session, testObj);
 ]]></script>
 <in-binding><bind name='testSuiteObj' type='VSPK:TestSuite' export-name="testSuiteObj" ></bind>
 <bind name='associatedTestDefinitionID' type='string' export-name="associatedTestDefinitionID" ></bind>
+<bind name='associatedTestDefinitionType' type='VSPK:TestAssociatedTestDefinitionType' export-name="associatedTestDefinitionType" ></bind>
 <bind name='description' type='string' export-name="description" ></bind>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 <bind name='name' type='string' export-name="name" ></bind>
@@ -50,6 +54,8 @@ testSuiteObj.createTest(session, testObj);
 <p-param name="testSuiteObj"><desc><![CDATA[testSuiteObj]]></desc>
 <p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
 <p-param name="associatedTestDefinitionID"><desc><![CDATA[associatedTestDefinitionID]]></desc>
+</p-param>
+<p-param name="associatedTestDefinitionType"><desc><![CDATA[associatedTestDefinitionType]]></desc>
 </p-param>
 <p-param name="description"><desc><![CDATA[description]]></desc>
 </p-param>

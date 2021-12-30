@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.TestAssociatedTestDefinitionType;
+
 import net.nuagenetworks.vro.vspk.model.enums.TestEntityScope;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -61,6 +63,9 @@ public class Test extends BaseObject {
     
     @JsonProperty(value = "associatedTestDefinitionID")
     protected String associatedTestDefinitionID;
+    
+    @JsonProperty(value = "associatedTestDefinitionType")
+    protected TestAssociatedTestDefinitionType associatedTestDefinitionType;
     
     @JsonProperty(value = "associatedTestSuiteID")
     protected String associatedTestSuiteID;
@@ -142,21 +147,6 @@ public class Test extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedTestDefinitionID", readOnly = false)   
     public String getAssociatedTestDefinitionID() {
@@ -166,6 +156,17 @@ public class Test extends BaseObject {
     @JsonIgnore
     public void setAssociatedTestDefinitionID(String value) { 
         this.associatedTestDefinitionID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedTestDefinitionType", readOnly = false)   
+    public TestAssociatedTestDefinitionType getAssociatedTestDefinitionType() {
+       return associatedTestDefinitionType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedTestDefinitionType(TestAssociatedTestDefinitionType value) { 
+        this.associatedTestDefinitionType = value;
     }
     
     @JsonIgnore
@@ -402,7 +403,6 @@ public class Test extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "Test [" + "associatedTestDefinitionID=" + associatedTestDefinitionID + ", associatedTestSuiteID=" + associatedTestSuiteID + ", command=" + command + ", creationDate=" + creationDate + ", description=" + description + ", destination=" + destination + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", order=" + order + ", owner=" + owner + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "Test [" + "associatedTestDefinitionID=" + associatedTestDefinitionID + ", associatedTestDefinitionType=" + associatedTestDefinitionType + ", associatedTestSuiteID=" + associatedTestSuiteID + ", command=" + command + ", creationDate=" + creationDate + ", description=" + description + ", destination=" + destination + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", order=" + order + ", owner=" + owner + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

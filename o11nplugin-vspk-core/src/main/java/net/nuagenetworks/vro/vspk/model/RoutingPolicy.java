@@ -92,6 +92,9 @@ public class RoutingPolicy extends BaseObject {
     @JsonProperty(value = "policyDefinition")
     protected String policyDefinition;
     
+    @JsonProperty(value = "policyUniqueID")
+    protected Long policyUniqueID;
+    
     @JsonProperty(value = "routingProtocol")
     protected RoutingPolicyRoutingProtocol routingProtocol;
     
@@ -132,21 +135,6 @@ public class RoutingPolicy extends BaseObject {
     @VsoProperty(displayName = "ParentType", readOnly = false)
     public String getParentType() {
         return super.getParentType();
-    }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
     }
     @JsonIgnore
     @VsoProperty(displayName = "CustomerID", readOnly = false)   
@@ -248,6 +236,17 @@ public class RoutingPolicy extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "PolicyUniqueID", readOnly = false)   
+    public Long getPolicyUniqueID() {
+       return policyUniqueID;
+    }
+
+    @JsonIgnore
+    public void setPolicyUniqueID(Long value) { 
+        this.policyUniqueID = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "RoutingProtocol", readOnly = false)   
     public RoutingPolicyRoutingProtocol getRoutingProtocol() {
        return routingProtocol;
@@ -338,7 +337,6 @@ public class RoutingPolicy extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "RoutingPolicy [" + "CustomerID=" + CustomerID + ", contentType=" + contentType + ", defaultAction=" + defaultAction + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", policyDefinition=" + policyDefinition + ", routingProtocol=" + routingProtocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "RoutingPolicy [" + "CustomerID=" + CustomerID + ", contentType=" + contentType + ", defaultAction=" + defaultAction + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", name=" + name + ", policyDefinition=" + policyDefinition + ", policyUniqueID=" + policyUniqueID + ", routingProtocol=" + routingProtocol + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

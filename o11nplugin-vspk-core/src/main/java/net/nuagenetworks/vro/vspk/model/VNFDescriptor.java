@@ -147,21 +147,6 @@ public class VNFDescriptor extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "CPUCount", readOnly = false)   
     public Long getCPUCount() {
@@ -408,7 +393,6 @@ public class VNFDescriptor extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.VNFINTERFACEDESCRIPTORS_FETCHER, getId());
         }
     }public String toString() {
-        return "VNFDescriptor [" + "CPUCount=" + CPUCount + ", associatedVNFThresholdPolicyID=" + associatedVNFThresholdPolicyID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", storageGB=" + storageGB + ", type=" + type + ", vendor=" + vendor + ", visible=" + visible + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "VNFDescriptor [" + "CPUCount=" + CPUCount + ", associatedVNFThresholdPolicyID=" + associatedVNFThresholdPolicyID + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", memoryMB=" + memoryMB + ", metadataID=" + metadataID + ", name=" + name + ", storageGB=" + storageGB + ", type=" + type + ", vendor=" + vendor + ", visible=" + visible + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

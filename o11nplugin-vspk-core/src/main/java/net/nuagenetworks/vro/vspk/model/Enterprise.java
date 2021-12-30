@@ -86,6 +86,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.GroupsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.GroupKeyEncryptionProfilesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.ICMPEchoTestDefinitionsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.IDPProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.IKECertificatesFetcher;
@@ -173,6 +175,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.SaaSApplicationTypesFetcher;
 import net.nuagenetworks.vro.vspk.model.fetchers.SAPEgressQoSProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SAPIngressQoSProfilesFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.ScheduledTestSuitesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.SharedNetworkResourcesFetcher;
 
@@ -269,6 +273,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
         @VsoRelation(inventoryChildren = true, name = Constants.GROUPS_FETCHER, type = Constants.GROUPS_FETCHER), 
 
+        @VsoRelation(inventoryChildren = true, name = Constants.ICMPECHOTESTDEFINITIONS_FETCHER, type = Constants.ICMPECHOTESTDEFINITIONS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.IDPPROFILES_FETCHER, type = Constants.IDPPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.IKECERTIFICATES_FETCHER, type = Constants.IKECERTIFICATES_FETCHER), 
@@ -336,6 +342,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.SAPEGRESSQOSPROFILES_FETCHER, type = Constants.SAPEGRESSQOSPROFILES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.SAPINGRESSQOSPROFILES_FETCHER, type = Constants.SAPINGRESSQOSPROFILES_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.SCHEDULEDTESTSUITES_FETCHER, type = Constants.SCHEDULEDTESTSUITES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.SYSLOGDESTINATIONS_FETCHER, type = Constants.SYSLOGDESTINATIONS_FETCHER), 
 
@@ -590,6 +598,9 @@ public class Enterprise extends BaseObject {
     private GroupKeyEncryptionProfilesFetcher groupKeyEncryptionProfiles;
     
     @JsonIgnore
+    private ICMPEchoTestDefinitionsFetcher iCMPEchoTestDefinitions;
+    
+    @JsonIgnore
     private IDPProfilesFetcher iDPProfiles;
     
     @JsonIgnore
@@ -722,6 +733,9 @@ public class Enterprise extends BaseObject {
     private SAPIngressQoSProfilesFetcher sAPIngressQoSProfiles;
     
     @JsonIgnore
+    private ScheduledTestSuitesFetcher scheduledTestSuites;
+    
+    @JsonIgnore
     private SharedNetworkResourcesFetcher sharedNetworkResources;
     
     @JsonIgnore
@@ -822,6 +836,8 @@ public class Enterprise extends BaseObject {
         
         groupKeyEncryptionProfiles = new GroupKeyEncryptionProfilesFetcher(this);
         
+        iCMPEchoTestDefinitions = new ICMPEchoTestDefinitionsFetcher(this);
+        
         iDPProfiles = new IDPProfilesFetcher(this);
         
         iKECertificates = new IKECertificatesFetcher(this);
@@ -910,6 +926,8 @@ public class Enterprise extends BaseObject {
         
         sAPIngressQoSProfiles = new SAPIngressQoSProfilesFetcher(this);
         
+        scheduledTestSuites = new ScheduledTestSuitesFetcher(this);
+        
         sharedNetworkResources = new SharedNetworkResourcesFetcher(this);
         
         syslogDestinations = new SyslogDestinationsFetcher(this);
@@ -956,21 +974,6 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "ParentType", readOnly = false)
     public String getParentType() {
         return super.getParentType();
-    }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
     }
     @JsonIgnore
     @VsoProperty(displayName = "BGPEnabled", readOnly = false)   
@@ -1637,6 +1640,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "ICMPEchoTestDefinitions", readOnly = true)   
+    public ICMPEchoTestDefinitionsFetcher getICMPEchoTestDefinitions() {
+        return iCMPEchoTestDefinitions;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "IDPProfiles", readOnly = true)   
     public IDPProfilesFetcher getIDPProfiles() {
         return iDPProfiles;
@@ -1898,6 +1907,12 @@ public class Enterprise extends BaseObject {
     @VsoProperty(displayName = "SAPIngressQoSProfiles", readOnly = true)   
     public SAPIngressQoSProfilesFetcher getSAPIngressQoSProfiles() {
         return sAPIngressQoSProfiles;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ScheduledTestSuites", readOnly = true)   
+    public ScheduledTestSuitesFetcher getScheduledTestSuites() {
+        return scheduledTestSuites;
     }
     
     @JsonIgnore
@@ -2191,6 +2206,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.GROUPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createICMPEchoTestDefinition(Session session, ICMPEchoTestDefinition childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ICMPECHOTESTDEFINITIONS_FETCHER, getId());
         }
     }
     @VsoMethod
@@ -2492,6 +2515,14 @@ public class Enterprise extends BaseObject {
         }
     }
     @VsoMethod
+    public void createScheduledTestSuite(Session session, ScheduledTestSuite childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.SCHEDULEDTESTSUITES_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createSyslogDestination(Session session, SyslogDestination childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -2579,7 +2610,6 @@ public class Enterprise extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ZFBREQUESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", allowedForwardingMode=" + allowedForwardingMode + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", blockedPageText=" + blockedPageText + ", creationDate=" + creationDate + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", embeddedMetadata=" + embeddedMetadata + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", enterpriseType=" + enterpriseType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", flowCollectionEnabled=" + flowCollectionEnabled + ", forwardingClass=" + forwardingClass + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", localAS=" + localAS + ", name=" + name + ", owner=" + owner + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", sharedEnterprise=" + sharedEnterprise + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", threatPreventionManagementEnabled=" + threatPreventionManagementEnabled + ", useGlobalMAC=" + useGlobalMAC + ", virtualFirewallRulesEnabled=" + virtualFirewallRulesEnabled + ", webFilterEnabled=" + webFilterEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "Enterprise [" + "BGPEnabled=" + BGPEnabled + ", DHCPLeaseInterval=" + DHCPLeaseInterval + ", LDAPAuthorizationEnabled=" + LDAPAuthorizationEnabled + ", LDAPEnabled=" + LDAPEnabled + ", VNFManagementEnabled=" + VNFManagementEnabled + ", allowAdvancedQOSConfiguration=" + allowAdvancedQOSConfiguration + ", allowGatewayManagement=" + allowGatewayManagement + ", allowTrustedForwardingClass=" + allowTrustedForwardingClass + ", allowedForwardingClasses=" + allowedForwardingClasses + ", allowedForwardingMode=" + allowedForwardingMode + ", associatedEnterpriseSecurityID=" + associatedEnterpriseSecurityID + ", associatedGroupKeyEncryptionProfileID=" + associatedGroupKeyEncryptionProfileID + ", associatedKeyServerMonitorID=" + associatedKeyServerMonitorID + ", avatarData=" + avatarData + ", avatarType=" + avatarType + ", blockedPageText=" + blockedPageText + ", creationDate=" + creationDate + ", customerID=" + customerID + ", description=" + description + ", dictionaryVersion=" + dictionaryVersion + ", embeddedMetadata=" + embeddedMetadata + ", enableApplicationPerformanceManagement=" + enableApplicationPerformanceManagement + ", encryptionManagementMode=" + encryptionManagementMode + ", enterpriseProfileID=" + enterpriseProfileID + ", enterpriseType=" + enterpriseType + ", entityScope=" + entityScope + ", externalID=" + externalID + ", floatingIPsQuota=" + floatingIPsQuota + ", floatingIPsUsed=" + floatingIPsUsed + ", flowCollectionEnabled=" + flowCollectionEnabled + ", forwardingClass=" + forwardingClass + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", localAS=" + localAS + ", name=" + name + ", owner=" + owner + ", receiveMultiCastListID=" + receiveMultiCastListID + ", sendMultiCastListID=" + sendMultiCastListID + ", sharedEnterprise=" + sharedEnterprise + ", threatIntelligenceEnabled=" + threatIntelligenceEnabled + ", threatPreventionManagementEnabled=" + threatPreventionManagementEnabled + ", useGlobalMAC=" + useGlobalMAC + ", virtualFirewallRulesEnabled=" + virtualFirewallRulesEnabled + ", webFilterEnabled=" + webFilterEnabled + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

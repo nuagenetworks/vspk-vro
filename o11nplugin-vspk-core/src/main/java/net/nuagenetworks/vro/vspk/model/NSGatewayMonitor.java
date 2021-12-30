@@ -93,21 +93,6 @@ public class NSGatewayMonitor extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "Controllervrslinks", readOnly = false)   
     public java.util.List<String> getControllervrslinks() {
@@ -194,7 +179,6 @@ public class NSGatewayMonitor extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.NSGATEWAYMONITOR, getId());
         }
     }public String toString() {
-        return "NSGatewayMonitor [" + "controllervrslinks=" + controllervrslinks + ", nsginfo=" + nsginfo + ", nsgstate=" + nsgstate + ", nsgsummary=" + nsgsummary + ", vrsinfo=" + vrsinfo + ", vscs=" + vscs + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "NSGatewayMonitor [" + "controllervrslinks=" + controllervrslinks + ", nsginfo=" + nsginfo + ", nsgstate=" + nsgstate + ", nsgsummary=" + nsgsummary + ", vrsinfo=" + vrsinfo + ", vscs=" + vscs + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

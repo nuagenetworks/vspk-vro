@@ -99,21 +99,6 @@ public class AutoDiscoverCluster extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "AssocVCenterDataCenterID", readOnly = false)   
     public String getAssocVCenterDataCenterID() {
@@ -233,7 +218,6 @@ public class AutoDiscoverCluster extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.AUTODISCOVERCLUSTER, getId());
         }
     }public String toString() {
-        return "AutoDiscoverCluster [" + "assocVCenterDataCenterID=" + assocVCenterDataCenterID + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", managedObjectID=" + managedObjectID + ", name=" + name + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "AutoDiscoverCluster [" + "assocVCenterDataCenterID=" + assocVCenterDataCenterID + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", managedObjectID=" + managedObjectID + ", name=" + name + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

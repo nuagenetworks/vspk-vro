@@ -143,21 +143,6 @@ public class BFDSession extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "BFDDestinationIP", readOnly = false)   
     public String getBFDDestinationIP() {
@@ -381,7 +366,6 @@ public class BFDSession extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "BFDSession [" + "BFDDestinationIP=" + BFDDestinationIP + ", BFDDestinationIPType=" + BFDDestinationIPType + ", BFDDestinationIPv6=" + BFDDestinationIPv6 + ", BFDMultiplier=" + BFDMultiplier + ", BFDTimer=" + BFDTimer + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", multiHopEnabled=" + multiHopEnabled + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "BFDSession [" + "BFDDestinationIP=" + BFDDestinationIP + ", BFDDestinationIPType=" + BFDDestinationIPType + ", BFDDestinationIPv6=" + BFDDestinationIPv6 + ", BFDMultiplier=" + BFDMultiplier + ", BFDTimer=" + BFDTimer + ", creationDate=" + creationDate + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", multiHopEnabled=" + multiHopEnabled + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

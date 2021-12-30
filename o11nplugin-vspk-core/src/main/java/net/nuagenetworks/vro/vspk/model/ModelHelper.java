@@ -10735,6 +10735,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static ICMPEchoTestDefinitionsFetcher getICMPEchoTestDefinitionsFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            ICMPEchoTestDefinitionsFetcher fetcher = obj.getICMPEchoTestDefinitions();
+            return addFetcher(Constants.ICMPECHOTESTDEFINITIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static IDPProfilesFetcher getIDPProfilesFetcherForEnterpriseId(String id) throws RestException {
         Enterprise obj = getObject(Constants.ENTERPRISE, id);
         if (obj == null) {
@@ -11346,6 +11360,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             SAPIngressQoSProfilesFetcher fetcher = obj.getSAPIngressQoSProfiles();
             return addFetcher(Constants.SAPINGRESSQOSPROFILES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static ScheduledTestSuitesFetcher getScheduledTestSuitesFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            ScheduledTestSuitesFetcher fetcher = obj.getScheduledTestSuites();
+            return addFetcher(Constants.SCHEDULEDTESTSUITES_FETCHER, fetcher);
         }
 
         return null;
@@ -16734,6 +16762,59 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<HSCsFetcher> getAllHSCsFetchers() throws RestException {
         java.util.List<HSCsFetcher> allObjs = new ArrayList<HSCsFetcher>();
+        return allObjs;
+    }
+    public static ICMPEchoTestDefinition getICMPEchoTestDefinitionById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            ICMPEchoTestDefinition obj = null;
+            obj = new ICMPEchoTestDefinition();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.ICMPECHOTESTDEFINITION, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<ICMPEchoTestDefinition> getICMPEchoTestDefinitionsForFetcherId(String id) throws RestException {
+        ICMPEchoTestDefinitionsFetcher fetcher = getICMPEchoTestDefinitionsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.ICMPECHOTESTDEFINITION);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<ICMPEchoTestDefinition>();
+    }
+
+    public static ICMPEchoTestDefinitionsFetcher getICMPEchoTestDefinitionsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.ICMPECHOTESTDEFINITIONS_FETCHER, id);
+        if (fetcher != null) {
+            return (ICMPEchoTestDefinitionsFetcher) fetcher;
+        }
+        if ((fetcher = getICMPEchoTestDefinitionsFetcherForEnterpriseId(id)) != null) {
+            return (ICMPEchoTestDefinitionsFetcher) addFetcher(Constants.ICMPECHOTESTDEFINITIONS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<ICMPEchoTestDefinition> getAllICMPEchoTestDefinitions() throws RestException {
+        java.util.List<ICMPEchoTestDefinition> allObjs = new ArrayList<ICMPEchoTestDefinition>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<ICMPEchoTestDefinitionsFetcher> getAllICMPEchoTestDefinitionsFetchers() throws RestException {
+        java.util.List<ICMPEchoTestDefinitionsFetcher> allObjs = new ArrayList<ICMPEchoTestDefinitionsFetcher>();
         return allObjs;
     }
     public static IDPProfile getIDPProfileById(String id) {
@@ -36214,6 +36295,158 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<SAPIngressQoSProfilesFetcher> allObjs = new ArrayList<SAPIngressQoSProfilesFetcher>();
         return allObjs;
     }
+    public static ScheduledTestSuite getScheduledTestSuiteById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            ScheduledTestSuite obj = null;
+            obj = new ScheduledTestSuite();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.SCHEDULEDTESTSUITE, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static ScheduledtestsuiterunsFetcher getScheduledtestsuiterunsFetcherForScheduledTestSuiteId(String id) throws RestException {
+        ScheduledTestSuite obj = getObject(Constants.SCHEDULEDTESTSUITE, id);
+        if (obj == null) {
+            obj = getScheduledTestSuiteById(id);
+        }
+
+        if (obj != null) {
+            ScheduledtestsuiterunsFetcher fetcher = obj.getScheduledtestsuiteruns();
+            return addFetcher(Constants.SCHEDULEDTESTSUITERUNS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static TestsFetcher getTestsFetcherForScheduledTestSuiteId(String id) throws RestException {
+        ScheduledTestSuite obj = getObject(Constants.SCHEDULEDTESTSUITE, id);
+        if (obj == null) {
+            obj = getScheduledTestSuiteById(id);
+        }
+
+        if (obj != null) {
+            TestsFetcher fetcher = obj.getTests();
+            return addFetcher(Constants.TESTS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<ScheduledTestSuite> getScheduledTestSuitesForFetcherId(String id) throws RestException {
+        ScheduledTestSuitesFetcher fetcher = getScheduledTestSuitesFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.SCHEDULEDTESTSUITE);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<ScheduledTestSuite>();
+    }
+
+    public static ScheduledTestSuitesFetcher getScheduledTestSuitesFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.SCHEDULEDTESTSUITES_FETCHER, id);
+        if (fetcher != null) {
+            return (ScheduledTestSuitesFetcher) fetcher;
+        }
+        if ((fetcher = getScheduledTestSuitesFetcherForEnterpriseId(id)) != null) {
+            return (ScheduledTestSuitesFetcher) addFetcher(Constants.SCHEDULEDTESTSUITES_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<ScheduledTestSuite> getAllScheduledTestSuites() throws RestException {
+        java.util.List<ScheduledTestSuite> allObjs = new ArrayList<ScheduledTestSuite>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<ScheduledTestSuitesFetcher> getAllScheduledTestSuitesFetchers() throws RestException {
+        java.util.List<ScheduledTestSuitesFetcher> allObjs = new ArrayList<ScheduledTestSuitesFetcher>();
+        return allObjs;
+    }
+    public static Scheduledtestsuiterun getScheduledtestsuiterunById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            Scheduledtestsuiterun obj = null;
+            obj = new Scheduledtestsuiterun();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.SCHEDULEDTESTSUITERUN, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static TestRunsFetcher getTestRunsFetcherForScheduledtestsuiterunId(String id) throws RestException {
+        Scheduledtestsuiterun obj = getObject(Constants.SCHEDULEDTESTSUITERUN, id);
+        if (obj == null) {
+            obj = getScheduledtestsuiterunById(id);
+        }
+
+        if (obj != null) {
+            TestRunsFetcher fetcher = obj.getTestRuns();
+            return addFetcher(Constants.TESTRUNS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<Scheduledtestsuiterun> getScheduledtestsuiterunsForFetcherId(String id) throws RestException {
+        ScheduledtestsuiterunsFetcher fetcher = getScheduledtestsuiterunsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.SCHEDULEDTESTSUITERUN);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<Scheduledtestsuiterun>();
+    }
+
+    public static ScheduledtestsuiterunsFetcher getScheduledtestsuiterunsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.SCHEDULEDTESTSUITERUNS_FETCHER, id);
+        if (fetcher != null) {
+            return (ScheduledtestsuiterunsFetcher) fetcher;
+        }
+        if ((fetcher = getScheduledtestsuiterunsFetcherForScheduledTestSuiteId(id)) != null) {
+            return (ScheduledtestsuiterunsFetcher) addFetcher(Constants.SCHEDULEDTESTSUITERUNS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getScheduledtestsuiterunsFetcherForVPortId(id)) != null) {
+            return (ScheduledtestsuiterunsFetcher) addFetcher(Constants.SCHEDULEDTESTSUITERUNS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<Scheduledtestsuiterun> getAllScheduledtestsuiteruns() throws RestException {
+        java.util.List<Scheduledtestsuiterun> allObjs = new ArrayList<Scheduledtestsuiterun>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<ScheduledtestsuiterunsFetcher> getAllScheduledtestsuiterunsFetchers() throws RestException {
+        java.util.List<ScheduledtestsuiterunsFetcher> allObjs = new ArrayList<ScheduledtestsuiterunsFetcher>();
+        return allObjs;
+    }
     public static WANService getWANServiceById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             WANService obj = null;
@@ -38750,6 +38983,10 @@ public class ModelHelper extends BaseModelHelper {
         if (fetcher != null) {
             return (TestsFetcher) fetcher;
         }
+        if ((fetcher = getTestsFetcherForScheduledTestSuiteId(id)) != null) {
+            return (TestsFetcher) addFetcher(Constants.TESTS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getTestsFetcherForTestSuiteId(id)) != null) {
             return (TestsFetcher) addFetcher(Constants.TESTS_FETCHER, fetcher);
         }
@@ -38950,6 +39187,10 @@ public class ModelHelper extends BaseModelHelper {
         if (fetcher != null) {
             return (TestRunsFetcher) fetcher;
         }
+        if ((fetcher = getTestRunsFetcherForScheduledtestsuiterunId(id)) != null) {
+            return (TestRunsFetcher) addFetcher(Constants.TESTRUNS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getTestRunsFetcherForTestSuiteRunId(id)) != null) {
             return (TestRunsFetcher) addFetcher(Constants.TESTRUNS_FETCHER, fetcher);
         }
@@ -43633,6 +43874,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             RedirectionTargetsFetcher fetcher = obj.getRedirectionTargets();
             return addFetcher(Constants.REDIRECTIONTARGETS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static ScheduledtestsuiterunsFetcher getScheduledtestsuiterunsFetcherForVPortId(String id) throws RestException {
+        VPort obj = getObject(Constants.VPORT, id);
+        if (obj == null) {
+            obj = getVPortById(id);
+        }
+
+        if (obj != null) {
+            ScheduledtestsuiterunsFetcher fetcher = obj.getScheduledtestsuiteruns();
+            return addFetcher(Constants.SCHEDULEDTESTSUITERUNS_FETCHER, fetcher);
         }
 
         return null;

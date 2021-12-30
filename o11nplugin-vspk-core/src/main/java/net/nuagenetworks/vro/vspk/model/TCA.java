@@ -42,6 +42,8 @@ import net.nuagenetworks.vro.vspk.model.enums.TCAEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.TCAMetric;
 
+import net.nuagenetworks.vro.vspk.model.enums.TCAProtocol;
+
 import net.nuagenetworks.vro.vspk.model.enums.TCAType;
 import net.nuagenetworks.bambou.RestException;
 import net.nuagenetworks.bambou.annotation.RestEntity;
@@ -86,6 +88,9 @@ public class TCA extends BaseObject {
     @JsonProperty(value = "description")
     protected String description;
     
+    @JsonProperty(value = "destinationPort")
+    protected Long destinationPort;
+    
     @JsonProperty(value = "disable")
     protected Boolean disable;
     
@@ -118,6 +123,9 @@ public class TCA extends BaseObject {
     
     @JsonProperty(value = "period")
     protected Long period;
+    
+    @JsonProperty(value = "protocol")
+    protected TCAProtocol protocol;
     
     @JsonProperty(value = "status")
     protected Boolean status;
@@ -192,21 +200,6 @@ public class TCA extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "URLEndPoint", readOnly = false)   
     public String getURLEndPoint() {
@@ -260,6 +253,17 @@ public class TCA extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "DestinationPort", readOnly = false)   
+    public Long getDestinationPort() {
+       return destinationPort;
+    }
+
+    @JsonIgnore
+    public void setDestinationPort(Long value) { 
+        this.destinationPort = value;
     }
     
     @JsonIgnore
@@ -381,6 +385,17 @@ public class TCA extends BaseObject {
     @JsonIgnore
     public void setPeriod(Long value) { 
         this.period = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Protocol", readOnly = false)   
+    public TCAProtocol getProtocol() {
+       return protocol;
+    }
+
+    @JsonIgnore
+    public void setProtocol(TCAProtocol value) { 
+        this.protocol = value;
     }
     
     @JsonIgnore
@@ -560,7 +575,6 @@ public class TCA extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "TCA [" + "URLEndPoint=" + URLEndPoint + ", action=" + action + ", count=" + count + ", creationDate=" + creationDate + ", description=" + description + ", disable=" + disable + ", displayStatus=" + displayStatus + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", metric=" + metric + ", name=" + name + ", owner=" + owner + ", period=" + period + ", status=" + status + ", targetEntityID=" + targetEntityID + ", targetPolicyGroupID=" + targetPolicyGroupID + ", threshold=" + threshold + ", throttleTime=" + throttleTime + ", triggerInterval=" + triggerInterval + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "TCA [" + "URLEndPoint=" + URLEndPoint + ", action=" + action + ", count=" + count + ", creationDate=" + creationDate + ", description=" + description + ", destinationPort=" + destinationPort + ", disable=" + disable + ", displayStatus=" + displayStatus + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", metric=" + metric + ", name=" + name + ", owner=" + owner + ", period=" + period + ", protocol=" + protocol + ", status=" + status + ", targetEntityID=" + targetEntityID + ", targetPolicyGroupID=" + targetPolicyGroupID + ", threshold=" + threshold + ", throttleTime=" + throttleTime + ", triggerInterval=" + triggerInterval + ", type=" + type + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

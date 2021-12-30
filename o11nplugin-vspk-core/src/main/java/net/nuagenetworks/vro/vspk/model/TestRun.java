@@ -32,6 +32,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.enums.TestRunAssociatedTestSuiteRunType;
+
 import net.nuagenetworks.vro.vspk.model.enums.TestRunEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.TestRunOperationStatus;
@@ -67,11 +69,17 @@ public class TestRun extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "additionalTestRunDetails")
+    protected Object additionalTestRunDetails;
+    
     @JsonProperty(value = "associatedTestID")
     protected String associatedTestID;
     
     @JsonProperty(value = "associatedTestSuiteRunID")
     protected String associatedTestSuiteRunID;
+    
+    @JsonProperty(value = "associatedTestSuiteRunType")
+    protected TestRunAssociatedTestSuiteRunType associatedTestSuiteRunType;
     
     @JsonProperty(value = "command")
     protected String command;
@@ -182,21 +190,17 @@ public class TestRun extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
+    @JsonIgnore
+    @VsoProperty(displayName = "AdditionalTestRunDetails", readOnly = false)   
+    public Object getAdditionalTestRunDetails() {
+       return additionalTestRunDetails;
     }
 
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
+    @JsonIgnore
+    public void setAdditionalTestRunDetails(Object value) { 
+        this.additionalTestRunDetails = value;
     }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "AssociatedTestID", readOnly = false)   
     public String getAssociatedTestID() {
@@ -217,6 +221,17 @@ public class TestRun extends BaseObject {
     @JsonIgnore
     public void setAssociatedTestSuiteRunID(String value) { 
         this.associatedTestSuiteRunID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedTestSuiteRunType", readOnly = false)   
+    public TestRunAssociatedTestSuiteRunType getAssociatedTestSuiteRunType() {
+       return associatedTestSuiteRunType;
+    }
+
+    @JsonIgnore
+    public void setAssociatedTestSuiteRunType(TestRunAssociatedTestSuiteRunType value) { 
+        this.associatedTestSuiteRunType = value;
     }
     
     @JsonIgnore
@@ -541,7 +556,6 @@ public class TestRun extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "TestRun [" + "associatedTestID=" + associatedTestID + ", associatedTestSuiteRunID=" + associatedTestSuiteRunID + ", command=" + command + ", commandExitCode=" + commandExitCode + ", commandOutput=" + commandOutput + ", commandOutputSummary=" + commandOutputSummary + ", creationDate=" + creationDate + ", duration=" + duration + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", operationStatus=" + operationStatus + ", owner=" + owner + ", startDateTime=" + startDateTime + ", stopDateTime=" + stopDateTime + ", testResult=" + testResult + ", testResultData=" + testResultData + ", testResultDataType=" + testResultDataType + ", testResultSpecificationEntityName=" + testResultSpecificationEntityName + ", underlayTestCategory=" + underlayTestCategory + ", underlayTestDescription=" + underlayTestDescription + ", underlayTestName=" + underlayTestName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "TestRun [" + "additionalTestRunDetails=" + additionalTestRunDetails + ", associatedTestID=" + associatedTestID + ", associatedTestSuiteRunID=" + associatedTestSuiteRunID + ", associatedTestSuiteRunType=" + associatedTestSuiteRunType + ", command=" + command + ", commandExitCode=" + commandExitCode + ", commandOutput=" + commandOutput + ", commandOutputSummary=" + commandOutputSummary + ", creationDate=" + creationDate + ", duration=" + duration + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", operationStatus=" + operationStatus + ", owner=" + owner + ", startDateTime=" + startDateTime + ", stopDateTime=" + stopDateTime + ", testResult=" + testResult + ", testResultData=" + testResultData + ", testResultDataType=" + testResultDataType + ", testResultSpecificationEntityName=" + testResultSpecificationEntityName + ", underlayTestCategory=" + underlayTestCategory + ", underlayTestDescription=" + underlayTestDescription + ", underlayTestName=" + underlayTestName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

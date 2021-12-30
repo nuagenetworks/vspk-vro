@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Diagnostics</entry>
+<entry key="name">Add TestRun to Scheduledtestsuiterun</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">f9e6b0b1-c23e-57b8-bb5a-64c7d2387664</entry>
+</properties>

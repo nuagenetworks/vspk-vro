@@ -107,21 +107,6 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "AssocEntityID", readOnly = false)   
     public String getAssocEntityID() {
@@ -252,7 +237,6 @@ public class AutoDiscoverHypervisorFromCluster extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.AUTODISCOVERHYPERVISORFROMCLUSTER, getId());
         }
     }public String toString() {
-        return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + assocEntityID + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorIP=" + hypervisorIP + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", managedObjectID=" + managedObjectID + ", networkList=" + networkList + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "AutoDiscoverHypervisorFromCluster [" + "assocEntityID=" + assocEntityID + ", creationDate=" + creationDate + ", entityScope=" + entityScope + ", externalID=" + externalID + ", hypervisorIP=" + hypervisorIP + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", managedObjectID=" + managedObjectID + ", networkList=" + networkList + ", owner=" + owner + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

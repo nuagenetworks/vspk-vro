@@ -146,21 +146,6 @@ public class Destinationurl extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "HTTPMethod", readOnly = false)   
     public DestinationurlHTTPMethod getHTTPMethod() {
@@ -395,7 +380,6 @@ public class Destinationurl extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "Destinationurl [" + "HTTPMethod=" + HTTPMethod + ", URL=" + URL + ", creationDate=" + creationDate + ", downThresholdCount=" + downThresholdCount + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", packetCount=" + packetCount + ", percentageWeight=" + percentageWeight + ", probeInterval=" + probeInterval + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "Destinationurl [" + "HTTPMethod=" + HTTPMethod + ", URL=" + URL + ", creationDate=" + creationDate + ", downThresholdCount=" + downThresholdCount + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", owner=" + owner + ", packetCount=" + packetCount + ", percentageWeight=" + percentageWeight + ", probeInterval=" + probeInterval + ", timeout=" + timeout + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

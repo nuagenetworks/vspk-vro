@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Nsg</entry>
+<entry key="name">Edit Scheduledtestsuiterun</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">2adda9ed-f1c5-539e-9fb4-baea53fc873a</entry>
+</properties>

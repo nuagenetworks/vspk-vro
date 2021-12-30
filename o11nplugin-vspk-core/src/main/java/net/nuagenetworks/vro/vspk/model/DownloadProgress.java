@@ -99,21 +99,6 @@ public class DownloadProgress extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "AverageSpeed", readOnly = false)   
     public Long getAverageSpeed() {
@@ -222,7 +207,6 @@ public class DownloadProgress extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.DOWNLOADPROGRESS, getId());
         }
     }public String toString() {
-        return "DownloadProgress [" + "averageSpeed=" + averageSpeed + ", currentSpeed=" + currentSpeed + ", imageFileName=" + imageFileName + ", imageVersion=" + imageVersion + ", percentage=" + percentage + ", startTime=" + startTime + ", timeLeft=" + timeLeft + ", timeSpent=" + timeSpent + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "DownloadProgress [" + "averageSpeed=" + averageSpeed + ", currentSpeed=" + currentSpeed + ", imageFileName=" + imageFileName + ", imageVersion=" + imageVersion + ", percentage=" + percentage + ", startTime=" + startTime + ", timeLeft=" + timeLeft + ", timeSpent=" + timeSpent + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

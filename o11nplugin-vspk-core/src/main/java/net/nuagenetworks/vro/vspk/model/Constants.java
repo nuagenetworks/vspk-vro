@@ -254,6 +254,8 @@ public interface Constants extends BaseConstants {
     String HOSTINTERFACES = "HostInterfaces";
     String HSC = "HSC";
     String HSCS = "HSCs";
+    String ICMPECHOTESTDEFINITION = "ICMPEchoTestDefinition";
+    String ICMPECHOTESTDEFINITIONS = "ICMPEchoTestDefinitions";
     String IDPPROFILE = "IDPProfile";
     String IDPPROFILES = "IDPProfiles";
     String IDPPROFILEACTION = "IDPProfileAction";
@@ -514,6 +516,10 @@ public interface Constants extends BaseConstants {
     String SAPEGRESSQOSPROFILES = "SAPEgressQoSProfiles";
     String SAPINGRESSQOSPROFILE = "SAPIngressQoSProfile";
     String SAPINGRESSQOSPROFILES = "SAPIngressQoSProfiles";
+    String SCHEDULEDTESTSUITE = "ScheduledTestSuite";
+    String SCHEDULEDTESTSUITES = "ScheduledTestSuites";
+    String SCHEDULEDTESTSUITERUN = "Scheduledtestsuiterun";
+    String SCHEDULEDTESTSUITERUNS = "Scheduledtestsuiteruns";
     String WANSERVICE = "WANService";
     String WANSERVICES = "WANServices";
     String SHAREDNETWORKRESOURCE = "SharedNetworkResource";
@@ -773,6 +779,7 @@ public interface Constants extends BaseConstants {
     String GROUPKEYENCRYPTIONPROFILES_FETCHER = "GroupKeyEncryptionProfilesFetcher";
     String HOSTINTERFACES_FETCHER = "HostInterfacesFetcher";
     String HSCS_FETCHER = "HSCsFetcher";
+    String ICMPECHOTESTDEFINITIONS_FETCHER = "ICMPEchoTestDefinitionsFetcher";
     String IDPPROFILES_FETCHER = "IDPProfilesFetcher";
     String IDPPROFILEACTIONS_FETCHER = "IDPProfileActionsFetcher";
     String IDPSIGNATURES_FETCHER = "IDPSignaturesFetcher";
@@ -903,6 +910,8 @@ public interface Constants extends BaseConstants {
     String SAASAPPLICATIONTYPES_FETCHER = "SaaSApplicationTypesFetcher";
     String SAPEGRESSQOSPROFILES_FETCHER = "SAPEgressQoSProfilesFetcher";
     String SAPINGRESSQOSPROFILES_FETCHER = "SAPIngressQoSProfilesFetcher";
+    String SCHEDULEDTESTSUITES_FETCHER = "ScheduledTestSuitesFetcher";
+    String SCHEDULEDTESTSUITERUNS_FETCHER = "ScheduledtestsuiterunsFetcher";
     String WANSERVICES_FETCHER = "WANServicesFetcher";
     String SHAREDNETWORKRESOURCES_FETCHER = "SharedNetworkResourcesFetcher";
     String SHUNTLINKS_FETCHER = "ShuntLinksFetcher";
@@ -1392,6 +1401,7 @@ public interface Constants extends BaseConstants {
     String HSC_TYPE_ENUM = "HSCType";
     
     
+    
     String IDPPROFILEACTION_ACTION_ENUM = "IDPProfileActionAction";
     
     
@@ -1869,6 +1879,10 @@ public interface Constants extends BaseConstants {
     String SAPINGRESSQOSPROFILE_BLOBTYPE_ENUM = "SAPIngressQoSProfileBlobType";
     String SAPINGRESSQOSPROFILE_ENTITYSCOPE_ENUM = "SAPIngressQoSProfileEntityScope";
     
+    String SCHEDULEDTESTSUITE_SCHEDULEINTERVALUNITS_ENUM = "ScheduledTestSuiteScheduleIntervalUnits";
+    
+    String SCHEDULEDTESTSUITERUN_OPERATIONSTATUS_ENUM = "ScheduledtestsuiterunOperationStatus";
+    
     String WANSERVICE_CONFIGTYPE_ENUM = "WANServiceConfigType";
     String WANSERVICE_ENTITYSCOPE_ENUM = "WANServiceEntityScope";
     String WANSERVICE_PERMITTEDACTION_ENUM = "WANServicePermittedAction";
@@ -1949,12 +1963,15 @@ public interface Constants extends BaseConstants {
     String TCA_ACTION_ENUM = "TCAAction";
     String TCA_ENTITYSCOPE_ENUM = "TCAEntityScope";
     String TCA_METRIC_ENUM = "TCAMetric";
+    String TCA_PROTOCOL_ENUM = "TCAProtocol";
     String TCA_TYPE_ENUM = "TCAType";
     
+    String TEST_ASSOCIATEDTESTDEFINITIONTYPE_ENUM = "TestAssociatedTestDefinitionType";
     String TEST_ENTITYSCOPE_ENUM = "TestEntityScope";
     
     String TESTDEFINITION_ENTITYSCOPE_ENUM = "TestDefinitionEntityScope";
     
+    String TESTRUN_ASSOCIATEDTESTSUITERUNTYPE_ENUM = "TestRunAssociatedTestSuiteRunType";
     String TESTRUN_ENTITYSCOPE_ENUM = "TestRunEntityScope";
     String TESTRUN_OPERATIONSTATUS_ENUM = "TestRunOperationStatus";
     String TESTRUN_TESTRESULT_ENUM = "TestRunTestResult";
@@ -2040,6 +2057,7 @@ public interface Constants extends BaseConstants {
     String VIRTUALFIREWALLPOLICY_PRIORITYTYPE_ENUM = "VirtualFirewallPolicyPriorityType";
     
     String VIRTUALFIREWALLRULE_ACTION_ENUM = "VirtualFirewallRuleAction";
+    String VIRTUALFIREWALLRULE_APPTYPE_ENUM = "VirtualFirewallRuleAppType";
     String VIRTUALFIREWALLRULE_ASSOCIATEDTRAFFICTYPE_ENUM = "VirtualFirewallRuleAssociatedTrafficType";
     String VIRTUALFIREWALLRULE_ENTITYSCOPE_ENUM = "VirtualFirewallRuleEntityScope";
     String VIRTUALFIREWALLRULE_FAILSAFEDATAPATH_ENUM = "VirtualFirewallRuleFailsafeDatapath";
@@ -2048,8 +2066,10 @@ public interface Constants extends BaseConstants {
     String VIRTUALFIREWALLRULE_NETWORKENTITYTYPE_ENUM = "VirtualFirewallRuleNetworkEntityType";
     String VIRTUALFIREWALLRULE_NETWORKTYPE_ENUM = "VirtualFirewallRuleNetworkType";
     String VIRTUALFIREWALLRULE_POLICYSTATE_ENUM = "VirtualFirewallRulePolicyState";
+    String VIRTUALFIREWALLRULE_REMOTEUPLINKPREFERENCE_ENUM = "VirtualFirewallRuleRemoteUplinkPreference";
     String VIRTUALFIREWALLRULE_REPUTATIONSCORE_ENUM = "VirtualFirewallRuleReputationScore";
     String VIRTUALFIREWALLRULE_TYPE_ENUM = "VirtualFirewallRuleType";
+    String VIRTUALFIREWALLRULE_UPLINKPREFERENCE_ENUM = "VirtualFirewallRuleUplinkPreference";
     String VIRTUALFIREWALLRULE_WEBFILTERTYPE_ENUM = "VirtualFirewallRuleWebFilterType";
     
     String VIRTUALIP_IPTYPE_ENUM = "VirtualIPIPType";
@@ -2316,6 +2336,7 @@ public interface Constants extends BaseConstants {
     String GROUPKEYENCRYPTIONPROFILE_IMAGE_FILENAME = "images/icon-groupkeyencryptionprofile.png";
     String HOSTINTERFACE_IMAGE_FILENAME = "images/icon-hostinterface.png";
     String HSC_IMAGE_FILENAME = "images/icon-hsc.png";
+    String ICMPECHOTESTDEFINITION_IMAGE_FILENAME = "images/icon-icmpechotestdefinition.png";
     String IDPPROFILE_IMAGE_FILENAME = "images/icon-idpprofile.png";
     String IDPPROFILEACTION_IMAGE_FILENAME = "images/icon-idpprofileaction.png";
     String IDPSIGNATURE_IMAGE_FILENAME = "images/icon-idpsignature.png";
@@ -2446,6 +2467,8 @@ public interface Constants extends BaseConstants {
     String SAASAPPLICATIONTYPE_IMAGE_FILENAME = "images/icon-saasapplicationtype.png";
     String SAPEGRESSQOSPROFILE_IMAGE_FILENAME = "images/icon-sapegressqosprofile.png";
     String SAPINGRESSQOSPROFILE_IMAGE_FILENAME = "images/icon-sapingressqosprofile.png";
+    String SCHEDULEDTESTSUITE_IMAGE_FILENAME = "images/icon-scheduledtestsuite.png";
+    String SCHEDULEDTESTSUITERUN_IMAGE_FILENAME = "images/icon-scheduledtestsuiterun.png";
     String WANSERVICE_IMAGE_FILENAME = "images/icon-wanservice.png";
     String SHAREDNETWORKRESOURCE_IMAGE_FILENAME = "images/icon-sharednetworkresource.png";
     String SHUNTLINK_IMAGE_FILENAME = "images/icon-shuntlink.png";
@@ -2632,6 +2655,7 @@ public interface Constants extends BaseConstants {
     String GROUPKEYENCRYPTIONPROFILE_ENTITY_TYPE = "groupkeyencryptionprofile";
     String HOSTINTERFACE_ENTITY_TYPE = "hostinterface";
     String HSC_ENTITY_TYPE = "hsc";
+    String ICMPECHOTESTDEFINITION_ENTITY_TYPE = "icmpechotestdefinition";
     String IDPPROFILE_ENTITY_TYPE = "idpprofile";
     String IDPPROFILEACTION_ENTITY_TYPE = "idpprofileaction";
     String IDPSIGNATURE_ENTITY_TYPE = "idpsignature";
@@ -2762,6 +2786,8 @@ public interface Constants extends BaseConstants {
     String SAASAPPLICATIONTYPE_ENTITY_TYPE = "saasapplicationtype";
     String SAPEGRESSQOSPROFILE_ENTITY_TYPE = "sapegressqosprofile";
     String SAPINGRESSQOSPROFILE_ENTITY_TYPE = "sapingressqosprofile";
+    String SCHEDULEDTESTSUITE_ENTITY_TYPE = "scheduledtestsuite";
+    String SCHEDULEDTESTSUITERUN_ENTITY_TYPE = "scheduledtestsuiterun";
     String WANSERVICE_ENTITY_TYPE = "service";
     String SHAREDNETWORKRESOURCE_ENTITY_TYPE = "sharednetworkresource";
     String SHUNTLINK_ENTITY_TYPE = "shuntlink";

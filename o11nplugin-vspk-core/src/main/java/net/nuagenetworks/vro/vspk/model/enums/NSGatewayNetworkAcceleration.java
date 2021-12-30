@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum NSGatewayNetworkAcceleration {
 
-    NONE("NONE", "NONE"), PERFORMANCE("PERFORMANCE", "PERFORMANCE"), SESSION_OPTIMIZED("SESSION_OPTIMIZED", "SESSION_OPTIMIZED"), TP_AWARE("TP_AWARE", "TP_AWARE"), VNF_AWARE("VNF_AWARE", "VNF_AWARE");
+    NONE("NONE", "NONE"), PERFORMANCE("PERFORMANCE", "PERFORMANCE"), SESSION_OPTIMIZED("SESSION_OPTIMIZED", "SESSION_OPTIMIZED"), TP_AWARE("TP_AWARE", "TP_AWARE"), VNF_AWARE("VNF_AWARE", "VNF_AWARE"), WIFI_OPTIMIZED("WIFI_OPTIMIZED", "WIFI_OPTIMIZED"), WIFI_TP_AWARE("WIFI_TP_AWARE", "WIFI_TP_AWARE"), WIFI_VNF_AWARE("WIFI_VNF_AWARE", "WIFI_VNF_AWARE");
 
     private final String id;
     private final String name;
@@ -81,6 +81,21 @@ public enum NSGatewayNetworkAcceleration {
     @VsoProperty(displayName = "VNF_AWARE", readOnly = true)
     public NSGatewayNetworkAcceleration getVNF_AWARE() {
         return VNF_AWARE;
+    }
+    
+    @VsoProperty(displayName = "WIFI_OPTIMIZED", readOnly = true)
+    public NSGatewayNetworkAcceleration getWIFI_OPTIMIZED() {
+        return WIFI_OPTIMIZED;
+    }
+    
+    @VsoProperty(displayName = "WIFI_TP_AWARE", readOnly = true)
+    public NSGatewayNetworkAcceleration getWIFI_TP_AWARE() {
+        return WIFI_TP_AWARE;
+    }
+    
+    @VsoProperty(displayName = "WIFI_VNF_AWARE", readOnly = true)
+    public NSGatewayNetworkAcceleration getWIFI_VNF_AWARE() {
+        return WIFI_VNF_AWARE;
     }
     
 

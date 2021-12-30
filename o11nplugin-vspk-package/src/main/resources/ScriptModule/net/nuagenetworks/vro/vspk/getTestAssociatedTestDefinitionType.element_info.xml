@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getTestAssociatedTestDefinitionType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">339ea013-eac2-5230-ac73-8aa4fc9dde28</entry>
+</properties>

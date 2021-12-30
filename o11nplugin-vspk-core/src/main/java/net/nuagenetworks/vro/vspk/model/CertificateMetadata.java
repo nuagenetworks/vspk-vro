@@ -93,21 +93,6 @@ public class CertificateMetadata extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "SHA1Fingerprint", readOnly = false)   
     public String getSHA1Fingerprint() {
@@ -194,7 +179,6 @@ public class CertificateMetadata extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.CERTIFICATEMETADATA, getId());
         }
     }public String toString() {
-        return "CertificateMetadata [" + "SHA1Fingerprint=" + SHA1Fingerprint + ", issuer=" + issuer + ", notAfter=" + notAfter + ", notBefore=" + notBefore + ", serial=" + serial + ", subject=" + subject + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "CertificateMetadata [" + "SHA1Fingerprint=" + SHA1Fingerprint + ", issuer=" + issuer + ", notAfter=" + notAfter + ", notBefore=" + notBefore + ", serial=" + serial + ", subject=" + subject + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

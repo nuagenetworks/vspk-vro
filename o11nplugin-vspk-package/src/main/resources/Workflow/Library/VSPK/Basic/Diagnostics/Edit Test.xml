@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ad06898b-2912-5f3e-b97f-cd42c8c1c47e"  version="20.10.6" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ad06898b-2912-5f3e-b97f-cd42c8c1c47e"  version="20.10.7" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit Test]]></display-name>
 <ref-types><![CDATA[(VSPK:Test)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -7,6 +7,9 @@
 </param>
 
 <param name='associatedTestDefinitionID' type='string' >
+</param>
+
+<param name='associatedTestDefinitionType' type='VSPK:TestAssociatedTestDefinitionType' >
 </param>
 
 <param name='description' type='string' >
@@ -30,6 +33,7 @@ if (associatedTestDefinitionID) {
 } else if (testObj.associatedTestDefinitionID) {
    testObj.associatedTestDefinitionID = "";
 }
+testObj.associatedTestDefinitionType = associatedTestDefinitionType;
 if (description) {
    testObj.description = description;
 } else if (testObj.description) {
@@ -50,6 +54,8 @@ testObj.save(session, 1);]]></script>
 
 <bind name='associatedTestDefinitionID' type='string' export-name="associatedTestDefinitionID" ></bind>
 
+<bind name='associatedTestDefinitionType' type='VSPK:TestAssociatedTestDefinitionType' export-name="associatedTestDefinitionType" ></bind>
+
 <bind name='description' type='string' export-name="description" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
@@ -64,6 +70,9 @@ testObj.save(session, 1);]]></script>
 
 <p-param name="associatedTestDefinitionID"><desc><![CDATA[associatedTestDefinitionID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#testObj.associatedTestDefinitionID]]></p-qual></p-param>
+
+<p-param name="associatedTestDefinitionType"><desc><![CDATA[associatedTestDefinitionType]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:TestAssociatedTestDefinitionType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getTestAssociatedTestDefinitionType").call( #testObj )]]></p-qual></p-param>
 
 <p-param name="description"><desc><![CDATA[description]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#testObj.description]]></p-qual></p-param>

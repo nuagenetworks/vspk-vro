@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.PermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleAction;
 
+import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleAppType;
+
 import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleAssociatedTrafficType;
 
 import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleEntityScope;
@@ -50,9 +52,13 @@ import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleNetworkType;
 
 import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRulePolicyState;
 
+import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleRemoteUplinkPreference;
+
 import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleReputationScore;
 
 import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleType;
+
+import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleUplinkPreference;
 
 import net.nuagenetworks.vro.vspk.model.enums.VirtualFirewallRuleWebFilterType;
 import net.nuagenetworks.bambou.RestException;
@@ -101,6 +107,12 @@ public class VirtualFirewallRule extends BaseObject {
     
     @JsonProperty(value = "addressOverride")
     protected String addressOverride;
+    
+    @JsonProperty(value = "appType")
+    protected VirtualFirewallRuleAppType appType;
+    
+    @JsonProperty(value = "associatedApplicationID")
+    protected String associatedApplicationID;
     
     @JsonProperty(value = "associatedEgressEntryID")
     protected String associatedEgressEntryID;
@@ -156,6 +168,9 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonProperty(value = "flowLoggingEnabled")
     protected Boolean flowLoggingEnabled;
     
+    @JsonProperty(value = "isSLAAware")
+    protected Boolean isSLAAware;
+    
     @JsonProperty(value = "lastUpdatedBy")
     protected String lastUpdatedBy;
     
@@ -201,6 +216,9 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonProperty(value = "protocol")
     protected String protocol;
     
+    @JsonProperty(value = "remoteUplinkPreference")
+    protected VirtualFirewallRuleRemoteUplinkPreference remoteUplinkPreference;
+    
     @JsonProperty(value = "reputationScore")
     protected VirtualFirewallRuleReputationScore reputationScore;
     
@@ -218,6 +236,9 @@ public class VirtualFirewallRule extends BaseObject {
     
     @JsonProperty(value = "type")
     protected VirtualFirewallRuleType type;
+    
+    @JsonProperty(value = "uplinkPreference")
+    protected VirtualFirewallRuleUplinkPreference uplinkPreference;
     
     @JsonProperty(value = "webFilterID")
     protected String webFilterID;
@@ -270,21 +291,6 @@ public class VirtualFirewallRule extends BaseObject {
     @VsoProperty(displayName = "ParentType", readOnly = false)
     public String getParentType() {
         return super.getParentType();
-    }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
     }
     @JsonIgnore
     @VsoProperty(displayName = "ACLTemplateName", readOnly = false)   
@@ -361,6 +367,28 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonIgnore
     public void setAddressOverride(String value) { 
         this.addressOverride = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AppType", readOnly = false)   
+    public VirtualFirewallRuleAppType getAppType() {
+       return appType;
+    }
+
+    @JsonIgnore
+    public void setAppType(VirtualFirewallRuleAppType value) { 
+        this.appType = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "AssociatedApplicationID", readOnly = false)   
+    public String getAssociatedApplicationID() {
+       return associatedApplicationID;
+    }
+
+    @JsonIgnore
+    public void setAssociatedApplicationID(String value) { 
+        this.associatedApplicationID = value;
     }
     
     @JsonIgnore
@@ -562,6 +590,17 @@ public class VirtualFirewallRule extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "IsSLAAware", readOnly = false)   
+    public Boolean getIsSLAAware() {
+       return isSLAAware;
+    }
+
+    @JsonIgnore
+    public void setIsSLAAware(Boolean value) { 
+        this.isSLAAware = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
     public String getLastUpdatedBy() {
        return lastUpdatedBy;
@@ -727,6 +766,17 @@ public class VirtualFirewallRule extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "RemoteUplinkPreference", readOnly = false)   
+    public VirtualFirewallRuleRemoteUplinkPreference getRemoteUplinkPreference() {
+       return remoteUplinkPreference;
+    }
+
+    @JsonIgnore
+    public void setRemoteUplinkPreference(VirtualFirewallRuleRemoteUplinkPreference value) { 
+        this.remoteUplinkPreference = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "ReputationScore", readOnly = false)   
     public VirtualFirewallRuleReputationScore getReputationScore() {
        return reputationScore;
@@ -790,6 +840,17 @@ public class VirtualFirewallRule extends BaseObject {
     @JsonIgnore
     public void setType(VirtualFirewallRuleType value) { 
         this.type = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "UplinkPreference", readOnly = false)   
+    public VirtualFirewallRuleUplinkPreference getUplinkPreference() {
+       return uplinkPreference;
+    }
+
+    @JsonIgnore
+    public void setUplinkPreference(VirtualFirewallRuleUplinkPreference value) { 
+        this.uplinkPreference = value;
     }
     
     @JsonIgnore
@@ -905,7 +966,6 @@ public class VirtualFirewallRule extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VirtualFirewallRule [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", associatedEgressEntryID=" + associatedEgressEntryID + ", associatedIngressEntryID=" + associatedIngressEntryID + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", creationDate=" + creationDate + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", locationEntityType=" + locationEntityType + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationGroupID=" + mirrorDestinationGroupID + ", mirrorDestinationID=" + mirrorDestinationID + ", networkEntityType=" + networkEntityType + ", networkID=" + networkID + ", networkType=" + networkType + ", overlayMirrorDestinationID=" + overlayMirrorDestinationID + ", owner=" + owner + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", reputationScore=" + reputationScore + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", type=" + type + ", webFilterID=" + webFilterID + ", webFilterStatsLoggingEnabled=" + webFilterStatsLoggingEnabled + ", webFilterType=" + webFilterType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "VirtualFirewallRule [" + "ACLTemplateName=" + ACLTemplateName + ", DSCP=" + DSCP + ", ICMPCode=" + ICMPCode + ", ICMPType=" + ICMPType + ", IPv6AddressOverride=" + IPv6AddressOverride + ", action=" + action + ", addressOverride=" + addressOverride + ", appType=" + appType + ", associatedApplicationID=" + associatedApplicationID + ", associatedEgressEntryID=" + associatedEgressEntryID + ", associatedIngressEntryID=" + associatedIngressEntryID + ", associatedL7ApplicationSignatureID=" + associatedL7ApplicationSignatureID + ", associatedLiveEntityID=" + associatedLiveEntityID + ", associatedLiveTemplateID=" + associatedLiveTemplateID + ", associatedTrafficType=" + associatedTrafficType + ", associatedTrafficTypeID=" + associatedTrafficTypeID + ", creationDate=" + creationDate + ", description=" + description + ", destinationPort=" + destinationPort + ", domainName=" + domainName + ", embeddedMetadata=" + embeddedMetadata + ", enterpriseName=" + enterpriseName + ", entityScope=" + entityScope + ", etherType=" + etherType + ", externalID=" + externalID + ", failsafeDatapath=" + failsafeDatapath + ", flowLoggingEnabled=" + flowLoggingEnabled + ", isSLAAware=" + isSLAAware + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", locationEntityType=" + locationEntityType + ", locationID=" + locationID + ", locationType=" + locationType + ", mirrorDestinationGroupID=" + mirrorDestinationGroupID + ", mirrorDestinationID=" + mirrorDestinationID + ", networkEntityType=" + networkEntityType + ", networkID=" + networkID + ", networkType=" + networkType + ", overlayMirrorDestinationID=" + overlayMirrorDestinationID + ", owner=" + owner + ", policyState=" + policyState + ", priority=" + priority + ", protocol=" + protocol + ", remoteUplinkPreference=" + remoteUplinkPreference + ", reputationScore=" + reputationScore + ", sourcePort=" + sourcePort + ", stateful=" + stateful + ", statsID=" + statsID + ", statsLoggingEnabled=" + statsLoggingEnabled + ", type=" + type + ", uplinkPreference=" + uplinkPreference + ", webFilterID=" + webFilterID + ", webFilterStatsLoggingEnabled=" + webFilterStatsLoggingEnabled + ", webFilterType=" + webFilterType + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

@@ -30,6 +30,8 @@ package net.nuagenetworks.vro.vspk.model.fetchers;
 import net.nuagenetworks.vro.vspk.model.Test;
 import net.nuagenetworks.vro.vspk.model.Session;
 import net.nuagenetworks.vro.vspk.model.Constants;
+import net.nuagenetworks.vro.vspk.model.ScheduledTestSuite;
+
 import net.nuagenetworks.vro.vspk.model.TestSuite;
 import net.nuagenetworks.vro.model.fetchers.BaseFetcher;
 import net.nuagenetworks.bambou.RestException;
@@ -64,6 +66,16 @@ public class TestsFetcher extends BaseFetcher<Test> {
     public Session getSession() {
         return (Session) super.getSession();
     }
+    @VsoProperty(displayName = "ScheduledTestSuite", readOnly = true)
+    public ScheduledTestSuite getScheduledTestSuite() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ScheduledTestSuite) {
+            return (ScheduledTestSuite) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "TestSuite", readOnly = true)
     public TestSuite getTestSuite() {
         RestObject obj = super.getParentRestObj();

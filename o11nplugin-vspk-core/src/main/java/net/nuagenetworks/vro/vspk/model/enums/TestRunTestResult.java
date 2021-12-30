@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum TestRunTestResult {
 
-    DEGRADED("DEGRADED", "DEGRADED"), FAIL("FAIL", "FAIL"), NOT_APPLICABLE("NOT_APPLICABLE", "NOT_APPLICABLE"), PASS("PASS", "PASS");
+    DEGRADED("DEGRADED", "DEGRADED"), FAIL("FAIL", "FAIL"), NOT_APPLICABLE("NOT_APPLICABLE", "NOT_APPLICABLE"), PASS("PASS", "PASS"), RUNNING("RUNNING", "RUNNING");
 
     private final String id;
     private final String name;
@@ -76,6 +76,11 @@ public enum TestRunTestResult {
     @VsoProperty(displayName = "PASS", readOnly = true)
     public TestRunTestResult getPASS() {
         return PASS;
+    }
+    
+    @VsoProperty(displayName = "RUNNING", readOnly = true)
+    public TestRunTestResult getRUNNING() {
+        return RUNNING;
     }
     
 

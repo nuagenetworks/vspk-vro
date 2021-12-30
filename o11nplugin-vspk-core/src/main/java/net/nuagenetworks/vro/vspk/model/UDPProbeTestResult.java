@@ -87,21 +87,6 @@ public class UDPProbeTestResult extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
-
-    @VsoProperty(displayName = "CreationDate", readOnly = false)
-    public String getCreationDate() {
-        return super.getCreationDate();
-    }
-
-    @VsoProperty(displayName = "UpdatedDate", readOnly = false)
-    public String getLastUpdatedDate() {
-        return super.getLastUpdatedDate();
-    }
-
-    @VsoProperty(displayName = "Owner", readOnly = false)
-    public String getOwner() {
-        return super.getOwner();
-    }
     @JsonIgnore
     @VsoProperty(displayName = "PacketLossPercent", readOnly = false)   
     public Float getPacketLossPercent() {
@@ -166,7 +151,6 @@ public class UDPProbeTestResult extends BaseObject {
            SessionManager.getInstance().notifyElementDeleted(Constants.UDPPROBETESTRESULT, getId());
         }
     }public String toString() {
-        return "UDPProbeTestResult [" + "packetLossPercent=" + packetLossPercent + ", packetsLost=" + packetsLost + ", packetsReceived=" + packetsReceived + ", packetsTransmitted=" + packetsTransmitted + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType + ", creationDate=" + creationDate + ", lastUpdatedDate="
-                 + lastUpdatedDate + ", owner=" + owner  + "]";
+        return "UDPProbeTestResult [" + "packetLossPercent=" + packetLossPercent + ", packetsLost=" + packetsLost + ", packetsReceived=" + packetsReceived + ", packetsTransmitted=" + packetsTransmitted + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }
