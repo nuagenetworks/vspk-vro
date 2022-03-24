@@ -6427,6 +6427,10 @@ public class ModelHelper extends BaseModelHelper {
             return (DeploymentFailuresFetcher) addFetcher(Constants.DEPLOYMENTFAILURES_FETCHER, fetcher);
         }
         
+        if ((fetcher = getDeploymentFailuresFetcherForNetconfGlobalConfigurationId(id)) != null) {
+            return (DeploymentFailuresFetcher) addFetcher(Constants.DEPLOYMENTFAILURES_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getDeploymentFailuresFetcherForRedundancyGroupId(id)) != null) {
             return (DeploymentFailuresFetcher) addFetcher(Constants.DEPLOYMENTFAILURES_FETCHER, fetcher);
         }
@@ -7602,6 +7606,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             RoutingPoliciesFetcher fetcher = obj.getRoutingPolicies();
             return addFetcher(Constants.ROUTINGPOLICIES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static RoutingPolicyAssociationsFetcher getRoutingPolicyAssociationsFetcherForDomainId(String id) throws RestException {
+        Domain obj = getObject(Constants.DOMAIN, id);
+        if (obj == null) {
+            obj = getDomainById(id);
+        }
+
+        if (obj != null) {
+            RoutingPolicyAssociationsFetcher fetcher = obj.getRoutingPolicyAssociations();
+            return addFetcher(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER, fetcher);
         }
 
         return null;
@@ -10595,6 +10613,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static EthernetSegmentGWGroupsFetcher getEthernetSegmentGWGroupsFetcherForEnterpriseId(String id) throws RestException {
+        Enterprise obj = getObject(Constants.ENTERPRISE, id);
+        if (obj == null) {
+            obj = getEnterpriseById(id);
+        }
+
+        if (obj != null) {
+            EthernetSegmentGWGroupsFetcher fetcher = obj.getEthernetSegmentGWGroups();
+            return addFetcher(Constants.ETHERNETSEGMENTGWGROUPS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static EventLogsFetcher getEventLogsFetcherForEnterpriseId(String id) throws RestException {
         Enterprise obj = getObject(Constants.ENTERPRISE, id);
         if (obj == null) {
@@ -12801,6 +12833,10 @@ public class ModelHelper extends BaseModelHelper {
         if (fetcher != null) {
             return (EthernetSegmentGWGroupsFetcher) fetcher;
         }
+        if ((fetcher = getEthernetSegmentGWGroupsFetcherForEnterpriseId(id)) != null) {
+            return (EthernetSegmentGWGroupsFetcher) addFetcher(Constants.ETHERNETSEGMENTGWGROUPS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getEthernetSegmentGWGroupsFetcherForMeId(id)) != null) {
             return (EthernetSegmentGWGroupsFetcher) addFetcher(Constants.ETHERNETSEGMENTGWGROUPS_FETCHER, fetcher);
         }
@@ -14167,6 +14203,10 @@ public class ModelHelper extends BaseModelHelper {
         if ((fetcher = getGatewaysFetcherForRedundancyGroupId(id)) != null) {
             return (GatewaysFetcher) addFetcher(Constants.GATEWAYS_FETCHER, fetcher);
         }
+        
+        if ((fetcher = getGatewaysFetcherForSubnetId(id)) != null) {
+            return (GatewaysFetcher) addFetcher(Constants.GATEWAYS_FETCHER, fetcher);
+        }
         return null;
     }
 
@@ -15396,6 +15436,10 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForNetconfGlobalConfigurationId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForNetconfManagerId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -15601,6 +15645,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getGlobalMetadatasFetcherForRoutingPolicyId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForRoutingPolicyAssociationId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
@@ -23503,6 +23551,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static NetconfGlobalConfigurationsFetcher getNetconfGlobalConfigurationsFetcherForMeId(String id) throws RestException {
+        Me obj = getObject(Constants.ME, id);
+        if (obj == null) {
+            obj = getMeById(id);
+        }
+
+        if (obj != null) {
+            NetconfGlobalConfigurationsFetcher fetcher = obj.getNetconfGlobalConfigurations();
+            return addFetcher(Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static NetconfProfilesFetcher getNetconfProfilesFetcherForMeId(String id) throws RestException {
         Me obj = getObject(Constants.ME, id);
         if (obj == null) {
@@ -24923,6 +24985,10 @@ public class ModelHelper extends BaseModelHelper {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getMetadatasFetcherForNetconfGlobalConfigurationId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getMetadatasFetcherForNetconfManagerId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
@@ -25128,6 +25194,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getMetadatasFetcherForRoutingPolicyId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForRoutingPolicyAssociationId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
@@ -26890,6 +26960,10 @@ public class ModelHelper extends BaseModelHelper {
         if ((fetcher = getNetconfGatewaysFetcherForDomainId(id)) != null) {
             return (NetconfGatewaysFetcher) addFetcher(Constants.NETCONFGATEWAYS_FETCHER, fetcher);
         }
+        
+        if ((fetcher = getNetconfGatewaysFetcherForSubnetId(id)) != null) {
+            return (NetconfGatewaysFetcher) addFetcher(Constants.NETCONFGATEWAYS_FETCHER, fetcher);
+        }
         return null;
     }
 
@@ -26901,6 +26975,121 @@ public class ModelHelper extends BaseModelHelper {
 
     public static java.util.List<NetconfGatewaysFetcher> getAllNetconfGatewaysFetchers() throws RestException {
         java.util.List<NetconfGatewaysFetcher> allObjs = new ArrayList<NetconfGatewaysFetcher>();
+        return allObjs;
+    }
+    public static NetconfGlobalConfiguration getNetconfGlobalConfigurationById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            NetconfGlobalConfiguration obj = null;
+            obj = new NetconfGlobalConfiguration();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.NETCONFGLOBALCONFIGURATION, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static DeploymentFailuresFetcher getDeploymentFailuresFetcherForNetconfGlobalConfigurationId(String id) throws RestException {
+        NetconfGlobalConfiguration obj = getObject(Constants.NETCONFGLOBALCONFIGURATION, id);
+        if (obj == null) {
+            obj = getNetconfGlobalConfigurationById(id);
+        }
+
+        if (obj != null) {
+            DeploymentFailuresFetcher fetcher = obj.getDeploymentFailures();
+            return addFetcher(Constants.DEPLOYMENTFAILURES_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForNetconfGlobalConfigurationId(String id) throws RestException {
+        NetconfGlobalConfiguration obj = getObject(Constants.NETCONFGLOBALCONFIGURATION, id);
+        if (obj == null) {
+            obj = getNetconfGlobalConfigurationById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForNetconfGlobalConfigurationId(String id) throws RestException {
+        NetconfGlobalConfiguration obj = getObject(Constants.NETCONFGLOBALCONFIGURATION, id);
+        if (obj == null) {
+            obj = getNetconfGlobalConfigurationById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForNetconfGlobalConfigurationId(String id) throws RestException {
+        NetconfGlobalConfiguration obj = getObject(Constants.NETCONFGLOBALCONFIGURATION, id);
+        if (obj == null) {
+            obj = getNetconfGlobalConfigurationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<NetconfGlobalConfiguration> getNetconfGlobalConfigurationsForFetcherId(String id) throws RestException {
+        NetconfGlobalConfigurationsFetcher fetcher = getNetconfGlobalConfigurationsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.NETCONFGLOBALCONFIGURATION);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<NetconfGlobalConfiguration>();
+    }
+
+    public static NetconfGlobalConfigurationsFetcher getNetconfGlobalConfigurationsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER, id);
+        if (fetcher != null) {
+            return (NetconfGlobalConfigurationsFetcher) fetcher;
+        }
+        if ((fetcher = getNetconfGlobalConfigurationsFetcherForMeId(id)) != null) {
+            return (NetconfGlobalConfigurationsFetcher) addFetcher(Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<NetconfGlobalConfiguration> getAllNetconfGlobalConfigurations() throws RestException {
+        java.util.List<NetconfGlobalConfiguration> allObjs = new ArrayList<NetconfGlobalConfiguration>();
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            NetconfGlobalConfigurationsFetcher fetcher = getNetconfGlobalConfigurationsFetcherForMeId(session.getId());
+            java.util.List<NetconfGlobalConfiguration> objs = session.fetch(fetcher);
+            allObjs.addAll(objs);
+        }
+        
+
+        return allObjs;
+    }
+
+    public static java.util.List<NetconfGlobalConfigurationsFetcher> getAllNetconfGlobalConfigurationsFetchers() throws RestException {
+        java.util.List<NetconfGlobalConfigurationsFetcher> allObjs = new ArrayList<NetconfGlobalConfigurationsFetcher>();
         return allObjs;
     }
     public static NetconfManager getNetconfManagerById(String id) {
@@ -31823,6 +32012,10 @@ public class ModelHelper extends BaseModelHelper {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getPermissionsFetcherForNetconfGlobalConfigurationId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getPermissionsFetcherForNetconfManagerId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
@@ -32032,6 +32225,10 @@ public class ModelHelper extends BaseModelHelper {
         }
         
         if ((fetcher = getPermissionsFetcherForRoutingPolicyId(id)) != null) {
+            return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getPermissionsFetcherForRoutingPolicyAssociationId(id)) != null) {
             return (PermissionsFetcher) addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
         }
         
@@ -35742,6 +35939,105 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<RoutingPoliciesFetcher> allObjs = new ArrayList<RoutingPoliciesFetcher>();
         return allObjs;
     }
+    public static RoutingPolicyAssociation getRoutingPolicyAssociationById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            RoutingPolicyAssociation obj = null;
+            obj = new RoutingPolicyAssociation();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.ROUTINGPOLICYASSOCIATION, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForRoutingPolicyAssociationId(String id) throws RestException {
+        RoutingPolicyAssociation obj = getObject(Constants.ROUTINGPOLICYASSOCIATION, id);
+        if (obj == null) {
+            obj = getRoutingPolicyAssociationById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForRoutingPolicyAssociationId(String id) throws RestException {
+        RoutingPolicyAssociation obj = getObject(Constants.ROUTINGPOLICYASSOCIATION, id);
+        if (obj == null) {
+            obj = getRoutingPolicyAssociationById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static PermissionsFetcher getPermissionsFetcherForRoutingPolicyAssociationId(String id) throws RestException {
+        RoutingPolicyAssociation obj = getObject(Constants.ROUTINGPOLICYASSOCIATION, id);
+        if (obj == null) {
+            obj = getRoutingPolicyAssociationById(id);
+        }
+
+        if (obj != null) {
+            PermissionsFetcher fetcher = obj.getPermissions();
+            return addFetcher(Constants.PERMISSIONS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<RoutingPolicyAssociation> getRoutingPolicyAssociationsForFetcherId(String id) throws RestException {
+        RoutingPolicyAssociationsFetcher fetcher = getRoutingPolicyAssociationsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.ROUTINGPOLICYASSOCIATION);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<RoutingPolicyAssociation>();
+    }
+
+    public static RoutingPolicyAssociationsFetcher getRoutingPolicyAssociationsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER, id);
+        if (fetcher != null) {
+            return (RoutingPolicyAssociationsFetcher) fetcher;
+        }
+        if ((fetcher = getRoutingPolicyAssociationsFetcherForDomainId(id)) != null) {
+            return (RoutingPolicyAssociationsFetcher) addFetcher(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getRoutingPolicyAssociationsFetcherForSubnetId(id)) != null) {
+            return (RoutingPolicyAssociationsFetcher) addFetcher(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<RoutingPolicyAssociation> getAllRoutingPolicyAssociations() throws RestException {
+        java.util.List<RoutingPolicyAssociation> allObjs = new ArrayList<RoutingPolicyAssociation>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<RoutingPolicyAssociationsFetcher> getAllRoutingPolicyAssociationsFetchers() throws RestException {
+        java.util.List<RoutingPolicyAssociationsFetcher> allObjs = new ArrayList<RoutingPolicyAssociationsFetcher>();
+        return allObjs;
+    }
     public static RoutingPolicyBinding getRoutingPolicyBindingById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             RoutingPolicyBinding obj = null;
@@ -38058,6 +38354,20 @@ public class ModelHelper extends BaseModelHelper {
         return null;
     }
     
+    public static GatewaysFetcher getGatewaysFetcherForSubnetId(String id) throws RestException {
+        Subnet obj = getObject(Constants.SUBNET, id);
+        if (obj == null) {
+            obj = getSubnetById(id);
+        }
+
+        if (obj != null) {
+            GatewaysFetcher fetcher = obj.getGateways();
+            return addFetcher(Constants.GATEWAYS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForSubnetId(String id) throws RestException {
         Subnet obj = getObject(Constants.SUBNET, id);
         if (obj == null) {
@@ -38109,6 +38419,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             MetadatasFetcher fetcher = obj.getMetadatas();
             return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static NetconfGatewaysFetcher getNetconfGatewaysFetcherForSubnetId(String id) throws RestException {
+        Subnet obj = getObject(Constants.SUBNET, id);
+        if (obj == null) {
+            obj = getSubnetById(id);
+        }
+
+        if (obj != null) {
+            NetconfGatewaysFetcher fetcher = obj.getNetconfGateways();
+            return addFetcher(Constants.NETCONFGATEWAYS_FETCHER, fetcher);
         }
 
         return null;
@@ -38179,6 +38503,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             VMResyncsFetcher fetcher = obj.getVMResyncs();
             return addFetcher(Constants.VMRESYNCS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static RoutingPolicyAssociationsFetcher getRoutingPolicyAssociationsFetcherForSubnetId(String id) throws RestException {
+        Subnet obj = getObject(Constants.SUBNET, id);
+        if (obj == null) {
+            obj = getSubnetById(id);
+        }
+
+        if (obj != null) {
+            RoutingPolicyAssociationsFetcher fetcher = obj.getRoutingPolicyAssociations();
+            return addFetcher(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER, fetcher);
         }
 
         return null;

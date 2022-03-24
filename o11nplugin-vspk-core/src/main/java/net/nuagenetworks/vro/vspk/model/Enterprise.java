@@ -66,6 +66,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.EnterpriseNetworksFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EnterpriseSecuritiesFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.EthernetSegmentGWGroupsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.FirewallAclsFetcher;
@@ -260,6 +262,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.EGRESSQOSPOLICIES_FETCHER, type = Constants.EGRESSQOSPOLICIES_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISENETWORKS_FETCHER, type = Constants.ENTERPRISENETWORKS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.ETHERNETSEGMENTGWGROUPS_FETCHER, type = Constants.ETHERNETSEGMENTGWGROUPS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.FIREWALLACLS_FETCHER, type = Constants.FIREWALLACLS_FETCHER), 
 
@@ -568,6 +572,9 @@ public class Enterprise extends BaseObject {
     private EnterpriseSecuritiesFetcher enterpriseSecurities;
     
     @JsonIgnore
+    private EthernetSegmentGWGroupsFetcher ethernetSegmentGWGroups;
+    
+    @JsonIgnore
     private EventLogsFetcher eventLogs;
     
     @JsonIgnore
@@ -815,6 +822,8 @@ public class Enterprise extends BaseObject {
         enterpriseNetworks = new EnterpriseNetworksFetcher(this);
         
         enterpriseSecurities = new EnterpriseSecuritiesFetcher(this);
+        
+        ethernetSegmentGWGroups = new EthernetSegmentGWGroupsFetcher(this);
         
         eventLogs = new EventLogsFetcher(this);
         
@@ -1580,6 +1589,12 @@ public class Enterprise extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EthernetSegmentGWGroups", readOnly = true)   
+    public EthernetSegmentGWGroupsFetcher getEthernetSegmentGWGroups() {
+        return ethernetSegmentGWGroups;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EventLogs", readOnly = true)   
     public EventLogsFetcher getEventLogs() {
         return eventLogs;
@@ -2141,6 +2156,14 @@ public class Enterprise extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.ENTERPRISENETWORKS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createEthernetSegmentGWGroup(Session session, EthernetSegmentGWGroup childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.ETHERNETSEGMENTGWGROUPS_FETCHER, getId());
         }
     }
     @VsoMethod

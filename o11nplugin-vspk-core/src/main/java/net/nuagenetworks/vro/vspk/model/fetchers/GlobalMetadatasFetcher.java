@@ -314,6 +314,8 @@ import net.nuagenetworks.vro.vspk.model.NATMapEntry;
 
 import net.nuagenetworks.vro.vspk.model.NetconfGateway;
 
+import net.nuagenetworks.vro.vspk.model.NetconfGlobalConfiguration;
+
 import net.nuagenetworks.vro.vspk.model.NetconfManager;
 
 import net.nuagenetworks.vro.vspk.model.NetconfProfile;
@@ -417,6 +419,8 @@ import net.nuagenetworks.vro.vspk.model.Role;
 import net.nuagenetworks.vro.vspk.model.Roleentry;
 
 import net.nuagenetworks.vro.vspk.model.RoutingPolicy;
+
+import net.nuagenetworks.vro.vspk.model.RoutingPolicyAssociation;
 
 import net.nuagenetworks.vro.vspk.model.RoutingPolicyBinding;
 
@@ -2008,6 +2012,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         return null;
     }
     
+    @VsoProperty(displayName = "NetconfGlobalConfiguration", readOnly = true)
+    public NetconfGlobalConfiguration getNetconfGlobalConfiguration() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGlobalConfiguration) {
+            return (NetconfGlobalConfiguration) obj;
+        }
+        
+        return null;
+    }
+    
     @VsoProperty(displayName = "NetconfManager", readOnly = true)
     public NetconfManager getNetconfManager() {
         RestObject obj = super.getParentRestObj();
@@ -2523,6 +2537,16 @@ public class GlobalMetadatasFetcher extends BaseFetcher<GlobalMetadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof RoutingPolicy) {
             return (RoutingPolicy) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "RoutingPolicyAssociation", readOnly = true)
+    public RoutingPolicyAssociation getRoutingPolicyAssociation() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof RoutingPolicyAssociation) {
+            return (RoutingPolicyAssociation) obj;
         }
         
         return null;

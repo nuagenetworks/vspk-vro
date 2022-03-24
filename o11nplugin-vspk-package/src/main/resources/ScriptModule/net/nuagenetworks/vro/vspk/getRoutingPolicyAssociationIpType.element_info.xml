@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getRoutingPolicyAssociationIpType</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">c88fb402-2946-5523-80bb-57f6a21e1100</entry>
+</properties>

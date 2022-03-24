@@ -1008,6 +1008,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.NETCONFGLOBALCONFIGURATION_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.NETCONFMANAGER_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.NETCONFMANAGERS_FETCHER, entityParentId);
             return;
@@ -1340,6 +1345,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.ROUTINGPOLICY_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.ROUTINGPOLICIES_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.ROUTINGPOLICYASSOCIATION_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER, entityParentId);
             return;
         }
         
@@ -2592,6 +2602,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.NETCONFGLOBALCONFIGURATION_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.NETCONFGLOBALCONFIGURATION, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.NETCONFMANAGER_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.NETCONFMANAGER, entityId);
             return;
@@ -2924,6 +2939,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.ROUTINGPOLICY_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.ROUTINGPOLICY, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.ROUTINGPOLICYASSOCIATION_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.ROUTINGPOLICYASSOCIATION, entityId);
             return;
         }
         
@@ -4176,6 +4196,11 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.NETCONFGLOBALCONFIGURATION_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.NETCONFGLOBALCONFIGURATION, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.NETCONFMANAGER_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.NETCONFMANAGER, entityId);
             return;
@@ -4508,6 +4533,11 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.ROUTINGPOLICY_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.ROUTINGPOLICY, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.ROUTINGPOLICYASSOCIATION_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.ROUTINGPOLICYASSOCIATION, entityId);
             return;
         }
         

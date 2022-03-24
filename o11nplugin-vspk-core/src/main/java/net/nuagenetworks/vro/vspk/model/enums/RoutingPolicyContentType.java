@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum RoutingPolicyContentType {
 
-    DEFAULT("DEFAULT", "DEFAULT"), NETCONF_7X50("NETCONF_7X50", "NETCONF_7X50"), SR_LINUX("SR_LINUX", "SR_LINUX");
+    DEFAULT("DEFAULT", "DEFAULT"), NETCONF_7X50("NETCONF_7X50", "NETCONF_7X50"), NETCONF_THIRDPARTY_HW_VTEP("NETCONF_THIRDPARTY_HW_VTEP", "NETCONF_THIRDPARTY_HW_VTEP"), SR_LINUX("SR_LINUX", "SR_LINUX");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum RoutingPolicyContentType {
     @VsoProperty(displayName = "NETCONF_7X50", readOnly = true)
     public RoutingPolicyContentType getNETCONF_7X50() {
         return NETCONF_7X50;
+    }
+    
+    @VsoProperty(displayName = "NETCONF_THIRDPARTY_HW_VTEP", readOnly = true)
+    public RoutingPolicyContentType getNETCONF_THIRDPARTY_HW_VTEP() {
+        return NETCONF_THIRDPARTY_HW_VTEP;
     }
     
     @VsoProperty(displayName = "SR_LINUX", readOnly = true)

@@ -126,6 +126,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.MirrorDestinationsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.MultiCastChannelMapsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.NetconfGlobalConfigurationsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.NetconfProfilesFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.NetworkLayoutsFetcher;
@@ -304,6 +306,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
         @VsoRelation(inventoryChildren = true, name = Constants.MIRRORDESTINATIONS_FETCHER, type = Constants.MIRRORDESTINATIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.MULTICASTCHANNELMAPS_FETCHER, type = Constants.MULTICASTCHANNELMAPS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER, type = Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.NETCONFPROFILES_FETCHER, type = Constants.NETCONFPROFILES_FETCHER), 
 
@@ -596,6 +600,9 @@ public class Me extends BaseRootObject {
     private MultiCastChannelMapsFetcher multiCastChannelMaps;
     
     @JsonIgnore
+    private NetconfGlobalConfigurationsFetcher netconfGlobalConfigurations;
+    
+    @JsonIgnore
     private NetconfProfilesFetcher netconfProfiles;
     
     @JsonIgnore
@@ -861,6 +868,8 @@ public class Me extends BaseRootObject {
         mirrorDestinations = new MirrorDestinationsFetcher(this);
         
         multiCastChannelMaps = new MultiCastChannelMapsFetcher(this);
+        
+        netconfGlobalConfigurations = new NetconfGlobalConfigurationsFetcher(this);
         
         netconfProfiles = new NetconfProfilesFetcher(this);
         
@@ -1590,6 +1599,12 @@ public class Me extends BaseRootObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "NetconfGlobalConfigurations", readOnly = true)   
+    public NetconfGlobalConfigurationsFetcher getNetconfGlobalConfigurations() {
+        return netconfGlobalConfigurations;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "NetconfProfiles", readOnly = true)   
     public NetconfProfilesFetcher getNetconfProfiles() {
         return netconfProfiles;
@@ -2197,6 +2212,14 @@ public class Me extends BaseRootObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.MULTICASTCHANNELMAPS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createNetconfGlobalConfiguration(Session session, NetconfGlobalConfiguration childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER, getId());
         }
     }
     @VsoMethod

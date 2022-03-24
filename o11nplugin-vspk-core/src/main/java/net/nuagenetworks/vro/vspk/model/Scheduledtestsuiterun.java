@@ -89,6 +89,9 @@ public class Scheduledtestsuiterun extends BaseObject {
     @JsonProperty(value = "secondarySystemID")
     protected String secondarySystemID;
     
+    @JsonProperty(value = "sourceIP")
+    protected String sourceIP;
+    
     @JsonProperty(value = "subnetName")
     protected String subnetName;
     
@@ -273,6 +276,17 @@ public class Scheduledtestsuiterun extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "SourceIP", readOnly = false)   
+    public String getSourceIP() {
+       return sourceIP;
+    }
+
+    @JsonIgnore
+    public void setSourceIP(String value) { 
+        this.sourceIP = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "SubnetName", readOnly = false)   
     public String getSubnetName() {
        return subnetName;
@@ -372,6 +386,6 @@ public class Scheduledtestsuiterun extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.TESTRUNS_FETCHER, getId());
         }
     }public String toString() {
-        return "Scheduledtestsuiterun [" + "NSGatewayName=" + NSGatewayName + ", VPortName=" + VPortName + ", associatedScheduledTestSuiteID=" + associatedScheduledTestSuiteID + ", associatedScheduledTestSuiteName=" + associatedScheduledTestSuiteName + ", datapathID=" + datapathID + ", destination=" + destination + ", domainName=" + domainName + ", macAddress=" + macAddress + ", operationStatus=" + operationStatus + ", secondaryDatapathID=" + secondaryDatapathID + ", secondaryNSGatewayName=" + secondaryNSGatewayName + ", secondarySystemID=" + secondarySystemID + ", subnetName=" + subnetName + ", systemID=" + systemID + ", vlanID=" + vlanID + ", vportPortName=" + vportPortName + ", vportVlanID=" + vportVlanID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
+        return "Scheduledtestsuiterun [" + "NSGatewayName=" + NSGatewayName + ", VPortName=" + VPortName + ", associatedScheduledTestSuiteID=" + associatedScheduledTestSuiteID + ", associatedScheduledTestSuiteName=" + associatedScheduledTestSuiteName + ", datapathID=" + datapathID + ", destination=" + destination + ", domainName=" + domainName + ", macAddress=" + macAddress + ", operationStatus=" + operationStatus + ", secondaryDatapathID=" + secondaryDatapathID + ", secondaryNSGatewayName=" + secondaryNSGatewayName + ", secondarySystemID=" + secondarySystemID + ", sourceIP=" + sourceIP + ", subnetName=" + subnetName + ", systemID=" + systemID + ", vlanID=" + vlanID + ", vportPortName=" + vportPortName + ", vportVlanID=" + vportVlanID + ", zoneName=" + zoneName + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="ad92e2cd-4f31-507d-b384-ed77be8b049b"  version="20.10.8" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Add RoutingPolicyAssociation to Domain]]></display-name>
+<ref-types><![CDATA[(VSPK:Domain)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='domainObj' type='VSPK:Domain' >
+</param>
+<param name='associatedRoutingPolicyID' type='string' >
+</param>
+<param name='externalID' type='string' >
+</param>
+<param name='ipType' type='VSPK:RoutingPolicyAssociationIpType' >
+</param>
+<param name='netconfGatewayIDs' type='Array/string' >
+</param>
+</input><output><param name='routingPolicyAssociationObj' type='VSPK:RoutingPolicyAssociation' >
+</param>
+</output><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = domainObj.session;
+
+routingPolicyAssociationObj = new VSPKRoutingPolicyAssociation();
+if (associatedRoutingPolicyID) {
+   routingPolicyAssociationObj.associatedRoutingPolicyID = associatedRoutingPolicyID;
+}
+if (externalID) {
+   routingPolicyAssociationObj.externalID = externalID;
+}
+routingPolicyAssociationObj.ipType = ipType;
+routingPolicyAssociationObj.netconfGatewayIDs = netconfGatewayIDs;
+
+domainObj.createRoutingPolicyAssociation(session, routingPolicyAssociationObj);
+]]></script>
+<in-binding><bind name='domainObj' type='VSPK:Domain' export-name="domainObj" ></bind>
+<bind name='associatedRoutingPolicyID' type='string' export-name="associatedRoutingPolicyID" ></bind>
+<bind name='externalID' type='string' export-name="externalID" ></bind>
+<bind name='ipType' type='VSPK:RoutingPolicyAssociationIpType' export-name="ipType" ></bind>
+<bind name='netconfGatewayIDs' type='Array/string' export-name="netconfGatewayIDs" ></bind>
+</in-binding><out-binding><bind name='routingPolicyAssociationObj' type='VSPK:RoutingPolicyAssociation' export-name="routingPolicyAssociationObj" ></bind>
+</out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="domainObj"><desc><![CDATA[domainObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+<p-param name="associatedRoutingPolicyID"><desc><![CDATA[associatedRoutingPolicyID]]></desc>
+</p-param>
+<p-param name="externalID"><desc><![CDATA[externalID]]></desc>
+</p-param>
+<p-param name="ipType"><desc><![CDATA[ipType]]></desc>
+</p-param>
+<p-param name="netconfGatewayIDs"><desc><![CDATA[netconfGatewayIDs]]></desc>
+</p-param>
+</presentation></workflow>

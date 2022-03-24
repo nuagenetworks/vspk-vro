@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="29c8f6db-a6ec-5673-81c4-a9f7fa3aca9e"  version="20.10.7" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="29c8f6db-a6ec-5673-81c4-a9f7fa3aca9e"  version="20.10.8" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit NATMapEntry]]></display-name>
 <ref-types><![CDATA[(VSPK:NATMapEntry)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -10,9 +10,6 @@
 </param>
 
 <param name='privateIP' type='string' >
-</param>
-
-<param name='publicIP' type='string' >
 </param>
 
 <param name='type' type='VSPK:NATMapEntryType' >
@@ -35,11 +32,6 @@ if (privateIP) {
 } else if (nATMapEntryObj.privateIP) {
    nATMapEntryObj.privateIP = "";
 }
-if (publicIP) {
-   nATMapEntryObj.publicIP = publicIP;
-} else if (nATMapEntryObj.publicIP) {
-   nATMapEntryObj.publicIP = "";
-}
 nATMapEntryObj.type = type;
 nATMapEntryObj.save(session, 1);]]></script>
 <in-binding><bind name='nATMapEntryObj' type='VSPK:NATMapEntry' export-name="nATMapEntryObj" ></bind>
@@ -47,8 +39,6 @@ nATMapEntryObj.save(session, 1);]]></script>
 <bind name='externalID' type='string' export-name="externalID" ></bind>
 
 <bind name='privateIP' type='string' export-name="privateIP" ></bind>
-
-<bind name='publicIP' type='string' export-name="publicIP" ></bind>
 
 <bind name='type' type='VSPK:NATMapEntryType' export-name="type" ></bind>
 
@@ -63,9 +53,6 @@ nATMapEntryObj.save(session, 1);]]></script>
 
 <p-param name="privateIP"><desc><![CDATA[privateIP]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nATMapEntryObj.privateIP]]></p-qual></p-param>
-
-<p-param name="publicIP"><desc><![CDATA[publicIP]]></desc>
-<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#nATMapEntryObj.publicIP]]></p-qual></p-param>
 
 <p-param name="type"><desc><![CDATA[type]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="VSPK:NATMapEntryType" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getNATMapEntryType").call( #nATMapEntryObj )]]></p-qual></p-param>

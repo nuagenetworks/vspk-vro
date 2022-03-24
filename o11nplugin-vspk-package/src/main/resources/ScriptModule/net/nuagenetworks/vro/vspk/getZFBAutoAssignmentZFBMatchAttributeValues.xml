@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dunes-script-module name="getZFBAutoAssignmentZFBMatchAttributeValues" result-type="Array/string" api-version="6.0.0"  id="8203cad9-b9f9-5bd1-9843-9c06b6186ba5"  version="20.10.7"  allowed-operations="vef" ><param n="zFBAutoAssignmentObj" t="VSPK:ZFBAutoAssignment"></param><script encoded='false'><![CDATA[return zFBAutoAssignmentObj.ZFBMatchAttributeValues;]]></script>
+<dunes-script-module name="getZFBAutoAssignmentZFBMatchAttributeValues" result-type="Array/string" api-version="6.0.0"  id="8203cad9-b9f9-5bd1-9843-9c06b6186ba5"  version="20.10.8"  allowed-operations="vef" ><param n="zFBAutoAssignmentObj" t="VSPK:ZFBAutoAssignment"></param><script encoded='false'><![CDATA[return zFBAutoAssignmentObj.ZFBMatchAttributeValues;]]></script>
 </dunes-script-module>

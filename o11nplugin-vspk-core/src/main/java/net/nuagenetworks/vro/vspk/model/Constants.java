@@ -372,6 +372,8 @@ public interface Constants extends BaseConstants {
     String NATMAPENTRIES = "NATMapEntries";
     String NETCONFGATEWAY = "NetconfGateway";
     String NETCONFGATEWAYS = "NetconfGateways";
+    String NETCONFGLOBALCONFIGURATION = "NetconfGlobalConfiguration";
+    String NETCONFGLOBALCONFIGURATIONS = "NetconfGlobalConfigurations";
     String NETCONFMANAGER = "NetconfManager";
     String NETCONFMANAGERS = "NetconfManagers";
     String NETCONFPROFILE = "NetconfProfile";
@@ -506,6 +508,8 @@ public interface Constants extends BaseConstants {
     String ROLEENTRIES = "Roleentries";
     String ROUTINGPOLICY = "RoutingPolicy";
     String ROUTINGPOLICIES = "RoutingPolicies";
+    String ROUTINGPOLICYASSOCIATION = "RoutingPolicyAssociation";
+    String ROUTINGPOLICYASSOCIATIONS = "RoutingPolicyAssociations";
     String ROUTINGPOLICYBINDING = "RoutingPolicyBinding";
     String ROUTINGPOLICYBINDINGS = "RoutingPolicyBindings";
     String SAASAPPLICATIONGROUP = "SaaSApplicationGroup";
@@ -838,6 +842,7 @@ public interface Constants extends BaseConstants {
     String MULTINICVPORTS_FETCHER = "MultiNICVPortsFetcher";
     String NATMAPENTRIES_FETCHER = "NATMapEntriesFetcher";
     String NETCONFGATEWAYS_FETCHER = "NetconfGatewaysFetcher";
+    String NETCONFGLOBALCONFIGURATIONS_FETCHER = "NetconfGlobalConfigurationsFetcher";
     String NETCONFMANAGERS_FETCHER = "NetconfManagersFetcher";
     String NETCONFPROFILES_FETCHER = "NetconfProfilesFetcher";
     String NETCONFSESSIONS_FETCHER = "NetconfSessionsFetcher";
@@ -905,6 +910,7 @@ public interface Constants extends BaseConstants {
     String ROLES_FETCHER = "RolesFetcher";
     String ROLEENTRIES_FETCHER = "RoleentriesFetcher";
     String ROUTINGPOLICIES_FETCHER = "RoutingPoliciesFetcher";
+    String ROUTINGPOLICYASSOCIATIONS_FETCHER = "RoutingPolicyAssociationsFetcher";
     String ROUTINGPOLICYBINDINGS_FETCHER = "RoutingPolicyBindingsFetcher";
     String SAASAPPLICATIONGROUPS_FETCHER = "SaaSApplicationGroupsFetcher";
     String SAASAPPLICATIONTYPES_FETCHER = "SaaSApplicationTypesFetcher";
@@ -1636,6 +1642,8 @@ public interface Constants extends BaseConstants {
     String NETCONFGATEWAY_PERSONALITY_ENUM = "NetconfGatewayPersonality";
     String NETCONFGATEWAY_VENDOR_ENUM = "NetconfGatewayVendor";
     
+    String NETCONFGLOBALCONFIGURATION_ENTITYSCOPE_ENUM = "NetconfGlobalConfigurationEntityScope";
+    
     String NETCONFMANAGER_ENTITYSCOPE_ENUM = "NetconfManagerEntityScope";
     String NETCONFMANAGER_STATUS_ENUM = "NetconfManagerStatus";
     
@@ -1864,6 +1872,9 @@ public interface Constants extends BaseConstants {
     String ROUTINGPOLICY_DEFAULTACTION_ENUM = "RoutingPolicyDefaultAction";
     String ROUTINGPOLICY_ENTITYSCOPE_ENUM = "RoutingPolicyEntityScope";
     String ROUTINGPOLICY_ROUTINGPROTOCOL_ENUM = "RoutingPolicyRoutingProtocol";
+    
+    String ROUTINGPOLICYASSOCIATION_ENTITYSCOPE_ENUM = "RoutingPolicyAssociationEntityScope";
+    String ROUTINGPOLICYASSOCIATION_IPTYPE_ENUM = "RoutingPolicyAssociationIpType";
     
     String ROUTINGPOLICYBINDING_OSPFTYPE_ENUM = "RoutingPolicyBindingOSPFType";
     String ROUTINGPOLICYBINDING_ENTITYSCOPE_ENUM = "RoutingPolicyBindingEntityScope";
@@ -2395,6 +2406,7 @@ public interface Constants extends BaseConstants {
     String MULTINICVPORT_IMAGE_FILENAME = "images/icon-multinicvport.png";
     String NATMAPENTRY_IMAGE_FILENAME = "images/icon-natmapentry.png";
     String NETCONFGATEWAY_IMAGE_FILENAME = "images/icon-netconfgateway.png";
+    String NETCONFGLOBALCONFIGURATION_IMAGE_FILENAME = "images/icon-netconfglobalconfiguration.png";
     String NETCONFMANAGER_IMAGE_FILENAME = "images/icon-netconfmanager.png";
     String NETCONFPROFILE_IMAGE_FILENAME = "images/icon-netconfprofile.png";
     String NETCONFSESSION_IMAGE_FILENAME = "images/icon-netconfsession.png";
@@ -2462,6 +2474,7 @@ public interface Constants extends BaseConstants {
     String ROLE_IMAGE_FILENAME = "images/icon-role.png";
     String ROLEENTRY_IMAGE_FILENAME = "images/icon-roleentry.png";
     String ROUTINGPOLICY_IMAGE_FILENAME = "images/icon-routingpolicy.png";
+    String ROUTINGPOLICYASSOCIATION_IMAGE_FILENAME = "images/icon-routingpolicyassociation.png";
     String ROUTINGPOLICYBINDING_IMAGE_FILENAME = "images/icon-routingpolicybinding.png";
     String SAASAPPLICATIONGROUP_IMAGE_FILENAME = "images/icon-saasapplicationgroup.png";
     String SAASAPPLICATIONTYPE_IMAGE_FILENAME = "images/icon-saasapplicationtype.png";
@@ -2714,6 +2727,7 @@ public interface Constants extends BaseConstants {
     String MULTINICVPORT_ENTITY_TYPE = "multinicvport";
     String NATMAPENTRY_ENTITY_TYPE = "natmapentry";
     String NETCONFGATEWAY_ENTITY_TYPE = "netconfgateway";
+    String NETCONFGLOBALCONFIGURATION_ENTITY_TYPE = "netconfglobalconfiguration";
     String NETCONFMANAGER_ENTITY_TYPE = "netconfmanager";
     String NETCONFPROFILE_ENTITY_TYPE = "netconfprofile";
     String NETCONFSESSION_ENTITY_TYPE = "netconfsession";
@@ -2781,6 +2795,7 @@ public interface Constants extends BaseConstants {
     String ROLE_ENTITY_TYPE = "role";
     String ROLEENTRY_ENTITY_TYPE = "roleentry";
     String ROUTINGPOLICY_ENTITY_TYPE = "routingpolicy";
+    String ROUTINGPOLICYASSOCIATION_ENTITY_TYPE = "routingpolicyassociation";
     String ROUTINGPOLICYBINDING_ENTITY_TYPE = "routingpolicybinding";
     String SAASAPPLICATIONGROUP_ENTITY_TYPE = "saasapplicationgroup";
     String SAASAPPLICATIONTYPE_ENTITY_TYPE = "saasapplicationtype";

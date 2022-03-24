@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="2ce77192-8233-5dab-af0f-9920c1910620"  version="20.10.7" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="2ce77192-8233-5dab-af0f-9920c1910620"  version="20.10.8" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
 <display-name><![CDATA[Edit SystemConfig]]></display-name>
 <ref-types><![CDATA[(VSPK:SystemConfig)]]></ref-types>
 <position x='100.0' y='50.0'/>
@@ -7,6 +7,12 @@
 </param>
 
 <param name='externalID' type='string' >
+</param>
+
+<param name='loopbackIntfLowerLimit' type='number' >
+</param>
+
+<param name='loopbackIntfUpperLimit' type='number' >
 </param>
 
 </input><workflow-item name='item0' type='end' end-mode='0' >
@@ -21,10 +27,16 @@ if (externalID) {
 } else if (systemConfigObj.externalID) {
    systemConfigObj.externalID = "";
 }
+systemConfigObj.loopbackIntfLowerLimit = loopbackIntfLowerLimit;
+systemConfigObj.loopbackIntfUpperLimit = loopbackIntfUpperLimit;
 systemConfigObj.save(session, 1);]]></script>
 <in-binding><bind name='systemConfigObj' type='VSPK:SystemConfig' export-name="systemConfigObj" ></bind>
 
 <bind name='externalID' type='string' export-name="externalID" ></bind>
+
+<bind name='loopbackIntfLowerLimit' type='number' export-name="loopbackIntfLowerLimit" ></bind>
+
+<bind name='loopbackIntfUpperLimit' type='number' export-name="loopbackIntfUpperLimit" ></bind>
 
 </in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
 </workflow-item>
@@ -34,5 +46,11 @@ systemConfigObj.save(session, 1);]]></script>
 
 <p-param name="externalID"><desc><![CDATA[externalID]]></desc>
 <p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#systemConfigObj.externalID]]></p-qual></p-param>
+
+<p-param name="loopbackIntfLowerLimit"><desc><![CDATA[loopbackIntfLowerLimit]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#systemConfigObj.loopbackIntfLowerLimit]]></p-qual></p-param>
+
+<p-param name="loopbackIntfUpperLimit"><desc><![CDATA[loopbackIntfUpperLimit]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="number" ><![CDATA[#systemConfigObj.loopbackIntfUpperLimit]]></p-qual></p-param>
 
 </presentation></workflow>

@@ -2970,6 +2970,16 @@ public final class PluginFactory extends BasePluginFactory {
             return NetconfGatewayVendor.getEnumById(id);
         }
         
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATION)) {
+            return ModelHelper.getNetconfGlobalConfigurationById(id);
+        }
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER)) {
+            return ModelHelper.getNetconfGlobalConfigurationsFetcherById(id);
+        }
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATION_ENTITYSCOPE_ENUM)) {
+            return NetconfGlobalConfigurationEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.NETCONFMANAGER)) {
             return ModelHelper.getNetconfManagerById(id);
         }
@@ -4018,6 +4028,20 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.ROUTINGPOLICY_ROUTINGPROTOCOL_ENUM)) {
             return RoutingPolicyRoutingProtocol.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATION)) {
+            return ModelHelper.getRoutingPolicyAssociationById(id);
+        }
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER)) {
+            return ModelHelper.getRoutingPolicyAssociationsFetcherById(id);
+        }
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATION_ENTITYSCOPE_ENUM)) {
+            return RoutingPolicyAssociationEntityScope.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATION_IPTYPE_ENUM)) {
+            return RoutingPolicyAssociationIpType.getEnumById(id);
         }
         
         if (type.equals(Constants.ROUTINGPOLICYBINDING)) {
@@ -6974,6 +6998,13 @@ public final class PluginFactory extends BasePluginFactory {
             return toList(ModelHelper.getRoutingPoliciesFetcherForDomainId(id));
         }
         
+        if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER)) {
+            return toList(ModelHelper.getRoutingPolicyAssociationsFetcherForDomainId(id));
+        }
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER) && relationName.equals(Constants.ROUTINGPOLICYASSOCIATIONS)) {
+            return ModelHelper.getRoutingPolicyAssociationsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.DOMAIN) && relationName.equals(Constants.ROUTINGPOLICYBINDINGS_FETCHER)) {
             return toList(ModelHelper.getRoutingPolicyBindingsFetcherForDomainId(id));
         }
@@ -7536,6 +7567,13 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.ENTERPRISESECURITIES_FETCHER) && relationName.equals(Constants.ENTERPRISESECURITIES)) {
             return ModelHelper.getEnterpriseSecuritiesForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.ETHERNETSEGMENTGWGROUPS_FETCHER)) {
+            return toList(ModelHelper.getEthernetSegmentGWGroupsFetcherForEnterpriseId(id));
+        }
+        if (type.equals(Constants.ETHERNETSEGMENTGWGROUPS_FETCHER) && relationName.equals(Constants.ETHERNETSEGMENTGWGROUPS)) {
+            return ModelHelper.getEthernetSegmentGWGroupsForFetcherId(id);
         }
         
         if (type.equals(Constants.ENTERPRISE) && relationName.equals(Constants.EVENTLOGS_FETCHER)) {
@@ -9744,9 +9782,6 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.ME) && relationName.equals(Constants.ETHERNETSEGMENTGWGROUPS_FETCHER)) {
             return toList(ModelHelper.getEthernetSegmentGWGroupsFetcherForMeId(id));
         }
-        if (type.equals(Constants.ETHERNETSEGMENTGWGROUPS_FETCHER) && relationName.equals(Constants.ETHERNETSEGMENTGWGROUPS)) {
-            return ModelHelper.getEthernetSegmentGWGroupsForFetcherId(id);
-        }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.FLOATINGIPS_FETCHER)) {
             return toList(ModelHelper.getFloatingIpsFetcherForMeId(id));
@@ -9862,6 +9897,13 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.MULTICASTCHANNELMAPS_FETCHER)) {
             return toList(ModelHelper.getMultiCastChannelMapsFetcherForMeId(id));
+        }
+        
+        if (type.equals(Constants.ME) && relationName.equals(Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER)) {
+            return toList(ModelHelper.getNetconfGlobalConfigurationsFetcherForMeId(id));
+        }
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER) && relationName.equals(Constants.NETCONFGLOBALCONFIGURATIONS)) {
+            return ModelHelper.getNetconfGlobalConfigurationsForFetcherId(id);
         }
         
         if (type.equals(Constants.ME) && relationName.equals(Constants.NETCONFPROFILES_FETCHER)) {
@@ -10411,6 +10453,22 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.NETCONFGATEWAY) && relationName.equals(Constants.SUBNETS_FETCHER)) {
             return toList(ModelHelper.getSubnetsFetcherForNetconfGatewayId(id));
+        }
+        
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATION) && relationName.equals(Constants.DEPLOYMENTFAILURES_FETCHER)) {
+            return toList(ModelHelper.getDeploymentFailuresFetcherForNetconfGlobalConfigurationId(id));
+        }
+        
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForNetconfGlobalConfigurationId(id));
+        }
+        
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATION) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForNetconfGlobalConfigurationId(id));
+        }
+        
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATION) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
+            return toList(ModelHelper.getPermissionsFetcherForNetconfGlobalConfigurationId(id));
         }
         
         if (type.equals(Constants.NETCONFMANAGER) && relationName.equals(Constants.ALARMS_FETCHER)) {
@@ -11574,6 +11632,18 @@ public final class PluginFactory extends BasePluginFactory {
             return toList(ModelHelper.getPermissionsFetcherForRoutingPolicyId(id));
         }
         
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATION) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForRoutingPolicyAssociationId(id));
+        }
+        
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATION) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForRoutingPolicyAssociationId(id));
+        }
+        
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATION) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
+            return toList(ModelHelper.getPermissionsFetcherForRoutingPolicyAssociationId(id));
+        }
+        
         if (type.equals(Constants.ROUTINGPOLICYBINDING) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
             return toList(ModelHelper.getGlobalMetadatasFetcherForRoutingPolicyBindingId(id));
         }
@@ -11905,6 +11975,10 @@ public final class PluginFactory extends BasePluginFactory {
             return toList(ModelHelper.getEventLogsFetcherForSubnetId(id));
         }
         
+        if (type.equals(Constants.SUBNET) && relationName.equals(Constants.GATEWAYS_FETCHER)) {
+            return toList(ModelHelper.getGatewaysFetcherForSubnetId(id));
+        }
+        
         if (type.equals(Constants.SUBNET) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
             return toList(ModelHelper.getGlobalMetadatasFetcherForSubnetId(id));
         }
@@ -11925,6 +11999,10 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.SUBNET) && relationName.equals(Constants.METADATAS_FETCHER)) {
             return toList(ModelHelper.getMetadatasFetcherForSubnetId(id));
+        }
+        
+        if (type.equals(Constants.SUBNET) && relationName.equals(Constants.NETCONFGATEWAYS_FETCHER)) {
+            return toList(ModelHelper.getNetconfGatewaysFetcherForSubnetId(id));
         }
         
         if (type.equals(Constants.SUBNET) && relationName.equals(Constants.PATIPENTRIES_FETCHER)) {
@@ -11948,6 +12026,10 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.VMRESYNCS_FETCHER) && relationName.equals(Constants.VMRESYNCS)) {
             return ModelHelper.getVMResyncsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SUBNET) && relationName.equals(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER)) {
+            return toList(ModelHelper.getRoutingPolicyAssociationsFetcherForSubnetId(id));
         }
         
         if (type.equals(Constants.SUBNET) && relationName.equals(Constants.STATISTICS_FETCHER)) {
@@ -16591,6 +16673,18 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(NetconfGatewayVendor.values()));
         }
         
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATION)) {
+            java.util.List<NetconfGlobalConfiguration> allObjs = ModelHelper.getAllNetconfGlobalConfigurations();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATIONS_FETCHER)) {
+            java.util.List<NetconfGlobalConfigurationsFetcher> allObjs = ModelHelper.getAllNetconfGlobalConfigurationsFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.NETCONFGLOBALCONFIGURATION_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(NetconfGlobalConfigurationEntityScope.values()));
+        }
+        
         if (type.equals(Constants.NETCONFMANAGER)) {
             java.util.List<NetconfManager> allObjs = ModelHelper.getAllNetconfManagers();
             return new QueryResult(allObjs);
@@ -17773,6 +17867,22 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.ROUTINGPOLICY_ROUTINGPROTOCOL_ENUM)) {
             return new QueryResult(Arrays.asList(RoutingPolicyRoutingProtocol.values()));
+        }
+        
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATION)) {
+            java.util.List<RoutingPolicyAssociation> allObjs = ModelHelper.getAllRoutingPolicyAssociations();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATIONS_FETCHER)) {
+            java.util.List<RoutingPolicyAssociationsFetcher> allObjs = ModelHelper.getAllRoutingPolicyAssociationsFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATION_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(RoutingPolicyAssociationEntityScope.values()));
+        }
+        
+        if (type.equals(Constants.ROUTINGPOLICYASSOCIATION_IPTYPE_ENUM)) {
+            return new QueryResult(Arrays.asList(RoutingPolicyAssociationIpType.values()));
         }
         
         if (type.equals(Constants.ROUTINGPOLICYBINDING)) {

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dunes-script-module name="getRoutingPolicyAssociationNetconfGatewayIDs" result-type="Array/string" api-version="6.0.0"  id="4e7cb9ad-32e9-58f9-b482-706039e633ed"  version="20.10.8"  allowed-operations="vef" ><param n="routingPolicyAssociationObj" t="VSPK:RoutingPolicyAssociation"></param><script encoded='false'><![CDATA[return routingPolicyAssociationObj.netconfGatewayIDs;]]></script>
+</dunes-script-module>

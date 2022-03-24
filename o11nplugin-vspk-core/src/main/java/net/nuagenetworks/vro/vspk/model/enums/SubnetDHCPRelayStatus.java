@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum SubnetDHCPRelayStatus {
 
-    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED");
+    DISABLED("DISABLED", "DISABLED"), ENABLED("ENABLED", "ENABLED"), OVERRIDE("OVERRIDE", "OVERRIDE");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum SubnetDHCPRelayStatus {
     @VsoProperty(displayName = "ENABLED", readOnly = true)
     public SubnetDHCPRelayStatus getENABLED() {
         return ENABLED;
+    }
+    
+    @VsoProperty(displayName = "OVERRIDE", readOnly = true)
+    public SubnetDHCPRelayStatus getOVERRIDE() {
+        return OVERRIDE;
     }
     
 

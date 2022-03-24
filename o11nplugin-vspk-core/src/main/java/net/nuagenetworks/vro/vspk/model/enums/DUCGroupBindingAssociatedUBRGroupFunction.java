@@ -37,7 +37,7 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 @VsoObject(strict = true)
 public enum DUCGroupBindingAssociatedUBRGroupFunction {
 
-    GATEWAY("GATEWAY", "GATEWAY"), UBR("UBR", "UBR");
+    GATEWAY("GATEWAY", "GATEWAY"), UBR("UBR", "UBR"), HUB("HUB", "HUB");
 
     private final String id;
     private final String name;
@@ -66,6 +66,11 @@ public enum DUCGroupBindingAssociatedUBRGroupFunction {
     @VsoProperty(displayName = "UBR", readOnly = true)
     public DUCGroupBindingAssociatedUBRGroupFunction getUBR() {
         return UBR;
+    }
+    
+    @VsoProperty(displayName = "HUB", readOnly = true)
+    public DUCGroupBindingAssociatedUBRGroupFunction getHUB() {
+        return HUB;
     }
     
 

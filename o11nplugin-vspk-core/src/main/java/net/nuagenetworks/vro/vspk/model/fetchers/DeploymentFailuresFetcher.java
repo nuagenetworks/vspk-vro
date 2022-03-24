@@ -52,6 +52,8 @@ import net.nuagenetworks.vro.vspk.model.L2Domain;
 
 import net.nuagenetworks.vro.vspk.model.NetconfGateway;
 
+import net.nuagenetworks.vro.vspk.model.NetconfGlobalConfiguration;
+
 import net.nuagenetworks.vro.vspk.model.RedundancyGroup;
 
 import net.nuagenetworks.vro.vspk.model.StaticRoute;
@@ -197,6 +199,16 @@ public class DeploymentFailuresFetcher extends BaseFetcher<DeploymentFailure> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof NetconfGateway) {
             return (NetconfGateway) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "NetconfGlobalConfiguration", readOnly = true)
+    public NetconfGlobalConfiguration getNetconfGlobalConfiguration() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof NetconfGlobalConfiguration) {
+            return (NetconfGlobalConfiguration) obj;
         }
         
         return null;

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in RoutingPolicyAssociation</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">0686b712-d1a0-5571-8251-b4f38e1f5926</entry>
+</properties>
