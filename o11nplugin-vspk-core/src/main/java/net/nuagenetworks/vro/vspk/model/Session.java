@@ -433,6 +433,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.DDNSCONFIG_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.DDNSCONFIGS_FETCHER, entityParentId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.DDNSCONFIGBINDING_ENTITY_TYPE)) {
+            notifyElementInvalidate(sessionManager, Constants.DDNSCONFIGBINDINGS_FETCHER, entityParentId);
+            return;
+        }
+        
         if (entityType.equals(Constants.DEFAULTGATEWAY_ENTITY_TYPE)) {
             notifyElementInvalidate(sessionManager, Constants.DEFAULTGATEWAYS_FETCHER, entityParentId);
             return;
@@ -2027,6 +2037,16 @@ public class Session extends BaseSession<Me> {
             return;
         }
         
+        if (entityType.equals(Constants.DDNSCONFIG_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.DDNSCONFIG, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.DDNSCONFIGBINDING_ENTITY_TYPE)) {
+            sessionManager.notifyElementUpdated(Constants.DDNSCONFIGBINDING, entityId);
+            return;
+        }
+        
         if (entityType.equals(Constants.DEFAULTGATEWAY_ENTITY_TYPE)) {
             sessionManager.notifyElementUpdated(Constants.DEFAULTGATEWAY, entityId);
             return;
@@ -3618,6 +3638,16 @@ public class Session extends BaseSession<Me> {
         
         if (entityType.equals(Constants.CUSTOMPROPERTY_ENTITY_TYPE)) {
             sessionManager.notifyElementDeleted(Constants.CUSTOMPROPERTY, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.DDNSCONFIG_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.DDNSCONFIG, entityId);
+            return;
+        }
+        
+        if (entityType.equals(Constants.DDNSCONFIGBINDING_ENTITY_TYPE)) {
+            sessionManager.notifyElementDeleted(Constants.DDNSCONFIGBINDING, entityId);
             return;
         }
         

@@ -34,6 +34,8 @@ import net.nuagenetworks.vro.vspk.model.fetchers.BootstrapActivationsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.CommandsFetcher;
 
+import net.nuagenetworks.vro.vspk.model.fetchers.DdnsconfigsFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.EnterprisePermissionsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.EventLogsFetcher;
@@ -130,6 +132,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.NSGATEWAY, datasource = Constants.DATASOURCE, image = Constants.NSGATEWAY_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
         @VsoRelation(inventoryChildren = true, name = Constants.COMMANDS_FETCHER, type = Constants.COMMANDS_FETCHER), 
+
+        @VsoRelation(inventoryChildren = true, name = Constants.DDNSCONFIGS_FETCHER, type = Constants.DDNSCONFIGS_FETCHER), 
 
         @VsoRelation(inventoryChildren = true, name = Constants.ENTERPRISEPERMISSIONS_FETCHER, type = Constants.ENTERPRISEPERMISSIONS_FETCHER), 
 
@@ -377,6 +381,9 @@ public class NSGateway extends BaseObject {
     private CommandsFetcher commands;
     
     @JsonIgnore
+    private DdnsconfigsFetcher ddnsconfigs;
+    
+    @JsonIgnore
     private EnterprisePermissionsFetcher enterprisePermissions;
     
     @JsonIgnore
@@ -457,6 +464,8 @@ public class NSGateway extends BaseObject {
         bootstrapActivations = new BootstrapActivationsFetcher(this);
         
         commands = new CommandsFetcher(this);
+        
+        ddnsconfigs = new DdnsconfigsFetcher(this);
         
         enterprisePermissions = new EnterprisePermissionsFetcher(this);
         
@@ -1333,6 +1342,12 @@ public class NSGateway extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "Ddnsconfigs", readOnly = true)   
+    public DdnsconfigsFetcher getDdnsconfigs() {
+        return ddnsconfigs;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "EnterprisePermissions", readOnly = true)   
     public EnterprisePermissionsFetcher getEnterprisePermissions() {
         return enterprisePermissions;
@@ -1555,6 +1570,14 @@ public class NSGateway extends BaseObject {
         super.createChild(session, childRestObj, responseChoice, commit);
         if (!session.getNotificationsEnabled()) {
            SessionManager.getInstance().notifyElementInvalidate(Constants.COMMANDS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createDdnsconfig(Session session, Ddnsconfig childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.DDNSCONFIGS_FETCHER, getId());
         }
     }
     @VsoMethod

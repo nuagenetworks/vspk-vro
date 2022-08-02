@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Common</entry>
+<entry key="name">Find Metadata in Scheduledtestsuiterun</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">9edf9991-a024-58de-bdaa-96ad09b100b4</entry>
+</properties>

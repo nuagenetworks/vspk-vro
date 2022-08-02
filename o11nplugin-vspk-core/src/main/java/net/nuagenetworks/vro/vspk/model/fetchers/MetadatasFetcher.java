@@ -432,6 +432,10 @@ import net.nuagenetworks.vro.vspk.model.SAPEgressQoSProfile;
 
 import net.nuagenetworks.vro.vspk.model.SAPIngressQoSProfile;
 
+import net.nuagenetworks.vro.vspk.model.ScheduledTestSuite;
+
+import net.nuagenetworks.vro.vspk.model.Scheduledtestsuiterun;
+
 import net.nuagenetworks.vro.vspk.model.WANService;
 
 import net.nuagenetworks.vro.vspk.model.SharedNetworkResource;
@@ -2597,6 +2601,26 @@ public class MetadatasFetcher extends BaseFetcher<Metadata> {
         RestObject obj = super.getParentRestObj();
         if (obj instanceof SAPIngressQoSProfile) {
             return (SAPIngressQoSProfile) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "ScheduledTestSuite", readOnly = true)
+    public ScheduledTestSuite getScheduledTestSuite() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof ScheduledTestSuite) {
+            return (ScheduledTestSuite) obj;
+        }
+        
+        return null;
+    }
+    
+    @VsoProperty(displayName = "Scheduledtestsuiterun", readOnly = true)
+    public Scheduledtestsuiterun getScheduledtestsuiterun() {
+        RestObject obj = super.getParentRestObj();
+        if (obj instanceof Scheduledtestsuiterun) {
+            return (Scheduledtestsuiterun) obj;
         }
         
         return null;

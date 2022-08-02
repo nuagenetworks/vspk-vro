@@ -820,6 +820,26 @@ public final class PluginFactory extends BasePluginFactory {
             return CustomPropertyEntityScope.getEnumById(id);
         }
         
+        if (type.equals(Constants.DDNSCONFIG)) {
+            return ModelHelper.getDdnsconfigById(id);
+        }
+        if (type.equals(Constants.DDNSCONFIGS_FETCHER)) {
+            return ModelHelper.getDdnsconfigsFetcherById(id);
+        }
+        if (type.equals(Constants.DDNSCONFIG_CONNECTIONSTATUS_ENUM)) {
+            return DdnsconfigConnectionStatus.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.DDNSCONFIG_PROVIDERNAME_ENUM)) {
+            return DdnsconfigProviderName.getEnumById(id);
+        }
+        
+        if (type.equals(Constants.DDNSCONFIGBINDING)) {
+            return ModelHelper.getDdnsconfigbindingById(id);
+        }
+        if (type.equals(Constants.DDNSCONFIGBINDINGS_FETCHER)) {
+            return ModelHelper.getDdnsconfigbindingsFetcherById(id);
+        }
         if (type.equals(Constants.DEFAULTGATEWAY)) {
             return ModelHelper.getDefaultGatewayById(id);
         }
@@ -4116,6 +4136,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.SCHEDULEDTESTSUITES_FETCHER)) {
             return ModelHelper.getScheduledTestSuitesFetcherById(id);
         }
+        if (type.equals(Constants.SCHEDULEDTESTSUITE_ENTITYSCOPE_ENUM)) {
+            return ScheduledTestSuiteEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.SCHEDULEDTESTSUITE_SCHEDULEINTERVALUNITS_ENUM)) {
             return ScheduledTestSuiteScheduleIntervalUnits.getEnumById(id);
         }
@@ -4126,6 +4150,10 @@ public final class PluginFactory extends BasePluginFactory {
         if (type.equals(Constants.SCHEDULEDTESTSUITERUNS_FETCHER)) {
             return ModelHelper.getScheduledtestsuiterunsFetcherById(id);
         }
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUN_ENTITYSCOPE_ENUM)) {
+            return ScheduledtestsuiterunEntityScope.getEnumById(id);
+        }
+        
         if (type.equals(Constants.SCHEDULEDTESTSUITERUN_OPERATIONSTATUS_ENUM)) {
             return ScheduledtestsuiterunOperationStatus.getEnumById(id);
         }
@@ -6692,6 +6720,13 @@ public final class PluginFactory extends BasePluginFactory {
         
         if (type.equals(Constants.CUSTOMPROPERTY) && relationName.equals(Constants.PERMISSIONS_FETCHER)) {
             return toList(ModelHelper.getPermissionsFetcherForCustomPropertyId(id));
+        }
+        
+        if (type.equals(Constants.DDNSCONFIG) && relationName.equals(Constants.DDNSCONFIGBINDINGS_FETCHER)) {
+            return toList(ModelHelper.getDdnsconfigbindingsFetcherForDdnsconfigId(id));
+        }
+        if (type.equals(Constants.DDNSCONFIGBINDINGS_FETCHER) && relationName.equals(Constants.DDNSCONFIGBINDINGS)) {
+            return ModelHelper.getDdnsconfigbindingsForFetcherId(id);
         }
         
         if (type.equals(Constants.DEFAULTGATEWAY) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
@@ -10613,6 +10648,13 @@ public final class PluginFactory extends BasePluginFactory {
             return toList(ModelHelper.getCommandsFetcherForNSGatewayId(id));
         }
         
+        if (type.equals(Constants.NSGATEWAY) && relationName.equals(Constants.DDNSCONFIGS_FETCHER)) {
+            return toList(ModelHelper.getDdnsconfigsFetcherForNSGatewayId(id));
+        }
+        if (type.equals(Constants.DDNSCONFIGS_FETCHER) && relationName.equals(Constants.DDNSCONFIGS)) {
+            return ModelHelper.getDdnsconfigsForFetcherId(id);
+        }
+        
         if (type.equals(Constants.NSGATEWAY) && relationName.equals(Constants.ENTERPRISEPERMISSIONS_FETCHER)) {
             return toList(ModelHelper.getEnterprisePermissionsFetcherForNSGatewayId(id));
         }
@@ -11712,6 +11754,14 @@ public final class PluginFactory extends BasePluginFactory {
             return toList(ModelHelper.getPermissionsFetcherForSAPIngressQoSProfileId(id));
         }
         
+        if (type.equals(Constants.SCHEDULEDTESTSUITE) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForScheduledTestSuiteId(id));
+        }
+        
+        if (type.equals(Constants.SCHEDULEDTESTSUITE) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForScheduledTestSuiteId(id));
+        }
+        
         if (type.equals(Constants.SCHEDULEDTESTSUITE) && relationName.equals(Constants.SCHEDULEDTESTSUITERUNS_FETCHER)) {
             return toList(ModelHelper.getScheduledtestsuiterunsFetcherForScheduledTestSuiteId(id));
         }
@@ -11724,6 +11774,14 @@ public final class PluginFactory extends BasePluginFactory {
         }
         if (type.equals(Constants.TESTS_FETCHER) && relationName.equals(Constants.TESTS)) {
             return ModelHelper.getTestsForFetcherId(id);
+        }
+        
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUN) && relationName.equals(Constants.GLOBALMETADATAS_FETCHER)) {
+            return toList(ModelHelper.getGlobalMetadatasFetcherForScheduledtestsuiterunId(id));
+        }
+        
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUN) && relationName.equals(Constants.METADATAS_FETCHER)) {
+            return toList(ModelHelper.getMetadatasFetcherForScheduledtestsuiterunId(id));
         }
         
         if (type.equals(Constants.SCHEDULEDTESTSUITERUN) && relationName.equals(Constants.TESTRUNS_FETCHER)) {
@@ -14293,6 +14351,30 @@ public final class PluginFactory extends BasePluginFactory {
             return new QueryResult(Arrays.asList(CustomPropertyEntityScope.values()));
         }
         
+        if (type.equals(Constants.DDNSCONFIG)) {
+            java.util.List<Ddnsconfig> allObjs = ModelHelper.getAllDdnsconfigs();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.DDNSCONFIGS_FETCHER)) {
+            java.util.List<DdnsconfigsFetcher> allObjs = ModelHelper.getAllDdnsconfigsFetchers();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.DDNSCONFIG_CONNECTIONSTATUS_ENUM)) {
+            return new QueryResult(Arrays.asList(DdnsconfigConnectionStatus.values()));
+        }
+        
+        if (type.equals(Constants.DDNSCONFIG_PROVIDERNAME_ENUM)) {
+            return new QueryResult(Arrays.asList(DdnsconfigProviderName.values()));
+        }
+        
+        if (type.equals(Constants.DDNSCONFIGBINDING)) {
+            java.util.List<Ddnsconfigbinding> allObjs = ModelHelper.getAllDdnsconfigbindings();
+            return new QueryResult(allObjs);
+        }
+        if (type.equals(Constants.DDNSCONFIGBINDINGS_FETCHER)) {
+            java.util.List<DdnsconfigbindingsFetcher> allObjs = ModelHelper.getAllDdnsconfigbindingsFetchers();
+            return new QueryResult(allObjs);
+        }
         if (type.equals(Constants.DEFAULTGATEWAY)) {
             java.util.List<DefaultGateway> allObjs = ModelHelper.getAllDefaultGateways();
             return new QueryResult(allObjs);
@@ -17969,6 +18051,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<ScheduledTestSuitesFetcher> allObjs = ModelHelper.getAllScheduledTestSuitesFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.SCHEDULEDTESTSUITE_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(ScheduledTestSuiteEntityScope.values()));
+        }
+        
         if (type.equals(Constants.SCHEDULEDTESTSUITE_SCHEDULEINTERVALUNITS_ENUM)) {
             return new QueryResult(Arrays.asList(ScheduledTestSuiteScheduleIntervalUnits.values()));
         }
@@ -17981,6 +18067,10 @@ public final class PluginFactory extends BasePluginFactory {
             java.util.List<ScheduledtestsuiterunsFetcher> allObjs = ModelHelper.getAllScheduledtestsuiterunsFetchers();
             return new QueryResult(allObjs);
         }
+        if (type.equals(Constants.SCHEDULEDTESTSUITERUN_ENTITYSCOPE_ENUM)) {
+            return new QueryResult(Arrays.asList(ScheduledtestsuiterunEntityScope.values()));
+        }
+        
         if (type.equals(Constants.SCHEDULEDTESTSUITERUN_OPERATIONSTATUS_ENUM)) {
             return new QueryResult(Arrays.asList(ScheduledtestsuiterunOperationStatus.values()));
         }

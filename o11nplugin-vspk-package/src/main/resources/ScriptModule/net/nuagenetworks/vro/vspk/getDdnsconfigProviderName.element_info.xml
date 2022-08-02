@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">net.nuagenetworks.vro.vspk</entry>
+<entry key="name">getDdnsconfigProviderName</entry>
+<entry key="type">ScriptModule</entry>
+<entry key="id">9f8787ec-41d5-5c3e-9e66-e43c7c8c9029</entry>
+</properties>

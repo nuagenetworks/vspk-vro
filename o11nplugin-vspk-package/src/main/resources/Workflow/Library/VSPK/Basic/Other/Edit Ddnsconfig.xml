@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://vmware.com/vco/workflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vmware.com/vco/workflow http://vmware.com/vco/workflow/Workflow-v4.xsd" root-name="item1" object-name="workflow:name=generic" id="078b48bb-faa4-588c-b437-6e56bc85ba05"  version="20.10.9" api-version="6.0.0" allowed-operations="vef" restartMode="1" resumeFromFailedMode="0" >
+<display-name><![CDATA[Edit Ddnsconfig]]></display-name>
+<ref-types><![CDATA[(VSPK:Ddnsconfig)]]></ref-types>
+<position x='100.0' y='50.0'/>
+<input><param name='ddnsconfigObj' type='VSPK:Ddnsconfig' >
+</param>
+
+<param name='hostname' type='string' >
+</param>
+
+<param name='password' type='string' >
+</param>
+
+<param name='providerName' type='VSPK:DdnsconfigProviderName' >
+</param>
+
+<param name='username' type='string' >
+</param>
+
+</input><workflow-item name='item0' type='end' end-mode='0' >
+<position x='384.5' y='45.40909090909091'/>
+</workflow-item>
+<workflow-item name='item1' out-name='item0' type='task' >
+<display-name><![CDATA[Scriptable task]]></display-name>
+<script encoded='false'><![CDATA[var session = ddnsconfigObj.session;
+
+if (hostname) {
+   ddnsconfigObj.hostname = hostname;
+} else if (ddnsconfigObj.hostname) {
+   ddnsconfigObj.hostname = "";
+}
+if (password) {
+   ddnsconfigObj.password = password;
+} else if (ddnsconfigObj.password) {
+   ddnsconfigObj.password = "";
+}
+ddnsconfigObj.providerName = providerName;
+if (username) {
+   ddnsconfigObj.username = username;
+} else if (ddnsconfigObj.username) {
+   ddnsconfigObj.username = "";
+}
+ddnsconfigObj.save(session, 1);]]></script>
+<in-binding><bind name='ddnsconfigObj' type='VSPK:Ddnsconfig' export-name="ddnsconfigObj" ></bind>
+
+<bind name='hostname' type='string' export-name="hostname" ></bind>
+
+<bind name='password' type='string' export-name="password" ></bind>
+
+<bind name='providerName' type='VSPK:DdnsconfigProviderName' export-name="providerName" ></bind>
+
+<bind name='username' type='string' export-name="username" ></bind>
+
+</in-binding><out-binding></out-binding><position x='204.5' y='55.40909090909091'/>
+</workflow-item>
+<presentation>
+<p-param name="ddnsconfigObj"><desc><![CDATA[ddnsconfigObj]]></desc>
+<p-qual name="contextualParameter" type="void" ><![CDATA[__NULL__]]></p-qual></p-param>
+
+<p-param name="hostname"><desc><![CDATA[hostname]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ddnsconfigObj.hostname]]></p-qual></p-param>
+
+<p-param name="password"><desc><![CDATA[password]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ddnsconfigObj.password]]></p-qual></p-param>
+
+<p-param name="providerName"><desc><![CDATA[providerName]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="VSPK:DdnsconfigProviderName" ><![CDATA[GetAction("net.nuagenetworks.vro.vspk","getDdnsconfigProviderName").call( #ddnsconfigObj )]]></p-qual></p-param>
+
+<p-param name="username"><desc><![CDATA[username]]></desc>
+<p-qual kind="ognl" name="defaultValue" type="string" ><![CDATA[#ddnsconfigObj.username]]></p-qual></p-param>
+
+</presentation></workflow>

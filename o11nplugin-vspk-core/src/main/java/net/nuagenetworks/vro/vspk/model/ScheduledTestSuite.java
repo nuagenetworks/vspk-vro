@@ -26,9 +26,15 @@
 */
 
 package net.nuagenetworks.vro.vspk.model;
+import net.nuagenetworks.vro.vspk.model.fetchers.GlobalMetadatasFetcher;
+
+import net.nuagenetworks.vro.vspk.model.fetchers.MetadatasFetcher;
+
 import net.nuagenetworks.vro.vspk.model.fetchers.ScheduledtestsuiterunsFetcher;
 
 import net.nuagenetworks.vro.vspk.model.fetchers.TestsFetcher;
+
+import net.nuagenetworks.vro.vspk.model.enums.ScheduledTestSuiteEntityScope;
 
 import net.nuagenetworks.vro.vspk.model.enums.ScheduledTestSuiteScheduleIntervalUnits;
 import net.nuagenetworks.bambou.RestException;
@@ -45,6 +51,8 @@ import com.vmware.o11n.plugin.sdk.annotation.VsoProperty;
 import com.vmware.o11n.plugin.sdk.annotation.VsoRelation;
 
 @VsoFinder(name = Constants.SCHEDULEDTESTSUITE, datasource = Constants.DATASOURCE, image = Constants.SCHEDULEDTESTSUITE_IMAGE_FILENAME, idAccessor = Constants.ID_ACCESSOR, relations = {
+        @VsoRelation(inventoryChildren = true, name = Constants.METADATAS_FETCHER, type = Constants.METADATAS_FETCHER), 
+
         @VsoRelation(inventoryChildren = true, name = Constants.TESTS_FETCHER, type = Constants.TESTS_FETCHER)
 })
 @VsoObject(create = false, strict = true)
@@ -55,14 +63,35 @@ public class ScheduledTestSuite extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "creationDate")
+    protected String creationDate;
+    
     @JsonProperty(value = "description")
     protected String description;
+    
+    @JsonProperty(value = "embeddedMetadata")
+    protected java.util.List<String> embeddedMetadata;
     
     @JsonProperty(value = "endDateTime")
     protected Float endDateTime;
     
+    @JsonProperty(value = "entityScope")
+    protected ScheduledTestSuiteEntityScope entityScope;
+    
+    @JsonProperty(value = "externalID")
+    protected String externalID;
+    
+    @JsonProperty(value = "lastUpdatedBy")
+    protected String lastUpdatedBy;
+    
+    @JsonProperty(value = "lastUpdatedDate")
+    protected String lastUpdatedDate;
+    
     @JsonProperty(value = "name")
     protected String name;
+    
+    @JsonProperty(value = "owner")
+    protected String owner;
     
     @JsonProperty(value = "scheduleInterval")
     protected Long scheduleInterval;
@@ -74,6 +103,12 @@ public class ScheduledTestSuite extends BaseObject {
     protected Float startDateTime;
     
     @JsonIgnore
+    private GlobalMetadatasFetcher globalMetadatas;
+    
+    @JsonIgnore
+    private MetadatasFetcher metadatas;
+    
+    @JsonIgnore
     private ScheduledtestsuiterunsFetcher scheduledtestsuiteruns;
     
     @JsonIgnore
@@ -81,6 +116,10 @@ public class ScheduledTestSuite extends BaseObject {
     
     @VsoConstructor
     public ScheduledTestSuite() {
+        globalMetadatas = new GlobalMetadatasFetcher(this);
+        
+        metadatas = new MetadatasFetcher(this);
+        
         scheduledtestsuiteruns = new ScheduledtestsuiterunsFetcher(this);
         
         tests = new TestsFetcher(this);
@@ -107,6 +146,17 @@ public class ScheduledTestSuite extends BaseObject {
         return super.getParentType();
     }
     @JsonIgnore
+    @VsoProperty(displayName = "CreationDate", readOnly = false)   
+    public String getCreationDate() {
+       return creationDate;
+    }
+
+    @JsonIgnore
+    public void setCreationDate(String value) { 
+        this.creationDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Description", readOnly = false)   
     public String getDescription() {
        return description;
@@ -115,6 +165,17 @@ public class ScheduledTestSuite extends BaseObject {
     @JsonIgnore
     public void setDescription(String value) { 
         this.description = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "EmbeddedMetadata", readOnly = false)   
+    public java.util.List<String> getEmbeddedMetadata() {
+       return embeddedMetadata;
+    }
+
+    @JsonIgnore
+    public void setEmbeddedMetadata(java.util.List<String> value) { 
+        this.embeddedMetadata = value;
     }
     
     @JsonIgnore
@@ -129,6 +190,50 @@ public class ScheduledTestSuite extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "EntityScope", readOnly = false)   
+    public ScheduledTestSuiteEntityScope getEntityScope() {
+       return entityScope;
+    }
+
+    @JsonIgnore
+    public void setEntityScope(ScheduledTestSuiteEntityScope value) { 
+        this.entityScope = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ExternalID", readOnly = false)   
+    public String getExternalID() {
+       return externalID;
+    }
+
+    @JsonIgnore
+    public void setExternalID(String value) { 
+        this.externalID = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedBy", readOnly = false)   
+    public String getLastUpdatedBy() {
+       return lastUpdatedBy;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedBy(String value) { 
+        this.lastUpdatedBy = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastUpdatedDate", readOnly = false)   
+    public String getLastUpdatedDate() {
+       return lastUpdatedDate;
+    }
+
+    @JsonIgnore
+    public void setLastUpdatedDate(String value) { 
+        this.lastUpdatedDate = value;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Name", readOnly = false)   
     public String getName() {
        return name;
@@ -137,6 +242,17 @@ public class ScheduledTestSuite extends BaseObject {
     @JsonIgnore
     public void setName(String value) { 
         this.name = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Owner", readOnly = false)   
+    public String getOwner() {
+       return owner;
+    }
+
+    @JsonIgnore
+    public void setOwner(String value) { 
+        this.owner = value;
     }
     
     @JsonIgnore
@@ -173,6 +289,18 @@ public class ScheduledTestSuite extends BaseObject {
     }
     
     @JsonIgnore
+    @VsoProperty(displayName = "GlobalMetadatas", readOnly = true)   
+    public GlobalMetadatasFetcher getGlobalMetadatas() {
+        return globalMetadatas;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "Metadatas", readOnly = true)   
+    public MetadatasFetcher getMetadatas() {
+        return metadatas;
+    }
+    
+    @JsonIgnore
     @VsoProperty(displayName = "Scheduledtestsuiteruns", readOnly = true)   
     public ScheduledtestsuiterunsFetcher getScheduledtestsuiteruns() {
         return scheduledtestsuiteruns;
@@ -205,6 +333,31 @@ public class ScheduledTestSuite extends BaseObject {
         }
     }
     @VsoMethod
+    public void assignGlobalMetadatas(Session session, GlobalMetadata[] childRestObjs, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.assign(session, java.util.Arrays.asList(childRestObjs), commit);
+        if (!session.getNotificationsEnabled()) { 
+           SessionManager.getInstance().notifyElementUpdated(Constants.SCHEDULEDTESTSUITE, getId());
+        }
+    }
+    
+    @VsoMethod
+    public void createGlobalMetadata(Session session, GlobalMetadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.GLOBALMETADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
+    public void createMetadata(Session session, Metadata childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
+        boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
+        super.createChild(session, childRestObj, responseChoice, commit);
+        if (!session.getNotificationsEnabled()) {
+           SessionManager.getInstance().notifyElementInvalidate(Constants.METADATAS_FETCHER, getId());
+        }
+    }
+    @VsoMethod
     public void createTest(Session session, Test childRestObj, Integer responseChoice, Boolean commitObj) throws RestException {
         boolean commit = (commitObj != null) ? commitObj.booleanValue() : true;
         super.createChild(session, childRestObj, responseChoice, commit);
@@ -212,6 +365,6 @@ public class ScheduledTestSuite extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.TESTS_FETCHER, getId());
         }
     }public String toString() {
-        return "ScheduledTestSuite [" + "description=" + description + ", endDateTime=" + endDateTime + ", name=" + name + ", scheduleInterval=" + scheduleInterval + ", scheduleIntervalUnits=" + scheduleIntervalUnits + ", startDateTime=" + startDateTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
+        return "ScheduledTestSuite [" + "creationDate=" + creationDate + ", description=" + description + ", embeddedMetadata=" + embeddedMetadata + ", endDateTime=" + endDateTime + ", entityScope=" + entityScope + ", externalID=" + externalID + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", name=" + name + ", owner=" + owner + ", scheduleInterval=" + scheduleInterval + ", scheduleIntervalUnits=" + scheduleIntervalUnits + ", startDateTime=" + startDateTime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }

@@ -142,6 +142,10 @@ public interface Constants extends BaseConstants {
     String CTRANSLATIONMAPS = "CTranslationMaps";
     String CUSTOMPROPERTY = "CustomProperty";
     String CUSTOMPROPERTIES = "CustomProperties";
+    String DDNSCONFIG = "Ddnsconfig";
+    String DDNSCONFIGS = "Ddnsconfigs";
+    String DDNSCONFIGBINDING = "Ddnsconfigbinding";
+    String DDNSCONFIGBINDINGS = "Ddnsconfigbindings";
     String DEFAULTGATEWAY = "DefaultGateway";
     String DEFAULTGATEWAYS = "DefaultGateways";
     String DEMARCATIONSERVICE = "DemarcationService";
@@ -727,6 +731,8 @@ public interface Constants extends BaseConstants {
     String CSNATPOOLS_FETCHER = "CSNATPoolsFetcher";
     String CTRANSLATIONMAPS_FETCHER = "CTranslationMapsFetcher";
     String CUSTOMPROPERTIES_FETCHER = "CustomPropertiesFetcher";
+    String DDNSCONFIGS_FETCHER = "DdnsconfigsFetcher";
+    String DDNSCONFIGBINDINGS_FETCHER = "DdnsconfigbindingsFetcher";
     String DEFAULTGATEWAYS_FETCHER = "DefaultGatewaysFetcher";
     String DEMARCATIONSERVICES_FETCHER = "DemarcationServicesFetcher";
     String DEPLOYMENTFAILURES_FETCHER = "DeploymentFailuresFetcher";
@@ -1161,6 +1167,10 @@ public interface Constants extends BaseConstants {
     String CTRANSLATIONMAP_MAPPINGTYPE_ENUM = "CTranslationMapMappingType";
     
     String CUSTOMPROPERTY_ENTITYSCOPE_ENUM = "CustomPropertyEntityScope";
+    
+    String DDNSCONFIG_CONNECTIONSTATUS_ENUM = "DdnsconfigConnectionStatus";
+    String DDNSCONFIG_PROVIDERNAME_ENUM = "DdnsconfigProviderName";
+    
     
     String DEFAULTGATEWAY_ENTITYSCOPE_ENUM = "DefaultGatewayEntityScope";
     
@@ -1890,8 +1900,10 @@ public interface Constants extends BaseConstants {
     String SAPINGRESSQOSPROFILE_BLOBTYPE_ENUM = "SAPIngressQoSProfileBlobType";
     String SAPINGRESSQOSPROFILE_ENTITYSCOPE_ENUM = "SAPIngressQoSProfileEntityScope";
     
+    String SCHEDULEDTESTSUITE_ENTITYSCOPE_ENUM = "ScheduledTestSuiteEntityScope";
     String SCHEDULEDTESTSUITE_SCHEDULEINTERVALUNITS_ENUM = "ScheduledTestSuiteScheduleIntervalUnits";
     
+    String SCHEDULEDTESTSUITERUN_ENTITYSCOPE_ENUM = "ScheduledtestsuiterunEntityScope";
     String SCHEDULEDTESTSUITERUN_OPERATIONSTATUS_ENUM = "ScheduledtestsuiterunOperationStatus";
     
     String WANSERVICE_CONFIGTYPE_ENUM = "WANServiceConfigType";
@@ -2291,6 +2303,8 @@ public interface Constants extends BaseConstants {
     String CSNATPOOL_IMAGE_FILENAME = "images/icon-csnatpool.png";
     String CTRANSLATIONMAP_IMAGE_FILENAME = "images/icon-ctranslationmap.png";
     String CUSTOMPROPERTY_IMAGE_FILENAME = "images/icon-customproperty.png";
+    String DDNSCONFIG_IMAGE_FILENAME = "images/icon-ddnsconfig.png";
+    String DDNSCONFIGBINDING_IMAGE_FILENAME = "images/icon-ddnsconfigbinding.png";
     String DEFAULTGATEWAY_IMAGE_FILENAME = "images/icon-defaultgateway.png";
     String DEMARCATIONSERVICE_IMAGE_FILENAME = "images/icon-demarcationservice.png";
     String DEPLOYMENTFAILURE_IMAGE_FILENAME = "images/icon-deploymentfailure.png";
@@ -2612,6 +2626,8 @@ public interface Constants extends BaseConstants {
     String CSNATPOOL_ENTITY_TYPE = "csnatpool";
     String CTRANSLATIONMAP_ENTITY_TYPE = "ctranslationmap";
     String CUSTOMPROPERTY_ENTITY_TYPE = "customproperty";
+    String DDNSCONFIG_ENTITY_TYPE = "ddnsconfig";
+    String DDNSCONFIGBINDING_ENTITY_TYPE = "ddnsconfigbinding";
     String DEFAULTGATEWAY_ENTITY_TYPE = "defaultgateway";
     String DEMARCATIONSERVICE_ENTITY_TYPE = "demarcationservice";
     String DEPLOYMENTFAILURE_ENTITY_TYPE = "deploymentfailure";

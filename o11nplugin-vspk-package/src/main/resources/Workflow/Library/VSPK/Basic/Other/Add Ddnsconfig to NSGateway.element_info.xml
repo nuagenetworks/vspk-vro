@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Add Ddnsconfig to NSGateway</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">cd0b6998-1958-532a-a024-e831a70bf89e</entry>
+</properties>

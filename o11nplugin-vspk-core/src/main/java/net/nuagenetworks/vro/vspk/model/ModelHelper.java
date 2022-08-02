@@ -6114,6 +6114,126 @@ public class ModelHelper extends BaseModelHelper {
         java.util.List<CustomPropertiesFetcher> allObjs = new ArrayList<CustomPropertiesFetcher>();
         return allObjs;
     }
+    public static Ddnsconfig getDdnsconfigById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            Ddnsconfig obj = null;
+            obj = new Ddnsconfig();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.DDNSCONFIG, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }
+    public static DdnsconfigbindingsFetcher getDdnsconfigbindingsFetcherForDdnsconfigId(String id) throws RestException {
+        Ddnsconfig obj = getObject(Constants.DDNSCONFIG, id);
+        if (obj == null) {
+            obj = getDdnsconfigById(id);
+        }
+
+        if (obj != null) {
+            DdnsconfigbindingsFetcher fetcher = obj.getDdnsconfigbindings();
+            return addFetcher(Constants.DDNSCONFIGBINDINGS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    public static java.util.List<Ddnsconfig> getDdnsconfigsForFetcherId(String id) throws RestException {
+        DdnsconfigsFetcher fetcher = getDdnsconfigsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.DDNSCONFIG);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<Ddnsconfig>();
+    }
+
+    public static DdnsconfigsFetcher getDdnsconfigsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.DDNSCONFIGS_FETCHER, id);
+        if (fetcher != null) {
+            return (DdnsconfigsFetcher) fetcher;
+        }
+        if ((fetcher = getDdnsconfigsFetcherForNSGatewayId(id)) != null) {
+            return (DdnsconfigsFetcher) addFetcher(Constants.DDNSCONFIGS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<Ddnsconfig> getAllDdnsconfigs() throws RestException {
+        java.util.List<Ddnsconfig> allObjs = new ArrayList<Ddnsconfig>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<DdnsconfigsFetcher> getAllDdnsconfigsFetchers() throws RestException {
+        java.util.List<DdnsconfigsFetcher> allObjs = new ArrayList<DdnsconfigsFetcher>();
+        return allObjs;
+    }
+    public static Ddnsconfigbinding getDdnsconfigbindingById(String id) {
+        for (Session session : SessionManager.getInstance().getSessions()) {
+            Ddnsconfigbinding obj = null;
+            obj = new Ddnsconfigbinding();
+            obj.setId(id);
+
+            try {
+                session.fetch(obj);
+                return addObject(Constants.DDNSCONFIGBINDING, obj);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Object not found in session
+            }
+
+            
+        }
+
+        return null;
+    }public static java.util.List<Ddnsconfigbinding> getDdnsconfigbindingsForFetcherId(String id) throws RestException {
+        DdnsconfigbindingsFetcher fetcher = getDdnsconfigbindingsFetcherById(id);
+        if (fetcher != null) {
+            try {
+                Session session = fetcher.getSession();
+                session.fetch(fetcher);
+                return addFetcherObjects(fetcher, Constants.DDNSCONFIGBINDING);
+            } catch (RestException | HttpClientErrorException ex) {
+                // Error fetching objects
+            }
+        }
+
+        return new ArrayList<Ddnsconfigbinding>();
+    }
+
+    public static DdnsconfigbindingsFetcher getDdnsconfigbindingsFetcherById(String id) throws RestException {
+        BaseFetcher<? extends BaseObjectExtensions> fetcher = getFetcher(Constants.DDNSCONFIGBINDINGS_FETCHER, id);
+        if (fetcher != null) {
+            return (DdnsconfigbindingsFetcher) fetcher;
+        }
+        if ((fetcher = getDdnsconfigbindingsFetcherForDdnsconfigId(id)) != null) {
+            return (DdnsconfigbindingsFetcher) addFetcher(Constants.DDNSCONFIGBINDINGS_FETCHER, fetcher);
+        }
+        return null;
+    }
+
+    public static java.util.List<Ddnsconfigbinding> getAllDdnsconfigbindings() throws RestException {
+        java.util.List<Ddnsconfigbinding> allObjs = new ArrayList<Ddnsconfigbinding>();
+
+        return allObjs;
+    }
+
+    public static java.util.List<DdnsconfigbindingsFetcher> getAllDdnsconfigbindingsFetchers() throws RestException {
+        java.util.List<DdnsconfigbindingsFetcher> allObjs = new ArrayList<DdnsconfigbindingsFetcher>();
+        return allObjs;
+    }
     public static DefaultGateway getDefaultGatewayById(String id) {
         for (Session session : SessionManager.getInstance().getSessions()) {
             DefaultGateway obj = null;
@@ -15672,6 +15792,14 @@ public class ModelHelper extends BaseModelHelper {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getGlobalMetadatasFetcherForScheduledTestSuiteId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getGlobalMetadatasFetcherForScheduledtestsuiterunId(id)) != null) {
+            return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getGlobalMetadatasFetcherForWANServiceId(id)) != null) {
             return (GlobalMetadatasFetcher) addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
         }
@@ -25221,6 +25349,14 @@ public class ModelHelper extends BaseModelHelper {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
         
+        if ((fetcher = getMetadatasFetcherForScheduledTestSuiteId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
+        if ((fetcher = getMetadatasFetcherForScheduledtestsuiterunId(id)) != null) {
+            return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+        
         if ((fetcher = getMetadatasFetcherForWANServiceId(id)) != null) {
             return (MetadatasFetcher) addFetcher(Constants.METADATAS_FETCHER, fetcher);
         }
@@ -28051,6 +28187,20 @@ public class ModelHelper extends BaseModelHelper {
         if (obj != null) {
             CommandsFetcher fetcher = obj.getCommands();
             return addFetcher(Constants.COMMANDS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static DdnsconfigsFetcher getDdnsconfigsFetcherForNSGatewayId(String id) throws RestException {
+        NSGateway obj = getObject(Constants.NSGATEWAY, id);
+        if (obj == null) {
+            obj = getNSGatewayById(id);
+        }
+
+        if (obj != null) {
+            DdnsconfigsFetcher fetcher = obj.getDdnsconfigs();
+            return addFetcher(Constants.DDNSCONFIGS_FETCHER, fetcher);
         }
 
         return null;
@@ -36609,6 +36759,34 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForScheduledTestSuiteId(String id) throws RestException {
+        ScheduledTestSuite obj = getObject(Constants.SCHEDULEDTESTSUITE, id);
+        if (obj == null) {
+            obj = getScheduledTestSuiteById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForScheduledTestSuiteId(String id) throws RestException {
+        ScheduledTestSuite obj = getObject(Constants.SCHEDULEDTESTSUITE, id);
+        if (obj == null) {
+            obj = getScheduledTestSuiteById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static ScheduledtestsuiterunsFetcher getScheduledtestsuiterunsFetcherForScheduledTestSuiteId(String id) throws RestException {
         ScheduledTestSuite obj = getObject(Constants.SCHEDULEDTESTSUITE, id);
         if (obj == null) {
@@ -36690,6 +36868,34 @@ public class ModelHelper extends BaseModelHelper {
 
         return null;
     }
+    public static GlobalMetadatasFetcher getGlobalMetadatasFetcherForScheduledtestsuiterunId(String id) throws RestException {
+        Scheduledtestsuiterun obj = getObject(Constants.SCHEDULEDTESTSUITERUN, id);
+        if (obj == null) {
+            obj = getScheduledtestsuiterunById(id);
+        }
+
+        if (obj != null) {
+            GlobalMetadatasFetcher fetcher = obj.getGlobalMetadatas();
+            return addFetcher(Constants.GLOBALMETADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
+    public static MetadatasFetcher getMetadatasFetcherForScheduledtestsuiterunId(String id) throws RestException {
+        Scheduledtestsuiterun obj = getObject(Constants.SCHEDULEDTESTSUITERUN, id);
+        if (obj == null) {
+            obj = getScheduledtestsuiterunById(id);
+        }
+
+        if (obj != null) {
+            MetadatasFetcher fetcher = obj.getMetadatas();
+            return addFetcher(Constants.METADATAS_FETCHER, fetcher);
+        }
+
+        return null;
+    }
+    
     public static TestRunsFetcher getTestRunsFetcherForScheduledtestsuiterunId(String id) throws RestException {
         Scheduledtestsuiterun obj = getObject(Constants.SCHEDULEDTESTSUITERUN, id);
         if (obj == null) {

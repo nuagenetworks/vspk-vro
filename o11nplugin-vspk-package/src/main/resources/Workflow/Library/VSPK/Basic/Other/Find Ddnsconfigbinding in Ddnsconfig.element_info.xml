@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Exported from [server]</comment>
+<entry key="categoryPath">Library.VSPK.Basic.Other</entry>
+<entry key="name">Find Ddnsconfigbinding in Ddnsconfig</entry>
+<entry key="type">Workflow</entry>
+<entry key="id">674b1f02-1338-5a78-bc90-17c37d69c495</entry>
+</properties>
