@@ -93,6 +93,12 @@ public class VRS extends BaseObject {
     private static final long serialVersionUID = 1L;
 
     
+    @JsonProperty(value = "ISSUFailureReason")
+    protected String ISSUFailureReason;
+    
+    @JsonProperty(value = "ISSUState")
+    protected String ISSUState;
+    
     @JsonProperty(value = "address")
     protected String address;
     
@@ -155,6 +161,9 @@ public class VRS extends BaseObject {
     
     @JsonProperty(value = "lastEventTimestamp")
     protected Long lastEventTimestamp;
+    
+    @JsonProperty(value = "lastISSUState")
+    protected String lastISSUState;
     
     @JsonProperty(value = "lastStateChange")
     protected Long lastStateChange;
@@ -335,6 +344,28 @@ public class VRS extends BaseObject {
     public String getParentType() {
         return super.getParentType();
     }
+    @JsonIgnore
+    @VsoProperty(displayName = "ISSUFailureReason", readOnly = false)   
+    public String getISSUFailureReason() {
+       return ISSUFailureReason;
+    }
+
+    @JsonIgnore
+    public void setISSUFailureReason(String value) { 
+        this.ISSUFailureReason = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "ISSUState", readOnly = false)   
+    public String getISSUState() {
+       return ISSUState;
+    }
+
+    @JsonIgnore
+    public void setISSUState(String value) { 
+        this.ISSUState = value;
+    }
+    
     @JsonIgnore
     @VsoProperty(displayName = "Address", readOnly = false)   
     public String getAddress() {
@@ -564,6 +595,17 @@ public class VRS extends BaseObject {
     @JsonIgnore
     public void setLastEventTimestamp(Long value) { 
         this.lastEventTimestamp = value;
+    }
+    
+    @JsonIgnore
+    @VsoProperty(displayName = "LastISSUState", readOnly = false)   
+    public String getLastISSUState() {
+       return lastISSUState;
+    }
+
+    @JsonIgnore
+    public void setLastISSUState(String value) { 
+        this.lastISSUState = value;
     }
     
     @JsonIgnore
@@ -1041,6 +1083,6 @@ public class VRS extends BaseObject {
            SessionManager.getInstance().notifyElementInvalidate(Constants.PERMISSIONS_FETCHER, getId());
         }
     }public String toString() {
-        return "VRS [" + "address=" + address + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", creationDate=" + creationDate + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", dbSynced=" + dbSynced + ", description=" + description + ", disks=" + disks + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayUUID=" + gatewayUUID + ", hypervisorConnectionState=" + hypervisorConnectionState + ", hypervisorIdentifier=" + hypervisorIdentifier + ", hypervisorName=" + hypervisorName + ", hypervisorType=" + hypervisorType + ", isResilient=" + isResilient + ", lastEventName=" + lastEventName + ", lastEventObject=" + lastEventObject + ", lastEventTimestamp=" + lastEventTimestamp + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", licensedState=" + licensedState + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", multiNICVPortEnabled=" + multiNICVPortEnabled + ", name=" + name + ", numberOfBridgeInterfaces=" + numberOfBridgeInterfaces + ", numberOfContainers=" + numberOfContainers + ", numberOfHostInterfaces=" + numberOfHostInterfaces + ", numberOfVirtualMachines=" + numberOfVirtualMachines + ", owner=" + owner + ", parentIDs=" + parentIDs + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", personality=" + personality + ", primaryVSCConnectionLost=" + primaryVSCConnectionLost + ", productVersion=" + productVersion + ", revertBehaviorEnabled=" + revertBehaviorEnabled + ", revertCompleted=" + revertCompleted + ", revertCount=" + revertCount + ", revertFailedCount=" + revertFailedCount + ", role=" + role + ", status=" + status + ", uptime=" + uptime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
+        return "VRS [" + "ISSUFailureReason=" + ISSUFailureReason + ", ISSUState=" + ISSUState + ", address=" + address + ", averageCPUUsage=" + averageCPUUsage + ", averageMemoryUsage=" + averageMemoryUsage + ", creationDate=" + creationDate + ", currentCPUUsage=" + currentCPUUsage + ", currentMemoryUsage=" + currentMemoryUsage + ", dbSynced=" + dbSynced + ", description=" + description + ", disks=" + disks + ", embeddedMetadata=" + embeddedMetadata + ", entityScope=" + entityScope + ", externalID=" + externalID + ", gatewayUUID=" + gatewayUUID + ", hypervisorConnectionState=" + hypervisorConnectionState + ", hypervisorIdentifier=" + hypervisorIdentifier + ", hypervisorName=" + hypervisorName + ", hypervisorType=" + hypervisorType + ", isResilient=" + isResilient + ", lastEventName=" + lastEventName + ", lastEventObject=" + lastEventObject + ", lastEventTimestamp=" + lastEventTimestamp + ", lastISSUState=" + lastISSUState + ", lastStateChange=" + lastStateChange + ", lastUpdatedBy=" + lastUpdatedBy + ", lastUpdatedDate=" + lastUpdatedDate + ", licensedState=" + licensedState + ", location=" + location + ", managementIP=" + managementIP + ", messages=" + messages + ", multiNICVPortEnabled=" + multiNICVPortEnabled + ", name=" + name + ", numberOfBridgeInterfaces=" + numberOfBridgeInterfaces + ", numberOfContainers=" + numberOfContainers + ", numberOfHostInterfaces=" + numberOfHostInterfaces + ", numberOfVirtualMachines=" + numberOfVirtualMachines + ", owner=" + owner + ", parentIDs=" + parentIDs + ", peakCPUUsage=" + peakCPUUsage + ", peakMemoryUsage=" + peakMemoryUsage + ", personality=" + personality + ", primaryVSCConnectionLost=" + primaryVSCConnectionLost + ", productVersion=" + productVersion + ", revertBehaviorEnabled=" + revertBehaviorEnabled + ", revertCompleted=" + revertCompleted + ", revertCount=" + revertCount + ", revertFailedCount=" + revertFailedCount + ", role=" + role + ", status=" + status + ", uptime=" + uptime + ", id=" + id + ", parentId=" + parentId + ", parentType=" + parentType  + "]";
     }
 }
